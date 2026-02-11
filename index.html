@@ -21,15 +21,18 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <span class="logo-icon">⚡</span>
+        <svg class="logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#22d3ee" stroke="#a78bfa" stroke-width="1.5"/></svg>
         <span class="logo-text">rtk</span>
       </a>
       <div class="nav-links">
+        <a href="#demo">Demo</a>
         <a href="#features">Features</a>
-        <a href="#savings">Savings</a>
         <a href="#install">Install</a>
         <a href="#commands">Commands</a>
-        <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
   </nav>
@@ -40,7 +43,7 @@
     <h1>Stop wasting tokens.<br><span class="gradient-text">Start using rtk.</span></h1>
     <p class="hero-sub">
       A high-performance CLI proxy that filters and compresses command outputs
-      before they reach your LLM context. <strong>Save 60–90% of tokens</strong> on every session.
+      before they reach your LLM context. <strong>Save 60-90% of tokens</strong> on every session.
     </p>
     <div class="hero-stats">
       <div class="stat">
@@ -60,24 +63,100 @@
     </div>
     <div class="hero-cta">
       <a href="#install" class="btn btn-primary">Install rtk</a>
-      <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub →</a>
+      <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Star on GitHub
+      </a>
     </div>
   </section>
 
-  <!-- Before / After -->
+  <!-- Slideshow Demo -->
   <section class="demo" id="demo">
     <div class="section-inner">
       <h2>See the difference</h2>
-      <p class="section-sub">A typical 30-minute Claude Code session drops from ~150,000 to ~45,000 tokens.</p>
-      <div class="demo-grid">
-        <div class="demo-card demo-before">
-          <div class="demo-card-header">
-            <span class="demo-dot red"></span>
-            <span class="demo-label">Without rtk</span>
-            <span class="demo-tokens">~2,400 tokens</span>
+      <p class="section-sub">Real outputs from the rtk codebase. Click to browse examples.</p>
+
+      <div class="slideshow">
+        <div class="slideshow-nav">
+          <button class="slide-tab active" data-slide="0">ls</button>
+          <button class="slide-tab" data-slide="1">git status</button>
+          <button class="slide-tab" data-slide="2">cat / read</button>
+          <button class="slide-tab" data-slide="3">deps</button>
+          <button class="slide-tab" data-slide="4">grep</button>
+          <button class="slide-tab" data-slide="5">git log</button>
+        </div>
+
+        <div class="slideshow-viewport">
+          <!-- Slide 0: ls -->
+          <div class="slide active" data-index="0">
+            <div class="demo-grid">
+              <div class="demo-card demo-before">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">ls -la src/</span>
+                  <span class="demo-tokens">~3,200 tokens</span>
+                </div>
+                <pre><code>total 928
+drwxr-xr-x  41 patrick  staff   1312  2 feb 21:43 .
+drwxr-xr-x  25 patrick  staff    800  2 feb 21:35 ..
+-rw-r--r--   1 patrick  staff  16394  2 feb 21:35 cargo_cmd.rs
+-rw-r--r--   1 patrick  staff  27220  2 feb 21:35 cc_economics.rs
+-rw-r--r--   1 patrick  staff   9503  2 feb 21:35 ccusage.rs
+-rw-r--r--   1 patrick  staff   2884  2 feb 21:35 config.rs
+-rw-r--r--   1 patrick  staff  12886  2 feb 21:35 container.rs
+-rw-r--r--   1 patrick  staff   3406  2 feb 21:35 curl_cmd.rs
+-rw-r--r--   1 patrick  staff   9040  2 feb 21:35 deps.rs
+-rw-r--r--   1 patrick  staff  10667  2 feb 21:35 diff_cmd.rs
+drwxr-xr-x   6 patrick  staff    192  2 feb 21:35 discover
+-rw-r--r--   1 patrick  staff   9732  2 feb 21:35 display_helpers.rs
+-rw-r--r--   1 patrick  staff   5500  2 feb 21:35 env_cmd.rs
+-rw-r--r--   1 patrick  staff  12156  2 feb 21:35 filter.rs
+-rw-r--r--   1 patrick  staff   3007  2 feb 21:35 find_cmd.rs
+-rw-r--r--   1 patrick  staff  10648  2 feb 21:35 gain.rs
+-rw-r--r--   1 patrick  staff  24865  2 feb 21:35 gh_cmd.rs
+-rw-r--r--   1 patrick  staff  36053  2 feb 21:35 git.rs
+-rw-r--r--   1 patrick  staff   5263  2 feb 21:35 grep_cmd.rs
+<span class="truncated">... 20 more lines</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk ls src/</span>
+                  <span class="demo-tokens">~640 tokens</span>
+                  <span class="demo-savings">-80%</span>
+                </div>
+                <pre><code>discover/
+parser/
+cargo_cmd.rs  16.0K
+cc_economics.rs  26.6K
+ccusage.rs  9.3K
+config.rs  2.8K
+container.rs  12.6K
+curl_cmd.rs  3.3K
+deps.rs  8.8K
+diff_cmd.rs  10.4K
+display_helpers.rs  9.5K
+env_cmd.rs  5.4K
+filter.rs  11.9K
+find_cmd.rs  2.9K
+gain.rs  10.4K
+...
+
+37 files, 2 dirs (37 .rs)</code></pre>
+              </div>
+            </div>
           </div>
-          <pre><code>$ git status
-On branch main
+
+          <!-- Slide 1: git status -->
+          <div class="slide" data-index="1">
+            <div class="demo-grid">
+              <div class="demo-card demo-before">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">git status</span>
+                  <span class="demo-tokens">~2,400 tokens</span>
+                </div>
+                <pre><code>On branch main
 Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
@@ -88,25 +167,295 @@ Changes to be committed:
 
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
-  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+  (use "git restore &lt;file&gt;..." to discard changes)
         modified:   Cargo.toml
         modified:   README.md
 
 Untracked files:
-  (use "git add &lt;file&gt;..." to include in what will be committed)
+  (use "git add &lt;file&gt;..." to include in what...)
         tests/docker_test.rs
         docs/docker.md</code></pre>
-        </div>
-        <div class="demo-card demo-after">
-          <div class="demo-card-header">
-            <span class="demo-dot green"></span>
-            <span class="demo-label">With rtk</span>
-            <span class="demo-tokens">~480 tokens</span>
-          </div>
-          <pre><code>$ rtk git status
-staged: src/main.rs src/lib.rs +src/commands/docker.rs
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk git status</span>
+                  <span class="demo-tokens">~480 tokens</span>
+                  <span class="demo-savings">-80%</span>
+                </div>
+                <pre><code>staged: src/main.rs src/lib.rs +src/commands/docker.rs
 modified: Cargo.toml README.md
 untracked: tests/docker_test.rs docs/docker.md</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: cat / read -->
+          <div class="slide" data-index="2">
+            <div class="demo-grid">
+              <div class="demo-card demo-before">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">cat src/main.rs | head -40</span>
+                  <span class="demo-tokens">~1,800 tokens</span>
+                </div>
+                <pre><code>mod cargo_cmd;
+mod cc_economics;
+mod ccusage;
+mod config;
+mod container;
+mod curl_cmd;
+mod deps;
+mod diff_cmd;
+mod discover;
+mod display_helpers;
+mod env_cmd;
+mod filter;
+mod find_cmd;
+mod gain;
+mod gh_cmd;
+mod git;
+mod grep_cmd;
+mod init;
+mod json_cmd;
+mod lint_cmd;
+mod local_llm;
+mod log_cmd;
+mod ls;
+mod next_cmd;
+mod npm_cmd;
+mod parser;
+mod playwright_cmd;
+mod pnpm_cmd;
+mod prettier_cmd;
+mod prisma_cmd;
+mod read;
+mod runner;
+mod summary;
+mod tracking;
+mod tsc_cmd;
+mod utils;
+mod vitest_cmd;
+mod wget_cmd;
+
+use anyhow::{Context, Result};
+<span class="truncated">... continues for 600+ lines</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk read src/main.rs -l aggressive</span>
+                  <span class="demo-tokens">~520 tokens</span>
+                  <span class="demo-savings">-71%</span>
+                </div>
+                <pre><code>use anyhow::{Context, Result};
+use clap::{Parser, Subcommand};
+use std::path::PathBuf;
+struct Cli {
+    // ... implementation
+enum Commands {
+    // ... implementation
+enum GitCommands {
+    // ... implementation
+enum DockerCommands {
+    // ... implementation
+enum KubectlCommands {
+    // ... implementation
+enum VitestCommands {
+    // ... implementation
+enum CargoCommands {
+    // ... implementation
+fn main() -> Result&lt;()&gt; {
+    // ... implementation</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: deps -->
+          <div class="slide" data-index="3">
+            <div class="demo-grid">
+              <div class="demo-card demo-before">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">cat Cargo.toml</span>
+                  <span class="demo-tokens">~2,100 tokens</span>
+                </div>
+                <pre><code>[package]
+name = "rtk"
+version = "0.8.1"
+edition = "2021"
+authors = ["Patrick Szymkowiak"]
+description = "Rust Token Killer - ..."
+license = "MIT"
+repository = "https://github.com/rtk-ai/rtk"
+readme = "README.md"
+keywords = ["cli", "llm", "token", ...]
+categories = ["command-line-utilities", ...]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+anyhow = "1.0"
+ignore = "0.4"
+walkdir = "2"
+regex = "1"
+lazy_static = "1.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+colored = "2"
+dirs = "5"
+rusqlite = { version = "0.31", features = ... }
+toml = "0.8"
+chrono = "0.4"
+thiserror = "1.0"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+<span class="truncated">... 20 more lines (deb, rpm config)</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk deps</span>
+                  <span class="demo-tokens">~320 tokens</span>
+                  <span class="demo-savings">-85%</span>
+                </div>
+                <pre><code>Rust (Cargo.toml):
+  Dependencies (14):
+    clap (4)
+    anyhow (1.0)
+    ignore (0.4)
+    walkdir (2)
+    regex (1)
+    lazy_static (1.4)
+    serde (1)
+    serde_json (1)
+    colored (2)
+    dirs (5)
+    ... +4 more
+  Dev (1):
+    tempfile (3)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: grep -->
+          <div class="slide" data-index="4">
+            <div class="demo-grid">
+              <div class="demo-card demo-before">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">grep -rn "fn " src/git.rs</span>
+                  <span class="demo-tokens">~3,600 tokens</span>
+                </div>
+                <pre><code>src/git.rs:21:pub fn run(cmd: GitCommand, ...
+src/git.rs:38:fn run_diff(args: &amp;[String], ...
+src/git.rs:105:fn run_show(args: &amp;[String], ...
+src/git.rs:194:pub(crate) fn compact_diff(...
+src/git.rs:260:fn run_log(args: &amp;[String], ...
+src/git.rs:317:fn format_status_output(por...
+src/git.rs:412:fn run_status(args: &amp;[String...
+src/git.rs:467:fn run_add(files: &amp;[String],...
+src/git.rs:519:fn run_commit(message: &amp;str,...
+src/git.rs:561:fn run_push(args: &amp;[String],...
+src/git.rs:610:fn run_pull(args: &amp;[String],...
+src/git.rs:682:fn run_branch(args: &amp;[String...
+src/git.rs:734:fn filter_branch_output(out...
+src/git.rs:788:fn run_fetch(args: &amp;[String]...
+src/git.rs:830:fn run_stash(subcommand: Op...
+src/git.rs:917:fn filter_stash_list(output...
+src/git.rs:938:fn run_worktree(args: &amp;[Str...
+src/git.rs:983:fn filter_worktree_list(out...
+src/git.rs:1015:fn test_compact_diff() {
+src/git.rs:1020:fn main() {
+src/git.rs:1030:fn test_filter_branch_out...
+src/git.rs:1042:fn test_filter_branch_no_...
+src/git.rs:1051:fn test_filter_stash_list...
+src/git.rs:1060:fn test_filter_worktree_l...
+<span class="truncated">... 5 more matches</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk grep "fn " src/git.rs</span>
+                  <span class="demo-tokens">~800 tokens</span>
+                  <span class="demo-savings">-78%</span>
+                </div>
+                <pre><code>29 matches in 1 file:
+
+  :21  pub fn run(cmd: GitCommand, ...)
+  :38  fn run_diff(args: &amp;[String], ...)
+  :105 fn run_show(args: &amp;[String], ...)
+  :194 pub fn compact_diff(&amp;str, ...)
+  :260 fn run_log(args: &amp;[String], ...)
+  :317 fn format_status_output(&amp;str)
+  :412 fn run_status(args: &amp;[String], ...)
+  :467 fn run_add(files: &amp;[String], ...)
+  :519 fn run_commit(message: &amp;str, ...)
+  :561 fn run_push(args: &amp;[String], ...)
+  :610 fn run_pull(args: &amp;[String], ...)
+  :682 fn run_branch(args: ...)
+  ... +17 tests</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5: git log -->
+          <div class="slide" data-index="5">
+            <div class="demo-grid">
+              <div class="demo-card demo-before">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">git log --oneline -5</span>
+                  <span class="demo-tokens">~600 tokens</span>
+                </div>
+                <pre><code>d6ff33f Merge pull request #52 from
+        FlorianBruniaux/docs/point-
+        to-upstream
+48ed221 Revise RTK roadmap for
+        clarity and updated goals
+67f93a5 Update README.md
+b1f15cf Fix repository link in
+        INSTALL.md
+8138071 Update name collision
+        warning in CLAUDE.md</code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk git log -n 5</span>
+                  <span class="demo-tokens">~320 tokens</span>
+                  <span class="demo-savings">-80%</span>
+                </div>
+                <pre><code>48ed221 Revise RTK roadmap (9d ago)
+67f93a5 Update README.md (9d ago)
+b1f15cf Fix repo link INSTALL.md (9d)
+8138071 Update CLAUDE.md warning (9d)
+15a34ae Fix install script URL (9d)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slideshow-controls">
+          <button class="slide-arrow slide-prev" aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="slide-dots">
+            <span class="dot active" data-slide="0"></span>
+            <span class="dot" data-slide="1"></span>
+            <span class="dot" data-slide="2"></span>
+            <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+          </div>
+          <button class="slide-arrow slide-next" aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -119,32 +468,44 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
       <p class="section-sub">rtk sits between your shell and your LLM, compressing everything automatically.</p>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">🔍</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#22d3ee" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
           <h3>Smart Filtering</h3>
           <p>Removes noise — comments, whitespace, boilerplate — keeping only what matters for your LLM.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📦</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="#22d3ee" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="#a78bfa" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="#a78bfa" stroke-width="2"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="#22d3ee" stroke-width="2"/></svg>
+          </div>
           <h3>Grouping</h3>
           <p>Aggregates similar items: files by directory, errors by type, logs by pattern.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">✂️</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/><line x1="4" y1="4" x2="20" y2="4" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/><line x1="8" y1="20" x2="16" y2="20" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
           <h3>Truncation</h3>
           <p>Keeps relevant context, cuts redundancy. Your LLM sees the signal, not the noise.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🔁</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M17 1l4 4-4 4" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11V9a4 4 0 014-4h14" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/><path d="M7 23l-4-4 4-4" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 13v2a4 4 0 01-4 4H3" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
           <h3>Deduplication</h3>
           <p>Collapses repeated log lines with counts. 500 identical errors become one line.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🪝</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2v6l3-3" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2v6l-3-3" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="12" width="18" height="8" rx="2" stroke="#a78bfa" stroke-width="2"/><circle cx="7" cy="16" r="1" fill="#22d3ee"/><line x1="11" y1="16" x2="17" y2="16" stroke="#22d3ee" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
           <h3>Auto-Rewrite Hook</h3>
           <p>Transparently intercepts Bash commands and rewrites them to rtk equivalents. Zero config, 100% adoption.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📊</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="#22d3ee" opacity="0.5"/><rect x="10" y="7" width="4" height="14" rx="1" fill="#a78bfa" opacity="0.5"/><rect x="17" y="2" width="4" height="19" rx="1" fill="#22d3ee" opacity="0.5"/><rect x="3" y="12" width="4" height="9" rx="1" stroke="#22d3ee" stroke-width="1.5"/><rect x="10" y="7" width="4" height="14" rx="1" stroke="#a78bfa" stroke-width="1.5"/><rect x="17" y="2" width="4" height="19" rx="1" stroke="#22d3ee" stroke-width="1.5"/></svg>
+          </div>
           <h3>Analytics</h3>
           <p><code>rtk gain</code> shows savings stats, graphs, and history. <code>rtk discover</code> finds missed opportunities.</p>
         </div>
@@ -237,7 +598,7 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
       <div class="install-grid">
         <div class="install-card install-primary">
           <h3>Quick Install</h3>
-          <p>One-liner for Linux & macOS</p>
+          <p>One-liner for Linux &amp; macOS</p>
           <div class="code-block">
             <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh</code>
             <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label="Copy">
@@ -287,7 +648,10 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
 
       <div class="commands-grid">
         <div class="cmd-group">
-          <h4>Files</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z" stroke="#22d3ee" stroke-width="2"/><polyline points="13 2 13 9 20 9" stroke="#a78bfa" stroke-width="2"/></svg>
+            Files
+          </h4>
           <div class="cmd"><code>rtk ls .</code><span>Filtered tree</span></div>
           <div class="cmd"><code>rtk read file.rs</code><span>Smart read</span></div>
           <div class="cmd"><code>rtk find "*.rs"</code><span>Compact find</span></div>
@@ -296,7 +660,10 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
         </div>
 
         <div class="cmd-group">
-          <h4>Git</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="#22d3ee" stroke-width="2"/><line x1="12" y1="3" x2="12" y2="6" stroke="#a78bfa" stroke-width="2"/><line x1="12" y1="18" x2="12" y2="21" stroke="#a78bfa" stroke-width="2"/><line x1="3" y1="12" x2="6" y2="12" stroke="#a78bfa" stroke-width="2"/><line x1="18" y1="12" x2="21" y2="12" stroke="#a78bfa" stroke-width="2"/></svg>
+            Git
+          </h4>
           <div class="cmd"><code>rtk git status</code><span>Compact status</span></div>
           <div class="cmd"><code>rtk git log</code><span>One-line commits</span></div>
           <div class="cmd"><code>rtk git diff</code><span>Condensed diff</span></div>
@@ -305,7 +672,10 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
         </div>
 
         <div class="cmd-group">
-          <h4>Test & Build</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" stroke="#22d3ee" stroke-width="2"/><line x1="4" y1="22" x2="4" y2="15" stroke="#a78bfa" stroke-width="2"/></svg>
+            Test &amp; Build
+          </h4>
           <div class="cmd"><code>rtk test &lt;cmd&gt;</code><span>Failures only</span></div>
           <div class="cmd"><code>rtk err &lt;cmd&gt;</code><span>Errors only</span></div>
           <div class="cmd"><code>rtk tsc</code><span>TS errors grouped</span></div>
@@ -314,7 +684,10 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
         </div>
 
         <div class="cmd-group">
-          <h4>Data & Analytics</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" stroke="#22d3ee" stroke-width="2"/><rect x="10" y="7" width="4" height="14" rx="1" stroke="#a78bfa" stroke-width="2"/><rect x="17" y="2" width="4" height="19" rx="1" stroke="#22d3ee" stroke-width="2"/></svg>
+            Data &amp; Analytics
+          </h4>
           <div class="cmd"><code>rtk json config.json</code><span>Structure only</span></div>
           <div class="cmd"><code>rtk deps</code><span>Dependencies summary</span></div>
           <div class="cmd"><code>rtk env</code><span>Vars filtered</span></div>
@@ -323,7 +696,10 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
         </div>
 
         <div class="cmd-group">
-          <h4>Containers</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="#22d3ee" stroke-width="2"/><line x1="8" y1="21" x2="16" y2="21" stroke="#a78bfa" stroke-width="2"/><line x1="12" y1="17" x2="12" y2="21" stroke="#a78bfa" stroke-width="2"/></svg>
+            Containers
+          </h4>
           <div class="cmd"><code>rtk docker ps</code><span>Compact list</span></div>
           <div class="cmd"><code>rtk docker logs &lt;c&gt;</code><span>Deduplicated</span></div>
           <div class="cmd"><code>rtk kubectl pods</code><span>Compact pods</span></div>
@@ -331,7 +707,10 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
         </div>
 
         <div class="cmd-group">
-          <h4>Network & More</h4>
+          <h4>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/><line x1="2" y1="12" x2="22" y2="12" stroke="#a78bfa" stroke-width="1.5"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="#a78bfa" stroke-width="1.5"/></svg>
+            Network &amp; More
+          </h4>
           <div class="cmd"><code>rtk curl &lt;url&gt;</code><span>Auto JSON schema</span></div>
           <div class="cmd"><code>rtk gh pr list</code><span>Compact PRs</span></div>
           <div class="cmd"><code>rtk cargo build</code><span>Cargo compact</span></div>
@@ -342,14 +721,35 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA + Social -->
   <section class="cta">
     <div class="section-inner">
       <h2>Your LLM doesn't need to read all that.</h2>
       <p class="section-sub">Install rtk, save tokens, ship faster.</p>
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary">Install rtk</a>
-        <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">Star on GitHub ★</a>
+        <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Star on GitHub
+        </a>
+      </div>
+
+      <div class="social-share">
+        <span class="share-label">Share rtk</span>
+        <div class="share-links">
+          <!-- X / Twitter -->
+          <a href="https://x.com/intent/tweet?text=rtk%20%E2%80%94%20Rust%20Token%20Killer%3A%20save%2060-90%25%20of%20LLM%20tokens%20on%20every%20Claude%20Code%20session.%20Open%20source%2C%20written%20in%20Rust.&url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk" target="_blank" rel="noopener" class="share-btn" aria-label="Share on X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Bluesky -->
+          <a href="https://bsky.app/intent/compose?text=rtk%20%E2%80%94%20Rust%20Token%20Killer%3A%20save%2060-90%25%20of%20LLM%20tokens%20on%20every%20Claude%20Code%20session.%20Open%20source%2C%20written%20in%20Rust.%20https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk" target="_blank" rel="noopener" class="share-btn" aria-label="Share on Bluesky">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.627 3.601 3.495 6.186 3.245-3.775.547-7.052 2.48-4.452 7.378 2.294 3.796 5.057 4.755 7.642.38C12 17.764 12 14.568 12 14.568s0 3.196 2 6.682c2.585 4.375 5.348 3.416 7.642-.38 2.6-4.898-.677-6.831-4.452-7.378 2.585.25 5.401-.618 6.186-3.245.246-.828.624-5.788.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk" target="_blank" rel="noopener" class="share-btn" aria-label="Share on LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -358,7 +758,8 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <span class="logo-icon">⚡</span> <strong>rtk</strong> &middot; Rust Token Killer
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#22d3ee" stroke="#a78bfa" stroke-width="1.5"/></svg>
+        <strong>rtk</strong> &middot; Rust Token Killer
       </div>
       <div class="footer-right">
         <a href="https://github.com/rtk-ai" target="_blank" rel="noopener">GitHub</a>
@@ -368,15 +769,54 @@ untracked: tests/docker_test.rs docs/docker.md</code></pre>
   </footer>
 
   <script>
+    // Copy buttons
     document.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const text = btn.dataset.copy;
-        navigator.clipboard.writeText(text).then(() => {
+        navigator.clipboard.writeText(btn.dataset.copy).then(() => {
           btn.classList.add('copied');
           setTimeout(() => btn.classList.remove('copied'), 1500);
         });
       });
     });
+
+    // Slideshow
+    const slides = document.querySelectorAll('.slide');
+    const tabs = document.querySelectorAll('.slide-tab');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+    let autoTimer;
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      tabs[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      tabs[current].classList.add('active');
+      dots[current].classList.add('active');
+      resetAuto();
+    }
+
+    function next() { goTo((current + 1) % slides.length); }
+    function prev() { goTo((current - 1 + slides.length) % slides.length); }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(next, 6000);
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => goTo(+t.dataset.slide)));
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.slide)));
+    document.querySelector('.slide-next').addEventListener('click', next);
+    document.querySelector('.slide-prev').addEventListener('click', prev);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+
+    resetAuto();
   </script>
 
 </body>
