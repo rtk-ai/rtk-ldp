@@ -147,45 +147,39 @@ gain.rs  10.4K
             </div>
           </div>
 
-          <!-- Slide 1: git status -->
+          <!-- Slide 1: git status (real output from rtk repo) -->
           <div class="slide" data-index="1">
             <div class="demo-grid">
               <div class="demo-card demo-before">
                 <div class="demo-card-header">
                   <span class="demo-dot red"></span>
                   <span class="demo-label">git status</span>
-                  <span class="demo-tokens">~2,400 tokens</span>
+                  <span class="demo-tokens">~800 tokens</span>
                 </div>
-                <pre><code>On branch main
-Your branch is up to date with 'origin/main'.
+                <pre><code>Sur la branche master
+Votre branche est à jour avec 'origin/master'.
 
-Changes to be committed:
-  (use "git restore --staged &lt;file&gt;..." to unstage)
-        modified:   src/main.rs
-        modified:   src/lib.rs
-        new file:   src/commands/docker.rs
+Modifications qui ne seront pas validées :
+  (utilisez "git add &lt;fichier&gt;..." pour mettre
+   à jour ce qui sera validé)
+  (utilisez "git restore &lt;fichier&gt;..." pour
+   annuler les modifications dans le répertoire
+   de travail)
+	modifié :         src/ls.rs
 
-Changes not staged for commit:
-  (use "git add &lt;file&gt;..." to update what will be committed)
-  (use "git restore &lt;file&gt;..." to discard changes)
-        modified:   Cargo.toml
-        modified:   README.md
-
-Untracked files:
-  (use "git add &lt;file&gt;..." to include in what...)
-        tests/docker_test.rs
-        docs/docker.md</code></pre>
+aucune modification n'a été ajoutée à la
+validation (utilisez "git add" ou "git commit -a")</code></pre>
               </div>
               <div class="demo-card demo-after">
                 <div class="demo-card-header">
                   <span class="demo-dot green"></span>
                   <span class="demo-label">rtk git status</span>
-                  <span class="demo-tokens">~480 tokens</span>
+                  <span class="demo-tokens">~160 tokens</span>
                   <span class="demo-savings">-80%</span>
                 </div>
-                <pre><code>staged: src/main.rs src/lib.rs +src/commands/docker.rs
-modified: Cargo.toml README.md
-untracked: tests/docker_test.rs docs/docker.md</code></pre>
+                <pre><code>📌 master...origin/master
+📝 Modified: 1 files
+   src/ls.rs</code></pre>
               </div>
             </div>
           </div>
@@ -385,21 +379,29 @@ src/git.rs:1060:fn test_filter_worktree_l...
                   <span class="demo-tokens">~800 tokens</span>
                   <span class="demo-savings">-78%</span>
                 </div>
-                <pre><code>29 matches in 1 file:
+                <pre><code>🔍 29 in 19F:
 
-  :21  pub fn run(cmd: GitCommand, ...)
-  :38  fn run_diff(args: &amp;[String], ...)
-  :105 fn run_show(args: &amp;[String], ...)
-  :194 pub fn compact_diff(&amp;str, ...)
-  :260 fn run_log(args: &amp;[String], ...)
-  :317 fn format_status_output(&amp;str)
-  :412 fn run_status(args: &amp;[String], ...)
-  :467 fn run_add(files: &amp;[String], ...)
-  :519 fn run_commit(message: &amp;str, ...)
-  :561 fn run_push(args: &amp;[String], ...)
-  :610 fn run_pull(args: &amp;[String], ...)
-  :682 fn run_branch(args: ...)
-  ... +17 tests</code></pre>
+📄 21 (1):
+  GitCommand, args: &amp;[String], ...
+📄 38 (1):
+  &amp;[String], max_lines: Option...
+📄 105 (1):
+  &amp;[String], max_lines: Option...
+📄 194 (1):
+  &amp;str, max_lines: usize) -&gt; ...
+📄 260 (1):
+  &amp;[String], _max_lines: Optio...
+📄 317 (1):
+  &amp;str) -&gt; String {
+📄 412 (1):
+  &amp;[String], verbose: u8) -&gt; ...
+📄 467 (1):
+  &amp;[String], verbose: u8) -&gt; ...
+📄 src/git.rs (11):
+  1015: fn test_compact_diff() {
+  1020: fn main() {
+  1030: fn test_filter_branch_output()
+  ... +8 more</code></pre>
               </div>
             </div>
           </div>
