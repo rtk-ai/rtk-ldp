@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rtk — Rust Token Killer | Save 70% on LLM tokens</title>
+  <meta name="description" content="rtk is a high-performance CLI proxy written in Rust that saves 60-90% of LLM tokens by filtering and compressing command outputs before they reach your AI context.">
+  <meta property="og:title" content="rtk — Rust Token Killer">
+  <meta property="og:description" content="Save 60-90% of LLM tokens. Drop-in CLI proxy for Claude Code, written in Rust.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rtk-ai.github.io/rtk-ldp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">rtk</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#savings">Savings</a>
+        <a href="#install">Install</a>
+        <a href="#commands">Commands</a>
+        <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">Open Source &middot; MIT License &middot; Written in Rust</div>
+    <h1>Stop wasting tokens.<br><span class="gradient-text">Start using rtk.</span></h1>
+    <p class="hero-sub">
+      A high-performance CLI proxy that filters and compresses command outputs
+      before they reach your LLM context. <strong>Save 60–90% of tokens</strong> on every session.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-value">70%</span>
+        <span class="stat-label">avg. token savings</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-value">30+</span>
+        <span class="stat-label">commands</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-value">0ms</span>
+        <span class="stat-label">overhead</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#install" class="btn btn-primary">Install rtk</a>
+      <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </section>
+
+  <!-- Before / After -->
+  <section class="demo" id="demo">
+    <div class="section-inner">
+      <h2>See the difference</h2>
+      <p class="section-sub">A typical 30-minute Claude Code session drops from ~150,000 to ~45,000 tokens.</p>
+      <div class="demo-grid">
+        <div class="demo-card demo-before">
+          <div class="demo-card-header">
+            <span class="demo-dot red"></span>
+            <span class="demo-label">Without rtk</span>
+            <span class="demo-tokens">~2,400 tokens</span>
+          </div>
+          <pre><code>$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+        modified:   src/main.rs
+        modified:   src/lib.rs
+        new file:   src/commands/docker.rs
+
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+        modified:   Cargo.toml
+        modified:   README.md
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        tests/docker_test.rs
+        docs/docker.md</code></pre>
+        </div>
+        <div class="demo-card demo-after">
+          <div class="demo-card-header">
+            <span class="demo-dot green"></span>
+            <span class="demo-label">With rtk</span>
+            <span class="demo-tokens">~480 tokens</span>
+          </div>
+          <pre><code>$ rtk git status
+staged: src/main.rs src/lib.rs +src/commands/docker.rs
+modified: Cargo.toml README.md
+untracked: tests/docker_test.rs docs/docker.md</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <h2>Built for AI-assisted development</h2>
+      <p class="section-sub">rtk sits between your shell and your LLM, compressing everything automatically.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Smart Filtering</h3>
+          <p>Removes noise — comments, whitespace, boilerplate — keeping only what matters for your LLM.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Grouping</h3>
+          <p>Aggregates similar items: files by directory, errors by type, logs by pattern.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✂️</div>
+          <h3>Truncation</h3>
+          <p>Keeps relevant context, cuts redundancy. Your LLM sees the signal, not the noise.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔁</div>
+          <h3>Deduplication</h3>
+          <p>Collapses repeated log lines with counts. 500 identical errors become one line.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🪝</div>
+          <h3>Auto-Rewrite Hook</h3>
+          <p>Transparently intercepts Bash commands and rewrites them to rtk equivalents. Zero config, 100% adoption.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Analytics</h3>
+          <p><code>rtk gain</code> shows savings stats, graphs, and history. <code>rtk discover</code> finds missed opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Savings Table -->
+  <section class="savings" id="savings">
+    <div class="section-inner">
+      <h2>Token savings by operation</h2>
+      <p class="section-sub">Measured on real-world Claude Code sessions.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Operation</th>
+              <th>Standard</th>
+              <th>With rtk</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>ls / tree</code></td>
+              <td>File listings with metadata</td>
+              <td>Filtered tree, grouped</td>
+              <td><span class="badge">-80%</span></td>
+            </tr>
+            <tr>
+              <td><code>cat / read</code></td>
+              <td>Full file contents</td>
+              <td>Signatures only (aggressive)</td>
+              <td><span class="badge">-70%</span></td>
+            </tr>
+            <tr>
+              <td><code>grep / rg</code></td>
+              <td>Verbose match output</td>
+              <td>Grouped by file, compact</td>
+              <td><span class="badge">-80%</span></td>
+            </tr>
+            <tr>
+              <td><code>git status</code></td>
+              <td>Multi-line with hints</td>
+              <td>One-line per category</td>
+              <td><span class="badge">-80%</span></td>
+            </tr>
+            <tr>
+              <td><code>git diff</code></td>
+              <td>Full unified diff</td>
+              <td>Ultra-condensed diff</td>
+              <td><span class="badge">-75%</span></td>
+            </tr>
+            <tr>
+              <td><code>git log</code></td>
+              <td>Verbose commit history</td>
+              <td>Compact one-liners</td>
+              <td><span class="badge">-80%</span></td>
+            </tr>
+            <tr>
+              <td><code>git add/commit/push</code></td>
+              <td>Multi-line confirmations</td>
+              <td><code>ok ✓ abc1234</code></td>
+              <td><span class="badge badge-best">-92%</span></td>
+            </tr>
+            <tr>
+              <td><code>test runners</code></td>
+              <td>Full test output</td>
+              <td>Failures only</td>
+              <td><span class="badge badge-best">-90%</span></td>
+            </tr>
+            <tr>
+              <td><code>docker ps</code></td>
+              <td>Wide table with IDs</td>
+              <td>Compact container list</td>
+              <td><span class="badge">-80%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section class="install" id="install">
+    <div class="section-inner">
+      <h2>Get started in 30 seconds</h2>
+      <p class="section-sub">rtk is written in Rust for maximum performance. Choose your install method.</p>
+
+      <div class="install-grid">
+        <div class="install-card install-primary">
+          <h3>Quick Install</h3>
+          <p>One-liner for Linux & macOS</p>
+          <div class="code-block">
+            <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh</code>
+            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label="Copy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <h3>Via Cargo</h3>
+          <p>From GitHub or crates.io</p>
+          <div class="code-block">
+            <code>cargo install --git https://github.com/rtk-ai/rtk</code>
+            <button class="copy-btn" data-copy="cargo install --git https://github.com/rtk-ai/rtk" aria-label="Copy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <h3>Pre-built Binaries</h3>
+          <p>macOS, Linux, Windows</p>
+          <div class="code-block">
+            <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link">Download from Releases →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="install-setup">
+        <h3>Then activate the auto-rewrite hook</h3>
+        <div class="code-block code-block-wide">
+          <code>rtk init --global</code>
+          <button class="copy-btn" data-copy="rtk init --global" aria-label="Copy">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+        <p class="install-note">This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents. Zero token overhead, 100% adoption.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands -->
+  <section class="commands" id="commands">
+    <div class="section-inner">
+      <h2>30+ commands, one tool</h2>
+      <p class="section-sub">Everything you need, from file browsing to Kubernetes logs.</p>
+
+      <div class="commands-grid">
+        <div class="cmd-group">
+          <h4>Files</h4>
+          <div class="cmd"><code>rtk ls .</code><span>Filtered tree</span></div>
+          <div class="cmd"><code>rtk read file.rs</code><span>Smart read</span></div>
+          <div class="cmd"><code>rtk find "*.rs"</code><span>Compact find</span></div>
+          <div class="cmd"><code>rtk grep "pattern"</code><span>Grouped grep</span></div>
+          <div class="cmd"><code>rtk diff f1 f2</code><span>Condensed diff</span></div>
+        </div>
+
+        <div class="cmd-group">
+          <h4>Git</h4>
+          <div class="cmd"><code>rtk git status</code><span>Compact status</span></div>
+          <div class="cmd"><code>rtk git log</code><span>One-line commits</span></div>
+          <div class="cmd"><code>rtk git diff</code><span>Condensed diff</span></div>
+          <div class="cmd"><code>rtk git commit -m "msg"</code><span>ok ✓ abc1234</span></div>
+          <div class="cmd"><code>rtk git push</code><span>ok ✓ main</span></div>
+        </div>
+
+        <div class="cmd-group">
+          <h4>Test & Build</h4>
+          <div class="cmd"><code>rtk test &lt;cmd&gt;</code><span>Failures only</span></div>
+          <div class="cmd"><code>rtk err &lt;cmd&gt;</code><span>Errors only</span></div>
+          <div class="cmd"><code>rtk tsc</code><span>TS errors grouped</span></div>
+          <div class="cmd"><code>rtk lint eslint .</code><span>Violations grouped</span></div>
+          <div class="cmd"><code>rtk vitest run</code><span>Compact output</span></div>
+        </div>
+
+        <div class="cmd-group">
+          <h4>Data & Analytics</h4>
+          <div class="cmd"><code>rtk json config.json</code><span>Structure only</span></div>
+          <div class="cmd"><code>rtk deps</code><span>Dependencies summary</span></div>
+          <div class="cmd"><code>rtk env</code><span>Vars filtered</span></div>
+          <div class="cmd"><code>rtk gain</code><span>Savings stats</span></div>
+          <div class="cmd"><code>rtk discover</code><span>Missed savings</span></div>
+        </div>
+
+        <div class="cmd-group">
+          <h4>Containers</h4>
+          <div class="cmd"><code>rtk docker ps</code><span>Compact list</span></div>
+          <div class="cmd"><code>rtk docker logs &lt;c&gt;</code><span>Deduplicated</span></div>
+          <div class="cmd"><code>rtk kubectl pods</code><span>Compact pods</span></div>
+          <div class="cmd"><code>rtk kubectl logs &lt;p&gt;</code><span>Deduplicated</span></div>
+        </div>
+
+        <div class="cmd-group">
+          <h4>Network & More</h4>
+          <div class="cmd"><code>rtk curl &lt;url&gt;</code><span>Auto JSON schema</span></div>
+          <div class="cmd"><code>rtk gh pr list</code><span>Compact PRs</span></div>
+          <div class="cmd"><code>rtk cargo build</code><span>Cargo compact</span></div>
+          <div class="cmd"><code>rtk prisma migrate</code><span>No ASCII art</span></div>
+          <div class="cmd"><code>rtk next build</code><span>Next.js compact</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="section-inner">
+      <h2>Your LLM doesn't need to read all that.</h2>
+      <p class="section-sub">Install rtk, save tokens, ship faster.</p>
+      <div class="hero-cta">
+        <a href="#install" class="btn btn-primary">Install rtk</a>
+        <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">Star on GitHub ★</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="logo-icon">⚡</span> <strong>rtk</strong> &middot; Rust Token Killer
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/rtk-ai" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rtk-ai/rtk/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.dataset.copy;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.classList.add('copied');
+          setTimeout(() => btn.classList.remove('copied'), 1500);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
