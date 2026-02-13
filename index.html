@@ -724,6 +724,26 @@ b1f15cf Fix repo link INSTALL.md (9d)
     </div>
   </section>
 
+  <!-- RTK Cloud Waitlist -->
+  <section class="waitlist" id="cloud">
+    <div class="section-inner">
+      <div class="waitlist-card">
+        <div class="waitlist-badge">Coming Soon</div>
+        <h2>RTK Cloud</h2>
+        <p class="waitlist-desc">Shared ICM memory, team dashboard, centralized policies.<br>Be the first to know.</p>
+        <form class="waitlist-form" id="waitlist-form">
+          <div class="waitlist-inputs">
+            <input type="text" name="name" placeholder="Your name" required class="waitlist-input">
+            <input type="email" name="email" placeholder="you@company.com" required class="waitlist-input">
+          </div>
+          <button type="submit" class="btn btn-primary waitlist-btn">Join the waitlist</button>
+        </form>
+        <p class="waitlist-status" id="waitlist-status"></p>
+        <p class="waitlist-note">No spam. One email when we launch.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA + Social -->
   <section class="cta">
     <div class="section-inner">
@@ -821,6 +841,39 @@ b1f15cf Fix repo link INSTALL.md (9d)
     });
 
     resetAuto();
+
+    // Waitlist form
+    const SHEET_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+    document.getElementById('waitlist-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const status = document.getElementById('waitlist-status');
+      const btn = form.querySelector('.waitlist-btn');
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.textContent = '';
+      status.className = 'waitlist-status';
+
+      try {
+        const res = await fetch(SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, source: 'rtk-ai.app', ts: new Date().toISOString() })
+        });
+        status.textContent = "You're on the list. We'll be in touch.";
+        status.classList.add('waitlist-ok');
+        form.reset();
+      } catch (err) {
+        status.textContent = 'Something went wrong. Try again.';
+        status.classList.add('waitlist-err');
+      }
+      btn.disabled = false;
+      btn.textContent = 'Join the waitlist';
+    });
   </script>
 
 </body>
