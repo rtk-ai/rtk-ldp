@@ -629,7 +629,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.88rem;
-      min-width: 800px;
+      min-width: 900px;
     }
 
     .compare-table th {
@@ -1051,6 +1051,114 @@
       font-size: 0.78rem;
     }
 
+    /* === Share My Gain === */
+    .share-gain { background: var(--bg); }
+
+    .share-gain-card {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      text-align: center;
+    }
+
+    .share-gain-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .share-gain-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 24px;
+    }
+
+    .gain-input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .gain-input {
+      width: 130px;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .gain-input:focus { border-color: var(--accent); }
+    .gain-input::placeholder { color: var(--text-dim); font-weight: 400; }
+
+    .gain-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .gain-field {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .gain-preview {
+      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      text-align: left;
+      min-height: 60px;
+    }
+
+    .gain-preview .gp-highlight { color: var(--accent); font-weight: 600; }
+
+    .gain-share-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .gain-share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gain-share-btn:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .gain-share-btn svg { flex-shrink: 0; }
+
     /* === Footer === */
     .footer {
       border-top: 1px solid var(--border);
@@ -1165,7 +1273,7 @@
       .slideshow-nav { gap: 4px; }
       .slide-tab { padding: 4px 10px; font-size: 0.68rem; }
 
-      .compare-table { min-width: 650px; }
+      .compare-table { min-width: 750px; }
 
       .install-steps { flex-direction: column; align-items: center; }
 
@@ -1256,27 +1364,31 @@
       <div class="terminal-body" id="terminal-body">
         <span class="prompt">$</span> <span class="cmd">rtk gain</span>
         <br><br>
-        <span class="output">Token Savings Report</span>
+        <span class="output">&#x1F4CA; RTK Token Savings</span>
         <br>
-        <span class="dim">─────────────────────────────────────</span>
-        <br>
-        <span class="output">Total commands:</span> <span class="highlight">2,847</span>
-        <br>
-        <span class="output">Original tokens:</span> <span class="waste-badge">12,450,320</span>
-        <br>
-        <span class="output">After rtk:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1,370,812</span>
-        <br>
-        <span class="dim">─────────────────────────────────────</span>
-        <br>
-        <span class="output">Saved:</span> <span class="highlight" style="font-size:1em">11,079,508 tokens (89%)</span>
+        <span class="dim">════════════════════════════════════════</span>
         <br><br>
-        <span class="output">Top savings:</span>
+        <span class="output">Total commands:</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">2,927</span>
         <br>
-        <span class="dim">&nbsp;&nbsp;ls/tree&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="highlight">-82%</span> <span class="dim">│</span> <span class="dim">git log&nbsp;&nbsp;&nbsp;</span><span class="highlight">-80%</span>
+        <span class="output">Input tokens:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="waste-badge">11.6M</span>
         <br>
-        <span class="dim">&nbsp;&nbsp;cat/read&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="highlight">-74%</span> <span class="dim">│</span> <span class="dim">test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="highlight">-90%</span>
+        <span class="output">Output tokens:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1.4M</span>
         <br>
-        <span class="dim">&nbsp;&nbsp;git status&nbsp;&nbsp;&nbsp;</span><span class="highlight">-80%</span> <span class="dim">│</span> <span class="dim">deps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="highlight">-85%</span>
+        <span class="output">Tokens saved:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight" style="font-size:1em">10.3M (89.2%)</span>
+        <br><br>
+        <span class="output">By Command:</span>
+        <br>
+        <span class="dim">────────────────────────────────────────</span>
+        <br>
+        <span class="dim">Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avg%</span>
+        <br>
+        <span class="output">rtk find</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">324</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">6.8M</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">78.3%</span>
+        <br>
+        <span class="output">rtk git status</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1.4M</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">80.8%</span>
+        <br>
+        <span class="output">rtk grep</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">227</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">786.7K</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">49.5%</span>
+        <br>
+        <span class="output">rtk cargo test</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">50.1K</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">91.8%</span>
         <br><br>
         <span class="prompt">$</span> <span class="cursor-blink"></span>
       </div>
@@ -1322,15 +1434,224 @@
 
       <div class="slideshow reveal">
         <div class="slideshow-nav">
-          <button class="slide-tab active" data-slide="0">ls</button>
-          <button class="slide-tab" data-slide="1">git status</button>
-          <button class="slide-tab" data-slide="2">cat / read</button>
-          <button class="slide-tab" data-slide="3">git log</button>
+          <button class="slide-tab active" data-slide="0">cargo test</button>
+          <button class="slide-tab" data-slide="1">pytest</button>
+          <button class="slide-tab" data-slide="2">go test</button>
+          <button class="slide-tab" data-slide="3">ls</button>
         </div>
 
         <div class="slideshow-viewport">
-          <!-- Slide 0: ls -->
+          <!-- Slide 0: cargo test (real output from rtk project, 262 tests) -->
           <div class="slide active" data-index="0">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">cargo test</span>
+                  <span class="demo-tokens">~4,823 tokens</span>
+                </div>
+                <pre><code>warning: unused variable: `start`
+   --> src/init.rs:561:17
+    |
+561 |             let start = i;
+    |                 ^^^^^ help: prefix it with an underscore
+
+warning: unused variable: `original_keys`
+    --> src/init.rs:1287:13
+
+warning: constant `BILLION` is never used
+  --> src/cc_economics.rs:17:7
+
+warning: `rtk` (bin "rtk" test) generated 17 warnings
+    Finished `test` profile target(s) in 0.20s
+     Running unittests src/main.rs
+
+running 262 tests
+test cargo_cmd::tests::test_filter_cargo_build_success ... ok
+test cargo_cmd::tests::test_filter_cargo_clippy_clean ... ok
+test cargo_cmd::tests::test_filter_cargo_install_empty ... ok
+test cargo_cmd::tests::test_filter_cargo_install_already ... ok
+test cargo_cmd::tests::test_filter_cargo_install_from_path ... ok
+test cargo_cmd::tests::test_filter_cargo_install_replace ... ok
+test cargo_cmd::tests::test_filter_cargo_install_success ... ok
+test cargo_cmd::tests::test_filter_cargo_test_all_pass ... ok
+test cargo_cmd::tests::test_filter_cargo_test_failures ... ok
+test cc_economics::tests::test_compute_dual_metrics ... ok
+test cc_economics::tests::test_compute_weighted_metrics ... ok
+test cc_economics::tests::test_period_economics_new ... ok
+test curl_cmd::tests::test_filter_curl_json ... ok
+test diff_cmd::tests::test_compute_diff_identical ... ok
+test diff_cmd::tests::test_compute_diff_added_lines ... ok
+test diff_cmd::tests::test_condense_unified_diff ... ok
+test filter::tests::test_filter_level_parsing ... ok
+test filter::tests::test_language_detection ... ok
+test git::tests::test_compact_diff ... ok
+test git::tests::test_filter_branch_output ... ok
+test git::tests::test_filter_log_output ... ok
+test git::tests::test_filter_status_with_args ... ok
+test init::tests::test_hook_already_present ... ok
+test init::tests::test_init_is_idempotent ... ok
+test json_cmd::tests::test_extract_schema_simple ... ok
+test ls::tests::test_compact_basic ... ok
+test ls::tests::test_compact_filters_noise ... ok
+<span class="truncated">... 235 more tests, all passing</span>
+
+test result: ok. 262 passed; 0 failed; 0 ignored; 0 measured</code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk cargo test</span>
+                  <span class="demo-tokens">~11 tokens</span>
+                  <span class="demo-savings">-99%</span>
+                </div>
+                <pre><code>&#x2713; cargo test: 262 passed (1 suite, 0.08s)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 1: pytest (real output, 33 tests) -->
+          <div class="slide" data-index="1">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">pytest -v</span>
+                  <span class="demo-tokens">~756 tokens</span>
+                </div>
+                <pre><code>===== test session starts ======
+platform darwin -- Python 3.14.3, pytest-9.0.2
+cachedir: .pytest_cache
+rootdir: /app
+plugins: anyio-4.12.1
+collected 33 items
+
+test_utils.py::TestStringUtils::test_strip PASSED    [  3%]
+test_utils.py::TestStringUtils::test_upper PASSED    [  6%]
+test_utils.py::TestStringUtils::test_split PASSED    [  9%]
+test_utils.py::TestStringUtils::test_join PASSED     [ 12%]
+test_utils.py::TestStringUtils::test_replace PASSED  [ 15%]
+test_utils.py::TestStringUtils::test_starts PASSED   [ 18%]
+test_utils.py::TestStringUtils::test_ends PASSED     [ 21%]
+test_utils.py::TestStringUtils::test_contains PASSED [ 24%]
+test_utils.py::TestMathUtils::test_sqrt PASSED       [ 27%]
+test_utils.py::TestMathUtils::test_ceil PASSED       [ 30%]
+test_utils.py::TestMathUtils::test_floor PASSED      [ 33%]
+test_utils.py::TestMathUtils::test_pow PASSED        [ 36%]
+test_utils.py::TestMathUtils::test_factorial PASSED  [ 39%]
+test_utils.py::TestMathUtils::test_gcd PASSED        [ 42%]
+test_utils.py::TestMathUtils::test_isnan PASSED      [ 45%]
+test_utils.py::TestMathUtils::test_pi PASSED         [ 48%]
+test_utils.py::TestJsonUtils::test_dumps PASSED      [ 51%]
+test_utils.py::TestJsonUtils::test_loads PASSED      [ 54%]
+test_utils.py::TestJsonUtils::test_roundtrip PASSED  [ 57%]
+test_utils.py::TestJsonUtils::test_pretty PASSED     [ 60%]
+test_utils.py::TestPathUtils::test_join PASSED       [ 63%]
+test_utils.py::TestPathUtils::test_basename PASSED   [ 66%]
+test_utils.py::TestPathUtils::test_dirname PASSED    [ 69%]
+test_utils.py::TestPathUtils::test_splitext PASSED   [ 72%]
+test_utils.py::TestPathUtils::test_exists PASSED     [ 75%]
+test_utils.py::TestListOps::test_sort PASSED         [ 78%]
+test_utils.py::TestListOps::test_reverse PASSED      [ 81%]
+test_utils.py::TestListOps::test_filter PASSED       [ 84%]
+test_utils.py::TestListOps::test_map PASSED          [ 87%]
+test_utils.py::TestListOps::test_zip PASSED          [ 90%]
+test_utils.py::TestListOps::test_enumerate PASSED    [ 93%]
+test_utils.py::TestListOps::test_comprehension PASSED[ 96%]
+test_utils.py::TestListOps::test_flatten PASSED      [100%]
+
+====== 33 passed in 0.05s ======</code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk test "pytest -v"</span>
+                  <span class="demo-tokens">~24 tokens</span>
+                  <span class="demo-savings">-96%</span>
+                </div>
+                <pre><code>&#x1F4CA; SUMMARY:
+  ====== 33 passed in 0.02s ======</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: go test (real output, kubecraftai-operator) -->
+          <div class="slide" data-index="2">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">go test ./... -v</span>
+                  <span class="demo-tokens">~592 tokens</span>
+                </div>
+                <pre><code>=== RUN   TestControllers
+Running Suite: Controller Suite
+Random Seed: 1771093287
+
+Will run 1 of 1 specs
+&#x2022;
+
+Ran 1 of 1 Specs in 6.037 seconds
+SUCCESS! -- 1 Passed | 0 Failed | 0 Pending
+--- PASS: TestControllers (6.04s)
+PASS
+ok  kubecraft.ai/.../controller  6.610s
+=== RUN   TestNewAWSBedrockClient
+--- PASS: TestNewAWSBedrockClient (0.00s)
+=== RUN   TestNewAWSBedrockClientWithConfig
+--- PASS: TestNewAWSBedrockClientWithConfig (0.00s)
+=== RUN   TestAWSBedrockGenerateCode_Success
+--- PASS: TestAWSBedrockGenerateCode_Success (0.00s)
+=== RUN   TestNewAzureOpenAIClient
+--- PASS: TestNewAzureOpenAIClient (0.00s)
+=== RUN   TestAzureOpenAIGenerateCode_Success
+--- PASS: TestAzureOpenAIGenerateCode_Success (0.00s)
+=== RUN   TestAzureOpenAIGenerateCode_Error
+--- PASS: TestAzureOpenAIGenerateCode_Error (0.00s)
+=== RUN   TestNewMistralClient
+--- PASS: TestNewMistralClient (0.00s)
+=== RUN   TestGenerateCode_Success
+--- PASS: TestGenerateCode_Success (0.00s)
+=== RUN   TestGenerateCode_Error
+--- PASS: TestGenerateCode_Error (0.00s)
+=== RUN   TestNewVertexAIClient
+--- PASS: TestNewVertexAIClient (0.00s)
+=== RUN   TestVertexAIGenerateCode_Success
+--- PASS: TestVertexAIGenerateCode_Success (0.00s)
+=== RUN   TestVertexAIGenerateCode_Error
+--- PASS: TestVertexAIGenerateCode_Error (0.00s)
+PASS
+ok  kubecraft.ai/.../llm  0.776s</code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk test "go test ./... -v"</span>
+                  <span class="demo-tokens">~246 tokens</span>
+                  <span class="demo-savings">-58%</span>
+                </div>
+                <pre><code>&#x1F4CA; SUMMARY:
+  --- PASS: TestControllers (5.07s)
+  ok  kubecraft.ai/.../controller  5.847s
+  --- PASS: TestNewAWSBedrockClient (0.00s)
+  --- PASS: TestNewAWSBedrockClientWithConfig (0.00s)
+  --- PASS: TestAWSBedrockGenerateCode_Success (0.00s)
+  --- PASS: TestNewAzureOpenAIClient (0.00s)
+  --- PASS: TestAzureOpenAIGenerateCode_Success (0.00s)
+  --- PASS: TestAzureOpenAIGenerateCode_Error (0.00s)
+  --- PASS: TestNewMistralClient (0.00s)
+  --- PASS: TestGenerateCode_Success (0.00s)
+  --- PASS: TestGenerateCode_Error (0.00s)
+  --- PASS: TestNewVertexAIClient (0.00s)
+  --- PASS: TestVertexAIGenerateCode_Success (0.00s)
+  --- PASS: TestVertexAIGenerateCode_Error (0.00s)
+  ok  kubecraft.ai/.../llm  0.246s</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: ls (real output) -->
+          <div class="slide" data-index="3">
             <div class="demo-grid">
               <div class="demo-card">
                 <div class="demo-card-header">
@@ -1388,170 +1709,6 @@ gain.rs  10.4K
               </div>
             </div>
           </div>
-
-          <!-- Slide 1: git status -->
-          <div class="slide" data-index="1">
-            <div class="demo-grid">
-              <div class="demo-card">
-                <div class="demo-card-header">
-                  <span class="demo-dot red"></span>
-                  <span class="demo-label">git status</span>
-                  <span class="demo-tokens">~800 tokens</span>
-                </div>
-                <pre><code>On branch master
-Your branch is up to date with 'origin/master'.
-
-Changes not staged for commit:
-  (use "git add &lt;file&gt;..." to update what
-   will be committed)
-  (use "git restore &lt;file&gt;..." to discard
-   changes in working directory)
-	modified:         src/ls.rs
-	modified:         src/main.rs
-	modified:         src/git.rs
-
-Untracked files:
-  (use "git add &lt;file&gt;..." to include in
-   what will be committed)
-	src/new_feature.rs
-
-no changes added to commit
-(use "git add" or "git commit -a")</code></pre>
-              </div>
-              <div class="demo-card demo-after">
-                <div class="demo-card-header">
-                  <span class="demo-dot green"></span>
-                  <span class="demo-label">rtk git status</span>
-                  <span class="demo-tokens">~160 tokens</span>
-                  <span class="demo-savings">-80%</span>
-                </div>
-                <pre><code>&#x1F4CC; master...origin/master
-&#x1F4DD; Modified: 3 files
-   src/ls.rs
-   src/main.rs
-   src/git.rs
-&#x2753; Untracked: 1 file
-   src/new_feature.rs</code></pre>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 2: cat / read -->
-          <div class="slide" data-index="2">
-            <div class="demo-grid">
-              <div class="demo-card">
-                <div class="demo-card-header">
-                  <span class="demo-dot red"></span>
-                  <span class="demo-label">cat src/main.rs | head -40</span>
-                  <span class="demo-tokens">~1,800 tokens</span>
-                </div>
-                <pre><code>mod cargo_cmd;
-mod cc_economics;
-mod ccusage;
-mod config;
-mod container;
-mod curl_cmd;
-mod deps;
-mod diff_cmd;
-mod discover;
-mod display_helpers;
-mod env_cmd;
-mod filter;
-mod find_cmd;
-mod gain;
-mod gh_cmd;
-mod git;
-mod grep_cmd;
-mod init;
-mod json_cmd;
-mod lint_cmd;
-mod local_llm;
-mod log_cmd;
-mod ls;
-mod next_cmd;
-mod npm_cmd;
-mod parser;
-mod playwright_cmd;
-mod pnpm_cmd;
-mod prettier_cmd;
-mod prisma_cmd;
-mod read;
-mod runner;
-mod summary;
-mod tracking;
-mod tsc_cmd;
-mod utils;
-mod vitest_cmd;
-mod wget_cmd;
-
-use anyhow::{Context, Result};
-<span class="truncated">... continues for 600+ lines</span></code></pre>
-              </div>
-              <div class="demo-card demo-after">
-                <div class="demo-card-header">
-                  <span class="demo-dot green"></span>
-                  <span class="demo-label">rtk read src/main.rs -l aggressive</span>
-                  <span class="demo-tokens">~520 tokens</span>
-                  <span class="demo-savings">-71%</span>
-                </div>
-                <pre><code>use anyhow::{Context, Result};
-use clap::{Parser, Subcommand};
-use std::path::PathBuf;
-struct Cli {
-    // ... implementation
-enum Commands {
-    // ... implementation
-enum GitCommands {
-    // ... implementation
-enum DockerCommands {
-    // ... implementation
-enum KubectlCommands {
-    // ... implementation
-enum VitestCommands {
-    // ... implementation
-enum CargoCommands {
-    // ... implementation
-fn main() -> Result&lt;()&gt; {
-    // ... implementation</code></pre>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide 3: git log -->
-          <div class="slide" data-index="3">
-            <div class="demo-grid">
-              <div class="demo-card">
-                <div class="demo-card-header">
-                  <span class="demo-dot red"></span>
-                  <span class="demo-label">git log --oneline -5</span>
-                  <span class="demo-tokens">~600 tokens</span>
-                </div>
-                <pre><code>d6ff33f Merge pull request #52 from
-        FlorianBruniaux/docs/point-
-        to-upstream
-48ed221 Revise RTK roadmap for
-        clarity and updated goals
-67f93a5 Update README.md
-b1f15cf Fix repository link in
-        INSTALL.md
-8138071 Update name collision
-        warning in CLAUDE.md</code></pre>
-              </div>
-              <div class="demo-card demo-after">
-                <div class="demo-card-header">
-                  <span class="demo-dot green"></span>
-                  <span class="demo-label">rtk git log -n 5</span>
-                  <span class="demo-tokens">~120 tokens</span>
-                  <span class="demo-savings">-80%</span>
-                </div>
-                <pre><code>48ed221 Revise RTK roadmap (9d ago)
-67f93a5 Update README.md (9d ago)
-b1f15cf Fix repo link INSTALL.md (9d)
-8138071 Update CLAUDE.md warning (9d)
-15a34ae Fix install script URL (9d)</code></pre>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="slideshow-controls">
@@ -1584,7 +1741,8 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <th>Tool</th>
               <th>Type</th>
-              <th>Pricing</th>
+              <th>Billing</th>
+              <th>Cost / dev</th>
               <th>Context</th>
               <th>Without RTK</th>
               <th>With RTK</th>
@@ -1594,6 +1752,7 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">Claude Code</span></td>
               <td><span class="tool-type type-terminal">Terminal</span></td>
+              <td>Quota / 5h</td>
               <td>$20-200/mo</td>
               <td>200K</td>
               <td><span class="waste-badge">~73% noise</span></td>
@@ -1602,6 +1761,7 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">Cursor</span></td>
               <td><span class="tool-type type-ide">IDE</span></td>
+              <td>Credits</td>
               <td>$20-40/mo</td>
               <td>70-120K</td>
               <td><span class="waste-badge">~69% noise</span></td>
@@ -1610,6 +1770,7 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">OpenAI Codex</span></td>
               <td><span class="tool-type type-agent">Agent</span></td>
+              <td>Usage-based</td>
               <td>~$20/mo</td>
               <td>128K</td>
               <td><span class="waste-badge">~71% noise</span></td>
@@ -1618,6 +1779,7 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">Windsurf</span></td>
               <td><span class="tool-type type-ide">IDE</span></td>
+              <td>Credits</td>
               <td>$15-30/mo</td>
               <td>200K</td>
               <td><span class="waste-badge">~71% noise</span></td>
@@ -1626,7 +1788,8 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">Gemini CLI</span></td>
               <td><span class="tool-type type-terminal">Terminal</span></td>
-              <td>Free&rarr;pay/token</td>
+              <td>Pay-per-token</td>
+              <td>$0&rarr;$200+/mo</td>
               <td>1M</td>
               <td><span class="waste-badge">~70% noise</span></td>
               <td><span class="impact-badge impact-green">~$150/mo saved</span></td>
@@ -1634,7 +1797,8 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">Aider</span></td>
               <td><span class="tool-type type-terminal">Terminal</span></td>
-              <td>Free + API</td>
+              <td>Pay-per-token</td>
+              <td>$50-300+/mo</td>
               <td>Variable</td>
               <td><span class="waste-badge">~70% noise</span></td>
               <td><span class="impact-badge impact-green">-70% API bill</span></td>
@@ -1642,6 +1806,7 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">GitHub Copilot</span></td>
               <td><span class="tool-type type-ide">IDE</span></td>
+              <td>Subscription</td>
               <td>$10-39/mo</td>
               <td>Variable</td>
               <td><span class="waste-badge">~40% noise</span></td>
@@ -1650,7 +1815,8 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <tr>
               <td><span class="tool-name">Cline / Roo</span></td>
               <td><span class="tool-type type-terminal">VS Code</span></td>
-              <td>Free + API</td>
+              <td>Pay-per-token</td>
+              <td>$50-500+/mo</td>
               <td>Variable</td>
               <td><span class="waste-badge">~71% noise</span></td>
               <td><span class="impact-badge impact-green">-71% API bill</span></td>
@@ -1789,6 +1955,56 @@ b1f15cf Fix repo link INSTALL.md (9d)
             <span class="install-step-num">3</span>
             <code>rtk gain</code>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share My Gain -->
+  <section class="share-gain" id="share-gain">
+    <div class="section-inner">
+      <div class="share-gain-card reveal">
+        <h2>Post your <span class="gradient-text">rtk gain</span></h2>
+        <p class="share-gain-desc">Run <code>rtk gain</code>, paste your stats, and flex on the timeline.</p>
+
+        <div class="gain-input-row">
+          <div class="gain-field">
+            <span class="gain-label">Tokens saved</span>
+            <input type="text" class="gain-input" id="gain-tokens" placeholder="10.3M" value="">
+          </div>
+          <div class="gain-field">
+            <span class="gain-label">Savings %</span>
+            <input type="text" class="gain-input" id="gain-pct" placeholder="89%" value="">
+          </div>
+          <div class="gain-field">
+            <span class="gain-label">Commands</span>
+            <input type="text" class="gain-input" id="gain-cmds" placeholder="2,927" value="">
+          </div>
+        </div>
+
+        <div class="gain-preview" id="gain-preview">
+          <span class="gp-highlight">&#x26A1; My rtk gain:</span> <span id="gp-tokens">___</span> tokens saved (<span id="gp-pct">___</span>) over <span id="gp-cmds">___</span> commands.
+          <br>That's <span id="gp-pct2">___</span> less noise in my AI's context window.
+          <br><br>github.com/rtk-ai/rtk
+        </div>
+
+        <div class="gain-share-btns">
+          <a id="gain-share-x" href="#" target="_blank" rel="noopener" class="gain-share-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Post on X
+          </a>
+          <a id="gain-share-bsky" href="#" target="_blank" rel="noopener" class="gain-share-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.627 3.601 3.495 6.186 3.245-3.775.547-7.052 2.48-4.452 7.378 2.294 3.796 5.057 4.755 7.642.38C12 17.764 12 14.568 12 14.568s0 3.196 2 6.682c2.585 4.375 5.348 3.416 7.642-.38 2.6-4.898-.677-6.831-4.452-7.378 2.585.25 5.401-.618 6.186-3.245.246-.828.624-5.788.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+            Post on Bluesky
+          </a>
+          <a id="gain-share-li" href="#" target="_blank" rel="noopener" class="gain-share-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <button id="gain-copy-btn" class="gain-share-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
         </div>
       </div>
     </div>
@@ -1963,6 +2179,45 @@ b1f15cf Fix repo link INSTALL.md (9d)
         }
       });
     });
+
+    // === Share My Gain ===
+    const gainTokens = document.getElementById('gain-tokens');
+    const gainPct = document.getElementById('gain-pct');
+    const gainCmds = document.getElementById('gain-cmds');
+
+    function updateGainPreview() {
+      const t = gainTokens.value || '___';
+      const p = gainPct.value || '___';
+      const c = gainCmds.value || '___';
+      document.getElementById('gp-tokens').textContent = t;
+      document.getElementById('gp-pct').textContent = p;
+      document.getElementById('gp-cmds').textContent = c;
+      document.getElementById('gp-pct2').textContent = p;
+
+      const text = `\u26A1 My rtk gain: ${t} tokens saved (${p}) over ${c} commands.\nThat's ${p} less noise in my AI's context window.\n\nhttps://github.com/rtk-ai/rtk`;
+      const encoded = encodeURIComponent(text);
+
+      document.getElementById('gain-share-x').href =
+        `https://x.com/intent/tweet?text=${encoded}`;
+      document.getElementById('gain-share-bsky').href =
+        `https://bsky.app/intent/compose?text=${encoded}`;
+      document.getElementById('gain-share-li').href =
+        `https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk`;
+
+      document.getElementById('gain-copy-btn').onclick = () => {
+        navigator.clipboard.writeText(text.replace(/\n/g, '\n')).then(() => {
+          const btn = document.getElementById('gain-copy-btn');
+          const orig = btn.innerHTML;
+          btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+          setTimeout(() => { btn.innerHTML = orig; }, 1500);
+        });
+      };
+    }
+
+    gainTokens.addEventListener('input', updateGainPreview);
+    gainPct.addEventListener('input', updateGainPreview);
+    gainCmds.addEventListener('input', updateGainPreview);
+    updateGainPreview();
   </script>
 
 </body>
