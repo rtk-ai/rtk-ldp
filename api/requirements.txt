@@ -1,4 +1,0 @@
-fastapi==0.115.0
-uvicorn[standard]==0.30.0
-google-cloud-firestore==2.19.0
-pydantic[email]==2.10.0
