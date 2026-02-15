@@ -2822,7 +2822,7 @@ lto = true
     <div class="footer-inner">
       <div class="footer-left">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#00e599" stroke="#a78bfa" stroke-width="1.5"/></svg>
-        <strong>rtk</strong> &middot; Rust Token Killer &middot; v0.15.2
+        <strong>rtk</strong> &middot; Rust Token Killer &middot; <span id="rtk-version">v0.15.2</span>
       </div>
       <div class="footer-links">
         <a href="vox.html">Vox</a>
@@ -3014,6 +3014,16 @@ lto = true
           const display = count >= 1000 ? (count / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : count.toString();
           const el = document.getElementById('github-stars-count');
           if (el) el.textContent = display;
+        }
+      })
+      .catch(() => {});
+
+    fetch('https://api.github.com/repos/rtk-ai/rtk/releases/latest')
+      .then(r => r.json())
+      .then(data => {
+        if (data.tag_name) {
+          const el = document.getElementById('rtk-version');
+          if (el) el.textContent = data.tag_name;
         }
       })
       .catch(() => {});
