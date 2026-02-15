@@ -629,7 +629,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.88rem;
-      min-width: 900px;
+      min-width: 1050px;
     }
 
     .compare-table th {
@@ -704,6 +704,148 @@
       color: var(--red);
       font-family: var(--font-mono);
       font-size: 0.78rem;
+    }
+
+    /* === Tool Detail Cards === */
+    .tool-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .tool-card:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .tool-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tool-card-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-bright);
+    }
+
+    .tool-card-specs {
+      padding: 0;
+    }
+
+    .tool-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+
+    .tool-card-row:last-child {
+      border-bottom: none;
+    }
+
+    .tool-card-label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .tool-card-value {
+      color: var(--text);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .tool-card-impact {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tool-card-impact .waste-badge {
+      font-size: 0.76rem;
+    }
+
+    .tool-card-detail {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      background: rgba(0, 229, 153, 0.02);
+    }
+
+    /* === Session Callout === */
+    .session-callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      margin: 40px 0 12px;
+      text-align: center;
+    }
+
+    .session-headline {
+      color: var(--text-bright);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .session-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .session-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .session-num {
+      font-family: var(--font-mono);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text-bright);
+      line-height: 1.2;
+    }
+
+    .session-num-red { color: var(--red); }
+    .session-num-accent { color: var(--accent); }
+
+    .session-label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .session-note {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.5;
     }
 
     /* === RTK Cloud === */
@@ -1075,45 +1217,23 @@
       margin-bottom: 24px;
     }
 
-    .gain-input-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .gain-input {
-      width: 130px;
-      padding: 10px 14px;
+    .gain-textarea {
+      width: 100%;
+      padding: 14px 16px;
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 10px;
       background: var(--bg);
       color: var(--accent);
       font-family: var(--font-mono);
-      font-size: 0.92rem;
-      font-weight: 600;
-      text-align: center;
+      font-size: 0.75rem;
+      line-height: 1.5;
       outline: none;
+      resize: vertical;
       transition: border-color 0.2s;
+      margin-bottom: 16px;
     }
-    .gain-input:focus { border-color: var(--accent); }
-    .gain-input::placeholder { color: var(--text-dim); font-weight: 400; }
-
-    .gain-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
-    }
-
-    .gain-field {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
+    .gain-textarea:focus { border-color: var(--accent); }
+    .gain-textarea::placeholder { color: var(--text-dim); }
 
     .gain-preview {
       padding: 16px 20px;
@@ -1232,6 +1352,39 @@
       transform: translateY(-2px);
     }
 
+    /* === Language Switcher === */
+    .lang-switch {
+      display: flex;
+      gap: 2px;
+      margin-left: 8px;
+      padding: 2px;
+      border-radius: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    .lang-btn {
+      padding: 3px 8px;
+      border: none;
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-btn.active {
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .lang-switch { margin-left: 0; }
+    }
+
     /* === CTA === */
     .cta-section {
       background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
@@ -1273,7 +1426,11 @@
       .slideshow-nav { gap: 4px; }
       .slide-tab { padding: 4px 10px; font-size: 0.68rem; }
 
-      .compare-table { min-width: 750px; }
+      .tool-cards { grid-template-columns: 1fr; }
+      .tool-card-detail { font-size: 0.76rem; }
+      .session-callout { padding: 20px 16px; }
+      .session-stats-row { gap: 24px; }
+      .session-num { font-size: 1.3rem; }
 
       .install-steps { flex-direction: column; align-items: center; }
 
@@ -1297,16 +1454,22 @@
         <span>rtk</span>
       </a>
       <div class="nav-links">
-        <a href="#problem">Why</a>
-        <a href="#demo">Demo</a>
-        <a href="#compare">Tools</a>
-        <a href="#cloud">Cloud</a>
-        <a href="#install">Install</a>
+        <a href="#problem" data-i18n="nav.why">Why</a>
+        <a href="#demo" data-i18n="nav.demo">Demo</a>
+        <a href="#compare" data-i18n="nav.tools">Tools</a>
+        <a href="#cloud" data-i18n="nav.cloud">Cloud</a>
+        <a href="#install" data-i18n="nav.install">Install</a>
         <a href="vox.html" class="nav-link-vox">Vox</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
         </a>
+        <div class="lang-switch">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -1314,42 +1477,42 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-badges">
-      <span class="hero-badge badge-oss">Open Source &middot; MIT &middot; Rust</span>
-      <span class="hero-badge badge-stars">
+      <span class="hero-badge badge-oss" data-i18n="hero.badge_oss">Open Source &middot; MIT &middot; Rust</span>
+      <span class="hero-badge badge-stars" id="github-stars-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        450+ stars
+        <span id="github-stars-count">450+</span> stars
       </span>
     </div>
 
-    <h1>Your AI agent is drowning<br>in CLI noise. <span class="gradient-text">Fix it.</span></h1>
+    <h1><span data-i18n="hero.title_1">Your AI agent is drowning</span><br><span data-i18n="hero.title_2">in CLI noise.</span> <span class="gradient-text" data-i18n="hero.title_3">Fix it.</span></h1>
 
     <p class="hero-sub">
-      rtk compresses command outputs before they reach the context window.
-      <strong>Better reasoning. Longer sessions. Lower costs.</strong>
+      <span data-i18n="hero.sub_1">rtk compresses command outputs before they reach the context window.</span>
+      <strong data-i18n="hero.sub_2">Better reasoning. Longer sessions. Lower costs.</strong>
     </p>
 
     <div class="hero-stats">
       <div class="stat">
         <span class="stat-value">89%</span>
-        <span class="stat-label">avg. noise removed</span>
+        <span class="stat-label" data-i18n="hero.stat_pct_label">avg. noise removed</span>
       </div>
       <div class="stat-sep"></div>
       <div class="stat">
         <span class="stat-value">3x</span>
-        <span class="stat-label">longer sessions</span>
+        <span class="stat-label" data-i18n="hero.stat_3x_label">longer sessions</span>
       </div>
       <div class="stat-sep"></div>
       <div class="stat">
         <span class="stat-value">30+</span>
-        <span class="stat-label">commands</span>
+        <span class="stat-label" data-i18n="hero.stat_cmds_label">commands</span>
       </div>
     </div>
 
     <div class="hero-cta">
-      <a href="#install" class="btn btn-primary">Install rtk</a>
+      <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
       <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Star on GitHub
+        <span data-i18n="hero.cta_star">Star on GitHub</span>
       </a>
     </div>
 
@@ -1398,29 +1561,29 @@
   <!-- Problem Section -->
   <section class="problem" id="problem">
     <div class="section-inner">
-      <h2 class="reveal">The problem with AI coding today</h2>
-      <p class="section-sub reveal">Every command your agent runs pollutes the context window with noise. Here's what that costs you.</p>
+      <h2 class="reveal" data-i18n="problem.title">The problem with AI coding today</h2>
+      <p class="section-sub reveal" data-i18n="problem.sub">Every command your agent runs pollutes the context window with noise. Here's what that costs you.</p>
 
       <div class="problem-grid">
         <div class="problem-card reveal">
-          <div class="problem-icon brain">&#x1F9E0;</div>
-          <h3>Context pollution</h3>
-          <p>Your 200K context window isn't infinite. When <code>cargo test</code> dumps 5,000 tokens of boilerplate, that's 5,000 tokens less for reasoning about your actual code.</p>
-          <span class="metric metric-violet">Worse AI reasoning</span>
+          <div class="problem-icon brain"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 1.5 5.5 4 7v2h6v-2c2.5-1.5 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 22h6" stroke="var(--text-muted)"/><path d="M10 18h4" stroke="var(--text-muted)"/><path d="M12 2v4" opacity="0.4"/><path d="M8 9c0-1 .5-2.5 2-3" opacity="0.5"/></svg></div>
+          <h3 data-i18n="problem.card1.title">Context pollution</h3>
+          <p data-i18n-html="problem.card1.text">Your 200K context window isn't infinite. When <code>cargo test</code> dumps 5,000 tokens of boilerplate, that's 5,000 tokens less for reasoning about your actual code.</p>
+          <span class="metric metric-violet" data-i18n="problem.card1.metric">Worse AI reasoning</span>
         </div>
 
         <div class="problem-card reveal">
-          <div class="problem-icon clock">&#x23F1;&#xFE0F;</div>
-          <h3>Sessions too short</h3>
-          <p>Context overflows, the agent restarts, you lose the thread. On flat-rate plans, you hit rate limits 40% faster than you should.</p>
-          <span class="metric metric-cyan">3x shorter sessions</span>
+          <div class="problem-icon clock"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14" stroke="var(--text-muted)"/><path d="M4.93 4.93l1.41 1.41" opacity="0.4"/><path d="M19.07 4.93l-1.41 1.41" opacity="0.4"/></svg></div>
+          <h3 data-i18n="problem.card2.title">Sessions too short</h3>
+          <p data-i18n="problem.card2.text">Context overflows, the agent restarts, you lose the thread. On flat-rate plans, you hit rate limits 40% faster than you should.</p>
+          <span class="metric metric-cyan" data-i18n="problem.card2.metric">3x shorter sessions</span>
         </div>
 
         <div class="problem-card reveal">
-          <div class="problem-icon money">&#x1F4B8;</div>
-          <h3>Costs that explode</h3>
-          <p>On pay-per-token setups (API, Gemini CLI, Aider), 70% of your bill is noise the LLM doesn't need. A team of 10 wastes ~$1,750/month.</p>
-          <span class="metric metric-red">~70% wasted spend</span>
+          <div class="problem-icon money"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="var(--red)"/><path d="M3 7l2-2" stroke="var(--text-muted)" opacity="0.5"/><path d="M21 7l-2-2" stroke="var(--text-muted)" opacity="0.5"/></svg></div>
+          <h3 data-i18n="problem.card3.title">Costs that explode</h3>
+          <p data-i18n="problem.card3.text">On pay-per-token setups (API, Gemini CLI, Aider), 70% of your bill is noise the LLM doesn't need. A team of 10 wastes ~$1,750/month.</p>
+          <span class="metric metric-red" data-i18n="problem.card3.metric">~70% wasted spend</span>
         </div>
       </div>
     </div>
@@ -1429,15 +1592,22 @@
   <!-- Demo Slideshow -->
   <section class="demo-section" id="demo">
     <div class="section-inner">
-      <h2 class="reveal">See the difference</h2>
-      <p class="section-sub reveal">Real outputs, real savings. Side-by-side comparison on actual commands.</p>
+      <h2 class="reveal" data-i18n="demo.title">See the difference</h2>
+      <p class="section-sub reveal" data-i18n="demo.sub">Real outputs, real savings. Side-by-side comparison on actual commands.</p>
 
       <div class="slideshow reveal">
         <div class="slideshow-nav">
           <button class="slide-tab active" data-slide="0">cargo test</button>
           <button class="slide-tab" data-slide="1">pytest</button>
           <button class="slide-tab" data-slide="2">go test</button>
-          <button class="slide-tab" data-slide="3">ls</button>
+          <button class="slide-tab" data-slide="3">git diff</button>
+          <button class="slide-tab" data-slide="4">git status</button>
+          <button class="slide-tab" data-slide="5">git log</button>
+          <button class="slide-tab" data-slide="6">read</button>
+          <button class="slide-tab" data-slide="7">grep</button>
+          <button class="slide-tab" data-slide="8">find</button>
+          <button class="slide-tab" data-slide="9">ls</button>
+          <button class="slide-tab" data-slide="10">deps</button>
         </div>
 
         <div class="slideshow-viewport">
@@ -1650,8 +1820,351 @@ ok  kubecraft.ai/.../llm  0.776s</code></pre>
             </div>
           </div>
 
-          <!-- Slide 3: ls (real output) -->
+          <!-- Slide 3: git diff (real output, rtk-ldp) -->
           <div class="slide" data-index="3">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">git diff HEAD~1</span>
+                  <span class="demo-tokens">~21,500 tokens</span>
+                </div>
+                <pre><code>diff --git a/index.html b/index.html
+index 1b7488b..0ebac4f 100644
+--- a/index.html
++++ b/index.html
+@@ -629,7 +629,7 @@
+       width: 100%;
+       border-collapse: collapse;
+       font-size: 0.88rem;
+-      min-width: 800px;
++      min-width: 1050px;
+     }
+
+     .compare-table th {
+@@ -1051,6 +1051,114 @@
+       font-size: 0.78rem;
+     }
+
++    /* === Share My Gain === */
++    .share-gain { background: var(--bg); }
++
++    .share-gain-card {
++      max-width: 600px;
++      margin: 0 auto;
++      padding: 40px 36px;
++      border: 1px solid var(--border);
++      border-radius: var(--radius-lg);
+<span class="truncated">... 855 insertions(+), 266 deletions(-)</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk git diff HEAD~1</span>
+                  <span class="demo-tokens">~1,259 tokens</span>
+                  <span class="demo-savings">-94%</span>
+                </div>
+                <pre><code>index.html | 1121 ++++++++++++------
+ 1 file changed, 855 ins(+), 266 del(-)
+
+--- Changes ---
+
+&#x1F4C4; index.html
+  @@ -629,7 +629,7 @@
+  -      min-width: 800px;
+  +      min-width: 1050px;
+  @@ -1051,6 +1051,114 @@
+  +    /* === Share My Gain === */
+  +    .share-gain { background: var(--bg); }
+  @@ -1124,6 +1232,39 @@
+  +    /* === Language Switcher === */
+  ... (truncated)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4: git status (real output, rtk-ldp repo) -->
+          <div class="slide" data-index="4">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">git status</span>
+                  <span class="demo-tokens">~120 tokens</span>
+                </div>
+                <pre><code>On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+	modified:   index.html
+	modified:   src/main.rs
+	modified:   src/config.rs
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+	.fastembed_cache/
+	tests/
+
+no changes added to commit (use "git add" and/or "git commit -a")</code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk git status</span>
+                  <span class="demo-tokens">~30 tokens</span>
+                  <span class="demo-savings">-75%</span>
+                </div>
+                <pre><code>&#x1F4CC; master...origin/master
+&#x1F4DD; Modified: 3 files
+   index.html
+   src/main.rs
+   src/config.rs
+&#x2753; Untracked: 2 files
+   .fastembed_cache/
+   tests/</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5: git log (real output, rtk project with --stat) -->
+          <div class="slide" data-index="5">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">git log --stat -10</span>
+                  <span class="demo-tokens">~1,430 tokens</span>
+                </div>
+                <pre><code>commit c84fa3c fix: add website URL (rtk-ai.app)
+Author: patrick szymkowiak &lt;52030887+pszymkowiak@...&gt;
+Date:   Thu Feb 12 12:28:37 2026 +0100
+
+    - Cargo.toml: add homepage field
+    - README.md: add website/github/install links
+    - Formula/rtk.rb: update homepage to website
+
+ .github/workflows/release.yml | 4 ++--
+ Cargo.toml                    | 1 +
+ Formula/rtk.rb                | 2 +-
+ README.md                     | 8 ++++++++
+ 5 files changed, 14 insertions(+), 3 deletions(-)
+
+commit a0d2184 feat(ci): automate Homebrew formula
+Author: patrick szymkowiak &lt;52030887+pszymkowiak@...&gt;
+<span class="truncated">... 8 more commits with full stats</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk git log -n 10</span>
+                  <span class="demo-tokens">~194 tokens</span>
+                  <span class="demo-savings">-86%</span>
+                </div>
+                <pre><code>c84fa3c fix: add website URL (rtk-ai.app) (#81)
+a0d2184 feat(ci): automate Homebrew formula (#80)
+55d010a fix: update stale repo URLs (#78)
+9e764c4 chore(master): release 0.13.1
+bd76b36 fix(ci): fix release workflow artifacts
+0d388b3 chore(master): release 0.13.0
+93364b5 feat(sqlite): custom db location
+3dde699 chore(master): release 0.12.0
+645a773 feat(cargo): cargo install filtering
+22182e4 chore(master): release 0.11.0</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 6: read (real output, main.rs 1295 lines → 49 lines) -->
+          <div class="slide" data-index="6">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">cat src/main.rs</span>
+                  <span class="demo-tokens">~10,176 tokens</span>
+                </div>
+                <pre><code>mod cargo_cmd;
+mod cc_economics;
+mod ccusage;
+mod config;
+mod container;
+mod curl_cmd;
+mod deps;
+mod diff_cmd;
+mod discover;
+mod display_helpers;
+mod env_cmd;
+mod filter;
+mod find_cmd;
+mod gain;
+mod gh_cmd;
+mod git;
+mod grep_cmd;
+mod init;
+mod json_cmd;
+mod learn;
+mod lint_cmd;
+mod local_llm;
+mod log_cmd;
+mod ls;
+mod next_cmd;
+mod npm_cmd;
+mod parser;
+mod playwright_cmd;
+<span class="truncated">... 1,295 lines total (enums, match arms, CLI parsing)</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk read src/main.rs -l aggressive</span>
+                  <span class="demo-tokens">~504 tokens</span>
+                  <span class="demo-savings">-95%</span>
+                </div>
+                <pre><code>use anyhow::{Context, Result};
+use clap::{Parser, Subcommand};
+use std::ffi::OsString;
+use std::path::{Path, PathBuf};
+struct Cli {
+    // ... implementation
+enum Commands {
+    // ... implementation
+enum GitCommands {
+    // ... implementation
+enum DockerCommands {
+    // ... implementation
+enum KubectlCommands {
+    // ... implementation
+enum CargoCommands {
+    // ... implementation
+fn main() -> Result&lt;()&gt; {
+    // ... implementation</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 7: grep (real output, 112 matches in 47 files) -->
+          <div class="slide" data-index="7">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">grep -rn "pub fn" src/</span>
+                  <span class="demo-tokens">~2,108 tokens</span>
+                </div>
+                <pre><code>src/cargo_cmd.rs:17:pub fn run(cmd: CargoCommand, args: &amp;[String], verbose: u8) -> Result&lt;()&gt; {
+src/cargo_cmd.rs:551:pub fn run_passthrough(args: &amp;[OsString], verbose: u8) -> Result&lt;()&gt; {
+src/cc_economics.rs:184:pub fn run(
+src/ccusage.rs:118:pub fn is_available() -> bool {
+src/ccusage.rs:127:pub fn fetch(granularity: Granularity) -> Result&lt;Option&lt;Vec&lt;CcusagePeriod&gt;&gt;&gt; {
+src/config.rs:73:    pub fn load() -> Result&lt;Self&gt; {
+src/config.rs:85:    pub fn save(&amp;self) -> Result&lt;()&gt; {
+src/config.rs:97:    pub fn create_default() -> Result&lt;PathBuf&gt; {
+src/config.rs:109:pub fn show_config() -> Result&lt;()&gt; {
+src/container.rs:16:pub fn run(cmd: ContainerCmd, args: &amp;[String], verbose: u8) -> Result&lt;()&gt; {
+src/curl_cmd.rs:7:pub fn run(args: &amp;[String], verbose: u8) -> Result&lt;()&gt; {
+src/deps.rs:8:pub fn run(path: &amp;Path, verbose: u8) -> Result&lt;()&gt; {
+src/diff_cmd.rs:8:pub fn run(file1: &amp;Path, file2: &amp;Path, verbose: u8) -> Result&lt;()&gt; {
+src/filter.rs:57:    pub fn from_extension(ext: &amp;str) -> Self {
+src/filter.rs:309:pub fn get_filter(level: FilterLevel) -> Box&lt;dyn FilterStrategy&gt; {
+<span class="truncated">... 112 matches across 47 files</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk grep "pub fn" src/</span>
+                  <span class="demo-tokens">~940 tokens</span>
+                  <span class="demo-savings">-55%</span>
+                </div>
+                <pre><code>&#x1F50D; 112 in 47F:
+
+&#x1F4C4; src/cargo_cmd.rs (3):
+    17: pub fn run(cmd: CargoCommand, ...) -> Result&lt;()&gt;
+   551: pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
+
+&#x1F4C4; src/config.rs (4):
+    73: pub fn load() -> Result&lt;Self&gt;
+    85: pub fn save(&amp;self) -> Result&lt;()&gt;
+    97: pub fn create_default() -> Result&lt;PathBuf&gt;
+   109: pub fn show_config() -> Result&lt;()&gt;
+
+&#x1F4C4; src/git.rs (2):
+    22: pub fn run(cmd: GitCommand, ...) -> Result&lt;()&gt;
+  1264: pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
+
+&#x1F4C4; src/filter.rs (4):
+    57: pub fn from_extension(ext: &amp;str) -> Self
+   309: pub fn get_filter(level: ...) -> Box&lt;...&gt;
+... +62</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 8: find (real output, 49 .rs files) -->
+          <div class="slide" data-index="8">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">find . -name "*.rs"</span>
+                  <span class="demo-tokens">~276 tokens</span>
+                </div>
+                <pre><code>./target/debug/build/serde_core-.../out/private.rs
+./target/debug/build/libsqlite3-sys-.../out/bindgen.rs
+./target/debug/build/serde-.../out/private.rs
+./src/ls.rs
+./src/local_llm.rs
+./src/learn/detector.rs
+./src/learn/report.rs
+./src/learn/mod.rs
+./src/discover/registry.rs
+./src/discover/provider.rs
+./src/discover/report.rs
+./src/discover/mod.rs
+./src/wget_cmd.rs
+./src/npm_cmd.rs
+./src/cargo_cmd.rs
+./src/ccusage.rs
+./src/config.rs
+./src/lint_cmd.rs
+./src/curl_cmd.rs
+./src/prisma_cmd.rs
+./src/cc_economics.rs
+./src/find_cmd.rs
+./src/gain.rs
+./src/git.rs
+<span class="truncated">... 49 files total</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk find "*.rs" .</span>
+                  <span class="demo-tokens">~149 tokens</span>
+                  <span class="demo-savings">-46%</span>
+                </div>
+                <pre><code>&#x1F4C1; 49F 4D:
+
+src/ cargo_cmd.rs cc_economics.rs
+  ccusage.rs config.rs container.rs
+  curl_cmd.rs deps.rs diff_cmd.rs
+  display_helpers.rs env_cmd.rs
+  filter.rs find_cmd.rs gain.rs
+  gh_cmd.rs git.rs grep_cmd.rs
+  init.rs json_cmd.rs lint_cmd.rs
+  local_llm.rs log_cmd.rs ls.rs
+  main.rs ...
+src/discover/ mod.rs provider.rs
+  registry.rs report.rs
+src/learn/ detector.rs mod.rs report.rs
+src/parser/ error.rs formatter.rs
+  mod.rs types.rs</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 9: ls (real output) -->
+          <div class="slide" data-index="9">
             <div class="demo-grid">
               <div class="demo-card">
                 <div class="demo-card-header">
@@ -1709,6 +2222,76 @@ gain.rs  10.4K
               </div>
             </div>
           </div>
+
+          <!-- Slide 10: deps (real output, rtk Cargo.toml) -->
+          <div class="slide" data-index="10">
+            <div class="demo-grid">
+              <div class="demo-card">
+                <div class="demo-card-header">
+                  <span class="demo-dot red"></span>
+                  <span class="demo-label">cat Cargo.toml</span>
+                  <span class="demo-tokens">~368 tokens</span>
+                </div>
+                <pre><code>[package]
+name = "rtk"
+version = "0.13.1"
+edition = "2021"
+authors = ["Patrick Szymkowiak"]
+description = "Rust Token Killer - High-performance CLI proxy..."
+license = "MIT"
+homepage = "https://www.rtk-ai.app"
+repository = "https://github.com/rtk-ai/rtk"
+readme = "README.md"
+keywords = ["cli", "llm", "token", "filter", "productivity"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+anyhow = "1.0"
+ignore = "0.4"
+walkdir = "2"
+regex = "1"
+lazy_static = "1.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+colored = "2"
+dirs = "5"
+rusqlite = { version = "0.31", features = ["bundled"] }
+toml = "0.8"
+chrono = "0.4"
+thiserror = "1.0"
+tempfile = "3"
+
+[dev-dependencies]
+
+[profile.release]
+opt-level = 3
+lto = true
+<span class="truncated">... + cargo-deb, cargo-generate-rpm metadata</span></code></pre>
+              </div>
+              <div class="demo-card demo-after">
+                <div class="demo-card-header">
+                  <span class="demo-dot green"></span>
+                  <span class="demo-label">rtk deps</span>
+                  <span class="demo-tokens">~55 tokens</span>
+                  <span class="demo-savings">-85%</span>
+                </div>
+                <pre><code>&#x1F4E6; Rust (Cargo.toml):
+  Dependencies (15):
+    clap (4)
+    anyhow (1.0)
+    ignore (0.4)
+    walkdir (2)
+    regex (1)
+    lazy_static (1.4)
+    serde (1)
+    serde_json (1)
+    colored (2)
+    dirs (5)
+    ... +5 more</code></pre>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="slideshow-controls">
@@ -1720,6 +2303,13 @@ gain.rs  10.4K
             <span class="dot" data-slide="1"></span>
             <span class="dot" data-slide="2"></span>
             <span class="dot" data-slide="3"></span>
+            <span class="dot" data-slide="4"></span>
+            <span class="dot" data-slide="5"></span>
+            <span class="dot" data-slide="6"></span>
+            <span class="dot" data-slide="7"></span>
+            <span class="dot" data-slide="8"></span>
+            <span class="dot" data-slide="9"></span>
+            <span class="dot" data-slide="10"></span>
           </div>
           <button class="slide-arrow slide-next" aria-label="Next">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -1732,98 +2322,240 @@ gain.rs  10.4K
   <!-- Comparison Table -->
   <section class="comparison" id="compare">
     <div class="section-inner">
-      <h2 class="reveal">RTK works with every AI coding tool</h2>
-      <p class="section-sub reveal">Whether you're on a flat-rate plan or pay-per-token, RTK makes your tool work better.</p>
+      <h2 class="reveal" data-i18n="compare.title">No AI tool offers unlimited usage. Every token counts.</h2>
+      <p class="section-sub reveal" data-i18n="compare.sub">Even at $200/mo, every tool has caps. RTK compresses CLI noise so your limits stretch further.</p>
 
-      <div class="table-wrap reveal">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Tool</th>
-              <th>Type</th>
-              <th>Billing</th>
-              <th>Cost / dev</th>
-              <th>Context</th>
-              <th>Without RTK</th>
-              <th>With RTK</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="tool-name">Claude Code</span></td>
-              <td><span class="tool-type type-terminal">Terminal</span></td>
-              <td>Quota / 5h</td>
-              <td>$20-200/mo</td>
-              <td>200K</td>
-              <td><span class="waste-badge">~73% noise</span></td>
-              <td><span class="impact-badge impact-green">Sessions 3x longer</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">Cursor</span></td>
-              <td><span class="tool-type type-ide">IDE</span></td>
-              <td>Credits</td>
-              <td>$20-40/mo</td>
-              <td>70-120K</td>
-              <td><span class="waste-badge">~69% noise</span></td>
-              <td><span class="impact-badge impact-green">More room for code</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">OpenAI Codex</span></td>
-              <td><span class="tool-type type-agent">Agent</span></td>
-              <td>Usage-based</td>
-              <td>~$20/mo</td>
-              <td>128K</td>
-              <td><span class="waste-badge">~71% noise</span></td>
-              <td><span class="impact-badge impact-green">Faster iterations</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">Windsurf</span></td>
-              <td><span class="tool-type type-ide">IDE</span></td>
-              <td>Credits</td>
-              <td>$15-30/mo</td>
-              <td>200K</td>
-              <td><span class="waste-badge">~71% noise</span></td>
-              <td><span class="impact-badge impact-green">Credits last longer</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">Gemini CLI</span></td>
-              <td><span class="tool-type type-terminal">Terminal</span></td>
-              <td>Pay-per-token</td>
-              <td>$0&rarr;$200+/mo</td>
-              <td>1M</td>
-              <td><span class="waste-badge">~70% noise</span></td>
-              <td><span class="impact-badge impact-green">~$150/mo saved</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">Aider</span></td>
-              <td><span class="tool-type type-terminal">Terminal</span></td>
-              <td>Pay-per-token</td>
-              <td>$50-300+/mo</td>
-              <td>Variable</td>
-              <td><span class="waste-badge">~70% noise</span></td>
-              <td><span class="impact-badge impact-green">-70% API bill</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">GitHub Copilot</span></td>
-              <td><span class="tool-type type-ide">IDE</span></td>
-              <td>Subscription</td>
-              <td>$10-39/mo</td>
-              <td>Variable</td>
-              <td><span class="waste-badge">~40% noise</span></td>
-              <td><span class="impact-badge impact-green">Marginal gain</span></td>
-            </tr>
-            <tr>
-              <td><span class="tool-name">Cline / Roo</span></td>
-              <td><span class="tool-type type-terminal">VS Code</span></td>
-              <td>Pay-per-token</td>
-              <td>$50-500+/mo</td>
-              <td>Variable</td>
-              <td><span class="waste-badge">~71% noise</span></td>
-              <td><span class="impact-badge impact-green">-71% API bill</span></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="session-callout reveal">
+        <p class="session-headline" data-i18n="compare.session_headline">A typical 2h coding session with an AI agent:</p>
+        <div class="session-stats-row">
+          <div class="session-stat">
+            <span class="session-num">~60</span>
+            <span class="session-label" data-i18n="compare.session_cmds">CLI commands run</span>
+          </div>
+          <div class="session-stat">
+            <span class="session-num session-num-red">~210K</span>
+            <span class="session-label" data-i18n="compare.session_noise">tokens of CLI noise</span>
+          </div>
+          <div class="session-stat">
+            <span class="session-num session-num-accent">~23K</span>
+            <span class="session-label" data-i18n="compare.session_rtk">with RTK (89% less)</span>
+          </div>
+        </div>
+        <p class="session-note" data-i18n="compare.session_note">Without RTK, CLI output alone can overflow a 200K context window. Based on avg 3,500 tokens/command measured across 2,900+ real commands.</p>
       </div>
+
+      <div class="tool-cards">
+
+        <!-- Claude Code -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">Claude Code</span>
+            <span class="tool-type type-terminal">Terminal</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value">$20 &mdash; $200/mo</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_cc">~45 msgs/5h (Pro), 5-20x on Max</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value">200K tokens</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_cc">Sessions ~3x longer</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_cc">Even Max $200/mo (20x Pro) has weekly caps (240-480h). Quota resets every 5h. RTK compresses CLI outputs by avg 89%, so each message carries less noise and your quota stretches ~3x.</div>
+        </div>
+
+        <!-- Cursor -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">Cursor</span>
+            <span class="tool-type type-ide">IDE</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value">$20 &mdash; $200/mo</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_cursor">$20 credits/mo (Pro), ~225 Claude reqs</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value" data-i18n="compare.ctx_cursor">Up to 200K (Max mode)</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_cursor">Credits go ~2x further</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_cursor">Even Ultra $200/mo (20x credits) is capped. Each request consumes credits based on model &mdash; Claude burns 2.4x faster than Gemini. RTK compresses CLI outputs so each request starts cleaner.</div>
+        </div>
+
+        <!-- OpenAI Codex -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">OpenAI Codex</span>
+            <span class="tool-type type-agent">Agent</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value" data-i18n="compare.price_codex">$20/mo (Plus) &mdash; $200/mo (Pro)</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_codex">30-1,500 msgs/5h by plan</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value">192K tokens</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_codex">More iterations per cap</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_codex">Included with ChatGPT plans. Pro $200/mo caps at 1,500 msgs/5h. The agent runs commands autonomously &mdash; each output eats your cap. RTK compresses them for more iterations per window.</div>
+        </div>
+
+        <!-- Windsurf -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">Windsurf</span>
+            <span class="tool-type type-ide">IDE</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value">$15 &mdash; $60/mo</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_windsurf">500 credits/mo (Pro)</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value">200K tokens</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_windsurf">Credits last ~2x longer</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_windsurf">Enterprise $60/user gets 1,000 credits/mo &mdash; still capped. Cascade consumes credits per prompt. RTK compresses CLI outputs so each interaction uses fewer tokens, stretching your credits.</div>
+        </div>
+
+        <!-- Gemini CLI -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">Gemini CLI</span>
+            <span class="tool-type type-terminal">Terminal</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value" data-i18n="compare.price_gemini">Free &mdash; pay-per-token</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_gemini">1,000 req/day, 60 req/min (free)</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value">1M tokens</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_gemini">~70% less on token bill</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_gemini">Free tier is generous (1,000 req/day) but still rate-limited. Beyond that, you pay per token. RTK compresses CLI outputs by avg 89%, cutting your bill or freeing rate limit headroom.</div>
+        </div>
+
+        <!-- Aider -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">Aider</span>
+            <span class="tool-type type-terminal">Terminal</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value" data-i18n="compare.price_aider">Free + API costs ($5-300+/mo)</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_aider">Per API provider</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value" data-i18n="compare.ctx_model">Per model (up to 200K)</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_aider">~70% less API cost</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_aider">BYO API key &mdash; you pay per token to OpenAI, Anthropic, etc. RTK compresses every command output before it reaches the model, directly cutting your API bill by ~70% on CLI-heavy workflows.</div>
+        </div>
+
+        <!-- GitHub Copilot -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">GitHub Copilot</span>
+            <span class="tool-type type-ide">IDE</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value" data-i18n="compare.price_copilot">Free &mdash; $39/mo (Pro+)</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_copilot">50-1,500 premium req/mo</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value" data-i18n="compare.ctx_model">Per model (up to 200K)</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_copilot">Better context quality</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_copilot">Enterprise $39/user: 1,000 premium req/mo. Base completions are unlimited, but Chat and the coding agent have caps. RTK keeps terminal output lean so premium requests carry more useful context.</div>
+        </div>
+
+        <!-- Cline / Roo -->
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <span class="tool-card-name">Cline / Roo</span>
+            <span class="tool-type type-agent">VS Code</span>
+          </div>
+          <div class="tool-card-specs">
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_price">Price</span>
+              <span class="tool-card-value" data-i18n="compare.price_cline">Free + API costs ($0-500+/mo)</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_limits">Limits</span>
+              <span class="tool-card-value" data-i18n="compare.limit_cline">Per API provider</span>
+            </div>
+            <div class="tool-card-row">
+              <span class="tool-card-label" data-i18n="compare.th_context">Context</span>
+              <span class="tool-card-value" data-i18n="compare.ctx_model">Per model (up to 200K)</span>
+            </div>
+          </div>
+          <div class="tool-card-impact">
+            <span class="impact-badge impact-green" data-i18n="compare.impact_cline">~70% less API cost</span>
+          </div>
+          <div class="tool-card-detail" data-i18n="compare.detail_cline">No tool-side limit, but your API provider caps apply. Heavy users report $200-500+/mo. RTK compresses every output by avg 89%, directly cutting your bill and reducing context overflow.</div>
+        </div>
+
+      </div>
+      <p class="section-sub" style="font-size:0.72rem; margin-top:20px; opacity:0.5;" data-i18n="compare.footnote">Pricing verified Feb 2026. Limits vary by usage and plan. RTK savings based on avg 89% compression across 2,900+ real commands.</p>
     </div>
   </section>
 
@@ -1831,50 +2563,50 @@ gain.rs  10.4K
   <section class="cloud-section" id="cloud">
     <div class="section-inner">
       <div class="cloud-card reveal">
-        <div class="cloud-badge"><span>Coming Soon</span></div>
+        <div class="cloud-badge"><span data-i18n="cloud.badge">Coming Soon</span></div>
         <h2>RTK Cloud</h2>
-        <p class="cloud-desc">Visibility and control over your team's AI coding costs. Know what's wasted. Fix it.</p>
+        <p class="cloud-desc" data-i18n="cloud.desc">Visibility and control over your team's AI coding costs. Know what's wasted. Fix it.</p>
 
         <div class="cloud-features">
           <div class="cloud-feature">
-            <span class="cloud-feature-icon">&#x1F50D;</span>
+            <span class="cloud-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="var(--violet)"/></svg></span>
             <div>
-              <h4>Token analytics</h4>
-              <p>Dashboard per dev, per project, per tool</p>
+              <h4 data-i18n="cloud.f1.title">Token analytics</h4>
+              <p data-i18n="cloud.f1.desc">Dashboard per dev, per project, per tool</p>
             </div>
           </div>
           <div class="cloud-feature">
-            <span class="cloud-feature-icon">&#x1F4CA;</span>
+            <span class="cloud-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10" stroke="var(--accent)"/><path d="M12 20V4"/><path d="M6 20v-6" stroke="var(--accent)"/></svg></span>
             <div>
-              <h4>Team savings reports</h4>
-              <p>"Your team saved $4,200 this month"</p>
+              <h4 data-i18n="cloud.f2.title">Team savings reports</h4>
+              <p data-i18n="cloud.f2.desc">"Your team saved $4,200 this month"</p>
             </div>
           </div>
           <div class="cloud-feature">
-            <span class="cloud-feature-icon">&#x1F6A8;</span>
+            <span class="cloud-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13" stroke="var(--text-bright)"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="var(--text-bright)"/></svg></span>
             <div>
-              <h4>Rate limit alerts</h4>
-              <p>Monitoring &amp; smart notifications</p>
+              <h4 data-i18n="cloud.f3.title">Rate limit alerts</h4>
+              <p data-i18n="cloud.f3.desc">Monitoring &amp; smart notifications</p>
             </div>
           </div>
           <div class="cloud-feature">
-            <span class="cloud-feature-icon">&#x1F3E2;</span>
+            <span class="cloud-feature-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9.01" y2="6" stroke="var(--accent)"/><line x1="15" y1="6" x2="15.01" y2="6" stroke="var(--accent)"/><line x1="9" y1="10" x2="9.01" y2="10" stroke="var(--accent)"/><line x1="15" y1="10" x2="15.01" y2="10" stroke="var(--accent)"/><line x1="9" y1="14" x2="9.01" y2="14" stroke="var(--accent)"/><line x1="15" y1="14" x2="15.01" y2="14" stroke="var(--accent)"/><path d="M9 18h6"/></svg></span>
             <div>
-              <h4>Enterprise controls</h4>
-              <p>SSO, audit logs, compliance</p>
+              <h4 data-i18n="cloud.f4.title">Enterprise controls</h4>
+              <p data-i18n="cloud.f4.desc">SSO, audit logs, compliance</p>
             </div>
           </div>
         </div>
 
-        <p class="cloud-pricing">Free for open-source. Teams from <strong>$15/dev/month</strong>.</p>
+        <p class="cloud-pricing" data-i18n-html="cloud.pricing">Free for open-source. Teams from <strong>$15/dev/month</strong>.</p>
 
         <form class="waitlist-form" id="waitlist-form">
           <div class="waitlist-row">
-            <input type="email" id="wl-email" class="wl-input" placeholder="you@company.com" required>
-            <input type="text" id="wl-company" class="wl-input" placeholder="Company (optional)">
+            <input type="email" id="wl-email" class="wl-input" data-i18n-placeholder="cloud.placeholder_email" placeholder="you@company.com" required>
+            <input type="text" id="wl-company" class="wl-input" data-i18n-placeholder="cloud.placeholder_company" placeholder="Company (optional)">
           </div>
           <select id="wl-tool" class="wl-select">
-            <option value="">Main AI coding tool (optional)</option>
+            <option value="" data-i18n="cloud.placeholder_tool">Main AI coding tool (optional)</option>
             <option value="claude-code">Claude Code</option>
             <option value="cursor">Cursor</option>
             <option value="gemini-cli">Gemini CLI</option>
@@ -1885,11 +2617,11 @@ gain.rs  10.4K
             <option value="copilot">GitHub Copilot</option>
             <option value="other">Other</option>
           </select>
-          <button type="submit" class="wl-submit" id="wl-submit">Join the waitlist</button>
+          <button type="submit" class="wl-submit" id="wl-submit" data-i18n="cloud.submit">Join the waitlist</button>
         </form>
 
-        <p class="waitlist-count"><span id="waitlist-count">0</span> teams on the waitlist</p>
-        <p class="waitlist-note">No spam. One email when we launch.</p>
+        <p class="waitlist-count"><span id="waitlist-count">0</span> <span data-i18n="cloud.counter">teams on the waitlist</span></p>
+        <p class="waitlist-note" data-i18n="cloud.note">No spam. One email when we launch.</p>
       </div>
     </div>
   </section>
@@ -1897,13 +2629,13 @@ gain.rs  10.4K
   <!-- Install -->
   <section class="install-section" id="install">
     <div class="section-inner">
-      <h2 class="reveal">Get started in 30 seconds</h2>
-      <p class="section-sub reveal">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
+      <h2 class="reveal" data-i18n="install.title">Get started in 30 seconds</h2>
+      <p class="section-sub reveal" data-i18n="install.sub">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
 
       <div class="install-grid reveal">
         <div class="install-card install-primary">
-          <h3>Quick Install</h3>
-          <p>One-liner for Linux &amp; macOS</p>
+          <h3 data-i18n="install.quick">Quick Install</h3>
+          <p data-i18n="install.quick_desc">One-liner for Linux &amp; macOS</p>
           <div class="code-block">
             <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh</code>
             <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label="Copy">
@@ -1913,8 +2645,8 @@ gain.rs  10.4K
         </div>
 
         <div class="install-card">
-          <h3>Via Cargo</h3>
-          <p>From GitHub</p>
+          <h3 data-i18n="install.cargo">Via Cargo</h3>
+          <p data-i18n="install.cargo_desc">From GitHub</p>
           <div class="code-block">
             <code>cargo install --git https://github.com/rtk-ai/rtk</code>
             <button class="copy-btn" data-copy="cargo install --git https://github.com/rtk-ai/rtk" aria-label="Copy">
@@ -1924,23 +2656,23 @@ gain.rs  10.4K
         </div>
 
         <div class="install-card">
-          <h3>Pre-built Binaries</h3>
-          <p>macOS, Linux, Windows</p>
+          <h3 data-i18n="install.binaries">Pre-built Binaries</h3>
+          <p data-i18n="install.binaries_desc">macOS, Linux, Windows</p>
           <div class="code-block">
-            <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link">Download from Releases &rarr;</a>
+            <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link" data-i18n="install.releases">Download from Releases &rarr;</a>
           </div>
         </div>
       </div>
 
       <div class="install-setup reveal">
-        <h3>Then activate the auto-rewrite hook</h3>
+        <h3 data-i18n="install.hook">Then activate the auto-rewrite hook</h3>
         <div class="code-block code-block-wide">
           <code>rtk init --global</code>
           <button class="copy-btn" data-copy="rtk init --global" aria-label="Copy">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
-        <p class="install-note">This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents.</p>
+        <p class="install-note" data-i18n="install.hook_note">This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents.</p>
 
         <div class="install-steps">
           <div class="install-step">
@@ -1964,23 +2696,10 @@ gain.rs  10.4K
   <section class="share-gain" id="share-gain">
     <div class="section-inner">
       <div class="share-gain-card reveal">
-        <h2>Post your <span class="gradient-text">rtk gain</span></h2>
-        <p class="share-gain-desc">Run <code>rtk gain</code>, paste your stats, and flex on the timeline.</p>
+        <h2><span data-i18n="share.title_1">Post your</span> <span class="gradient-text" data-i18n="share.title_2">rtk gain</span></h2>
+        <p class="share-gain-desc" data-i18n-html="share.desc">Run <code>rtk gain</code>, paste your stats, and flex on the timeline.</p>
 
-        <div class="gain-input-row">
-          <div class="gain-field">
-            <span class="gain-label">Tokens saved</span>
-            <input type="text" class="gain-input" id="gain-tokens" placeholder="10.3M" value="">
-          </div>
-          <div class="gain-field">
-            <span class="gain-label">Savings %</span>
-            <input type="text" class="gain-input" id="gain-pct" placeholder="89%" value="">
-          </div>
-          <div class="gain-field">
-            <span class="gain-label">Commands</span>
-            <input type="text" class="gain-input" id="gain-cmds" placeholder="2,927" value="">
-          </div>
-        </div>
+        <textarea class="gain-textarea" id="gain-paste" rows="6" data-i18n-placeholder="share.paste_placeholder" placeholder="Paste your rtk gain output here..."></textarea>
 
         <div class="gain-preview" id="gain-preview">
           <span class="gp-highlight">&#x26A1; My rtk gain:</span> <span id="gp-tokens">___</span> tokens saved (<span id="gp-pct">___</span>) over <span id="gp-cmds">___</span> commands.
@@ -1991,19 +2710,19 @@ gain.rs  10.4K
         <div class="gain-share-btns">
           <a id="gain-share-x" href="#" target="_blank" rel="noopener" class="gain-share-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Post on X
+            <span data-i18n="share.post_x">Post on X</span>
           </a>
           <a id="gain-share-bsky" href="#" target="_blank" rel="noopener" class="gain-share-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.627 3.601 3.495 6.186 3.245-3.775.547-7.052 2.48-4.452 7.378 2.294 3.796 5.057 4.755 7.642.38C12 17.764 12 14.568 12 14.568s0 3.196 2 6.682c2.585 4.375 5.348 3.416 7.642-.38 2.6-4.898-.677-6.831-4.452-7.378 2.585.25 5.401-.618 6.186-3.245.246-.828.624-5.788.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
-            Post on Bluesky
+            <span data-i18n="share.post_bsky">Post on Bluesky</span>
           </a>
           <a id="gain-share-li" href="#" target="_blank" rel="noopener" class="gain-share-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
+            <span data-i18n="share.linkedin">LinkedIn</span>
           </a>
           <button id="gain-copy-btn" class="gain-share-btn">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-            Copy
+            <span data-i18n="share.copy">Copy</span>
           </button>
         </div>
       </div>
@@ -2013,18 +2732,18 @@ gain.rs  10.4K
   <!-- CTA + Social -->
   <section class="cta-section">
     <div class="section-inner">
-      <h2 class="reveal">Your AI doesn't need<br>to read all that.</h2>
-      <p class="section-sub reveal">Install rtk. Better code, longer sessions, lower costs.</p>
+      <h2 class="reveal"><span data-i18n="cta.title_1">Your AI doesn't need</span><br><span data-i18n="cta.title_2">to read all that.</span></h2>
+      <p class="section-sub reveal" data-i18n="cta.sub">Install rtk. Better code, longer sessions, lower costs.</p>
       <div class="hero-cta reveal">
-        <a href="#install" class="btn btn-primary">Install rtk</a>
+        <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Star on GitHub
+          <span data-i18n="hero.cta_star">Star on GitHub</span>
         </a>
       </div>
 
       <div class="social-share reveal">
-        <span class="share-label">Share rtk</span>
+        <span class="share-label" data-i18n="cta.share">Share rtk</span>
         <div class="share-links">
           <a href="https://x.com/intent/tweet?text=rtk%20%E2%80%94%20Your%20AI%20coding%20agent%20is%20drowning%20in%20CLI%20noise.%20RTK%20compresses%20outputs%20by%2089%25.%20Better%20reasoning%2C%20longer%20sessions%2C%20lower%20costs.%20Open%20source%2C%20Rust.&url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk" target="_blank" rel="noopener" class="share-btn" aria-label="Share on X">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -2181,14 +2900,19 @@ gain.rs  10.4K
     });
 
     // === Share My Gain ===
-    const gainTokens = document.getElementById('gain-tokens');
-    const gainPct = document.getElementById('gain-pct');
-    const gainCmds = document.getElementById('gain-cmds');
+    const gainPaste = document.getElementById('gain-paste');
+
+    function parseGainOutput(raw) {
+      let tokens = '___', pct = '___', cmds = '___';
+      const savedMatch = raw.match(/Tokens saved:\s+([\d.,]+[KMB]?)\s*\(([\d.]+%)\)/i);
+      if (savedMatch) { tokens = savedMatch[1]; pct = savedMatch[2]; }
+      const cmdsMatch = raw.match(/Total commands:\s+([\d,]+)/i);
+      if (cmdsMatch) cmds = cmdsMatch[1];
+      return { tokens, pct, cmds };
+    }
 
     function updateGainPreview() {
-      const t = gainTokens.value || '___';
-      const p = gainPct.value || '___';
-      const c = gainCmds.value || '___';
+      const { tokens: t, pct: p, cmds: c } = parseGainOutput(gainPaste.value);
       document.getElementById('gp-tokens').textContent = t;
       document.getElementById('gp-pct').textContent = p;
       document.getElementById('gp-cmds').textContent = c;
@@ -2205,7 +2929,7 @@ gain.rs  10.4K
         `https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk`;
 
       document.getElementById('gain-copy-btn').onclick = () => {
-        navigator.clipboard.writeText(text.replace(/\n/g, '\n')).then(() => {
+        navigator.clipboard.writeText(text).then(() => {
           const btn = document.getElementById('gain-copy-btn');
           const orig = btn.innerHTML;
           btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
@@ -2214,10 +2938,350 @@ gain.rs  10.4K
       };
     }
 
-    gainTokens.addEventListener('input', updateGainPreview);
-    gainPct.addEventListener('input', updateGainPreview);
-    gainCmds.addEventListener('input', updateGainPreview);
+    gainPaste.addEventListener('input', updateGainPreview);
     updateGainPreview();
+
+    // === GitHub Stars ===
+    fetch('https://api.github.com/repos/rtk-ai/rtk')
+      .then(r => r.json())
+      .then(data => {
+        if (data.stargazers_count) {
+          const count = data.stargazers_count;
+          const display = count >= 1000 ? (count / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : count.toString();
+          const el = document.getElementById('github-stars-count');
+          if (el) el.textContent = display;
+        }
+      })
+      .catch(() => {});
+
+    // === i18n ===
+    const T = {
+      en: {
+        'nav.why': 'Why', 'nav.demo': 'Demo', 'nav.tools': 'Tools', 'nav.cloud': 'Cloud', 'nav.install': 'Install',
+        'hero.badge_oss': 'Open Source \u00b7 MIT \u00b7 Rust',
+        'hero.title_1': 'Your AI agent is drowning', 'hero.title_2': 'in CLI noise.', 'hero.title_3': 'Fix it.',
+        'hero.sub_1': 'rtk compresses command outputs before they reach the context window.',
+        'hero.sub_2': 'Better reasoning. Longer sessions. Lower costs.',
+        'hero.stat_pct_label': 'avg. noise removed', 'hero.stat_3x_label': 'longer sessions', 'hero.stat_cmds_label': 'commands',
+        'hero.cta_install': 'Install rtk', 'hero.cta_star': 'Star on GitHub',
+        'problem.title': 'The problem with AI coding today',
+        'problem.sub': "Every command your agent runs pollutes the context window with noise. Here\u2019s what that costs you.",
+        'problem.card1.title': 'Context pollution',
+        'problem.card1.text': "Your 200K context window isn\u2019t infinite. When <code>cargo test</code> dumps 5,000 tokens of boilerplate, that\u2019s 5,000 tokens less for reasoning about your actual code.",
+        'problem.card1.metric': 'Worse AI reasoning',
+        'problem.card2.title': 'Sessions too short',
+        'problem.card2.text': 'Context overflows, the agent restarts, you lose the thread. On flat-rate plans, you hit rate limits 40% faster than you should.',
+        'problem.card2.metric': '3x shorter sessions',
+        'problem.card3.title': 'Costs that explode',
+        'problem.card3.text': "On pay-per-token setups (API, Gemini CLI, Aider), 70% of your bill is noise the LLM doesn\u2019t need. A team of 10 wastes ~$1,750/month.",
+        'problem.card3.metric': '~70% wasted spend',
+        'demo.title': 'See the difference', 'demo.sub': 'Real outputs, real savings. Side-by-side comparison on actual commands.',
+        'compare.title': 'No AI tool offers unlimited usage. Every token counts.',
+        'compare.sub': 'Even at $200/mo, every tool has caps. RTK compresses CLI noise so your limits stretch further.',
+        'compare.session_headline': 'A typical 2h coding session with an AI agent:',
+        'compare.session_cmds': 'CLI commands run', 'compare.session_noise': 'tokens of CLI noise', 'compare.session_rtk': 'with RTK (89% less)',
+        'compare.session_note': 'Without RTK, CLI output alone can overflow a 200K context window. Based on avg 3,500 tokens/command measured across 2,900+ real commands.',
+        'compare.th_price': 'Price', 'compare.th_limits': 'Limits', 'compare.th_context': 'Context',
+        'compare.limit_cc': '~45 msgs/5h (Pro), 5-20x on Max', 'compare.limit_cursor': '$20 credits/mo (Pro), ~225 Claude reqs',
+        'compare.limit_codex': '30-1,500 msgs/5h by plan', 'compare.limit_windsurf': '500 credits/mo (Pro)',
+        'compare.limit_gemini': '1,000 req/day, 60 req/min (free)', 'compare.limit_aider': 'Per API provider',
+        'compare.limit_copilot': '50-1,500 premium req/mo', 'compare.limit_cline': 'Per API provider',
+        'compare.price_codex': '$20/mo (Plus) \u2014 $200/mo (Pro)', 'compare.price_gemini': 'Free \u2014 pay-per-token',
+        'compare.price_aider': 'Free + API costs ($5-300+/mo)', 'compare.price_copilot': 'Free \u2014 $39/mo (Pro+)',
+        'compare.price_cline': 'Free + API costs ($0-500+/mo)',
+        'compare.ctx_cursor': 'Up to 200K (Max mode)', 'compare.ctx_model': 'Per model (up to 200K)',
+        'compare.impact_cc': 'Sessions ~3x longer', 'compare.impact_cursor': 'Credits go ~2x further',
+        'compare.impact_codex': 'More iterations per cap', 'compare.impact_windsurf': 'Credits last ~2x longer', 'compare.impact_copilot': 'Better context quality',
+        'compare.impact_gemini': '~70% less on token bill', 'compare.impact_aider': '~70% less API cost', 'compare.impact_cline': '~70% less API cost',
+        'compare.detail_cc': 'Even Max $200/mo (20x Pro) has weekly caps (240-480h). Quota resets every 5h. RTK compresses CLI outputs by avg 89%, so each message carries less noise and your quota stretches ~3x.',
+        'compare.detail_cursor': 'Even Ultra $200/mo (20x credits) is capped. Each request consumes credits based on model \u2014 Claude burns 2.4x faster than Gemini. RTK compresses CLI outputs so each request starts cleaner.',
+        'compare.detail_codex': 'Included with ChatGPT plans. Pro $200/mo caps at 1,500 msgs/5h. The agent runs commands autonomously \u2014 each output eats your cap. RTK compresses them for more iterations per window.',
+        'compare.detail_windsurf': 'Enterprise $60/user gets 1,000 credits/mo \u2014 still capped. Cascade consumes credits per prompt. RTK compresses CLI outputs so each interaction uses fewer tokens, stretching your credits.',
+        'compare.detail_gemini': 'Free tier is generous (1,000 req/day) but still rate-limited. Beyond that, you pay per token. RTK compresses CLI outputs by avg 89%, cutting your bill or freeing rate limit headroom.',
+        'compare.detail_aider': 'BYO API key \u2014 you pay per token to OpenAI, Anthropic, etc. RTK compresses every command output before it reaches the model, directly cutting your API bill by ~70% on CLI-heavy workflows.',
+        'compare.detail_copilot': 'Enterprise $39/user: 1,000 premium req/mo. Base completions are unlimited, but Chat and the coding agent have caps. RTK keeps terminal output lean so premium requests carry more useful context.',
+        'compare.detail_cline': 'No tool-side limit, but your API provider caps apply. Heavy users report $200-500+/mo. RTK compresses every output by avg 89%, directly cutting your bill and reducing context overflow.',
+        'compare.footnote': 'Pricing verified Feb 2026. Limits vary by usage and plan. RTK savings based on avg 89% compression across 2,900+ real commands.',
+        'cloud.badge': 'Coming Soon', 'cloud.desc': "Visibility and control over your team\u2019s AI coding costs. Know what\u2019s wasted. Fix it.",
+        'cloud.f1.title': 'Token analytics', 'cloud.f1.desc': 'Dashboard per dev, per project, per tool',
+        'cloud.f2.title': 'Team savings reports', 'cloud.f2.desc': '\u201cYour team saved $4,200 this month\u201d',
+        'cloud.f3.title': 'Rate limit alerts', 'cloud.f3.desc': 'Monitoring & smart notifications',
+        'cloud.f4.title': 'Enterprise controls', 'cloud.f4.desc': 'SSO, audit logs, compliance',
+        'cloud.pricing': 'Free for open-source. Teams from <strong>$15/dev/month</strong>.',
+        'cloud.submit': 'Join the waitlist', 'cloud.counter': 'teams on the waitlist',
+        'cloud.note': 'No spam. One email when we launch.',
+        'cloud.placeholder_email': 'you@company.com', 'cloud.placeholder_company': 'Company (optional)',
+        'cloud.placeholder_tool': 'Main AI coding tool (optional)',
+        'install.title': 'Get started in 30 seconds',
+        'install.sub': 'Install, activate the auto-rewrite hook, and every command is compressed automatically.',
+        'install.quick': 'Quick Install', 'install.quick_desc': 'One-liner for Linux & macOS',
+        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'From GitHub',
+        'install.binaries': 'Pre-built Binaries', 'install.binaries_desc': 'macOS, Linux, Windows',
+        'install.releases': 'Download from Releases \u2192',
+        'install.hook': 'Then activate the auto-rewrite hook',
+        'install.hook_note': 'This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents.',
+        'share.title_1': 'Post your', 'share.title_2': 'rtk gain',
+        'share.desc': 'Run <code>rtk gain</code>, paste your stats, and flex on the timeline.',
+        'share.paste_placeholder': 'Paste your rtk gain output here...',
+        'share.post_x': 'Post on X', 'share.post_bsky': 'Post on Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': 'Copy',
+        'cta.title_1': "Your AI doesn\u2019t need", 'cta.title_2': 'to read all that.',
+        'cta.sub': 'Install rtk. Better code, longer sessions, lower costs.', 'cta.share': 'Share rtk',
+      },
+      fr: {
+        'nav.why': 'Pourquoi', 'nav.demo': 'D\u00e9mo', 'nav.tools': 'Outils', 'nav.cloud': 'Cloud', 'nav.install': 'Installer',
+        'hero.badge_oss': 'Open Source \u00b7 MIT \u00b7 Rust',
+        'hero.title_1': 'Votre agent IA se noie', 'hero.title_2': 'dans le bruit CLI.', 'hero.title_3': 'R\u00e9solvez \u00e7a.',
+        'hero.sub_1': "rtk compresse les sorties des commandes avant qu\u2019elles n\u2019atteignent la fen\u00eatre de contexte.",
+        'hero.sub_2': 'Meilleur raisonnement. Sessions plus longues. Co\u00fbts r\u00e9duits.',
+        'hero.stat_pct_label': 'bruit supprim\u00e9 (moy.)', 'hero.stat_3x_label': 'sessions plus longues', 'hero.stat_cmds_label': 'commandes',
+        'hero.cta_install': 'Installer rtk', 'hero.cta_star': 'Star sur GitHub',
+        'problem.title': "Le probl\u00e8me du codage IA aujourd\u2019hui",
+        'problem.sub': 'Chaque commande ex\u00e9cut\u00e9e par votre agent pollue la fen\u00eatre de contexte avec du bruit. Voici ce que \u00e7a vous co\u00fbte.',
+        'problem.card1.title': 'Pollution du contexte',
+        'problem.card1.text': "Votre fen\u00eatre de 200K tokens n\u2019est pas infinie. Quand <code>cargo test</code> d\u00e9verse 5 000 tokens de boilerplate, c\u2019est 5 000 tokens de moins pour raisonner sur votre code.",
+        'problem.card1.metric': 'IA moins performante',
+        'problem.card2.title': 'Sessions trop courtes',
+        'problem.card2.text': "Le contexte d\u00e9borde, l\u2019agent red\u00e9marre, vous perdez le fil. Avec les forfaits, vous atteignez les limites 40% plus vite que pr\u00e9vu.",
+        'problem.card2.metric': 'Sessions 3x plus courtes',
+        'problem.card3.title': 'Des co\u00fbts qui explosent',
+        'problem.card3.text': 'Avec le paiement au token (API, Gemini CLI, Aider), 70% de votre facture est du bruit inutile. Une \u00e9quipe de 10 gaspille ~1 750$/mois.',
+        'problem.card3.metric': '~70% de d\u00e9penses gaspill\u00e9es',
+        'demo.title': 'Voyez la diff\u00e9rence', 'demo.sub': 'Des sorties r\u00e9elles, des \u00e9conomies r\u00e9elles. Comparaison c\u00f4te \u00e0 c\u00f4te sur de vraies commandes.',
+        'compare.title': "Aucun outil IA n\u2019offre un usage illimit\u00e9. Chaque token compte.",
+        'compare.sub': "M\u00eame \u00e0 200$/mo, tous les outils ont des plafonds. RTK compresse le bruit CLI pour que vos limites aillent plus loin.",
+        'compare.session_headline': "Une session de codage typique de 2h avec un agent IA :",
+        'compare.session_cmds': 'commandes CLI ex\u00e9cut\u00e9es', 'compare.session_noise': 'tokens de bruit CLI', 'compare.session_rtk': 'avec RTK (89% de moins)',
+        'compare.session_note': "Sans RTK, les sorties CLI seules peuvent faire d\u00e9border une fen\u00eatre de 200K tokens. Bas\u00e9 sur moy. 3 500 tokens/commande mesur\u00e9s sur 2 900+ commandes r\u00e9elles.",
+        'compare.th_price': 'Prix', 'compare.th_limits': 'Limites', 'compare.th_context': 'Contexte',
+        'compare.limit_cc': '~45 msgs/5h (Pro), 5-20x sur Max', 'compare.limit_cursor': '20$ cr\u00e9dits/mo (Pro), ~225 reqs Claude',
+        'compare.limit_codex': '30-1 500 msgs/5h selon le plan', 'compare.limit_windsurf': '500 cr\u00e9dits/mo (Pro)',
+        'compare.limit_gemini': '1 000 req/jour, 60 req/min (gratuit)', 'compare.limit_aider': 'Selon le provider API',
+        'compare.limit_copilot': '50-1 500 reqs premium/mo', 'compare.limit_cline': 'Selon le provider API',
+        'compare.price_codex': '20$/mo (Plus) \u2014 200$/mo (Pro)', 'compare.price_gemini': 'Gratuit \u2014 au token',
+        'compare.price_aider': 'Gratuit + co\u00fbts API (5-300+$/mo)', 'compare.price_copilot': 'Gratuit \u2014 39$/mo (Pro+)',
+        'compare.price_cline': 'Gratuit + co\u00fbts API (0-500+$/mo)',
+        'compare.ctx_cursor': "Jusqu\u2019\u00e0 200K (mode Max)", 'compare.ctx_model': "Selon le mod\u00e8le (jusqu\u2019\u00e0 200K)",
+        'compare.impact_cc': 'Sessions ~3x plus longues', 'compare.impact_cursor': 'Cr\u00e9dits vont ~2x plus loin',
+        'compare.impact_codex': "Plus d\u2019it\u00e9rations par cap", 'compare.impact_windsurf': 'Cr\u00e9dits durent ~2x plus', 'compare.impact_copilot': 'Meilleure qualit\u00e9 de contexte',
+        'compare.impact_gemini': '~70% de moins sur la facture', 'compare.impact_aider': '~70% de co\u00fbt API en moins', 'compare.impact_cline': '~70% de co\u00fbt API en moins',
+        'compare.detail_cc': "M\u00eame Max 200$/mo (20x Pro) a des limites hebdo (240-480h). Le quota se r\u00e9initialise toutes les 5h. RTK compresse les sorties CLI de 89% en moy., votre quota dure ~3x plus longtemps.",
+        'compare.detail_cursor': "M\u00eame Ultra 200$/mo (20x cr\u00e9dits) est plafonn\u00e9. Chaque requ\u00eate consomme des cr\u00e9dits selon le mod\u00e8le \u2014 Claude br\u00fble 2,4x plus vite que Gemini. RTK compresse les sorties CLI pour partir plus propre.",
+        'compare.detail_codex': "Inclus avec les plans ChatGPT. Pro 200$/mo plafonne \u00e0 1 500 msgs/5h. L\u2019agent ex\u00e9cute des commandes en autonomie \u2014 chaque sortie consomme votre cap. RTK les compresse pour plus d\u2019it\u00e9rations.",
+        'compare.detail_windsurf': "Enterprise 60$/user obtient 1 000 cr\u00e9dits/mo \u2014 toujours plafonn\u00e9. Cascade consomme des cr\u00e9dits par prompt. RTK compresse les sorties CLI pour que chaque interaction co\u00fbte moins de tokens.",
+        'compare.detail_gemini': "Le tier gratuit est g\u00e9n\u00e9reux (1 000 req/jour) mais toujours limit\u00e9. Au-del\u00e0, vous payez au token. RTK compresse les sorties CLI de 89% en moy., r\u00e9duisant la facture ou lib\u00e9rant du headroom.",
+        'compare.detail_aider': "Cl\u00e9 API perso \u2014 vous payez au token \u00e0 OpenAI, Anthropic, etc. RTK compresse chaque sortie de commande avant qu\u2019elle n\u2019atteigne le mod\u00e8le, r\u00e9duisant la facture API de ~70% sur les workflows CLI.",
+        'compare.detail_copilot': "Enterprise 39$/user : 1 000 reqs premium/mo. Les compl\u00e9tions de base sont illimit\u00e9es, mais Chat et l\u2019agent sont plafonn\u00e9s. RTK garde les sorties terminal l\u00e9g\u00e8res pour que les reqs premium portent plus de contexte utile.",
+        'compare.detail_cline': "Pas de limite c\u00f4t\u00e9 outil, mais les caps de votre provider API s\u2019appliquent. Les gros utilisateurs rapportent 200-500+$/mo. RTK compresse chaque sortie de 89% en moy., r\u00e9duisant la facture et le d\u00e9bordement de contexte.",
+        'compare.footnote': "Tarifs v\u00e9rifi\u00e9s f\u00e9v. 2026. Limites variables selon l\u2019usage et le plan. \u00c9conomies RTK bas\u00e9es sur 89% de compression moyenne sur 2 900+ commandes r\u00e9elles.",
+        'cloud.badge': 'Bient\u00f4t disponible', 'cloud.desc': "Visibilit\u00e9 et contr\u00f4le sur les co\u00fbts IA de votre \u00e9quipe. Sachez ce qui est gaspill\u00e9. Corrigez-le.",
+        'cloud.f1.title': 'Analytique des tokens', 'cloud.f1.desc': 'Dashboard par dev, par projet, par outil',
+        'cloud.f2.title': "Rapports d\u2019\u00e9conomies", 'cloud.f2.desc': '\u00ab Votre \u00e9quipe a \u00e9conomis\u00e9 4 200$ ce mois \u00bb',
+        'cloud.f3.title': 'Alertes de limites', 'cloud.f3.desc': 'Monitoring & notifications intelligentes',
+        'cloud.f4.title': 'Contr\u00f4les entreprise', 'cloud.f4.desc': "SSO, journaux d\u2019audit, conformit\u00e9",
+        'cloud.pricing': "Gratuit pour l\u2019open-source. \u00c9quipes \u00e0 partir de <strong>15$/dev/mois</strong>.",
+        'cloud.submit': 'Rejoindre la waitlist', 'cloud.counter': "\u00e9quipes en liste d\u2019attente",
+        'cloud.note': 'Pas de spam. Un seul email au lancement.',
+        'cloud.placeholder_email': 'vous@entreprise.com', 'cloud.placeholder_company': 'Entreprise (optionnel)',
+        'cloud.placeholder_tool': 'Outil IA principal (optionnel)',
+        'install.title': 'D\u00e9marrez en 30 secondes',
+        'install.sub': 'Installez, activez le hook auto-rewrite, et chaque commande est compress\u00e9e automatiquement.',
+        'install.quick': 'Installation rapide', 'install.quick_desc': 'Une ligne pour Linux & macOS',
+        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'Depuis GitHub',
+        'install.binaries': 'Binaires pr\u00e9-compil\u00e9s', 'install.binaries_desc': 'macOS, Linux, Windows',
+        'install.releases': 'T\u00e9l\u00e9charger depuis Releases \u2192',
+        'install.hook': 'Puis activez le hook auto-rewrite',
+        'install.hook_note': 'Cela installe un hook PreToolUse qui r\u00e9\u00e9crit automatiquement les commandes Bash en \u00e9quivalents rtk.',
+        'share.title_1': 'Postez votre', 'share.title_2': 'rtk gain',
+        'share.desc': 'Lancez <code>rtk gain</code>, collez vos stats, et flexez sur la timeline.',
+        'share.paste_placeholder': 'Collez la sortie de rtk gain ici...',
+        'share.post_x': 'Poster sur X', 'share.post_bsky': 'Poster sur Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': 'Copier',
+        'cta.title_1': "Votre IA n\u2019a pas besoin", 'cta.title_2': 'de lire tout \u00e7a.',
+        'cta.sub': 'Installez rtk. Meilleur code, sessions plus longues, co\u00fbts r\u00e9duits.', 'cta.share': 'Partager rtk',
+      },
+      es: {
+        'nav.why': 'Por qu\u00e9', 'nav.demo': 'Demo', 'nav.tools': 'Herramientas', 'nav.cloud': 'Cloud', 'nav.install': 'Instalar',
+        'hero.badge_oss': 'Open Source \u00b7 MIT \u00b7 Rust',
+        'hero.title_1': 'Tu agente IA se ahoga', 'hero.title_2': 'en ruido del CLI.', 'hero.title_3': 'Arr\u00e9glalo.',
+        'hero.sub_1': 'rtk comprime las salidas de comandos antes de que lleguen a la ventana de contexto.',
+        'hero.sub_2': 'Mejor razonamiento. Sesiones m\u00e1s largas. Menores costos.',
+        'hero.stat_pct_label': 'ruido eliminado (prom.)', 'hero.stat_3x_label': 'sesiones m\u00e1s largas', 'hero.stat_cmds_label': 'comandos',
+        'hero.cta_install': 'Instalar rtk', 'hero.cta_star': 'Star en GitHub',
+        'problem.title': 'El problema del coding con IA hoy',
+        'problem.sub': 'Cada comando que ejecuta tu agente contamina la ventana de contexto con ruido. Esto es lo que te cuesta.',
+        'problem.card1.title': 'Contaminaci\u00f3n del contexto',
+        'problem.card1.text': 'Tu ventana de 200K tokens no es infinita. Cuando <code>cargo test</code> vuelca 5.000 tokens de boilerplate, son 5.000 tokens menos para razonar sobre tu c\u00f3digo.',
+        'problem.card1.metric': 'IA menos precisa',
+        'problem.card2.title': 'Sesiones demasiado cortas',
+        'problem.card2.text': 'El contexto se desborda, el agente reinicia, pierdes el hilo. Con tarifas planas, alcanzas los l\u00edmites un 40% m\u00e1s r\u00e1pido.',
+        'problem.card2.metric': 'Sesiones 3x m\u00e1s cortas',
+        'problem.card3.title': 'Costos que explotan',
+        'problem.card3.text': 'Con pago por token (API, Gemini CLI, Aider), el 70% de tu factura es ruido que el LLM no necesita. Un equipo de 10 desperdicia ~$1.750/mes.',
+        'problem.card3.metric': '~70% gasto desperdiciado',
+        'demo.title': 'Mira la diferencia', 'demo.sub': 'Salidas reales, ahorros reales. Comparaci\u00f3n lado a lado con comandos reales.',
+        'compare.title': 'Ninguna herramienta IA ofrece uso ilimitado. Cada token cuenta.',
+        'compare.sub': 'Incluso a $200/mo, todas tienen l\u00edmites. RTK comprime el ruido CLI para que tus l\u00edmites rindan m\u00e1s.',
+        'compare.session_headline': 'Una sesi\u00f3n t\u00edpica de 2h con un agente IA:',
+        'compare.session_cmds': 'comandos CLI ejecutados', 'compare.session_noise': 'tokens de ruido CLI', 'compare.session_rtk': 'con RTK (89% menos)',
+        'compare.session_note': 'Sin RTK, las salidas CLI solas pueden desbordar una ventana de 200K tokens. Basado en prom. 3.500 tokens/comando medidos en 2.900+ comandos reales.',
+        'compare.th_price': 'Precio', 'compare.th_limits': 'L\u00edmites', 'compare.th_context': 'Contexto',
+        'compare.limit_cc': '~45 msgs/5h (Pro), 5-20x en Max', 'compare.limit_cursor': '$20 cr\u00e9ditos/mo (Pro), ~225 reqs Claude',
+        'compare.limit_codex': '30-1.500 msgs/5h seg\u00fan plan', 'compare.limit_windsurf': '500 cr\u00e9ditos/mo (Pro)',
+        'compare.limit_gemini': '1.000 req/d\u00eda, 60 req/min (gratis)', 'compare.limit_aider': 'Seg\u00fan proveedor API',
+        'compare.limit_copilot': '50-1.500 reqs premium/mo', 'compare.limit_cline': 'Seg\u00fan proveedor API',
+        'compare.price_codex': '$20/mo (Plus) \u2014 $200/mo (Pro)', 'compare.price_gemini': 'Gratis \u2014 por token',
+        'compare.price_aider': 'Gratis + costos API ($5-300+/mo)', 'compare.price_copilot': 'Gratis \u2014 $39/mo (Pro+)',
+        'compare.price_cline': 'Gratis + costos API ($0-500+/mo)',
+        'compare.ctx_cursor': 'Hasta 200K (modo Max)', 'compare.ctx_model': 'Seg\u00fan modelo (hasta 200K)',
+        'compare.impact_cc': 'Sesiones ~3x m\u00e1s largas', 'compare.impact_cursor': 'Cr\u00e9ditos rinden ~2x m\u00e1s',
+        'compare.impact_codex': 'M\u00e1s iteraciones por cap', 'compare.impact_windsurf': 'Cr\u00e9ditos duran ~2x m\u00e1s', 'compare.impact_copilot': 'Mejor calidad de contexto',
+        'compare.impact_gemini': '~70% menos en factura', 'compare.impact_aider': '~70% menos costo API', 'compare.impact_cline': '~70% menos costo API',
+        'compare.detail_cc': 'Incluso Max $200/mo (20x Pro) tiene l\u00edmites semanales (240-480h). La cuota se reinicia cada 5h. RTK comprime salidas CLI un 89% en prom., tu cuota se extiende ~3x.',
+        'compare.detail_cursor': 'Incluso Ultra $200/mo (20x cr\u00e9ditos) est\u00e1 limitado. Cada solicitud consume cr\u00e9ditos seg\u00fan modelo \u2014 Claude quema 2,4x m\u00e1s r\u00e1pido que Gemini. RTK comprime salidas CLI para arrancar m\u00e1s limpio.',
+        'compare.detail_codex': 'Incluido con planes ChatGPT. Pro $200/mo tope de 1.500 msgs/5h. El agente ejecuta comandos aut\u00f3nomamente \u2014 cada salida consume tu cap. RTK los comprime para m\u00e1s iteraciones.',
+        'compare.detail_windsurf': 'Enterprise $60/user obtiene 1.000 cr\u00e9ditos/mo \u2014 a\u00fan limitado. Cascade consume cr\u00e9ditos por prompt. RTK comprime salidas CLI para que cada interacci\u00f3n cueste menos tokens.',
+        'compare.detail_gemini': 'El tier gratis es generoso (1.000 req/d\u00eda) pero limitado. M\u00e1s all\u00e1, pagas por token. RTK comprime salidas CLI un 89% en prom., reduciendo tu factura o liberando margen en rate limits.',
+        'compare.detail_aider': 'Clave API propia \u2014 pagas por token a OpenAI, Anthropic, etc. RTK comprime cada salida de comando antes de llegar al modelo, reduciendo tu factura API un ~70% en flujos CLI.',
+        'compare.detail_copilot': 'Enterprise $39/user: 1.000 reqs premium/mo. Completados base son ilimitados, pero Chat y el agente tienen tope. RTK mantiene salidas de terminal ligeras para que las reqs premium lleven m\u00e1s contexto \u00fatil.',
+        'compare.detail_cline': 'Sin l\u00edmite del lado herramienta, pero los caps de tu proveedor API aplican. Usuarios intensivos reportan $200-500+/mo. RTK comprime cada salida un 89% en prom., reduciendo la factura y el desbordamiento.',
+        'compare.footnote': 'Precios verificados feb. 2026. L\u00edmites var\u00edan seg\u00fan uso y plan. Ahorros RTK basados en 89% de compresi\u00f3n promedio en 2.900+ comandos reales.',
+        'cloud.badge': 'Pr\u00f3ximamente', 'cloud.desc': 'Visibilidad y control sobre los costos de IA de tu equipo. Sabe qu\u00e9 se desperdicia. Corr\u00edgelo.',
+        'cloud.f1.title': 'Anal\u00edtica de tokens', 'cloud.f1.desc': 'Dashboard por dev, por proyecto, por herramienta',
+        'cloud.f2.title': 'Informes de ahorro', 'cloud.f2.desc': '\u201cTu equipo ahorr\u00f3 $4.200 este mes\u201d',
+        'cloud.f3.title': 'Alertas de l\u00edmites', 'cloud.f3.desc': 'Monitoreo y notificaciones inteligentes',
+        'cloud.f4.title': 'Controles empresariales', 'cloud.f4.desc': 'SSO, logs de auditor\u00eda, cumplimiento',
+        'cloud.pricing': 'Gratis para open-source. Equipos desde <strong>$15/dev/mes</strong>.',
+        'cloud.submit': 'Unirse a la waitlist', 'cloud.counter': 'equipos en lista de espera',
+        'cloud.note': 'Sin spam. Un solo email al lanzamiento.',
+        'cloud.placeholder_email': 'tu@empresa.com', 'cloud.placeholder_company': 'Empresa (opcional)',
+        'cloud.placeholder_tool': 'Herramienta IA principal (opcional)',
+        'install.title': 'Empieza en 30 segundos',
+        'install.sub': 'Instala, activa el hook auto-rewrite, y cada comando se comprime autom\u00e1ticamente.',
+        'install.quick': 'Instalaci\u00f3n r\u00e1pida', 'install.quick_desc': 'Una l\u00ednea para Linux y macOS',
+        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'Desde GitHub',
+        'install.binaries': 'Binarios pre-compilados', 'install.binaries_desc': 'macOS, Linux, Windows',
+        'install.releases': 'Descargar desde Releases \u2192',
+        'install.hook': 'Luego activa el hook auto-rewrite',
+        'install.hook_note': 'Esto instala un hook PreToolUse que reescribe autom\u00e1ticamente los comandos Bash a equivalentes rtk.',
+        'share.title_1': 'Publica tu', 'share.title_2': 'rtk gain',
+        'share.desc': 'Ejecuta <code>rtk gain</code>, pega tus stats, y presume en el timeline.',
+        'share.paste_placeholder': 'Pega la salida de rtk gain aqu\u00ed...',
+        'share.post_x': 'Publicar en X', 'share.post_bsky': 'Publicar en Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': 'Copiar',
+        'cta.title_1': 'Tu IA no necesita', 'cta.title_2': 'leer todo eso.',
+        'cta.sub': 'Instala rtk. Mejor c\u00f3digo, sesiones m\u00e1s largas, menores costos.', 'cta.share': 'Compartir rtk',
+      },
+      de: {
+        'nav.why': 'Warum', 'nav.demo': 'Demo', 'nav.tools': 'Tools', 'nav.cloud': 'Cloud', 'nav.install': 'Installieren',
+        'hero.badge_oss': 'Open Source \u00b7 MIT \u00b7 Rust',
+        'hero.title_1': 'Dein KI-Agent ertrinkt', 'hero.title_2': 'im CLI-Rauschen.', 'hero.title_3': 'Beheb das.',
+        'hero.sub_1': 'rtk komprimiert Kommandoausgaben, bevor sie das Kontextfenster erreichen.',
+        'hero.sub_2': 'Besseres Reasoning. L\u00e4ngere Sessions. Geringere Kosten.',
+        'hero.stat_pct_label': 'Rauschen entfernt (\u00d8)', 'hero.stat_3x_label': 'l\u00e4ngere Sessions', 'hero.stat_cmds_label': 'Befehle',
+        'hero.cta_install': 'rtk installieren', 'hero.cta_star': 'Star auf GitHub',
+        'problem.title': 'Das Problem mit KI-Coding heute',
+        'problem.sub': 'Jeder Befehl deines Agenten verschmutzt das Kontextfenster mit Rauschen. Das kostet dich.',
+        'problem.card1.title': 'Kontextverschmutzung',
+        'problem.card1.text': 'Dein 200K-Kontextfenster ist nicht unendlich. Wenn <code>cargo test</code> 5.000 Token Boilerplate ausgibt, sind das 5.000 Token weniger f\u00fcrs Reasoning \u00fcber deinen Code.',
+        'problem.card1.metric': 'Schlechteres KI-Reasoning',
+        'problem.card2.title': 'Sessions zu kurz',
+        'problem.card2.text': 'Der Kontext l\u00e4uft \u00fcber, der Agent startet neu, du verlierst den Faden. Bei Flatrate-Pl\u00e4nen erreichst du Limits 40% schneller als n\u00f6tig.',
+        'problem.card2.metric': '3x k\u00fcrzere Sessions',
+        'problem.card3.title': 'Explodierende Kosten',
+        'problem.card3.text': 'Bei Token-basierter Abrechnung (API, Gemini CLI, Aider) sind 70% deiner Rechnung Rauschen. Ein 10er-Team verschwendet ~$1.750/Monat.',
+        'problem.card3.metric': '~70% verschwendet',
+        'demo.title': 'Sieh den Unterschied', 'demo.sub': 'Echte Ausgaben, echte Einsparungen. Seite-an-Seite-Vergleich mit echten Befehlen.',
+        'compare.title': 'Kein KI-Tool bietet unbegrenzte Nutzung. Jeder Token z\u00e4hlt.',
+        'compare.sub': 'Selbst bei $200/Mo haben alle Tools Limits. RTK komprimiert CLI-Rauschen, damit deine Limits weiter reichen.',
+        'compare.session_headline': 'Eine typische 2h-Coding-Session mit einem KI-Agenten:',
+        'compare.session_cmds': 'CLI-Befehle ausgef\u00fchrt', 'compare.session_noise': 'Tokens CLI-Rauschen', 'compare.session_rtk': 'mit RTK (89% weniger)',
+        'compare.session_note': 'Ohne RTK k\u00f6nnen CLI-Ausgaben allein ein 200K-Kontextfenster \u00fcberlaufen. Basierend auf \u00d83.500 Tokens/Befehl gemessen an 2.900+ echten Befehlen.',
+        'compare.th_price': 'Preis', 'compare.th_limits': 'Limits', 'compare.th_context': 'Kontext',
+        'compare.limit_cc': '~45 Msgs/5h (Pro), 5-20x bei Max', 'compare.limit_cursor': '$20 Credits/Mo (Pro), ~225 Claude-Reqs',
+        'compare.limit_codex': '30-1.500 Msgs/5h je Plan', 'compare.limit_windsurf': '500 Credits/Mo (Pro)',
+        'compare.limit_gemini': '1.000 Req/Tag, 60 Req/Min (kostenlos)', 'compare.limit_aider': 'Je API-Anbieter',
+        'compare.limit_copilot': '50-1.500 Premium-Reqs/Mo', 'compare.limit_cline': 'Je API-Anbieter',
+        'compare.price_codex': '$20/Mo (Plus) \u2014 $200/Mo (Pro)', 'compare.price_gemini': 'Kostenlos \u2014 pro Token',
+        'compare.price_aider': 'Kostenlos + API-Kosten ($5-300+/Mo)', 'compare.price_copilot': 'Kostenlos \u2014 $39/Mo (Pro+)',
+        'compare.price_cline': 'Kostenlos + API-Kosten ($0-500+/Mo)',
+        'compare.ctx_cursor': 'Bis zu 200K (Max-Modus)', 'compare.ctx_model': 'Je Modell (bis zu 200K)',
+        'compare.impact_cc': 'Sessions ~3x l\u00e4nger', 'compare.impact_cursor': 'Credits reichen ~2x weiter',
+        'compare.impact_codex': 'Mehr Iterationen pro Cap', 'compare.impact_windsurf': 'Credits halten ~2x l\u00e4nger', 'compare.impact_copilot': 'Bessere Kontextqualit\u00e4t',
+        'compare.impact_gemini': '~70% weniger auf der Rechnung', 'compare.impact_aider': '~70% weniger API-Kosten', 'compare.impact_cline': '~70% weniger API-Kosten',
+        'compare.detail_cc': 'Selbst Max $200/Mo (20x Pro) hat Wochen-Limits (240-480h). Kontingent setzt alle 5h zur\u00fcck. RTK komprimiert CLI-Ausgaben um \u00d889%, dein Kontingent h\u00e4lt ~3x l\u00e4nger.',
+        'compare.detail_cursor': 'Selbst Ultra $200/Mo (20x Credits) ist begrenzt. Jede Anfrage verbraucht Credits je Modell \u2014 Claude brennt 2,4x schneller als Gemini. RTK komprimiert CLI-Ausgaben f\u00fcr sauberere Starts.',
+        'compare.detail_codex': 'Inklusive bei ChatGPT-Pl\u00e4nen. Pro $200/Mo begrenzt auf 1.500 Msgs/5h. Der Agent f\u00fchrt Befehle autonom aus \u2014 jede Ausgabe verbraucht dein Cap. RTK komprimiert f\u00fcr mehr Iterationen.',
+        'compare.detail_windsurf': 'Enterprise $60/User bekommt 1.000 Credits/Mo \u2014 immer noch begrenzt. Cascade verbraucht Credits pro Prompt. RTK komprimiert CLI-Ausgaben, damit jede Interaktion weniger Tokens kostet.',
+        'compare.detail_gemini': 'Free Tier ist gro\u00dfz\u00fcgig (1.000 Req/Tag) aber begrenzt. Dar\u00fcber hinaus zahlst du pro Token. RTK komprimiert CLI-Ausgaben um \u00d889%, senkt die Rechnung oder schafft Rate-Limit-Spielraum.',
+        'compare.detail_aider': 'Eigener API-Key \u2014 du zahlst pro Token an OpenAI, Anthropic usw. RTK komprimiert jede Befehlsausgabe bevor sie das Modell erreicht, senkt deine API-Rechnung um ~70% bei CLI-Workflows.',
+        'compare.detail_copilot': 'Enterprise $39/User: 1.000 Premium-Reqs/Mo. Basis-Completions sind unbegrenzt, aber Chat und Agent haben Caps. RTK h\u00e4lt Terminal-Output schlank f\u00fcr mehr n\u00fctzlichen Kontext.',
+        'compare.detail_cline': 'Kein Tool-seitiges Limit, aber API-Anbieter-Caps gelten. Intensivnutzer berichten $200-500+/Mo. RTK komprimiert jede Ausgabe um \u00d889%, senkt direkt die Rechnung und reduziert Kontext-\u00dcberlauf.',
+        'compare.footnote': 'Preise verifiziert Feb. 2026. Limits variieren je nach Nutzung und Plan. RTK-Einsparungen basieren auf \u00d889% Komprimierung \u00fcber 2.900+ echte Befehle.',
+        'cloud.badge': 'Demn\u00e4chst', 'cloud.desc': 'Transparenz und Kontrolle \u00fcber die KI-Kosten deines Teams. Wisse, was verschwendet wird. Beheb es.',
+        'cloud.f1.title': 'Token-Analytics', 'cloud.f1.desc': 'Dashboard pro Dev, pro Projekt, pro Tool',
+        'cloud.f2.title': 'Team-Sparberichte', 'cloud.f2.desc': '\u201eDein Team hat diesen Monat $4.200 gespart\u201c',
+        'cloud.f3.title': 'Rate-Limit-Alarme', 'cloud.f3.desc': 'Monitoring & smarte Benachrichtigungen',
+        'cloud.f4.title': 'Enterprise-Kontrollen', 'cloud.f4.desc': 'SSO, Audit-Logs, Compliance',
+        'cloud.pricing': 'Kostenlos f\u00fcr Open-Source. Teams ab <strong>$15/Dev/Monat</strong>.',
+        'cloud.submit': 'Auf die Warteliste', 'cloud.counter': 'Teams auf der Warteliste',
+        'cloud.note': 'Kein Spam. Eine E-Mail zum Launch.',
+        'cloud.placeholder_email': 'du@firma.com', 'cloud.placeholder_company': 'Firma (optional)',
+        'cloud.placeholder_tool': 'Haupt-KI-Tool (optional)',
+        'install.title': 'In 30 Sekunden starten',
+        'install.sub': 'Installieren, Auto-Rewrite-Hook aktivieren, und jeder Befehl wird automatisch komprimiert.',
+        'install.quick': 'Schnellinstallation', 'install.quick_desc': 'Einzeiler f\u00fcr Linux & macOS',
+        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'Von GitHub',
+        'install.binaries': 'Vorkompilierte Binaries', 'install.binaries_desc': 'macOS, Linux, Windows',
+        'install.releases': 'Von Releases herunterladen \u2192',
+        'install.hook': 'Dann den Auto-Rewrite-Hook aktivieren',
+        'install.hook_note': 'Dies installiert einen PreToolUse-Hook, der Bash-Befehle transparent in rtk-\u00c4quivalente umschreibt.',
+        'share.title_1': 'Poste deinen', 'share.title_2': 'rtk gain',
+        'share.desc': 'Starte <code>rtk gain</code>, f\u00fcge deine Stats ein und zeig es auf der Timeline.',
+        'share.paste_placeholder': 'F\u00fcge die Ausgabe von rtk gain hier ein...',
+        'share.post_x': 'Auf X posten', 'share.post_bsky': 'Auf Bluesky posten', 'share.linkedin': 'LinkedIn', 'share.copy': 'Kopieren',
+        'cta.title_1': 'Deine KI muss nicht', 'cta.title_2': 'das alles lesen.',
+        'cta.sub': 'Installiere rtk. Besserer Code, l\u00e4ngere Sessions, geringere Kosten.', 'cta.share': 'rtk teilen',
+      }
+    };
+
+    let currentLang = localStorage.getItem('rtk-lang') || (navigator.language || '').slice(0, 2);
+    if (!T[currentLang]) currentLang = 'en';
+
+    function setLang(lang) {
+      if (!T[lang]) return;
+      currentLang = lang;
+      localStorage.setItem('rtk-lang', lang);
+      document.documentElement.lang = lang;
+
+      // Update text content
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (T[lang][key]) el.textContent = T[lang][key];
+      });
+
+      // Update HTML content (for <strong>, <code> etc.)
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (T[lang][key]) el.innerHTML = T[lang][key];
+      });
+
+      // Update placeholders
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (T[lang][key]) el.placeholder = T[lang][key];
+      });
+
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+    }
+
+    // Init language switcher
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+
+    // Apply detected/stored language
+    setLang(currentLang);
   </script>
 
 </body>
