@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page not found | rtk</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Head back to rtk's homepage.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#060b18">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #060b18;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      text-decoration: none;
+      color: #f8fafc;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .logo:hover { text-decoration: none; opacity: 0.8; }
+    .code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #22d3ee, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      color: #64748b;
+      font-size: 1rem;
+      max-width: 400px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .terminal {
+      background: #0c1225;
+      border: 1px solid #1a2344;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.875rem;
+      color: #64748b;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    .terminal .prompt { color: #22d3ee; }
+    .terminal .output { color: #f87171; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(167, 139, 250, 0.15));
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 8px;
+      color: #22d3ee;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(167, 139, 250, 0.25));
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+    .links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+    .links a {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    .links a:hover { color: #a78bfa; }
+  </style>
+</head>
+<body>
+  <a href="/" class="logo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#00e599" stroke="#a78bfa" stroke-width="1.5"/></svg>
+    rtk
+  </a>
+  <div class="code">404</div>
+  <h1>Page not found</h1>
+  <p>Looks like this page got compressed a bit too aggressively.</p>
+  <div class="terminal">
+    <div><span class="prompt">$</span> rtk read this-page</div>
+    <div class="output">error: file not found (0 tokens saved)</div>
+  </div>
+  <a href="/" class="btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to rtk
+  </a>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/vox.html">Vox</a>
+    <a href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</body>
+</html>
