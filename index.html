@@ -1571,6 +1571,237 @@
       .install-grid { grid-template-columns: repeat(3, 1fr); }
       .cloud-features { grid-template-columns: repeat(2, 1fr); }
     }
+
+    /* === Proof / Real-world Savings === */
+    .proof-section { background: var(--bg-alt); }
+
+    .proof-row {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      margin-bottom: 56px;
+    }
+
+    .proof-row:last-child { margin-bottom: 0; }
+    .proof-row-reverse { flex-direction: row-reverse; }
+
+    .proof-text { flex: 1; min-width: 0; }
+
+    .proof-text h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-bright);
+    }
+
+    .proof-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .proof-img {
+      flex: 1.2;
+      min-width: 0;
+      max-width: 560px;
+    }
+
+    .proof-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 20px 60px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .proof-img img:hover {
+      transform: scale(1.03);
+      box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 229, 153, 0.15),
+        0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .proof-row, .proof-row-reverse { flex-direction: column; gap: 28px; }
+      .proof-img { max-width: 100%; }
+    }
+
+    /* === Starred Carousel === */
+    .starred-section {
+      padding: 48px 0 44px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .starred-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 28px;
+      opacity: 0.5;
+      font-weight: 600;
+    }
+
+    .starred-track-wrapper {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    }
+
+    .starred-track {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 24px;
+      animation: starred-scroll 45s linear infinite;
+      width: max-content;
+    }
+
+    .starred-track:hover { animation-play-state: paused; }
+
+    .starred-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.02em;
+      transition: color 0.3s, opacity 0.3s;
+      opacity: 0.55;
+    }
+
+    .starred-name:hover {
+      color: var(--text-bright);
+      opacity: 1;
+    }
+
+    .starred-sep {
+      color: var(--border-light);
+      font-size: 0.5rem;
+      flex-shrink: 0;
+      opacity: 0.3;
+      user-select: none;
+    }
+
+    @keyframes starred-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* === Viking Illustrations === */
+    .viking-illustration {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,229,153,0.08);
+    }
+
+    /* Hero Viking */
+    .hero-with-viking {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-content {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+    .hero-content .hero-badges,
+    .hero-content .hero-stats,
+    .hero-content .hero-cta {
+      justify-content: flex-start;
+    }
+    .hero-viking {
+      flex: 0 0 auto;
+      max-width: 440px;
+    }
+    .hero-viking img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,229,153,0.1), 0 0 80px rgba(0,229,153,0.06);
+      animation: viking-float 6s ease-in-out infinite;
+    }
+    @keyframes viking-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* Section Viking (problem, compare, cta) */
+    .section-viking {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-viking img {
+      max-width: 480px;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,229,153,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .section-viking img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,229,153,0.15);
+    }
+
+    /* Proof Viking - inline with content */
+    .proof-viking {
+      text-align: center;
+      margin: 48px 0;
+    }
+    .proof-viking img {
+      max-width: 560px;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(0,229,153,0.2);
+      box-shadow: 0 12px 60px rgba(0,0,0,0.5), 0 0 60px rgba(0,229,153,0.08);
+    }
+
+    /* CTA Viking - background style */
+    .cta-viking {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .cta-viking img {
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      opacity: 0.9;
+      transition: opacity 0.3s, transform 0.4s;
+    }
+    .cta-viking img:hover {
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      .hero-with-viking { flex-direction: column; gap: 32px; }
+      .hero-viking { max-width: 320px; }
+      .section-viking img { max-width: 320px; }
+      .proof-viking img { max-width: 340px; }
+      .cta-viking img { max-width: 300px; }
+    }
   </style>
 </head>
 <body>
@@ -1580,7 +1811,7 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#00e599" stroke="#a78bfa" stroke-width="1.5"/></svg>
+        <img src="https://avatars.githubusercontent.com/u/258253854?s=80" alt="rtk logo" width="28" height="28" style="border-radius: 6px;">
         <span>rtk</span>
       </a>
       <div class="nav-links">
@@ -1601,6 +1832,8 @@
           <button class="lang-btn" data-lang="fr">FR</button>
           <button class="lang-btn" data-lang="es">ES</button>
           <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn" data-lang="zh">ZH</button>
+          <button class="lang-btn" data-lang="ja">JA</button>
         </div>
       </div>
     </div>
@@ -1609,44 +1842,51 @@
   <!-- Hero -->
   <main id="main-content">
   <section class="hero">
-    <div class="hero-badges">
-      <span class="hero-badge badge-oss" data-i18n="hero.badge_oss">Open Source &middot; MIT &middot; Rust</span>
-      <span class="hero-badge badge-stars" id="github-stars-badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span id="github-stars-count">450+</span> stars
-      </span>
-    </div>
+    <div class="hero-with-viking">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <span class="hero-badge badge-oss" data-i18n="hero.badge_oss">Open Source &middot; MIT &middot; Rust</span>
+          <span class="hero-badge badge-stars" id="github-stars-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span id="github-stars-count">450+</span> stars
+          </span>
+        </div>
 
-    <h1><span data-i18n="hero.title_1">Your AI agent is drowning</span><br><span data-i18n="hero.title_2">in CLI noise.</span> <span class="gradient-text" data-i18n="hero.title_3">Fix it.</span></h1>
+        <h1><span data-i18n="hero.title_1">Your AI agent is drowning</span><br><span data-i18n="hero.title_2">in CLI noise.</span> <span class="gradient-text" data-i18n="hero.title_3">Fix it.</span></h1>
 
-    <p class="hero-sub">
-      <span data-i18n="hero.sub_1">rtk compresses command outputs before they reach the context window.</span>
-      <strong data-i18n="hero.sub_2">Better reasoning. Longer sessions. Lower costs.</strong>
-    </p>
+        <p class="hero-sub">
+          <span data-i18n="hero.sub_1">rtk compresses command outputs before they reach the context window.</span>
+          <strong data-i18n="hero.sub_2">Better reasoning. Longer sessions. Lower costs.</strong>
+        </p>
 
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-value">89%</span>
-        <span class="stat-label" data-i18n="hero.stat_pct_label">avg. noise removed</span>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">89%</span>
+            <span class="stat-label" data-i18n="hero.stat_pct_label">avg. noise removed</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <span class="stat-value">3x</span>
+            <span class="stat-label" data-i18n="hero.stat_3x_label">longer sessions</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat">
+            <span class="stat-value">30+</span>
+            <span class="stat-label" data-i18n="hero.stat_cmds_label">commands</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
+          <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span data-i18n="hero.cta_star">Star on GitHub</span>
+          </a>
+        </div>
       </div>
-      <div class="stat-sep"></div>
-      <div class="stat">
-        <span class="stat-value">3x</span>
-        <span class="stat-label" data-i18n="hero.stat_3x_label">longer sessions</span>
+      <div class="hero-viking">
+        <img src="assets/illustrations/viking-hero.png" alt="Viking warrior smashing token noise with his axe" loading="eager">
       </div>
-      <div class="stat-sep"></div>
-      <div class="stat">
-        <span class="stat-value">30+</span>
-        <span class="stat-label" data-i18n="hero.stat_cmds_label">commands</span>
-      </div>
-    </div>
-
-    <div class="hero-cta">
-      <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
-      <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span data-i18n="hero.cta_star">Star on GitHub</span>
-      </a>
     </div>
 
     <!-- Terminal Demo -->
@@ -1694,6 +1934,9 @@
   <!-- Problem Section -->
   <section class="problem" id="problem">
     <div class="section-inner">
+      <div class="section-viking reveal">
+        <img src="assets/illustrations/viking-problem.png" alt="Viking bracing against a tidal wave of tokens" loading="lazy">
+      </div>
       <h2 class="reveal" data-i18n="problem.title">The problem with AI coding today</h2>
       <p class="section-sub reveal" data-i18n="problem.sub">Every command your agent runs pollutes the context window with noise. Here's what that costs you.</p>
 
@@ -1725,6 +1968,9 @@
   <!-- Demo Slideshow -->
   <section class="demo-section" id="demo">
     <div class="section-inner">
+      <div class="section-viking reveal">
+        <img src="assets/illustrations/viking-demo.png" alt="Viking compressing tokens into a glowing crystal" loading="lazy">
+      </div>
       <h2 class="reveal" data-i18n="demo.title">See the difference</h2>
       <p class="section-sub reveal" data-i18n="demo.sub">Real outputs, real savings. Side-by-side comparison on actual commands.</p>
 
@@ -2452,9 +2698,45 @@ lto = true
     </div>
   </section>
 
+  <!-- User feedback -->
+  <section class="proof-section" id="proof">
+    <div class="section-inner">
+      <div class="section-viking reveal">
+        <img src="assets/illustrations/viking-proof.png" alt="Viking king on throne with 88.9% holographic display" loading="lazy">
+      </div>
+      <h2 class="reveal" data-i18n="proof.title">Real-world savings</h2>
+      <p class="section-sub reveal" data-i18n-html="proof.sub">Actual <code>rtk gain</code> output from a happy developer.</p>
+
+      <div class="proof-row reveal">
+        <div class="proof-text">
+          <h3 data-i18n="proof.h1">A developer's feedback</h3>
+          <p data-i18n-html="proof.d1">After a few weeks of daily use: 15,720 commands processed, 138M tokens saved. Just run <code>rtk gain</code> to see yours.</p>
+          <span class="metric metric-green">88.9% efficiency</span>
+        </div>
+        <div class="proof-img">
+          <img src="assets/screenshots/rtkgain02.png" alt="rtk gain dashboard showing 88.9% efficiency" loading="lazy">
+        </div>
+      </div>
+
+      <div class="proof-row proof-row-reverse reveal">
+        <div class="proof-text">
+          <h3 data-i18n="proof.h2">Detailed breakdown</h3>
+          <p data-i18n-html="proof.d2">Daily, weekly, and monthly stats by command. Track your savings over time.</p>
+          <span class="metric metric-cyan">Per-command analytics</span>
+        </div>
+        <div class="proof-img">
+          <img src="assets/screenshots/rtkgain01.png" alt="rtk gain daily and weekly breakdown" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Comparison Table -->
   <section class="comparison" id="compare">
     <div class="section-inner">
+      <div class="section-viking reveal">
+        <img src="assets/illustrations/viking-compare.png" alt="Viking squad marching through datacenter corridor" loading="lazy">
+      </div>
       <h2 class="reveal" data-i18n="compare.title">No AI tool offers unlimited usage. Every token counts.</h2>
       <p class="section-sub reveal" data-i18n="compare.sub">Even at $200/mo, every tool has caps. RTK compresses CLI noise so your limits stretch further.</p>
 
@@ -2778,6 +3060,9 @@ lto = true
   <!-- Install -->
   <section class="install-section" id="install">
     <div class="section-inner">
+      <div class="section-viking reveal">
+        <img src="assets/illustrations/viking-install.png" alt="Viking slamming axe into ground creating green energy shockwave" loading="lazy">
+      </div>
       <h2 class="reveal" data-i18n="install.title">Get started in 30 seconds</h2>
       <p class="section-sub reveal" data-i18n="install.sub">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
 
@@ -2850,6 +3135,9 @@ lto = true
   <!-- Share My Gain -->
   <section class="share-gain" id="share-gain">
     <div class="section-inner">
+      <div class="section-viking reveal" style="margin-bottom: 32px;">
+        <img src="assets/illustrations/viking-share.png" alt="Viking raising axe in triumphant war cry" loading="lazy">
+      </div>
       <div class="share-gain-card reveal">
         <h2><span data-i18n="share.title_1">Post your</span> <span class="gradient-text" data-i18n="share.title_2">rtk gain</span></h2>
         <p class="share-gain-desc" data-i18n-html="share.desc">Run <code>rtk gain</code>, paste your stats, and flex on the timeline.</p>
@@ -2887,6 +3175,9 @@ lto = true
   <!-- CTA + Social -->
   <section class="cta-section">
     <div class="section-inner">
+      <div class="cta-viking reveal">
+        <img src="assets/illustrations/viking-cta.png" alt="Victorious viking standing over crushed tokens" loading="lazy">
+      </div>
       <h2 class="reveal"><span data-i18n="cta.title_1">Your AI doesn't need</span><br><span data-i18n="cta.title_2">to read all that.</span></h2>
       <p class="section-sub reveal" data-i18n="cta.sub">Install rtk. Better code, longer sessions, lower costs.</p>
       <div class="hero-cta reveal">
@@ -2916,11 +3207,88 @@ lto = true
 
   </main>
 
+  <!-- Starred by -->
+  <section class="starred-section">
+    <p class="starred-label" data-i18n="starred.label">Starred by developers at</p>
+    <div class="starred-track-wrapper">
+      <div class="starred-track">
+        <span class="starred-name">Apple</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">AWS</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Barclays</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Bosch</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Canva</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Cisco</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Datadog</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Deloitte</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">ENI</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Google</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Hitachi</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">HPE</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">IBM</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Meta</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Microsoft</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">OVHcloud</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Zendesk</span>
+        <span class="starred-sep">&middot;</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="starred-name">Apple</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">AWS</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Barclays</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Bosch</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Canva</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Cisco</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Datadog</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Deloitte</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">ENI</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Google</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Hitachi</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">HPE</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">IBM</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Meta</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Microsoft</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">OVHcloud</span>
+        <span class="starred-sep">&middot;</span>
+        <span class="starred-name">Zendesk</span>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="#00e599" stroke="#a78bfa" stroke-width="1.5"/></svg>
+        <img src="https://avatars.githubusercontent.com/u/258253854?s=40" alt="rtk logo" width="20" height="20" style="border-radius: 4px;">
         <strong>rtk</strong> &middot; Rust Token Killer &middot; <span id="rtk-version">v0.15.2</span>
       </div>
       <div class="footer-links">
@@ -3188,6 +3556,9 @@ lto = true
         'cloud.post_gain': 'or post your rtk gain',
         'cloud.placeholder_email': 'you@company.com', 'cloud.placeholder_company': 'Company (optional)',
         'cloud.placeholder_tool': 'Main AI coding tool (optional)',
+        'proof.title': 'Real-world savings', 'proof.sub': 'Actual <code>rtk gain</code> output from a happy developer.',
+        'proof.h1': 'A developer\u2019s feedback', 'proof.d1': 'After a few weeks of daily use: 15,720 commands processed, 138M tokens saved. Just run <code>rtk gain</code> to see yours.',
+        'proof.h2': 'Detailed breakdown', 'proof.d2': 'Daily, weekly, and monthly stats by command. Track your savings over time.',
         'install.title': 'Get started in 30 seconds',
         'install.sub': 'Install, activate the auto-rewrite hook, and every command is compressed automatically.',
         'install.quick': 'Quick Install', 'install.quick_desc': 'One-liner for Linux & macOS',
@@ -3202,6 +3573,7 @@ lto = true
         'share.post_x': 'Post on X', 'share.post_bsky': 'Post on Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': 'Copy',
         'cta.title_1': "Your AI doesn\u2019t need", 'cta.title_2': 'to read all that.',
         'cta.sub': 'Install rtk. Better code, longer sessions, lower costs.', 'cta.share': 'Share rtk',
+        'starred.label': 'Starred by developers at',
       },
       fr: {
         'nav.why': 'Pourquoi', 'nav.demo': 'D\u00e9mo', 'nav.tools': 'Outils', 'nav.cloud': 'Cloud', 'nav.install': 'Installer',
@@ -3261,6 +3633,9 @@ lto = true
         'cloud.post_gain': 'ou postez votre rtk gain',
         'cloud.placeholder_email': 'vous@entreprise.com', 'cloud.placeholder_company': 'Entreprise (optionnel)',
         'cloud.placeholder_tool': 'Outil IA principal (optionnel)',
+        'proof.title': '\u00c9conomies r\u00e9elles', 'proof.sub': 'Retour r\u00e9el d\u2019un d\u00e9veloppeur satisfait via <code>rtk gain</code>.',
+        'proof.h1': 'Retour d\u2019un d\u00e9veloppeur', 'proof.d1': 'Apr\u00e8s quelques semaines d\u2019utilisation quotidienne : 15 720 commandes, 138M tokens \u00e9conomis\u00e9s. Lancez <code>rtk gain</code> pour voir les v\u00f4tres.',
+        'proof.h2': 'D\u00e9tail par commande', 'proof.d2': 'Statistiques quotidiennes, hebdomadaires et mensuelles. Suivez vos \u00e9conomies dans le temps.',
         'install.title': 'D\u00e9marrez en 30 secondes',
         'install.sub': 'Installez, activez le hook auto-rewrite, et chaque commande est compress\u00e9e automatiquement.',
         'install.quick': 'Installation rapide', 'install.quick_desc': 'Une ligne pour Linux & macOS',
@@ -3275,6 +3650,7 @@ lto = true
         'share.post_x': 'Poster sur X', 'share.post_bsky': 'Poster sur Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': 'Copier',
         'cta.title_1': "Votre IA n\u2019a pas besoin", 'cta.title_2': 'de lire tout \u00e7a.',
         'cta.sub': 'Installez rtk. Meilleur code, sessions plus longues, co\u00fbts r\u00e9duits.', 'cta.share': 'Partager rtk',
+        'starred.label': 'Star\u00e9 par des d\u00e9veloppeurs chez',
       },
       es: {
         'nav.why': 'Por qu\u00e9', 'nav.demo': 'Demo', 'nav.tools': 'Herramientas', 'nav.cloud': 'Cloud', 'nav.install': 'Instalar',
@@ -3334,6 +3710,9 @@ lto = true
         'cloud.post_gain': 'o publica tu rtk gain',
         'cloud.placeholder_email': 'tu@empresa.com', 'cloud.placeholder_company': 'Empresa (opcional)',
         'cloud.placeholder_tool': 'Herramienta IA principal (opcional)',
+        'proof.title': 'Ahorros reales', 'proof.sub': 'Resultado real de un desarrollador satisfecho con <code>rtk gain</code>.',
+        'proof.h1': 'Feedback de un desarrollador', 'proof.d1': 'Tras unas semanas de uso diario: 15.720 comandos, 138M tokens ahorrados. Ejecuta <code>rtk gain</code> para ver los tuyos.',
+        'proof.h2': 'Desglose detallado', 'proof.d2': 'Estad\u00edsticas diarias, semanales y mensuales por comando. Rastrea tus ahorros.',
         'install.title': 'Empieza en 30 segundos',
         'install.sub': 'Instala, activa el hook auto-rewrite, y cada comando se comprime autom\u00e1ticamente.',
         'install.quick': 'Instalaci\u00f3n r\u00e1pida', 'install.quick_desc': 'Una l\u00ednea para Linux y macOS',
@@ -3348,6 +3727,7 @@ lto = true
         'share.post_x': 'Publicar en X', 'share.post_bsky': 'Publicar en Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': 'Copiar',
         'cta.title_1': 'Tu IA no necesita', 'cta.title_2': 'leer todo eso.',
         'cta.sub': 'Instala rtk. Mejor c\u00f3digo, sesiones m\u00e1s largas, menores costos.', 'cta.share': 'Compartir rtk',
+        'starred.label': 'Starred por desarrolladores en',
       },
       de: {
         'nav.why': 'Warum', 'nav.demo': 'Demo', 'nav.tools': 'Tools', 'nav.cloud': 'Cloud', 'nav.install': 'Installieren',
@@ -3407,6 +3787,9 @@ lto = true
         'cloud.post_gain': 'oder poste deinen rtk gain',
         'cloud.placeholder_email': 'du@firma.com', 'cloud.placeholder_company': 'Firma (optional)',
         'cloud.placeholder_tool': 'Haupt-KI-Tool (optional)',
+        'proof.title': 'Echte Einsparungen', 'proof.sub': 'Echtes Feedback eines zufriedenen Entwicklers mit <code>rtk gain</code>.',
+        'proof.h1': 'Feedback eines Entwicklers', 'proof.d1': 'Nach einigen Wochen t\u00e4glicher Nutzung: 15.720 Befehle, 138M Tokens gespart. F\u00fchren Sie <code>rtk gain</code> aus, um Ihre zu sehen.',
+        'proof.h2': 'Detaillierte Aufschl\u00fcsselung', 'proof.d2': 'T\u00e4gliche, w\u00f6chentliche und monatliche Statistiken pro Befehl. Verfolgen Sie Ihre Einsparungen.',
         'install.title': 'In 30 Sekunden starten',
         'install.sub': 'Installieren, Auto-Rewrite-Hook aktivieren, und jeder Befehl wird automatisch komprimiert.',
         'install.quick': 'Schnellinstallation', 'install.quick_desc': 'Einzeiler f\u00fcr Linux & macOS',
@@ -3421,6 +3804,161 @@ lto = true
         'share.post_x': 'Auf X posten', 'share.post_bsky': 'Auf Bluesky posten', 'share.linkedin': 'LinkedIn', 'share.copy': 'Kopieren',
         'cta.title_1': 'Deine KI muss nicht', 'cta.title_2': 'das alles lesen.',
         'cta.sub': 'Installiere rtk. Besserer Code, l\u00e4ngere Sessions, geringere Kosten.', 'cta.share': 'rtk teilen',
+        'starred.label': 'Gestarrt von Entwicklern bei',
+      },
+      zh: {
+        'nav.why': '\u4e3a\u4ec0\u4e48', 'nav.demo': '\u6f14\u793a', 'nav.tools': '\u5de5\u5177', 'nav.cloud': '\u4e91\u7aef', 'nav.install': '\u5b89\u88c5',
+        'hero.badge_oss': '\u5f00\u6e90 \u00b7 MIT \u00b7 Rust',
+        'hero.title_1': '\u4f60\u7684 AI \u4ee3\u7406\u6b63\u6df9\u6ca1\u5728', 'hero.title_2': 'CLI \u566a\u97f3\u4e2d\u3002', 'hero.title_3': '\u89e3\u51b3\u5b83\u3002',
+        'hero.sub_1': 'rtk \u5728\u547d\u4ee4\u8f93\u51fa\u8fdb\u5165\u4e0a\u4e0b\u6587\u7a97\u53e3\u4e4b\u524d\u5bf9\u5176\u8fdb\u884c\u538b\u7f29\u3002',
+        'hero.sub_2': '\u66f4\u597d\u7684\u63a8\u7406\u3002\u66f4\u957f\u7684\u4f1a\u8bdd\u3002\u66f4\u4f4e\u7684\u6210\u672c\u3002',
+        'hero.stat_pct_label': '\u5e73\u5747\u53bb\u9664\u566a\u97f3', 'hero.stat_3x_label': '\u66f4\u957f\u4f1a\u8bdd', 'hero.stat_cmds_label': '\u547d\u4ee4\u6570',
+        'hero.cta_install': '\u5b89\u88c5 rtk', 'hero.cta_star': 'GitHub \u4e0a\u52a0\u661f',
+        'problem.title': '\u5f53\u4eca AI \u7f16\u7a0b\u7684\u95ee\u9898',
+        'problem.sub': '\u4ee3\u7406\u6267\u884c\u7684\u6bcf\u4e2a\u547d\u4ee4\u90fd\u4f1a\u7528\u566a\u97f3\u6c61\u67d3\u4e0a\u4e0b\u6587\u7a97\u53e3\u3002\u8fd9\u4f1a\u4ea7\u751f\u4ee5\u4e0b\u4ee3\u4ef7\u3002',
+        'problem.card1.title': '\u4e0a\u4e0b\u6587\u6c61\u67d3',
+        'problem.card1.text': '\u4f60\u7684 200K \u4e0a\u4e0b\u6587\u7a97\u53e3\u4e0d\u662f\u65e0\u9650\u7684\u3002\u5f53 <code>cargo test</code> \u8f93\u51fa 5000 \u4e2a\u6a21\u677f token \u65f6\uff0c\u5c31\u5c11\u4e86 5000 \u4e2a\u7528\u4e8e\u63a8\u7406\u4f60\u5b9e\u9645\u4ee3\u7801\u7684 token\u3002',
+        'problem.card1.metric': 'AI \u63a8\u7406\u53d8\u5dee',
+        'problem.card2.title': '\u4f1a\u8bdd\u592a\u77ed',
+        'problem.card2.text': '\u4e0a\u4e0b\u6587\u6ea2\u51fa\uff0c\u4ee3\u7406\u91cd\u542f\uff0c\u4f60\u5931\u53bb\u4e86\u7ebf\u7d22\u3002\u5728\u56fa\u5b9a\u8d39\u7387\u8ba1\u5212\u4e0a\uff0c\u4f60\u4f1a\u6bd4\u5e94\u8be5\u7684\u901f\u5ea6\u5feb 40% \u8fbe\u5230\u901f\u7387\u9650\u5236\u3002',
+        'problem.card2.metric': '\u4f1a\u8bdd\u77ed 3 \u500d',
+        'problem.card3.title': '\u6210\u672c\u7206\u70b8',
+        'problem.card3.text': '\u5728\u6309 token \u4ed8\u8d39\u7684\u8bbe\u7f6e\u4e2d\uff08API\u3001Gemini CLI\u3001Aider\uff09\uff0c70% \u7684\u8d26\u5355\u662f LLM \u4e0d\u9700\u8981\u7684\u566a\u97f3\u300210 \u4eba\u56e2\u961f\u6bcf\u6708\u6d6a\u8d39\u7ea6 $1,750\u3002',
+        'problem.card3.metric': '\u7ea6 70% \u6d6a\u8d39\u652f\u51fa',
+        'demo.title': '\u67e5\u770b\u5dee\u5f02', 'demo.sub': '\u771f\u5b9e\u8f93\u51fa\uff0c\u771f\u5b9e\u8282\u7701\u3002\u5b9e\u9645\u547d\u4ee4\u7684\u5e76\u6392\u5bf9\u6bd4\u3002',
+        'compare.title': '\u6ca1\u6709 AI \u5de5\u5177\u63d0\u4f9b\u65e0\u9650\u4f7f\u7528\u3002\u6bcf\u4e2a token \u90fd\u5f88\u91cd\u8981\u3002',
+        'compare.sub': '\u5373\u4f7f\u6bcf\u6708 $200\uff0c\u6bcf\u4e2a\u5de5\u5177\u90fd\u6709\u4e0a\u9650\u3002RTK \u538b\u7f29 CLI \u566a\u97f3\uff0c\u8ba9\u4f60\u7684\u989d\u5ea6\u66f4\u6301\u4e45\u3002',
+        'compare.session_headline': '\u4e00\u4e2a\u5178\u578b\u7684 2 \u5c0f\u65f6 AI \u4ee3\u7406\u7f16\u7a0b\u4f1a\u8bdd\uff1a',
+        'compare.session_cmds': 'CLI \u547d\u4ee4\u6267\u884c\u6570', 'compare.session_noise': 'CLI \u566a\u97f3 token', 'compare.session_rtk': '\u4f7f\u7528 RTK\uff0889% \u51cf\u5c11\uff09',
+        'compare.session_note': '\u6ca1\u6709 RTK\uff0c\u4ec5 CLI \u8f93\u51fa\u5c31\u53ef\u80fd\u6ea2\u51fa 200K \u4e0a\u4e0b\u6587\u7a97\u53e3\u3002\u57fa\u4e8e 2,900+ \u4e2a\u771f\u5b9e\u547d\u4ee4\u6d4b\u91cf\u7684\u5e73\u5747 3,500 tokens/\u547d\u4ee4\u3002',
+        'compare.th_price': '\u4ef7\u683c', 'compare.th_limits': '\u9650\u5236', 'compare.th_context': '\u4e0a\u4e0b\u6587',
+        'compare.limit_cc': '\u7ea6 45 \u6761/5\u5c0f\u65f6\uff08Pro\uff09\uff0cMax 5-20\u500d', 'compare.limit_cursor': '$20 \u989d\u5ea6/\u6708\uff08Pro\uff09\uff0c\u7ea6 225 Claude \u8bf7\u6c42',
+        'compare.limit_codex': '\u6bcf 5 \u5c0f\u65f6 30-1,500 \u6761', 'compare.limit_windsurf': '500 \u989d\u5ea6/\u6708\uff08Pro\uff09',
+        'compare.limit_gemini': '\u6bcf\u5929 1,000 \u8bf7\u6c42\uff0c\u6bcf\u5206\u949f 60 \u8bf7\u6c42\uff08\u514d\u8d39\uff09', 'compare.limit_aider': '\u6309 API \u63d0\u4f9b\u5546',
+        'compare.limit_copilot': '\u6bcf\u6708 50-1,500 \u9ad8\u7ea7\u8bf7\u6c42', 'compare.limit_cline': '\u6309 API \u63d0\u4f9b\u5546',
+        'compare.price_codex': '$20/\u6708\uff08Plus\uff09\u2014 $200/\u6708\uff08Pro\uff09', 'compare.price_gemini': '\u514d\u8d39 \u2014 \u6309 token \u4ed8\u8d39',
+        'compare.price_aider': '\u514d\u8d39 + API \u8d39\u7528\uff08$5-300+/\u6708\uff09', 'compare.price_copilot': '\u514d\u8d39 \u2014 $39/\u6708\uff08Pro+\uff09',
+        'compare.price_cline': '\u514d\u8d39 + API \u8d39\u7528\uff08$0-500+/\u6708\uff09',
+        'compare.ctx_cursor': '\u6700\u9ad8 200K\uff08Max \u6a21\u5f0f\uff09', 'compare.ctx_model': '\u6309\u6a21\u578b\uff08\u6700\u9ad8 200K\uff09',
+        'compare.impact_cc': '\u4f1a\u8bdd\u957f\u7ea6 3 \u500d', 'compare.impact_cursor': '\u989d\u5ea6\u6301\u4e45\u7ea6 2 \u500d',
+        'compare.impact_codex': '\u6bcf\u4e2a\u4e0a\u9650\u66f4\u591a\u8fed\u4ee3', 'compare.impact_windsurf': '\u989d\u5ea6\u6301\u4e45\u7ea6 2 \u500d', 'compare.impact_copilot': '\u66f4\u597d\u7684\u4e0a\u4e0b\u6587\u8d28\u91cf',
+        'compare.impact_gemini': 'token \u8d26\u5355\u51cf\u5c11\u7ea6 70%', 'compare.impact_aider': 'API \u6210\u672c\u51cf\u5c11\u7ea6 70%', 'compare.impact_cline': 'API \u6210\u672c\u51cf\u5c11\u7ea6 70%',
+        'compare.detail_cc': '\u5373\u4f7f Max $200/\u6708\uff0820\u500d Pro\uff09\u4e5f\u6709\u6bcf\u5468\u4e0a\u9650\u3002\u914d\u989d\u6bcf 5 \u5c0f\u65f6\u91cd\u7f6e\u3002RTK \u5e73\u5747\u538b\u7f29 89% CLI \u8f93\u51fa\uff0c\u914d\u989d\u5ef6\u957f\u7ea6 3 \u500d\u3002',
+        'compare.detail_cursor': '\u5373\u4f7f Ultra $200/\u6708\u4e5f\u6709\u4e0a\u9650\u3002\u6bcf\u4e2a\u8bf7\u6c42\u6309\u6a21\u578b\u6d88\u8017\u989d\u5ea6\u3002RTK \u538b\u7f29 CLI \u8f93\u51fa\uff0c\u8ba9\u6bcf\u4e2a\u8bf7\u6c42\u66f4\u5e72\u51c0\u3002',
+        'compare.detail_codex': '\u5305\u542b\u5728 ChatGPT \u8ba1\u5212\u4e2d\u3002Pro $200/\u6708\u4e0a\u9650 1,500 \u6761/5\u5c0f\u65f6\u3002RTK \u538b\u7f29\u547d\u4ee4\u8f93\u51fa\uff0c\u83b7\u5f97\u66f4\u591a\u8fed\u4ee3\u3002',
+        'compare.detail_windsurf': 'Enterprise $60/\u7528\u6237\u6709 1,000 \u989d\u5ea6/\u6708\u3002RTK \u538b\u7f29 CLI \u8f93\u51fa\uff0c\u8ba9\u989d\u5ea6\u66f4\u6301\u4e45\u3002',
+        'compare.detail_gemini': '\u514d\u8d39\u5c42\u5f88\u6177\u6168\uff08\u6bcf\u5929 1,000 \u8bf7\u6c42\uff09\u4f46\u4ecd\u6709\u901f\u7387\u9650\u5236\u3002RTK \u538b\u7f29 89%\uff0c\u51cf\u5c11\u8d26\u5355\u6216\u91ca\u653e\u901f\u7387\u9650\u5236\u7a7a\u95f4\u3002',
+        'compare.detail_aider': '\u81ea\u5e26 API \u5bc6\u94a5\u2014\u6309 token \u4ed8\u8d39\u3002RTK \u538b\u7f29\u6bcf\u4e2a\u547d\u4ee4\u8f93\u51fa\uff0c\u76f4\u63a5\u51cf\u5c11\u7ea6 70% API \u8d39\u7528\u3002',
+        'compare.detail_copilot': 'Enterprise $39/\u7528\u6237\uff1a1,000 \u9ad8\u7ea7\u8bf7\u6c42/\u6708\u3002RTK \u4fdd\u6301\u7ec8\u7aef\u8f93\u51fa\u7cbe\u7b80\uff0c\u9ad8\u7ea7\u8bf7\u6c42\u643a\u5e26\u66f4\u591a\u6709\u7528\u4e0a\u4e0b\u6587\u3002',
+        'compare.detail_cline': '\u65e0\u5de5\u5177\u7aef\u9650\u5236\uff0c\u4f46 API \u63d0\u4f9b\u5546\u4e0a\u9650\u9002\u7528\u3002RTK \u538b\u7f29 89%\uff0c\u76f4\u63a5\u51cf\u5c11\u8d26\u5355\u548c\u4e0a\u4e0b\u6587\u6ea2\u51fa\u3002',
+        'compare.footnote': '\u4ef7\u683c\u4e8e 2026 \u5e74 2 \u6708\u9a8c\u8bc1\u3002\u9650\u5236\u56e0\u4f7f\u7528\u548c\u8ba1\u5212\u800c\u5f02\u3002RTK \u8282\u7701\u57fa\u4e8e 2,900+ \u4e2a\u771f\u5b9e\u547d\u4ee4\u7684\u5e73\u5747 89% \u538b\u7f29\u7387\u3002',
+        'cloud.badge': '\u5373\u5c06\u63a8\u51fa', 'cloud.desc': '\u5bf9\u56e2\u961f AI \u7f16\u7a0b\u6210\u672c\u7684\u53ef\u89c1\u6027\u548c\u63a7\u5236\u3002\u4e86\u89e3\u6d6a\u8d39\u3002\u89e3\u51b3\u5b83\u3002',
+        'cloud.f1.title': 'Token \u5206\u6790', 'cloud.f1.desc': '\u6309\u5f00\u53d1\u8005\u3001\u9879\u76ee\u3001\u5de5\u5177\u7684\u4eea\u8868\u76d8',
+        'cloud.f2.title': '\u56e2\u961f\u8282\u7701\u62a5\u544a', 'cloud.f2.desc': '\u201c\u4f60\u7684\u56e2\u961f\u672c\u6708\u8282\u7701\u4e86 $4,200\u201d',
+        'cloud.f3.title': '\u901f\u7387\u9650\u5236\u8b66\u62a5', 'cloud.f3.desc': '\u76d1\u63a7\u548c\u667a\u80fd\u901a\u77e5',
+        'cloud.f4.title': '\u4f01\u4e1a\u63a7\u5236', 'cloud.f4.desc': 'SSO\u3001\u5ba1\u8ba1\u65e5\u5fd7\u3001\u5408\u89c4',
+        'cloud.pricing': '\u5f00\u6e90\u514d\u8d39\u3002\u56e2\u961f\u4ece <strong>$15/\u5f00\u53d1\u8005/\u6708</strong> \u8d77\u3002',
+        'cloud.submit': '\u52a0\u5165\u7b49\u5f85\u5217\u8868', 'cloud.counter': '\u56e2\u961f\u5728\u7b49\u5f85\u5217\u8868\u4e2d',
+        'cloud.note': '\u65e0\u5783\u573e\u90ae\u4ef6\u3002\u4e0a\u7ebf\u65f6\u53d1\u4e00\u5c01\u90ae\u4ef6\u3002',
+        'cloud.spread': '\u4f20\u64ad\u4e00\u4e0b',
+        'cloud.post_gain': '\u6216\u53d1\u5e03\u4f60\u7684 rtk gain',
+        'cloud.placeholder_email': 'you@company.com', 'cloud.placeholder_company': '\u516c\u53f8\uff08\u53ef\u9009\uff09',
+        'cloud.placeholder_tool': '\u4e3b\u8981 AI \u7f16\u7a0b\u5de5\u5177\uff08\u53ef\u9009\uff09',
+        'proof.title': '\u771f\u5b9e\u8282\u7701', 'proof.sub': '\u6ee1\u610f\u7684\u5f00\u53d1\u8005\u901a\u8fc7 <code>rtk gain</code> \u7684\u771f\u5b9e\u53cd\u9988\u3002',
+        'proof.h1': '\u5f00\u53d1\u8005\u53cd\u9988', 'proof.d1': '\u65e5\u5e38\u4f7f\u7528\u51e0\u5468\u540e\uff1a15,720 \u4e2a\u547d\u4ee4\uff0c\u8282\u7701 1.38 \u4ebf token\u3002\u8fd0\u884c <code>rtk gain</code> \u67e5\u770b\u4f60\u7684\u3002',
+        'proof.h2': '\u8be6\u7ec6\u660e\u7ec6', 'proof.d2': '\u6309\u547d\u4ee4\u7684\u6bcf\u65e5\u3001\u6bcf\u5468\u548c\u6bcf\u6708\u7edf\u8ba1\u3002\u8ddf\u8e2a\u4f60\u7684\u8282\u7701\u3002',
+        'install.title': '30 \u79d2\u5f00\u59cb',
+        'install.sub': '\u5b89\u88c5\uff0c\u6fc0\u6d3b\u81ea\u52a8\u91cd\u5199\u94a9\u5b50\uff0c\u6bcf\u4e2a\u547d\u4ee4\u81ea\u52a8\u538b\u7f29\u3002',
+        'install.quick': '\u5feb\u901f\u5b89\u88c5', 'install.quick_desc': 'Linux \u548c macOS \u4e00\u884c\u547d\u4ee4',
+        'install.brew': 'Via Homebrew', 'install.brew_desc': 'macOS & Linux',
+        'install.binaries': '\u9884\u7f16\u8bd1\u4e8c\u8fdb\u5236', 'install.binaries_desc': 'macOS\u3001Linux\u3001Windows',
+        'install.releases': '\u4ece Releases \u4e0b\u8f7d \u2192',
+        'install.hook': '\u7136\u540e\u6fc0\u6d3b\u81ea\u52a8\u91cd\u5199\u94a9\u5b50',
+        'install.hook_note': '\u8fd9\u4f1a\u5b89\u88c5\u4e00\u4e2a PreToolUse \u94a9\u5b50\uff0c\u900f\u660e\u5730\u5c06 Bash \u547d\u4ee4\u91cd\u5199\u4e3a rtk \u7b49\u4ef7\u547d\u4ee4\u3002',
+        'share.title_1': '\u53d1\u5e03\u4f60\u7684', 'share.title_2': 'rtk gain',
+        'share.desc': '\u8fd0\u884c <code>rtk gain</code>\uff0c\u7c98\u8d34\u4f60\u7684\u7edf\u8ba1\u6570\u636e\uff0c\u5728\u65f6\u95f4\u7ebf\u4e0a\u5c55\u793a\u3002',
+        'share.paste_placeholder': '\u5728\u6b64\u7c98\u8d34 rtk gain \u8f93\u51fa...',
+        'share.post_x': '\u53d1\u5e03\u5230 X', 'share.post_bsky': '\u53d1\u5e03\u5230 Bluesky', 'share.linkedin': 'LinkedIn', 'share.copy': '\u590d\u5236',
+        'cta.title_1': '\u4f60\u7684 AI \u4e0d\u9700\u8981', 'cta.title_2': '\u8bfb\u5b8c\u8fd9\u4e9b\u3002',
+        'cta.sub': '\u5b89\u88c5 rtk\u3002\u66f4\u597d\u7684\u4ee3\u7801\uff0c\u66f4\u957f\u7684\u4f1a\u8bdd\uff0c\u66f4\u4f4e\u7684\u6210\u672c\u3002', 'cta.share': '\u5206\u4eab rtk',
+        'starred.label': '\u6765\u81ea\u8fd9\u4e9b\u516c\u53f8\u7684\u5f00\u53d1\u8005\u5df2\u52a0\u661f',
+      },
+      ja: {
+        'nav.why': '\u306a\u305c', 'nav.demo': '\u30c7\u30e2', 'nav.tools': '\u30c4\u30fc\u30eb', 'nav.cloud': '\u30af\u30e9\u30a6\u30c9', 'nav.install': '\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb',
+        'hero.badge_oss': '\u30aa\u30fc\u30d7\u30f3\u30bd\u30fc\u30b9 \u00b7 MIT \u00b7 Rust',
+        'hero.title_1': 'AI \u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u306f', 'hero.title_2': 'CLI \u30ce\u30a4\u30ba\u306b\u57cb\u3082\u308c\u3066\u3044\u308b\u3002', 'hero.title_3': '\u89e3\u6c7a\u3057\u3088\u3046\u3002',
+        'hero.sub_1': 'rtk \u306f\u30b3\u30de\u30f3\u30c9\u51fa\u529b\u304c\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u30a6\u30a3\u30f3\u30c9\u30a6\u306b\u5165\u308b\u524d\u306b\u5727\u7e2e\u3057\u307e\u3059\u3002',
+        'hero.sub_2': '\u3088\u308a\u826f\u3044\u63a8\u8ad6\u3002\u3088\u308a\u9577\u3044\u30bb\u30c3\u30b7\u30e7\u30f3\u3002\u3088\u308a\u4f4e\u3044\u30b3\u30b9\u30c8\u3002',
+        'hero.stat_pct_label': '\u5e73\u5747\u30ce\u30a4\u30ba\u9664\u53bb', 'hero.stat_3x_label': '\u30bb\u30c3\u30b7\u30e7\u30f3\u5ef6\u9577', 'hero.stat_cmds_label': '\u30b3\u30de\u30f3\u30c9\u6570',
+        'hero.cta_install': 'rtk \u3092\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb', 'hero.cta_star': 'GitHub \u3067\u30b9\u30bf\u30fc',
+        'problem.title': '\u4eca\u65e5\u306e AI \u30b3\u30fc\u30c7\u30a3\u30f3\u30b0\u306e\u554f\u984c',
+        'problem.sub': '\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u304c\u5b9f\u884c\u3059\u308b\u3059\u3079\u3066\u306e\u30b3\u30de\u30f3\u30c9\u304c\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u30a6\u30a3\u30f3\u30c9\u30a6\u3092\u30ce\u30a4\u30ba\u3067\u6c5a\u67d3\u3057\u307e\u3059\u3002\u305d\u306e\u4ee3\u511f\u306f\u4ee5\u4e0b\u306e\u901a\u308a\u3002',
+        'problem.card1.title': '\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u6c5a\u67d3',
+        'problem.card1.text': '200K \u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u30a6\u30a3\u30f3\u30c9\u30a6\u306f\u7121\u9650\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002<code>cargo test</code> \u304c 5,000 \u30c8\u30fc\u30af\u30f3\u306e\u30dc\u30a4\u30e9\u30fc\u30d7\u30ec\u30fc\u30c8\u3092\u51fa\u529b\u3059\u308b\u3068\u3001\u5b9f\u969b\u306e\u30b3\u30fc\u30c9\u306e\u63a8\u8ad6\u306b\u4f7f\u3048\u308b\u30c8\u30fc\u30af\u30f3\u304c 5,000 \u6e1b\u308a\u307e\u3059\u3002',
+        'problem.card1.metric': 'AI \u63a8\u8ad6\u304c\u60aa\u5316',
+        'problem.card2.title': '\u30bb\u30c3\u30b7\u30e7\u30f3\u304c\u77ed\u3059\u304e\u308b',
+        'problem.card2.text': '\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u304c\u30aa\u30fc\u30d0\u30fc\u30d5\u30ed\u30fc\u3057\u3001\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8\u304c\u518d\u8d77\u52d5\u3057\u3001\u6d41\u308c\u3092\u5931\u3044\u307e\u3059\u3002\u5b9a\u984d\u30d7\u30e9\u30f3\u3067\u306f\u3001\u672c\u6765\u3088\u308a 40% \u901f\u304f\u30ec\u30fc\u30c8\u5236\u9650\u306b\u9054\u3057\u307e\u3059\u3002',
+        'problem.card2.metric': '\u30bb\u30c3\u30b7\u30e7\u30f3 3 \u500d\u77ed\u7e2e',
+        'problem.card3.title': '\u30b3\u30b9\u30c8\u7206\u767a',
+        'problem.card3.text': '\u30c8\u30fc\u30af\u30f3\u8ab2\u91d1\uff08API\u3001Gemini CLI\u3001Aider\uff09\u3067\u306f\u3001\u8acb\u6c42\u306e 70% \u306f LLM \u304c\u4e0d\u8981\u306a\u30ce\u30a4\u30ba\u3067\u3059\u300210 \u4eba\u30c1\u30fc\u30e0\u3067\u6708\u7d04 $1,750 \u306e\u7121\u99c4\u3002',
+        'problem.card3.metric': '\u7d04 70% \u304c\u7121\u99c4\u306a\u652f\u51fa',
+        'demo.title': '\u9055\u3044\u3092\u898b\u308b', 'demo.sub': '\u5b9f\u969b\u306e\u51fa\u529b\u3001\u5b9f\u969b\u306e\u7bc0\u7d04\u3002\u5b9f\u30b3\u30de\u30f3\u30c9\u306e\u4e26\u5217\u6bd4\u8f03\u3002',
+        'compare.title': '\u7121\u5236\u9650\u306e AI \u30c4\u30fc\u30eb\u306f\u3042\u308a\u307e\u305b\u3093\u3002\u3059\u3079\u3066\u306e\u30c8\u30fc\u30af\u30f3\u304c\u91cd\u8981\u3002',
+        'compare.sub': '\u6708 $200 \u3067\u3082\u3001\u3059\u3079\u3066\u306e\u30c4\u30fc\u30eb\u306b\u4e0a\u9650\u304c\u3042\u308a\u307e\u3059\u3002RTK \u306f CLI \u30ce\u30a4\u30ba\u3092\u5727\u7e2e\u3057\u3001\u5236\u9650\u3092\u5ef6\u9577\u3057\u307e\u3059\u3002',
+        'compare.session_headline': '\u5178\u578b\u7684\u306a 2 \u6642\u9593\u306e AI \u30b3\u30fc\u30c7\u30a3\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\uff1a',
+        'compare.session_cmds': 'CLI \u30b3\u30de\u30f3\u30c9\u5b9f\u884c\u6570', 'compare.session_noise': 'CLI \u30ce\u30a4\u30ba\u30c8\u30fc\u30af\u30f3', 'compare.session_rtk': 'RTK \u4f7f\u7528\u6642\uff0889% \u524a\u6e1b\uff09',
+        'compare.session_note': 'RTK \u306a\u3057\u3067\u306f\u3001CLI \u51fa\u529b\u3060\u3051\u3067 200K \u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u304c\u30aa\u30fc\u30d0\u30fc\u30d5\u30ed\u30fc\u3059\u308b\u53ef\u80fd\u6027\u3002\u5b9f\u6e2c 2,900+ \u30b3\u30de\u30f3\u30c9\u306e\u5e73\u5747 3,500 \u30c8\u30fc\u30af\u30f3/\u30b3\u30de\u30f3\u30c9\u3002',
+        'compare.th_price': '\u4fa1\u683c', 'compare.th_limits': '\u5236\u9650', 'compare.th_context': '\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8',
+        'compare.limit_cc': '\u7d04 45 \u4ef6/5\u6642\u9593\uff08Pro\uff09\u3001Max 5-20\u500d', 'compare.limit_cursor': '$20 \u30af\u30ec\u30b8\u30c3\u30c8/\u6708\uff08Pro\uff09\u3001\u7d04 225 Claude \u30ea\u30af\u30a8\u30b9\u30c8',
+        'compare.limit_codex': '5\u6642\u9593\u3042\u305f\u308a 30-1,500 \u4ef6', 'compare.limit_windsurf': '500 \u30af\u30ec\u30b8\u30c3\u30c8/\u6708\uff08Pro\uff09',
+        'compare.limit_gemini': '\u65e5 1,000 \u30ea\u30af\u30a8\u30b9\u30c8\u3001\u5206 60\uff08\u7121\u6599\uff09', 'compare.limit_aider': 'API \u30d7\u30ed\u30d0\u30a4\u30c0\u30fc\u6b21\u7b2c',
+        'compare.limit_copilot': '\u6708 50-1,500 \u30d7\u30ec\u30df\u30a2\u30e0\u30ea\u30af\u30a8\u30b9\u30c8', 'compare.limit_cline': 'API \u30d7\u30ed\u30d0\u30a4\u30c0\u30fc\u6b21\u7b2c',
+        'compare.price_codex': '$20/\u6708\uff08Plus\uff09\u2014 $200/\u6708\uff08Pro\uff09', 'compare.price_gemini': '\u7121\u6599 \u2014 \u30c8\u30fc\u30af\u30f3\u8ab2\u91d1',
+        'compare.price_aider': '\u7121\u6599 + API\u8cbb\u7528\uff08$5-300+/\u6708\uff09', 'compare.price_copilot': '\u7121\u6599 \u2014 $39/\u6708\uff08Pro+\uff09',
+        'compare.price_cline': '\u7121\u6599 + API\u8cbb\u7528\uff08$0-500+/\u6708\uff09',
+        'compare.ctx_cursor': '\u6700\u5927 200K\uff08Max\u30e2\u30fc\u30c9\uff09', 'compare.ctx_model': '\u30e2\u30c7\u30eb\u6b21\u7b2c\uff08\u6700\u5927 200K\uff09',
+        'compare.impact_cc': '\u30bb\u30c3\u30b7\u30e7\u30f3\u7d04 3 \u500d\u5ef6\u9577', 'compare.impact_cursor': '\u30af\u30ec\u30b8\u30c3\u30c8\u7d04 2 \u500d\u6301\u7d9a',
+        'compare.impact_codex': '\u4e0a\u9650\u3042\u305f\u308a\u3088\u308a\u591a\u304f\u306e\u53cd\u5fa9', 'compare.impact_windsurf': '\u30af\u30ec\u30b8\u30c3\u30c8\u7d04 2 \u500d\u6301\u7d9a', 'compare.impact_copilot': '\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u54c1\u8cea\u5411\u4e0a',
+        'compare.impact_gemini': '\u30c8\u30fc\u30af\u30f3\u8acb\u6c42\u7d04 70% \u524a\u6e1b', 'compare.impact_aider': 'API\u30b3\u30b9\u30c8\u7d04 70% \u524a\u6e1b', 'compare.impact_cline': 'API\u30b3\u30b9\u30c8\u7d04 70% \u524a\u6e1b',
+        'compare.detail_cc': 'Max $200/\u6708\uff0820\u500d Pro\uff09\u3067\u3082\u9031\u6b21\u4e0a\u9650\u3042\u308a\u3002RTK \u306f CLI \u51fa\u529b\u3092\u5e73\u5747 89% \u5727\u7e2e\u3001\u5236\u9650\u3092\u7d04 3 \u500d\u5ef6\u9577\u3002',
+        'compare.detail_cursor': 'Ultra $200/\u6708\u3067\u3082\u4e0a\u9650\u3042\u308a\u3002RTK \u304c CLI \u51fa\u529b\u3092\u5727\u7e2e\u3057\u3001\u30ea\u30af\u30a8\u30b9\u30c8\u3092\u30af\u30ea\u30fc\u30f3\u306b\u3002',
+        'compare.detail_codex': 'ChatGPT \u30d7\u30e9\u30f3\u306b\u542b\u307e\u308c\u308b\u3002Pro $200/\u6708\u306f 5\u6642\u9593 1,500 \u4ef6\u4e0a\u9650\u3002RTK \u304c\u51fa\u529b\u3092\u5727\u7e2e\u3057\u3001\u3088\u308a\u591a\u304f\u306e\u53cd\u5fa9\u3092\u5b9f\u73fe\u3002',
+        'compare.detail_windsurf': 'Enterprise $60/\u30e6\u30fc\u30b6\u30fc\u3067 1,000 \u30af\u30ec\u30b8\u30c3\u30c8/\u6708\u3002RTK \u304c CLI \u51fa\u529b\u3092\u5727\u7e2e\u3057\u3001\u30af\u30ec\u30b8\u30c3\u30c8\u3092\u5ef6\u9577\u3002',
+        'compare.detail_gemini': '\u7121\u6599\u679a\u306f\u5bdb\u5927\uff08\u65e5 1,000\uff09\u3060\u304c\u30ec\u30fc\u30c8\u5236\u9650\u3042\u308a\u3002RTK \u304c 89% \u5727\u7e2e\u3057\u3001\u8acb\u6c42\u524a\u6e1b\u307e\u305f\u306f\u5236\u9650\u7de9\u548c\u3002',
+        'compare.detail_aider': '\u81ea\u524d API \u30ad\u30fc\u2014\u30c8\u30fc\u30af\u30f3\u8ab2\u91d1\u3002RTK \u304c\u5168\u51fa\u529b\u3092\u5727\u7e2e\u3001API\u8cbb\u7528\u3092\u7d04 70% \u524a\u6e1b\u3002',
+        'compare.detail_copilot': 'Enterprise $39/\u30e6\u30fc\u30b6\u30fc\uff1a\u6708 1,000 \u30d7\u30ec\u30df\u30a2\u30e0\u3002RTK \u304c\u30bf\u30fc\u30df\u30ca\u30eb\u51fa\u529b\u3092\u7cbe\u7e2e\u306b\u4fdd\u3061\u3001\u30ea\u30af\u30a8\u30b9\u30c8\u306e\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u54c1\u8cea\u5411\u4e0a\u3002',
+        'compare.detail_cline': '\u30c4\u30fc\u30eb\u5074\u5236\u9650\u306a\u3057\u3001\u4f46 API \u4e0a\u9650\u9069\u7528\u3002RTK \u304c 89% \u5727\u7e2e\u3001\u8acb\u6c42\u3068\u30aa\u30fc\u30d0\u30fc\u30d5\u30ed\u30fc\u3092\u76f4\u63a5\u524a\u6e1b\u3002',
+        'compare.footnote': '2026\u5e742\u6708\u6642\u70b9\u306e\u4fa1\u683c\u3002\u5236\u9650\u306f\u4f7f\u7528\u3068\u30d7\u30e9\u30f3\u306b\u3088\u308a\u7570\u306a\u308b\u3002RTK \u7bc0\u7d04\u306f 2,900+ \u30b3\u30de\u30f3\u30c9\u306e\u5e73\u5747 89% \u5727\u7e2e\u7387\u306b\u57fa\u3065\u304f\u3002',
+        'cloud.badge': '\u8fd1\u65e5\u516c\u958b', 'cloud.desc': '\u30c1\u30fc\u30e0\u306e AI \u30b3\u30fc\u30c7\u30a3\u30f3\u30b0\u30b3\u30b9\u30c8\u306e\u53ef\u8996\u5316\u3068\u5236\u5fa1\u3002\u7121\u99c4\u3092\u628a\u63e1\u3002\u89e3\u6c7a\u3002',
+        'cloud.f1.title': '\u30c8\u30fc\u30af\u30f3\u5206\u6790', 'cloud.f1.desc': '\u958b\u767a\u8005\u30fb\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u30fb\u30c4\u30fc\u30eb\u5225\u30c0\u30c3\u30b7\u30e5\u30dc\u30fc\u30c9',
+        'cloud.f2.title': '\u30c1\u30fc\u30e0\u7bc0\u7d04\u30ec\u30dd\u30fc\u30c8', 'cloud.f2.desc': '\u300c\u30c1\u30fc\u30e0\u306f\u4eca\u6708 $4,200 \u7bc0\u7d04\u300d',
+        'cloud.f3.title': '\u30ec\u30fc\u30c8\u5236\u9650\u30a2\u30e9\u30fc\u30c8', 'cloud.f3.desc': '\u30e2\u30cb\u30bf\u30ea\u30f3\u30b0\u3068\u30b9\u30de\u30fc\u30c8\u901a\u77e5',
+        'cloud.f4.title': '\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u5236\u5fa1', 'cloud.f4.desc': 'SSO\u3001\u76e3\u67fb\u30ed\u30b0\u3001\u30b3\u30f3\u30d7\u30e9\u30a4\u30a2\u30f3\u30b9',
+        'cloud.pricing': '\u30aa\u30fc\u30d7\u30f3\u30bd\u30fc\u30b9\u306f\u7121\u6599\u3002\u30c1\u30fc\u30e0\u306f <strong>$15/\u958b\u767a\u8005/\u6708</strong> \u304b\u3089\u3002',
+        'cloud.submit': '\u30a6\u30a7\u30a4\u30c8\u30ea\u30b9\u30c8\u306b\u53c2\u52a0', 'cloud.counter': '\u30c1\u30fc\u30e0\u304c\u5f85\u6a5f\u4e2d',
+        'cloud.note': '\u30b9\u30d1\u30e0\u306a\u3057\u3002\u30ed\u30fc\u30f3\u30c1\u6642\u306b 1 \u901a\u3002',
+        'cloud.spread': '\u62e1\u6563\u3059\u308b',
+        'cloud.post_gain': '\u307e\u305f\u306f rtk gain \u3092\u6295\u7a3f',
+        'cloud.placeholder_email': 'you@company.com', 'cloud.placeholder_company': '\u4f1a\u793e\uff08\u4efb\u610f\uff09',
+        'cloud.placeholder_tool': '\u4e3b\u8981 AI \u30b3\u30fc\u30c7\u30a3\u30f3\u30b0\u30c4\u30fc\u30eb\uff08\u4efb\u610f\uff09',
+        'proof.title': '\u5b9f\u969b\u306e\u7bc0\u7d04', 'proof.sub': '\u6e80\u8db3\u3057\u305f\u958b\u767a\u8005\u306e <code>rtk gain</code> \u306b\u3088\u308b\u5b9f\u969b\u306e\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af\u3002',
+        'proof.h1': '\u958b\u767a\u8005\u306e\u30d5\u30a3\u30fc\u30c9\u30d0\u30c3\u30af', 'proof.d1': '\u6570\u9031\u9593\u306e\u65e5\u5e38\u4f7f\u7528\u5f8c\uff1a15,720 \u30b3\u30de\u30f3\u30c9\u30011.38\u5104\u30c8\u30fc\u30af\u30f3\u7bc0\u7d04\u3002<code>rtk gain</code> \u3067\u78ba\u8a8d\u3002',
+        'proof.h2': '\u8a73\u7d30\u306a\u5185\u8a33', 'proof.d2': '\u30b3\u30de\u30f3\u30c9\u5225\u306e\u65e5\u6b21\u30fb\u9031\u6b21\u30fb\u6708\u6b21\u7d71\u8a08\u3002\u7bc0\u7d04\u3092\u8ffd\u8de1\u3002',
+        'install.title': '30\u79d2\u3067\u958b\u59cb',
+        'install.sub': '\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u3001\u81ea\u52d5\u66f8\u304d\u63db\u3048\u30d5\u30c3\u30af\u3092\u6709\u52b9\u5316\u3001\u3059\u3079\u3066\u306e\u30b3\u30de\u30f3\u30c9\u304c\u81ea\u52d5\u5727\u7e2e\u3002',
+        'install.quick': '\u30af\u30a4\u30c3\u30af\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb', 'install.quick_desc': 'Linux\u30fbmacOS \u30ef\u30f3\u30e9\u30a4\u30ca\u30fc',
+        'install.brew': 'Via Homebrew', 'install.brew_desc': 'macOS & Linux',
+        'install.binaries': '\u30d3\u30eb\u30c9\u6e08\u30d0\u30a4\u30ca\u30ea', 'install.binaries_desc': 'macOS\u3001Linux\u3001Windows',
+        'install.releases': 'Releases \u304b\u3089\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9 \u2192',
+        'install.hook': '\u6b21\u306b\u81ea\u52d5\u66f8\u304d\u63db\u3048\u30d5\u30c3\u30af\u3092\u6709\u52b9\u5316',
+        'install.hook_note': 'Bash \u30b3\u30de\u30f3\u30c9\u3092\u900f\u904e\u7684\u306b rtk \u7b49\u4fa1\u30b3\u30de\u30f3\u30c9\u306b\u66f8\u304d\u63db\u3048\u308b PreToolUse \u30d5\u30c3\u30af\u3092\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u3057\u307e\u3059\u3002',
+        'share.title_1': '\u3042\u306a\u305f\u306e', 'share.title_2': 'rtk gain',
+        'share.desc': '<code>rtk gain</code> \u3092\u5b9f\u884c\u3001\u7d71\u8a08\u3092\u8cbc\u308a\u4ed8\u3051\u3001\u30bf\u30a4\u30e0\u30e9\u30a4\u30f3\u3067\u5171\u6709\u3002',
+        'share.paste_placeholder': 'rtk gain \u306e\u51fa\u529b\u3092\u3053\u3053\u306b\u8cbc\u308a\u4ed8\u3051...',
+        'share.post_x': 'X \u306b\u6295\u7a3f', 'share.post_bsky': 'Bluesky \u306b\u6295\u7a3f', 'share.linkedin': 'LinkedIn', 'share.copy': '\u30b3\u30d4\u30fc',
+        'cta.title_1': 'AI \u306f\u3053\u308c\u3092\u5168\u90e8', 'cta.title_2': '\u8aad\u3080\u5fc5\u8981\u306f\u306a\u3044\u3002',
+        'cta.sub': 'rtk \u3092\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u3002\u3088\u308a\u826f\u3044\u30b3\u30fc\u30c9\u3001\u3088\u308a\u9577\u3044\u30bb\u30c3\u30b7\u30e7\u30f3\u3001\u3088\u308a\u4f4e\u3044\u30b3\u30b9\u30c8\u3002', 'cta.share': 'rtk \u3092\u5171\u6709',
+        'starred.label': '\u3053\u308c\u3089\u306e\u4f01\u696d\u306e\u958b\u767a\u8005\u304c\u30b9\u30bf\u30fc\u6e08\u307f',
       }
     };
 
