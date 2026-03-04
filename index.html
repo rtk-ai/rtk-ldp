@@ -206,6 +206,7 @@
     .nav-links a:hover { color: var(--text); text-decoration: none; }
 
     .nav-link-vox { color: var(--violet) !important; }
+    .nav-link-icm { color: #38bdf8 !important; }
 
     /* === Buttons === */
     .btn {
@@ -1522,7 +1523,7 @@
 
     /* === Responsive === */
     @media (max-width: 768px) {
-      .nav-links a:not(.btn):not(.nav-link-vox) { display: none; }
+      .nav-links a:not(.btn):not(.nav-link-vox):not(.nav-link-icm) { display: none; }
 
       .hero { padding: 120px 20px 40px; }
       .hero::before { width: 300px; height: 200px; }
@@ -1589,6 +1590,7 @@
         <a href="#cloud" data-i18n="nav.cloud">Cloud</a>
         <a href="#install" data-i18n="nav.install">Install</a>
         <a href="vox.html" class="nav-link-vox">Vox</a>
+        <a href="icm.html" class="nav-link-icm">ICM</a>
         <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm" target="_blank" rel="noopener" style="background: #ff5e5b; border-color: #ff5e5b; color: #fff;">☕ Support</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -2792,11 +2794,17 @@ lto = true
         </div>
 
         <div class="install-card">
-          <h3 data-i18n="install.cargo">Via Cargo</h3>
-          <p data-i18n="install.cargo_desc">From GitHub</p>
+          <h3 data-i18n="install.brew">Via Homebrew</h3>
+          <p data-i18n="install.brew_desc">macOS &amp; Linux</p>
           <div class="code-block">
-            <code>cargo install --git https://github.com/rtk-ai/rtk</code>
-            <button class="copy-btn" data-copy="cargo install --git https://github.com/rtk-ai/rtk" aria-label="Copy">
+            <code>brew install rtk</code>
+            <button class="copy-btn" data-copy="brew install rtk" aria-label="Copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code>brew upgrade rtk</code>
+            <button class="copy-btn" data-copy="brew upgrade rtk" aria-label="Copy">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             </button>
           </div>
@@ -2917,6 +2925,7 @@ lto = true
       </div>
       <div class="footer-links">
         <a href="vox.html">Vox</a>
+        <a href="icm.html">ICM</a>
         <a href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener">GitHub</a>
         <a href="https://github.com/rtk-ai/rtk/blob/master/LICENSE" target="_blank" rel="noopener">MIT License</a>
         <a href="https://ko-fi.com/patrickszymkowiak" target="_blank" rel="noopener">☕ Buy me a coffee</a>
@@ -3182,7 +3191,7 @@ lto = true
         'install.title': 'Get started in 30 seconds',
         'install.sub': 'Install, activate the auto-rewrite hook, and every command is compressed automatically.',
         'install.quick': 'Quick Install', 'install.quick_desc': 'One-liner for Linux & macOS',
-        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'From GitHub',
+        'install.brew': 'Via Homebrew', 'install.brew_desc': 'macOS & Linux',
         'install.binaries': 'Pre-built Binaries', 'install.binaries_desc': 'macOS, Linux, Windows',
         'install.releases': 'Download from Releases \u2192',
         'install.hook': 'Then activate the auto-rewrite hook',
@@ -3255,7 +3264,7 @@ lto = true
         'install.title': 'D\u00e9marrez en 30 secondes',
         'install.sub': 'Installez, activez le hook auto-rewrite, et chaque commande est compress\u00e9e automatiquement.',
         'install.quick': 'Installation rapide', 'install.quick_desc': 'Une ligne pour Linux & macOS',
-        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'Depuis GitHub',
+        'install.brew': 'Via Homebrew', 'install.brew_desc': 'macOS & Linux',
         'install.binaries': 'Binaires pr\u00e9-compil\u00e9s', 'install.binaries_desc': 'macOS, Linux, Windows',
         'install.releases': 'T\u00e9l\u00e9charger depuis Releases \u2192',
         'install.hook': 'Puis activez le hook auto-rewrite',
@@ -3328,7 +3337,7 @@ lto = true
         'install.title': 'Empieza en 30 segundos',
         'install.sub': 'Instala, activa el hook auto-rewrite, y cada comando se comprime autom\u00e1ticamente.',
         'install.quick': 'Instalaci\u00f3n r\u00e1pida', 'install.quick_desc': 'Una l\u00ednea para Linux y macOS',
-        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'Desde GitHub',
+        'install.brew': 'Via Homebrew', 'install.brew_desc': 'macOS & Linux',
         'install.binaries': 'Binarios pre-compilados', 'install.binaries_desc': 'macOS, Linux, Windows',
         'install.releases': 'Descargar desde Releases \u2192',
         'install.hook': 'Luego activa el hook auto-rewrite',
@@ -3401,7 +3410,7 @@ lto = true
         'install.title': 'In 30 Sekunden starten',
         'install.sub': 'Installieren, Auto-Rewrite-Hook aktivieren, und jeder Befehl wird automatisch komprimiert.',
         'install.quick': 'Schnellinstallation', 'install.quick_desc': 'Einzeiler f\u00fcr Linux & macOS',
-        'install.cargo': 'Via Cargo', 'install.cargo_desc': 'Von GitHub',
+        'install.brew': 'Via Homebrew', 'install.brew_desc': 'macOS & Linux',
         'install.binaries': 'Vorkompilierte Binaries', 'install.binaries_desc': 'macOS, Linux, Windows',
         'install.releases': 'Von Releases herunterladen \u2192',
         'install.hook': 'Dann den Auto-Rewrite-Hook aktivieren',
