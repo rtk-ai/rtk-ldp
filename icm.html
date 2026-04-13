@@ -42,7 +42,7 @@
       "name": "rtk-ai",
       "url": "https://github.com/rtk-ai"
     },
-    "license": "https://opensource.org/licenses/MIT",
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
     "programmingLanguage": "Rust",
     "offers": {
       "@type": "Offer",
@@ -53,7 +53,8 @@
       "Dual memory model: episodic memories + semantic knowledge graphs",
       "Hybrid search: BM25 + vector cosine similarity",
       "Temporal decay by importance levels",
-      "22 MCP tools for 14 AI editors (Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, and more)",
+      "26 MCP tools for 17 AI editors (Claude Code, Claude Desktop, Cursor, Windsurf, VS Code, Copilot, Gemini, Codex, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, OpenCode, Continue.dev, Aider)",
+      "Interactive dashboards: TUI (ratatui) and web UI with Three.js 3D knowledge graph (icm dashboard / icm serve --expose)",
       "Feedback system: record corrections, search past feedback, track stats",
       "Auto-extraction hooks (PostToolUse, PreCompact, UserPromptSubmit) at zero LLM cost",
       "Single binary, zero API keys, fully local",
@@ -80,6 +81,7 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#models">Models</a>
         <a href="#tools">Live Demo</a>
         <a href="#compare">Compare</a>
@@ -100,7 +102,7 @@
   <main id="main-content">
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge">Open Source &middot; MIT License &middot; Written in Rust</div>
+    <div class="hero-badge">Open Source &middot; Apache-2.0 License &middot; Written in Rust</div>
     <h1>Your AI forgets everything.<br><span class="gradient-text">Fix that.</span></h1>
     <p class="hero-sub">
       <strong>ICM</strong> gives AI agents real persistent memory.
@@ -173,7 +175,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3>MCP Native</h3>
-          <p>22 tools exposed via Model Context Protocol. <code>icm init</code> auto-configures 14 editors: Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, OpenCode, and more.</p>
+          <p>26 tools exposed via Model Context Protocol. <code>icm init</code> auto-configures 17 editors: Claude Code, Claude Desktop, Cursor, Windsurf, VS Code, GitHub Copilot, Gemini, Codex, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, OpenCode, Continue.dev, and Aider.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -187,7 +189,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/></svg>
           </div>
           <h3>Single Binary</h3>
-          <p>One <code>cargo install</code>. No Docker, no Python, no Qdrant, no Redis. Just a Rust binary and a SQLite file.</p>
+          <p>One <code>brew install</code>. No Docker, no Python, no Qdrant, no Redis. Just a Rust binary and a SQLite file.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
@@ -202,6 +204,62 @@
           </div>
           <h3>Auto-Extraction Hooks</h3>
           <p>Three lifecycle hooks &mdash; PostToolUse, PreCompact, UserPromptSubmit &mdash; automatically extract and store context at zero LLM cost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="icm-dash" id="dashboard">
+    <div class="section-inner">
+      <h2>See your memory, actually</h2>
+      <p class="section-sub">Every memory, every concept, every link &mdash; in your terminal or your browser. No telemetry, no cloud, your SQLite file.</p>
+
+      <div class="dash-hero">
+        <img src="assets/icm/web-graph-3d.png" alt="ICM web dashboard — Three.js force-directed knowledge graph" loading="lazy">
+        <div class="dash-hero-cap">
+          <span class="dash-tag">Web · Three.js WebGL</span>
+          <strong>3D knowledge graph</strong>
+          <span class="dash-muted">Concepts as nodes, typed relations as edges. Click a node for the full concept panel.</span>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <figure class="dash-card">
+          <img src="assets/icm/web-overview.png" alt="ICM web dashboard — Overview page with stats and top topics" loading="lazy">
+          <figcaption>
+            <span class="dash-tag">Web · Overview</span>
+            Memories, topics, concepts, links, feedback &mdash; at a glance.
+          </figcaption>
+        </figure>
+        <figure class="dash-card">
+          <img src="assets/icm/web-health.png" alt="ICM web dashboard — Health audit per topic" loading="lazy">
+          <figcaption>
+            <span class="dash-tag">Web · Health</span>
+            Consolidation hints, stale detection, decay &amp; prune buttons inline.
+          </figcaption>
+        </figure>
+        <figure class="dash-card">
+          <img src="assets/icm/tui-overview.png" alt="ICM TUI dashboard — ratatui in the terminal" loading="lazy">
+          <figcaption>
+            <span class="dash-tag">TUI · ratatui</span>
+            Keyboard-driven. <code>1-5</code> tabs, <code>j/k</code> nav, <code>/</code> search, <code>?</code> help.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="dash-cmd">
+        <div class="code-block code-block-wide">
+          <code>icm dashboard</code>
+          <button class="copy-btn" data-copy="icm dashboard" aria-label="Copy">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+        <div class="code-block code-block-wide">
+          <code>icm serve --expose &nbsp;&middot;&nbsp; http://127.0.0.1:8420</code>
+          <button class="copy-btn" data-copy="icm serve --expose" aria-label="Copy">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
         </div>
       </div>
     </div>
@@ -617,8 +675,8 @@
           <div class="icm-highlight-item icm-h-yes">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
             <div>
-              <strong>22 MCP tools</strong>
-              <span>Auto-configures 14 editors via <code>icm init</code></span>
+              <strong>26 MCP tools</strong>
+              <span>Auto-configures 17 editors via <code>icm init</code></span>
             </div>
           </div>
           <div class="icm-highlight-item icm-h-yes">
@@ -649,22 +707,28 @@
 
       <div class="install-grid">
         <div class="install-card install-primary">
-          <h3>Via Cargo</h3>
-          <p>From crates.io</p>
+          <h3>Via Homebrew</h3>
+          <p>macOS &amp; Linux</p>
           <div class="code-block">
-            <code>cargo install icm</code>
-            <button class="copy-btn" data-copy="cargo install icm" aria-label="Copy">
+            <code>brew install rtk-ai/tap/icm</code>
+            <button class="copy-btn" data-copy="brew install rtk-ai/tap/icm" aria-label="Copy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code>brew upgrade icm</code>
+            <button class="copy-btn" data-copy="brew upgrade icm" aria-label="Copy">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             </button>
           </div>
         </div>
 
         <div class="install-card">
-          <h3>From Source</h3>
-          <p>Latest from GitHub</p>
+          <h3>Install Script</h3>
+          <p>macOS, Linux</p>
           <div class="code-block">
-            <code>cargo install --git https://github.com/rtk-ai/icm</code>
-            <button class="copy-btn" data-copy="cargo install --git https://github.com/rtk-ai/icm" aria-label="Copy">
+            <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/icm/main/install.sh | sh</code>
+            <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/icm/main/install.sh | sh" aria-label="Copy">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             </button>
           </div>
@@ -680,14 +744,45 @@
       </div>
 
       <div class="install-setup">
-        <h3>Then auto-configure your editor</h3>
+        <h3>Then auto-configure your editors</h3>
         <div class="code-block code-block-wide">
-          <code>icm init</code>
-          <button class="copy-btn" data-copy="icm init" aria-label="Copy">
+          <code>icm init --mode all</code>
+          <button class="copy-btn" data-copy="icm init --mode all" aria-label="Copy">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
-        <p class="install-note">Auto-detects and configures 14 editors: Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode. Your AI agent can now store memories, build knowledge graphs, record feedback, and recall context across sessions.</p>
+        <p class="install-note">One command, every layer, every detected editor. <code>icm init</code> alone sets up MCP only; <code>--mode all</code> also wires up hooks, instruction files, and slash commands wherever supported. Covers 17 editors: Claude Code, Claude Desktop, Cursor, Windsurf, VS Code, GitHub Copilot, Gemini, Codex, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, OpenCode, Continue.dev, and Aider.</p>
+      </div>
+
+      <div class="init-layers">
+        <h3 class="init-layers-title">What <code>icm init --mode all</code> sets up, per tool</h3>
+        <p class="init-layers-sub">Four integration layers. Each tool gets the layers it supports &mdash; run a single <code>--mode mcp|hook|cli|skill</code> to install just one.</p>
+        <div class="init-layers-grid">
+          <div class="init-layer">
+            <div class="init-layer-badge">MCP</div>
+            <h4>MCP Server</h4>
+            <p>Exposes 26 tools (<code>icm_memory_store</code>, <code>icm_memory_recall</code>, <code>icm_memoir_*</code>, <code>icm_feedback_*</code>, <code>icm_wake_up</code>&hellip;) to every editor that speaks MCP.</p>
+            <p class="init-layer-tools">17 editors &middot; <code>icm init --mode mcp</code></p>
+          </div>
+          <div class="init-layer">
+            <div class="init-layer-badge">Hooks</div>
+            <h4>Auto-extraction hooks</h4>
+            <p>SessionStart, PreTool, PostTool, PreCompact, UserPromptSubmit. Injects wake-up packs, extracts facts from tool output, recalls context on each prompt &mdash; all at zero LLM cost.</p>
+            <p class="init-layer-tools">Claude Code, Gemini CLI, Codex CLI, Copilot CLI, OpenCode &middot; <code>icm init --mode hook</code></p>
+          </div>
+          <div class="init-layer">
+            <div class="init-layer-badge">CLI</div>
+            <h4>Instruction files</h4>
+            <p>Injects ICM usage guidance into each tool&rsquo;s native instruction file so the agent knows when to store and recall.</p>
+            <p class="init-layer-tools"><code>CLAUDE.md</code>, <code>GEMINI.md</code>, <code>AGENTS.md</code>, <code>.windsurfrules</code>, <code>copilot-instructions.md</code>, <code>.aider.conventions.md</code> &middot; <code>icm init --mode cli</code></p>
+          </div>
+          <div class="init-layer">
+            <div class="init-layer-badge">Skills</div>
+            <h4>Slash commands &amp; rules</h4>
+            <p>Ready-to-use shortcuts so the user can recall or remember in one keystroke.</p>
+            <p class="init-layer-tools">Claude Code (<code>/recall</code>, <code>/remember</code>), Amp (<code>/icm-recall</code>, <code>/icm-remember</code>), Cursor <code>.mdc</code>, Roo Code <code>.md</code> &middot; <code>icm init --mode skill</code></p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -735,7 +830,7 @@
         <a href="index.html">rtk</a>
         <a href="vox.html">Vox</a>
         <a href="https://github.com/rtk-ai/icm" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/rtk-ai/icm/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+        <a href="https://github.com/rtk-ai/icm/blob/main/LICENSE" target="_blank" rel="noopener">Apache-2.0 License</a>
       </div>
     </div>
   </footer>
@@ -805,7 +900,7 @@
         // ICM center
         h += '<circle cx="'+CX+'" cy="'+CY+'" r="'+ICM_R+'" fill="#111113" stroke="#22d3ee" stroke-width="2"/>';
         h += '<text x="'+CX+'" y="'+(CY-6)+'" text-anchor="middle" fill="#22d3ee" font-size="16" font-weight="800" font-family="\'JetBrains Mono\', monospace">ICM</text>';
-        h += '<text x="'+CX+'" y="'+(CY+12)+'" text-anchor="middle" fill="#a1a1aa" font-size="9" font-family="\'Inter\', sans-serif">22 MCP tools</text>';
+        h += '<text x="'+CX+'" y="'+(CY+12)+'" text-anchor="middle" fill="#a1a1aa" font-size="9" font-family="\'Inter\', sans-serif">26 MCP tools</text>';
 
         // Memory nodes
         h += '<g id="mem-nodes">';
