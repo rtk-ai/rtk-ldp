@@ -1,0 +1,169 @@
+---
+/**
+ * Header.astro — RTK docs nav header.
+ * Visually matches the landing Nav.astro but without anchor links and mobile drawer
+ * (Starlight handles its own mobile menu for docs pages).
+ */
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <img src="https://avatars.githubusercontent.com/u/258253854?s=80" alt="rtk logo" width="26" height="26" style="border-radius:6px;">
+      <span>rtk</span>
+    </a>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/#problem" class="header-link">Why</a>
+      <a href="/#install" class="header-link">Install</a>
+      <span class="header-divider" aria-hidden="true"></span>
+      <a href="/guide/" class="header-link header-link--active">Docs</a>
+      <a href="/vox/" class="header-link header-link--vox">Vox</a>
+      <a href="/icm/" class="header-link header-link--icm">ICM</a>
+      <span class="header-divider" aria-hidden="true"></span>
+      <button id="search-trigger" class="header-search-btn" aria-label="Search (Cmd+K)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <span class="header-search-label">Search</span>
+        <kbd class="header-search-kbd">⌘K</kbd>
+      </button>
+      <a href="https://github.com/rtk-ai/rtk" class="header-btn-ghost" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 60px;
+    background: rgba(6, 11, 24, 0.92);
+    border-bottom: 1px solid #1a2344;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .header-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+    color: #f8fafc;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .header-logo:hover { text-decoration: none; color: #f8fafc; }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 18px;
+    background: #1a2344;
+    margin: 0 6px;
+    flex-shrink: 0;
+  }
+
+  .header-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    color: #8294ab;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: color 150ms ease, background 150ms ease;
+  }
+  .header-link:hover {
+    color: #e2e8f0;
+    background: #0f1629;
+    text-decoration: none;
+  }
+  .header-link--active { color: #e2e8f0; }
+  .header-link--vox { color: #a78bfa; }
+  .header-link--vox:hover { color: #a78bfa; background: rgba(167,139,250,0.08); }
+  .header-link--icm { color: #38bdf8; }
+  .header-link--icm:hover { color: #38bdf8; background: rgba(56,189,248,0.08); }
+
+  .header-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    color: #8294ab;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid #1a2344;
+    text-decoration: none;
+    transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+    margin-left: 4px;
+  }
+  .header-btn-ghost:hover {
+    color: #e2e8f0;
+    border-color: #243056;
+    background: #0f1629;
+    text-decoration: none;
+  }
+
+  .header-search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    color: #8294ab;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: 1px solid #1a2344;
+    background: transparent;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+    margin-left: 4px;
+  }
+  .header-search-btn:hover {
+    color: #e2e8f0;
+    border-color: #243056;
+    background: #0f1629;
+  }
+  .header-search-label {
+    color: #64748b;
+    font-size: 0.8125rem;
+  }
+  .header-search-kbd {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 5px;
+    font-size: 0.6875rem;
+    color: #64748b;
+    background: #0c1225;
+    border: 1px solid #1a2344;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+</style>

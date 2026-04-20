@@ -1,0 +1,148 @@
+---
+// ToolComparison — 8 AI tool cards with session callout + expandable detail
+---
+<section class="comparison" id="compare">
+  <div class="section-inner">
+    <div class="section-viking reveal">
+      <img src="/assets/illustrations/viking-compare.webp" alt="Viking squad marching through datacenter corridor" loading="lazy" width="1920" height="1047">
+    </div>
+    <h2 class="reveal" data-i18n="compare.title">No AI tool offers unlimited usage. Every token counts.</h2>
+    <p class="section-sub reveal" data-i18n="compare.sub">Even at $200/mo, every tool has caps. RTK compresses CLI noise so your limits stretch further.</p>
+
+    <div class="session-callout reveal">
+      <p class="session-headline" data-i18n="compare.session_headline">A typical 2h coding session with an AI agent:</p>
+      <div class="session-stats-row">
+        <div class="session-stat">
+          <span class="session-num">~60</span>
+          <span class="session-label" data-i18n="compare.session_cmds">CLI commands run</span>
+        </div>
+        <div class="session-stat">
+          <span class="session-num session-num-red">~210K</span>
+          <span class="session-label" data-i18n="compare.session_noise">tokens of CLI noise</span>
+        </div>
+        <div class="session-stat">
+          <span class="session-num session-num-accent">~23K</span>
+          <span class="session-label" data-i18n="compare.session_rtk">with RTK (89% less)</span>
+        </div>
+      </div>
+      <p class="session-note" data-i18n="compare.session_note">Without RTK, CLI output alone can overflow a 200K context window. Based on avg 3,500 tokens/command measured across 2,900+ real commands.</p>
+    </div>
+
+    <div class="tool-cards">
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">Claude Code</span>
+          <span class="tool-type type-terminal">Terminal</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value">$20 &mdash; $200/mo</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_cc">~45 msgs/5h (Pro), 5-20x on Max</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value">200K tokens</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_cc">Sessions ~3x longer</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_cc">Even Max $200/mo (20x Pro) has weekly caps (240-480h). Quota resets every 5h. RTK compresses CLI outputs by avg 89%, so each message carries less noise and your quota stretches ~3x.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">Cursor</span>
+          <span class="tool-type type-ide">IDE</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value">$20 &mdash; $200/mo</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_cursor">$20 credits/mo (Pro), ~225 Claude reqs</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value" data-i18n="compare.ctx_cursor">Up to 200K (Max mode)</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_cursor">Credits go ~2x further</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_cursor">Even Ultra $200/mo (20x credits) is capped. Each request consumes credits based on model — Claude burns 2.4x faster than Gemini. RTK compresses CLI outputs so each request starts cleaner.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">OpenAI Codex</span>
+          <span class="tool-type type-agent">Agent</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value" data-i18n="compare.price_codex">$20/mo (Plus) &mdash; $200/mo (Pro)</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_codex">30-1,500 msgs/5h by plan</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value">192K tokens</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_codex">More iterations per cap</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_codex">Included with ChatGPT plans. Pro $200/mo caps at 1,500 msgs/5h. The agent runs commands autonomously — each output eats your cap. RTK compresses them for more iterations per window.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">Windsurf</span>
+          <span class="tool-type type-ide">IDE</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value">$15 &mdash; $60/mo</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_windsurf">500 credits/mo (Pro)</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value">200K tokens</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_windsurf">Credits last ~2x longer</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_windsurf">Enterprise $60/user gets 1,000 credits/mo — still capped. Cascade consumes credits per prompt. RTK compresses CLI outputs so each interaction uses fewer tokens, stretching your credits.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">Gemini CLI</span>
+          <span class="tool-type type-terminal">Terminal</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value" data-i18n="compare.price_gemini">Free &mdash; pay-per-token</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_gemini">1,000 req/day, 60 req/min (free)</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value">1M tokens</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_gemini">~70% less on token bill</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_gemini">Free tier is generous (1,000 req/day) but still rate-limited. Beyond that, you pay per token. RTK compresses CLI outputs by avg 89%, cutting your bill or freeing rate limit headroom.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">Aider</span>
+          <span class="tool-type type-terminal">Terminal</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value" data-i18n="compare.price_aider">Free + API costs ($5-300+/mo)</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_aider">Per API provider</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value" data-i18n="compare.ctx_model">Per model (up to 200K)</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_aider">~70% less API cost</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_aider">BYO API key — you pay per token to OpenAI, Anthropic, etc. RTK compresses every command output before it reaches the model, directly cutting your API bill by ~70% on CLI-heavy workflows.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">GitHub Copilot</span>
+          <span class="tool-type type-ide">IDE</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value" data-i18n="compare.price_copilot">Free &mdash; $39/mo (Pro+)</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_copilot">50-1,500 premium req/mo</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value" data-i18n="compare.ctx_model">Per model (up to 200K)</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_copilot">Better context quality</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_copilot">Enterprise $39/user: 1,000 premium req/mo. Base completions are unlimited, but Chat and the coding agent have caps. RTK keeps terminal output lean so premium requests carry more useful context.</div>
+      </div>
+
+      <div class="tool-card reveal">
+        <div class="tool-card-header">
+          <span class="tool-card-name">Cline / Roo</span>
+          <span class="tool-type type-agent">VS Code</span>
+        </div>
+        <div class="tool-card-specs">
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_price">Price</span><span class="tool-card-value" data-i18n="compare.price_cline">Free + API costs ($0-500+/mo)</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_limits">Limits</span><span class="tool-card-value" data-i18n="compare.limit_cline">Per API provider</span></div>
+          <div class="tool-card-row"><span class="tool-card-label" data-i18n="compare.th_context">Context</span><span class="tool-card-value" data-i18n="compare.ctx_model">Per model (up to 200K)</span></div>
+        </div>
+        <div class="tool-card-impact"><span class="impact-badge impact-green" data-i18n="compare.impact_cline">~70% less API cost</span></div>
+        <div class="tool-card-detail" data-i18n="compare.detail_cline">No tool-side limit, but your API provider caps apply. Heavy users report $200-500+/mo. RTK compresses every output by avg 89%, directly cutting your bill and reducing context overflow.</div>
+      </div>
+
+    </div>
+    <p class="section-sub" style="font-size:0.72rem; margin-top:20px; opacity:0.5;" data-i18n="compare.footnote">Pricing verified Feb 2026. Limits vary by usage and plan. RTK savings based on avg 89% compression across 2,900+ real commands.</p>
+  </div>
+</section>

@@ -1,0 +1,578 @@
+---
+// DemoSlideshow — 11 before/after slides with tabs, dots, prev/next, 7s autoplay
+---
+<section class="demo-section" id="demo">
+  <div class="section-inner">
+    <div class="section-viking reveal">
+      <img src="/assets/illustrations/viking-demo.webp" alt="Viking compressing tokens into a glowing crystal" loading="lazy" width="1920" height="1047">
+    </div>
+    <h2 class="reveal" data-i18n="demo.title">See the difference</h2>
+    <p class="section-sub reveal" data-i18n="demo.sub">Real outputs, real savings. Side-by-side comparison on actual commands.</p>
+
+    <div class="slideshow reveal">
+      <div class="slideshow-nav">
+        <button class="slide-tab active" data-slide="0">cargo test</button>
+        <button class="slide-tab" data-slide="1">pytest</button>
+        <button class="slide-tab" data-slide="2">go test</button>
+        <button class="slide-tab" data-slide="3">git diff</button>
+        <button class="slide-tab" data-slide="4">git status</button>
+        <button class="slide-tab" data-slide="5">git log</button>
+        <button class="slide-tab" data-slide="6">read</button>
+        <button class="slide-tab" data-slide="7">grep</button>
+        <button class="slide-tab" data-slide="8">find</button>
+        <button class="slide-tab" data-slide="9">ls</button>
+        <button class="slide-tab" data-slide="10">deps</button>
+      </div>
+
+      <div class="slideshow-viewport">
+        <!-- Slide 0: cargo test -->
+        <div class="slide active" data-index="0">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">cargo test</span>
+                <span class="demo-tokens">~4,823 tokens</span>
+              </div>
+              <pre><code>warning: unused variable: `start`
+   --> src/init.rs:561:17
+    |
+561 |             let start = i;
+    |                 ^^^^^ help: prefix it with an underscore
+
+warning: `rtk` (bin "rtk" test) generated 17 warnings
+    Finished `test` profile target(s) in 0.20s
+     Running unittests src/main.rs
+
+running 262 tests
+test cargo_cmd::tests::test_filter_cargo_build_success ... ok
+test cargo_cmd::tests::test_filter_cargo_clippy_clean ... ok
+test cargo_cmd::tests::test_filter_cargo_test_all_pass ... ok
+test cargo_cmd::tests::test_filter_cargo_test_failures ... ok
+test cc_economics::tests::test_compute_dual_metrics ... ok
+test git::tests::test_compact_diff ... ok
+test git::tests::test_filter_branch_output ... ok
+test git::tests::test_filter_log_output ... ok
+test git::tests::test_filter_status_with_args ... ok
+<span class="truncated">... 253 more tests, all passing</span>
+
+test result: ok. 262 passed; 0 failed; 0 ignored; 0 measured</code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk cargo test</span>
+                <span class="demo-tokens">~11 tokens</span>
+                <span class="demo-savings">-99%</span>
+              </div>
+              <pre><code>&#x2713; cargo test: 262 passed (1 suite, 0.08s)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 1: pytest -->
+        <div class="slide" data-index="1">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">pytest -v</span>
+                <span class="demo-tokens">~756 tokens</span>
+              </div>
+              <pre><code>===== test session starts ======
+platform darwin -- Python 3.14.3, pytest-9.0.2
+collected 33 items
+
+test_utils.py::TestStringUtils::test_strip PASSED    [  3%]
+test_utils.py::TestStringUtils::test_upper PASSED    [  6%]
+test_utils.py::TestStringUtils::test_split PASSED    [  9%]
+test_utils.py::TestMathUtils::test_sqrt PASSED       [ 27%]
+test_utils.py::TestMathUtils::test_ceil PASSED       [ 30%]
+test_utils.py::TestJsonUtils::test_dumps PASSED      [ 51%]
+test_utils.py::TestJsonUtils::test_loads PASSED      [ 54%]
+test_utils.py::TestPathUtils::test_join PASSED       [ 63%]
+test_utils.py::TestListOps::test_sort PASSED         [ 78%]
+test_utils.py::TestListOps::test_flatten PASSED      [100%]
+<span class="truncated">... 23 more tests, all passing</span>
+
+====== 33 passed in 0.05s ======</code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk test "pytest -v"</span>
+                <span class="demo-tokens">~24 tokens</span>
+                <span class="demo-savings">-96%</span>
+              </div>
+              <pre><code>&#x1F4CA; SUMMARY:
+  ====== 33 passed in 0.02s ======</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: go test -->
+        <div class="slide" data-index="2">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">go test ./... -v</span>
+                <span class="demo-tokens">~592 tokens</span>
+              </div>
+              <pre><code>=== RUN   TestControllers
+Running Suite: Controller Suite
+Random Seed: 1771093287
+Will run 1 of 1 specs
+&#x2022;
+Ran 1 of 1 Specs in 6.037 seconds
+SUCCESS! -- 1 Passed | 0 Failed | 0 Pending
+--- PASS: TestControllers (6.04s)
+PASS
+ok  kubecraft.ai/.../controller  6.610s
+=== RUN   TestNewAWSBedrockClient
+--- PASS: TestNewAWSBedrockClient (0.00s)
+=== RUN   TestNewAzureOpenAIClient
+--- PASS: TestNewAzureOpenAIClient (0.00s)
+--- PASS: TestAzureOpenAIGenerateCode_Success (0.00s)
+--- PASS: TestNewMistralClient (0.00s)
+--- PASS: TestGenerateCode_Success (0.00s)
+PASS
+ok  kubecraft.ai/.../llm  0.776s</code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk test "go test ./... -v"</span>
+                <span class="demo-tokens">~246 tokens</span>
+                <span class="demo-savings">-58%</span>
+              </div>
+              <pre><code>&#x1F4CA; SUMMARY:
+  --- PASS: TestControllers (5.07s)
+  ok  kubecraft.ai/.../controller  5.847s
+  --- PASS: TestNewAWSBedrockClient (0.00s)
+  --- PASS: TestNewAzureOpenAIClient (0.00s)
+  --- PASS: TestAzureOpenAIGenerateCode_Success (0.00s)
+  --- PASS: TestNewMistralClient (0.00s)
+  --- PASS: TestGenerateCode_Success (0.00s)
+  ok  kubecraft.ai/.../llm  0.246s</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: git diff -->
+        <div class="slide" data-index="3">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">git diff HEAD~1</span>
+                <span class="demo-tokens">~21,500 tokens</span>
+              </div>
+              <pre><code>diff --git a/index.html b/index.html
+index 1b7488b..0ebac4f 100644
+--- a/index.html
++++ b/index.html
+@@ -629,7 +629,7 @@
+       width: 100%;
+       border-collapse: collapse;
+       font-size: 0.88rem;
+-      min-width: 800px;
++      min-width: 1050px;
+     &#125;
+@@ -1051,6 +1051,114 @@
++    /* === Share My Gain === */
++    .share-gain &#123; background: var(--bg); &#125;
++    .share-gain-card &#123;
++      max-width: 600px;
++      margin: 0 auto;
+<span class="truncated">... 855 insertions(+), 266 deletions(-)</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk git diff HEAD~1</span>
+                <span class="demo-tokens">~1,259 tokens</span>
+                <span class="demo-savings">-94%</span>
+              </div>
+              <pre><code>index.html | 1121 ++++++++++++------
+ 1 file changed, 855 ins(+), 266 del(-)
+
+--- Changes ---
+
+&#x1F4C4; index.html
+  @@ -629,7 +629,7 @@
+  -      min-width: 800px;
+  +      min-width: 1050px;
+  @@ -1051,6 +1051,114 @@
+  +    /* === Share My Gain === */
+  +    .share-gain &#123; background: var(--bg); &#125;
+  ... (truncated)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: git status -->
+        <div class="slide" data-index="4">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">git status</span>
+                <span class="demo-tokens">~120 tokens</span>
+              </div>
+              <pre><code>On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git restore &lt;file&gt;..." to discard changes in working directory)
+	modified:   index.html
+	modified:   src/main.rs
+	modified:   src/config.rs
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+	.fastembed_cache/
+	tests/
+
+no changes added to commit</code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk git status</span>
+                <span class="demo-tokens">~30 tokens</span>
+                <span class="demo-savings">-75%</span>
+              </div>
+              <pre><code>&#x1F4CC; master...origin/master
+&#x1F4DD; Modified: 3 files
+   index.html
+   src/main.rs
+   src/config.rs
+&#x2753; Untracked: 2 files
+   .fastembed_cache/
+   tests/</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: git log -->
+        <div class="slide" data-index="5">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">git log --stat -10</span>
+                <span class="demo-tokens">~1,430 tokens</span>
+              </div>
+              <pre><code>commit c84fa3c fix: add website URL (rtk-ai.app)
+Author: patrick szymkowiak &lt;52030887+pszymkowiak@...&gt;
+Date:   Thu Feb 12 12:28:37 2026 +0100
+
+    - Cargo.toml: add homepage field
+    - README.md: add website/github/install links
+
+ .github/workflows/release.yml | 4 ++--
+ Cargo.toml                    | 1 +
+ Formula/rtk.rb                | 2 +-
+ README.md                     | 8 ++++++++
+ 5 files changed, 14 insertions(+), 3 deletions(-)
+
+commit a0d2184 feat(ci): automate Homebrew formula
+<span class="truncated">... 8 more commits with full stats</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk git log -n 10</span>
+                <span class="demo-tokens">~194 tokens</span>
+                <span class="demo-savings">-86%</span>
+              </div>
+              <pre><code>c84fa3c fix: add website URL (rtk-ai.app) (#81)
+a0d2184 feat(ci): automate Homebrew formula (#80)
+55d010a fix: update stale repo URLs (#78)
+9e764c4 chore(master): release 0.13.1
+bd76b36 fix(ci): fix release workflow artifacts
+0d388b3 chore(master): release 0.13.0
+93364b5 feat(sqlite): custom db location
+3dde699 chore(master): release 0.12.0
+645a773 feat(cargo): cargo install filtering
+22182e4 chore(master): release 0.11.0</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: read -->
+        <div class="slide" data-index="6">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">cat src/main.rs</span>
+                <span class="demo-tokens">~10,176 tokens</span>
+              </div>
+              <pre><code>mod cargo_cmd;
+mod cc_economics;
+mod ccusage;
+mod config;
+mod container;
+mod curl_cmd;
+mod deps;
+mod diff_cmd;
+mod discover;
+mod filter;
+mod find_cmd;
+mod gain;
+mod gh_cmd;
+mod git;
+mod grep_cmd;
+mod init;
+mod json_cmd;
+mod ls;
+mod main.rs
+<span class="truncated">... 1,295 lines total (enums, match arms, CLI parsing)</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk read src/main.rs -l aggressive</span>
+                <span class="demo-tokens">~504 tokens</span>
+                <span class="demo-savings">-95%</span>
+              </div>
+              <pre><code>use anyhow::&#123;Context, Result&#125;;
+use clap::&#123;Parser, Subcommand&#125;;
+struct Cli &#123;
+    // ... implementation
+enum Commands &#123;
+    // ... implementation
+enum GitCommands &#123;
+    // ... implementation
+enum CargoCommands &#123;
+    // ... implementation
+fn main() -> Result&lt;()&gt; &#123;
+    // ... implementation</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7: grep -->
+        <div class="slide" data-index="7">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">grep -rn "pub fn" src/</span>
+                <span class="demo-tokens">~2,108 tokens</span>
+              </div>
+              <pre><code>src/cargo_cmd.rs:17:pub fn run(cmd: CargoCommand, ...) -> Result&lt;()&gt;
+src/cargo_cmd.rs:551:pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
+src/cc_economics.rs:184:pub fn run(...)
+src/config.rs:73:    pub fn load() -> Result&lt;Self&gt;
+src/config.rs:85:    pub fn save(&amp;self) -> Result&lt;()&gt;
+src/config.rs:97:    pub fn create_default() -> Result&lt;PathBuf&gt;
+src/filter.rs:57:    pub fn from_extension(ext: &amp;str) -> Self
+src/filter.rs:309:pub fn get_filter(level: FilterLevel) -> Box&lt;dyn FilterStrategy&gt;
+<span class="truncated">... 112 matches across 47 files</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk grep "pub fn" src/</span>
+                <span class="demo-tokens">~940 tokens</span>
+                <span class="demo-savings">-55%</span>
+              </div>
+              <pre><code>&#x1F50D; 112 in 47F:
+
+&#x1F4C4; src/cargo_cmd.rs (3):
+    17: pub fn run(cmd: CargoCommand, ...) -> Result&lt;()&gt;
+   551: pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
+
+&#x1F4C4; src/config.rs (4):
+    73: pub fn load() -> Result&lt;Self&gt;
+    85: pub fn save(&amp;self) -> Result&lt;()&gt;
+    97: pub fn create_default() -> Result&lt;PathBuf&gt;
+   109: pub fn show_config() -> Result&lt;()&gt;
+
+&#x1F4C4; src/git.rs (2):
+    22: pub fn run(cmd: GitCommand, ...) -> Result&lt;()&gt;
+  1264: pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
+... +62</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: find -->
+        <div class="slide" data-index="8">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">find . -name "*.rs"</span>
+                <span class="demo-tokens">~276 tokens</span>
+              </div>
+              <pre><code>./target/debug/build/serde_core-.../out/private.rs
+./target/debug/build/libsqlite3-sys-.../out/bindgen.rs
+./src/ls.rs
+./src/local_llm.rs
+./src/learn/detector.rs
+./src/learn/report.rs
+./src/discover/registry.rs
+./src/discover/provider.rs
+./src/cargo_cmd.rs
+./src/ccusage.rs
+./src/config.rs
+./src/find_cmd.rs
+./src/gain.rs
+./src/git.rs
+<span class="truncated">... 49 files total</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk find "*.rs" .</span>
+                <span class="demo-tokens">~149 tokens</span>
+                <span class="demo-savings">-46%</span>
+              </div>
+              <pre><code>&#x1F4C1; 49F 4D:
+
+src/ cargo_cmd.rs cc_economics.rs
+  ccusage.rs config.rs container.rs
+  curl_cmd.rs deps.rs diff_cmd.rs
+  filter.rs find_cmd.rs gain.rs
+  gh_cmd.rs git.rs grep_cmd.rs
+  init.rs json_cmd.rs ls.rs
+  main.rs ...
+src/discover/ mod.rs provider.rs
+  registry.rs report.rs
+src/learn/ detector.rs mod.rs report.rs
+src/parser/ error.rs formatter.rs</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: ls -->
+        <div class="slide" data-index="9">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">ls -la src/</span>
+                <span class="demo-tokens">~3,200 tokens</span>
+              </div>
+              <pre><code>total 928
+drwxr-xr-x  41 patrick  staff   1312 .
+drwxr-xr-x  25 patrick  staff    800 ..
+-rw-r--r--   1 patrick  staff  16394 cargo_cmd.rs
+-rw-r--r--   1 patrick  staff  27220 cc_economics.rs
+-rw-r--r--   1 patrick  staff   9503 ccusage.rs
+-rw-r--r--   1 patrick  staff   2884 config.rs
+-rw-r--r--   1 patrick  staff  12886 container.rs
+-rw-r--r--   1 patrick  staff   3406 curl_cmd.rs
+-rw-r--r--   1 patrick  staff  12156 filter.rs
+-rw-r--r--   1 patrick  staff  10648 gain.rs
+<span class="truncated">... 20 more lines</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk ls src/</span>
+                <span class="demo-tokens">~640 tokens</span>
+                <span class="demo-savings">-80%</span>
+              </div>
+              <pre><code>discover/
+parser/
+cargo_cmd.rs  16.0K
+cc_economics.rs  26.6K
+ccusage.rs  9.3K
+config.rs  2.8K
+container.rs  12.6K
+filter.rs  11.9K
+find_cmd.rs  2.9K
+gain.rs  10.4K
+...
+
+37 files, 2 dirs (37 .rs)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 10: deps -->
+        <div class="slide" data-index="10">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">cat Cargo.toml</span>
+                <span class="demo-tokens">~368 tokens</span>
+              </div>
+              <pre><code>[package]
+name = "rtk"
+version = "0.13.1"
+edition = "2021"
+license = "MIT"
+homepage = "https://www.rtk-ai.app"
+repository = "https://github.com/rtk-ai/rtk"
+
+[dependencies]
+clap = &#123; version = "4", features = ["derive"] &#125;
+anyhow = "1.0"
+ignore = "0.4"
+walkdir = "2"
+regex = "1"
+lazy_static = "1.4"
+serde = &#123; version = "1", features = ["derive"] &#125;
+serde_json = &#123; version = "1" &#125;
+colored = "2"
+dirs = "5"
+rusqlite = &#123; version = "0.31", features = ["bundled"] &#125;
+<span class="truncated">... + cargo-deb, cargo-generate-rpm metadata</span></code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk deps</span>
+                <span class="demo-tokens">~55 tokens</span>
+                <span class="demo-savings">-85%</span>
+              </div>
+              <pre><code>&#x1F4E6; Rust (Cargo.toml):
+  Dependencies (15):
+    clap (4)
+    anyhow (1.0)
+    ignore (0.4)
+    walkdir (2)
+    regex (1)
+    lazy_static (1.4)
+    serde (1)
+    serde_json (1)
+    colored (2)
+    dirs (5)
+    ... +5 more</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slideshow-controls">
+        <button class="slide-arrow slide-prev" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="slide-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+          <span class="dot" data-slide="3"></span>
+          <span class="dot" data-slide="4"></span>
+          <span class="dot" data-slide="5"></span>
+          <span class="dot" data-slide="6"></span>
+          <span class="dot" data-slide="7"></span>
+          <span class="dot" data-slide="8"></span>
+          <span class="dot" data-slide="9"></span>
+          <span class="dot" data-slide="10"></span>
+        </div>
+        <button class="slide-arrow slide-next" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

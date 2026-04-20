@@ -1,0 +1,189 @@
+---
+import { SEARCH_INDEX } from '../../data/search-index'
+const searchData = JSON.stringify(SEARCH_INDEX)
+---
+
+<div
+  id="search-modal"
+  class="search-modal"
+  role="dialog"
+  aria-label="Site search"
+  aria-modal="true"
+  aria-hidden="true"
+  hidden
+>
+  <div id="search-backdrop" class="search-modal-backdrop" aria-hidden="true"></div>
+  <div class="search-modal-content" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-owns="search-results">
+    <div class="search-input-wrapper">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
+      </svg>
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Search commands, docs, tools…"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        role="searchbox"
+        aria-label="Search"
+        aria-autocomplete="list"
+        aria-controls="search-results"
+      />
+      <kbd class="search-kbd" aria-label="Press Escape to close">Esc</kbd>
+    </div>
+    <ul id="search-results" class="search-results" role="listbox" aria-label="Search results" aria-live="polite">
+      <li class="search-no-results">Start typing to search…</li>
+    </ul>
+    <div class="search-footer" aria-hidden="true">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> open</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<script id="search-data" type="application/json" set:html={searchData} />
+
+<script>
+  import { initSearch } from '../../scripts/search'
+  import type { SearchEntry } from '../../scripts/search'
+  const dataEl = document.getElementById('search-data')
+  if (dataEl) {
+    try {
+      const entries = JSON.parse(dataEl.textContent || '[]') as SearchEntry[]
+      initSearch(entries)
+    } catch (e) {
+      console.error('[search] Failed to parse search data:', e)
+    }
+  }
+</script>
+
+<style>
+  .search-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 6vh 1rem;
+  }
+  .search-modal[hidden] { display: none; }
+  .search-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .search-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+  }
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+    gap: 0.75rem;
+  }
+  .search-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  #search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: var(--text-bright);
+    font-family: inherit;
+  }
+  #search-input::placeholder { color: var(--text-muted); }
+  .search-kbd {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: inherit;
+  }
+  .search-results {
+    max-height: 55vh;
+    overflow-y: auto;
+    padding: 0.5rem;
+    list-style: none;
+    margin: 0;
+  }
+  .search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    min-height: 44px;
+    transition: background 0.1s;
+  }
+  .search-result-item:hover,
+  .search-result-item[aria-selected="true"] {
+    background: var(--bg-alt);
+  }
+  .search-result-type {
+    min-width: 44px;
+    flex-shrink: 0;
+  }
+  .search-result-title {
+    color: var(--text);
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+  }
+  .search-result-category {
+    margin-left: auto;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg-alt);
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .search-no-results {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    list-style: none;
+    font-size: 0.9rem;
+  }
+  .search-footer {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.55rem 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+  .search-footer kbd {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin-right: 2px;
+  }
+</style>

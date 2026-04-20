@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Explicit AI bot access — required for GEO (Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.rtk-ai.app/sitemap-index.xml

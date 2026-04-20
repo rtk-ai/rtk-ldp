@@ -1,6 +1,33 @@
-.fastembed_cache/
+# Astro
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
 .env
 .env.*
-*.pyc
-__pycache__/
-.DS_Store
+!.env.example
+
+# Debug
+npm-debug.log*
+pnpm-debug.log*
+
+# Generated content (rebuilt at CI time from rtk repo)
+src/content/docs/
+src/data/docs-anchor-map.json
+src/data/docs-search-entries.ts
+
+# Next.js (not used here but just in case)
+.next/

@@ -1,0 +1,118 @@
+---
+// Hero section — OSS badge, GitHub stars, headline, stats, terminal demo, viking image
+let stars = 31000
+let forks = 1900
+
+try {
+  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
+  const token = process.env.GITHUB_TOKEN
+  if (token) headers['Authorization'] = `Bearer ${token}`
+
+  const res = await fetch('https://api.github.com/repos/rtk-ai/rtk', { headers })
+  if (res.ok) {
+    const data = await res.json()
+    if (data.stargazers_count) stars = data.stargazers_count
+    if (data.forks_count) forks = data.forks_count
+  }
+} catch {}
+
+const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(stars)
+---
+<section class="hero">
+  <div class="hero-with-viking">
+    <div class="hero-content">
+      <div class="hero-badges">
+        <span class="hero-badge badge-oss" data-i18n="hero.badge_oss">Open Source &middot; MIT &middot; Rust</span>
+        <span class="hero-badge badge-stars" id="github-stars-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span id="github-stars-count">{starsLabel}</span> stars
+        </span>
+      </div>
+
+      <h1>
+        <span data-i18n="hero.title_1">Your AI agent is drowning</span><br>
+        <span data-i18n="hero.title_2">in CLI noise.</span> <span class="gradient-text" data-i18n="hero.title_3">Fix it.</span>
+      </h1>
+
+      <p class="hero-sub">
+        <span data-i18n="hero.sub_1">rtk compresses command outputs before they reach the context window.</span>
+        <strong data-i18n="hero.sub_2">Better reasoning. Longer sessions. Lower costs.</strong>
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">89%</span>
+          <span class="stat-label" data-i18n="hero.stat_pct_label">avg. noise removed</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-value">3x</span>
+          <span class="stat-label" data-i18n="hero.stat_3x_label">longer sessions</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-value">30+</span>
+          <span class="stat-label" data-i18n="hero.stat_cmds_label">commands</span>
+        </div>
+      </div>
+
+      <p class="hero-context">
+        RTK demonstrably removes an average of 89% of CLI output noise before it enters the AI context window — measured internally across 2,900+ real-world developer commands. The result: AI coding sessions extend by up to 3x, token costs drop 60-90%, and reasoning quality improves because the context window holds code instead of boilerplate. Per-command measurements: <code>cargo test</code> 91.8% savings, <code>git status</code> 80.8%, <code>find</code> 78.3%, <code>grep</code> 49.5%. On pay-per-token setups, a 10-developer team eliminates roughly $1,750/month in wasted spend. RTK is free, open source (MIT), written in Rust — activate with <code>rtk init --global</code>.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
+        <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span data-i18n="hero.cta_star">Star on GitHub</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-viking">
+      <img src="/assets/illustrations/viking-hero.webp" alt="Viking warrior smashing token noise with his axe" loading="eager" width="1920" height="1047">
+    </div>
+  </div>
+
+  <!-- Terminal Demo -->
+  <div class="terminal-demo">
+    <div class="terminal-header">
+      <div class="terminal-dot r"></div>
+      <div class="terminal-dot y"></div>
+      <div class="terminal-dot g"></div>
+      <span class="terminal-title">Terminal</span>
+    </div>
+    <div class="terminal-body" id="terminal-body">
+      <span class="prompt">$</span> <span class="cmd">rtk gain</span>
+      <br><br>
+      <span class="output">&#x1F4CA; RTK Token Savings</span>
+      <br>
+      <span class="dim">════════════════════════════════════════</span>
+      <br><br>
+      <span class="output">Total commands:</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">2,927</span>
+      <br>
+      <span class="output">Input tokens:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="waste-badge">11.6M</span>
+      <br>
+      <span class="output">Output tokens:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1.4M</span>
+      <br>
+      <span class="output">Tokens saved:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight" style="font-size:1em">10.3M (89.2%)</span>
+      <br><br>
+      <span class="output">By Command:</span>
+      <br>
+      <span class="dim">────────────────────────────────────────</span>
+      <br>
+      <span class="dim">Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avg%</span>
+      <br>
+      <span class="output">rtk find</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">324</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">6.8M</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">78.3%</span>
+      <br>
+      <span class="output">rtk git status</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1.4M</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">80.8%</span>
+      <br>
+      <span class="output">rtk grep</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">227</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">786.7K</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">49.5%</span>
+      <br>
+      <span class="output">rtk cargo test</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">50.1K</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">91.8%</span>
+      <br><br>
+      <span class="prompt">$</span> <span class="cursor-blink"></span>
+    </div>
+  </div>
+</section>
+

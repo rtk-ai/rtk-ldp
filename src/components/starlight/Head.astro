@@ -1,0 +1,46 @@
+---
+/**
+ * Starlight Head override — adds dynamic BreadcrumbList JSON-LD
+ * based on the current page URL.
+ */
+import Default from '@astrojs/starlight/components/Head.astro'
+
+const { entry, ...rest } = Astro.props
+
+// Build breadcrumb items from URL pathname
+const siteUrl = 'https://www.rtk-ai.app'
+const pathname = Astro.url.pathname.replace(/\/$/, '')
+const segments = pathname.split('/').filter(Boolean)
+
+const breadcrumbs = [
+  { name: 'RTK', url: siteUrl + '/' },
+]
+
+let accumulated = ''
+for (const seg of segments) {
+  accumulated += '/' + seg
+  const label = seg
+    .split('-')
+    .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')
+  breadcrumbs.push({ name: label, url: siteUrl + accumulated + '/' })
+}
+
+// Override last item name with actual page title if available
+if (entry?.data?.title && breadcrumbs.length > 1) {
+  breadcrumbs[breadcrumbs.length - 1].name = entry.data.title
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: item.url,
+  })),
+}
+---
+<Default {...Astro.props} />
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
