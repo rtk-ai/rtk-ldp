@@ -73,7 +73,7 @@
     if (gpPct2) gpPct2.textContent = pct ?? '?'
     preview.style.display = 'block'
 
-    const shareText = `⚡ My rtk gain: ${tokens} tokens saved (${pct}) over ${cmds} commands.\nThat's ${pct} less noise in my AI's context window.\n\ngithub.com/rtk-ai/rtk`
+    const shareText = `⚡ My rtk gain: ${tokens} tokens saved (${pct ?? '?'}) over ${cmds ?? '?'} commands.\nThat's ${pct ?? '?'} less noise in my AI's context window.\n\ngithub.com/rtk-ai/rtk`
     const encoded = encodeURIComponent(shareText)
 
     const xLink = document.getElementById('gain-share-x') as HTMLAnchorElement | null

@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "input=$(cat); echo \"$input\" | grep -q 'git push' && printf '\\n⚠️  [RSS] Pushed to landing. New release or content? Update src/data/rss-entries.ts\\n    Types: release | new_page | new_doc | new_feature | performance\\n    File: /Users/florianbruniaux/Sites/rtk-ai/rtk-landing/src/data/rss-entries.ts\\n' || true"
+            "command": "input=$(cat); echo \"$input\" | grep -q 'git push' && printf '\\n⚠️  [RSS] Pushed to landing. New release or content? Update src/data/rss-entries.ts\\n    Types: release | new_page | new_doc | new_feature | performance\\n    File: src/data/rss-entries.ts\\n' || true"
           }
         ]
       }

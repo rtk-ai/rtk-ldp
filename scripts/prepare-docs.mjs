@@ -167,8 +167,9 @@ for (const relPath of mdFiles) {
   let content = readFileSync(src, 'utf-8')
   content = normalizeLangs(content)
 
-  // Compute page URL: strip .md, add leading /guide/
-  const slug = outRelPath.replace(/\.md$/, '').replace(/\/index$/, '')
+  // Compute page URL: strip .md, normalize index pages to their directory route
+  const rawSlug = outRelPath.replace(/\.md$/, '')
+  const slug = rawSlug === 'index' ? '' : rawSlug.replace(/\/index$/, '')
   const pageUrl = `/guide/${slug}/`
 
   buildAnchorMap(content, pageUrl, anchorMap)

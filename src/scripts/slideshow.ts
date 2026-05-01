@@ -36,6 +36,8 @@ export function initSlideshow() {
   document.querySelector('.slide-prev')?.addEventListener('click', prev)
 
   document.addEventListener('keydown', e => {
+    const target = e.target as HTMLElement
+    if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable) return
     if (e.key === 'ArrowRight') next()
     if (e.key === 'ArrowLeft') prev()
   })

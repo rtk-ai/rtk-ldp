@@ -16,11 +16,11 @@ import { visit } from 'unist-util-visit'
 
 /** Convert a .md filename to a Starlight slug path */
 function mdToSlug(href) {
-  // Strip ./ ../ prefix, keep the filename
   const clean = href.replace(/^\.\.?\//, '')
-  // Lowercase, strip .md
-  const slug = clean.replace(/\.md$/, '').toLowerCase()
-  return `/docs/guide/${slug}/`
+  const rawSlug = clean.replace(/\.md$/, '').toLowerCase()
+  // Strip bare `index` or trailing `/index` so index pages map to their directory route
+  const slug = rawSlug === 'index' ? '' : rawSlug.replace(/\/index$/, '')
+  return `/guide/${slug}/`
 }
 
 /** @returns {import('unified').Plugin} */

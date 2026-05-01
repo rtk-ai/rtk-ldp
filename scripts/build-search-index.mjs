@@ -32,7 +32,8 @@ function slugify(text) {
 function getPageUrl(relPath) {
   const withoutExt = relPath.replace(/\.md$/, '')
   const normalized = withoutExt.replace(/\\/g, '/')
-  return `/guide/${normalized}/`
+  const slug = normalized === 'index' ? '' : normalized.replace(/\/index$/, '')
+  return `/guide/${slug}/`
 }
 
 function extractFrontmatterTitle(content) {
