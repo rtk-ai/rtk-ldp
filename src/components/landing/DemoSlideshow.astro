@@ -104,8 +104,7 @@ test_utils.py::TestListOps::test_flatten PASSED      [100%]
                 <span class="demo-tokens">~24 tokens</span>
                 <span class="demo-savings">-96%</span>
               </div>
-              <pre><code>&#x1F4CA; SUMMARY:
-  ====== 33 passed in 0.02s ======</code></pre>
+              <pre><code>33 passed in 0.02s</code></pre>
             </div>
           </div>
         </div>
@@ -146,15 +145,14 @@ ok  kubecraft.ai/.../llm  0.776s</code></pre>
                 <span class="demo-tokens">~246 tokens</span>
                 <span class="demo-savings">-58%</span>
               </div>
-              <pre><code>&#x1F4CA; SUMMARY:
-  --- PASS: TestControllers (5.07s)
-  ok  kubecraft.ai/.../controller  5.847s
-  --- PASS: TestNewAWSBedrockClient (0.00s)
-  --- PASS: TestNewAzureOpenAIClient (0.00s)
-  --- PASS: TestAzureOpenAIGenerateCode_Success (0.00s)
-  --- PASS: TestNewMistralClient (0.00s)
-  --- PASS: TestGenerateCode_Success (0.00s)
-  ok  kubecraft.ai/.../llm  0.246s</code></pre>
+              <pre><code>--- PASS: TestControllers (5.07s)
+ok  kubecraft.ai/.../controller  5.847s
+--- PASS: TestNewAWSBedrockClient (0.00s)
+--- PASS: TestNewAzureOpenAIClient (0.00s)
+--- PASS: TestAzureOpenAIGenerateCode_Success (0.00s)
+--- PASS: TestNewMistralClient (0.00s)
+--- PASS: TestGenerateCode_Success (0.00s)
+ok  kubecraft.ai/.../llm  0.246s</code></pre>
             </div>
           </div>
         </div>
@@ -199,7 +197,7 @@ index 1b7488b..0ebac4f 100644
 
 --- Changes ---
 
-&#x1F4C4; index.html
+index.html
   @@ -629,7 +629,7 @@
   -      min-width: 800px;
   +      min-width: 1050px;
@@ -244,14 +242,9 @@ no changes added to commit</code></pre>
                 <span class="demo-tokens">~30 tokens</span>
                 <span class="demo-savings">-75%</span>
               </div>
-              <pre><code>&#x1F4CC; master...origin/master
-&#x1F4DD; Modified: 3 files
-   index.html
-   src/main.rs
-   src/config.rs
-&#x2753; Untracked: 2 files
-   .fastembed_cache/
-   tests/</code></pre>
+              <pre><code>* master...origin/master
+~ 3  index.html, src/main.rs, src/config.rs
+? 2  .fastembed_cache/, tests/</code></pre>
             </div>
           </div>
         </div>
@@ -381,19 +374,19 @@ src/filter.rs:309:pub fn get_filter(level: FilterLevel) -> Box&lt;dyn FilterStra
                 <span class="demo-tokens">~940 tokens</span>
                 <span class="demo-savings">-55%</span>
               </div>
-              <pre><code>&#x1F50D; 112 in 47F:
+              <pre><code>112 in 47 files:
 
-&#x1F4C4; src/cargo_cmd.rs (3):
+src/cargo_cmd.rs (3):
     17: pub fn run(cmd: CargoCommand, ...) -> Result&lt;()&gt;
    551: pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
 
-&#x1F4C4; src/config.rs (4):
+src/config.rs (4):
     73: pub fn load() -> Result&lt;Self&gt;
     85: pub fn save(&amp;self) -> Result&lt;()&gt;
     97: pub fn create_default() -> Result&lt;PathBuf&gt;
    109: pub fn show_config() -> Result&lt;()&gt;
 
-&#x1F4C4; src/git.rs (2):
+src/git.rs (2):
     22: pub fn run(cmd: GitCommand, ...) -> Result&lt;()&gt;
   1264: pub fn run_passthrough(args: ...) -> Result&lt;()&gt;
 ... +62</code></pre>
@@ -433,7 +426,7 @@ src/filter.rs:309:pub fn get_filter(level: FilterLevel) -> Box&lt;dyn FilterStra
                 <span class="demo-tokens">~149 tokens</span>
                 <span class="demo-savings">-46%</span>
               </div>
-              <pre><code>&#x1F4C1; 49F 4D:
+              <pre><code>49 files in 4 dirs:
 
 src/ cargo_cmd.rs cc_economics.rs
   ccusage.rs config.rs container.rs
@@ -534,7 +527,7 @@ rusqlite = &#123; version = "0.31", features = ["bundled"] &#125;
                 <span class="demo-tokens">~55 tokens</span>
                 <span class="demo-savings">-85%</span>
               </div>
-              <pre><code>&#x1F4E6; Rust (Cargo.toml):
+              <pre><code>Rust (Cargo.toml):
   Dependencies (15):
     clap (4)
     anyhow (1.0)

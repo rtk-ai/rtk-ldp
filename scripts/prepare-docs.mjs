@@ -3,7 +3,7 @@
  *
  * Prepares RTK docs for Starlight:
  *   1. Walks $RTK_REPO_PATH/docs/guide/ recursively
- *   2. Copies to src/content/docs/guide/ preserving subdirectory structure
+ *   2. Copies to src/content/docs/docs/ preserving subdirectory structure
  *   3. Files already have valid Starlight frontmatter — no injection needed
  *   4. Generates the anchor map for cross-reference resolution
  *
@@ -26,7 +26,7 @@ const RTK_REPO_PATH = process.env.RTK_REPO_PATH
   ?? (existsSync(resolve(ROOT, '../rtk')) ? resolve(ROOT, '../rtk') : resolve(ROOT, 'rtk-repo'))
 
 const DOCS_SRC = resolve(RTK_REPO_PATH, 'docs/guide')
-const OUT_GUIDE = resolve(ROOT, 'src/content/docs/guide')
+const OUT_GUIDE = resolve(ROOT, 'src/content/docs/docs')
 const ANCHOR_MAP_PATH = resolve(ROOT, 'src/data/docs-anchor-map.json')
 
 // Clear Astro's content layer store to avoid stale entries
@@ -167,15 +167,14 @@ for (const relPath of mdFiles) {
   let content = readFileSync(src, 'utf-8')
   content = normalizeLangs(content)
 
-  // Compute page URL: strip .md, normalize index pages to their directory route
-  const rawSlug = outRelPath.replace(/\.md$/, '')
-  const slug = rawSlug === 'index' ? '' : rawSlug.replace(/\/index$/, '')
-  const pageUrl = `/guide/${slug}/`
+  // Compute page URL: strip .md, add leading /docs/
+  const slug = outRelPath.replace(/\.md$/, '').replace(/\/index$/, '')
+  const pageUrl = `/docs/${slug}/`
 
   buildAnchorMap(content, pageUrl, anchorMap)
   writeFileSync(outPath, content, 'utf-8')
 
-  console.log(`[prepare-docs]   ✓ ${relPath} → guide/${slug || ''}`)
+  console.log(`[prepare-docs]   ✓ ${relPath} → docs/${slug || ''}`)
   count++
 }
 

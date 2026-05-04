@@ -1405,6 +1405,11 @@ section h2 {
   color: var(--text-muted);
   margin-top: 12px;
 }
+.install-docs-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+.install-docs-link:hover { text-decoration: underline; }
 
 .install-steps {
   display: flex;
