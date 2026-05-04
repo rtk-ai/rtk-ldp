@@ -31,6 +31,8 @@ const ogImage = image.startsWith('http') ? image : siteUrl + image
 // Otherwise auto-inject a WebPage schema and combine with page schemas.
 const hasGraph = schemaOrg && !Array.isArray(schemaOrg) && '@graph' in (schemaOrg as Record<string, unknown>)
 
+const buildDate = new Date().toISOString().split('T')[0]
+
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -38,6 +40,7 @@ const webPageSchema = {
   description,
   url: canonical,
   inLanguage: 'en',
+  dateModified: buildDate,
   isPartOf: { '@type': 'WebSite', name: 'RTK', url: siteUrl },
   publisher: {
     '@type': 'Organization',
@@ -74,6 +77,7 @@ const allSchemas = hasGraph
     <meta property="og:image" content={ogImage} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="RTK" />
+    <meta property="og:locale" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />

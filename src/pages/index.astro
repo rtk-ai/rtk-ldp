@@ -41,6 +41,20 @@ const faqItems = [
   },
 ]
 
+let version = ''
+try {
+  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
+  const token = process.env.GITHUB_TOKEN
+  if (token) headers['Authorization'] = `Bearer ${token}`
+  const rel = await fetch('https://api.github.com/repos/rtk-ai/rtk/releases/latest', { headers })
+  if (rel.ok) {
+    const data = await rel.json()
+    if (data.tag_name) version = data.tag_name.replace(/^v/, '')
+  }
+} catch {}
+
+const buildDate = new Date().toISOString().split('T')[0]
+
 // Single @graph block — links all entities, preferred by Google & AI search engines
 const schemaOrg = {
   '@context': 'https://schema.org',
@@ -68,9 +82,10 @@ const schemaOrg = {
       url: 'https://www.rtk-ai.app',
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'macOS, Linux, Windows',
-      softwareVersion: 'latest',
+      ...(version ? { softwareVersion: version } : {}),
       releaseNotes: 'https://github.com/rtk-ai/rtk/blob/master/CHANGELOG.md',
       datePublished: '2025-01-01',
+      dateModified: buildDate,
       offers: {
         '@type': 'Offer',
         price: '0',
@@ -135,8 +150,9 @@ const schemaOrg = {
       '@id': 'https://www.rtk-ai.app/#webpage',
       url: 'https://www.rtk-ai.app/',
       name: 'RTK — Rust Token Killer',
-      description: 'Reduce Claude Code token usage by 60-90% with zero config changes. Open source, MIT, Rust.',
+      description: 'RTK reduces Claude Code token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. Free, open source, MIT, written in Rust.',
       inLanguage: 'en',
+      dateModified: buildDate,
       isPartOf: { '@type': 'WebSite', name: 'RTK', url: 'https://www.rtk-ai.app' },
       publisher: { '@id': 'https://www.rtk-ai.app/#organization' },
       speakable: {
@@ -149,7 +165,7 @@ const schemaOrg = {
 ---
 <Layout
   title="RTK — Rust Token Killer"
-  description="Reduce Claude Code token usage by 60-90% with zero config changes. Open source, MIT, Rust."
+  description="RTK reduces Claude Code token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. Free, open source, MIT, written in Rust."
   schemaOrg={schemaOrg}
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>

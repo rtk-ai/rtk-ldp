@@ -3,28 +3,112 @@ import Layout from '../../layouts/Layout.astro'
 import SearchModal from '../../components/global/SearchModal.astro'
 import ProductNav from '../../components/landing/ProductNav.astro'
 
-const schemaOrg = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'ICM — Infinite Context Memory',
-  description:
-    'Permanent persistent memory for AI agents. Single binary, SQLite storage, MCP native with 22 tools. Episodic memories with temporal decay, semantic knowledge graphs, and hybrid BM25+vector search. Auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, and VS Code.',
-  url: 'https://www.rtk-ai.app/icm/',
-  applicationCategory: 'DeveloperApplication',
-  operatingSystem: 'macOS, Linux, Windows',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-  license: 'https://opensource.org/licenses/MIT',
-  downloadUrl: 'https://github.com/rtk-ai/icm',
-  featureList: [
-    'Episodic memories with temporal decay',
-    'Semantic knowledge graphs with typed relations',
-    'Hybrid BM25 + vector cosine similarity search',
-    '22 MCP tools exposed',
-    'Auto-configures 14 AI editors',
-    '100% local — SQLite + BAAI/bge-small embeddings',
-    'Single binary, zero dependencies',
-  ],
-}
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'ICM — Infinite Context Memory',
+    description:
+      'Permanent persistent memory for AI agents. Single binary, SQLite storage, MCP native with 22 tools. Episodic memories with temporal decay, semantic knowledge graphs, and hybrid BM25+vector search. Auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, and VS Code.',
+    url: 'https://www.rtk-ai.app/icm/',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'macOS, Linux, Windows',
+    dateModified: buildDate,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+    license: 'https://opensource.org/licenses/MIT',
+    downloadUrl: 'https://github.com/rtk-ai/icm',
+    author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    featureList: [
+      'Episodic memories with temporal decay — 4 importance levels, automatic memory aging',
+      'Semantic knowledge graphs with typed relations (depends_on, contradicts, refines)',
+      'Hybrid BM25 + vector cosine similarity search (384-dim BAAI/bge-small embeddings)',
+      '22 MCP tools exposed via Model Context Protocol',
+      'Auto-configures 14 AI editors via icm init (Claude Code, Cursor, Windsurf, VS Code, and more)',
+      '100% local — SQLite storage, local embeddings, zero API keys, zero cloud',
+      'Single binary, zero dependencies — no Docker, no Python, no Qdrant',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is ICM — Infinite Context Memory?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'ICM is permanent persistent memory for AI agents. It is a single Rust binary with SQLite storage that exposes 22 MCP tools. ICM provides three memory systems: episodic memories with temporal decay (4 importance levels), semantic knowledge graphs with typed relations, and a correction feedback system. It auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, VS Code, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode. 100% local, zero API keys required, MIT licensed.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does ICM memory decay work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'ICM uses 4 importance levels: critical (never decays), high (slow decay), medium (normal decay), and low (fast decay — fades in days). Memories are stored with a timestamp and importance score. Trivial details like debug notes fade naturally while critical architectural decisions remain permanently. This mirrors human memory prioritization without manual cleanup.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does ICM compare to Mem0 and other AI memory tools?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Mem0 ($24M funded, 41K GitHub stars) requires cloud infrastructure and API keys. Zep/Graphiti (20K stars) requires Neo4j and an OpenAI API key. mcp-memory-service (1.3K stars) is MCP-native but lacks knowledge graphs and temporal decay. ICM offers a single Rust binary with SQLite — no Docker, no Python, no cloud. It combines hybrid BM25+vector search, knowledge graphs, and temporal decay in one zero-dependency binary that installs with a single cargo install command.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I install ICM and connect it to my AI editor?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Install with: cargo install icm — then run icm init to auto-configure your editors. ICM detects and configures 14 editors automatically. For Claude Code specifically, it registers ICM as an MCP server exposing all 22 tools. No manual JSON editing required.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is ICM data stored locally or in the cloud?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'ICM is 100% local. All data is stored in a SQLite file on your machine. Embeddings use BAAI/bge-small (384-dimensional vectors) running locally with no API calls. No data leaves your machine. No API keys required.',
+        },
+      },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to give AI agents persistent memory with ICM',
+    description: 'Install ICM and connect it to your AI editor in under 2 minutes. Single binary, zero dependencies.',
+    totalTime: 'PT2M',
+    estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+    tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
+    step: [
+      {
+        '@type': 'HowToStep',
+        position: 1,
+        name: 'Install ICM',
+        text: 'Run: cargo install icm — or install from source: cargo install --git https://github.com/rtk-ai/icm. Pre-built binaries are also available on the GitHub releases page.',
+        url: 'https://www.rtk-ai.app/icm/#install',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 2,
+        name: 'Auto-configure your editors',
+        text: 'Run icm init to auto-detect and configure up to 14 AI editors. Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode are all supported.',
+        url: 'https://www.rtk-ai.app/icm/#install',
+      },
+      {
+        '@type': 'HowToStep',
+        position: 3,
+        name: 'Store and recall memories',
+        text: 'Use icm_memory_store with a topic, content, and importance level (critical/high/medium/low). Retrieve context with icm_memory_recall using natural language queries. Build knowledge graphs with icm_memoir_create and icm_memoir_link.',
+        url: 'https://www.rtk-ai.app/icm/#demo',
+      },
+    ],
+  },
+]
 ---
 <Layout
   title="ICM — The SQLite of AI Memory | rtk-ai"
@@ -41,7 +125,7 @@ const schemaOrg = {
     <!-- Hero -->
     <section class="hero">
       <div class="hero-badge">Open Source &middot; MIT License &middot; Written in Rust</div>
-      <h1>Your AI forgets everything.<br><span class="gradient-text">Fix that.</span></h1>
+      <h1>Your AI forgets everything.<br><span class="gradient-text">ICM fixes that.</span></h1>
       <p class="hero-sub">
         <strong>ICM</strong> gives AI agents real persistent memory.
         Episodic memories with temporal decay, semantic knowledge graphs, hybrid search &mdash; in a single binary.

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config'
+import sitemap from '@astrojs/sitemap'
 import starlight from '@astrojs/starlight'
 import tailwind from '@astrojs/tailwind'
 import { remarkDocsLinks } from './plugins/remark-docs-links.mjs'
@@ -20,12 +21,21 @@ export default defineConfig({
   redirects: {
     '/vox.html': '/vox/',
     '/icm.html': '/icm/',
-    '/docs': '/guide/',
-    // Post-refactor: preserve backlinks after moving pages to resources/
-    '/guide/what-rtk-covers/': '/guide/resources/what-rtk-covers/',
-    '/guide/troubleshooting/': '/guide/resources/troubleshooting/',
+    // Backcompat: old /guide/ URLs → new /docs/
+    '/guide/': '/docs/',
+    '/guide/what-rtk-covers/': '/docs/resources/what-rtk-covers/',
+    '/guide/troubleshooting/': '/docs/resources/troubleshooting/',
+    '/guide/getting-started/installation/': '/docs/getting-started/installation/',
+    '/guide/getting-started/quick-start/': '/docs/getting-started/quick-start/',
+    '/guide/analytics/gain/': '/docs/analytics/gain/',
+    '/guide/analytics/discover/': '/docs/analytics/discover/',
+    '/guide/filter-workflow/': '/docs/filter-workflow/',
+    '/guide/technical/': '/docs/technical/',
+    '/guide/resources/what-rtk-covers/': '/docs/resources/what-rtk-covers/',
+    '/guide/resources/troubleshooting/': '/docs/resources/troubleshooting/',
   },
   integrations: [
+    sitemap(),
     starlight({
       title: 'RTK',
       description: 'RTK — Rust Token Killer. Reduce Claude Code token usage by 60-90%.',
@@ -38,10 +48,18 @@ export default defineConfig({
           content: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'TechArticle',
+            name: 'RTK Documentation',
+            datePublished: '2025-01-01',
+            author: {
+              '@type': 'Organization',
+              name: 'RTK AI',
+              url: 'https://www.rtk-ai.app',
+            },
             publisher: {
               '@type': 'Organization',
               name: 'RTK AI',
               url: 'https://www.rtk-ai.app',
+              logo: { '@type': 'ImageObject', url: 'https://www.rtk-ai.app/favicon.svg' },
             },
             isPartOf: {
               '@type': 'WebSite',
@@ -66,7 +84,7 @@ export default defineConfig({
       sidebar: [
         {
           label: 'Guide',
-          autogenerate: { directory: 'guide' },
+          autogenerate: { directory: 'docs' },
         },
         ...(hasContent('reference') ? [{
           label: 'Reference',
