@@ -1,0 +1,35 @@
+{
+  "name": "rtk-landing",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "dev:full": "node scripts/prepare-docs.mjs && node scripts/build-search-index.mjs && astro dev",
+    "build:guide": "node scripts/prepare-docs.mjs",
+    "build:search": "node scripts/build-search-index.mjs",
+    "build": "node scripts/prepare-docs.mjs && node scripts/build-search-index.mjs && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/starlight": "^0.37.6",
+    "astro": "^5.17.1",
+    "unist-util-visit": "^5.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^22.0.0",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.7.0"
+  }
+}

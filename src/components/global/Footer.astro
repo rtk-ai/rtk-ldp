@@ -1,0 +1,78 @@
+---
+/**
+ * Footer.astro — RTK global footer.
+ * Used on landing pages and as a Starlight override.
+ */
+const year = new Date().getFullYear()
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <span class="footer-logo">RTK</span>
+      <span class="footer-copy">© {year} RTK AI. All rights reserved.</span>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="/guide/" class="footer-link">Docs</a>
+      <a href="/icm/" class="footer-link">ICM</a>
+      <a href="/vox/" class="footer-link">Vox</a>
+      <a href="https://github.com/rtk-ai/rtk" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    padding: 1.25rem 1.5rem;
+    margin-top: auto;
+  }
+
+  .footer-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-logo {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-link {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+  .footer-link:hover {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>

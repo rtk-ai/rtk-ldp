@@ -1,133 +1,198 @@
-<!-- rtk-instructions v2 -->
-# RTK (Rust Token Killer) - Token-Optimized Commands
+# RTK Landing — Claude Code Instructions
 
-## Golden Rule
+## URLs
 
-**Always prefix commands with `rtk`**. If RTK has a dedicated filter, it uses it. If not, it passes through unchanged. This means RTK is always safe to use.
+| Environment | URL |
+|-------------|-----|
+| **Production** | https://www.rtk-ai.app |
+| **GitHub Repo** | https://github.com/rtk-ai/rtk-landing |
+| **RTK Repo** | https://github.com/rtk-ai/rtk |
 
-**Important**: Even in command chains with `&&`, use `rtk`:
+---
+
+## Stack technique
+
+| Layer | Tech |
+|-------|------|
+| Framework | Astro 5 |
+| Docs | Starlight |
+| Styles | CSS custom properties (dark-only design system) |
+| Deploy | GitHub Pages via GitHub Actions |
+| Fonts | DM Sans + JetBrains Mono (Google Fonts) |
+
+**No React. No component framework. Pure Astro + CSS.**
+
+---
+
+## Local dev
+
 ```bash
-# ❌ Wrong
-git add . && git commit -m "msg" && git push
+# Full dev (docs incluses) — à utiliser par défaut
+pnpm dev:full
 
-# ✅ Correct
-rtk git add . && rtk git commit -m "msg" && rtk git push
+# Landing only — /guide/* renvoie 404 sans les docs
+pnpm dev
+
+# Chemin custom vers le repo rtk (défaut: ../rtk)
+RTK_REPO_PATH=/path/to/rtk pnpm dev:full
 ```
 
-## RTK Commands by Workflow
+> **`/guide/` retourne 404 ?** Utilise `pnpm dev:full` — il génère les docs avant de lancer le serveur.
 
-### Build & Compile (80-90% savings)
+## Build & deploy
+
 ```bash
-rtk cargo build         # Cargo build output
-rtk cargo check         # Cargo check output
-rtk cargo clippy        # Clippy warnings grouped by file (80%)
-rtk tsc                 # TypeScript errors grouped by file/code (83%)
-rtk lint                # ESLint/Biome violations grouped (84%)
-rtk prettier --check    # Files needing format only (70%)
-rtk next build          # Next.js build with route metrics (87%)
+pnpm build    # Build complet (prepare-docs + build-search + astro build)
+pnpm preview  # Preview dist/
 ```
 
-### Test (90-99% savings)
-```bash
-rtk cargo test          # Cargo test failures only (90%)
-rtk vitest run          # Vitest failures only (99.5%)
-rtk playwright test     # Playwright failures only (94%)
-rtk test <cmd>          # Generic test wrapper - failures only
+Push sur `main` → deploy automatique via GitHub Actions.
+
+---
+
+## Architecture
+
+```
+src/
+  pages/
+    index.astro              # Landing page (Hero, Problem, Demo, Proof, FAQ…)
+    vox/index.astro          # Page produit Vox
+    icm/index.astro          # Page produit ICM
+    rss.xml.ts               # Endpoint RSS
+    404.astro
+  content/docs/guide/        # GÉNÉRÉ — ne jamais éditer (prepare-docs.mjs)
+  layouts/
+    Layout.astro             # Shell HTML — meta tags, OG, WebPage schema auto-inject
+  components/
+    landing/                 # Sections landing (Nav, Hero, Problem, Install…)
+    global/                  # Partagés (Header docs, SearchModal, I18nScript)
+    starlight/               # Overrides Starlight (Header, Footer, Head)
+  data/
+    rss-entries.ts           # ← ÉDITER ICI pour ajouter des entrées RSS
+    docs-search-entries.ts   # GÉNÉRÉ — ne pas éditer
+    docs-anchor-map.json     # GÉNÉRÉ — ne pas éditer
+  styles/
+    global.css               # Design tokens + resets (source de vérité)
+    landing.css              # Styles pages landing
+    starlight-overrides.css  # Overrides thème Starlight
+scripts/
+  prepare-docs.mjs           # Pipeline docs: rtk/docs/guide/ → src/content/docs/guide/
+  build-search-index.mjs     # Construit docs-search-entries.ts
 ```
 
-### Git (59-80% savings)
-```bash
-rtk git status          # Compact status
-rtk git log             # Compact log (works with all git flags)
-rtk git diff            # Compact diff (80%)
-rtk git show            # Compact show (80%)
-rtk git add             # Ultra-compact confirmations (59%)
-rtk git commit          # Ultra-compact confirmations (59%)
-rtk git push            # Ultra-compact confirmations
-rtk git pull            # Ultra-compact confirmations
-rtk git branch          # Compact branch list
-rtk git fetch           # Compact fetch
-rtk git stash           # Compact stash
-rtk git worktree        # Compact worktree
+---
+
+## Design system
+
+Tokens dans `src/styles/global.css`. **Jamais de styles inline pour des couleurs qui ont un token.**
+
+```css
+--bg: #060b18          --accent: #00e599
+--bg-alt: #0c1225      --cyan: #38bdf8
+--bg-card: #0f1629     --violet: #a78bfa
+--text: #e2e8f0        --border: #1a2344
+--text-muted: #8294ab
+--text-dim: #64748b
 ```
 
-Note: Git passthrough works for ALL subcommands, even those not explicitly listed.
+---
 
-### GitHub (26-87% savings)
-```bash
-rtk gh pr view <num>    # Compact PR view (87%)
-rtk gh pr checks        # Compact PR checks (79%)
-rtk gh run list         # Compact workflow runs (82%)
-rtk gh issue list       # Compact issue list (80%)
-rtk gh api              # Compact API responses (26%)
+## Fichiers critiques
+
+| Fichier | Rôle |
+|---------|------|
+| `src/pages/index.astro` | Landing — sections + schemas JSON-LD (@graph complet) |
+| `src/pages/vox/index.astro` | Page Vox — SoftwareApplication schema |
+| `src/pages/icm/index.astro` | Page ICM — SoftwareApplication schema |
+| `src/layouts/Layout.astro` | Shell — WebPage schema auto-injecté, détection @graph |
+| `src/components/starlight/Head.astro` | BreadcrumbList dynamique sur /guide/* |
+| `src/data/rss-entries.ts` | Entrées RSS — éditer manuellement à chaque release |
+| `public/robots.txt` | AI bots : GPTBot, PerplexityBot, ClaudeBot, Anthropic-ai autorisés |
+| `astro.config.mjs` | Config Astro + Starlight (sidebar, TechArticle schema global) |
+| `.github/workflows/deploy.yml` | CI/CD : clone rtk → build → GitHub Pages |
+
+---
+
+## Source de vérité
+
+| Donnée | Source | Ne jamais éditer |
+|--------|--------|-----------------|
+| Contenu docs | `rtk/docs/guide/**/*.md` | `src/content/docs/guide/` |
+| Index search docs | `build-search-index.mjs` | `src/data/docs-search-entries.ts` |
+| Anchor map | `prepare-docs.mjs` | `src/data/docs-anchor-map.json` |
+| Entrées RSS | `src/data/rss-entries.ts` | `src/pages/rss.xml.ts` |
+
+---
+
+## SEO / GEO
+
+### Schémas JSON-LD en place
+
+| Page | Schémas |
+|------|---------|
+| `/` | `@graph` : Organization, SoftwareApplication, FAQPage, HowTo, WebPage + SpeakableSpecification |
+| `/vox/` | SoftwareApplication + WebPage (via Layout auto-inject) |
+| `/icm/` | SoftwareApplication + WebPage (via Layout auto-inject) |
+| `/guide/*` | BreadcrumbList dynamique + TechArticle (via Starlight Head override) |
+
+**Règles :**
+- `src/pages/index.astro` utilise un objet `@graph` — Layout.astro le détecte et ne duplique pas WebPage
+- `/vox/` et `/icm/` passent un objet simple → Layout injecte WebPage automatiquement
+- Ne jamais ajouter `@context` dans les objets enfants d'un `@graph`
+
+### FAQ — workflow de mise à jour
+
+La FAQ est dans `faqItems` au début de `src/pages/index.astro`.
+Modifier le tableau → le composant HTML ET le FAQPage JSON-LD se mettent à jour automatiquement.
+
+### Images
+
+- **Toutes les illustrations doivent être en WebP** (`public/assets/illustrations/*.webp`)
+- Toujours ajouter `width` et `height` sur les balises `<img>` (prévention CLS)
+- Les OG images restent en PNG (Twitter/X ne supporte pas WebP pour les cards)
+- Conversion : `cwebp -q 85 -preset photo input.jpg -o output.webp`
+
+### robots.txt
+
+Bots IA explicitement autorisés : `GPTBot`, `PerplexityBot`, `ClaudeBot`, `Anthropic-ai`, `Bingbot`, `Google-Extended`.
+Ne pas bloquer ces bots — c'est critique pour la visibilité GEO.
+
+---
+
+## Après chaque release RTK
+
+1. Mettre à jour `src/data/rss-entries.ts` — ajouter une entrée en haut :
+
+```ts
+{
+  type: 'release',           // release | new_page | new_doc | new_feature | performance
+  title: 'RTK vX.Y.Z released',
+  date: 'Apr 10, 2026',
+  description: '1-3 phrases, no HTML',
+  link: 'https://www.rtk-ai.app/',
+}
 ```
 
-### JavaScript/TypeScript Tooling (70-90% savings)
+2. Push → deploy auto.
+
+---
+
+## Nav architecture
+
+| Page | Composant nav |
+|------|--------------|
+| Landing (`/`) | `src/components/landing/Nav.astro` |
+| Produits (`/vox/`, `/icm/`) | `src/components/landing/ProductNav.astro` |
+| Docs (`/guide/**`) | `src/components/global/Header.astro` (Starlight override) |
+
+Les anchor links dans Nav.astro utilisent des chemins absolus (`/#problem`, `/#install`) pour fonctionner depuis n'importe quelle page.
+
+---
+
+## Workflow obligatoire avant push sur main
+
 ```bash
-rtk pnpm list           # Compact dependency tree (70%)
-rtk pnpm outdated       # Compact outdated packages (80%)
-rtk pnpm install        # Compact install output (90%)
-rtk npm run <script>    # Compact npm script output
-rtk npx <cmd>           # Compact npx command output
-rtk prisma              # Prisma without ASCII art (88%)
+pnpm build    # Doit passer avec 0 erreur
 ```
 
-### Files & Search (60-75% savings)
-```bash
-rtk ls <path>           # Tree format, compact (65%)
-rtk read <file>         # Code reading with filtering (60%)
-rtk grep <pattern>      # Search grouped by file (75%)
-rtk find <pattern>      # Find grouped by directory (70%)
-```
-
-### Analysis & Debug (70-90% savings)
-```bash
-rtk err <cmd>           # Filter errors only from any command
-rtk log <file>          # Deduplicated logs with counts
-rtk json <file>         # JSON structure without values
-rtk deps                # Dependency overview
-rtk env                 # Environment variables compact
-rtk summary <cmd>       # Smart summary of command output
-rtk diff                # Ultra-compact diffs
-```
-
-### Infrastructure (85% savings)
-```bash
-rtk docker ps           # Compact container list
-rtk docker images       # Compact image list
-rtk docker logs <c>     # Deduplicated logs
-rtk kubectl get         # Compact resource list
-rtk kubectl logs        # Deduplicated pod logs
-```
-
-### Network (65-70% savings)
-```bash
-rtk curl <url>          # Compact HTTP responses (70%)
-rtk wget <url>          # Compact download output (65%)
-```
-
-### Meta Commands
-```bash
-rtk gain                # View token savings statistics
-rtk gain --history      # View command history with savings
-rtk discover            # Analyze Claude Code sessions for missed RTK usage
-rtk proxy <cmd>         # Run command without filtering (for debugging)
-rtk init                # Add RTK instructions to CLAUDE.md
-rtk init --global       # Add RTK to ~/.claude/CLAUDE.md
-```
-
-## Token Savings Overview
-
-| Category | Commands | Typical Savings |
-|----------|----------|-----------------|
-| Tests | vitest, playwright, cargo test | 90-99% |
-| Build | next, tsc, lint, prettier | 70-87% |
-| Git | status, log, diff, add, commit | 59-80% |
-| GitHub | gh pr, gh run, gh issue | 26-87% |
-| Package Managers | pnpm, npm, npx | 70-90% |
-| Files | ls, read, grep, find | 60-75% |
-| Infrastructure | docker, kubectl | 85% |
-| Network | curl, wget | 65-70% |
-
-Overall average: **60-90% token reduction** on common development operations.
-<!-- /rtk-instructions -->
+Vérifier : 0 erreurs TypeScript, toutes les pages générées, `/rss.xml` accessible.

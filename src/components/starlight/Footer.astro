@@ -1,0 +1,20 @@
+---
+/**
+ * Starlight Footer override.
+ * Moves the footer to <body> level to escape Starlight's flex layout.
+ */
+import GlobalFooter from '../global/Footer.astro'
+---
+<div id="sl-footer-portal">
+  <GlobalFooter />
+</div>
+
+<script is:inline>
+  ;(function () {
+    var el = document.getElementById('sl-footer-portal')
+    if (el) {
+      el.removeAttribute('id')
+      document.body.appendChild(el)
+    }
+  })()
+</script>

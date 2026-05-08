@@ -1,0 +1,76 @@
+---
+// Install section — 3 install methods + hook activation + 3-step visual guide
+---
+<section class="install-section" id="install">
+  <div class="section-inner">
+    <div class="section-viking reveal">
+      <img src="/assets/illustrations/viking-install.webp" alt="Viking slamming axe into ground creating green energy shockwave" loading="lazy" width="1920" height="1047">
+    </div>
+    <h2 class="reveal" data-i18n="install.title">Get started in 30 seconds</h2>
+    <p class="section-sub reveal" data-i18n="install.sub">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
+
+    <div class="install-grid reveal">
+      <div class="install-card install-primary">
+        <h3 data-i18n="install.quick">Quick Install</h3>
+        <p data-i18n="install.quick_desc">One-liner for Linux &amp; macOS</p>
+        <div class="code-block">
+          <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh</code>
+          <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label="Copy">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="install-card">
+        <h3 data-i18n="install.brew">Via Homebrew</h3>
+        <p data-i18n="install.brew_desc">macOS &amp; Linux</p>
+        <div class="code-block">
+          <code>brew install rtk</code>
+          <button class="copy-btn" data-copy="brew install rtk" aria-label="Copy">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+        <div class="code-block">
+          <code>brew upgrade rtk</code>
+          <button class="copy-btn" data-copy="brew upgrade rtk" aria-label="Copy">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="install-card">
+        <h3 data-i18n="install.binaries">Pre-built Binaries</h3>
+        <p data-i18n="install.binaries_desc">macOS, Linux, Windows</p>
+        <div class="code-block">
+          <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link" data-i18n="install.releases">Download from Releases &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="install-setup reveal">
+      <h3 data-i18n="install.hook">Then activate the auto-rewrite hook</h3>
+      <div class="code-block code-block-wide">
+        <code>rtk init --global</code>
+        <button class="copy-btn" data-copy="rtk init --global" aria-label="Copy">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        </button>
+      </div>
+      <p class="install-note" data-i18n="install.hook_note">This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents. <a href="/docs/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
+
+      <div class="install-steps">
+        <div class="install-step">
+          <span class="install-step-num">1</span>
+          <code>curl ... | sh</code>
+        </div>
+        <div class="install-step">
+          <span class="install-step-num">2</span>
+          <code>rtk init --global</code>
+        </div>
+        <div class="install-step">
+          <span class="install-step-num">3</span>
+          <code>rtk gain</code>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
