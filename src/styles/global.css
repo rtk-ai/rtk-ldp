@@ -20,11 +20,13 @@
   /* Text */
   --text: #e2e8f0;
   --text-bright: #f8fafc;
-  --text-muted: #8294ab;
-  --text-dim: #64748b;
+  --text-muted: #94a3b8;
+  --text-dim: #7e8ca6;
+  --text-on-accent: #060b18;
 
   /* Brand colors */
   --accent: #00e599;
+  --accent-hover: #00cc88;
   --accent-dim: rgba(0, 229, 153, 0.10);
   --accent-glow: rgba(0, 229, 153, 0.25);
   --cyan: #38bdf8;
@@ -40,10 +42,45 @@
   --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
+  /* Backgrounds (extended) */
+  --bg-elevated: #1a2244;
+  --bg-glass: rgba(6, 11, 24, 0.82);
+
   /* Layout */
   --max-w: 1140px;
-  --radius: 12px;
-  --radius-lg: 16px;
+
+  /* Spacing scale (4pt base) */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.5rem;     /* 24px */
+  --space-6: 2rem;       /* 32px */
+  --space-7: 2.5rem;     /* 40px */
+  --space-8: 3rem;       /* 48px */
+  --space-9: 4rem;       /* 64px */
+  --space-10: 5rem;      /* 80px */
+  --space-11: 6.25rem;   /* 100px */
+  --space-12: 8.75rem;   /* 140px */
+
+  /* Typography scale */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+
+  /* Radius scale */
+  --radius-xs: 0.25rem;  /* 4px */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem;   /* 8px */
+  --radius: 0.75rem;     /* 12px */
+  --radius-lg: 1rem;     /* 16px */
+  --radius-xl: 1.25rem;  /* 20px */
+  --radius-pill: 999px;
 
   /* Shadows */
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.35);

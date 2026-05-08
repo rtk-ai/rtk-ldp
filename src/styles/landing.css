@@ -23,51 +23,7 @@
   outline-offset: 2px;
 }
 
-:root {
-  --bg: #060b18;
-  --bg-alt: #0c1225;
-  --bg-card: #0f1629;
-  --bg-card-hover: #151d35;
-  --border: #1a2344;
-  --border-light: #243056;
-  --text: #e2e8f0;
-  --text-bright: #f8fafc;
-  --text-muted: #64748b;
-  --text-dim: #475569;
-  --accent: #00e599;
-  --accent-dim: rgba(0, 229, 153, 0.10);
-  --accent-glow: rgba(0, 229, 153, 0.25);
-  --cyan: #38bdf8;
-  --cyan-dim: rgba(56, 189, 248, 0.10);
-  --violet: #a78bfa;
-  --violet-dim: rgba(167, 139, 250, 0.12);
-  --red: #f87171;
-  --red-dim: rgba(248, 113, 113, 0.10);
-  --orange: #fb923c;
-  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-  --max-w: 1140px;
-  --radius: 12px;
-  --radius-lg: 16px;
-}
-
-html { scroll-behavior: smooth; overflow-x: hidden; }
-
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-code, pre {
-  font-family: var(--font-mono);
-}
+/* Tokens sourced from global.css — do not redeclare :root here */
 
 /* === Scroll Reveal === */
 .reveal {
@@ -353,7 +309,7 @@ code, pre {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-6);
   position: relative;
 }
 
@@ -361,8 +317,8 @@ code, pre {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 16px;
-  border-radius: 100px;
+  padding: 6px var(--space-4);
+  border-radius: var(--radius-pill);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -422,9 +378,9 @@ code, pre {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.8em;
   color: var(--cyan);
-  background: rgba(34, 211, 238, 0.08);
+  background: var(--cyan-dim);
   padding: 1px 5px;
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
 }
 
 .hero-stats {
@@ -463,10 +419,10 @@ code, pre {
 
 .hero-cta {
   display: flex;
-  gap: 12px;
+  gap: var(--space-3);
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-8);
   position: relative;
 }
 
