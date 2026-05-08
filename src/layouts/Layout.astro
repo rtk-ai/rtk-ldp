@@ -36,6 +36,7 @@ const buildDate = new Date().toISOString().split('T')[0]
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
+  '@id': canonical + '#webpage',
   name: title,
   description,
   url: canonical,
