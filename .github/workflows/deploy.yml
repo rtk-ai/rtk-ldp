@@ -40,7 +40,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Clone RTK repo
-        run: git clone --depth 1 --branch main https://github.com/rtk-ai/rtk.git ./rtk-repo
+        run: git clone --depth 1 --branch master https://github.com/rtk-ai/rtk.git ./rtk-repo
         # If private: use https://x-access-token:${{ secrets.RTK_REPO_PAT }}@github.com/rtk-ai/rtk.git
 
       - name: Prepare docs content
