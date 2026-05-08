@@ -34,7 +34,7 @@ const LANDING_ENTRIES: SearchEntry[] = [
   { id: 'cmd-next', title: 'rtk next / tsc / lint', keywords: 'next nextjs typescript tsc eslint lint prettier build', category: 'Commands', url: '/#install', source: 'landing' },
 
   // Docs
-  { id: 'docs-home', title: 'RTK Documentation', keywords: 'docs documentation guide reference technical features filters', category: 'Docs', url: '/guide/', source: 'docs' },
+  { id: 'docs-home', title: 'RTK Documentation', keywords: 'docs documentation guide reference technical features filters', category: 'Docs', url: '/docs/', source: 'docs' },
 
   // Links
   { id: 'github-repo', title: 'RTK on GitHub', keywords: 'github repo source code open source mit stars fork', category: 'Links', url: 'https://github.com/rtk-ai/rtk', source: 'landing' },

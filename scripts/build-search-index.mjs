@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const ROOT = resolve(__dirname, '..')
-const CONTENT_DIR = resolve(ROOT, 'src/content/docs/guide')
+const CONTENT_DIR = resolve(ROOT, 'src/content/docs/docs')
 const OUT_PATH = resolve(ROOT, 'src/data/docs-search-entries.ts')
 
 const SKIP_HEADINGS = new Set([
@@ -33,7 +33,7 @@ function getPageUrl(relPath) {
   const withoutExt = relPath.replace(/\.md$/, '')
   const normalized = withoutExt.replace(/\\/g, '/')
   const slug = normalized === 'index' ? '' : normalized.replace(/\/index$/, '')
-  return `/guide/${slug}/`
+  return `/docs/${slug}/`
 }
 
 function extractFrontmatterTitle(content) {
