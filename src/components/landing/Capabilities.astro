@@ -1,0 +1,53 @@
+---
+// Capabilities — "Context Forge" suite section
+// Shows RTK + ICM + Vox as a coherent 3-tool suite
+const tools = [
+  {
+    label: 'RTK',
+    verb: 'Compress',
+    color: 'var(--accent)',
+    href: '/#install',
+    description: 'Commands, file reads, tests — compressed 60-90% before they reach your model context. Zero config.',
+    stat: '89% noise removed',
+  },
+  {
+    label: 'ICM',
+    verb: 'Remember',
+    color: 'var(--cyan)',
+    href: '/icm/',
+    description: 'Persistent memory across sessions. Your agent picks up where it left off — decisions, errors, context.',
+    stat: 'Infinite context memory',
+  },
+  {
+    label: 'Vox',
+    verb: 'Speak',
+    color: 'var(--violet)',
+    href: '/vox/',
+    description: 'Voice output for your AI agent. Three TTS backends, four Claude Code integration modes.',
+    stat: '3 TTS backends',
+  },
+]
+---
+
+<section class="capabilities section-calm" aria-labelledby="capabilities-title">
+  <div class="capabilities-inner">
+    <span class="eyebrow">// context forge</span>
+    <h2 id="capabilities-title" class="capabilities-title">
+      One forge. <span class="gradient-text">Three tools.</span>
+    </h2>
+    <p class="capabilities-sub">RTK, ICM, and Vox share one philosophy: open source, Rust, zero telemetry, local-first.</p>
+
+    <div class="capabilities-grid">
+      {tools.map((t) => (
+        <a href={t.href} class="capabilities-card card-muted">
+          <div class="capabilities-card-header">
+            <span class="capabilities-label" style={`color: ${t.color}`}>{t.label}</span>
+            <span class="capabilities-verb">{t.verb}</span>
+          </div>
+          <p class="capabilities-desc">{t.description}</p>
+          <span class="capabilities-stat pill-neutral">{t.stat}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
