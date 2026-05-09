@@ -4,11 +4,7 @@ import SiteHeader from '../components/global/SiteHeader.astro'
 import Hero from '../components/landing/Hero.astro'
 import Problem from '../components/landing/Problem.astro'
 import DemoSlideshow from '../components/landing/DemoSlideshow.astro'
-import Proof from '../components/landing/Proof.astro'
-import ToolComparison from '../components/landing/ToolComparison.astro'
-import CloudWaitlist from '../components/landing/CloudWaitlist.astro'
 import Install from '../components/landing/Install.astro'
-import ShareGain from '../components/landing/ShareGain.astro'
 import Cta from '../components/landing/Cta.astro'
 import SiteFooter from '../components/global/SiteFooter.astro'
 import I18nScript from '../components/global/I18nScript.astro'
@@ -163,6 +159,10 @@ const schemaOrg = {
   ],
 }
 ---
+<script is:inline>
+  var _ldgMap={'#proof':'/savings/','#compare':'/vs/','#cloud':'/cloud/','#share-gain':'/cloud/'};
+  if(location.hash&&_ldgMap[location.hash])location.replace(_ldgMap[location.hash]);
+</script>
 <Layout
   title="RTK — Rust Token Killer"
   description="RTK reduces Claude Code token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. MIT licensed."
@@ -174,11 +174,7 @@ const schemaOrg = {
     <Hero />
     <Problem />
     <DemoSlideshow />
-    <Proof />
-    <ToolComparison />
-    <CloudWaitlist />
     <Install />
-    <ShareGain />
     <Cta />
 
     <!-- FAQ Section -->

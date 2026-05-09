@@ -16,6 +16,27 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_page',
+    title: 'RTK Cloud waitlist page is live',
+    date: 'May 9, 2026',
+    description: 'The RTK Cloud page is now live with a waitlist signup and a share-your-savings section. Cloud features will bring team dashboards and org-wide hook deployment.',
+    link: 'https://www.rtk-ai.app/cloud/',
+  },
+  {
+    type: 'new_page',
+    title: 'RTK vs AI coding tools — comparison page',
+    date: 'May 9, 2026',
+    description: 'New comparison page showing RTK token savings across Claude Code, Cursor, Gemini CLI, Copilot, Aider, and other AI assistants. RTK compresses CLI output at the proxy layer, so any tool benefits.',
+    link: 'https://www.rtk-ai.app/vs/',
+  },
+  {
+    type: 'new_page',
+    title: 'RTK token savings data — dedicated page',
+    date: 'May 9, 2026',
+    description: 'Proof page with measured savings across 2,900+ real commands. cargo test at 91.8%, git status at 80.8%, grep at 49.5%. One developer tracked 138 million tokens saved over several weeks.',
+    link: 'https://www.rtk-ai.app/savings/',
+  },
+  {
+    type: 'new_page',
     title: 'Vox now has a dedicated how-it-works page',
     date: 'May 9, 2026',
     description: 'The Vox product page splits into two focused pages: an overview with features, install guide, and FAQ; and a how-it-works page covering the three TTS backends, CLI demo, Claude Code integration modes, and platform defaults.',
