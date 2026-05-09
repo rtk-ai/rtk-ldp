@@ -1,16 +1,16 @@
 ---
-// CTA section — headline, sub, 2 CTAs, social share links
+// CTA section — viewport-height close, tri-gradient headline, viking at 12% opacity
 import Eyebrow from './Eyebrow.astro'
 ---
-<section class="cta-section">
-  <div class="section-inner">
-    <Eyebrow label="ship it" />
-    <div class="cta-viking reveal">
-      <img src="/assets/illustrations/viking-cta.webp" alt="Victorious viking standing over crushed tokens" loading="lazy" width="1920" height="1047">
+<section class="cta-section cta-section--full">
+  <div class="section-inner cta-inner">
+    <div class="cta-viking-bg">
+      <img src="/assets/illustrations/viking-cta.webp" alt="" aria-hidden="true" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal">
+    <Eyebrow label="ship it" />
+    <h2 class="reveal cta-headline">
       <span data-i18n="cta.title_1">Your AI doesn't need</span><br>
-      <span data-i18n="cta.title_2">to read all that.</span>
+      <span class="gradient-text" data-i18n="cta.title_2">to read all that.</span>
     </h2>
     <p class="section-sub reveal" data-i18n="cta.sub">Install rtk. Better code, longer sessions, lower costs.</p>
     <div class="hero-cta reveal">
