@@ -1,0 +1,229 @@
+---
+import IconGitHub from '../ui/icons/IconGitHub.astro'
+import IconKofi from '../ui/icons/IconKofi.astro'
+import IconDiscord from '../ui/icons/IconDiscord.astro'
+import IconSearch from '../ui/icons/IconSearch.astro'
+
+interface Props {
+  variant?: 'landing' | 'product'
+  product?: 'vox' | 'icm'
+}
+
+const { variant = 'landing', product } = Astro.props
+const isLanding = variant === 'landing'
+const isVox = product === 'vox'
+const isIcm = product === 'icm'
+const githubUrl = isVox
+  ? 'https://github.com/rtk-ai/vox'
+  : isIcm
+  ? 'https://github.com/rtk-ai/icm'
+  : 'https://github.com/rtk-ai/rtk'
+---
+
+<nav class="nav" id="main-nav">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+      <img src="/brand/logo.png" alt="rtk logo" width="28" height="28" style="border-radius:var(--radius-sm);">
+      <span>rtk</span>
+      {!isLanding && (
+        <>
+          <span class="nav-sep">/</span>
+          {isVox
+            ? <span class="logo-text-accent">vox</span>
+            : <span class="logo-text-icm">icm</span>
+          }
+        </>
+      )}
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="nav-links" id="nav-links">
+      {isLanding ? (
+        <>
+          <a href="/#problem" class="nav-link" data-i18n="nav.why">Why</a>
+          <a href="/#demo" class="nav-link" data-i18n="nav.demo">Demo</a>
+          <a href="/#compare" class="nav-link nav-link-hide-md" data-i18n="nav.tools">Tools</a>
+          <a href="/#install" class="nav-link" data-i18n="nav.install">Install</a>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <a href="/guide/" class="nav-link">Docs</a>
+          <a href="/vox/" class="nav-link nav-link-vox">Vox</a>
+          <a href="/icm/" class="nav-link nav-link-icm">ICM</a>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title="Support on Ko-fi" aria-label="Support on Ko-fi">
+            <IconKofi size={16} />
+          </a>
+          <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title="Join Discord" aria-label="Join Discord">
+            <IconDiscord size={16} />
+          </a>
+          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">
+            <IconGitHub size={14} />
+            GitHub
+          </a>
+          <button id="search-trigger" class="search-trigger" aria-label="Search (Cmd+K)">
+            <IconSearch size={15} />
+            <span class="search-trigger-label">Search</span>
+            <kbd class="search-trigger-kbd">⌘K</kbd>
+          </button>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="de">DE</button>
+            <button class="lang-btn" data-lang="zh">ZH</button>
+            <button class="lang-btn" data-lang="ja">JA</button>
+          </div>
+        </>
+      ) : (
+        <>
+          {isVox ? (
+            <>
+              <a href="#features">Features</a>
+              <a href="#backends">Backends</a>
+              <a href="#install">Install</a>
+              <a href="#integration">Integration</a>
+              <a href="/icm/" class="nav-link-icm">ICM</a>
+            </>
+          ) : (
+            <>
+              <a href="#features">Features</a>
+              <a href="#models">Models</a>
+              <a href="#tools">Live Demo</a>
+              <a href="#compare">Compare</a>
+              <a href="#install">Install</a>
+              <a href="/vox/" class="nav-link-vox">Vox</a>
+              <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm nav-btn-discord" target="_blank" rel="noopener">
+                <IconDiscord size={15} />
+                Discord
+              </a>
+            </>
+          )}
+          <a href={githubUrl} class="btn btn-sm" target="_blank" rel="noopener">
+            <IconGitHub size={15} />
+            GitHub
+          </a>
+        </>
+      )}
+    </div>
+
+    <!-- Mobile right: search + hamburger -->
+    <div class="nav-mobile-right">
+      {isLanding ? (
+        <button id="search-trigger-mobile" class="search-trigger search-trigger-mobile" aria-label="Search (Cmd+K)">
+          <IconSearch size={18} />
+        </button>
+      ) : (
+        <button id="search-trigger" class="search-trigger search-trigger-mobile" aria-label="Search (Cmd+K)">
+          <IconSearch size={18} />
+        </button>
+      )}
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+  <div class="nav-drawer-inner">
+    <div class="nav-drawer-links">
+      {isLanding ? (
+        <>
+          <a href="/#problem" data-i18n="nav.why">Why</a>
+          <a href="/#demo" data-i18n="nav.demo">Demo</a>
+          <a href="/#compare" data-i18n="nav.tools">Tools</a>
+          <a href="/#install" data-i18n="nav.install">Install</a>
+          <a href="/guide/">Docs</a>
+          <a href="/vox/" class="nav-link-vox">Vox</a>
+          <a href="/icm/" class="nav-link-icm">ICM</a>
+        </>
+      ) : isVox ? (
+        <>
+          <a href="#features">Features</a>
+          <a href="#backends">Backends</a>
+          <a href="#install">Install</a>
+          <a href="#integration">Integration</a>
+          <a href="/icm/" class="nav-link-icm">ICM</a>
+        </>
+      ) : (
+        <>
+          <a href="#features">Features</a>
+          <a href="#models">Models</a>
+          <a href="#tools">Live Demo</a>
+          <a href="#compare">Compare</a>
+          <a href="#install">Install</a>
+          <a href="/vox/" class="nav-link-vox">Vox</a>
+        </>
+      )}
+    </div>
+    <div class="nav-drawer-actions">
+      {isLanding ? (
+        <>
+          <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">☕ Support</a>
+          <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">Discord</a>
+          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">GitHub</a>
+        </>
+      ) : (
+        <>
+          {!isVox && (
+            <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm nav-btn-discord" target="_blank" rel="noopener">Discord</a>
+          )}
+          <a href={githubUrl} class="btn btn-sm" target="_blank" rel="noopener">GitHub</a>
+        </>
+      )}
+    </div>
+    {isLanding && (
+      <div class="nav-drawer-lang">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+        <button class="lang-btn" data-lang="ja">JA</button>
+      </div>
+    )}
+  </div>
+</div>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger')
+  const drawer = document.getElementById('nav-drawer')
+  const overlay = document.getElementById('nav-overlay')
+  const searchMobile = document.getElementById('search-trigger-mobile')
+  const searchDesktop = document.getElementById('search-trigger')
+
+  function openDrawer() {
+    drawer?.classList.add('open')
+    overlay?.classList.add('open')
+    hamburger?.setAttribute('aria-expanded', 'true')
+    drawer?.setAttribute('aria-hidden', 'false')
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closeDrawer() {
+    drawer?.classList.remove('open')
+    overlay?.classList.remove('open')
+    hamburger?.setAttribute('aria-expanded', 'false')
+    drawer?.setAttribute('aria-hidden', 'true')
+    document.body.style.overflow = ''
+  }
+
+  hamburger?.addEventListener('click', () => {
+    drawer?.classList.contains('open') ? closeDrawer() : openDrawer()
+  })
+
+  overlay?.addEventListener('click', closeDrawer)
+  drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer))
+
+  // On landing: mobile search delegates to desktop search trigger
+  if (searchMobile) {
+    searchMobile.addEventListener('click', () => { searchDesktop?.click() })
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer() })
+</script>

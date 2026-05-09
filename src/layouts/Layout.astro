@@ -47,7 +47,7 @@ const webPageSchema = {
     '@type': 'Organization',
     name: 'RTK AI',
     url: siteUrl,
-    logo: { '@type': 'ImageObject', url: siteUrl + '/favicon.svg' },
+    logo: { '@type': 'ImageObject', url: siteUrl + '/brand/logo.png', width: 256, height: 256 },
   },
 }
 
@@ -94,6 +94,10 @@ const allSchemas = hasGraph
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/brand/favicon/favicon-192.png" />
 
     <!-- Fonts (preconnect for performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

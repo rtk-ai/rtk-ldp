@@ -1,13 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Nav from '../components/landing/Nav.astro'
-import LandingFooter from '../components/landing/LandingFooter.astro'
+import SiteHeader from '../components/global/SiteHeader.astro'
+import SiteFooter from '../components/global/SiteFooter.astro'
 ---
 <Layout
   title="404 — Page not found · RTK"
   description="This page does not exist."
 >
-  <Nav />
+  <SiteHeader />
   <main id="main-content" class="notfound-main">
     <div class="notfound-container">
       <div class="notfound-code">404</div>
@@ -21,7 +21,7 @@ import LandingFooter from '../components/landing/LandingFooter.astro'
       </div>
     </div>
   </main>
-  <LandingFooter />
+  <SiteFooter />
 </Layout>
 
 <style is:global>

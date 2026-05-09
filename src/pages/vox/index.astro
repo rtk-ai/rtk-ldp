@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import SearchModal from '../../components/global/SearchModal.astro'
-import ProductNav from '../../components/landing/ProductNav.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
@@ -119,7 +119,7 @@ const schemaOrg = [
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>
 
-  <ProductNav product="vox" />
+  <SiteHeader variant="product" product="vox" />
 
   <main id="main-content">
 
@@ -532,7 +532,7 @@ const schemaOrg = [
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <img src="https://avatars.githubusercontent.com/u/258253854?s=40" alt="rtk" width="18" height="18" style="border-radius:4px;">
+        <img src="/brand/logo.png" alt="rtk" width="18" height="18" style="border-radius:var(--radius-xs);">
         <strong>rtk</strong> / <strong>vox</strong> &middot; Give Claude Code a voice
       </div>
       <div class="footer-right">

@@ -15,10 +15,10 @@
   --sl-color-accent-high: #33edb0;                   /* --accent lighter */
 
   /* Text */
-  --sl-color-white:  #f8fafc;    /* --text-bright */
-  --sl-color-gray-1: #e2e8f0;    /* --text */
-  --sl-color-gray-2: #94a3b8;    /* mid muted */
-  --sl-color-gray-3: #475569;    /* --text-dim */
+  --sl-color-white:  #f8fafc;             /* --text-bright */
+  --sl-color-gray-1: #e2e8f0;             /* --text */
+  --sl-color-gray-2: var(--text-muted);   /* #94a3b8 */
+  --sl-color-gray-3: var(--text-dim);     /* #7e8ca6 */
   --sl-color-gray-4: #243056;    /* --border-light */
   --sl-color-gray-5: #0f1629;    /* --bg-card */
   --sl-color-gray-6: #0c1225;    /* --bg-alt */
