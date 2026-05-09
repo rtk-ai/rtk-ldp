@@ -10,7 +10,7 @@
     <p class="section-sub reveal" data-i18n="problem.sub">Every command your agent runs pollutes the context window with noise. Here's what that costs you.</p>
 
     <div class="problem-grid">
-      <div class="problem-card reveal">
+      <div class="problem-card card-muted reveal">
         <div class="problem-icon brain">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a7 7 0 0 0-7 7c0 3 1.5 5.5 4 7v2h6v-2c2.5-1.5 4-4 4-7a7 7 0 0 0-7-7z"/>
@@ -22,10 +22,10 @@
         </div>
         <h3 data-i18n="problem.card1.title">Context pollution</h3>
         <p data-i18n-html="problem.card1.text">Your 200K context window isn't infinite. When <code>cargo test</code> dumps 5,000 tokens of boilerplate, that's 5,000 tokens less for reasoning about your actual code.</p>
-        <span class="metric metric-violet" data-i18n="problem.card1.metric">Worse AI reasoning</span>
+        <pre class="problem-terminal problem-terminal-violet"><code>context_quality: degraded ▼</code></pre>
       </div>
 
-      <div class="problem-card reveal">
+      <div class="problem-card card-muted reveal">
         <div class="problem-icon clock">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -36,10 +36,10 @@
         </div>
         <h3 data-i18n="problem.card2.title">Sessions too short</h3>
         <p data-i18n="problem.card2.text">Context overflows, the agent restarts, you lose the thread. On flat-rate plans, you hit rate limits 40% faster than you should.</p>
-        <span class="metric metric-cyan" data-i18n="problem.card2.metric">3x shorter sessions</span>
+        <pre class="problem-terminal problem-terminal-cyan"><code>session_remaining: 32% ▼</code></pre>
       </div>
 
-      <div class="problem-card reveal">
+      <div class="problem-card card-muted reveal">
         <div class="problem-icon money">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="1" x2="12" y2="23"/>
@@ -50,7 +50,7 @@
         </div>
         <h3 data-i18n="problem.card3.title">Costs that explode</h3>
         <p data-i18n="problem.card3.text">On pay-per-token setups (API, Gemini CLI, Aider), 70% of your bill is noise the LLM doesn't need. A team of 10 wastes ~$1,750/month.</p>
-        <span class="metric metric-red" data-i18n="problem.card3.metric">~70% wasted spend</span>
+        <pre class="problem-terminal problem-terminal-red"><code>token_waste: $1,750/mo ▲</code></pre>
       </div>
     </div>
   </div>

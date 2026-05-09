@@ -3443,3 +3443,35 @@ td code {
 .capabilities-stat {
   align-self: flex-start;
 }
+
+/* Problem cards — terminal evidence blocks */
+.problem-terminal {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  margin: var(--space-4) 0 0;
+  border-left: 3px solid transparent;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.problem-terminal code {
+  color: inherit;
+  background: none;
+  padding: 0;
+}
+
+.problem-terminal-violet {
+  color: var(--violet);
+  border-left-color: var(--violet);
+}
+
+.problem-terminal-cyan {
+  color: var(--cyan);
+  border-left-color: var(--cyan);
+}
+
+.problem-terminal-red {
+  color: var(--red);
+  border-left-color: var(--red);
+}
