@@ -1,16 +1,55 @@
 ---
-// Install section — 3 install methods + hook activation + 3-step visual guide
+// Install section — persona tabs + 3 install methods + hook activation
 import Eyebrow from './Eyebrow.astro'
+
+const personas = [
+  {
+    id: 'claude-code',
+    label: 'Claude Code',
+    initCmd: 'rtk init --claude-code',
+    initNote: 'Installs PreToolUse hook in Claude Code settings.json — every Bash call is rewritten automatically.',
+  },
+  {
+    id: 'cursor',
+    label: 'Cursor',
+    initCmd: 'rtk init --cursor',
+    initNote: "Configures Cursor's .cursorrules to pipe Bash commands through rtk.",
+  },
+  {
+    id: 'other',
+    label: 'Other AI CLI',
+    initCmd: 'rtk init --global',
+    initNote: 'Installs a global shell hook — works with Aider, Gemini CLI, Codex, Windsurf, and any terminal AI tool.',
+  },
+]
 ---
+
 <section class="install-section" id="install">
   <div class="section-inner">
-    <Eyebrow label="get started" />
     <div class="section-viking reveal">
       <img src="/assets/illustrations/viking-install.webp" alt="Viking slamming axe into ground creating green energy shockwave" loading="lazy" width="1920" height="1047">
     </div>
+    <Eyebrow label="get started" />
     <h2 class="reveal" data-i18n="install.title">Get started in 30 seconds</h2>
     <p class="section-sub reveal" data-i18n="install.sub">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
 
+    <!-- Persona tabs -->
+    <div class="persona-tabs reveal" role="tablist" aria-label="Choose your AI tool">
+      {personas.map((p, i) => (
+        <button
+          class={`persona-tab${i === 0 ? ' persona-tab--active' : ''}`}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={`persona-panel-${p.id}`}
+          id={`persona-tab-${p.id}`}
+          data-persona={p.id}
+        >
+          {p.label}
+        </button>
+      ))}
+    </div>
+
+    <!-- Install cards (same for all personas) -->
     <div class="install-grid reveal">
       <div class="install-card install-primary">
         <h3 data-i18n="install.quick">Quick Install</h3>
@@ -49,15 +88,26 @@ import Eyebrow from './Eyebrow.astro'
       </div>
     </div>
 
+    <!-- Persona-specific hook command -->
     <div class="install-setup reveal">
       <h3 data-i18n="install.hook">Then activate the auto-rewrite hook</h3>
-      <div class="code-block code-block-wide">
-        <code>rtk init --global</code>
-        <button class="copy-btn" data-copy="rtk init --global" aria-label="Copy">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        </button>
-      </div>
-      <p class="install-note" data-i18n="install.hook_note">This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents. <a href="/docs/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
+      {personas.map((p, i) => (
+        <div
+          id={`persona-panel-${p.id}`}
+          class={`persona-panel${i === 0 ? ' persona-panel--active' : ''}`}
+          role="tabpanel"
+          aria-labelledby={`persona-tab-${p.id}`}
+          hidden={i !== 0}
+        >
+          <div class="code-block code-block-wide">
+            <code>{p.initCmd}</code>
+            <button class="copy-btn" data-copy={p.initCmd} aria-label="Copy">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <p class="install-note">{p.initNote} <a href="/guide/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
+        </div>
+      ))}
 
       <div class="install-steps">
         <div class="install-step">
@@ -66,7 +116,7 @@ import Eyebrow from './Eyebrow.astro'
         </div>
         <div class="install-step">
           <span class="install-step-num">2</span>
-          <code>rtk init --global</code>
+          <code id="install-step-2-cmd">rtk init --claude-code</code>
         </div>
         <div class="install-step">
           <span class="install-step-num">3</span>
@@ -76,3 +126,34 @@ import Eyebrow from './Eyebrow.astro'
     </div>
   </div>
 </section>
+
+<script>
+  // Persona tab switcher — plain JS, no framework
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.persona-tab')
+  const panels = document.querySelectorAll<HTMLElement>('.persona-panel')
+  const step2Cmd = document.getElementById('install-step-2-cmd')
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const persona = tab.dataset.persona
+
+      tabs.forEach((t) => {
+        t.classList.toggle('persona-tab--active', t === tab)
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false')
+      })
+
+      panels.forEach((panel) => {
+        const isActive = panel.id === `persona-panel-${persona}`
+        panel.classList.toggle('persona-panel--active', isActive)
+        panel.hidden = !isActive
+      })
+
+      // Update step 2 command label
+      const activePanel = document.getElementById(`persona-panel-${persona}`)
+      if (step2Cmd && activePanel) {
+        const cmd = activePanel.querySelector('code')?.textContent
+        if (cmd) step2Cmd.textContent = cmd
+      }
+    })
+  })
+</script>
