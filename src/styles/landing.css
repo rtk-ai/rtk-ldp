@@ -3258,3 +3258,48 @@ td code {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ── Context Forge Redesign — Utility classes ───────────────────────── */
+
+/* Section with calm-mode breathing room */
+.section-calm {
+  padding-block: var(--space-13);
+}
+
+/* Neutral muted card — no glow, no colored border */
+.card-muted {
+  background: var(--card-muted-bg);
+  border: 1px solid var(--card-muted-border);
+  border-radius: var(--card-muted-radius);
+}
+
+/* Compatibility pill — neutral tool tag */
+.pill-neutral {
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: var(--pill-text);
+  padding: var(--pill-padding);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  display: inline-block;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.pill-neutral:hover {
+  border-color: var(--border-light);
+  color: var(--text-muted);
+}
+
+/* Section eyebrow label — `// 01 — label` mono style */
+.eyebrow {
+  color: var(--eyebrow-color);
+  font-size: var(--eyebrow-size);
+  font-family: var(--eyebrow-font);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
