@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro'
 import SearchModal from '../../components/global/SearchModal.astro'
-import ProductNav from '../../components/landing/ProductNav.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
@@ -119,7 +119,7 @@ const schemaOrg = [
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>
 
-  <ProductNav product="icm" />
+  <SiteHeader variant="product" product="icm" />
 
   <main id="main-content">
 

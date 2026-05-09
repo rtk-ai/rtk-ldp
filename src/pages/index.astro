@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Nav from '../components/landing/Nav.astro'
+import SiteHeader from '../components/global/SiteHeader.astro'
 import Hero from '../components/landing/Hero.astro'
 import Problem from '../components/landing/Problem.astro'
 import DemoSlideshow from '../components/landing/DemoSlideshow.astro'
@@ -10,7 +10,7 @@ import CloudWaitlist from '../components/landing/CloudWaitlist.astro'
 import Install from '../components/landing/Install.astro'
 import ShareGain from '../components/landing/ShareGain.astro'
 import Cta from '../components/landing/Cta.astro'
-import LandingFooter from '../components/landing/LandingFooter.astro'
+import SiteFooter from '../components/global/SiteFooter.astro'
 import I18nScript from '../components/global/I18nScript.astro'
 import SearchModal from '../components/global/SearchModal.astro'
 
@@ -169,7 +169,7 @@ const schemaOrg = {
   schemaOrg={schemaOrg}
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>
-  <Nav />
+  <SiteHeader />
   <main id="main-content">
     <Hero />
     <Problem />
@@ -241,7 +241,7 @@ const schemaOrg = {
     </section>
   </main>
 
-  <LandingFooter />
+  <SiteFooter />
   <SearchModal />
   <I18nScript />
 </Layout>

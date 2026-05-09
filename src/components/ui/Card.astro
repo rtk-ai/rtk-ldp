@@ -1,0 +1,52 @@
+---
+interface Props {
+  variant?: 'default' | 'featured' | 'row'
+  class?: string
+}
+const { variant = 'default', class: cls } = Astro.props
+---
+<div class:list={['card', `card--${variant}`, cls]}>
+  <slot />
+</div>
+
+<style>
+.card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+/* Default: stacked, full padding */
+.card--default {
+  background: var(--bg-card);
+  padding: var(--space-5);
+}
+.card--default:hover {
+  border-color: var(--border-light);
+  transform: translateY(-2px);
+}
+
+/* Featured: accent border + elevated bg, larger padding */
+.card--featured {
+  background: var(--bg-elevated);
+  padding: var(--space-6);
+  border-color: var(--accent-dim);
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+.card--featured:hover {
+  border-color: var(--accent);
+}
+
+/* Row: horizontal layout, compact */
+.card--row {
+  background: var(--bg-card);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border-radius: var(--radius-md);
+}
+.card--row:hover {
+  border-color: var(--border-light);
+}
+</style>

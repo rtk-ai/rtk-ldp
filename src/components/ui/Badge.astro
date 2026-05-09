@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: 'accent' | 'violet' | 'cyan' | 'muted'
+  class?: string
+}
+const { variant = 'muted', class: cls } = Astro.props
+---
+<span class:list={['badge', `badge-${variant}`, cls]}>
+  <slot />
+</span>
+
+<style>
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-accent { background: var(--accent-dim); color: var(--accent); }
+.badge-violet { background: var(--violet-dim); color: var(--violet); }
+.badge-cyan   { background: var(--cyan-dim);   color: var(--cyan); }
+.badge-muted  { background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border); }
+</style>
