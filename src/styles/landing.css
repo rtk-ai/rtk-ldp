@@ -1809,17 +1809,17 @@ section h2 {
   right: 0;
   top: calc(100% + 8px);
   z-index: 200;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2px;
-  padding: 6px;
+  flex-direction: column;
+  gap: 1px;
+  padding: 4px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  min-width: 168px;
+  min-width: 80px;
 }
 .lang-dropdown[open] .lang-panel { display: flex; }
+.lang-panel .lang-btn { text-align: left; width: 100%; padding: 5px 10px; }
 
 .lang-switch {
   display: flex;
