@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import ToolComparison from '../../components/landing/ToolComparison.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'RTK vs AI Coding Tools — Token Usage Comparison',
+  description: 'Compare RTK token savings across Claude Code, Cursor, Gemini CLI, GitHub Copilot, Aider, and other AI coding assistants. RTK compresses CLI output before it reaches any AI context window.',
+  url: 'https://www.rtk-ai.app/vs/',
+  datePublished: '2025-01-01',
+  dateModified: buildDate,
+  author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  about: { '@type': 'SoftwareApplication', name: 'RTK — Rust Token Killer', url: 'https://www.rtk-ai.app' },
+}
+---
+<Layout
+  title="RTK vs AI Coding Tools — Token Comparison | rtk-ai"
+  description="Compare RTK token savings with Claude Code, Cursor, Gemini CLI, Copilot, Aider. RTK compresses CLI output before it reaches any AI context window, reducing noise by 89%."
+  schemaOrg={schemaOrg}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader />
+
+  <main id="main-content">
+
+    <!-- Hero compact -->
+    <section class="hero hero-compact">
+      <nav class="rtk-subnav" aria-label="RTK pages">
+        <a href="/">RTK</a>
+        <span aria-hidden="true">/</span>
+        <strong>Compare Tools</strong>
+      </nav>
+      <h1>RTK works with every AI coding tool.<br><span style="color:var(--accent)">See how the savings stack up.</span></h1>
+      <p class="hero-sub">
+        From Claude Code to Cursor, Aider to Gemini CLI. RTK compresses CLI output at the proxy layer,
+        so any tool that reads terminal output gets cleaner context with fewer tokens.
+      </p>
+    </section>
+
+    <ToolComparison />
+
+    <!-- Footer CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>Works with your tools<br><span style="color:var(--accent)">out of the box.</span></h2>
+        <p class="section-sub">Install RTK. Zero config. Works with any AI assistant that reads terminal output.</p>
+        <div class="hero-cta">
+          <a href="/#install" class="btn btn-primary">Install RTK &rarr;</a>
+          <a href="/savings/" class="btn btn-ghost">See the data</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <SiteFooter />
+  <SearchModal />
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* RTK landing sub-page breadcrumb */
+  .rtk-subnav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .rtk-subnav a { color: var(--accent); text-decoration: none; }
+  .rtk-subnav a:hover { text-decoration: underline; }
+  .rtk-subnav span { color: var(--text-dim); }
+  .rtk-subnav strong { color: var(--text); }
+
+  /* Compact hero for sub-pages */
+  .hero.hero-compact {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .hero.hero-compact h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+</style>
+
+<script>
+  import { initReveal } from '../../scripts/reveal'
+  initReveal()
+</script>
