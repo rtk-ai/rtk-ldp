@@ -16,6 +16,13 @@ export interface RssEntry {
 export const rssEntries: RssEntry[] = [
   {
     type: 'new_page',
+    title: 'Vox now has a dedicated how-it-works page',
+    date: 'May 9, 2026',
+    description: 'The Vox product page splits into two focused pages: an overview with features, install guide, and FAQ; and a how-it-works page covering the three TTS backends, CLI demo, Claude Code integration modes, and platform defaults.',
+    link: 'https://www.rtk-ai.app/vox/',
+  },
+  {
+    type: 'new_page',
     title: 'ICM now has dedicated pages for each topic',
     date: 'May 9, 2026',
     description: 'The ICM product page splits into three focused pages: an overview with FAQ and install guide, a how-it-works page covering the three memory systems and the interactive demo, and a comparison page for the AI memory landscape.',

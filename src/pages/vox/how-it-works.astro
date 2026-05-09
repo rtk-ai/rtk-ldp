@@ -1,0 +1,351 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'How Vox Works — TTS Backends, Voice Cloning, and Claude Code Integration',
+  description: 'Vox offers three TTS backends: macOS native say (~50ms), MLX-powered qwen neural (~500ms, Apple Silicon), and pure-Rust qwen-native (~300ms, Metal and CUDA GPU). 8 MCP tools integrate directly into Claude Code via vox init mcp.',
+  url: 'https://www.rtk-ai.app/vox/how-it-works/',
+  datePublished: '2025-06-01',
+  dateModified: buildDate,
+  author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  about: { '@type': 'SoftwareApplication', name: 'Vox', url: 'https://www.rtk-ai.app/vox/' },
+}
+---
+<Layout
+  title="How Vox Works — Backends & Integration | rtk-ai"
+  description="Vox TTS backends: macOS say (50ms), MLX qwen (500ms, Apple Silicon), pure-Rust qwen-native (300ms GPU). 8 MCP tools, voice cloning from 10 seconds. Zero API calls."
+  image="/og-vox.png"
+  schemaOrg={schemaOrg}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader variant="product" product="vox" />
+
+  <main id="main-content">
+
+    <!-- Hero compact -->
+    <section class="hero hero-compact">
+      <nav class="vox-subnav" aria-label="Vox pages">
+        <a href="/vox/">Vox Overview</a>
+        <span aria-hidden="true">/</span>
+        <strong>How it works</strong>
+      </nav>
+      <h1>3 backends,<br><span style="color:var(--violet)">one CLI.</span></h1>
+      <p class="hero-sub">
+        System TTS in 50ms, neural speech in 300ms, cross-platform GPU support. Voice cloning from a 10-second sample.
+        Everything runs on-device, zero API calls, zero cloud dependencies.
+      </p>
+    </section>
+
+    <!-- Backends -->
+    <section class="vox-backends" id="backends">
+      <div class="section-inner">
+        <h2>3 TTS backends, one CLI</h2>
+        <p class="section-sub">Pick the right engine for your platform and quality needs.</p>
+        <div class="backends-grid">
+          <div class="backend-card">
+            <div class="backend-header">
+              <span class="backend-name">say</span>
+              <span class="backend-badge">macOS native</span>
+            </div>
+            <p class="backend-desc">System speech synthesis via macOS <code>NSSpeechSynthesizer</code>. Instant startup, zero downloads, dozens of built-in voices.</p>
+            <div class="backend-meta">
+              <div class="backend-meta-item">
+                <span class="meta-label">Latency</span>
+                <span class="meta-value meta-fast">~50ms</span>
+              </div>
+              <div class="backend-meta-item">
+                <span class="meta-label">Quality</span>
+                <span class="meta-value">System</span>
+              </div>
+              <div class="backend-meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value">macOS</span>
+              </div>
+            </div>
+          </div>
+          <div class="backend-card backend-card-accent">
+            <div class="backend-header">
+              <span class="backend-name">qwen</span>
+              <span class="backend-badge badge-neural">Neural</span>
+            </div>
+            <p class="backend-desc">MLX-powered neural TTS on Apple Silicon. High-quality, natural-sounding speech with voice cloning support. Model auto-downloads (~1.2 GB).</p>
+            <div class="backend-meta">
+              <div class="backend-meta-item">
+                <span class="meta-label">Latency</span>
+                <span class="meta-value">~500ms</span>
+              </div>
+              <div class="backend-meta-item">
+                <span class="meta-label">Quality</span>
+                <span class="meta-value meta-best">Neural</span>
+              </div>
+              <div class="backend-meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value">macOS (Apple Si.)</span>
+              </div>
+            </div>
+          </div>
+          <div class="backend-card">
+            <div class="backend-header">
+              <span class="backend-name">qwen-native</span>
+              <span class="backend-badge">Pure Rust</span>
+            </div>
+            <p class="backend-desc">Cross-platform neural TTS. Pure Rust implementation with Metal &amp; CUDA GPU support. No Python, no dependencies.</p>
+            <div class="backend-meta">
+              <div class="backend-meta-item">
+                <span class="meta-label">Latency</span>
+                <span class="meta-value">~300ms</span>
+              </div>
+              <div class="backend-meta-item">
+                <span class="meta-label">Quality</span>
+                <span class="meta-value meta-best">Neural</span>
+              </div>
+              <div class="backend-meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value meta-fast">All</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="demo" id="demo">
+      <div class="section-inner">
+        <h2>See it in action</h2>
+        <p class="section-sub">Simple CLI, powerful results.</p>
+        <div class="vox-demo-grid">
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Basic usage</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> vox "Build complete. 3 tests passed."
+<span class="cmd-comment"># speaks aloud</span>
+
+<span class="cmd-prompt">$</span> vox -b qwen-native "Cross-platform TTS."
+<span class="cmd-comment"># uses pure-Rust backend</span>
+
+<span class="cmd-prompt">$</span> echo "Pipeline done" | vox
+<span class="cmd-comment"># reads from stdin</span></code></pre>
+          </div>
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Voice cloning</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> vox clone record myvoice --duration 10
+<span class="cmd-comment"># records 10s of your voice</span>
+
+<span class="cmd-prompt">$</span> vox clone add patrick \
+    --audio ~/voice.wav \
+    --text "Transcription helps quality"
+<span class="cmd-comment"># register from audio file</span>
+
+<span class="cmd-prompt">$</span> vox -v patrick "Speaking with your voice."
+<span class="cmd-comment"># use cloned voice</span></code></pre>
+          </div>
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Configuration</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> vox config set backend qwen
+<span class="cmd-comment"># switch default backend</span>
+
+<span class="cmd-prompt">$</span> vox config set lang fr
+<span class="cmd-comment"># set default language</span>
+
+<span class="cmd-prompt">$</span> vox config set voice Chelsie
+<span class="cmd-comment"># set default voice</span>
+
+<span class="cmd-prompt">$</span> vox --list-voices
+<span class="cmd-comment"># show available voices</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integration -->
+    <section class="vox-integration" id="integration">
+      <div class="section-inner">
+        <h2>Claude Code integration</h2>
+        <p class="section-sub">4 init modes. Pick what fits your workflow.</p>
+        <div class="integration-grid">
+          <div class="integration-card integration-primary">
+            <div class="integration-header">
+              <span class="integration-mode">mcp</span>
+              <span class="integration-badge">Default</span>
+            </div>
+            <p>Registers <code>vox serve</code> as an MCP server in <code>~/.claude.json</code>. Exposes 8 tools that Claude can call directly.</p>
+            <div class="code-block">
+              <code>vox init mcp</code>
+              <button class="copy-btn" data-copy="vox init mcp" aria-label="Copy">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="integration-card">
+            <div class="integration-header">
+              <span class="integration-mode">cli</span>
+            </div>
+            <p>Creates a <code>CLAUDE.md</code> with instructions and adds a stop hook that speaks "Termin&eacute;" when tasks complete.</p>
+            <div class="code-block">
+              <code>vox init cli</code>
+              <button class="copy-btn" data-copy="vox init cli" aria-label="Copy">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="integration-card">
+            <div class="integration-header">
+              <span class="integration-mode">skill</span>
+            </div>
+            <p>Generates a <code>/speak</code> slash command in <code>~/.claude/commands/</code>. Invoke with <code>/speak Hello</code>.</p>
+            <div class="code-block">
+              <code>vox init skill</code>
+              <button class="copy-btn" data-copy="vox init skill" aria-label="Copy">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="integration-card">
+            <div class="integration-header">
+              <span class="integration-mode">all</span>
+            </div>
+            <p>Runs all three modes at once. MCP server + CLAUDE.md + slash command. The full experience.</p>
+            <div class="code-block">
+              <code>vox init all</code>
+              <button class="copy-btn" data-copy="vox init all" aria-label="Copy">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mcp-tools-section">
+          <h3>8 MCP tools exposed</h3>
+          <div class="mcp-tools-grid">
+            <div class="mcp-tool"><code>vox_speak</code><span>Read text aloud</span></div>
+            <div class="mcp-tool"><code>vox_list_voices</code><span>List available voices</span></div>
+            <div class="mcp-tool"><code>vox_clone_add</code><span>Add a voice clone</span></div>
+            <div class="mcp-tool"><code>vox_clone_list</code><span>List voice clones</span></div>
+            <div class="mcp-tool"><code>vox_clone_remove</code><span>Remove a clone</span></div>
+            <div class="mcp-tool"><code>vox_config_show</code><span>Show preferences</span></div>
+            <div class="mcp-tool"><code>vox_config_set</code><span>Set a preference</span></div>
+            <div class="mcp-tool"><code>vox_stats</code><span>Usage statistics</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform defaults -->
+    <section class="vox-platforms" id="platforms">
+      <div class="section-inner">
+        <h2>Platform defaults</h2>
+        <p class="section-sub">Vox picks the best backend for your system automatically.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Default Backend</th>
+                <th>GPU Flag</th>
+                <th>Extra Dependency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>macOS</td>
+                <td><code>say</code></td>
+                <td><code>--features metal</code></td>
+                <td>None</td>
+              </tr>
+              <tr>
+                <td>Linux / WSL</td>
+                <td><code>qwen-native</code></td>
+                <td><code>--features cuda</code></td>
+                <td><code>libasound2-dev</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>Ready to give Claude Code<br><span style="color:var(--violet)">a voice?</span></h2>
+        <p class="section-sub">Install Vox. One command connects it to Claude Code.</p>
+        <div class="hero-cta">
+          <a href="/vox/#install" class="btn btn-primary">Install Vox &rarr;</a>
+          <a href="https://github.com/rtk-ai/vox" class="btn btn-ghost" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="/brand/logo.png" alt="rtk" width="18" height="18" style="border-radius:var(--radius-xs);">
+        <strong>rtk</strong> / <a href="/vox/"><strong>vox</strong></a> &middot; How it works
+      </div>
+      <div class="footer-right">
+        <a href="/">rtk</a>
+        <a href="/vox/">Vox Overview</a>
+        <a href="/icm/">ICM</a>
+        <a href="https://github.com/rtk-ai/vox" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rtk-ai/vox/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <SearchModal />
+
+  <script>
+    import { initCopyButtons } from '../../scripts/copy'
+    initCopyButtons()
+  </script>
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* Vox sub-page breadcrumb */
+  .vox-subnav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .vox-subnav a { color: var(--violet); text-decoration: none; }
+  .vox-subnav a:hover { text-decoration: underline; }
+  .vox-subnav span { color: var(--text-dim); }
+  .vox-subnav strong { color: var(--text); }
+
+  /* Compact hero for sub-pages */
+  .hero.hero-compact {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .hero.hero-compact h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+</style>
