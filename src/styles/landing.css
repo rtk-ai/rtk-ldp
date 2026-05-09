@@ -1637,6 +1637,13 @@ section h2 {
 }
 .footer-col-links a:hover { color: var(--accent); text-decoration: none; }
 
+.footer-sub-link {
+  padding-left: 1rem;
+  font-size: 0.78rem !important;
+  color: var(--text-dim);
+  opacity: 0.8;
+}
+
 /* Product links with dot indicator */
 .footer-link-product {
   display: flex;
