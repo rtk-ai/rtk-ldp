@@ -56,9 +56,12 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
         </div>
       </div>
 
-      <p class="hero-context">
-        RTK demonstrably removes an average of 89% of CLI output noise before it enters the AI context window — measured internally across 2,900+ real-world developer commands. The result: AI coding sessions extend by up to 3x, token costs drop 60-90%, and reasoning quality improves because the context window holds code instead of boilerplate. Per-command measurements: <code>cargo test</code> 91.8% savings, <code>git status</code> 80.8%, <code>find</code> 78.3%, <code>grep</code> 49.5%. On pay-per-token setups, a 10-developer team eliminates roughly $1,750/month in wasted spend. RTK is free, open source (MIT), written in Rust — activate with <code>rtk init --global</code>.
-      </p>
+      <details class="hero-context-details">
+        <summary class="hero-context-toggle">Why RTK? The numbers.</summary>
+        <p class="hero-context">
+          RTK demonstrably removes an average of 89% of CLI output noise before it enters the AI context window — measured internally across 2,900+ real-world developer commands. The result: AI coding sessions extend by up to 3x, token costs drop 60-90%, and reasoning quality improves because the context window holds code instead of boilerplate. Per-command measurements: <code>cargo test</code> 91.8% savings, <code>git status</code> 80.8%, <code>find</code> 78.3%, <code>grep</code> 49.5%. On pay-per-token setups, a 10-developer team eliminates roughly $1,750/month in wasted spend. RTK is free, open source (MIT), written in Rust — activate with <code>rtk init --global</code>.
+        </p>
+      </details>
 
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
