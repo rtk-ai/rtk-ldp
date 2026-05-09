@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'ICM vs Mem0, Zep, and Other AI Memory Tools',
+  description: 'Compare ICM to Mem0 ($24M raised), Zep/Graphiti (Neo4j + OpenAI), mcp-memory-service, and built-in editor memory. ICM is the only zero-dependency, fully local option with hybrid search, knowledge graphs, and temporal decay.',
+  url: 'https://www.rtk-ai.app/icm/vs/',
+  datePublished: '2025-09-01',
+  dateModified: buildDate,
+  author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  about: { '@type': 'SoftwareApplication', name: 'ICM — Infinite Context Memory', url: 'https://www.rtk-ai.app/icm/' },
+}
+---
+<Layout
+  title="ICM vs Mem0, Zep, and AI Memory Tools | rtk-ai"
+  description="Compare ICM to Mem0, Zep/Graphiti, mcp-memory-service, and built-in editor memory. Single binary, zero cloud, hybrid search. See how they stack up."
+  image="/og-icm-banner.png"
+  schemaOrg={schemaOrg}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader variant="product" product="icm" />
+
+  <main id="main-content">
+
+    <!-- Hero compact -->
+    <section class="hero hero-compact">
+      <nav class="icm-subnav" aria-label="ICM pages">
+        <a href="/icm/">ICM Overview</a>
+        <span aria-hidden="true">/</span>
+        <a href="/icm/how-it-works/">How it works</a>
+        <span aria-hidden="true">/</span>
+        <strong>Compare</strong>
+      </nav>
+      <h1>The AI memory landscape,<br><span style="color:var(--cyan)">honestly mapped.</span></h1>
+      <p class="hero-sub">
+        From $24M-funded platforms to flat-file editors. ICM sits in a specific place: local-first, zero-dependency, three memory systems in one binary.
+        Here's how that compares to the alternatives.
+      </p>
+    </section>
+
+    <!-- Market Comparison -->
+    <section class="icm-compare" id="compare">
+      <div class="section-inner">
+        <h2>The AI memory landscape</h2>
+        <p class="section-sub">From flat files to $24M startups. Here's how they compare.</p>
+        <div class="rival-grid">
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">Mem0</span>
+              <span class="rival-tag rival-tag-funded">$24M raised</span>
+            </div>
+            <p class="rival-desc">Market leader. Cloud-first memory platform with managed API.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Python</span>
+              <span class="rival-chip">Docker</span>
+              <span class="rival-chip">Qdrant</span>
+              <span class="rival-chip">OpenAI API</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">41K GitHub stars</div>
+              <div class="rival-con">Requires API key + cloud infra</div>
+              <div class="rival-con">Not MCP native</div>
+            </div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">Zep / Graphiti</span>
+              <span class="rival-tag rival-tag-oss">Open Source</span>
+            </div>
+            <p class="rival-desc">Temporal knowledge graph with LLM extraction. Most sophisticated OSS approach.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Python</span>
+              <span class="rival-chip">Neo4j</span>
+              <span class="rival-chip">OpenAI API</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">20K stars, deep graph model</div>
+              <div class="rival-con">Requires Neo4j + API key</div>
+              <div class="rival-con">Heavy infrastructure</div>
+            </div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">mcp-memory-service</span>
+              <span class="rival-tag rival-tag-oss">MCP</span>
+            </div>
+            <p class="rival-desc">Community MCP memory server. Simple key-value store with ChromaDB.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Python</span>
+              <span class="rival-chip">ChromaDB</span>
+              <span class="rival-chip">pip install</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">1.3K stars, MCP native</div>
+              <div class="rival-con">No knowledge graphs</div>
+              <div class="rival-con">No temporal decay</div>
+            </div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">Built-in Memory</span>
+              <span class="rival-tag">CLAUDE.md / Cursor / Windsurf</span>
+            </div>
+            <p class="rival-desc">File-based instructions or basic cloud memory. Good enough for simple preferences.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Flat file</span>
+              <span class="rival-chip">Manual</span>
+              <span class="rival-chip">No search</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">Zero setup, built into tool</div>
+              <div class="rival-con">No semantic search</div>
+              <div class="rival-con">No cross-tool sharing</div>
+            </div>
+          </div>
+        </div>
+        <div class="icm-highlight-card">
+          <div class="icm-highlight-header">
+            <div>
+              <span class="icm-highlight-name">ICM</span>
+              <span class="icm-highlight-tagline">The SQLite of AI memory</span>
+            </div>
+            <div class="rival-stack">
+              <span class="rival-chip rival-chip-accent">Rust</span>
+              <span class="rival-chip rival-chip-accent">SQLite</span>
+              <span class="rival-chip rival-chip-accent">Zero deps</span>
+            </div>
+          </div>
+          <div class="icm-highlight-grid">
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Single binary</strong><span>No Docker, no Python, no cloud</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Hybrid search</strong><span>BM25 + 384-dim vectors, local embeddings</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Knowledge graphs</strong><span>Typed relations, BFS traversal, revision tracking</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>22 MCP tools</strong><span>Auto-configures 14 editors via <code>icm init</code></span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Temporal decay</strong><span>4 importance levels, automatic memory aging</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>100% local &amp; private</strong><span>Zero API keys, zero cloud, your data stays yours</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>Ready to give your AI<br><span style="color:var(--cyan)">a real memory?</span></h2>
+        <p class="section-sub">Single binary. Zero cloud. Two minutes to install.</p>
+        <div class="hero-cta">
+          <a href="/icm/#install" class="btn btn-primary">Install ICM &rarr;</a>
+          <a href="https://github.com/rtk-ai/icm" class="btn btn-ghost" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="/brand/logo.png" alt="rtk" width="18" height="18" style="border-radius:var(--radius-xs);">
+        <strong>rtk</strong> / <a href="/icm/"><strong>icm</strong></a> &middot; Compare
+      </div>
+      <div class="footer-right">
+        <a href="/">rtk</a>
+        <a href="/icm/">ICM Overview</a>
+        <a href="/icm/how-it-works/">How it works</a>
+        <a href="https://github.com/rtk-ai/icm" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rtk-ai/icm/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <SearchModal />
+
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* ICM sub-page breadcrumb */
+  .icm-subnav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .icm-subnav a { color: var(--cyan); text-decoration: none; }
+  .icm-subnav a:hover { text-decoration: underline; }
+  .icm-subnav span { color: var(--text-dim); }
+  .icm-subnav strong { color: var(--text); }
+
+  /* Compact hero for sub-pages */
+  .hero.hero-compact {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .hero.hero-compact h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+</style>

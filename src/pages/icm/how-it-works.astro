@@ -1,0 +1,572 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline: 'How ICM Works — Three Memory Systems Explained',
+  description: 'ICM provides three complementary memory systems: episodic memories with temporal decay, semantic knowledge graphs with typed relations, and a correction feedback loop. Hybrid BM25+vector search with local BAAI/bge-small embeddings.',
+  url: 'https://www.rtk-ai.app/icm/how-it-works/',
+  datePublished: '2025-09-01',
+  dateModified: buildDate,
+  author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  about: { '@type': 'SoftwareApplication', name: 'ICM — Infinite Context Memory', url: 'https://www.rtk-ai.app/icm/' },
+}
+---
+<Layout
+  title="How ICM Works — Three Memory Systems | rtk-ai"
+  description="ICM gives AI agents three memory systems: episodic decay, knowledge graphs, and correction feedback. Hybrid BM25+vector search. Single binary, 100% local."
+  image="/og-icm-banner.png"
+  schemaOrg={schemaOrg}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader variant="product" product="icm" />
+
+  <main id="main-content">
+
+    <!-- Hero compact -->
+    <section class="hero hero-compact">
+      <nav class="icm-subnav" aria-label="ICM pages">
+        <a href="/icm/">ICM Overview</a>
+        <span aria-hidden="true">/</span>
+        <strong>How it works</strong>
+      </nav>
+      <h1>Three memory systems,<br><span style="color:var(--cyan)">one binary.</span></h1>
+      <p class="hero-sub">
+        Episodic memories with temporal decay, semantic knowledge graphs with typed relations, and a feedback loop for corrections.
+        All local, all searchable, all in a single <code>cargo install</code>.
+      </p>
+    </section>
+
+    <!-- Memory Models -->
+    <section class="icm-models" id="models">
+      <div class="section-inner">
+        <h2>Three memory systems</h2>
+        <p class="section-sub">Three complementary systems for different types of knowledge.</p>
+        <div class="models-grid">
+
+          <div class="model-card">
+            <div class="model-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="model-header">
+              <span class="model-name">Memories</span>
+              <span class="model-badge">Episodic</span>
+            </div>
+            <p class="model-desc">Session context, decisions, resolved errors. Stored with importance levels. Fade naturally over time &mdash; critical stays forever, trivial disappears.</p>
+            <div class="model-terminal">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">icm_memory_store</span>
+              </div>
+              <pre><code><span class="cmd-comment"># topic:</span> "decisions-auth"
+<span class="cmd-comment"># content:</span> "JWT with RS256, 30-day expiry"
+<span class="cmd-comment"># importance:</span> <span style="color:#22d3ee">critical</span>  <span class="cmd-comment"># never decays</span>
+
+<span class="cmd-comment"># topic:</span> "debug-notes"
+<span class="cmd-comment"># content:</span> "Tried port 3000, was busy"
+<span class="cmd-comment"># importance:</span> <span style="color:#a1a1aa">low</span>  <span class="cmd-comment"># fades in days</span></code></pre>
+            </div>
+            <div class="model-tags">
+              <span class="model-tag">4 importance levels</span>
+              <span class="model-tag">auto-decay</span>
+              <span class="model-tag">hybrid search</span>
+              <span class="model-tag">topic-based</span>
+            </div>
+          </div>
+
+          <div class="model-card model-card-accent">
+            <div class="model-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#a78bfa" stroke-width="1.5"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#22d3ee" stroke-width="1.5"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="#22d3ee" stroke-width="1.5"/></svg>
+            </div>
+            <div class="model-header">
+              <span class="model-name">Memoirs</span>
+              <span class="model-badge model-badge-violet">Knowledge Graph</span>
+            </div>
+            <p class="model-desc">Permanent knowledge containers. Concepts linked by typed edges form a graph. Never decay, only refined. Architecture decisions, domain models, project structure.</p>
+            <div class="model-graph">
+              <svg viewBox="0 0 480 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arrow-cyan" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 4L0 8z" fill="#22d3ee"/>
+                  </marker>
+                  <marker id="arrow-violet" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 4L0 8z" fill="#a78bfa"/>
+                  </marker>
+                  <marker id="arrow-green" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 4L0 8z" fill="#4ade80"/>
+                  </marker>
+                  <filter id="node-glow">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <line x1="240" y1="52" x2="130" y2="118" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-cyan)"/>
+                <line x1="240" y1="52" x2="350" y2="118" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-cyan)"/>
+                <line x1="78" y1="218" x2="118" y2="148" stroke="#a78bfa" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-violet)"/>
+                <line x1="220" y1="228" x2="340" y2="228" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-green)"/>
+                <line x1="130" y1="148" x2="350" y2="118" stroke="#22d3ee" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="4 4"/>
+                <text x="168" y="78" fill="#22d3ee" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">depends_on</text>
+                <text x="298" y="78" fill="#22d3ee" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">depends_on</text>
+                <text x="62" y="178" fill="#a78bfa" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">part_of</text>
+                <text x="260" y="220" fill="#4ade80" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">refines</text>
+                <g filter="url(#node-glow)">
+                  <circle cx="240" cy="40" r="14" fill="#111113" stroke="#22d3ee" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/></circle>
+                  <text x="240" y="44" text-anchor="middle" fill="#fafafa" font-size="8" font-weight="600" font-family="'JetBrains Mono', monospace">API</text>
+                  <circle cx="120" cy="132" r="16" fill="#111113" stroke="#a78bfa" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/></circle>
+                  <text x="120" y="136" text-anchor="middle" fill="#fafafa" font-size="7.5" font-weight="600" font-family="'JetBrains Mono', monospace">Auth</text>
+                  <circle cx="360" cy="132" r="14" fill="#111113" stroke="#22d3ee" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/></circle>
+                  <text x="360" y="136" text-anchor="middle" fill="#fafafa" font-size="7.5" font-weight="600" font-family="'JetBrains Mono', monospace">Users</text>
+                  <circle cx="65" cy="230" r="12" fill="#111113" stroke="#a78bfa" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3.2s" repeatCount="indefinite"/></circle>
+                  <text x="65" y="234" text-anchor="middle" fill="#fafafa" font-size="7" font-weight="600" font-family="'JetBrains Mono', monospace">JWT</text>
+                  <circle cx="205" cy="240" r="12" fill="#111113" stroke="#4ade80" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/></circle>
+                  <text x="205" y="244" text-anchor="middle" fill="#fafafa" font-size="7" font-weight="600" font-family="'JetBrains Mono', monospace">v2</text>
+                  <circle cx="360" cy="240" r="12" fill="#111113" stroke="#a1a1aa" stroke-width="1" stroke-opacity="0.5"/>
+                  <text x="360" y="244" text-anchor="middle" fill="#a1a1aa" font-size="7" font-weight="600" font-family="'JetBrains Mono', monospace">v1</text>
+                </g>
+                <text x="240" y="62" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">api-gateway</text>
+                <text x="120" y="157" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">auth-service</text>
+                <text x="360" y="157" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">user-store</text>
+                <text x="65" y="252" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">jwt-tokens</text>
+                <text x="205" y="262" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">session-v2</text>
+                <text x="360" y="262" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">session-v1</text>
+              </svg>
+            </div>
+            <div class="model-tags">
+              <span class="model-tag">permanent</span>
+              <span class="model-tag">typed relations</span>
+              <span class="model-tag">BFS traversal</span>
+              <span class="model-tag">revision tracking</span>
+            </div>
+          </div>
+
+          <div class="model-card">
+            <div class="model-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8M8 14h4" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="model-header">
+              <span class="model-name">Feedback</span>
+              <span class="model-badge">Corrections</span>
+            </div>
+            <p class="model-desc">Record when AI predictions are wrong. Search past corrections to inform future decisions. Track accuracy improvements over time.</p>
+            <div class="model-terminal">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">icm_feedback_record</span>
+              </div>
+              <pre><code><span class="cmd-comment"># predicted:</span> "port 3000 is available"
+<span class="cmd-comment"># actual:</span> "port 3000 was in use"
+<span class="cmd-comment"># context:</span> <span style="color:#22d3ee">dev-server</span>
+
+<span class="cmd-prompt">$</span> icm_feedback_search \
+    query="port configuration"
+<span style="color:#4ade80">Found 2 corrections</span>
+
+<span class="cmd-prompt">$</span> icm_feedback_stats
+<span style="color:#4ade80">12 corrections recorded</span></code></pre>
+            </div>
+            <div class="model-tags">
+              <span class="model-tag">record corrections</span>
+              <span class="model-tag">search feedback</span>
+              <span class="model-tag">accuracy stats</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="demo icm-demo" id="demo">
+      <div class="section-inner">
+        <h2>See it in action</h2>
+        <p class="section-sub">Simple MCP tools, powerful results.</p>
+        <div class="vox-demo-grid">
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Store &amp; Recall</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> icm_memory_store \
+    topic="decisions-auth" \
+    content="JWT with RS256, 30d expiry" \
+    importance=<span style="color:#22d3ee">critical</span>
+
+<span class="cmd-prompt">$</span> icm_memory_recall \
+    query="authentication token"
+<span style="color:#4ade80">Found 3 memories (best: 0.92)</span>
+
+<span class="cmd-prompt">$</span> icm_memory_consolidate \
+    topic="decisions-auth"
+<span style="color:#4ade80">Consolidated 8 → 1 summary</span></code></pre>
+          </div>
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Knowledge Graph</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> icm_memoir_create \
+    name="backend-arch"
+
+<span class="cmd-prompt">$</span> icm_memoir_add_concept \
+    memoir="backend-arch" \
+    name="auth-service" \
+    definition="JWT RS256, Axum middleware"
+
+<span class="cmd-prompt">$</span> icm_memoir_link \
+    from="api-gateway" \
+    to="auth-service" \
+    relation=<span style="color:#a78bfa">depends_on</span></code></pre>
+          </div>
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Explore</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> icm_memoir_inspect \
+    name="auth-service" depth=2
+<span style="color:#22d3ee">auth-service</span>
+  <span style="color:#a78bfa">←depends_on</span> api-gateway
+  <span style="color:#a78bfa">→depends_on</span> user-store
+  <span style="color:#a78bfa">←part_of</span>    jwt-tokens
+
+<span class="cmd-prompt">$</span> icm_memoir_search_all \
+    query="database schema"
+<span style="color:#4ade80">Found 5 concepts across 2 memoirs</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Memory Flow -->
+    <section class="icm-flow" id="tools">
+      <div class="section-inner">
+        <h2>Shared memory, multiple agents</h2>
+        <p class="section-sub">Watch how context flows between agents and sessions.</p>
+        <div class="flow-container">
+          <div class="flow-params">
+            <div class="flow-param-group">
+              <span class="flow-param-label">Agents</span>
+              <div class="flow-param-btns" id="param-agents">
+                <button class="flow-param-btn active" data-val="3">3</button>
+                <button class="flow-param-btn" data-val="4">4</button>
+                <button class="flow-param-btn" data-val="5">5</button>
+                <button class="flow-param-btn" data-val="6">6</button>
+              </div>
+            </div>
+            <div class="flow-param-group">
+              <span class="flow-param-label">Memories</span>
+              <div class="flow-param-btns" id="param-memories">
+                <button class="flow-param-btn active" data-val="4">4</button>
+                <button class="flow-param-btn" data-val="8">8</button>
+                <button class="flow-param-btn" data-val="12">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="flow-canvas">
+            <svg id="flow-svg" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+          <div class="flow-controls">
+            <button id="flow-play" class="flow-btn flow-btn-primary" aria-label="Play">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Auto
+            </button>
+            <button id="flow-step" class="flow-btn" aria-label="Next step">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4" fill="currentColor"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+              Step
+            </button>
+            <button id="flow-reset" class="flow-btn" aria-label="Reset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              Reset
+            </button>
+          </div>
+          <div class="flow-log" id="flow-log">
+            <div class="flow-log-entry flow-log-info">Click <strong>Auto</strong> to watch the demo or <strong>Step</strong> to go one action at a time.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>How does ICM stack up<br><span style="color:var(--cyan)">against the alternatives?</span></h2>
+        <p class="section-sub">From $24M-funded startups to flat-file editors. See where ICM fits in the AI memory landscape.</p>
+        <div class="hero-cta">
+          <a href="/icm/vs/" class="btn btn-primary">See the comparison &rarr;</a>
+          <a href="/icm/#install" class="btn btn-ghost">Install ICM</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <img src="/brand/logo.png" alt="rtk" width="18" height="18" style="border-radius:var(--radius-xs);">
+        <strong>rtk</strong> / <a href="/icm/"><strong>icm</strong></a> &middot; How it works
+      </div>
+      <div class="footer-right">
+        <a href="/">rtk</a>
+        <a href="/icm/">ICM Overview</a>
+        <a href="/icm/vs/">Compare</a>
+        <a href="https://github.com/rtk-ai/icm" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/rtk-ai/icm/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+      </div>
+    </div>
+  </footer>
+
+  <SearchModal />
+
+  <script>
+    // Flow Animation
+    (function() {
+      var AGENTS = [
+        { name: 'Claude Code', color: '#22d3ee' },
+        { name: 'Cursor', color: '#a78bfa' },
+        { name: 'Windsurf', color: '#4ade80' },
+        { name: 'Copilot', color: '#f472b6' },
+        { name: 'Cline', color: '#fbbf24' },
+        { name: 'Codex', color: '#fb923c' }
+      ]
+      var MEM_LABELS = [
+        'JWT auth', 'DB schema', 'API routes', 'deploy cfg',
+        'env vars', 'tests', 'CI/CD', 'error log',
+        'models', 'rate limit', 'webhooks', 'monitoring'
+      ]
+      var CX = 400, CY = 250, ICM_R = 42
+      var numAgents = 3, numMemories = 4
+      var currentStep = -1, steps = [], autoInterval = null, playing = false
+
+      var svgEl = document.getElementById('flow-svg')
+      var logEl = document.getElementById('flow-log')
+      var playBtn = document.getElementById('flow-play')
+      var stepBtn = document.getElementById('flow-step')
+      var resetBtn = document.getElementById('flow-reset')
+
+      if (!svgEl || !logEl || !playBtn || !stepBtn || !resetBtn) return
+
+      function agentPos(i) {
+        var a = (i / numAgents) * 2 * Math.PI - Math.PI / 2
+        return { x: Math.round(CX + 260 * Math.cos(a)), y: Math.round(CY + 175 * Math.sin(a)) }
+      }
+      function memPos(i) {
+        var r = numMemories <= 4 ? 78 : numMemories <= 8 ? 88 : 98
+        var a = (i / numMemories) * 2 * Math.PI - Math.PI / 4
+        return { x: Math.round(CX + r * Math.cos(a)), y: Math.round(CY + r * Math.sin(a)), a: a, r: r }
+      }
+      function buildSVG() {
+        var h = '<defs><radialGradient id="icm-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0.15"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/></radialGradient></defs>'
+        h += '<circle cx="'+CX+'" cy="'+CY+'" r="120" fill="url(#icm-glow)"/>'
+        for (var i = 0; i < numAgents; i++) {
+          var p = agentPos(i), dx = p.x - CX, dy = p.y - CY
+          var dist = Math.sqrt(dx*dx + dy*dy)
+          var ex = Math.round(CX + dx * (ICM_R + 4) / dist)
+          var ey = Math.round(CY + dy * (ICM_R + 4) / dist)
+          h += '<line id="line-'+i+'" x1="'+p.x+'" y1="'+p.y+'" x2="'+ex+'" y2="'+ey+'" stroke="'+AGENTS[i].color+'" stroke-width="1.5" stroke-opacity="0.15" stroke-dasharray="6 4"/>'
+        }
+        for (var i = 0; i < numAgents; i++) {
+          h += '<circle id="particle-'+i+'" cx="0" cy="0" r="4" fill="'+AGENTS[i].color+'" opacity="0"/>'
+        }
+        h += '<circle cx="'+CX+'" cy="'+CY+'" r="'+ICM_R+'" fill="#111113" stroke="#22d3ee" stroke-width="2"/>'
+        h += '<text x="'+CX+'" y="'+(CY-6)+'" text-anchor="middle" fill="#22d3ee" font-size="16" font-weight="800" font-family="\'JetBrains Mono\', monospace">ICM</text>'
+        h += '<text x="'+CX+'" y="'+(CY+12)+'" text-anchor="middle" fill="#a1a1aa" font-size="9" font-family="\'Inter\', sans-serif">22 MCP tools</text>'
+        h += '<g id="mem-nodes">'
+        var fs = numMemories <= 4 ? 7.5 : numMemories <= 8 ? 6.5 : 0
+        for (var i = 0; i < numMemories; i++) {
+          var mp = memPos(i), col = AGENTS[i % numAgents].color
+          var nr = numMemories <= 8 ? 8 : 6
+          h += '<g id="mem-'+i+'" opacity="0"><circle cx="'+mp.x+'" cy="'+mp.y+'" r="'+nr+'" fill="#111113" stroke="'+col+'" stroke-width="1.2"/>'
+          if (fs > 0) {
+            var lr = mp.r + 18
+            var lx = Math.round(CX + lr * Math.cos(mp.a))
+            var ly = Math.round(CY + lr * Math.sin(mp.a))
+            var anc = Math.abs(Math.cos(mp.a)) < 0.25 ? 'middle' : Math.cos(mp.a) > 0 ? 'start' : 'end'
+            var ddy = Math.sin(mp.a) > 0.4 ? 10 : Math.sin(mp.a) < -0.4 ? -4 : 4
+            h += '<text x="'+lx+'" y="'+(ly+ddy)+'" text-anchor="'+anc+'" fill="#a1a1aa" font-size="'+fs+'" font-family="\'Inter\', sans-serif">'+MEM_LABELS[i]+'</text>'
+          }
+          h += '</g>'
+        }
+        for (var i = 0; i < numMemories - 1; i++) {
+          var m1 = memPos(i), m2 = memPos(i + 1)
+          h += '<line id="mem-edge-'+i+'" x1="'+m1.x+'" y1="'+m1.y+'" x2="'+m2.x+'" y2="'+m2.y+'" stroke="#22d3ee" stroke-width="0.8" stroke-opacity="0" stroke-dasharray="3 3"/>'
+        }
+        h += '</g>'
+        var bw = numAgents <= 4 ? 148 : 128, bh = numAgents <= 4 ? 60 : 50
+        var afs = numAgents <= 4 ? 13 : 11
+        for (var i = 0; i < numAgents; i++) {
+          var p = agentPos(i), a = AGENTS[i]
+          h += '<g id="agent-'+i+'">'
+          h += '<rect x="'+(p.x - bw/2)+'" y="'+(p.y - bh/2)+'" width="'+bw+'" height="'+bh+'" rx="12" fill="#111113" stroke="'+a.color+'" stroke-width="1.5" stroke-opacity="0.6"/>'
+          h += '<text x="'+p.x+'" y="'+(p.y - 2)+'" text-anchor="middle" fill="#fafafa" font-size="'+afs+'" font-weight="700" font-family="\'Inter\', sans-serif">'+a.name+'</text>'
+          h += '<text id="status-'+i+'" x="'+p.x+'" y="'+(p.y + 15)+'" text-anchor="middle" fill="#a1a1aa" font-size="9" font-family="\'JetBrains Mono\', monospace">idle</text>'
+          h += '<circle cx="'+(p.x - bw/2 + 16)+'" cy="'+(p.y - bh/2 + 12)+'" r="3.5" fill="'+a.color+'" opacity="0.6"/>'
+          h += '</g>'
+        }
+        svgEl.innerHTML = h
+      }
+      function buildSteps() {
+        steps = []
+        var stored = []
+        for (var i = 0; i < numMemories; i++) {
+          var ag = i % numAgents
+          steps.push({ t: 'store', a: ag, m: i })
+          stored.push({ a: ag, m: i })
+          if (i >= 1 && i % 2 === 1) {
+            var ra = (ag + 1) % numAgents
+            var cands = stored.filter(function(s) { return s.a !== ra })
+            if (cands.length > 0) {
+              var tgt = cands[Math.max(0, cands.length - 2)]
+              steps.push({ t: 'recall', a: ra, m: tgt.m, from: tgt.a })
+            }
+          }
+        }
+        if (stored.length >= 2) steps.push({ t: 'link', a: 1 % numAgents, m1: 0, m2: 1 })
+        steps.push({ t: 'summary' })
+      }
+      function animLine(idx, on) {
+        var el = document.getElementById('line-' + idx)
+        if (el) { el.setAttribute('stroke-opacity', on ? '0.6' : '0.15'); el.setAttribute('stroke-width', on ? '2' : '1.5') }
+      }
+      function showMem(idx, show) {
+        var el = document.getElementById('mem-' + idx)
+        if (el) el.setAttribute('opacity', show ? '1' : '0')
+      }
+      function showEdge(idx, show) {
+        var el = document.getElementById('mem-edge-' + idx)
+        if (el) el.setAttribute('stroke-opacity', show ? '0.4' : '0')
+      }
+      function setSt(idx, text) {
+        var el = document.getElementById('status-' + idx)
+        if (el) el.textContent = text
+      }
+      function setGlow(idx, on) {
+        var g = document.getElementById('agent-' + idx)
+        if (!g) return
+        var r = g.querySelector('rect')
+        r.setAttribute('stroke-opacity', on ? '1' : '0.6')
+        r.setAttribute('stroke-width', on ? '2.5' : '1.5')
+      }
+      function particle(ai, tx, ty, rev) {
+        var el = document.getElementById('particle-' + ai)
+        if (!el) return
+        var p = agentPos(ai)
+        var fx = rev ? tx : p.x, fy = rev ? ty : p.y
+        var ex = rev ? p.x : tx, ey = rev ? p.y : ty
+        el.setAttribute('opacity', '1')
+        var anim = el.animate([
+          { transform: 'translate('+fx+'px, '+fy+'px)' },
+          { transform: 'translate('+ex+'px, '+ey+'px)' }
+        ], { duration: 800, easing: 'ease-in-out' })
+        anim.onfinish = function() { el.setAttribute('opacity', '0') }
+      }
+      function addLog(html, cls) {
+        var d = document.createElement('div')
+        d.className = 'flow-log-entry ' + (cls || '')
+        d.innerHTML = html
+        logEl.appendChild(d)
+        logEl.scrollTop = logEl.scrollHeight
+      }
+      function doStep() {
+        currentStep++
+        if (currentStep >= steps.length) { stopAuto(); return }
+        var s = steps[currentStep]
+        var ag = AGENTS[s.a]
+        var mp = s.m !== undefined ? memPos(s.m) : null
+        if (s.t === 'store') {
+          addLog('<span style="color:'+ag.color+'">'+ag.name+'</span> &rarr; <code>icm_memory_store</code> "'+MEM_LABELS[s.m]+'"', 'flow-log-store')
+          setSt(s.a, 'storing...'); setGlow(s.a, true); animLine(s.a, true); particle(s.a, mp.x, mp.y, false)
+          setTimeout(function() { showMem(s.m, true); if (s.m > 0) showEdge(s.m - 1, true); setSt(s.a, 'stored'); animLine(s.a, false); setGlow(s.a, false) }, 900)
+        } else if (s.t === 'recall') {
+          var from = AGENTS[s.from]
+          addLog('<span style="color:'+ag.color+'">'+ag.name+'</span> &rarr; <code>icm_memory_recall</code> "'+MEM_LABELS[s.m]+'"', 'flow-log-recall')
+          setSt(s.a, 'recalling...'); setGlow(s.a, true); animLine(s.a, true)
+          var me = document.getElementById('mem-' + s.m)
+          if (me) me.querySelector('circle').setAttribute('stroke-width', '2.5')
+          particle(s.a, mp.x, mp.y, true)
+          setTimeout(function() { addLog('&nbsp;&nbsp;<span style="color:#4ade80">Found:</span> "'+MEM_LABELS[s.m]+'" <span style="color:#a1a1aa">(from '+from.name+')</span>', 'flow-log-found'); setSt(s.a, 'recalled'); animLine(s.a, false); setGlow(s.a, false); if (me) me.querySelector('circle').setAttribute('stroke-width', '1.2') }, 900)
+        } else if (s.t === 'link') {
+          addLog('<span style="color:'+ag.color+'">'+ag.name+'</span> &rarr; <code>icm_memoir_link</code> "'+MEM_LABELS[s.m1]+'" &rarr; "'+MEM_LABELS[s.m2]+'"', 'flow-log-store')
+          setSt(s.a, 'linking...'); setGlow(s.a, true); animLine(s.a, true)
+          var edgeCount = 0
+          for (var i = 0; i < numMemories - 1; i++) {
+            var e = document.getElementById('mem-edge-' + i)
+            if (e && e.getAttribute('stroke-opacity') !== '0') edgeCount++
+          }
+          setTimeout(function() { addLog('&nbsp;&nbsp;<span style="color:#a78bfa">Graph:</span> '+numMemories+' concepts, '+(edgeCount+1)+' edges &mdash; knowledge grows across agents', 'flow-log-found'); setSt(s.a, 'linked'); animLine(s.a, false); setGlow(s.a, false) }, 900)
+        } else if (s.t === 'summary') {
+          for (var i = 0; i < numAgents; i++) setSt(i, 'idle')
+          addLog('<strong>'+numAgents+' agents, '+numMemories+' memories, 1 shared brain.</strong> Context persists across tools and sessions.', 'flow-log-info')
+        }
+      }
+      function resetAll() {
+        stopAuto(); currentStep = -1; buildSVG(); buildSteps()
+        logEl.innerHTML = '<div class="flow-log-entry flow-log-info">Click <strong>Auto</strong> to watch the demo or <strong>Step</strong> to go one action at a time.</div>'
+      }
+      function startAuto() {
+        if (currentStep >= steps.length - 1) resetAll()
+        playing = true
+        playBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause'
+        playBtn.classList.add('playing')
+        doStep()
+        autoInterval = setInterval(function() { if (currentStep >= steps.length - 1) { stopAuto(); return } doStep() }, 2200)
+      }
+      function stopAuto() {
+        playing = false; clearInterval(autoInterval); autoInterval = null
+        playBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Auto'
+        playBtn.classList.remove('playing')
+      }
+      playBtn.addEventListener('click', function() { playing ? stopAuto() : startAuto() })
+      stepBtn.addEventListener('click', function() { stopAuto(); if (currentStep >= steps.length - 1) resetAll(); else doStep() })
+      resetBtn.addEventListener('click', resetAll)
+      document.querySelectorAll('#param-agents .flow-param-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('#param-agents .flow-param-btn').forEach(function(b) { b.classList.remove('active') })
+          btn.classList.add('active'); numAgents = parseInt(btn.dataset.val); resetAll()
+        })
+      })
+      document.querySelectorAll('#param-memories .flow-param-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('#param-memories .flow-param-btn').forEach(function(b) { b.classList.remove('active') })
+          btn.classList.add('active'); numMemories = parseInt(btn.dataset.val); resetAll()
+        })
+      })
+      buildSVG(); buildSteps()
+    })()
+  </script>
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* ICM sub-page breadcrumb */
+  .icm-subnav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  .icm-subnav a { color: var(--cyan); text-decoration: none; }
+  .icm-subnav a:hover { text-decoration: underline; }
+  .icm-subnav span { color: var(--text-dim); }
+  .icm-subnav strong { color: var(--text); }
+
+  /* Compact hero for sub-pages */
+  .hero.hero-compact {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .hero.hero-compact h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+</style>

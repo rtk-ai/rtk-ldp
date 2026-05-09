@@ -89,6 +89,9 @@ const allSchemas = hasGraph
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(hasGraph ? allSchemas[0] : allSchemas)} />
 
+    <!-- Analytics -->
+    <script defer data-domain="rtk-ai.app" src="https://plausible.io/js/script.js"></script>
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="RTK — Rust Token Killer" href="/rss.xml" />
 
