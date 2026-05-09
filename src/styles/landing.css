@@ -3324,6 +3324,40 @@ td code {
   color: var(--text-muted);
 }
 
+/* CompatibilityStrip */
+.compat-strip {
+  padding-block: var(--space-5);
+  border-block: 1px solid var(--border);
+}
+
+.compat-inner {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.compat-label {
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.compat-pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
 /* Section eyebrow label — `// 01 — label` mono style */
 .eyebrow {
   color: var(--eyebrow-color);
