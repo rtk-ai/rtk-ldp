@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro'
 import SiteHeader from '../components/global/SiteHeader.astro'
 import Hero from '../components/landing/Hero.astro'
+import Capabilities from '../components/landing/Capabilities.astro'
+import CompatibilityStrip from '../components/landing/CompatibilityStrip.astro'
 import Problem from '../components/landing/Problem.astro'
 import DemoSlideshow from '../components/landing/DemoSlideshow.astro'
 import Proof from '../components/landing/Proof.astro'
@@ -172,6 +174,8 @@ const schemaOrg = {
   <SiteHeader />
   <main id="main-content">
     <Hero />
+    <CompatibilityStrip />
+    <Capabilities />
     <Problem />
     <DemoSlideshow />
     <Proof />
