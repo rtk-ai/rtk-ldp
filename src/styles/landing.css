@@ -530,7 +530,7 @@
   padding: 0 24px;
 }
 
-section { padding: 80px 0; }
+section { padding-block: var(--space-13); }
 
 section h2 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -1859,7 +1859,7 @@ section h2 {
 .cta-section {
   background: linear-gradient(180deg, var(--bg-alt) 0%, var(--bg) 100%);
   text-align: center;
-  padding: 100px 0;
+  padding-block: var(--space-13);
 }
 
 /* === Responsive === */
@@ -1882,7 +1882,7 @@ section h2 {
   .slideshow-viewport { min-height: auto; }
   .demo-card pre { font-size: 0.68rem; max-height: 280px; }
 
-  section { padding: 60px 0; }
+  section { padding-block: var(--space-10); }
 
   .cloud-card { padding: 32px 20px; }
 
@@ -1983,7 +1983,7 @@ section h2 {
 /* === Starred Carousel === */
 /* ── FAQ Section ─────────────────────────────────────────────────────── */
 .faq-section {
-  padding: 80px 0 64px;
+  padding-block: var(--space-13);
   border-top: 1px solid var(--border);
 }
 .faq-section h2 {
@@ -2355,7 +2355,7 @@ td code {
 .cta {
   background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg) 100%);
   text-align: center;
-  padding: 100px 0;
+  padding-block: var(--space-13);
 }
 
 .social-share {
