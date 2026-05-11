@@ -5,23 +5,34 @@ import SiteHeader from '../../components/global/SiteHeader.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
-const schemaOrg = {
-  '@context': 'https://schema.org',
-  '@type': 'Article',
-  headline: 'ICM vs Mem0, Zep, and Other AI Memory Tools',
-  description: 'Compare ICM to Mem0 ($24M raised), Zep/Graphiti (Neo4j + OpenAI), mcp-memory-service, and built-in editor memory. ICM is the only zero-dependency, fully local option with hybrid search, knowledge graphs, and temporal decay.',
-  url: 'https://www.rtk-ai.app/icm/vs/',
-  datePublished: '2025-09-01',
-  dateModified: buildDate,
-  author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
-  publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
-  about: { '@type': 'SoftwareApplication', name: 'ICM — Infinite Context Memory', url: 'https://www.rtk-ai.app/icm/' },
-}
+const schemaOrg = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'RTK', item: 'https://www.rtk-ai.app/' },
+      { '@type': 'ListItem', position: 2, name: 'ICM', item: 'https://www.rtk-ai.app/icm/' },
+      { '@type': 'ListItem', position: 3, name: 'Compare', item: 'https://www.rtk-ai.app/icm/vs/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'ICM vs Mem0, Zep, and Other AI Memory Tools',
+    description: 'Compare ICM to Mem0 ($24M raised), Zep/Graphiti (Neo4j + OpenAI), mcp-memory-service, and built-in editor memory. ICM is the only zero-dependency, fully local option with hybrid search, knowledge graphs, and temporal decay.',
+    url: 'https://www.rtk-ai.app/icm/vs/',
+    datePublished: '2026-04-29',
+    dateModified: buildDate,
+    author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    about: { '@type': 'SoftwareApplication', name: 'ICM — Infinite Context Memory', url: 'https://www.rtk-ai.app/icm/' },
+  },
+]
 ---
 <Layout
   title="ICM vs Mem0, Zep, and AI Memory Tools | rtk-ai"
   description="Compare ICM to Mem0, Zep/Graphiti, mcp-memory-service, and built-in editor memory. Single binary, zero cloud, hybrid search. See how they stack up."
-  image="/og-icm-banner.png"
+  image="/og-icm-vs.png"
   schemaOrg={schemaOrg}
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>
