@@ -18,9 +18,8 @@ const LANDING_ENTRIES: SearchEntry[] = [
   { id: 'landing-install', title: 'Install RTK', keywords: 'install curl brew cargo homebrew setup hook rtk init global transparent zero config', category: 'Landing', url: '/#install', source: 'landing' },
   { id: 'landing-share', title: 'Share Your rtk gain', keywords: 'share gain stats tokens saved twitter x bluesky linkedin social post flex timeline', category: 'Landing', url: '/#share-gain', source: 'landing' },
 
-  // Products
-  { id: 'product-vox', title: 'Vox — Voice for Claude Code', keywords: 'vox voice speech whisper dictation audio microphone claude code voice input', category: 'Products', url: '/vox/', source: 'landing' },
-  { id: 'product-icm', title: 'ICM — Infinite Context Memory', keywords: 'icm memory context persist cross-session knowledge graph recall topics store forget', category: 'Products', url: '/icm/', source: 'landing' },
+  // Team
+  { id: 'team', title: 'Team — RTK AI Labs', keywords: 'team rtk ai labs founder maintainers contributors patrick szymkowiak open source', category: 'Team', url: '/team/', source: 'landing' },
 
   // RTK commands
   { id: 'cmd-cargo', title: 'rtk cargo — Rust builds', keywords: 'cargo test build clippy check nextest rust 90% savings', category: 'Commands', url: '/#install', source: 'landing' },

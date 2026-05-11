@@ -62,7 +62,7 @@ const schemaOrg = {
   name: 'RTK AI Labs',
   url: siteUrl,
   logo: { '@type': 'ImageObject', url: siteUrl + '/brand/logo.png', width: 256, height: 256 },
-  description: 'RTK AI Labs builds tools for AI coding agents — RTK, Vox and ICM.',
+  description: 'RTK AI Labs builds tools for AI coding agents — makers of RTK (Rust Token Killer).',
   member: [
     ...labs.map((m) => ({
       '@type': 'Person',
@@ -83,7 +83,7 @@ const schemaOrg = {
 ---
 <Layout
   title="Team — RTK AI Labs | rtk-ai"
-  description="Meet RTK AI Labs — the team building tools for AI coding agents, plus the open-source maintainers behind RTK, Vox and ICM."
+  description="Meet RTK AI Labs — the team and open-source community building RTK, the Rust Token Killer for AI coding agents."
   image="/og-image.png"
   schemaOrg={schemaOrg}
 >
@@ -110,8 +110,8 @@ const schemaOrg = {
                 class="team-avatar"
                 src={member.photo}
                 alt={`Portrait of ${member.name}`}
-                width="144"
-                height="144"
+                width="116"
+                height="116"
                 loading="lazy"
               />
               <h3 class="team-name">{member.name}</h3>
@@ -135,7 +135,7 @@ const schemaOrg = {
     <section class="team-maintainers">
       <div class="section-inner">
         <h2 class="maintainers-title">RTK Open Source Maintainers</h2>
-        <p class="maintainers-sub">Core contributors who keep RTK, Vox and ICM moving.</p>
+        <p class="maintainers-sub">Core contributors who keep RTK moving.</p>
         <ul class="maintainers-list" role="list">
           {maintainers.map((m) => (
             <li class="maintainer-row">
@@ -273,12 +273,12 @@ const schemaOrg = {
     box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
   }
   .team-avatar {
-    width: 144px;
-    height: 144px;
+    width: 116px;
+    height: 116px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--border-light);
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   .team-name {
     font-size: var(--text-xl);
@@ -451,7 +451,7 @@ const schemaOrg = {
     .team-block-title { margin-bottom: 24px; }
     .team-grid { grid-template-columns: 1fr; }
     .team-card { padding: 28px 22px; }
-    .team-avatar { width: 120px; height: 120px; }
+    .team-avatar { width: 100px; height: 100px; }
     .team-sub { font-size: var(--text-base); }
     .team-maintainers { padding: 40px 0 56px; }
     .team-contributors { padding: 40px 0 64px; }
