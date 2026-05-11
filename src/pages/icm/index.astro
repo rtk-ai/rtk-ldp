@@ -8,6 +8,14 @@ const buildDate = new Date().toISOString().split('T')[0]
 const schemaOrg = [
   {
     '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'RTK', item: 'https://www.rtk-ai.app/' },
+      { '@type': 'ListItem', position: 2, name: 'ICM', item: 'https://www.rtk-ai.app/icm/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'ICM — Infinite Context Memory',
     description:
@@ -30,6 +38,10 @@ const schemaOrg = [
       '100% local — SQLite storage, local embeddings, zero API keys, zero cloud',
       'Single binary, zero dependencies — no Docker, no Python, no Qdrant',
     ],
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['.hero-sub', '.section-sub', '.feature-card p', '.faq-a p'],
+    },
   },
   {
     '@context': 'https://schema.org',
