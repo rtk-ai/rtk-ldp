@@ -31,6 +31,14 @@ const faqItems = [
 const schemaOrg = [
   {
     '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'RTK', item: 'https://www.rtk-ai.app/' },
+      { '@type': 'ListItem', position: 2, name: 'Vox', item: 'https://www.rtk-ai.app/vox/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'Vox',
     description:
