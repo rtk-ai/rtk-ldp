@@ -7,26 +7,35 @@ const tools = [
   {
     label: 'RTK',
     verb: 'Compress',
+    verbKey: 'caps.rtk.verb',
     color: 'var(--accent)',
     href: '/#install',
     description: 'Commands, file reads, tests — compressed 60-90% before they reach your model context. Zero config.',
+    descKey: 'caps.rtk.desc',
     stat: '89% noise removed',
+    statKey: 'caps.rtk.stat',
   },
   {
     label: 'ICM',
     verb: 'Remember',
+    verbKey: 'caps.icm.verb',
     color: 'var(--cyan)',
     href: '/icm/',
     description: 'Persistent memory across sessions. Your agent picks up where it left off — decisions, errors, context.',
+    descKey: 'caps.icm.desc',
     stat: 'Infinite context memory',
+    statKey: 'caps.icm.stat',
   },
   {
     label: 'Vox',
     verb: 'Speak',
+    verbKey: 'caps.vox.verb',
     color: 'var(--violet)',
     href: '/vox/',
     description: 'Voice output for your AI agent. Three TTS backends, four Claude Code integration modes.',
+    descKey: 'caps.vox.desc',
     stat: '3 TTS backends',
+    statKey: 'caps.vox.stat',
   },
 ]
 ---
@@ -35,19 +44,19 @@ const tools = [
   <div class="capabilities-inner">
     <Eyebrow label="context forge" />
     <h2 id="capabilities-title" class="capabilities-title">
-      One forge. <span class="gradient-text">Three tools.</span>
+      <span data-i18n="caps.title_1">One forge.</span> <span class="gradient-text" data-i18n="caps.title_2">Three tools.</span>
     </h2>
-    <p class="capabilities-sub">RTK, ICM, and Vox share one philosophy: open source, Rust, zero telemetry, local-first.</p>
+    <p class="capabilities-sub" data-i18n="caps.sub">RTK, ICM, and Vox share one philosophy: open source, Rust, zero telemetry, local-first.</p>
 
     <div class="capabilities-grid">
       {tools.map((t) => (
         <a href={t.href} class="capabilities-card card-muted">
           <div class="capabilities-card-header">
             <span class="capabilities-label" style={`color: ${t.color}`}>{t.label}</span>
-            <span class="capabilities-verb">{t.verb}</span>
+            <span class="capabilities-verb" data-i18n={t.verbKey}>{t.verb}</span>
           </div>
-          <p class="capabilities-desc">{t.description}</p>
-          <span class="capabilities-stat pill-neutral">{t.stat}</span>
+          <p class="capabilities-desc" data-i18n={t.descKey}>{t.description}</p>
+          <span class="capabilities-stat pill-neutral" data-i18n={t.statKey}>{t.stat}</span>
         </a>
       ))}
     </div>

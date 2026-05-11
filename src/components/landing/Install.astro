@@ -6,20 +6,26 @@ const personas = [
   {
     id: 'claude-code',
     label: 'Claude Code',
+    tabKey: 'install.tab.cc',
     initCmd: 'rtk init --claude-code',
     initNote: 'Installs PreToolUse hook in Claude Code settings.json — every Bash call is rewritten automatically.',
+    noteKey: 'install.note.cc',
   },
   {
     id: 'cursor',
     label: 'Cursor',
+    tabKey: 'install.tab.cursor',
     initCmd: 'rtk init --cursor',
     initNote: "Configures Cursor's .cursorrules to pipe Bash commands through rtk.",
+    noteKey: 'install.note.cursor',
   },
   {
     id: 'other',
     label: 'Other AI CLI',
+    tabKey: 'install.tab.other',
     initCmd: 'rtk init --global',
     initNote: 'Installs a global shell hook — works with Aider, Gemini CLI, Codex, Windsurf, and any terminal AI tool.',
+    noteKey: 'install.note.other',
   },
 ]
 ---
@@ -43,6 +49,7 @@ const personas = [
           aria-controls={`persona-panel-${p.id}`}
           id={`persona-tab-${p.id}`}
           data-persona={p.id}
+          data-i18n={p.tabKey}
         >
           {p.label}
         </button>
@@ -105,7 +112,7 @@ const personas = [
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             </button>
           </div>
-          <p class="install-note">{p.initNote} <a href="/guide/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
+          <p class="install-note"><span data-i18n={p.noteKey}>{p.initNote}</span> <a href="/guide/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
         </div>
       ))}
 
