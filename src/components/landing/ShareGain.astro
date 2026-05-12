@@ -9,12 +9,13 @@ const { lang } = Astro.props
 ---
 <section class="share-gain" id="share-gain">
   <div class="section-inner">
-    <div class="share-gain-card">
-      <h2>
-        <span>{t('share.title_1', lang)}</span> <span class="gradient-text">{t('share.title_2', lang)}</span>
-      </h2>
-      <p class="share-gain-desc" set:html={t('share.desc', lang)}></p>
+    <p class="share-eyebrow">// share your savings</p>
+    <h2>
+      {t('share.title_1', lang)} <span class="share-accent">{t('share.title_2', lang)}</span>
+    </h2>
+    <p class="share-gain-desc" set:html={t('share.desc', lang)}></p>
 
+    <div class="share-gain-body">
       <textarea class="gain-textarea" id="gain-paste" rows="6" placeholder={t('share.paste_placeholder', lang)}></textarea>
 
       <div class="gain-preview" id="gain-preview" style="display:none;">
@@ -104,19 +105,25 @@ const { lang } = Astro.props
 <style>
 .share-gain { background: var(--bg); }
 
-.share-gain-card {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 40px 36px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  text-align: center;
+.share-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin: 0 0 var(--space-3);
 }
 
-.share-gain-card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+.share-gain h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+  color: var(--text-bright);
+}
+
+.share-accent { color: var(--accent); }
+
+.share-gain-body {
+  max-width: 640px;
 }
 
 .share-gain-desc {
@@ -161,7 +168,7 @@ const { lang } = Astro.props
 .gain-share-btns {
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 

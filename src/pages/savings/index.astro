@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import SiteHeader from '../../components/global/SiteHeader.astro'
 import Proof from '../../components/landing/Proof.astro'
+import ShareGain from '../../components/landing/ShareGain.astro'
 import SiteFooter from '../../components/global/SiteFooter.astro'
 import SearchModal from '../../components/global/SearchModal.astro'
 
@@ -77,6 +78,8 @@ const schemaOrg = [
 
     <Proof />
 
+    <ShareGain />
+
     <!-- Footer CTA -->
     <section class="cta">
       <div class="section-inner">
@@ -106,7 +109,6 @@ const schemaOrg = [
     font-size: 0.875rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    justify-content: center;
     flex-wrap: wrap;
   }
   .rtk-subnav a { color: var(--accent); text-decoration: none; }
@@ -119,7 +121,7 @@ const schemaOrg = [
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 120px 24px 60px;
-    text-align: center;
+    text-align: left;
   }
   .subpage-hero h1 {
     font-size: clamp(1.8rem, 4vw, 3rem);
@@ -132,13 +134,13 @@ const schemaOrg = [
     font-size: 1.1rem;
     color: var(--text-muted);
     max-width: 640px;
-    margin: 0 auto 36px;
+    margin: 0 0 36px;
     line-height: 1.7;
   }
   .subpage-cta {
     display: flex;
     gap: var(--space-3);
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 </style>

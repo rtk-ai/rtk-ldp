@@ -15,14 +15,14 @@
   --sl-color-accent-high: #33edb0;                   /* --accent lighter */
 
   /* Text */
-  --sl-color-white:  #f8fafc;             /* --text-bright */
-  --sl-color-gray-1: #e2e8f0;             /* --text */
-  --sl-color-gray-2: var(--text-muted);   /* #94a3b8 */
-  --sl-color-gray-3: var(--text-dim);     /* #7e8ca6 */
-  --sl-color-gray-4: #243056;    /* --border-light */
-  --sl-color-gray-5: #0f1629;    /* --bg-card */
-  --sl-color-gray-6: #0c1225;    /* --bg-alt */
-  --sl-color-black:  #060b18;    /* --bg */
+  --sl-color-white:  var(--text-bright);  /* #ffffff */
+  --sl-color-gray-1: var(--text);         /* #f4f4f5 */
+  --sl-color-gray-2: var(--text-muted);   /* #a1a1aa */
+  --sl-color-gray-3: var(--text-dim);     /* #86868e */
+  --sl-color-gray-4: var(--border-light); /* #2a2a2e */
+  --sl-color-gray-5: var(--bg-card);      /* #121215 */
+  --sl-color-gray-6: var(--bg-alt);       /* #0c0c0e */
+  --sl-color-black:  var(--bg);           /* #09090b */
 
   /* Typography */
   --sl-font:      'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
