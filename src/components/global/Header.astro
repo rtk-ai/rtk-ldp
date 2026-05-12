@@ -74,7 +74,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     z-index: 100;
     height: 60px;
     background: rgba(6, 11, 24, 0.92);
-    border-bottom: 1px solid #1a2344;
+    border-bottom: 1px solid var(--border);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
   }
@@ -112,7 +112,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
   .header-divider {
     width: 1px;
     height: 18px;
-    background: #1a2344;
+    background: var(--border);
     margin: 0 6px;
     flex-shrink: 0;
   }
@@ -121,7 +121,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     display: inline-flex;
     align-items: center;
     padding: 5px 10px;
-    color: #8294ab;
+    color: var(--text-muted);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 6px;
@@ -129,11 +129,11 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     transition: color 150ms ease, background 150ms ease;
   }
   .header-link:hover {
-    color: #e2e8f0;
-    background: #0f1629;
+    color: var(--text);
+    background: var(--bg-card);
     text-decoration: none;
   }
-  .header-link--active { color: #e2e8f0; }
+  .header-link--active { color: var(--text); }
   .header-link--vox { color: #a78bfa; }
   .header-link--vox:hover { color: #a78bfa; background: rgba(167,139,250,0.08); }
   .header-link--icm { color: #38bdf8; }
@@ -144,19 +144,19 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     align-items: center;
     gap: 6px;
     padding: 5px 12px;
-    color: #8294ab;
+    color: var(--text-muted);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 6px;
-    border: 1px solid #1a2344;
+    border: 1px solid var(--border);
     text-decoration: none;
     transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
     margin-left: 4px;
   }
   .header-btn-ghost:hover {
-    color: #e2e8f0;
+    color: var(--text);
     border-color: #243056;
-    background: #0f1629;
+    background: var(--bg-card);
     text-decoration: none;
   }
 
@@ -165,20 +165,20 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     align-items: center;
     gap: 6px;
     padding: 5px 10px;
-    color: #8294ab;
+    color: var(--text-muted);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 6px;
-    border: 1px solid #1a2344;
+    border: 1px solid var(--border);
     background: transparent;
     cursor: pointer;
     transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
     margin-left: 4px;
   }
   .header-search-btn:hover {
-    color: #e2e8f0;
+    color: var(--text);
     border-color: #243056;
-    background: #0f1629;
+    background: var(--bg-card);
   }
   .header-search-label {
     color: #64748b;
@@ -190,8 +190,8 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     padding: 1px 5px;
     font-size: 0.6875rem;
     color: #64748b;
-    background: #0c1225;
-    border: 1px solid #1a2344;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
     border-radius: 4px;
     font-family: inherit;
   }
@@ -210,17 +210,17 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     width: 38px;
     height: 38px;
     border-radius: 8px;
-    border: 1px solid #1a2344;
+    border: 1px solid var(--border);
     background: rgba(15, 22, 41, 0.6);
-    color: #8294ab;
+    color: var(--text-muted);
     cursor: pointer;
     transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
     padding: 0;
   }
   .header-icon-btn:hover {
-    color: #e2e8f0;
+    color: var(--text);
     border-color: #243056;
-    background: #0f1629;
+    background: var(--bg-card);
   }
 
   .header-hamburger {
@@ -252,8 +252,8 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     right: 0;
     bottom: 0;
     width: min(280px, 80vw);
-    background: #0c1225;
-    border-left: 1px solid #1a2344;
+    background: var(--bg-alt);
+    border-left: 1px solid var(--border);
     z-index: 200;
     transform: translateX(100%);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -279,7 +279,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
   .docs-drawer-links a {
     display: block;
     padding: 12px 16px;
-    color: #8294ab;
+    color: var(--text-muted);
     font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
@@ -287,11 +287,11 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     transition: color 150ms ease, background 150ms ease;
   }
   .docs-drawer-links a:hover {
-    color: #e2e8f0;
-    background: #0f1629;
+    color: var(--text);
+    background: var(--bg-card);
   }
   .docs-drawer-links a.active {
-    color: #e2e8f0;
+    color: var(--text);
     background: rgba(255,255,255,0.04);
   }
   .docs-drawer-links a.link-vox { color: #a78bfa; }
@@ -309,18 +309,18 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    color: #8294ab;
+    color: var(--text-muted);
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 8px;
-    border: 1px solid #1a2344;
+    border: 1px solid var(--border);
     text-decoration: none;
     transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
   }
   .docs-drawer-actions a:hover {
-    color: #e2e8f0;
+    color: var(--text);
     border-color: #243056;
-    background: #0f1629;
+    background: var(--bg-card);
   }
 
   /* Overlay */
