@@ -54,7 +54,7 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
           <a href="/#install" class="nav-link">{t('nav.install', lang)}</a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="/guide/" class="nav-link">{t('ui.nav_docs', lang)}</a>
-          <a href="/cloud/" class="nav-link nav-link-hide-md">Cloud</a>
+          <a href="/cloud/" class="nav-link nav-link-hide-md nav-link-cloud">Cloud <span class="nav-badge-soon">soon</span></a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title={t('aria.join_discord', lang)} aria-label={t('aria.join_discord', lang)}>
             <IconDiscord size={16} />
@@ -146,7 +146,7 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
           <a href="/vs/">{t('nav.tools', lang)}</a>
           <a href="/#install">{t('nav.install', lang)}</a>
           <a href="/guide/">{t('ui.nav_docs', lang)}</a>
-          <a href="/cloud/">Cloud</a>
+          <a href="/cloud/">Cloud <span class="nav-badge-soon">soon</span></a>
         </>
       ) : isVox ? (
         <>
@@ -293,6 +293,22 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
 
 .nav-link-vox { color: var(--violet) !important; }
 .nav-link-icm { color: #38bdf8 !important; }
+
+.nav-badge-soon {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(0, 229, 153, 0.12);
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 2px;
+  line-height: 1.4;
+}
 
 /* Nav anchor links */
 .nav-link {
