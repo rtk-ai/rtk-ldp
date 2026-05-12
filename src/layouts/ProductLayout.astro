@@ -4,6 +4,7 @@ import SiteHeader from '../components/global/SiteHeader.astro'
 import SiteFooter from '../components/global/SiteFooter.astro'
 import SearchModal from '../components/global/SearchModal.astro'
 import I18nScript from '../components/global/I18nScript.astro'
+import type { Lang } from '../lib/i18n'
 
 interface Props {
   product: 'vox' | 'icm'
@@ -11,12 +12,13 @@ interface Props {
   description: string
   ogImage: string
   schema: Record<string, unknown>
+  lang?: Lang
 }
 
-const { product, title, description, ogImage, schema } = Astro.props
+const { product, title, description, ogImage, schema, lang = 'en' } = Astro.props
 ---
 <Layout title={title} description={description} image={ogImage} schemaOrg={schema}>
-  <SiteHeader variant="product" product={product} />
+  <SiteHeader variant="product" product={product} lang={lang} />
   <main id="main-content">
     <slot />
   </main>
