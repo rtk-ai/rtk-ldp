@@ -176,3 +176,8 @@ starlight-toc a:hover {
 .expressive-code {
   margin: 1.5rem 0;
 }
+
+/* Aside Caution */
+.starlight-aside--caution .starlight-aside__content {
+  color: var(--sl-color-orange-high);
+}
