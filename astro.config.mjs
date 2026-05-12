@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import starlight from '@astrojs/starlight'
-import tailwind from '@astrojs/tailwind'
 import { remarkDocsLinks } from './plugins/remark-docs-links.mjs'
 import { readdirSync, existsSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -96,7 +95,6 @@ export default defineConfig({
         }] : []),
       ],
     }),
-    tailwind({ applyBaseStyles: false }),
   ],
   markdown: {
     remarkPlugins: [remarkDocsLinks],
