@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import SearchModal from '../../components/global/SearchModal.astro'
 import SiteHeader from '../../components/global/SiteHeader.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
@@ -677,20 +678,7 @@ const schemaOrg = [
 
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <img src="/brand/logo.png" alt="rtk" width="18" height="18" style="border-radius:var(--radius-xs);">
-        <strong>rtk</strong> / <strong>icm</strong> &middot; The SQLite of AI memory
-      </div>
-      <div class="footer-right">
-        <a href="/">rtk</a>
-        <a href="/vox/">Vox</a>
-        <a href="https://github.com/rtk-ai/icm" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/rtk-ai/icm/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter />
 
   <SearchModal />
 

@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import SearchModal from '../../components/global/SearchModal.astro'
 import SiteHeader from '../../components/global/SiteHeader.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
@@ -529,20 +530,7 @@ const schemaOrg = [
 
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-left">
-        <img src="/brand/logo.png" alt="rtk" width="18" height="18" style="border-radius:var(--radius-xs);">
-        <strong>rtk</strong> / <strong>vox</strong> &middot; Give Claude Code a voice
-      </div>
-      <div class="footer-right">
-        <a href="/">rtk</a>
-        <a href="/icm/">ICM</a>
-        <a href="https://github.com/rtk-ai/vox" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/rtk-ai/vox/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
-      </div>
-    </div>
-  </footer>
+  <SiteFooter />
 
   <SearchModal />
 
