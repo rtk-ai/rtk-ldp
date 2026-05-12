@@ -1,0 +1,482 @@
+---
+/**
+ * /preview — identity sandbox (Phase 0.5)
+ * DO NOT MERGE TO MAIN — delete before Phase 1 PR.
+ * Tests new "Infrastructure-Grade Dark" tokens scoped to .preview-root.
+ * noIndex prevents search indexing.
+ */
+import Layout from '../../layouts/Layout.astro'
+
+let stars = 20000
+try {
+  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
+  const token = process.env.GITHUB_TOKEN
+  if (token) headers['Authorization'] = `Bearer ${token}`
+  const res = await fetch('https://api.github.com/repos/rtk-ai/rtk', { headers })
+  if (res.ok) {
+    const data = await res.json()
+    if (data.stargazers_count) stars = data.stargazers_count
+  }
+} catch {}
+
+const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(stars)
+---
+
+<Layout
+  title="Preview — RTK Identity Redesign"
+  description="Identity sandbox — not indexed."
+  noIndex={true}
+>
+  <div class="preview-root">
+    <!-- Preview banner -->
+    <div class="preview-banner">
+      <span class="preview-banner-label">// PREVIEW</span>
+      <span class="preview-banner-text">Identity redesign sandbox — new tokens scoped to <code>.preview-root</code></span>
+      <a href="/" class="preview-banner-link">← back to current site</a>
+    </div>
+
+    <!-- New Hero -->
+    <section class="p-hero">
+      <div class="p-hero-inner">
+        <!-- Left column: content -->
+        <div class="p-hero-content">
+          <div class="p-eyebrow">
+            <span class="p-eyebrow-label">// open source · MIT · Rust</span>
+          </div>
+
+          <h1 class="p-h1">
+            Your AI agent is drowning<br>
+            in CLI noise.<br>
+            <span class="p-h1-accent">Fix it.</span>
+          </h1>
+
+          <p class="p-subhead">
+            RTK is a token-efficient CLI proxy that strips noise from dev tool output before it reaches your AI agent. No config, no workflow changes — just install and go.
+          </p>
+
+          <div class="p-stats">
+            <div class="p-stat">
+              <span class="p-stat-value">89%</span>
+              <span class="p-stat-label">token reduction</span>
+            </div>
+            <div class="p-stat-sep"></div>
+            <div class="p-stat">
+              <span class="p-stat-value">24.6M</span>
+              <span class="p-stat-label">tokens saved</span>
+            </div>
+            <div class="p-stat-sep"></div>
+            <div class="p-stat">
+              <span class="p-stat-value">{starsLabel}</span>
+              <span class="p-stat-label">GitHub stars</span>
+            </div>
+          </div>
+
+          <div class="p-cta">
+            <a href="#install" class="p-btn-primary">Install RTK</a>
+            <a href="https://github.com/rtk-ai/rtk" class="p-btn-ghost" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              Star on GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column: terminal -->
+        <div class="p-hero-terminal">
+          <div class="p-terminal">
+            <div class="p-terminal-header" aria-hidden="true">
+              <div class="p-dot p-dot-r"></div>
+              <div class="p-dot p-dot-y"></div>
+              <div class="p-dot p-dot-g"></div>
+              <span class="p-terminal-title">Terminal</span>
+            </div>
+            <div class="p-terminal-body">
+              <div class="p-terminal-block">
+                <span class="p-dim">// before</span><br>
+                <span class="p-prompt">$</span> <span class="p-cmd">git status</span><br>
+                <span class="p-waste">On branch main</span><br>
+                <span class="p-waste">Your branch is up to date with 'origin/main'.</span><br>
+                <span class="p-waste">&nbsp;</span><br>
+                <span class="p-waste">Changes not staged for commit:</span><br>
+                <span class="p-waste">&nbsp; (use "git add &lt;file&gt;..." to update what will be committed)</span><br>
+                <span class="p-waste">&nbsp; (use "git restore &lt;file&gt;..." to discard changes in working directory)</span><br>
+                <span class="p-waste">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;src/styles/global.css</span><br>
+                <span class="p-waste">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;src/components/landing/Hero.astro</span><br>
+                <span class="p-waste">&nbsp;</span><br>
+                <span class="p-waste">no changes added to commit (use "git add" and/or "git commit -a")</span><br>
+              </div>
+
+              <div class="p-terminal-divider"></div>
+
+              <div class="p-terminal-block">
+                <span class="p-dim">// after</span><br>
+                <span class="p-prompt">$</span> <span class="p-cmd">rtk git status</span><br>
+                <span class="p-ok">M</span> <span class="p-ok-file">src/styles/global.css</span><br>
+                <span class="p-ok">M</span> <span class="p-ok-file">src/components/landing/Hero.astro</span><br>
+                <span class="p-saving">↓ 80.8% tokens saved</span><br>
+                <span class="p-prompt">$</span> <span class="p-cursor-blink"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-compat">
+            <span class="p-compat-label">Works with</span>
+            <div class="p-compat-tools">
+              <span>Claude Code</span>
+              <span>Cursor</span>
+              <span>Codex</span>
+              <span>Copilot</span>
+              <span>Gemini CLI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preview comparison note -->
+    <div class="preview-note">
+      <p>Phase 0.5 sandbox. Current branch: <code>feat/identity-redesign-v2</code>. Tokens scoped — no global changes yet.</p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+/* ─── New token overrides scoped to .preview-root ──────────────────── */
+.preview-root {
+  /* Backgrounds */
+  --bg:            #09090b;
+  --bg-alt:        #0c0c0e;
+  --bg-card:       #121215;
+  --bg-card-hover: #18181b;
+  --bg-elevated:   #1f1f23;
+  --bg-glass:      rgba(9, 9, 11, 0.72);
+
+  /* Borders */
+  --border:        #1f1f23;
+  --border-light:  #2a2a2e;
+
+  /* Text */
+  --text:          #f4f4f5;
+  --text-bright:   #ffffff;
+  --text-muted:    #a1a1aa;
+  --text-dim:      #86868e;
+
+  /* Brand */
+  --accent:        #00e599;
+  --accent-hover:  #00cc88;
+  --accent-dim:    rgba(0, 229, 153, 0.12);
+
+  /* Typography scale — extended */
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-family: var(--font-body);
+}
+
+/* ─── Preview chrome ────────────────────────────────────────────────── */
+.preview-banner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 10px 24px;
+  background: #1f1f23;
+  border-bottom: 1px solid #2a2a2e;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+}
+.preview-banner-label {
+  color: var(--accent);
+  font-weight: 600;
+}
+.preview-banner-text {
+  color: var(--text-muted);
+  flex: 1;
+}
+.preview-banner-text code {
+  color: var(--text);
+  background: var(--bg-card);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.preview-banner-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  margin-left: auto;
+}
+.preview-banner-link:hover {
+  color: var(--text-muted);
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────────── */
+.p-hero {
+  padding: 120px 24px 80px;
+}
+
+.p-hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Left column */
+.p-hero-content {
+  min-width: 0;
+}
+
+.p-eyebrow {
+  margin-bottom: 1.5rem;
+}
+.p-eyebrow-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.p-h1 {
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+  margin-bottom: 1.5rem;
+}
+.p-h1-accent {
+  color: var(--accent);
+}
+
+.p-subhead {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 36rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Stats */
+.p-stats {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.p-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.p-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.p-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+.p-stat-sep {
+  width: 1px;
+  height: 2rem;
+  background: var(--border-light);
+  flex-shrink: 0;
+}
+
+/* CTAs */
+.p-cta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.p-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: #09090b;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.p-btn-primary:hover {
+  background: var(--accent-hover);
+  text-decoration: none;
+}
+.p-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.p-btn-ghost:hover {
+  border-color: var(--text-dim);
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Right column: terminal */
+.p-hero-terminal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.p-terminal {
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.p-terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+.p-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.p-dot-r { background: #3d1a1a; }
+.p-dot-y { background: #3d2e1a; }
+.p-dot-g { background: #1a3d1a; }
+.p-terminal-title {
+  margin-left: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+}
+
+.p-terminal-body {
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.75;
+}
+
+.p-terminal-divider {
+  margin: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.p-terminal-block { display: block; }
+
+.p-prompt { color: var(--accent); font-weight: 600; }
+.p-cmd { color: var(--text-bright); }
+.p-dim { color: var(--text-dim); }
+.p-waste { color: #52525b; }
+.p-ok { color: var(--accent); font-weight: 600; width: 1rem; display: inline-block; }
+.p-ok-file { color: var(--text-muted); }
+.p-saving {
+  display: block;
+  color: var(--accent);
+  font-size: 0.72rem;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.p-cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--accent);
+  animation: p-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+@keyframes p-blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-cursor-blink {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Compat strip */
+.p-compat {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.p-compat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.p-compat-tools {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.p-compat-tools span {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 3px 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+}
+
+/* ─── Preview footer note ───────────────────────────────────────────── */
+.preview-note {
+  padding: 1.5rem 24px;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-align: center;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.preview-note code {
+  color: var(--accent);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .p-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .p-hero {
+    padding: 100px 20px 60px;
+  }
+}
+@media (max-width: 640px) {
+  .p-h1 {
+    font-size: clamp(2.25rem, 8vw, 3rem);
+  }
+  .p-stats {
+    gap: 1.5rem;
+  }
+}
+</style>
