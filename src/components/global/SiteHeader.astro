@@ -42,15 +42,6 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
     <a href="/" class="nav-logo">
       <img src="/brand/logo.png" alt="rtk logo" width="28" height="28" style="border-radius:var(--radius-sm);">
       <span>rtk</span>
-      {!isLanding && (
-        <>
-          <span class="nav-sep">/</span>
-          {isVox
-            ? <span class="logo-text-accent">vox</span>
-            : <span class="logo-text-icm">icm</span>
-          }
-        </>
-      )}
     </a>
 
     <!-- Desktop nav links -->

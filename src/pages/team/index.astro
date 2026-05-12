@@ -1,0 +1,464 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+import IconGitHub from '../../components/ui/icons/IconGitHub.astro'
+
+const siteUrl = 'https://www.rtk-ai.app'
+
+const labs = [
+  {
+    name: 'Patrick Szymkowiak',
+    role: 'Founder / CEO',
+    photo: '/assets/pictures/patrick.webp',
+    linkedin: 'https://www.linkedin.com/in/patrick-szymkowiak/',
+    github: 'https://github.com/pszymkowiak',
+  },
+]
+
+const maintainers = [
+  {
+    name: 'Florian Bruniaux',
+    linkedin: 'https://www.linkedin.com/in/florian-bruniaux-43408b83/',
+    github: 'https://github.com/FlorianBruniaux',
+  },
+  {
+    name: 'Adrien Eppling',
+    linkedin: 'https://www.linkedin.com/in/adrien-eppling/',
+    github: 'https://github.com/aeppling',
+  },
+  {
+    name: 'Nicolas Le Cam',
+    linkedin: 'https://www.linkedin.com/in/nicolas-le-cam-386387160/',
+    github: 'https://github.com/KuSh',
+  },
+]
+
+// Open-source contributors — GitHub handle only (this list will grow).
+const contributors = [
+  'https://github.com/ousamabenyounes',
+  'https://github.com/polaminggkub-debug',
+  'https://github.com/heAdz0r',
+  'https://github.com/guillaumedeslandes',
+  'https://github.com/tmchow',
+  'https://github.com/JBF1991',
+  'https://github.com/em0t',
+  'https://github.com/F0rty-Tw0',
+  'https://github.com/hed0rah',
+].map((url) => ({
+  url,
+  handle: url.replace(/\/+$/, '').split('/').pop() ?? url,
+}))
+
+// No dedicated LinkedIn icon component exists — inline the mark.
+const linkedinSvg =
+  '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': siteUrl + '/#organization',
+  name: 'RTK AI Labs',
+  url: siteUrl,
+  logo: { '@type': 'ImageObject', url: siteUrl + '/brand/logo.png', width: 256, height: 256 },
+  description: 'RTK AI Labs builds tools for AI coding agents — makers of RTK (Rust Token Killer).',
+  member: [
+    ...labs.map((m) => ({
+      '@type': 'Person',
+      name: m.name,
+      jobTitle: m.role,
+      image: siteUrl + m.photo,
+      sameAs: [m.linkedin, m.github],
+      worksFor: { '@id': siteUrl + '/#organization' },
+    })),
+    ...maintainers.map((m) => ({
+      '@type': 'Person',
+      name: m.name,
+      jobTitle: 'Open Source Maintainer',
+      sameAs: [m.linkedin, m.github],
+    })),
+  ],
+}
+---
+<Layout
+  title="Team — RTK AI Labs | rtk-ai"
+  description="Meet RTK AI Labs — the team and open-source community building RTK, the Rust Token Killer for AI coding agents."
+  image="/og-image.png"
+  schemaOrg={schemaOrg}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader />
+
+  <main id="main-content" class="team-page">
+    <section class="team-hero">
+      <div class="section-inner">
+        <div class="team-badge">Team</div>
+        <h1>The team behind <span class="gradient-text">RTK</span></h1>
+        <p class="team-sub">A small team building tools for AI coding agents</p>
+      </div>
+    </section>
+
+    <section class="team-block">
+      <div class="section-inner">
+        <h2 class="team-block-title">RTK AI Labs</h2>
+        <ul class="team-grid" role="list">
+          {labs.map((member) => (
+            <li class="team-card">
+              <img
+                class="team-avatar"
+                src={member.photo}
+                alt={`Portrait of ${member.name}`}
+                width="116"
+                height="116"
+                loading="lazy"
+              />
+              <h3 class="team-name">{member.name}</h3>
+              <p class="team-role">{member.role}</p>
+              <div class="social-row">
+                <a class="social-btn" href={member.github} target="_blank" rel="noopener" aria-label={`${member.name} on GitHub`}>
+                  <IconGitHub size={15} />
+                  GitHub
+                </a>
+                <a class="social-btn" href={member.linkedin} target="_blank" rel="noopener" aria-label={`${member.name} on LinkedIn`}>
+                  <Fragment set:html={linkedinSvg} />
+                  LinkedIn
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="team-maintainers">
+      <div class="section-inner">
+        <h2 class="maintainers-title">RTK Open Source Maintainers</h2>
+        <p class="maintainers-sub">Core contributors who keep RTK moving.</p>
+        <ul class="maintainers-list" role="list">
+          {maintainers.map((m) => (
+            <li class="maintainer-row">
+              <span class="maintainer-name">{m.name}</span>
+              <span class="maintainer-links">
+                <a class="maintainer-link" href={m.github} target="_blank" rel="noopener" aria-label={`${m.name} on GitHub`}>
+                  <IconGitHub size={15} />
+                </a>
+                <a class="maintainer-link" href={m.linkedin} target="_blank" rel="noopener" aria-label={`${m.name} on LinkedIn`}>
+                  <Fragment set:html={linkedinSvg} />
+                </a>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="team-contributors">
+      <div class="section-inner">
+        <h2 class="contributors-title">RTK Open Source Contributors</h2>
+        <p class="contributors-sub">Everyone who's shipped code, docs or fixes to RTK.</p>
+        <ul class="contributors-list" role="list">
+          {contributors.map((c) => (
+            <li>
+              <a class="contributor-chip" href={c.url} target="_blank" rel="noopener" aria-label={`${c.handle} on GitHub`}>
+                <IconGitHub size={13} />
+                {c.handle}
+              </a>
+            </li>
+          ))}
+          <li>
+            <a
+              class="contributor-chip contributor-chip--all"
+              href="https://github.com/rtk-ai/rtk/graphs/contributors"
+              target="_blank"
+              rel="noopener"
+            >
+              View all contributors
+              <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+  <SearchModal />
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* ── Team page ───────────────────────────────────────────────────── */
+  .team-page { padding-top: 60px; }
+
+  .team-hero {
+    padding: 72px 0 8px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 600px 240px at 50% 0%, var(--accent-glow), transparent 70%),
+      var(--bg);
+  }
+  .team-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .team-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .team-sub {
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* RTK AI Labs block */
+  .team-block { padding: 56px 0 72px; }
+  .team-block-title {
+    text-align: center;
+    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text-bright);
+    margin-bottom: 32px;
+  }
+  .team-block-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--cyan));
+    margin: 10px auto 0;
+    border-radius: var(--radius-pill);
+    opacity: 0.8;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+    gap: var(--space-5, 24px);
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 28px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
+  }
+  .team-avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-light);
+    margin-bottom: 16px;
+  }
+  .team-name {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 4px;
+  }
+  .team-role {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    margin: 0 0 18px;
+  }
+
+  /* Shared social pill buttons */
+  .social-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: var(--bg-card-hover);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .social-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ── RTK Open Source Maintainers (smaller block) ─────────────────── */
+  .team-maintainers {
+    padding: 56px 0 88px;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .maintainers-title {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+  .maintainers-sub {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin: 0 0 28px;
+  }
+  .maintainers-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 540px;
+    text-align: left;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    overflow: hidden;
+  }
+  .maintainer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .maintainer-row:last-child { border-bottom: none; }
+  .maintainer-name {
+    color: var(--text);
+    font-size: var(--text-base);
+    font-weight: 600;
+  }
+  .maintainer-links {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .maintainer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-light);
+    background: var(--bg-card-hover);
+    color: var(--text-muted);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .maintainer-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  /* ── RTK Open Source Contributors (lightweight chips) ────────────── */
+  .team-contributors {
+    padding: 56px 0 96px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .contributors-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-bright);
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+  .contributors-sub {
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin: 0 0 24px;
+  }
+  .contributors-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 760px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .contributor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .contributor-chip:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+    text-decoration: none;
+  }
+  .contributor-chip--all {
+    font-family: inherit;
+    font-weight: 600;
+    color: var(--accent);
+    border-color: var(--accent-dim);
+    background: var(--accent-dim);
+  }
+  .contributor-chip--all span { transition: transform 0.2s; }
+  .contributor-chip--all:hover { background: var(--accent-dim); border-color: var(--accent); }
+  .contributor-chip--all:hover span { transform: translateX(2px); }
+
+  @media (max-width: 640px) {
+    .team-hero { padding: 48px 0 4px; }
+    .team-block { padding: 40px 0 56px; }
+    .team-block-title { margin-bottom: 24px; }
+    .team-grid { grid-template-columns: 1fr; }
+    .team-card { padding: 28px 22px; }
+    .team-avatar { width: 100px; height: 100px; }
+    .team-sub { font-size: var(--text-base); }
+    .team-maintainers { padding: 40px 0 56px; }
+    .team-contributors { padding: 40px 0 64px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .team-card { transition: none; }
+    .team-card:hover { transform: none; }
+  }
+</style>

@@ -36,6 +36,195 @@
   transform: translateY(0);
 }
 
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-bright);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.nav-logo:hover { text-decoration: none; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+
+/* Nav anchor links */
+.nav-link {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--text); text-decoration: none; }
+
+/* Nav visual divider */
+.nav-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-light);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Icon-only nav buttons */
+.nav-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.nav-icon-btn:hover { color: var(--text); background: var(--bg-card-hover); text-decoration: none; }
+.nav-icon-btn--discord:hover { color: #7289da; }
+
+/* Ghost nav button (GitHub + mobile drawer) */
+.btn-ghost-nav {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  gap: 6px;
+}
+.btn-ghost-nav:hover { color: var(--text-bright); border-color: var(--border-light); background: var(--bg-card-hover); text-decoration: none; }
+
+/* Mobile right controls */
+.nav-mobile-right {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.search-trigger-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 6px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s;
+}
+.search-trigger-mobile:hover { color: var(--text-bright); }
+
+/* Hamburger button */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.nav-hamburger:hover { border-color: var(--accent); }
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Mobile drawer */
+.nav-drawer {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 100vw);
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  overflow-y: auto;
+}
+.nav-drawer.open { transform: translateX(0); }
+
+.nav-drawer-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.nav-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-drawer-links a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-drawer-links a:hover { background: var(--bg-card-hover); color: var(--text-bright); }
+
+.nav-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.nav-drawer-actions .btn { justify-content: center; }
+
+.nav-drawer-lang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Overlay */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+}
 /* === Buttons === */
 .btn {
   display: inline-flex;

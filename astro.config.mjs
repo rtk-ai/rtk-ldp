@@ -26,8 +26,6 @@ export default defineConfig({
     },
   },
   redirects: {
-    '/vox.html': '/vox/',
-    '/icm.html': '/icm/',
     // Backcompat: old /guide/ URLs → new /docs/
     '/guide/': '/docs/',
     '/guide/what-rtk-covers/': '/docs/resources/what-rtk-covers/',
