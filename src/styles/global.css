@@ -1,30 +1,30 @@
 /**
  * global.css — RTK dark-only design tokens + resets
- * Palette: B — Slate dark (retenue Phase 0.5, voir .claude/palettes.md)
+ * Palette: A — Zinc neutre (retenue, voir .claude/palettes.md)
  */
 
 /* Google Fonts loaded via <link> in Layout.astro (preconnect + non-blocking) */
 
 /* ── Design Tokens ─────────────────────────────────────────────────── */
 :root {
-  /* Backgrounds — Slate dark (palette B) */
-  --bg:            #0a0f1c;
-  --bg-alt:        #0d1322;
-  --bg-card:       #0f1625;
-  --bg-card-hover: #141c30;
-  --bg-elevated:   #1a2540;
-  --bg-glass:      rgba(10, 15, 28, 0.82);
+  /* Backgrounds — Zinc neutre (palette A) */
+  --bg:            #09090b;
+  --bg-alt:        #0c0c0e;
+  --bg-card:       #121215;
+  --bg-card-hover: #18181b;
+  --bg-elevated:   #1f1f23;
+  --bg-glass:      rgba(9, 9, 11, 0.80);
 
   /* Borders */
-  --border:        #1e2a45;
-  --border-light:  #243258;
+  --border:        #1f1f23;
+  --border-light:  #2a2a2e;
 
-  /* Text — contrast vérifié sur #0a0f1c */
-  --text:          #e8edf5;   /* ~14.5:1 — AAA */
-  --text-bright:   #f8fafc;   /* ~16.0:1 — AAA */
-  --text-muted:    #94a3b8;   /* ~6.2:1  — AAA */
-  --text-dim:      #64748b;   /* ~4.6:1  — AA  */
-  --text-on-accent: #0a0f1c;
+  /* Text */
+  --text:          #f4f4f5;
+  --text-bright:   #ffffff;
+  --text-muted:    #a1a1aa;
+  --text-dim:      #86868e;
+  --text-on-accent: #09090b;
 
   /* Brand colors */
   --accent:        #00e599;

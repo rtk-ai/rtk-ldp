@@ -5,7 +5,7 @@ Accent vert `#00e599` commun à toutes les options.
 
 ---
 
-## ✅ Option B — Slate dark (RETENUE)
+## Option B — Slate dark
 
 Garde la teinte bleue-navale du site actuel, beaucoup plus sombre.
 Continuité visuelle avec l'existant, identité "nuit profonde".
@@ -32,7 +32,7 @@ Contraste vérifié sur `#0a0f1c` :
 
 ---
 
-## Option A — Zinc (neutre pur)
+## ✅ Option A — Zinc (neutre pur) (RETENUE)
 
 Référence LeanCTX / Linear / Vercel. Sans teinte de couleur.
 
