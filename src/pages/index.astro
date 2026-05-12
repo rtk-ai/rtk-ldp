@@ -23,7 +23,7 @@ const faqItems = [
   },
   {
     q: 'How many tokens does RTK actually save?',
-    a: 'Based on measurements across 2,900+ real-world commands, RTK removes an average of 89% of CLI output noise. Command-level savings: cargo test (91.8% savings), git status (80.8%), find (78.3%), grep (49.5%). A developer who ran 15,720 commands saved 138 million tokens over several weeks — tracked live via rtk gain.',
+    a: 'Based on measurements across 2,900+ real-world commands, RTK removes an average of 89% of CLI output noise. Command-level savings: cargo test (91.8% savings), git status (80.8%), find (78.3%), grep (49.5%). A developer who ran 15,720 commands saved 138 million tokens over several weeks, tracked live via rtk gain.',
   },
   {
     q: 'Is RTK free? Are there usage limits?',
@@ -35,7 +35,7 @@ const faqItems = [
   },
   {
     q: 'How does RTK work without changing my workflow?',
-    a: 'Running rtk init --global installs a PreToolUse hook in Claude Code that automatically rewrites Bash commands to rtk equivalents at the proxy layer. You continue using your normal commands — RTK intercepts and compresses the output before it enters the context window. No manual changes to prompts or workflows are needed.',
+    a: 'Running rtk init --global installs a PreToolUse hook in Claude Code that automatically rewrites Bash commands to rtk equivalents at the proxy layer. You continue using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes to prompts or workflows needed.',
   },
   {
     q: 'Does RTK affect code quality or AI reasoning accuracy?',
