@@ -181,11 +181,11 @@ Ne pas bloquer ces bots — c'est critique pour la visibilité GEO.
 
 | Page | Composant nav |
 |------|--------------|
-| Landing (`/`) | `src/components/landing/Nav.astro` |
-| Produits (`/vox/`, `/icm/`) | `src/components/landing/ProductNav.astro` |
+| Landing (`/`) | `src/components/global/SiteHeader.astro` (variant="landing") |
+| Produits (`/vox/`, `/icm/`) | `src/components/global/SiteHeader.astro` (variant="product") |
 | Docs (`/guide/**`) | `src/components/global/Header.astro` (Starlight override) |
 
-Les anchor links dans Nav.astro utilisent des chemins absolus (`/#problem`, `/#install`) pour fonctionner depuis n'importe quelle page.
+Les anchor links dans SiteHeader.astro utilisent des chemins absolus (`/#problem`, `/#install`) pour fonctionner depuis n'importe quelle page.
 
 ---
 

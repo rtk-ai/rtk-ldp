@@ -102,11 +102,11 @@ CI clones `rtk/main` at `./rtk-repo`. Once `feat-refac-doc` is merged into main,
 
 | Page type | Nav component |
 |-----------|--------------|
-| Landing (`/`) | `src/components/landing/Nav.astro` |
-| Product pages (`/vox/`, `/icm/`) | `src/components/landing/ProductNav.astro` |
+| Landing (`/`) | `src/components/global/SiteHeader.astro` (variant="landing") |
+| Product pages (`/vox/`, `/icm/`) | `src/components/global/SiteHeader.astro` (variant="product") |
 | Docs (`/guide/**`) | `src/components/global/Header.astro` (via Starlight override) |
 
-Anchor links in Nav.astro use absolute paths (`/#problem`, `/#install`) so they work from any page.
+Anchor links in SiteHeader.astro use absolute paths (`/#problem`, `/#install`) so they work from any page.
 
 ## Workflow before push to main
 
