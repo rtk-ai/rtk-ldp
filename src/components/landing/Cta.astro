@@ -14,12 +14,12 @@ const { lang } = Astro.props
       <img src="/assets/illustrations/viking-cta.webp" alt="" aria-hidden="true" loading="lazy" width="1920" height="1047">
     </div>
     <Eyebrow label={t('eyebrow.ship_it', lang)} />
-    <h2 class="reveal cta-headline">
+    <h2 class="cta-headline">
       <span>{t('cta.title_1', lang)}</span><br>
       <span class="gradient-text">{t('cta.title_2', lang)}</span>
     </h2>
-    <p class="section-sub reveal">{t('cta.sub', lang)}</p>
-    <div class="hero-cta reveal">
+    <p class="section-sub">{t('cta.sub', lang)}</p>
+    <div class="hero-cta">
       <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
       <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -27,7 +27,7 @@ const { lang } = Astro.props
       </a>
     </div>
 
-    <div class="social-share reveal">
+    <div class="social-share">
       <span class="share-label">{t('cta.share', lang)}</span>
       <div class="share-links">
         <a href="https://x.com/intent/tweet?text=rtk%20%E2%80%94%20Your%20AI%20coding%20agent%20is%20drowning%20in%20CLI%20noise.%20RTK%20compresses%20outputs%20by%2089%25.%20Better%20reasoning%2C%20longer%20sessions%2C%20lower%20costs.%20Open%20source%2C%20Rust.&url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk" target="_blank" rel="noopener nofollow" class="share-btn" aria-label="Share on X">

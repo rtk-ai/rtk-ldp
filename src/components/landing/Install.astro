@@ -32,15 +32,15 @@ const personas = [
 
 <section class="install-section" id="install">
   <div class="section-inner">
-    <div class="section-viking reveal">
+    <div class="section-viking">
       <img src="/assets/illustrations/viking-install.webp" alt="Viking slamming axe into ground creating green energy shockwave" loading="lazy" width="1920" height="1047">
     </div>
     <Eyebrow label={t('eyebrow.get_started', lang)} />
-    <h2 class="reveal">{t('install.title', lang)}</h2>
-    <p class="section-sub reveal">{t('install.sub', lang)}</p>
+    <h2 >{t('install.title', lang)}</h2>
+    <p class="section-sub">{t('install.sub', lang)}</p>
 
     <!-- Persona tabs -->
-    <div class="persona-tabs reveal" role="tablist" aria-label={t('aria.choose_ai_tool', lang)}>
+    <div class="persona-tabs" role="tablist" aria-label={t('aria.choose_ai_tool', lang)}>
       {personas.map((p, i) => (
         <button
           class={`persona-tab${i === 0 ? ' persona-tab--active' : ''}`}
@@ -56,7 +56,7 @@ const personas = [
     </div>
 
     <!-- Install cards (same for all personas) -->
-    <div class="install-grid reveal">
+    <div class="install-grid">
       <div class="install-card install-primary">
         <h3>{t('install.quick', lang)}</h3>
         <p>{t('install.quick_desc', lang)}</p>
@@ -95,7 +95,7 @@ const personas = [
     </div>
 
     <!-- Persona-specific hook command -->
-    <div class="install-setup reveal">
+    <div class="install-setup">
       <h3>{t('install.hook', lang)}</h3>
       {personas.map((p, i) => (
         <div

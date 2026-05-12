@@ -193,10 +193,10 @@ const schemaOrg = {
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
       <div class="section-inner">
-        <h2 class="reveal">Frequently asked questions</h2>
+        <h2 >Frequently asked questions</h2>
         <div class="faq-list">
           {faqItems.map(({ q, a }) => (
-            <details class="faq-item reveal">
+            <details class="faq-item">
               <summary class="faq-question">{q}</summary>
               <p class="faq-answer">{a}</p>
             </details>
@@ -216,11 +216,9 @@ const schemaOrg = {
 </style>
 
 <script>
-  import { initReveal } from '../../scripts/reveal'
   import { initCopyButtons } from '../../scripts/copy'
   import { initSlideshow } from '../../scripts/slideshow'
 
-  initReveal()
   initCopyButtons()
   initSlideshow()
 </script>

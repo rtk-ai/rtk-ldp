@@ -9,13 +9,13 @@ const { lang } = Astro.props
 ---
 <section class="demo-section" id="demo">
   <div class="section-inner">
-    <div class="section-viking reveal">
+    <div class="section-viking">
       <img src="/assets/illustrations/viking-demo.webp" alt="Viking compressing tokens into a glowing crystal" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal">{t('demo.title', lang)}</h2>
-    <p class="section-sub reveal">{t('demo.sub', lang)}</p>
+    <h2 >{t('demo.title', lang)}</h2>
+    <p class="section-sub">{t('demo.sub', lang)}</p>
 
-    <div class="slideshow reveal">
+    <div class="slideshow">
       <div class="slideshow-nav">
         <button class="slide-tab active" data-slide="0">cargo test</button>
         <button class="slide-tab" data-slide="1">pytest</button>

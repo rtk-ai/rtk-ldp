@@ -9,13 +9,13 @@ const { lang } = Astro.props
 ---
 <section class="proof-section" id="proof">
   <div class="section-inner">
-    <div class="section-viking reveal">
+    <div class="section-viking">
       <img src="/assets/illustrations/viking-proof.webp" alt="Viking king on throne with 88.9% holographic display" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal">{t('proof.title', lang)}</h2>
-    <p class="section-sub reveal" set:html={t('proof.sub', lang)}></p>
+    <h2 >{t('proof.title', lang)}</h2>
+    <p class="section-sub" set:html={t('proof.sub', lang)}></p>
 
-    <div class="proof-row reveal">
+    <div class="proof-row">
       <div class="proof-text">
         <h3>{t('proof.h1', lang)}</h3>
         <p set:html={t('proof.d1', lang)}></p>
@@ -26,7 +26,7 @@ const { lang } = Astro.props
       </div>
     </div>
 
-    <div class="proof-row proof-row-reverse reveal">
+    <div class="proof-row proof-row-reverse">
       <div class="proof-text">
         <h3>{t('proof.h2', lang)}</h3>
         <p>{t('proof.d2', lang)}</p>

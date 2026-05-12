@@ -11,14 +11,14 @@ const { lang } = Astro.props
 <section class="problem" id="problem">
   <div class="section-inner">
     <Eyebrow label={t('eyebrow.problem', lang)} />
-    <div class="section-viking reveal">
+    <div class="section-viking">
       <img src="/assets/illustrations/viking-problem.webp" alt="Viking bracing against a tidal wave of tokens" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal">{t('problem.title', lang)}</h2>
-    <p class="section-sub reveal">{t('problem.sub', lang)}</p>
+    <h2 >{t('problem.title', lang)}</h2>
+    <p class="section-sub">{t('problem.sub', lang)}</p>
 
     <div class="problem-grid">
-      <div class="problem-card card-muted reveal">
+      <div class="problem-card card-muted">
         <div class="problem-icon brain">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a7 7 0 0 0-7 7c0 3 1.5 5.5 4 7v2h6v-2c2.5-1.5 4-4 4-7a7 7 0 0 0-7-7z"/>
@@ -33,7 +33,7 @@ const { lang } = Astro.props
         <pre class="problem-terminal problem-terminal-violet"><code>context_quality: degraded ▼</code></pre>
       </div>
 
-      <div class="problem-card card-muted reveal">
+      <div class="problem-card card-muted">
         <div class="problem-icon clock">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
@@ -47,7 +47,7 @@ const { lang } = Astro.props
         <pre class="problem-terminal problem-terminal-cyan"><code>session_remaining: 32% ▼</code></pre>
       </div>
 
-      <div class="problem-card card-muted reveal">
+      <div class="problem-card card-muted">
         <div class="problem-icon money">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="12" y1="1" x2="12" y2="23"/>

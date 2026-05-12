@@ -9,13 +9,13 @@ const { lang } = Astro.props
 ---
 <section class="comparison" id="compare">
   <div class="section-inner">
-    <div class="section-viking reveal">
+    <div class="section-viking">
       <img src="/assets/illustrations/viking-compare.webp" alt="Viking squad marching through datacenter corridor" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal">{t('compare.title', lang)}</h2>
-    <p class="section-sub reveal">{t('compare.sub', lang)}</p>
+    <h2 >{t('compare.title', lang)}</h2>
+    <p class="section-sub">{t('compare.sub', lang)}</p>
 
-    <div class="session-callout reveal">
+    <div class="session-callout">
       <p class="session-headline">{t('compare.session_headline', lang)}</p>
       <div class="session-stats-row">
         <div class="session-stat">
@@ -36,7 +36,7 @@ const { lang } = Astro.props
 
     <div class="tool-cards">
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Claude Code</span>
           <span class="tool-type type-terminal">Terminal</span>
@@ -50,7 +50,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_cc', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Cursor</span>
           <span class="tool-type type-ide">IDE</span>
@@ -64,7 +64,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_cursor', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">OpenAI Codex</span>
           <span class="tool-type type-agent">Agent</span>
@@ -78,7 +78,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_codex', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Windsurf</span>
           <span class="tool-type type-ide">IDE</span>
@@ -92,7 +92,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_windsurf', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Gemini CLI</span>
           <span class="tool-type type-terminal">Terminal</span>
@@ -106,7 +106,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_gemini', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Aider</span>
           <span class="tool-type type-terminal">Terminal</span>
@@ -120,7 +120,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_aider', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">GitHub Copilot</span>
           <span class="tool-type type-ide">IDE</span>
@@ -134,7 +134,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_copilot', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Cline / Roo</span>
           <span class="tool-type type-agent">VS Code</span>
