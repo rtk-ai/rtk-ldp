@@ -1,7 +1,6 @@
 ---
 // Problem section — 3-card layout: context pollution, short sessions, cost explosion
 import { t, type Lang } from '../../lib/i18n'
-import Eyebrow from './Eyebrow.astro'
 
 interface Props {
   lang: Lang
@@ -10,52 +9,24 @@ const { lang } = Astro.props
 ---
 <section class="problem" id="problem">
   <div class="section-inner">
-    <Eyebrow label={t('eyebrow.problem', lang)} />
-    <div class="section-viking">
-      <img src="/assets/illustrations/viking-problem.webp" alt="Viking bracing against a tidal wave of tokens" loading="lazy" width="1920" height="1047">
-    </div>
-    <h2 >{t('problem.title', lang)}</h2>
+    <div class="section-num">01</div>
+    <h2>{t('problem.title', lang)}</h2>
     <p class="section-sub">{t('problem.sub', lang)}</p>
 
     <div class="problem-grid">
       <div class="problem-card card-muted">
-        <div class="problem-icon brain">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a7 7 0 0 0-7 7c0 3 1.5 5.5 4 7v2h6v-2c2.5-1.5 4-4 4-7a7 7 0 0 0-7-7z"/>
-            <path d="M9 22h6" stroke="var(--text-muted)"/>
-            <path d="M10 18h4" stroke="var(--text-muted)"/>
-            <path d="M12 2v4" opacity="0.4"/>
-            <path d="M8 9c0-1 .5-2.5 2-3" opacity="0.5"/>
-          </svg>
-        </div>
         <h3>{t('problem.card1.title', lang)}</h3>
         <p set:html={t('problem.card1.text', lang)}></p>
         <pre class="problem-terminal problem-terminal-violet"><code>context_quality: degraded ▼</code></pre>
       </div>
 
       <div class="problem-card card-muted">
-        <div class="problem-icon clock">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14" stroke="var(--text-muted)"/>
-            <path d="M4.93 4.93l1.41 1.41" opacity="0.4"/>
-            <path d="M19.07 4.93l-1.41 1.41" opacity="0.4"/>
-          </svg>
-        </div>
         <h3>{t('problem.card2.title', lang)}</h3>
         <p>{t('problem.card2.text', lang)}</p>
         <pre class="problem-terminal problem-terminal-cyan"><code>session_remaining: 32% ▼</code></pre>
       </div>
 
       <div class="problem-card card-muted">
-        <div class="problem-icon money">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="1" x2="12" y2="23"/>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="var(--red)"/>
-            <path d="M3 7l2-2" stroke="var(--text-muted)" opacity="0.5"/>
-            <path d="M21 7l-2-2" stroke="var(--text-muted)" opacity="0.5"/>
-          </svg>
-        </div>
         <h3>{t('problem.card3.title', lang)}</h3>
         <p>{t('problem.card3.text', lang)}</p>
         <pre class="problem-terminal problem-terminal-red"><code>token_waste: $1,750/mo ▲</code></pre>
@@ -65,7 +36,7 @@ const { lang } = Astro.props
 </section>
 
 <style>
-.problem { background: var(--bg-alt); }
+.problem { background: var(--bg-card); }
 
 .problem-grid {
   display: grid;
@@ -79,28 +50,12 @@ const { lang } = Astro.props
   border-radius: var(--radius);
   background: var(--bg-card);
   box-shadow: var(--shadow-card);
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 .problem-card:hover {
   border-color: var(--border-light);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
+  box-shadow: var(--shadow-card-hover);
 }
-
-.problem-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: var(--text-2xl);
-}
-
-.problem-icon.brain { background: var(--violet-dim); }
-.problem-icon.clock { background: var(--cyan-dim); }
-.problem-icon.money { background: var(--red-dim); }
 
 .problem-card h3 {
   font-size: 1.1rem;
