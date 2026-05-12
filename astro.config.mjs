@@ -19,8 +19,6 @@ export default defineConfig({
   site: 'https://www.rtk-ai.app',
   trailingSlash: 'always',
   redirects: {
-    '/vox.html': '/vox/',
-    '/icm.html': '/icm/',
     // Backcompat: old /guide/ URLs → new /docs/
     '/guide/': '/docs/',
     '/guide/what-rtk-covers/': '/docs/resources/what-rtk-covers/',
