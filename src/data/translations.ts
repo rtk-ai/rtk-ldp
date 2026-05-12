@@ -170,4 +170,39 @@ export const T: Record<string, Record<Lang, string>> = {
   'install.note.cc':    { en: 'Installs PreToolUse hook in Claude Code settings.json — every Bash call is rewritten automatically.', fr: 'Installe un hook PreToolUse dans Claude Code settings.json — chaque appel Bash est réécrit automatiquement.', es: 'Instala hook PreToolUse en Claude Code settings.json — cada llamada Bash se reescribe automáticamente.', de: 'Installiert PreToolUse-Hook in Claude Code settings.json — jeder Bash-Aufruf wird automatisch umgeschrieben.', zh: '在 Claude Code settings.json 中安装 PreToolUse 钩子——每个 Bash 调用都会自动重写。', ja: 'Claude Code settings.json に PreToolUse フックをインストール—すべての Bash 呼び出しが自動的に書き換えられます。' },
   'install.note.cursor':{ en: "Configures Cursor's .cursorrules to pipe Bash commands through rtk.", fr: 'Configure le .cursorrules de Cursor pour router les commandes Bash via rtk.', es: 'Configura .cursorrules de Cursor para enrutar comandos Bash a través de rtk.', de: 'Konfiguriert Cursors .cursorrules, um Bash-Befehle durch rtk zu leiten.', zh: '配置 Cursor 的 .cursorrules，将 Bash 命令通过 rtk 传输。', ja: 'Cursor の .cursorrules を設定して Bash コマンドを rtk 経由でパイプします。' },
   'install.note.other': { en: 'Installs a global shell hook — works with Aider, Gemini CLI, Codex, Windsurf, and any terminal AI tool.', fr: 'Installe un hook shell global — fonctionne avec Aider, Gemini CLI, Codex, Windsurf et tout outil IA terminal.', es: 'Instala un hook de shell global — funciona con Aider, Gemini CLI, Codex, Windsurf y cualquier herramienta IA terminal.', de: 'Installiert einen globalen Shell-Hook — funktioniert mit Aider, Gemini CLI, Codex, Windsurf und jedem Terminal-KI-Tool.', zh: '安装全局 shell 钩子——适用于 Aider、Gemini CLI、Codex、Windsurf 以及任何终端 AI 工具。', ja: 'グローバルシェルフックをインストール—Aider、Gemini CLI、Codex、Windsurf、あらゆるターミナル AI ツールに対応。' },
+
+  // ── Eyebrow labels ────────────────────────────────────────────────────────
+  'eyebrow.get_started':   { en: 'get started',       fr: 'commencer',         es: 'empezar',           de: 'loslegen',          zh: '快速开始',   ja: 'はじめる' },
+  'eyebrow.context_forge': { en: 'context forge',     fr: 'context forge',     es: 'context forge',     de: 'context forge',     zh: 'context forge', ja: 'context forge' },
+  'eyebrow.ship_it':       { en: 'ship it',           fr: 'ship it',           es: 'ship it',           de: 'ship it',           zh: '发布',       ja: 'ship it' },
+  'eyebrow.problem':       { en: '01 — the problem',  fr: '01 — le problème',  es: '01 — el problema',  de: '01 — das Problem',  zh: '01 — 问题所在', ja: '01 — 問題' },
+
+  // ── Generic UI strings ────────────────────────────────────────────────────
+  'ui.terminal_title':    { en: 'Terminal',              fr: 'Terminal',             es: 'Terminal',             de: 'Terminal',             zh: '终端',          ja: 'ターミナル' },
+  'ui.hero_why_numbers':  { en: 'Why RTK? The numbers.', fr: 'Pourquoi RTK ? Les chiffres.', es: '¿Por qué RTK? Los números.', de: 'Warum RTK? Die Zahlen.', zh: '为什么选 RTK？数据说话。', ja: 'なぜ RTK？数字で見る。' },
+  'ui.github_stars':      { en: 'stars',                fr: 'étoiles',              es: 'estrellas',            de: 'Sterne',               zh: '星标',          ja: 'スター' },
+  'ui.works_with':        { en: 'Works with',           fr: 'Compatible avec',      es: 'Compatible con',       de: 'Kompatibel mit',       zh: '兼容',          ja: '対応ツール' },
+  'ui.install_docs_link': { en: 'Full install guide →', fr: 'Guide complet →',      es: 'Guía completa →',      de: 'Vollständige Anleitung →', zh: '完整安装指南 →', ja: '完全インストールガイド →' },
+  'ui.nav_docs':          { en: 'Docs',                 fr: 'Docs',                 es: 'Docs',                 de: 'Docs',                 zh: '文档',          ja: 'ドキュメント' },
+  'ui.nav_discord':       { en: 'Discord',              fr: 'Discord',              es: 'Discord',              de: 'Discord',              zh: 'Discord',       ja: 'Discord' },
+  'ui.nav_github':        { en: 'GitHub',               fr: 'GitHub',               es: 'GitHub',               de: 'GitHub',               zh: 'GitHub',        ja: 'GitHub' },
+  'ui.nav_support':       { en: '☕ Support',           fr: '☕ Soutenir',          es: '☕ Apoyar',            de: '☕ Unterstützen',      zh: '☕ 支持',        ja: '☕ サポート' },
+
+  // ── ARIA labels ───────────────────────────────────────────────────────────
+  'aria.copy':            { en: 'Copy',                 fr: 'Copier',               es: 'Copiar',               de: 'Kopieren',             zh: '复制',          ja: 'コピー' },
+  'aria.prev':            { en: 'Previous',             fr: 'Précédent',            es: 'Anterior',             de: 'Zurück',               zh: '上一个',        ja: '前へ' },
+  'aria.next':            { en: 'Next',                 fr: 'Suivant',              es: 'Siguiente',            de: 'Weiter',               zh: '下一个',        ja: '次へ' },
+  'aria.pause_slideshow': { en: 'Pause slideshow',      fr: 'Mettre en pause',      es: 'Pausar presentación',  de: 'Diashow pausieren',    zh: '暂停幻灯片',    ja: 'スライドショーを一時停止' },
+  'aria.resume_slideshow':{ en: 'Resume slideshow',     fr: 'Reprendre la lecture', es: 'Reanudar presentación', de: 'Diashow fortsetzen',  zh: '继续幻灯片',    ja: 'スライドショーを再開' },
+  'aria.choose_ai_tool':  { en: 'Choose your AI tool',  fr: 'Choisissez votre outil IA', es: 'Elige tu herramienta IA', de: 'Wähle dein KI-Tool', zh: '选择你的 AI 工具', ja: 'AI ツールを選択' },
+  'aria.main_nav':        { en: 'Main navigation',      fr: 'Navigation principale', es: 'Navegación principal', de: 'Hauptnavigation',     zh: '主导航',        ja: 'メインナビゲーション' },
+  'aria.open_menu':       { en: 'Open menu',            fr: 'Ouvrir le menu',       es: 'Abrir menú',           de: 'Menü öffnen',          zh: '打开菜单',      ja: 'メニューを開く' },
+  'aria.close_menu':      { en: 'Close menu',           fr: 'Fermer le menu',       es: 'Cerrar menú',          de: 'Menü schließen',       zh: '关闭菜单',      ja: 'メニューを閉じる' },
+  'aria.search':          { en: 'Search (Cmd+K)',        fr: 'Rechercher (Cmd+K)',   es: 'Buscar (Cmd+K)',       de: 'Suche (Cmd+K)',        zh: '搜索（Cmd+K）', ja: '検索（Cmd+K）' },
+  'aria.support_kofi':    { en: 'Support on Ko-fi',     fr: 'Soutenir sur Ko-fi',   es: 'Apoyar en Ko-fi',     de: 'Unterstützen auf Ko-fi', zh: '在 Ko-fi 上支持', ja: 'Ko-fi でサポート' },
+  'aria.join_discord':    { en: 'Join Discord',         fr: 'Rejoindre Discord',    es: 'Unirse a Discord',     de: 'Discord beitreten',    zh: '加入 Discord',  ja: 'Discord に参加' },
+  'aria.compat_tools':    { en: 'Compatible AI tools',  fr: 'Outils IA compatibles', es: 'Herramientas IA compatibles', de: 'Kompatible KI-Tools', zh: '兼容的 AI 工具', ja: '対応 AI ツール' },
+  'aria.share_x':         { en: 'Share on X',           fr: 'Partager sur X',       es: 'Compartir en X',       de: 'Auf X teilen',         zh: '分享到 X',      ja: 'X でシェア' },
+  'aria.share_bsky':      { en: 'Share on Bluesky',     fr: 'Partager sur Bluesky', es: 'Compartir en Bluesky', de: 'Auf Bluesky teilen',   zh: '分享到 Bluesky', ja: 'Bluesky でシェア' },
+  'aria.share_linkedin':  { en: 'Share on LinkedIn',    fr: 'Partager sur LinkedIn', es: 'Compartir en LinkedIn', de: 'Auf LinkedIn teilen', zh: '分享到 LinkedIn', ja: 'LinkedIn でシェア' },
 }
