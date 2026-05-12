@@ -14,7 +14,8 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
       <a href="/#problem" class="header-link">Why</a>
       <a href="/#install" class="header-link">Install</a>
       <span class="header-divider" aria-hidden="true"></span>
-      <a href="/guide/" class="header-link header-link--active">Docs</a>
+      <a href="/docs/" class="header-link header-link--active">Docs</a>
+      <a href="/savings/" class="header-link">Savings</a>
       <span class="header-divider" aria-hidden="true"></span>
       <button id="search-trigger" class="header-search-btn" aria-label="Search (Cmd+K)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true">
@@ -49,7 +50,8 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     <div class="docs-drawer-links">
       <a href="/#problem">Why</a>
       <a href="/#install">Install</a>
-      <a href="/guide/" class="active">Docs</a>
+      <a href="/docs/" class="active">Docs</a>
+      <a href="/savings/">Savings</a>
     </div>
     <div class="docs-drawer-actions">
       <a href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener">
@@ -69,10 +71,10 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     right: 0;
     z-index: 100;
     height: 60px;
-    background: rgba(6, 11, 24, 0.92);
+    background: var(--bg-glass);
     border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .header-inner {
@@ -92,12 +94,12 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     gap: 8px;
     text-decoration: none;
     flex-shrink: 0;
-    color: #f8fafc;
+    color: var(--text-bright);
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: -0.01em;
   }
-  .header-logo:hover { text-decoration: none; color: #f8fafc; }
+  .header-logo:hover { text-decoration: none; color: var(--text-bright); }
 
   .header-nav {
     display: flex;
@@ -151,7 +153,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
   }
   .header-btn-ghost:hover {
     color: var(--text);
-    border-color: #243056;
+    border-color: var(--border-light);
     background: var(--bg-card);
     text-decoration: none;
   }
@@ -173,11 +175,11 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
   }
   .header-search-btn:hover {
     color: var(--text);
-    border-color: #243056;
+    border-color: var(--border-light);
     background: var(--bg-card);
   }
   .header-search-label {
-    color: #64748b;
+    color: var(--text-dim);
     font-size: 0.8125rem;
   }
   .header-search-kbd {
@@ -185,7 +187,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     align-items: center;
     padding: 1px 5px;
     font-size: 0.6875rem;
-    color: #64748b;
+    color: var(--text-dim);
     background: var(--bg-alt);
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -207,7 +209,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     height: 38px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    background: rgba(15, 22, 41, 0.6);
+    background: var(--bg-card);
     color: var(--text-muted);
     cursor: pointer;
     transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
@@ -215,7 +217,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
   }
   .header-icon-btn:hover {
     color: var(--text);
-    border-color: #243056;
+    border-color: var(--border-light);
     background: var(--bg-card);
   }
 
@@ -311,7 +313,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
   }
   .docs-drawer-actions a:hover {
     color: var(--text);
-    border-color: #243056;
+    border-color: var(--border-light);
     background: var(--bg-card);
   }
 
@@ -320,7 +322,7 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
     display: none;
     position: fixed;
     inset: 60px 0 0 0;
-    background: rgba(6, 11, 24, 0.6);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(2px);
     z-index: 199;
   }

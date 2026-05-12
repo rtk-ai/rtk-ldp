@@ -5,10 +5,10 @@
  * Dark-only site — no light mode overrides needed.
  */
 
-/* ── Dark mode (always active) ────────────────────────────────────── */
+/* ── Force dark palette on ALL themes — dark-only site ───────────── */
 :root,
-:root[data-theme='dark'],
-[data-theme='dark'] {
+[data-theme='dark'],
+[data-theme='light'] {
   /* Accent / brand */
   --sl-color-accent-low:  rgba(0, 229, 153, 0.12);  /* --accent-dim */
   --sl-color-accent:      #00e599;                   /* --accent */

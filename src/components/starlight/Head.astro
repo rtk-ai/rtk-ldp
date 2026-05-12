@@ -42,5 +42,10 @@ const breadcrumbSchema = {
   })),
 }
 ---
+<!-- Force dark mode before first paint — dark-only site -->
+<script is:inline>
+  try { localStorage.setItem('starlight-theme', 'dark') } catch(e) {}
+  document.documentElement.setAttribute('data-theme', 'dark')
+</script>
 <Default {...Astro.props} />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
