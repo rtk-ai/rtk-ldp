@@ -50,10 +50,10 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
         <>
           <a href="/#problem" class="nav-link">{t('nav.why', lang)}</a>
           <a href="/#demo" class="nav-link">{t('nav.demo', lang)}</a>
-          <a href="/vs/" class="nav-link nav-link-hide-md">{t('nav.tools', lang)}</a>
           <a href="/#install" class="nav-link">{t('nav.install', lang)}</a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="/guide/" class="nav-link">{t('ui.nav_docs', lang)}</a>
+          <a href="/savings/" class="nav-link nav-link-hide-md">Savings</a>
           <a href="/cloud/" class="nav-link nav-link-hide-md nav-link-cloud">Cloud <span class="nav-badge-soon">soon</span></a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title={t('aria.join_discord', lang)} aria-label={t('aria.join_discord', lang)}>
@@ -143,9 +143,10 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
         <>
           <a href="/#problem">{t('nav.why', lang)}</a>
           <a href="/#demo">{t('nav.demo', lang)}</a>
-          <a href="/vs/">{t('nav.tools', lang)}</a>
           <a href="/#install">{t('nav.install', lang)}</a>
           <a href="/guide/">{t('ui.nav_docs', lang)}</a>
+          <a href="/savings/">Savings</a>
+          <a href="/vs/">Compare</a>
           <a href="/cloud/">Cloud <span class="nav-badge-soon">soon</span></a>
         </>
       ) : isVox ? (
