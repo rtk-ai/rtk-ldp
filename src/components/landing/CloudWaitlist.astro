@@ -159,7 +159,7 @@ const { lang } = Astro.props
           setTimeout(() => { btn.textContent = original!; btn.disabled = false }, 3000)
         }
       } catch {
-        btn.textContent = 'Error — try again'
+        btn.textContent = 'Error, try again'
         btn.disabled = false
         setTimeout(() => { btn.textContent = original!; btn.disabled = false }, 3000)
       }

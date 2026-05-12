@@ -25,7 +25,7 @@ const faqItems = [
   },
   {
     q: 'How does RTK work without changing my workflow?',
-    a: 'Running rtk init --global installs a PreToolUse hook in Claude Code that automatically rewrites Bash commands to rtk equivalents at the proxy layer. You continue using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes to prompts or workflows needed.',
+    a: 'Running rtk init --claude-code installs a PreToolUse hook in Claude Code settings that automatically rewrites Bash commands to rtk equivalents. For other AI tools, rtk init --global installs a shell hook that works at the process level. Either way, you keep using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes to prompts or workflows needed.',
   },
   {
     q: 'Does RTK affect code quality or AI reasoning accuracy?',
