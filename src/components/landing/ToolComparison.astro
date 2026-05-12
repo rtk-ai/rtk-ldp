@@ -146,3 +146,184 @@
     <p class="section-sub" style="font-size:0.72rem; margin-top:20px; opacity:0.5;" data-i18n="compare.footnote">Pricing verified Feb 2026. Limits vary by usage and plan. RTK savings based on avg 89% compression across 2,900+ real commands.</p>
   </div>
 </section>
+
+<style>
+.comparison { background: var(--bg); }
+
+.tool-type {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.type-terminal { background: var(--accent-dim); color: var(--accent); }
+.type-ide { background: var(--cyan-dim); color: var(--cyan); }
+.type-agent { background: var(--violet-dim); color: var(--violet); }
+
+.impact-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+
+.impact-green {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.tool-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.tool-card:hover {
+  border-color: var(--border-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-card-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-bright);
+}
+
+.tool-card-specs {
+  padding: 0;
+}
+
+.tool-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+
+.tool-card-row:last-child {
+  border-bottom: none;
+}
+
+.tool-card-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tool-card-value {
+  color: var(--text);
+  font-weight: 600;
+  text-align: right;
+}
+
+.tool-card-impact {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.tool-card-impact .waste-badge {
+  font-size: 0.76rem;
+}
+
+.tool-card-detail {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  background: rgba(0, 229, 153, 0.02);
+}
+
+.session-callout {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 229, 153, 0.03) 100%);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin: 40px 0 12px;
+  text-align: center;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(0, 229, 153, 0.04) inset;
+}
+
+.session-headline {
+  color: var(--text-bright);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.session-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.session-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.session-num {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  line-height: 1.2;
+}
+
+.session-num-red { color: var(--red); }
+.session-num-accent { color: var(--accent); }
+
+.session-label {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.session-note {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .tool-cards { grid-template-columns: 1fr; }
+  .tool-card-detail { font-size: 0.76rem; }
+  .session-callout { padding: 20px 16px; }
+  .session-stats-row { gap: var(--space-5); }
+  .session-num { font-size: 1.3rem; }
+}
+</style>
