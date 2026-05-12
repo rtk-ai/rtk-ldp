@@ -1,7 +1,6 @@
 ---
 // CTA section — viewport-height close, tri-gradient headline, viking at 12% opacity
 import { t, type Lang } from '../../lib/i18n'
-import Eyebrow from './Eyebrow.astro'
 
 interface Props {
   lang: Lang
@@ -10,13 +9,9 @@ const { lang } = Astro.props
 ---
 <section class="cta-section cta-section--full">
   <div class="section-inner cta-inner">
-    <div class="cta-viking-bg">
-      <img src="/assets/illustrations/viking-cta.webp" alt="" aria-hidden="true" loading="lazy" width="1920" height="1047">
-    </div>
-    <Eyebrow label={t('eyebrow.ship_it', lang)} />
     <h2 class="cta-headline">
-      <span>{t('cta.title_1', lang)}</span><br>
-      <span class="gradient-text">{t('cta.title_2', lang)}</span>
+      {t('cta.title_1', lang)}<br>
+      <span class="cta-accent">{t('cta.title_2', lang)}</span>
     </h2>
     <p class="section-sub">{t('cta.sub', lang)}</p>
     <div class="hero-cta">
@@ -68,26 +63,15 @@ const { lang } = Astro.props
   margin-inline: auto;
 }
 
-.cta-viking-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.cta-viking-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.12;
-  filter: grayscale(20%);
-}
-
 .cta-headline {
   font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin: var(--space-4) 0 var(--space-5);
+}
+
+.cta-accent {
+  color: var(--accent);
 }
 </style>
