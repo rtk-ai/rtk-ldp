@@ -17,6 +17,14 @@ function hasContent(tab) {
 export default defineConfig({
   site: 'https://www.rtk-ai.app',
   trailingSlash: 'always',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr', 'es', 'de', 'zh', 'ja'],
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: false,
+    },
+  },
   redirects: {
     '/vox.html': '/vox/',
     '/icm.html': '/icm/',
@@ -34,7 +42,19 @@ export default defineConfig({
     '/guide/resources/troubleshooting/': '/docs/resources/troubleshooting/',
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          fr: 'fr-FR',
+          es: 'es-ES',
+          de: 'de-DE',
+          zh: 'zh-CN',
+          ja: 'ja-JP',
+        },
+      },
+    }),
     starlight({
       title: 'RTK',
       description: 'RTK — Rust Token Killer. Reduce Claude Code token usage by 60-90%.',
