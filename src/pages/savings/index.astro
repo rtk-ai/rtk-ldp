@@ -62,14 +62,14 @@ const schemaOrg = [
   <main id="main-content">
 
     <!-- Hero compact -->
-    <section class="hero hero-compact">
+    <section class="subpage-hero">
       <nav class="rtk-subnav" aria-label="RTK pages">
         <a href="/">RTK</a>
         <span aria-hidden="true">/</span>
         <strong>Token Savings</strong>
       </nav>
       <h1>89% average noise removed,<br><span style="color:var(--accent)">measured across real commands.</span></h1>
-      <p class="hero-sub">
+      <p class="subpage-sub">
         Not a synthetic benchmark. These numbers come from 2,900+ actual developer sessions
         running cargo, git, grep, find, and everything else you use daily.
       </p>
@@ -82,7 +82,7 @@ const schemaOrg = [
       <div class="section-inner">
         <h2>Ready to cut your token usage<br><span style="color:var(--accent)">by 89%?</span></h2>
         <p class="section-sub">Install RTK. Zero config. Zero workflow change.</p>
-        <div class="hero-cta">
+        <div class="subpage-cta">
           <a href="/#install" class="btn btn-primary">Install RTK &rarr;</a>
           <a href="/vs/" class="btn btn-ghost">Compare tools</a>
         </div>
@@ -115,12 +115,31 @@ const schemaOrg = [
   .rtk-subnav strong { color: var(--text); }
 
   /* Compact hero for sub-pages */
-  .hero.hero-compact {
-    padding-top: 5rem;
-    padding-bottom: 3rem;
+  .subpage-hero {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 120px 24px 60px;
+    text-align: center;
   }
-  .hero.hero-compact h1 {
+  .subpage-hero h1 {
     font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .subpage-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .subpage-cta {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
   }
 </style>
 
