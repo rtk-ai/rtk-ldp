@@ -3,7 +3,6 @@ import Layout from './Layout.astro'
 import SiteHeader from '../components/global/SiteHeader.astro'
 import SiteFooter from '../components/global/SiteFooter.astro'
 import SearchModal from '../components/global/SearchModal.astro'
-import I18nScript from '../components/global/I18nScript.astro'
 import type { Lang } from '../lib/i18n'
 
 interface Props {
@@ -24,5 +23,4 @@ const { product, title, description, ogImage, schema, lang = 'en' } = Astro.prop
   </main>
   <SiteFooter />
   <SearchModal />
-  <I18nScript />
 </Layout>
