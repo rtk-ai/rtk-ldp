@@ -1,0 +1,26 @@
+---
+import Layout from './Layout.astro'
+import SiteHeader from '../components/global/SiteHeader.astro'
+import SiteFooter from '../components/global/SiteFooter.astro'
+import SearchModal from '../components/global/SearchModal.astro'
+import I18nScript from '../components/global/I18nScript.astro'
+
+interface Props {
+  product: 'vox' | 'icm'
+  title: string
+  description: string
+  ogImage: string
+  schema: Record<string, unknown>
+}
+
+const { product, title, description, ogImage, schema } = Astro.props
+---
+<Layout title={title} description={description} image={ogImage} schemaOrg={schema}>
+  <SiteHeader variant="product" product={product} />
+  <main id="main-content">
+    <slot />
+  </main>
+  <SiteFooter />
+  <SearchModal />
+  <I18nScript />
+</Layout>
