@@ -70,16 +70,6 @@ const { lang } = Astro.props
   line-height: 1.65;
 }
 
-.problem-card .metric {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
 .problem-terminal {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -115,9 +105,5 @@ const { lang } = Astro.props
   .problem-grid {
     grid-template-columns: 1fr;
   }
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-  .problem-grid { grid-template-columns: repeat(3, 1fr); }
 }
 </style>
