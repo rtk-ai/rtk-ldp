@@ -48,6 +48,17 @@ pnpm preview  # Preview dist/
 
 Push sur `main` → deploy automatique via GitHub Actions.
 
+### Épingler la version des docs RTK en CI
+
+La variable repo `RTK_DOCS_REF` contrôle le tag/branche cloné en CI (défaut : `master`).
+
+Pour épingler à un tag spécifique :
+1. GitHub → Settings → Variables → Repository variables
+2. Créer `RTK_DOCS_REF` = `v1.5.0` (ou le tag voulu)
+3. Le prochain build clonera ce tag au lieu de `master`
+
+Supprimer la variable pour revenir sur `master` automatiquement.
+
 ---
 
 ## Architecture
