@@ -181,7 +181,7 @@ const schemaOrg = {
     <!-- FAQ Section -->
     <section class="faq-section" id="faq">
       <div class="section-inner">
-        <h2 >Frequently asked questions</h2>
+        <h2>Frequently asked questions</h2>
         <div class="faq-list">
           {faqItems.map(({ q, a }) => (
             <details class="faq-item">
@@ -201,6 +201,10 @@ const schemaOrg = {
 
 <style is:global>
   @import '../../styles/landing.css';
+</style>
+
+<style>
+  .faq-section { background: var(--bg-card); }
 </style>
 
 <script>
