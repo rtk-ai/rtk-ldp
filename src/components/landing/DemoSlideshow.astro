@@ -1,5 +1,5 @@
 ---
-// DemoSlideshow — 11 before/after slides with tabs, dots, prev/next, 7s autoplay
+// DemoSlideshow — 4 before/after slides (cargo test, git diff, git status, find)
 import { t, type Lang } from '../../lib/i18n'
 
 interface Props {
@@ -222,7 +222,7 @@ src/parser/ error.rs formatter.rs</code></pre>
         <button class="slide-arrow slide-next" aria-label={t('aria.next', lang)}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
-        <button class="slide-pause" aria-label={t('aria.pause_slideshow', lang)} style="background:none;border:none;cursor:pointer;color:var(--text-dim);padding:8px;border-radius:var(--radius-xs);display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;"></button>
+        <button class="slide-pause" aria-label={t('aria.pause_slideshow', lang)}></button>
       </div>
     </div>
   </div>
@@ -298,6 +298,20 @@ src/parser/ error.rs formatter.rs</code></pre>
   transition: color 0.2s, border-color 0.2s;
 }
 .slide-arrow:hover { border-color: var(--accent); color: var(--accent); }
+
+.slide-pause {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dim);
+  padding: 8px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
 
 .slide-dots { display: flex; gap: var(--space-2); }
 
