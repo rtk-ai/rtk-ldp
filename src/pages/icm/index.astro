@@ -1,15 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import SearchModal from '../../components/global/SearchModal.astro'
-import SiteHeader from '../../components/global/SiteHeader.astro'
-import SiteFooter from '../../components/global/SiteFooter.astro'
+import ProductLayout from '../../layouts/ProductLayout.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
-const schemaOrg = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
     name: 'ICM — Infinite Context Memory',
     description:
       'Permanent persistent memory for AI agents. Single binary, SQLite storage, MCP native with 22 tools. Episodic memories with temporal decay, semantic knowledge graphs, and hybrid BM25+vector search. Auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, and VS Code.',
@@ -30,11 +28,10 @@ const schemaOrg = [
       'Auto-configures 14 AI editors via icm init (Claude Code, Cursor, Windsurf, VS Code, and more)',
       '100% local — SQLite storage, local embeddings, zero API keys, zero cloud',
       'Single binary, zero dependencies — no Docker, no Python, no Qdrant',
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
     mainEntity: [
       {
         '@type': 'Question',
@@ -76,53 +73,58 @@ const schemaOrg = [
           text: 'ICM is 100% local. All data is stored in a SQLite file on your machine. Embeddings use BAAI/bge-small (384-dimensional vectors) running locally with no API calls. No data leaves your machine. No API keys required.',
         },
       },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'How to give AI agents persistent memory with ICM',
-    description: 'Install ICM and connect it to your AI editor in under 2 minutes. Single binary, zero dependencies.',
-    totalTime: 'PT2M',
-    estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
-    tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
-    step: [
-      {
-        '@type': 'HowToStep',
-        position: 1,
-        name: 'Install ICM',
-        text: 'Run: cargo install icm — or install from source: cargo install --git https://github.com/rtk-ai/icm. Pre-built binaries are also available on the GitHub releases page.',
-        url: 'https://www.rtk-ai.app/icm/#install',
-      },
-      {
-        '@type': 'HowToStep',
-        position: 2,
-        name: 'Auto-configure your editors',
-        text: 'Run icm init to auto-detect and configure up to 14 AI editors. Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode are all supported.',
-        url: 'https://www.rtk-ai.app/icm/#install',
-      },
-      {
-        '@type': 'HowToStep',
-        position: 3,
-        name: 'Store and recall memories',
-        text: 'Use icm_memory_store with a topic, content, and importance level (critical/high/medium/low). Retrieve context with icm_memory_recall using natural language queries. Build knowledge graphs with icm_memoir_create and icm_memoir_link.',
-        url: 'https://www.rtk-ai.app/icm/#demo',
-      },
-    ],
-  },
-]
+      ],
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to give AI agents persistent memory with ICM',
+      description: 'Install ICM and connect it to your AI editor in under 2 minutes. Single binary, zero dependencies.',
+      totalTime: 'PT2M',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+      tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Install ICM',
+          text: 'Run: cargo install icm — or install from source: cargo install --git https://github.com/rtk-ai/icm. Pre-built binaries are also available on the GitHub releases page.',
+          url: 'https://www.rtk-ai.app/icm/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'Auto-configure your editors',
+          text: 'Run icm init to auto-detect and configure up to 14 AI editors. Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode are all supported.',
+          url: 'https://www.rtk-ai.app/icm/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Store and recall memories',
+          text: 'Use icm_memory_store with a topic, content, and importance level (critical/high/medium/low). Retrieve context with icm_memory_recall using natural language queries. Build knowledge graphs with icm_memoir_create and icm_memoir_link.',
+          url: 'https://www.rtk-ai.app/icm/#demo',
+        },
+      ],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.rtk-ai.app/icm/',
+      url: 'https://www.rtk-ai.app/icm/',
+      name: 'ICM — The SQLite of AI Memory | rtk-ai',
+      description: 'ICM is permanent memory for AI agents. Single binary, zero dependencies, MCP native. Episodic memories with temporal decay and semantic knowledge graphs.',
+      isPartOf: { '@id': 'https://www.rtk-ai.app/' },
+    },
+  ],
+}
 ---
-<Layout
+<ProductLayout
+  product="icm"
   title="ICM — The SQLite of AI Memory | rtk-ai"
   description="ICM is permanent memory for AI agents. Single binary, zero dependencies, MCP native. Episodic memories with temporal decay and semantic knowledge graphs."
-  image="/og-icm-banner.png"
-  schemaOrg={schemaOrg}
+  ogImage="/og-icm-banner.png"
+  schema={schema}
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>
-
-  <SiteHeader variant="product" product="icm" />
-
-  <main id="main-content">
 
     <!-- Hero -->
     <section class="hero">
@@ -676,12 +678,6 @@ const schemaOrg = [
       </div>
     </section>
 
-  </main>
-
-  <SiteFooter />
-
-  <SearchModal />
-
   <script>
     import { initCopyButtons } from '../../scripts/copy'
     initCopyButtons()
@@ -901,7 +897,7 @@ const schemaOrg = [
       buildSVG(); buildSteps()
     })()
   </script>
-</Layout>
+</ProductLayout>
 
 <style is:global>
   @import '../../styles/landing.css';
