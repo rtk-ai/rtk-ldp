@@ -14,6 +14,7 @@ function getLang(): Lang {
 }
 
 function applyLang(lang: Lang) {
+  document.documentElement.lang = lang
   document.querySelectorAll<HTMLElement>('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n!
     const val = T[key]?.[lang]
