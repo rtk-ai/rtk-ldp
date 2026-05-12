@@ -1,0 +1,147 @@
+<style>
+  .preview-wrap { display: flex; flex-direction: column; gap: 12px; }
+  .layout-card {
+    background: #0d1322; border: 1px solid #1e2a45;
+    border-radius: 10px; overflow: hidden;
+    cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .layout-card:hover { border-color: #00e599; }
+  .layout-card.selected { border-color: #00e599; box-shadow: 0 0 0 2px rgba(0,229,153,0.2); }
+  .layout-card-header {
+    padding: 14px 20px 10px; display: flex; align-items: center;
+    gap: 12px; border-bottom: 1px solid #1e2a45;
+  }
+  .layout-letter {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: #1a2540; border: 1px solid #243258;
+    display: flex; align-items: center; justify-content: center;
+    font-family: monospace; font-size: 12px; font-weight: 700; color: #00e599;
+    flex-shrink: 0;
+  }
+  .layout-meta h3 { margin: 0; font-size: 14px; font-weight: 600; color: #f8fafc; }
+  .layout-meta p { margin: 2px 0 0; font-size: 11px; color: #64748b; }
+  .layout-preview { padding: 16px 20px 20px; background: #0a0f1c; }
+
+  /* render réel des headers */
+  .r-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #64748b;
+    letter-spacing: 0.06em; margin-bottom: 8px;
+  }
+  .r-h2 {
+    font-size: 22px; font-weight: 600;
+    letter-spacing: -0.02em; line-height: 1.1;
+    color: #f8fafc; margin: 0 0 8px;
+  }
+  .r-lead {
+    font-size: 13px; color: #94a3b8;
+    line-height: 1.6; margin: 0;
+    max-width: 420px;
+  }
+  .r-accent { color: #00e599; }
+  .r-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #1e2a45;
+    font-weight: 700; letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .r-inline-row {
+    display: flex; align-items: baseline; gap: 16px; margin-bottom: 6px;
+  }
+  .r-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: #00e599;
+    background: rgba(0,229,153,0.08);
+    border: 1px solid rgba(0,229,153,0.2);
+    padding: 2px 8px; border-radius: 4px;
+    letter-spacing: 0.04em;
+    white-space: nowrap; align-self: center;
+  }
+  .r-divider { height: 1px; background: #1e2a45; margin: 14px 0; }
+  .r-section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px; font-weight: 700;
+    color: #1e2a45; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .r-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .r-card {
+    background: #0f1625; border: 1px solid #1e2a45;
+    border-radius: 6px; padding: 10px;
+  }
+  .r-stat { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 600; color: #00e599; margin-bottom: 3px; }
+  .r-label-sm { font-size: 11px; color: #64748b; }
+</style>
+
+<h2>Style des en-têtes de section</h2>
+<p class="subtitle">Comment introduire chaque section dans une mise en page full left-align.</p>
+
+<div class="preview-wrap">
+
+  <!-- Option A: eyebrow mono + H2 left -->
+  <div class="layout-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="layout-card-header">
+      <div class="layout-letter">A</div>
+      <div class="layout-meta">
+        <h3>Eyebrow mono + H2 — minimaliste</h3>
+        <p>// label en mono au-dessus, H2 grand et direct. Pas de numéros, pas de badges.</p>
+      </div>
+    </div>
+    <div class="layout-preview">
+      <div class="r-eyebrow">// the problem</div>
+      <h2 class="r-h2">Your AI agent reads<br>everything. Most of it<br>is <span class="r-accent">noise.</span></h2>
+      <p class="r-lead">CLI tools generate hundreds of lines of boilerplate for every meaningful line of output.</p>
+      <div class="r-divider"></div>
+      <div class="r-eyebrow">// install</div>
+      <h2 class="r-h2">One command.<br>Zero config.</h2>
+      <p class="r-lead">RTK hooks into your existing workflow transparently.</p>
+    </div>
+  </div>
+
+  <!-- Option B: numéro discret + H2 -->
+  <div class="layout-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="layout-card-header">
+      <div class="layout-letter">B</div>
+      <div class="layout-meta">
+        <h3>Numéro grand + H2 — éditorial</h3>
+        <p>Grand chiffre en couleur border très sombre, H2 dessous. Donne un sens de progression.</p>
+      </div>
+    </div>
+    <div class="layout-preview">
+      <div class="r-section-num">01</div>
+      <h2 class="r-h2">Your AI agent reads<br>everything. Most of it<br>is <span class="r-accent">noise.</span></h2>
+      <p class="r-lead">CLI tools generate hundreds of lines of boilerplate for every meaningful line of output.</p>
+      <div class="r-divider"></div>
+      <div class="r-section-num">02</div>
+      <h2 class="r-h2">One command.<br>Zero config.</h2>
+      <p class="r-lead">RTK hooks into your existing workflow transparently.</p>
+    </div>
+  </div>
+
+  <!-- Option C: eyebrow inline avec badge + H2 -->
+  <div class="layout-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="layout-card-header">
+      <div class="layout-letter">C</div>
+      <div class="layout-meta">
+        <h3>Badge inline + H2 — dense et tech</h3>
+        <p>Eyebrow mono sur la même ligne qu'un badge vert. Plus dense, look "dashboard technique".</p>
+      </div>
+    </div>
+    <div class="layout-preview">
+      <div class="r-inline-row">
+        <div class="r-eyebrow" style="margin:0">// the problem</div>
+        <div class="r-badge">01</div>
+      </div>
+      <h2 class="r-h2">Your AI agent reads<br>everything. Most of it<br>is <span class="r-accent">noise.</span></h2>
+      <p class="r-lead">CLI tools generate hundreds of lines of boilerplate for every meaningful line of output.</p>
+      <div class="r-divider"></div>
+      <div class="r-inline-row">
+        <div class="r-eyebrow" style="margin:0">// install</div>
+        <div class="r-badge">02</div>
+      </div>
+      <h2 class="r-h2">One command.<br>Zero config.</h2>
+      <p class="r-lead">RTK hooks into your existing workflow transparently.</p>
+    </div>
+  </div>
+
+</div>

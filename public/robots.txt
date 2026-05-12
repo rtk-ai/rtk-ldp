@@ -21,3 +21,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.rtk-ai.app/sitemap.xml
+LLMs: https://www.rtk-ai.app/llms.txt
