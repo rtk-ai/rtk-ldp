@@ -151,3 +151,273 @@
     })
   }
 </script>
+
+<style>
+.cloud-section {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.cloud-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(167, 139, 250, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cloud-card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 52px 48px;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 22, 41, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-align: center;
+  position: relative;
+}
+
+/* Gradient border */
+.cloud-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent), var(--violet), var(--cyan));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Glow */
+.cloud-card::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(0,229,153,0.1), rgba(167,139,250,0.1), rgba(56,189,248,0.1));
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cloud-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--accent-dim), var(--violet-dim));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.cloud-badge span {
+  background: linear-gradient(135deg, var(--accent), var(--violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cloud-card h2 {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-3);
+  background: linear-gradient(135deg, var(--accent), var(--violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cloud-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cloud-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-bottom: 36px;
+  text-align: left;
+}
+
+.cloud-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(6, 11, 24, 0.5);
+  border: 1px solid var(--border);
+}
+
+.cloud-feature-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+.cloud-feature h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 2px;
+}
+
+.cloud-feature p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.cloud-pricing {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+.cloud-pricing strong { color: var(--text); }
+
+/* Waitlist Form */
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.waitlist-row {
+  display: flex;
+  gap: 10px;
+}
+
+.wl-input, .wl-select {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(6, 11, 24, 0.6);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.wl-input::placeholder { color: var(--text-dim); }
+.wl-input:focus, .wl-select:focus { border-color: var(--violet); }
+
+.wl-select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.wl-select option { background: var(--bg-card); color: var(--text); }
+
+.wl-submit {
+  width: 100%;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+.wl-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+.wl-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.wl-spread {
+  display: none;
+  max-width: 440px;
+  margin: 16px auto 0;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  text-align: center;
+  animation: fadeSlideUp 0.4s ease-out;
+}
+.wl-spread.visible { display: block; }
+.wl-spread-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+.wl-spread-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.wl-spread-links .share-btn {
+  width: 40px;
+  height: 40px;
+}
+.wl-spread-gain {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.wl-spread-gain:hover { opacity: 1; text-decoration: underline; }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.waitlist-count {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-top: 14px;
+}
+.waitlist-count span { color: var(--violet); font-weight: 600; }
+
+.waitlist-note {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .cloud-features {
+    grid-template-columns: 1fr;
+  }
+
+  .cloud-card { padding: 32px 20px; }
+
+  .waitlist-row { flex-direction: column; }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .cloud-features { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
