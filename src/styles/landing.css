@@ -850,8 +850,6 @@ section h2 {
 }
 
 /* === Install === */
-.install-section { background: var(--bg-alt); }
-
 .install-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -957,50 +955,6 @@ section h2 {
   color: var(--text-muted);
   margin-top: 12px;
 }
-.install-docs-link {
-  color: var(--accent);
-  text-decoration: none;
-}
-.install-docs-link:hover { text-decoration: underline; }
-
-.install-steps {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-  margin-top: 24px;
-  flex-wrap: wrap;
-}
-
-.install-step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  font-size: 0.82rem;
-}
-
-.install-step-num {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--accent-dim);
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.install-step code {
-  color: var(--accent);
-  font-size: 0.78rem;
-}
-
 /* === Share My Gain === */
 .share-gain { background: var(--bg); }
 
@@ -1431,8 +1385,6 @@ section h2 {
   .session-callout { padding: 20px 16px; }
   .session-stats-row { gap: var(--space-5); }
   .session-num { font-size: 1.3rem; }
-
-  .install-steps { flex-direction: column; align-items: center; }
 
   .terminal-body { font-size: 0.68rem; padding: 14px; min-height: 160px; }
 }
@@ -2886,42 +2838,3 @@ td code {
   margin: var(--space-4) 0 var(--space-5);
 }
 
-/* Persona tabs — Install section */
-.persona-tabs {
-  display: flex;
-  gap: var(--space-2);
-  margin-bottom: var(--space-7);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0;
-}
-
-.persona-tab {
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  padding: var(--space-3) var(--space-5);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  margin-bottom: -1px;
-}
-
-.persona-tab:hover {
-  color: var(--text-muted);
-}
-
-.persona-tab--active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
-/* Persona panels */
-.persona-panel {
-  display: block;
-}
-
-.persona-panel[hidden] {
-  display: none;
-}
