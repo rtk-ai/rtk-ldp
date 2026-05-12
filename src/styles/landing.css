@@ -1012,67 +1012,6 @@ section h2 {
   .cloud-features { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* === Proof / Real-world Savings === */
-.proof-section { background: var(--bg-alt); }
-
-.proof-row {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-  margin-bottom: 56px;
-}
-
-.proof-row:last-child { margin-bottom: 0; }
-.proof-row-reverse { flex-direction: row-reverse; }
-
-.proof-text { flex: 1; min-width: 0; }
-
-.proof-text h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--text-bright);
-}
-
-.proof-text p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  margin-bottom: var(--space-4);
-}
-
-.proof-img {
-  flex: 1.2;
-  min-width: 0;
-  max-width: 560px;
-}
-
-.proof-img img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.04),
-    0 20px 60px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.proof-img img:hover {
-  transform: scale(1.03);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(0, 229, 153, 0.15),
-    0 24px 80px rgba(0, 0, 0, 0.35);
-}
-
-@media (max-width: 768px) {
-  .proof-row, .proof-row-reverse { flex-direction: column; gap: 28px; }
-  .proof-img { max-width: 100%; }
-}
-
 /* === Starred Carousel === */
 /* ── FAQ Section ─────────────────────────────────────────────────────── */
 .faq-section {
@@ -1163,20 +1102,6 @@ section h2 {
 .section-viking img:hover {
   transform: scale(1.03);
   box-shadow: 0 12px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,229,153,0.15);
-}
-
-/* Proof Viking - inline with content */
-.proof-viking {
-  text-align: center;
-  margin: 48px 0;
-}
-.proof-viking img {
-  max-width: 560px;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(0,229,153,0.2);
-  box-shadow: 0 12px 60px rgba(0,0,0,0.5), 0 0 60px rgba(0,229,153,0.08);
 }
 
 /* CTA Viking - background style */
