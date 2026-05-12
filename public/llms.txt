@@ -16,16 +16,16 @@
 
 ## Documentation
 
-- [Guide — Overview](https://www.rtk-ai.app/guide/): Full RTK documentation index — installation, configuration, command reference, supported agents, analytics, and troubleshooting.
-- [Installation](https://www.rtk-ai.app/guide/getting-started/installation/): Install RTK via Homebrew (`brew install rtk-ai/tap/rtk`) or Cargo (`cargo install rtk`). Verify with `rtk --version`.
-- [Quick Start](https://www.rtk-ai.app/guide/getting-started/quick-start/): Run `rtk init --global` to install the Claude Code hook. Start saving tokens immediately with your existing workflow.
-- [Configuration](https://www.rtk-ai.app/guide/getting-started/configuration/): Customize RTK filters, adjust output formats, and configure per-project settings via `rtk config`.
-- [Supported Agents](https://www.rtk-ai.app/guide/getting-started/supported-agents/): Full list of AI coding tools and terminal environments compatible with RTK.
-- [rtk gain — Analytics](https://www.rtk-ai.app/guide/analytics/gain/): Session and global token savings analytics. `rtk gain` shows savings per command and total tokens saved. `rtk gain -p` shows per-project breakdown.
-- [rtk discover](https://www.rtk-ai.app/guide/analytics/discover/): Analyze Claude Code session history to identify commands that weren't proxied through RTK. Find missed savings opportunities.
-- [What RTK Covers](https://www.rtk-ai.app/guide/resources/what-rtk-covers/): Complete list of supported command ecosystems: Git, Cargo, GitHub CLI, pnpm, Next.js, TypeScript, ESLint, Prettier, Vitest, Playwright, Prisma, Docker, kubectl, and more.
-- [Troubleshooting](https://www.rtk-ai.app/guide/resources/troubleshooting/): Common issues and solutions — hook not firing, savings not recorded, command not recognized.
-- [Telemetry](https://www.rtk-ai.app/guide/resources/telemetry/): RTK collects zero telemetry. No data leaves your machine. Full offline operation.
+- [Guide — Overview](https://www.rtk-ai.app/docs/): Full RTK documentation index — installation, configuration, command reference, supported agents, analytics, and troubleshooting.
+- [Installation](https://www.rtk-ai.app/docs/getting-started/installation/): Install RTK via Homebrew (`brew install rtk-ai/tap/rtk`) or Cargo (`cargo install rtk`). Verify with `rtk --version`.
+- [Quick Start](https://www.rtk-ai.app/docs/getting-started/quick-start/): Run `rtk init --global` to install the Claude Code hook. Start saving tokens immediately with your existing workflow.
+- [Configuration](https://www.rtk-ai.app/docs/getting-started/configuration/): Customize RTK filters, adjust output formats, and configure per-project settings via `rtk config`.
+- [Supported Agents](https://www.rtk-ai.app/docs/getting-started/supported-agents/): Full list of AI coding tools and terminal environments compatible with RTK.
+- [rtk gain — Analytics](https://www.rtk-ai.app/docs/analytics/gain/): Session and global token savings analytics. `rtk gain` shows savings per command and total tokens saved. `rtk gain -p` shows per-project breakdown.
+- [rtk discover](https://www.rtk-ai.app/docs/analytics/discover/): Analyze Claude Code session history to identify commands that weren't proxied through RTK. Find missed savings opportunities.
+- [What RTK Covers](https://www.rtk-ai.app/docs/resources/what-rtk-covers/): Complete list of supported command ecosystems: Git, Cargo, GitHub CLI, pnpm, Next.js, TypeScript, ESLint, Prettier, Vitest, Playwright, Prisma, Docker, kubectl, and more.
+- [Troubleshooting](https://www.rtk-ai.app/docs/resources/troubleshooting/): Common issues and solutions — hook not firing, savings not recorded, command not recognized.
+- [Telemetry](https://www.rtk-ai.app/docs/resources/telemetry/): RTK collects zero telemetry. No data leaves your machine. Full offline operation.
 
 ## Other
 
