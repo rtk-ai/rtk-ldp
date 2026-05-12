@@ -1,0 +1,910 @@
+---
+import type { Lang } from '../../lib/i18n'
+import ProductLayout from '../../layouts/ProductLayout.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+    name: 'ICM — Infinite Context Memory',
+    description:
+      'Permanent persistent memory for AI agents. Single binary, SQLite storage, MCP native with 22 tools. Episodic memories with temporal decay, semantic knowledge graphs, and hybrid BM25+vector search. Auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, and VS Code.',
+    url: 'https://www.rtk-ai.app/icm/',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'macOS, Linux, Windows',
+    datePublished: '2025-09-01',
+    dateModified: buildDate,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+    license: 'https://opensource.org/licenses/MIT',
+    downloadUrl: 'https://github.com/rtk-ai/icm',
+    author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    featureList: [
+      'Episodic memories with temporal decay — 4 importance levels, automatic memory aging',
+      'Semantic knowledge graphs with typed relations (depends_on, contradicts, refines)',
+      'Hybrid BM25 + vector cosine similarity search (384-dim BAAI/bge-small embeddings)',
+      '22 MCP tools exposed via Model Context Protocol',
+      'Auto-configures 14 AI editors via icm init (Claude Code, Cursor, Windsurf, VS Code, and more)',
+      '100% local — SQLite storage, local embeddings, zero API keys, zero cloud',
+      'Single binary, zero dependencies — no Docker, no Python, no Qdrant',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is ICM — Infinite Context Memory?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'ICM is permanent persistent memory for AI agents. It is a single Rust binary with SQLite storage that exposes 22 MCP tools. ICM provides three memory systems: episodic memories with temporal decay (4 importance levels), semantic knowledge graphs with typed relations, and a correction feedback system. It auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, VS Code, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode. 100% local, zero API keys required, MIT licensed.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does ICM memory decay work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'ICM uses 4 importance levels: critical (never decays), high (slow decay), medium (normal decay), and low (fast decay — fades in days). Memories are stored with a timestamp and importance score. Trivial details like debug notes fade naturally while critical architectural decisions remain permanently. This mirrors human memory prioritization without manual cleanup.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does ICM compare to Mem0 and other AI memory tools?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Mem0 ($24M funded, 41K GitHub stars) requires cloud infrastructure and API keys. Zep/Graphiti (20K stars) requires Neo4j and an OpenAI API key. mcp-memory-service (1.3K stars) is MCP-native but lacks knowledge graphs and temporal decay. ICM offers a single Rust binary with SQLite — no Docker, no Python, no cloud. It combines hybrid BM25+vector search, knowledge graphs, and temporal decay in one zero-dependency binary that installs with a single cargo install command.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I install ICM and connect it to my AI editor?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Install with: cargo install icm — then run icm init to auto-configure your editors. ICM detects and configures 14 editors automatically. For Claude Code specifically, it registers ICM as an MCP server exposing all 22 tools. No manual JSON editing required.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is ICM data stored locally or in the cloud?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'ICM is 100% local. All data is stored in a SQLite file on your machine. Embeddings use BAAI/bge-small (384-dimensional vectors) running locally with no API calls. No data leaves your machine. No API keys required.',
+        },
+      },
+      ],
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to give AI agents persistent memory with ICM',
+      description: 'Install ICM and connect it to your AI editor in under 2 minutes. Single binary, zero dependencies.',
+      totalTime: 'PT2M',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+      tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Install ICM',
+          text: 'Run: cargo install icm — or install from source: cargo install --git https://github.com/rtk-ai/icm. Pre-built binaries are also available on the GitHub releases page.',
+          url: 'https://www.rtk-ai.app/icm/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'Auto-configure your editors',
+          text: 'Run icm init to auto-detect and configure up to 14 AI editors. Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode are all supported.',
+          url: 'https://www.rtk-ai.app/icm/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Store and recall memories',
+          text: 'Use icm_memory_store with a topic, content, and importance level (critical/high/medium/low). Retrieve context with icm_memory_recall using natural language queries. Build knowledge graphs with icm_memoir_create and icm_memoir_link.',
+          url: 'https://www.rtk-ai.app/icm/#demo',
+        },
+      ],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.rtk-ai.app/icm/',
+      url: 'https://www.rtk-ai.app/icm/',
+      name: 'ICM — The SQLite of AI Memory | rtk-ai',
+      description: 'ICM is permanent memory for AI agents. Single binary, zero dependencies, MCP native. Episodic memories with temporal decay and semantic knowledge graphs.',
+      isPartOf: { '@id': 'https://www.rtk-ai.app/' },
+    },
+  ],
+}
+---
+<ProductLayout
+  product="icm"
+  title="ICM — The SQLite of AI Memory | rtk-ai"
+  description="ICM is permanent memory for AI agents. Single binary, zero dependencies, MCP native. Episodic memories with temporal decay and semantic knowledge graphs."
+  ogImage="/og-icm-banner.png"
+  schema={schema}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">Open Source &middot; MIT License &middot; Written in Rust</div>
+      <h1>Your AI forgets everything.<br><span class="gradient-text">ICM fixes that.</span></h1>
+      <p class="hero-sub">
+        <strong>ICM</strong> gives AI agents real persistent memory.
+        Episodic memories with temporal decay, semantic knowledge graphs, and hybrid search, all in a single binary.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">&infin;</span>
+          <span class="stat-label">session memory</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-value">0</span>
+          <span class="stat-label">context lost</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-value">22</span>
+          <span class="stat-label">MCP tools</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-value">1</span>
+          <span class="stat-label">single binary</span>
+        </div>
+      </div>
+      <img src="/assets/illustrations/icm-hero.webp" alt="ICM — Infinite Context Memory" class="icm-hero-banner" loading="eager" fetchpriority="high" decoding="async" width="1200" height="630">
+      <div class="hero-cta">
+        <a href="#install" class="btn btn-primary">Install ICM</a>
+        <a href="https://github.com/rtk-ai/icm" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Star on GitHub
+        </a>
+        <a href="https://discord.gg/RySmvNF5kF" class="btn btn-ghost" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+          Join Discord
+        </a>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+      <div class="section-inner">
+        <h2>Why ICM?</h2>
+        <p class="section-sub">Your AI restarts from zero every session. ICM changes that.</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="2"/><path d="M12 6v6l4 2" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Temporal Decay</h3>
+            <p>Memories fade naturally based on importance. Critical decisions stay forever. Trivial details disappear. Like human memory.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#22d3ee" stroke-width="2"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#a78bfa" stroke-width="2"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="#a78bfa" stroke-width="2"/></svg>
+            </div>
+            <h3>Knowledge Graphs</h3>
+            <p>Memoirs organize concepts with typed relations: depends_on, contradicts, refines. Structured knowledge, not flat notes.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="#22d3ee" stroke-width="2"/><line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Hybrid Search</h3>
+            <p>BM25 keyword search (30%) + vector cosine similarity (70%) via sqlite-vec. Find memories by meaning, not just keywords.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>MCP Native</h3>
+            <p>22 tools exposed via Model Context Protocol. <code>icm init</code> auto-configures 14 editors: Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, OpenCode, and more.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="#22d3ee" stroke-width="2"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#22d3ee"/></svg>
+            </div>
+            <h3>100% Local</h3>
+            <p>Everything stays on your machine. SQLite storage, local embeddings (384-dim via BAAI/bge-small), no cloud, no API keys.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Single Binary</h3>
+            <p>One <code>cargo install</code>. No Docker, no Python, no Qdrant, no Redis. Just a Rust binary and a SQLite file.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8M8 14h4" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Feedback System</h3>
+            <p>Record corrections when AI predictions are wrong. Search past feedback to avoid repeating mistakes. Track correction stats over time.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#22d3ee" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z" stroke="#a78bfa" stroke-width="2"/></svg>
+            </div>
+            <h3>Auto-Extraction Hooks</h3>
+            <p>Three lifecycle hooks (PostToolUse, PreCompact, UserPromptSubmit) automatically extract and store context at zero LLM cost.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memory Models -->
+    <section class="icm-models" id="models">
+      <div class="section-inner">
+        <h2>Three memory systems</h2>
+        <p class="section-sub">Three complementary systems for different types of knowledge.</p>
+        <div class="models-grid">
+
+          <div class="model-card">
+            <div class="model-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#22d3ee" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="model-header">
+              <span class="model-name">Memories</span>
+              <span class="model-badge">Episodic</span>
+            </div>
+            <p class="model-desc">Session context, decisions, resolved errors. Stored with importance levels. Critical decisions stay forever, trivial details disappear naturally.</p>
+            <div class="model-terminal">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">icm_memory_store</span>
+              </div>
+              <pre><code><span class="cmd-comment"># topic:</span> "decisions-auth"
+<span class="cmd-comment"># content:</span> "JWT with RS256, 30-day expiry"
+<span class="cmd-comment"># importance:</span> <span style="color:#22d3ee">critical</span>  <span class="cmd-comment"># never decays</span>
+
+<span class="cmd-comment"># topic:</span> "debug-notes"
+<span class="cmd-comment"># content:</span> "Tried port 3000, was busy"
+<span class="cmd-comment"># importance:</span> <span style="color:#a1a1aa">low</span>  <span class="cmd-comment"># fades in days</span></code></pre>
+            </div>
+            <div class="model-tags">
+              <span class="model-tag">4 importance levels</span>
+              <span class="model-tag">auto-decay</span>
+              <span class="model-tag">hybrid search</span>
+              <span class="model-tag">topic-based</span>
+            </div>
+          </div>
+
+          <div class="model-card model-card-accent">
+            <div class="model-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="#a78bfa" stroke-width="1.5"/><polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="#22d3ee" stroke-width="1.5"/><line x1="12" y1="22.08" x2="12" y2="12" stroke="#22d3ee" stroke-width="1.5"/></svg>
+            </div>
+            <div class="model-header">
+              <span class="model-name">Memoirs</span>
+              <span class="model-badge model-badge-violet">Knowledge Graph</span>
+            </div>
+            <p class="model-desc">Permanent knowledge containers. Concepts linked by typed edges form a graph. Never decay, only refined. Architecture decisions, domain models, project structure.</p>
+            <div class="model-graph">
+              <svg viewBox="0 0 480 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <marker id="arrow-cyan" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 4L0 8z" fill="#22d3ee"/>
+                  </marker>
+                  <marker id="arrow-violet" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 4L0 8z" fill="#a78bfa"/>
+                  </marker>
+                  <marker id="arrow-green" viewBox="0 0 10 8" refX="10" refY="4" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0 0L10 4L0 8z" fill="#4ade80"/>
+                  </marker>
+                  <filter id="node-glow">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <line x1="240" y1="52" x2="130" y2="118" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-cyan)"/>
+                <line x1="240" y1="52" x2="350" y2="118" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-cyan)"/>
+                <line x1="78" y1="218" x2="118" y2="148" stroke="#a78bfa" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-violet)"/>
+                <line x1="220" y1="228" x2="340" y2="228" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow-green)"/>
+                <line x1="130" y1="148" x2="350" y2="118" stroke="#22d3ee" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="4 4"/>
+                <text x="168" y="78" fill="#22d3ee" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">depends_on</text>
+                <text x="298" y="78" fill="#22d3ee" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">depends_on</text>
+                <text x="62" y="178" fill="#a78bfa" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">part_of</text>
+                <text x="260" y="220" fill="#4ade80" font-size="9" font-family="'JetBrains Mono', monospace" opacity="0.7">refines</text>
+                <g filter="url(#node-glow)">
+                  <circle cx="240" cy="40" r="14" fill="#111113" stroke="#22d3ee" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/></circle>
+                  <text x="240" y="44" text-anchor="middle" fill="#fafafa" font-size="8" font-weight="600" font-family="'JetBrains Mono', monospace">API</text>
+                  <circle cx="120" cy="132" r="16" fill="#111113" stroke="#a78bfa" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/></circle>
+                  <text x="120" y="136" text-anchor="middle" fill="#fafafa" font-size="7.5" font-weight="600" font-family="'JetBrains Mono', monospace">Auth</text>
+                  <circle cx="360" cy="132" r="14" fill="#111113" stroke="#22d3ee" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/></circle>
+                  <text x="360" y="136" text-anchor="middle" fill="#fafafa" font-size="7.5" font-weight="600" font-family="'JetBrains Mono', monospace">Users</text>
+                  <circle cx="65" cy="230" r="12" fill="#111113" stroke="#a78bfa" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="3.2s" repeatCount="indefinite"/></circle>
+                  <text x="65" y="234" text-anchor="middle" fill="#fafafa" font-size="7" font-weight="600" font-family="'JetBrains Mono', monospace">JWT</text>
+                  <circle cx="205" cy="240" r="12" fill="#111113" stroke="#4ade80" stroke-width="1.5"><animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite"/></circle>
+                  <text x="205" y="244" text-anchor="middle" fill="#fafafa" font-size="7" font-weight="600" font-family="'JetBrains Mono', monospace">v2</text>
+                  <circle cx="360" cy="240" r="12" fill="#111113" stroke="#a1a1aa" stroke-width="1" stroke-opacity="0.5"/>
+                  <text x="360" y="244" text-anchor="middle" fill="#a1a1aa" font-size="7" font-weight="600" font-family="'JetBrains Mono', monospace">v1</text>
+                </g>
+                <text x="240" y="62" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">api-gateway</text>
+                <text x="120" y="157" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">auth-service</text>
+                <text x="360" y="157" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">user-store</text>
+                <text x="65" y="252" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">jwt-tokens</text>
+                <text x="205" y="262" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">session-v2</text>
+                <text x="360" y="262" text-anchor="middle" fill="#a1a1aa" font-size="8" font-family="'Inter', sans-serif">session-v1</text>
+              </svg>
+            </div>
+            <div class="model-tags">
+              <span class="model-tag">permanent</span>
+              <span class="model-tag">typed relations</span>
+              <span class="model-tag">BFS traversal</span>
+              <span class="model-tag">revision tracking</span>
+            </div>
+          </div>
+
+          <div class="model-card">
+            <div class="model-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 10h8M8 14h4" stroke="#a78bfa" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="model-header">
+              <span class="model-name">Feedback</span>
+              <span class="model-badge">Corrections</span>
+            </div>
+            <p class="model-desc">Record when AI predictions are wrong. Search past corrections to inform future decisions. Track accuracy improvements over time.</p>
+            <div class="model-terminal">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">icm_feedback_record</span>
+              </div>
+              <pre><code><span class="cmd-comment"># predicted:</span> "port 3000 is available"
+<span class="cmd-comment"># actual:</span> "port 3000 was in use"
+<span class="cmd-comment"># context:</span> <span style="color:#22d3ee">dev-server</span>
+
+<span class="cmd-prompt">$</span> icm_feedback_search \
+    query="port configuration"
+<span style="color:#4ade80">Found 2 corrections</span>
+
+<span class="cmd-prompt">$</span> icm_feedback_stats
+<span style="color:#4ade80">12 corrections recorded</span></code></pre>
+            </div>
+            <div class="model-tags">
+              <span class="model-tag">record corrections</span>
+              <span class="model-tag">search feedback</span>
+              <span class="model-tag">accuracy stats</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section class="demo icm-demo" id="demo">
+      <div class="section-inner">
+        <h2>See it in action</h2>
+        <p class="section-sub">Simple MCP tools, powerful results.</p>
+        <div class="vox-demo-grid">
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Store &amp; Recall</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> icm_memory_store \
+    topic="decisions-auth" \
+    content="JWT with RS256, 30d expiry" \
+    importance=<span style="color:#22d3ee">critical</span>
+
+<span class="cmd-prompt">$</span> icm_memory_recall \
+    query="authentication token"
+<span style="color:#4ade80">Found 3 memories (best: 0.92)</span>
+
+<span class="cmd-prompt">$</span> icm_memory_consolidate \
+    topic="decisions-auth"
+<span style="color:#4ade80">Consolidated 8 → 1 summary</span></code></pre>
+          </div>
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Knowledge Graph</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> icm_memoir_create \
+    name="backend-arch"
+
+<span class="cmd-prompt">$</span> icm_memoir_add_concept \
+    memoir="backend-arch" \
+    name="auth-service" \
+    definition="JWT RS256, Axum middleware"
+
+<span class="cmd-prompt">$</span> icm_memoir_link \
+    from="api-gateway" \
+    to="auth-service" \
+    relation=<span style="color:#a78bfa">depends_on</span></code></pre>
+          </div>
+          <div class="vox-demo-card">
+            <div class="demo-card-header">
+              <span class="demo-dot green"></span>
+              <span class="demo-label">Explore</span>
+            </div>
+            <pre><code><span class="cmd-prompt">$</span> icm_memoir_inspect \
+    name="auth-service" depth=2
+<span style="color:#22d3ee">auth-service</span>
+  <span style="color:#a78bfa">←depends_on</span> api-gateway
+  <span style="color:#a78bfa">→depends_on</span> user-store
+  <span style="color:#a78bfa">←part_of</span>    jwt-tokens
+
+<span class="cmd-prompt">$</span> icm_memoir_search_all \
+    query="database schema"
+<span style="color:#4ade80">Found 5 concepts across 2 memoirs</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Memory Flow -->
+    <section class="icm-flow" id="tools">
+      <div class="section-inner">
+        <h2>Shared memory, multiple agents</h2>
+        <p class="section-sub">Watch how context flows between agents and sessions.</p>
+        <div class="flow-container">
+          <div class="flow-params">
+            <div class="flow-param-group">
+              <span class="flow-param-label">Agents</span>
+              <div class="flow-param-btns" id="param-agents">
+                <button class="flow-param-btn active" data-val="3">3</button>
+                <button class="flow-param-btn" data-val="4">4</button>
+                <button class="flow-param-btn" data-val="5">5</button>
+                <button class="flow-param-btn" data-val="6">6</button>
+              </div>
+            </div>
+            <div class="flow-param-group">
+              <span class="flow-param-label">Memories</span>
+              <div class="flow-param-btns" id="param-memories">
+                <button class="flow-param-btn active" data-val="4">4</button>
+                <button class="flow-param-btn" data-val="8">8</button>
+                <button class="flow-param-btn" data-val="12">12</button>
+              </div>
+            </div>
+          </div>
+          <div class="flow-canvas">
+            <svg id="flow-svg" viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+          <div class="flow-controls">
+            <button id="flow-play" class="flow-btn flow-btn-primary" aria-label="Play">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Auto
+            </button>
+            <button id="flow-step" class="flow-btn" aria-label="Next step">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="5 4 15 12 5 20 5 4" fill="currentColor"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+              Step
+            </button>
+            <button id="flow-reset" class="flow-btn" aria-label="Reset">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+              Reset
+            </button>
+          </div>
+          <div class="flow-log" id="flow-log">
+            <div class="flow-log-entry flow-log-info">Click <strong>Auto</strong> to watch the demo or <strong>Step</strong> to go one action at a time.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Comparison -->
+    <section class="icm-compare" id="compare">
+      <div class="section-inner">
+        <h2>The AI memory landscape</h2>
+        <p class="section-sub">From flat files to $24M startups. Here's how they compare.</p>
+        <div class="rival-grid">
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">Mem0</span>
+              <span class="rival-tag rival-tag-funded">$24M raised</span>
+            </div>
+            <p class="rival-desc">Market leader. Cloud-first memory platform with managed API.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Python</span>
+              <span class="rival-chip">Docker</span>
+              <span class="rival-chip">Qdrant</span>
+              <span class="rival-chip">OpenAI API</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">41K GitHub stars</div>
+              <div class="rival-con">Requires API key + cloud infra</div>
+              <div class="rival-con">Not MCP native</div>
+            </div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">Zep / Graphiti</span>
+              <span class="rival-tag rival-tag-oss">Open Source</span>
+            </div>
+            <p class="rival-desc">Temporal knowledge graph with LLM extraction. Most sophisticated OSS approach.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Python</span>
+              <span class="rival-chip">Neo4j</span>
+              <span class="rival-chip">OpenAI API</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">20K stars, deep graph model</div>
+              <div class="rival-con">Requires Neo4j + API key</div>
+              <div class="rival-con">Heavy infrastructure</div>
+            </div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">mcp-memory-service</span>
+              <span class="rival-tag rival-tag-oss">MCP</span>
+            </div>
+            <p class="rival-desc">Community MCP memory server. Simple key-value store with ChromaDB.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Python</span>
+              <span class="rival-chip">ChromaDB</span>
+              <span class="rival-chip">pip install</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">1.3K stars, MCP native</div>
+              <div class="rival-con">No knowledge graphs</div>
+              <div class="rival-con">No temporal decay</div>
+            </div>
+          </div>
+          <div class="rival-card">
+            <div class="rival-header">
+              <span class="rival-name">Built-in Memory</span>
+              <span class="rival-tag">CLAUDE.md / Cursor / Windsurf</span>
+            </div>
+            <p class="rival-desc">File-based instructions or basic cloud memory. Good enough for simple preferences.</p>
+            <div class="rival-stack">
+              <span class="rival-chip">Flat file</span>
+              <span class="rival-chip">Manual</span>
+              <span class="rival-chip">No search</span>
+            </div>
+            <div class="rival-verdict">
+              <div class="rival-pro">Zero setup, built into tool</div>
+              <div class="rival-con">No semantic search</div>
+              <div class="rival-con">No cross-tool sharing</div>
+            </div>
+          </div>
+        </div>
+        <div class="icm-highlight-card">
+          <div class="icm-highlight-header">
+            <div>
+              <span class="icm-highlight-name">ICM</span>
+              <span class="icm-highlight-tagline">The SQLite of AI memory</span>
+            </div>
+            <div class="rival-stack">
+              <span class="rival-chip rival-chip-accent">Rust</span>
+              <span class="rival-chip rival-chip-accent">SQLite</span>
+              <span class="rival-chip rival-chip-accent">Zero deps</span>
+            </div>
+          </div>
+          <div class="icm-highlight-grid">
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Single binary</strong><span>No Docker, no Python, no cloud</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Hybrid search</strong><span>BM25 + 384-dim vectors, local embeddings</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Knowledge graphs</strong><span>Typed relations, BFS traversal, revision tracking</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>22 MCP tools</strong><span>Auto-configures 14 editors via <code>icm init</code></span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>Temporal decay</strong><span>4 importance levels, automatic memory aging</span></div>
+            </div>
+            <div class="icm-highlight-item icm-h-yes">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <div><strong>100% local &amp; private</strong><span>Zero API keys, zero cloud, your data stays yours</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Install -->
+    <section class="install" id="install">
+      <div class="section-inner">
+        <h2>Install in seconds</h2>
+        <p class="section-sub">Single binary. No Docker, no Python, no external services.</p>
+        <div class="install-grid">
+          <div class="install-card install-primary">
+            <h3>Via Cargo</h3>
+            <p>From crates.io</p>
+            <div class="code-block">
+              <code>cargo install icm</code>
+              <button class="copy-btn" data-copy="cargo install icm" aria-label="Copy">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="install-card">
+            <h3>From Source</h3>
+            <p>Latest from GitHub</p>
+            <div class="code-block">
+              <code>cargo install --git https://github.com/rtk-ai/icm</code>
+              <button class="copy-btn" data-copy="cargo install --git https://github.com/rtk-ai/icm" aria-label="Copy">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="install-card">
+            <h3>Pre-built Binaries</h3>
+            <p>macOS, Linux, Windows</p>
+            <div class="code-block">
+              <a href="https://github.com/rtk-ai/icm/releases/latest" target="_blank" rel="noopener" class="releases-link">Download from Releases &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="install-setup">
+          <h3>Then auto-configure your editor</h3>
+          <div class="code-block code-block-wide">
+            <code>icm init</code>
+            <button class="copy-btn" data-copy="icm init" aria-label="Copy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <p class="install-note">Auto-detects and configures 14 editors: Claude Code, Cursor, Windsurf, VS Code/Copilot, Gemini Code Assist, Zed, Amp, Amazon Q, Cline, Roo Code, Kilo Code, Codex CLI, and OpenCode. Your AI agent can now store memories, build knowledge graphs, record feedback, and recall context across sessions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>Your AI starts from zero.<br><span class="gradient-text">Every. Single. Time.</span></h2>
+        <p class="section-sub">Install ICM. Give your AI agent a memory it deserves.</p>
+        <div class="hero-cta">
+          <a href="#install" class="btn btn-primary">Install ICM</a>
+          <a href="https://github.com/rtk-ai/icm" class="btn btn-ghost" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+        <div class="social-share">
+          <span class="share-label">Share ICM</span>
+          <div class="share-links">
+            <a href="https://x.com/intent/tweet?text=ICM%20%E2%80%94%20The%20SQLite%20of%20AI%20memory.%20Permanent%20memory%20for%20AI%20agents%2C%20single%20binary%2C%20zero%20API%20keys.&url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Ficm" target="_blank" rel="noopener nofollow" class="share-btn" aria-label="Share on X">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://bsky.app/intent/compose?text=ICM%20%E2%80%94%20The%20SQLite%20of%20AI%20memory.%20Permanent%20memory%20for%20AI%20agents%2C%20single%20binary%2C%20zero%20API%20keys.%20https%3A%2F%2Fgithub.com%2Frtk-ai%2Ficm" target="_blank" rel="noopener nofollow" class="share-btn" aria-label="Share on Bluesky">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.627 3.601 3.495 6.186 3.245-3.775.547-7.052 2.48-4.452 7.378 2.294 3.796 5.057 4.755 7.642.38C12 17.764 12 14.568 12 14.568s0 3.196 2 6.682c2.585 4.375 5.348 3.416 7.642-.38 2.6-4.898-.677-6.831-4.452-7.378 2.585.25 5.401-.618 6.186-3.245.246-.828.624-5.788.624-6.479 0-.688-.139-1.86-.902-2.203-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Ficm" target="_blank" rel="noopener nofollow" class="share-btn" aria-label="Share on LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <script>
+    import { initCopyButtons } from '../../scripts/copy'
+    initCopyButtons()
+
+    // Flow Animation
+    (function() {
+      var AGENTS = [
+        { name: 'Claude Code', color: '#22d3ee' },
+        { name: 'Cursor', color: '#a78bfa' },
+        { name: 'Windsurf', color: '#4ade80' },
+        { name: 'Copilot', color: '#f472b6' },
+        { name: 'Cline', color: '#fbbf24' },
+        { name: 'Codex', color: '#fb923c' }
+      ]
+      var MEM_LABELS = [
+        'JWT auth', 'DB schema', 'API routes', 'deploy cfg',
+        'env vars', 'tests', 'CI/CD', 'error log',
+        'models', 'rate limit', 'webhooks', 'monitoring'
+      ]
+      var CX = 400, CY = 250, ICM_R = 42
+      var numAgents = 3, numMemories = 4
+      var currentStep = -1, steps = [], autoInterval = null, playing = false
+
+      var svgEl = document.getElementById('flow-svg')
+      var logEl = document.getElementById('flow-log')
+      var playBtn = document.getElementById('flow-play')
+      var stepBtn = document.getElementById('flow-step')
+      var resetBtn = document.getElementById('flow-reset')
+
+      if (!svgEl || !logEl || !playBtn || !stepBtn || !resetBtn) return
+
+      function agentPos(i) {
+        var a = (i / numAgents) * 2 * Math.PI - Math.PI / 2
+        return { x: Math.round(CX + 260 * Math.cos(a)), y: Math.round(CY + 175 * Math.sin(a)) }
+      }
+      function memPos(i) {
+        var r = numMemories <= 4 ? 78 : numMemories <= 8 ? 88 : 98
+        var a = (i / numMemories) * 2 * Math.PI - Math.PI / 4
+        return { x: Math.round(CX + r * Math.cos(a)), y: Math.round(CY + r * Math.sin(a)), a: a, r: r }
+      }
+      function buildSVG() {
+        var h = '<defs><radialGradient id="icm-glow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#22d3ee" stop-opacity="0.15"/><stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/></radialGradient></defs>'
+        h += '<circle cx="'+CX+'" cy="'+CY+'" r="120" fill="url(#icm-glow)"/>'
+        for (var i = 0; i < numAgents; i++) {
+          var p = agentPos(i), dx = p.x - CX, dy = p.y - CY
+          var dist = Math.sqrt(dx*dx + dy*dy)
+          var ex = Math.round(CX + dx * (ICM_R + 4) / dist)
+          var ey = Math.round(CY + dy * (ICM_R + 4) / dist)
+          h += '<line id="line-'+i+'" x1="'+p.x+'" y1="'+p.y+'" x2="'+ex+'" y2="'+ey+'" stroke="'+AGENTS[i].color+'" stroke-width="1.5" stroke-opacity="0.15" stroke-dasharray="6 4"/>'
+        }
+        for (var i = 0; i < numAgents; i++) {
+          h += '<circle id="particle-'+i+'" cx="0" cy="0" r="4" fill="'+AGENTS[i].color+'" opacity="0"/>'
+        }
+        h += '<circle cx="'+CX+'" cy="'+CY+'" r="'+ICM_R+'" fill="#111113" stroke="#22d3ee" stroke-width="2"/>'
+        h += '<text x="'+CX+'" y="'+(CY-6)+'" text-anchor="middle" fill="#22d3ee" font-size="16" font-weight="800" font-family="\'JetBrains Mono\', monospace">ICM</text>'
+        h += '<text x="'+CX+'" y="'+(CY+12)+'" text-anchor="middle" fill="#a1a1aa" font-size="9" font-family="\'Inter\', sans-serif">22 MCP tools</text>'
+        h += '<g id="mem-nodes">'
+        var fs = numMemories <= 4 ? 7.5 : numMemories <= 8 ? 6.5 : 0
+        for (var i = 0; i < numMemories; i++) {
+          var mp = memPos(i), col = AGENTS[i % numAgents].color
+          var nr = numMemories <= 8 ? 8 : 6
+          h += '<g id="mem-'+i+'" opacity="0"><circle cx="'+mp.x+'" cy="'+mp.y+'" r="'+nr+'" fill="#111113" stroke="'+col+'" stroke-width="1.2"/>'
+          if (fs > 0) {
+            var lr = mp.r + 18
+            var lx = Math.round(CX + lr * Math.cos(mp.a))
+            var ly = Math.round(CY + lr * Math.sin(mp.a))
+            var anc = Math.abs(Math.cos(mp.a)) < 0.25 ? 'middle' : Math.cos(mp.a) > 0 ? 'start' : 'end'
+            var ddy = Math.sin(mp.a) > 0.4 ? 10 : Math.sin(mp.a) < -0.4 ? -4 : 4
+            h += '<text x="'+lx+'" y="'+(ly+ddy)+'" text-anchor="'+anc+'" fill="#a1a1aa" font-size="'+fs+'" font-family="\'Inter\', sans-serif">'+MEM_LABELS[i]+'</text>'
+          }
+          h += '</g>'
+        }
+        for (var i = 0; i < numMemories - 1; i++) {
+          var m1 = memPos(i), m2 = memPos(i + 1)
+          h += '<line id="mem-edge-'+i+'" x1="'+m1.x+'" y1="'+m1.y+'" x2="'+m2.x+'" y2="'+m2.y+'" stroke="#22d3ee" stroke-width="0.8" stroke-opacity="0" stroke-dasharray="3 3"/>'
+        }
+        h += '</g>'
+        var bw = numAgents <= 4 ? 148 : 128, bh = numAgents <= 4 ? 60 : 50
+        var afs = numAgents <= 4 ? 13 : 11
+        for (var i = 0; i < numAgents; i++) {
+          var p = agentPos(i), a = AGENTS[i]
+          h += '<g id="agent-'+i+'">'
+          h += '<rect x="'+(p.x - bw/2)+'" y="'+(p.y - bh/2)+'" width="'+bw+'" height="'+bh+'" rx="12" fill="#111113" stroke="'+a.color+'" stroke-width="1.5" stroke-opacity="0.6"/>'
+          h += '<text x="'+p.x+'" y="'+(p.y - 2)+'" text-anchor="middle" fill="#fafafa" font-size="'+afs+'" font-weight="700" font-family="\'Inter\', sans-serif">'+a.name+'</text>'
+          h += '<text id="status-'+i+'" x="'+p.x+'" y="'+(p.y + 15)+'" text-anchor="middle" fill="#a1a1aa" font-size="9" font-family="\'JetBrains Mono\', monospace">idle</text>'
+          h += '<circle cx="'+(p.x - bw/2 + 16)+'" cy="'+(p.y - bh/2 + 12)+'" r="3.5" fill="'+a.color+'" opacity="0.6"/>'
+          h += '</g>'
+        }
+        svgEl.innerHTML = h
+      }
+      function buildSteps() {
+        steps = []
+        var stored = []
+        for (var i = 0; i < numMemories; i++) {
+          var ag = i % numAgents
+          steps.push({ t: 'store', a: ag, m: i })
+          stored.push({ a: ag, m: i })
+          if (i >= 1 && i % 2 === 1) {
+            var ra = (ag + 1) % numAgents
+            var cands = stored.filter(function(s) { return s.a !== ra })
+            if (cands.length > 0) {
+              var tgt = cands[Math.max(0, cands.length - 2)]
+              steps.push({ t: 'recall', a: ra, m: tgt.m, from: tgt.a })
+            }
+          }
+        }
+        if (stored.length >= 2) steps.push({ t: 'link', a: 1 % numAgents, m1: 0, m2: 1 })
+        steps.push({ t: 'summary' })
+      }
+      function animLine(idx, on) {
+        var el = document.getElementById('line-' + idx)
+        if (el) { el.setAttribute('stroke-opacity', on ? '0.6' : '0.15'); el.setAttribute('stroke-width', on ? '2' : '1.5') }
+      }
+      function showMem(idx, show) {
+        var el = document.getElementById('mem-' + idx)
+        if (el) el.setAttribute('opacity', show ? '1' : '0')
+      }
+      function showEdge(idx, show) {
+        var el = document.getElementById('mem-edge-' + idx)
+        if (el) el.setAttribute('stroke-opacity', show ? '0.4' : '0')
+      }
+      function setSt(idx, text) {
+        var el = document.getElementById('status-' + idx)
+        if (el) el.textContent = text
+      }
+      function setGlow(idx, on) {
+        var g = document.getElementById('agent-' + idx)
+        if (!g) return
+        var r = g.querySelector('rect')
+        r.setAttribute('stroke-opacity', on ? '1' : '0.6')
+        r.setAttribute('stroke-width', on ? '2.5' : '1.5')
+      }
+      function particle(ai, tx, ty, rev) {
+        var el = document.getElementById('particle-' + ai)
+        if (!el) return
+        var p = agentPos(ai)
+        var fx = rev ? tx : p.x, fy = rev ? ty : p.y
+        var ex = rev ? p.x : tx, ey = rev ? p.y : ty
+        el.setAttribute('opacity', '1')
+        var anim = el.animate([
+          { transform: 'translate('+fx+'px, '+fy+'px)' },
+          { transform: 'translate('+ex+'px, '+ey+'px)' }
+        ], { duration: 800, easing: 'ease-in-out' })
+        anim.onfinish = function() { el.setAttribute('opacity', '0') }
+      }
+      function addLog(html, cls) {
+        var d = document.createElement('div')
+        d.className = 'flow-log-entry ' + (cls || '')
+        d.innerHTML = html
+        logEl.appendChild(d)
+        logEl.scrollTop = logEl.scrollHeight
+      }
+      function doStep() {
+        currentStep++
+        if (currentStep >= steps.length) { stopAuto(); return }
+        var s = steps[currentStep]
+        var ag = AGENTS[s.a]
+        var mp = s.m !== undefined ? memPos(s.m) : null
+        if (s.t === 'store') {
+          addLog('<span style="color:'+ag.color+'">'+ag.name+'</span> &rarr; <code>icm_memory_store</code> "'+MEM_LABELS[s.m]+'"', 'flow-log-store')
+          setSt(s.a, 'storing...'); setGlow(s.a, true); animLine(s.a, true); particle(s.a, mp.x, mp.y, false)
+          setTimeout(function() { showMem(s.m, true); if (s.m > 0) showEdge(s.m - 1, true); setSt(s.a, 'stored'); animLine(s.a, false); setGlow(s.a, false) }, 900)
+        } else if (s.t === 'recall') {
+          var from = AGENTS[s.from]
+          addLog('<span style="color:'+ag.color+'">'+ag.name+'</span> &rarr; <code>icm_memory_recall</code> "'+MEM_LABELS[s.m]+'"', 'flow-log-recall')
+          setSt(s.a, 'recalling...'); setGlow(s.a, true); animLine(s.a, true)
+          var me = document.getElementById('mem-' + s.m)
+          if (me) me.querySelector('circle').setAttribute('stroke-width', '2.5')
+          particle(s.a, mp.x, mp.y, true)
+          setTimeout(function() { addLog('&nbsp;&nbsp;<span style="color:#4ade80">Found:</span> "'+MEM_LABELS[s.m]+'" <span style="color:#a1a1aa">(from '+from.name+')</span>', 'flow-log-found'); setSt(s.a, 'recalled'); animLine(s.a, false); setGlow(s.a, false); if (me) me.querySelector('circle').setAttribute('stroke-width', '1.2') }, 900)
+        } else if (s.t === 'link') {
+          addLog('<span style="color:'+ag.color+'">'+ag.name+'</span> &rarr; <code>icm_memoir_link</code> "'+MEM_LABELS[s.m1]+'" &rarr; "'+MEM_LABELS[s.m2]+'"', 'flow-log-store')
+          setSt(s.a, 'linking...'); setGlow(s.a, true); animLine(s.a, true)
+          var edgeCount = 0
+          for (var i = 0; i < numMemories - 1; i++) {
+            var e = document.getElementById('mem-edge-' + i)
+            if (e && e.getAttribute('stroke-opacity') !== '0') edgeCount++
+          }
+          setTimeout(function() { addLog('&nbsp;&nbsp;<span style="color:#a78bfa">Graph:</span> '+numMemories+' concepts, '+(edgeCount+1)+' edges &mdash; knowledge grows across agents', 'flow-log-found'); setSt(s.a, 'linked'); animLine(s.a, false); setGlow(s.a, false) }, 900)
+        } else if (s.t === 'summary') {
+          for (var i = 0; i < numAgents; i++) setSt(i, 'idle')
+          addLog('<strong>'+numAgents+' agents, '+numMemories+' memories, 1 shared brain.</strong> Context persists across tools and sessions.', 'flow-log-info')
+        }
+      }
+      function resetAll() {
+        stopAuto(); currentStep = -1; buildSVG(); buildSteps()
+        logEl.innerHTML = '<div class="flow-log-entry flow-log-info">Click <strong>Auto</strong> to watch the demo or <strong>Step</strong> to go one action at a time.</div>'
+      }
+      function startAuto() {
+        if (currentStep >= steps.length - 1) resetAll()
+        playing = true
+        playBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause'
+        playBtn.classList.add('playing')
+        doStep()
+        autoInterval = setInterval(function() { if (currentStep >= steps.length - 1) { stopAuto(); return } doStep() }, 2200)
+      }
+      function stopAuto() {
+        playing = false; clearInterval(autoInterval); autoInterval = null
+        playBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Auto'
+        playBtn.classList.remove('playing')
+      }
+      playBtn.addEventListener('click', function() { playing ? stopAuto() : startAuto() })
+      stepBtn.addEventListener('click', function() { stopAuto(); if (currentStep >= steps.length - 1) resetAll(); else doStep() })
+      resetBtn.addEventListener('click', resetAll)
+      document.querySelectorAll('#param-agents .flow-param-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('#param-agents .flow-param-btn').forEach(function(b) { b.classList.remove('active') })
+          btn.classList.add('active'); numAgents = parseInt(btn.dataset.val); resetAll()
+        })
+      })
+      document.querySelectorAll('#param-memories .flow-param-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('#param-memories .flow-param-btn').forEach(function(b) { b.classList.remove('active') })
+          btn.classList.add('active'); numMemories = parseInt(btn.dataset.val); resetAll()
+        })
+      })
+      buildSVG(); buildSteps()
+    })()
+  </script>
+</ProductLayout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+</style>
