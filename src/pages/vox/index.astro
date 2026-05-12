@@ -1,128 +1,129 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import SearchModal from '../../components/global/SearchModal.astro'
-import SiteHeader from '../../components/global/SiteHeader.astro'
-import SiteFooter from '../../components/global/SiteFooter.astro'
+import ProductLayout from '../../layouts/ProductLayout.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
-const schemaOrg = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'Vox',
-    description:
-      'Local-first text-to-speech CLI for Claude Code. Hear when tasks finish, get spoken summaries, clone your own voice. 3 TTS backends (say, qwen, qwen-native), 8 MCP tools, zero API calls, written in Rust.',
-    url: 'https://www.rtk-ai.app/vox/',
-    applicationCategory: 'DeveloperApplication',
-    operatingSystem: 'macOS, Linux, Windows',
-    datePublished: '2025-06-01',
-    dateModified: buildDate,
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
-    license: 'https://opensource.org/licenses/MIT',
-    downloadUrl: 'https://github.com/rtk-ai/vox',
-    author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
-    featureList: [
-      'Task completion notifications with ~50ms latency on macOS say backend',
-      'Neural TTS via MLX-powered qwen backend (~500ms, Apple Silicon)',
-      'Cross-platform pure-Rust qwen-native backend (~300ms, Metal & CUDA GPU)',
-      'Voice cloning from 10-second audio sample',
-      '100% local — no API keys, no cloud, no data leaves your machine',
-      '8 MCP tools for Claude Code integration via vox init mcp',
-      'Cross-platform: macOS, Linux, WSL',
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is Vox for Claude Code?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Vox is a local-first text-to-speech CLI for Claude Code. It reads task completions aloud, provides spoken summaries, and supports voice cloning from a 10-second audio sample. Three TTS backends are available: macOS say (~50ms latency), MLX-powered qwen neural (~500ms, Apple Silicon), and pure-Rust qwen-native (~300ms, Metal and CUDA GPU). Zero API calls, fully local, MIT licensed.',
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Vox',
+      description:
+        'Local-first text-to-speech CLI for Claude Code. Hear when tasks finish, get spoken summaries, clone your own voice. 3 TTS backends (say, qwen, qwen-native), 8 MCP tools, zero API calls, written in Rust.',
+      url: 'https://www.rtk-ai.app/vox/',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'macOS, Linux, Windows',
+      datePublished: '2025-06-01',
+      dateModified: buildDate,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+      license: 'https://opensource.org/licenses/MIT',
+      downloadUrl: 'https://github.com/rtk-ai/vox',
+      author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+      featureList: [
+        'Task completion notifications with ~50ms latency on macOS say backend',
+        'Neural TTS via MLX-powered qwen backend (~500ms, Apple Silicon)',
+        'Cross-platform pure-Rust qwen-native backend (~300ms, Metal & CUDA GPU)',
+        'Voice cloning from 10-second audio sample',
+        '100% local — no API keys, no cloud, no data leaves your machine',
+        '8 MCP tools for Claude Code integration via vox init mcp',
+        'Cross-platform: macOS, Linux, WSL',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What is Vox for Claude Code?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Vox is a local-first text-to-speech CLI for Claude Code. It reads task completions aloud, provides spoken summaries, and supports voice cloning from a 10-second audio sample. Three TTS backends are available: macOS say (~50ms latency), MLX-powered qwen neural (~500ms, Apple Silicon), and pure-Rust qwen-native (~300ms, Metal and CUDA GPU). Zero API calls, fully local, MIT licensed.',
+          },
         },
-      },
-      {
-        '@type': 'Question',
-        name: 'Does Vox send audio data to the cloud?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No. Vox is 100% local. All TTS processing runs on-device using local models. No API keys required, no data leaves your machine. The qwen-native backend is a pure Rust implementation with Metal and CUDA GPU support that works cross-platform without any Python dependencies.',
+        {
+          '@type': 'Question',
+          name: 'Does Vox send audio data to the cloud?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. Vox is 100% local. All TTS processing runs on-device using local models. No API keys required, no data leaves your machine. The qwen-native backend is a pure Rust implementation with Metal and CUDA GPU support that works cross-platform without any Python dependencies.',
+          },
         },
-      },
-      {
-        '@type': 'Question',
-        name: 'How do I install Vox and connect it to Claude Code?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh — then run vox init mcp to register Vox as an MCP server in Claude Code. This exposes 8 MCP tools including vox_speak, vox_clone_add, and vox_config_set.',
+        {
+          '@type': 'Question',
+          name: 'How do I install Vox and connect it to Claude Code?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh — then run vox init mcp to register Vox as an MCP server in Claude Code. This exposes 8 MCP tools including vox_speak, vox_clone_add, and vox_config_set.',
+          },
         },
-      },
-      {
-        '@type': 'Question',
-        name: 'What TTS backends does Vox support?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Vox supports three backends: (1) say — macOS native NSSpeechSynthesizer, ~50ms latency, instant startup, dozens of built-in voices; (2) qwen — MLX-powered neural TTS on Apple Silicon, ~500ms, high-quality speech with voice cloning, ~1.2GB model auto-download; (3) qwen-native — pure Rust implementation, ~300ms, cross-platform with Metal & CUDA GPU support, no Python dependencies.',
+        {
+          '@type': 'Question',
+          name: 'What TTS backends does Vox support?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Vox supports three backends: (1) say — macOS native NSSpeechSynthesizer, ~50ms latency, instant startup, dozens of built-in voices; (2) qwen — MLX-powered neural TTS on Apple Silicon, ~500ms, high-quality speech with voice cloning, ~1.2GB model auto-download; (3) qwen-native — pure Rust implementation, ~300ms, cross-platform with Metal & CUDA GPU support, no Python dependencies.',
+          },
         },
-      },
-      {
-        '@type': 'Question',
-        name: 'How does voice cloning work in Vox?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Record a 10-second audio sample with vox clone record myvoice --duration 10, or register from an existing audio file with vox clone add --audio ~/voice.wav. Then use any cloned voice with vox -v myvoice "text". Voice cloning requires the qwen backend on Apple Silicon.',
+        {
+          '@type': 'Question',
+          name: 'How does voice cloning work in Vox?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Record a 10-second audio sample with vox clone record myvoice --duration 10, or register from an existing audio file with vox clone add --audio ~/voice.wav. Then use any cloned voice with vox -v myvoice "text". Voice cloning requires the qwen backend on Apple Silicon.',
+          },
         },
-      },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name: 'How to give Claude Code a voice with Vox TTS',
-    description: 'Install Vox TTS CLI and connect it to Claude Code via MCP in under 2 minutes. Zero API calls, fully local.',
-    totalTime: 'PT2M',
-    estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
-    tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
-    step: [
-      {
-        '@type': 'HowToStep',
-        position: 1,
-        name: 'Install Vox',
-        text: 'Run: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh — supports macOS, Linux, and WSL.',
-        url: 'https://www.rtk-ai.app/vox/#install',
-      },
-      {
-        '@type': 'HowToStep',
-        position: 2,
-        name: 'Connect to Claude Code',
-        text: 'Run vox init mcp to register Vox as an MCP server in ~/.claude.json. This exposes 8 tools Claude can call directly including vox_speak, vox_list_voices, and vox_stats.',
-        url: 'https://www.rtk-ai.app/vox/#install',
-      },
-      {
-        '@type': 'HowToStep',
-        position: 3,
-        name: 'Choose your backend',
-        text: 'Run vox config set backend qwen for neural TTS on Apple Silicon, or vox config set backend qwen-native for cross-platform support with GPU acceleration.',
-        url: 'https://www.rtk-ai.app/vox/#backends',
-      },
-    ],
-  },
-]
+      ],
+    },
+    {
+      '@type': 'HowTo',
+      name: 'How to give Claude Code a voice with Vox TTS',
+      description: 'Install Vox TTS CLI and connect it to Claude Code via MCP in under 2 minutes. Zero API calls, fully local.',
+      totalTime: 'PT2M',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+      tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Install Vox',
+          text: 'Run: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh — supports macOS, Linux, and WSL.',
+          url: 'https://www.rtk-ai.app/vox/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'Connect to Claude Code',
+          text: 'Run vox init mcp to register Vox as an MCP server in ~/.claude.json. This exposes 8 tools Claude can call directly including vox_speak, vox_list_voices, and vox_stats.',
+          url: 'https://www.rtk-ai.app/vox/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Choose your backend',
+          text: 'Run vox config set backend qwen for neural TTS on Apple Silicon, or vox config set backend qwen-native for cross-platform support with GPU acceleration.',
+          url: 'https://www.rtk-ai.app/vox/#backends',
+        },
+      ],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.rtk-ai.app/vox/',
+      url: 'https://www.rtk-ai.app/vox/',
+      name: 'Vox — Give Claude Code a Voice | rtk-ai',
+      description: 'Vox is a local-first TTS CLI for Claude Code. Hear when tasks finish, get spoken summaries, clone your own voice. Written in Rust.',
+      isPartOf: { '@id': 'https://www.rtk-ai.app/' },
+    },
+  ],
+}
 ---
-<Layout
+<ProductLayout
+  product="vox"
   title="Vox — Give Claude Code a Voice | rtk-ai"
   description="Vox is a local-first TTS CLI for Claude Code. Hear when tasks finish, get spoken summaries, clone your own voice. Written in Rust."
-  image="/og-vox.png"
-  schemaOrg={schemaOrg}
+  ogImage="/og-vox.png"
+  schema={schema}
 >
-  <a href="#main-content" class="skip-to-content">Skip to content</a>
-
-  <SiteHeader variant="product" product="vox" />
-
-  <main id="main-content">
 
     <!-- Hero -->
     <section class="hero">
@@ -528,17 +529,11 @@ const schemaOrg = [
       </div>
     </section>
 
-  </main>
-
-  <SiteFooter />
-
-  <SearchModal />
-
   <script>
     import { initCopyButtons } from '../../scripts/copy'
     initCopyButtons()
   </script>
-</Layout>
+</ProductLayout>
 
 <style is:global>
   @import '../../styles/landing.css';
