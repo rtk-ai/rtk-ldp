@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import CloudWaitlist from '../../components/landing/CloudWaitlist.astro'
+import ShareGain from '../../components/landing/ShareGain.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'RTK', item: 'https://www.rtk-ai.app/' },
+      { '@type': 'ListItem', position: 2, name: 'Cloud', item: 'https://www.rtk-ai.app/cloud/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'RTK Cloud',
+    description: 'Shared token savings dashboards, team analytics, and org-wide hook deployment for AI coding tools. Coming soon.',
+    url: 'https://www.rtk-ai.app/cloud/',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web',
+    datePublished: '2026-04-01',
+    dateModified: buildDate,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/PreOrder',
+    },
+    author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    featureList: [
+      'Shared token savings dashboards across team members',
+      'Team analytics and aggregate usage reporting',
+      'Org-wide hook deployment and configuration management',
+    ],
+  },
+]
+---
+<Layout
+  title="RTK Cloud — Team Token Savings | rtk-ai"
+  description="RTK Cloud brings shared savings dashboards, team analytics, and org-wide hook deployment. Join the waitlist for early access."
+  schemaOrg={schemaOrg}
+  image="/og-cloud.png"
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader />
+
+  <main id="main-content">
+
+    <!-- Hero compact -->
+    <section class="hero hero-compact">
+      <nav class="rtk-subnav" aria-label="RTK pages">
+        <a href="/">RTK</a>
+        <span aria-hidden="true">/</span>
+        <strong>Cloud</strong>
+      </nav>
+      <h1>RTK Cloud for teams.<br><span style="color:var(--accent)">Coming soon.</span></h1>
+      <p class="hero-sub">
+        Shared token savings dashboards, team analytics, and org-wide hook deployment.
+        Join the waitlist to get early access when it launches.
+      </p>
+    </section>
+
+    <CloudWaitlist />
+    <ShareGain />
+
+    <!-- Footer CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>Start saving tokens today<br><span style="color:var(--accent)">with RTK CLI.</span></h2>
+        <p class="section-sub">The CLI is free, open source, and works right now. Cloud features are coming for teams.</p>
+        <div class="hero-cta">
+          <a href="/#install" class="btn btn-primary">Install RTK &rarr;</a>
+          <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <SiteFooter />
+  <SearchModal />
+</Layout>
+
+<script>
+  import { initReveal } from '../../scripts/reveal'
+  initReveal()
+</script>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* RTK landing sub-page breadcrumb */
+  .rtk-subnav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .rtk-subnav a { color: var(--accent); text-decoration: none; }
+  .rtk-subnav a:hover { text-decoration: underline; }
+  .rtk-subnav span { color: var(--text-dim); }
+  .rtk-subnav strong { color: var(--text); }
+
+  /* Compact hero for sub-pages */
+  .hero.hero-compact {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .hero.hero-compact h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+  }
+</style>

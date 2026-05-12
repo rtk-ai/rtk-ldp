@@ -50,16 +50,12 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
         <>
           <a href="/#problem" class="nav-link">{t('nav.why', lang)}</a>
           <a href="/#demo" class="nav-link">{t('nav.demo', lang)}</a>
-          <a href="/#compare" class="nav-link nav-link-hide-md">{t('nav.tools', lang)}</a>
+          <a href="/vs/" class="nav-link nav-link-hide-md">{t('nav.tools', lang)}</a>
           <a href="/#install" class="nav-link">{t('nav.install', lang)}</a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="/guide/" class="nav-link">{t('ui.nav_docs', lang)}</a>
-          <a href={voxHref} class="nav-link nav-link-vox">Vox</a>
-          <a href={icmHref} class="nav-link nav-link-icm">ICM</a>
+          <a href="/cloud/" class="nav-link nav-link-hide-md">Cloud</a>
           <span class="nav-divider" aria-hidden="true"></span>
-          <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title={t('aria.support_kofi', lang)} aria-label={t('aria.support_kofi', lang)}>
-            <IconKofi size={16} />
-          </a>
           <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title={t('aria.join_discord', lang)} aria-label={t('aria.join_discord', lang)}>
             <IconDiscord size={16} />
           </a>
@@ -72,17 +68,21 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
             <span class="search-trigger-label">Search</span>
             <kbd class="search-trigger-kbd">⌘K</kbd>
           </button>
-          <span class="nav-divider" aria-hidden="true"></span>
-          <div class="lang-switch" role="navigation" aria-label="Language switcher">
-            {LOCALES.map(l => (
-              <a
-                href={getRelativeLocaleUrl(l, currentPath)}
-                class={`lang-btn${l === currentLocale ? ' active' : ''}`}
-                hreflang={l}
-                aria-current={l === currentLocale ? 'true' : undefined}
-              >{l.toUpperCase()}</a>
-            ))}
-          </div>
+          <details class="lang-dropdown">
+            <summary class="lang-globe-btn" aria-label="Change language">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </summary>
+            <div class="lang-panel">
+              {LOCALES.map(l => (
+                <a
+                  href={getRelativeLocaleUrl(l, currentPath)}
+                  class={`lang-btn${l === currentLocale ? ' active' : ''}`}
+                  hreflang={l}
+                  aria-current={l === currentLocale ? 'true' : undefined}
+                >{l.toUpperCase()}</a>
+              ))}
+            </div>
+          </details>
         </>
       ) : (
         <>
@@ -143,11 +143,10 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
         <>
           <a href="/#problem">{t('nav.why', lang)}</a>
           <a href="/#demo">{t('nav.demo', lang)}</a>
-          <a href="/#compare">{t('nav.tools', lang)}</a>
+          <a href="/vs/">{t('nav.tools', lang)}</a>
           <a href="/#install">{t('nav.install', lang)}</a>
           <a href="/guide/">{t('ui.nav_docs', lang)}</a>
-          <a href={voxHref} class="nav-link-vox">Vox</a>
-          <a href={icmHref} class="nav-link-icm">ICM</a>
+          <a href="/cloud/">Cloud</a>
         </>
       ) : isVox ? (
         <>
@@ -155,7 +154,6 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
           <a href="#backends">Backends</a>
           <a href="#install">Install</a>
           <a href="#integration">Integration</a>
-          <a href={icmHref} class="nav-link-icm">ICM</a>
         </>
       ) : (
         <>
@@ -164,7 +162,6 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
           <a href="#tools">Live Demo</a>
           <a href="#compare">Compare</a>
           <a href="#install">Install</a>
-          <a href={voxHref} class="nav-link-vox">Vox</a>
         </>
       )}
     </div>
@@ -230,12 +227,21 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
   overlay?.addEventListener('click', closeDrawer)
   drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer))
 
-  // On landing: mobile search delegates to desktop search trigger
   if (searchMobile) {
     searchMobile.addEventListener('click', () => { searchDesktop?.click() })
   }
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer() })
+
+  const langDropdown = document.querySelector('.lang-dropdown')
+  document.addEventListener('click', (e) => {
+    if (langDropdown?.hasAttribute('open') && !langDropdown.contains(e.target as Node)) {
+      langDropdown.removeAttribute('open')
+    }
+  })
+  langDropdown?.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => langDropdown.removeAttribute('open'))
+  })
 </script>
 
 <style>
