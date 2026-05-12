@@ -1,15 +1,21 @@
 ---
 // Problem section — 3-card layout: context pollution, short sessions, cost explosion
+import { t, type Lang } from '../../lib/i18n'
 import Eyebrow from './Eyebrow.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
 ---
 <section class="problem" id="problem">
   <div class="section-inner">
-    <Eyebrow label="01 — the problem" />
+    <Eyebrow label={t('eyebrow.problem', lang)} />
     <div class="section-viking reveal">
       <img src="/assets/illustrations/viking-problem.webp" alt="Viking bracing against a tidal wave of tokens" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal" data-i18n="problem.title">The problem with AI coding today</h2>
-    <p class="section-sub reveal" data-i18n="problem.sub">Every command your agent runs pollutes the context window with noise. Here's what that costs you.</p>
+    <h2 class="reveal">{t('problem.title', lang)}</h2>
+    <p class="section-sub reveal">{t('problem.sub', lang)}</p>
 
     <div class="problem-grid">
       <div class="problem-card card-muted reveal">
@@ -22,8 +28,8 @@ import Eyebrow from './Eyebrow.astro'
             <path d="M8 9c0-1 .5-2.5 2-3" opacity="0.5"/>
           </svg>
         </div>
-        <h3 data-i18n="problem.card1.title">Context pollution</h3>
-        <p data-i18n-html="problem.card1.text">Your 200K context window isn't infinite. When <code>cargo test</code> dumps 5,000 tokens of boilerplate, that's 5,000 tokens less for reasoning about your actual code.</p>
+        <h3>{t('problem.card1.title', lang)}</h3>
+        <p set:html={t('problem.card1.text', lang)}></p>
         <pre class="problem-terminal problem-terminal-violet"><code>context_quality: degraded ▼</code></pre>
       </div>
 
@@ -36,8 +42,8 @@ import Eyebrow from './Eyebrow.astro'
             <path d="M19.07 4.93l-1.41 1.41" opacity="0.4"/>
           </svg>
         </div>
-        <h3 data-i18n="problem.card2.title">Sessions too short</h3>
-        <p data-i18n="problem.card2.text">Context overflows, the agent restarts, you lose the thread. On flat-rate plans, you hit rate limits 40% faster than you should.</p>
+        <h3>{t('problem.card2.title', lang)}</h3>
+        <p>{t('problem.card2.text', lang)}</p>
         <pre class="problem-terminal problem-terminal-cyan"><code>session_remaining: 32% ▼</code></pre>
       </div>
 
@@ -50,8 +56,8 @@ import Eyebrow from './Eyebrow.astro'
             <path d="M21 7l-2-2" stroke="var(--text-muted)" opacity="0.5"/>
           </svg>
         </div>
-        <h3 data-i18n="problem.card3.title">Costs that explode</h3>
-        <p data-i18n="problem.card3.text">On pay-per-token setups (API, Gemini CLI, Aider), 70% of your bill is noise the LLM doesn't need. A team of 10 wastes ~$1,750/month.</p>
+        <h3>{t('problem.card3.title', lang)}</h3>
+        <p>{t('problem.card3.text', lang)}</p>
         <pre class="problem-terminal problem-terminal-red"><code>token_waste: $1,750/mo ▲</code></pre>
       </div>
     </div>

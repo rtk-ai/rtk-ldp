@@ -1,13 +1,19 @@
 ---
 // DemoSlideshow — 11 before/after slides with tabs, dots, prev/next, 7s autoplay
+import { t, type Lang } from '../../lib/i18n'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
 ---
 <section class="demo-section" id="demo">
   <div class="section-inner">
     <div class="section-viking reveal">
       <img src="/assets/illustrations/viking-demo.webp" alt="Viking compressing tokens into a glowing crystal" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal" data-i18n="demo.title">See the difference</h2>
-    <p class="section-sub reveal" data-i18n="demo.sub">Real outputs, real savings. Side-by-side comparison on actual commands.</p>
+    <h2 class="reveal">{t('demo.title', lang)}</h2>
+    <p class="section-sub reveal">{t('demo.sub', lang)}</p>
 
     <div class="slideshow reveal">
       <div class="slideshow-nav">
@@ -546,7 +552,7 @@ rusqlite = &#123; version = "0.31", features = ["bundled"] &#125;
       </div>
 
       <div class="slideshow-controls">
-        <button class="slide-arrow slide-prev" aria-label="Previous">
+        <button class="slide-arrow slide-prev" aria-label={t('aria.prev', lang)}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
         <div class="slide-dots">
@@ -562,10 +568,10 @@ rusqlite = &#123; version = "0.31", features = ["bundled"] &#125;
           <span class="dot" data-slide="9"></span>
           <span class="dot" data-slide="10"></span>
         </div>
-        <button class="slide-arrow slide-next" aria-label="Next">
+        <button class="slide-arrow slide-next" aria-label={t('aria.next', lang)}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
-        <button class="slide-pause" aria-label="Pause slideshow" style="background:none;border:none;cursor:pointer;color:var(--text-dim);padding:8px;border-radius:var(--radius-xs);display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;"></button>
+        <button class="slide-pause" aria-label={t('aria.pause_slideshow', lang)} style="background:none;border:none;cursor:pointer;color:var(--text-dim);padding:8px;border-radius:var(--radius-xs);display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;"></button>
       </div>
     </div>
   </div>

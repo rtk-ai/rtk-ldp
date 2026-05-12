@@ -3,13 +3,15 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
 import IconKofi from '../ui/icons/IconKofi.astro'
 import IconDiscord from '../ui/icons/IconDiscord.astro'
 import IconSearch from '../ui/icons/IconSearch.astro'
+import { t, type Lang } from '../../lib/i18n'
 
 interface Props {
   variant?: 'landing' | 'product'
   product?: 'vox' | 'icm'
+  lang?: Lang
 }
 
-const { variant = 'landing', product } = Astro.props
+const { variant = 'landing', product, lang = 'en' } = Astro.props
 const isLanding = variant === 'landing'
 const isVox = product === 'vox'
 const isIcm = product === 'icm'
@@ -20,7 +22,7 @@ const githubUrl = isVox
   : 'https://github.com/rtk-ai/rtk'
 ---
 
-<nav class="nav" id="main-nav" aria-label="Main navigation">
+<nav class="nav" id="main-nav" aria-label={t('aria.main_nav', lang)}>
   <div class="nav-inner">
 
     <!-- Logo -->
@@ -42,26 +44,26 @@ const githubUrl = isVox
     <div class="nav-links" id="nav-links">
       {isLanding ? (
         <>
-          <a href="/#problem" class="nav-link" data-i18n="nav.why">Why</a>
-          <a href="/#demo" class="nav-link" data-i18n="nav.demo">Demo</a>
-          <a href="/#compare" class="nav-link nav-link-hide-md" data-i18n="nav.tools">Tools</a>
-          <a href="/#install" class="nav-link" data-i18n="nav.install">Install</a>
+          <a href="/#problem" class="nav-link">{t('nav.why', lang)}</a>
+          <a href="/#demo" class="nav-link">{t('nav.demo', lang)}</a>
+          <a href="/#compare" class="nav-link nav-link-hide-md">{t('nav.tools', lang)}</a>
+          <a href="/#install" class="nav-link">{t('nav.install', lang)}</a>
           <span class="nav-divider" aria-hidden="true"></span>
-          <a href="/guide/" class="nav-link">Docs</a>
+          <a href="/guide/" class="nav-link">{t('ui.nav_docs', lang)}</a>
           <a href="/vox/" class="nav-link nav-link-vox">Vox</a>
           <a href="/icm/" class="nav-link nav-link-icm">ICM</a>
           <span class="nav-divider" aria-hidden="true"></span>
-          <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title="Support on Ko-fi" aria-label="Support on Ko-fi">
+          <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title={t('aria.support_kofi', lang)} aria-label={t('aria.support_kofi', lang)}>
             <IconKofi size={16} />
           </a>
-          <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title="Join Discord" aria-label="Join Discord">
+          <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title={t('aria.join_discord', lang)} aria-label={t('aria.join_discord', lang)}>
             <IconDiscord size={16} />
           </a>
           <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">
             <IconGitHub size={14} />
-            GitHub
+            {t('ui.nav_github', lang)}
           </a>
-          <button id="search-trigger" class="search-trigger" aria-label="Search (Cmd+K)">
+          <button id="search-trigger" class="search-trigger" aria-label={t('aria.search', lang)}>
             <IconSearch size={15} />
             <span class="search-trigger-label">Search</span>
             <kbd class="search-trigger-kbd">⌘K</kbd>
@@ -111,15 +113,15 @@ const githubUrl = isVox
     <!-- Mobile right: search + hamburger -->
     <div class="nav-mobile-right">
       {isLanding ? (
-        <button id="search-trigger-mobile" class="search-trigger search-trigger-mobile" aria-label="Search (Cmd+K)">
+        <button id="search-trigger-mobile" class="search-trigger search-trigger-mobile" aria-label={t('aria.search', lang)}>
           <IconSearch size={18} />
         </button>
       ) : (
-        <button id="search-trigger" class="search-trigger search-trigger-mobile" aria-label="Search (Cmd+K)">
+        <button id="search-trigger" class="search-trigger search-trigger-mobile" aria-label={t('aria.search', lang)}>
           <IconSearch size={18} />
         </button>
       )}
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label={t('aria.open_menu', lang)} aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -133,11 +135,11 @@ const githubUrl = isVox
     <div class="nav-drawer-links">
       {isLanding ? (
         <>
-          <a href="/#problem" data-i18n="nav.why">Why</a>
-          <a href="/#demo" data-i18n="nav.demo">Demo</a>
-          <a href="/#compare" data-i18n="nav.tools">Tools</a>
-          <a href="/#install" data-i18n="nav.install">Install</a>
-          <a href="/guide/">Docs</a>
+          <a href="/#problem">{t('nav.why', lang)}</a>
+          <a href="/#demo">{t('nav.demo', lang)}</a>
+          <a href="/#compare">{t('nav.tools', lang)}</a>
+          <a href="/#install">{t('nav.install', lang)}</a>
+          <a href="/guide/">{t('ui.nav_docs', lang)}</a>
           <a href="/vox/" class="nav-link-vox">Vox</a>
           <a href="/icm/" class="nav-link-icm">ICM</a>
         </>
@@ -163,9 +165,9 @@ const githubUrl = isVox
     <div class="nav-drawer-actions">
       {isLanding ? (
         <>
-          <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">☕ Support</a>
-          <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">Discord</a>
-          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_support', lang)}</a>
+          <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_discord', lang)}</a>
+          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_github', lang)}</a>
         </>
       ) : (
         <>

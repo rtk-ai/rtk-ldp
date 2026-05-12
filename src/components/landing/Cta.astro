@@ -1,28 +1,34 @@
 ---
 // CTA section — viewport-height close, tri-gradient headline, viking at 12% opacity
+import { t, type Lang } from '../../lib/i18n'
 import Eyebrow from './Eyebrow.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
 ---
 <section class="cta-section cta-section--full">
   <div class="section-inner cta-inner">
     <div class="cta-viking-bg">
       <img src="/assets/illustrations/viking-cta.webp" alt="" aria-hidden="true" loading="lazy" width="1920" height="1047">
     </div>
-    <Eyebrow label="ship it" />
+    <Eyebrow label={t('eyebrow.ship_it', lang)} />
     <h2 class="reveal cta-headline">
-      <span data-i18n="cta.title_1">Your AI doesn't need</span><br>
-      <span class="gradient-text" data-i18n="cta.title_2">to read all that.</span>
+      <span>{t('cta.title_1', lang)}</span><br>
+      <span class="gradient-text">{t('cta.title_2', lang)}</span>
     </h2>
-    <p class="section-sub reveal" data-i18n="cta.sub">Install rtk. Better code, longer sessions, lower costs.</p>
+    <p class="section-sub reveal">{t('cta.sub', lang)}</p>
     <div class="hero-cta reveal">
-      <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
+      <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
       <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <span data-i18n="hero.cta_star">Star on GitHub</span>
+        <span>{t('hero.cta_star', lang)}</span>
       </a>
     </div>
 
     <div class="social-share reveal">
-      <span class="share-label" data-i18n="cta.share">Share rtk</span>
+      <span class="share-label">{t('cta.share', lang)}</span>
       <div class="share-links">
         <a href="https://x.com/intent/tweet?text=rtk%20%E2%80%94%20Your%20AI%20coding%20agent%20is%20drowning%20in%20CLI%20noise.%20RTK%20compresses%20outputs%20by%2089%25.%20Better%20reasoning%2C%20longer%20sessions%2C%20lower%20costs.%20Open%20source%2C%20Rust.&url=https%3A%2F%2Fgithub.com%2Frtk-ai%2Frtk" target="_blank" rel="noopener nofollow" class="share-btn" aria-label="Share on X">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>

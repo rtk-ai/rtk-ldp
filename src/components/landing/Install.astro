@@ -1,30 +1,30 @@
 ---
 // Install section — persona tabs + 3 install methods + hook activation
+import { t, type Lang } from '../../lib/i18n'
 import Eyebrow from './Eyebrow.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
 
 const personas = [
   {
     id: 'claude-code',
-    label: 'Claude Code',
     tabKey: 'install.tab.cc',
     initCmd: 'rtk init --claude-code',
-    initNote: 'Installs PreToolUse hook in Claude Code settings.json, rewriting every Bash call automatically.',
     noteKey: 'install.note.cc',
   },
   {
     id: 'cursor',
-    label: 'Cursor',
     tabKey: 'install.tab.cursor',
     initCmd: 'rtk init --cursor',
-    initNote: "Configures Cursor's .cursorrules to pipe Bash commands through rtk.",
     noteKey: 'install.note.cursor',
   },
   {
     id: 'other',
-    label: 'Other AI CLI',
     tabKey: 'install.tab.other',
     initCmd: 'rtk init --global',
-    initNote: 'Installs a global shell hook, works with Aider, Gemini CLI, Codex, Windsurf, and any terminal AI tool.',
     noteKey: 'install.note.other',
   },
 ]
@@ -35,12 +35,12 @@ const personas = [
     <div class="section-viking reveal">
       <img src="/assets/illustrations/viking-install.webp" alt="Viking slamming axe into ground creating green energy shockwave" loading="lazy" width="1920" height="1047">
     </div>
-    <Eyebrow label="get started" />
-    <h2 class="reveal" data-i18n="install.title">Get started in 30 seconds</h2>
-    <p class="section-sub reveal" data-i18n="install.sub">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
+    <Eyebrow label={t('eyebrow.get_started', lang)} />
+    <h2 class="reveal">{t('install.title', lang)}</h2>
+    <p class="section-sub reveal">{t('install.sub', lang)}</p>
 
     <!-- Persona tabs -->
-    <div class="persona-tabs reveal" role="tablist" aria-label="Choose your AI tool">
+    <div class="persona-tabs reveal" role="tablist" aria-label={t('aria.choose_ai_tool', lang)}>
       {personas.map((p, i) => (
         <button
           class={`persona-tab${i === 0 ? ' persona-tab--active' : ''}`}
@@ -49,9 +49,8 @@ const personas = [
           aria-controls={`persona-panel-${p.id}`}
           id={`persona-tab-${p.id}`}
           data-persona={p.id}
-          data-i18n={p.tabKey}
         >
-          {p.label}
+          {t(p.tabKey, lang)}
         </button>
       ))}
     </div>
@@ -59,45 +58,45 @@ const personas = [
     <!-- Install cards (same for all personas) -->
     <div class="install-grid reveal">
       <div class="install-card install-primary">
-        <h3 data-i18n="install.quick">Quick Install</h3>
-        <p data-i18n="install.quick_desc">One-liner for Linux &amp; macOS</p>
+        <h3>{t('install.quick', lang)}</h3>
+        <p>{t('install.quick_desc', lang)}</p>
         <div class="code-block">
           <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh</code>
-          <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label="Copy">
+          <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
       </div>
 
       <div class="install-card">
-        <h3 data-i18n="install.brew">Via Homebrew</h3>
-        <p data-i18n="install.brew_desc">macOS &amp; Linux</p>
+        <h3>{t('install.brew', lang)}</h3>
+        <p>{t('install.brew_desc', lang)}</p>
         <div class="code-block">
           <code>brew install rtk</code>
-          <button class="copy-btn" data-copy="brew install rtk" aria-label="Copy">
+          <button class="copy-btn" data-copy="brew install rtk" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
         <div class="code-block">
           <code>brew upgrade rtk</code>
-          <button class="copy-btn" data-copy="brew upgrade rtk" aria-label="Copy">
+          <button class="copy-btn" data-copy="brew upgrade rtk" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
       </div>
 
       <div class="install-card">
-        <h3 data-i18n="install.binaries">Pre-built Binaries</h3>
-        <p data-i18n="install.binaries_desc">macOS, Linux, Windows</p>
+        <h3>{t('install.binaries', lang)}</h3>
+        <p>{t('install.binaries_desc', lang)}</p>
         <div class="code-block">
-          <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link" data-i18n="install.releases">Download from Releases &rarr;</a>
+          <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link">{t('install.releases', lang)}</a>
         </div>
       </div>
     </div>
 
     <!-- Persona-specific hook command -->
     <div class="install-setup reveal">
-      <h3 data-i18n="install.hook">Then activate the auto-rewrite hook</h3>
+      <h3>{t('install.hook', lang)}</h3>
       {personas.map((p, i) => (
         <div
           id={`persona-panel-${p.id}`}
@@ -108,11 +107,11 @@ const personas = [
         >
           <div class="code-block code-block-wide">
             <code>{p.initCmd}</code>
-            <button class="copy-btn" data-copy={p.initCmd} aria-label="Copy">
+            <button class="copy-btn" data-copy={p.initCmd} aria-label={t('aria.copy', lang)}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             </button>
           </div>
-          <p class="install-note"><span data-i18n={p.noteKey}>{p.initNote}</span> <a href="/guide/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
+          <p class="install-note"><span>{t(p.noteKey, lang)}</span> <a href="/guide/getting-started/installation/" class="install-docs-link">{t('ui.install_docs_link', lang)}</a></p>
         </div>
       ))}
 

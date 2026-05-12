@@ -1,5 +1,12 @@
 ---
 // Hero section — OSS badge, GitHub stars, headline, stats, terminal demo, viking image
+import { t, type Lang } from '../../lib/i18n'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+
 let stars = 31000
 let forks = 1900
 
@@ -22,7 +29,7 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   <div class="hero-with-viking">
     <div class="hero-content">
       <div class="hero-badges">
-        <span class="hero-badge badge-oss" data-i18n="hero.badge_oss">Open Source &middot; MIT &middot; Rust</span>
+        <span class="hero-badge badge-oss">{t('hero.badge_oss', lang)}</span>
         <span class="hero-badge badge-stars" id="github-stars-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <span id="github-stars-count">{starsLabel}</span> stars
@@ -30,29 +37,29 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
       </div>
 
       <h1>
-        <span data-i18n="hero.title_1">Your AI agent is drowning</span><br>
-        <span data-i18n="hero.title_2">in CLI noise.</span> <span class="gradient-text" data-i18n="hero.title_3">Fix it.</span>
+        <span>{t('hero.title_1', lang)}</span><br>
+        <span>{t('hero.title_2', lang)}</span> <span class="gradient-text">{t('hero.title_3', lang)}</span>
       </h1>
 
       <p class="hero-sub">
-        <span data-i18n="hero.sub_1">rtk compresses command outputs before they reach the context window.</span>
-        <strong data-i18n="hero.sub_2">Better reasoning. Longer sessions. Lower costs.</strong>
+        <span>{t('hero.sub_1', lang)}</span>
+        <strong>{t('hero.sub_2', lang)}</strong>
       </p>
 
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-value">89%</span>
-          <span class="stat-label" data-i18n="hero.stat_pct_label">avg. noise removed</span>
+          <span class="stat-label">{t('hero.stat_pct_label', lang)}</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
           <span class="stat-value">3x</span>
-          <span class="stat-label" data-i18n="hero.stat_3x_label">longer sessions</span>
+          <span class="stat-label">{t('hero.stat_3x_label', lang)}</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
           <span class="stat-value">30+</span>
-          <span class="stat-label" data-i18n="hero.stat_cmds_label">commands</span>
+          <span class="stat-label">{t('hero.stat_cmds_label', lang)}</span>
         </div>
       </div>
 
@@ -64,10 +71,10 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
       </details>
 
       <div class="hero-cta">
-        <a href="#install" class="btn btn-primary" data-i18n="hero.cta_install">Install rtk</a>
+        <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span data-i18n="hero.cta_star">Star on GitHub</span>
+          <span>{t('hero.cta_star', lang)}</span>
         </a>
       </div>
     </div>
@@ -397,4 +404,3 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   .hero-viking { max-width: 320px; }
 }
 </style>
-

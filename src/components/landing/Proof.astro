@@ -1,18 +1,24 @@
 ---
 // Proof section — 2 real rtk gain screenshots from a happy developer
+import { t, type Lang } from '../../lib/i18n'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
 ---
 <section class="proof-section" id="proof">
   <div class="section-inner">
     <div class="section-viking reveal">
       <img src="/assets/illustrations/viking-proof.webp" alt="Viking king on throne with 88.9% holographic display" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal" data-i18n="proof.title">Real-world savings</h2>
-    <p class="section-sub reveal" data-i18n-html="proof.sub">Actual <code>rtk gain</code> output from a happy developer.</p>
+    <h2 class="reveal">{t('proof.title', lang)}</h2>
+    <p class="section-sub reveal" set:html={t('proof.sub', lang)}></p>
 
     <div class="proof-row reveal">
       <div class="proof-text">
-        <h3 data-i18n="proof.h1">A developer's feedback</h3>
-        <p data-i18n-html="proof.d1">After a few weeks of daily use: 15,720 commands processed, 138M tokens saved. Just run <code>rtk gain</code> to see yours.</p>
+        <h3>{t('proof.h1', lang)}</h3>
+        <p set:html={t('proof.d1', lang)}></p>
         <span class="metric metric-green">88.9% efficiency</span>
       </div>
       <div class="proof-img">
@@ -22,8 +28,8 @@
 
     <div class="proof-row proof-row-reverse reveal">
       <div class="proof-text">
-        <h3 data-i18n="proof.h2">Detailed breakdown</h3>
-        <p data-i18n="proof.d2">Daily, weekly, and monthly stats by command. Track your savings over time.</p>
+        <h3>{t('proof.h2', lang)}</h3>
+        <p>{t('proof.d2', lang)}</p>
         <span class="metric metric-cyan">Per-command analytics</span>
       </div>
       <div class="proof-img">
