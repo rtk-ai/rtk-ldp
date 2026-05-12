@@ -122,67 +122,6 @@ section h2 {
   margin: 0 auto 52px;
 }
 
-/* === Problem Section === */
-.problem { background: var(--bg-alt); }
-
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-
-.problem-card {
-  padding: 32px 28px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  box-shadow: var(--shadow-card);
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-.problem-card:hover {
-  border-color: var(--border-light);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
-}
-
-.problem-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  font-size: var(--text-2xl);
-}
-
-.problem-icon.brain { background: var(--violet-dim); }
-.problem-icon.clock { background: var(--cyan-dim); }
-.problem-icon.money { background: var(--red-dim); }
-
-.problem-card h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--text-bright);
-}
-
-.problem-card p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.65;
-}
-
-.problem-card .metric {
-  display: inline-block;
-  margin-top: 14px;
-  padding: 4px 12px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
 .metric-red { background: var(--red-dim); color: var(--red); }
 .metric-cyan { background: var(--cyan-dim); color: var(--cyan); }
 .metric-violet { background: var(--violet-dim); color: var(--violet); }
@@ -1355,7 +1294,6 @@ section h2 {
   .hero-stats { gap: 20px; }
   .stat-value { font-size: var(--text-2xl); }
 
-  .problem-grid,
   .demo-grid,
   .install-grid,
   .cloud-features {
@@ -1390,7 +1328,6 @@ section h2 {
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
-  .problem-grid { grid-template-columns: repeat(3, 1fr); }
   .install-grid { grid-template-columns: repeat(3, 1fr); }
   .cloud-features { grid-template-columns: repeat(2, 1fr); }
 }
@@ -2763,38 +2700,6 @@ td code {
 
 .capabilities-stat {
   align-self: flex-start;
-}
-
-/* Problem cards — terminal evidence blocks */
-.problem-terminal {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  padding: var(--space-3) var(--space-4);
-  border-radius: var(--radius-sm);
-  margin: var(--space-4) 0 0;
-  border-left: 3px solid transparent;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.problem-terminal code {
-  color: inherit;
-  background: none;
-  padding: 0;
-}
-
-.problem-terminal-violet {
-  color: var(--violet);
-  border-left-color: var(--violet);
-}
-
-.problem-terminal-cyan {
-  color: var(--cyan);
-  border-left-color: var(--cyan);
-}
-
-.problem-terminal-red {
-  color: var(--red);
-  border-left-color: var(--red);
 }
 
 /* CTA — viewport-height version */
