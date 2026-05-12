@@ -250,7 +250,7 @@
   font-weight: 600;
   font-size: 0.9rem;
   font-family: var(--font-body);
-  transition: all 0.2s;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   border: 1px solid transparent;
   cursor: pointer;
 }
@@ -368,11 +368,10 @@
 
 .hero-context {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
   max-width: 600px;
   margin: 0 auto 28px;
   line-height: 1.65;
-  opacity: 0.7;
 }
 .hero-context code {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
@@ -649,7 +648,7 @@ section h2 {
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 .slide-tab:hover { border-color: var(--text-muted); color: var(--text); }
 .slide-tab.active {
@@ -693,7 +692,7 @@ section h2 {
   background: var(--bg-card);
   color: var(--text-muted);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 }
 .slide-arrow:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -705,7 +704,7 @@ section h2 {
   border-radius: 50%;
   background: var(--border);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 .dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
 .dot:hover { background: var(--text-muted); }
@@ -1221,7 +1220,7 @@ section h2 {
   font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
 }
 .wl-submit:hover {
   transform: translateY(-1px);
@@ -1517,7 +1516,7 @@ section h2 {
   background: var(--bg-card);
   color: var(--text);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s, transform 0.2s;
 }
 .gain-share-btn:hover {
   border-color: var(--accent);
@@ -1817,7 +1816,7 @@ section h2 {
   border: 1px solid var(--border);
   background: var(--bg-card);
   color: var(--text-muted);
-  transition: all 0.2s;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s;
 }
 .share-btn:hover {
   text-decoration: none;
@@ -1846,7 +1845,7 @@ section h2 {
   font-size: 0.68rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s;
   letter-spacing: 0.02em;
   min-height: 44px;
   display: flex;
@@ -2333,7 +2332,7 @@ td code {
   border: 1px solid var(--border);
   background: var(--bg-card);
   color: var(--text-muted);
-  transition: all 0.2s;
+  transition: color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 .share-btn:hover {
@@ -2860,7 +2859,7 @@ td code {
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, border-color 0.2s;
 }
 
 .flow-btn:hover {
@@ -2948,7 +2947,7 @@ td code {
   font-size: 0.78rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .flow-param-btn:hover {
