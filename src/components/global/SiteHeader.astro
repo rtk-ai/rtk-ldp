@@ -3,7 +3,8 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
 import IconKofi from '../ui/icons/IconKofi.astro'
 import IconDiscord from '../ui/icons/IconDiscord.astro'
 import IconSearch from '../ui/icons/IconSearch.astro'
-import { t, type Lang } from '../../lib/i18n'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { t, LOCALES, type Lang } from '../../lib/i18n'
 
 interface Props {
   variant?: 'landing' | 'product'
@@ -20,6 +21,18 @@ const githubUrl = isVox
   : isIcm
   ? 'https://github.com/rtk-ai/icm'
   : 'https://github.com/rtk-ai/rtk'
+
+const currentLocale = (Astro.currentLocale ?? 'en') as Lang
+
+function stripLocalePrefix(path: string): string {
+  const NON_DEFAULT = ['fr', 'es', 'de', 'zh', 'ja']
+  return path.replace(new RegExp(`^/(${NON_DEFAULT.join('|')})/`), '/')
+}
+
+const currentPath = stripLocalePrefix(Astro.url.pathname)
+
+const voxHref = getRelativeLocaleUrl(currentLocale, 'vox/')
+const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
 ---
 
 <nav class="nav" id="main-nav" aria-label={t('aria.main_nav', lang)}>
@@ -50,8 +63,8 @@ const githubUrl = isVox
           <a href="/#install" class="nav-link">{t('nav.install', lang)}</a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="/guide/" class="nav-link">{t('ui.nav_docs', lang)}</a>
-          <a href="/vox/" class="nav-link nav-link-vox">Vox</a>
-          <a href="/icm/" class="nav-link nav-link-icm">ICM</a>
+          <a href={voxHref} class="nav-link nav-link-vox">Vox</a>
+          <a href={icmHref} class="nav-link nav-link-icm">ICM</a>
           <span class="nav-divider" aria-hidden="true"></span>
           <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title={t('aria.support_kofi', lang)} aria-label={t('aria.support_kofi', lang)}>
             <IconKofi size={16} />
@@ -69,13 +82,15 @@ const githubUrl = isVox
             <kbd class="search-trigger-kbd">⌘K</kbd>
           </button>
           <span class="nav-divider" aria-hidden="true"></span>
-          <div class="lang-switch">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="fr">FR</button>
-            <button class="lang-btn" data-lang="es">ES</button>
-            <button class="lang-btn" data-lang="de">DE</button>
-            <button class="lang-btn" data-lang="zh">ZH</button>
-            <button class="lang-btn" data-lang="ja">JA</button>
+          <div class="lang-switch" role="navigation" aria-label="Language switcher">
+            {LOCALES.map(l => (
+              <a
+                href={getRelativeLocaleUrl(l, currentPath)}
+                class={`lang-btn${l === currentLocale ? ' active' : ''}`}
+                hreflang={l}
+                aria-current={l === currentLocale ? 'true' : undefined}
+              >{l.toUpperCase()}</a>
+            ))}
           </div>
         </>
       ) : (
@@ -140,8 +155,8 @@ const githubUrl = isVox
           <a href="/#compare">{t('nav.tools', lang)}</a>
           <a href="/#install">{t('nav.install', lang)}</a>
           <a href="/guide/">{t('ui.nav_docs', lang)}</a>
-          <a href="/vox/" class="nav-link-vox">Vox</a>
-          <a href="/icm/" class="nav-link-icm">ICM</a>
+          <a href={voxHref} class="nav-link-vox">Vox</a>
+          <a href={icmHref} class="nav-link-icm">ICM</a>
         </>
       ) : isVox ? (
         <>
@@ -149,7 +164,7 @@ const githubUrl = isVox
           <a href="#backends">Backends</a>
           <a href="#install">Install</a>
           <a href="#integration">Integration</a>
-          <a href="/icm/" class="nav-link-icm">ICM</a>
+          <a href={icmHref} class="nav-link-icm">ICM</a>
         </>
       ) : (
         <>
@@ -158,7 +173,7 @@ const githubUrl = isVox
           <a href="#tools">Live Demo</a>
           <a href="#compare">Compare</a>
           <a href="#install">Install</a>
-          <a href="/vox/" class="nav-link-vox">Vox</a>
+          <a href={voxHref} class="nav-link-vox">Vox</a>
         </>
       )}
     </div>
@@ -179,13 +194,15 @@ const githubUrl = isVox
       )}
     </div>
     {isLanding && (
-      <div class="nav-drawer-lang">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <button class="lang-btn" data-lang="es">ES</button>
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="zh">ZH</button>
-        <button class="lang-btn" data-lang="ja">JA</button>
+      <div class="nav-drawer-lang" role="navigation" aria-label="Language switcher">
+        {LOCALES.map(l => (
+          <a
+            href={getRelativeLocaleUrl(l, currentPath)}
+            class={`lang-btn${l === currentLocale ? ' active' : ''}`}
+            hreflang={l}
+            aria-current={l === currentLocale ? 'true' : undefined}
+          >{l.toUpperCase()}</a>
+        ))}
       </div>
     )}
   </div>
@@ -460,8 +477,9 @@ const githubUrl = isVox
   min-height: 44px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
-.lang-btn:hover { color: var(--text); }
+.lang-btn:hover { color: var(--text); text-decoration: none; }
 .lang-btn.active {
   color: var(--accent);
   font-weight: 700;
