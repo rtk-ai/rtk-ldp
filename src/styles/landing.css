@@ -2043,69 +2043,6 @@ section h2 {
   margin: 0;
 }
 
-.starred-section {
-  padding: 48px 0 44px;
-  text-align: center;
-  border-top: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.starred-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  margin-bottom: 28px;
-  opacity: 0.75;
-  font-weight: 600;
-}
-
-.starred-track-wrapper {
-  overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
-}
-
-.starred-track {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: var(--space-5);
-  animation: starred-scroll 45s linear infinite;
-  width: max-content;
-}
-
-.starred-track:hover { animation-play-state: paused; }
-
-.starred-name {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  white-space: nowrap;
-  flex-shrink: 0;
-  letter-spacing: 0.02em;
-  transition: color 0.3s, opacity 0.3s;
-  opacity: 0.75;
-}
-
-.starred-name:hover {
-  color: var(--text-bright);
-  opacity: 1;
-}
-
-.starred-sep {
-  color: var(--border-light);
-  font-size: 0.5rem;
-  flex-shrink: 0;
-  opacity: 0.3;
-  user-select: none;
-}
-
-@keyframes starred-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 /* === Viking Illustrations === */
 .viking-illustration {
   width: 100%;

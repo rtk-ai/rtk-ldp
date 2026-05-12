@@ -67,8 +67,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'cta.sub':     { en: 'Install rtk. Better code, longer sessions, lower costs.', fr: 'Installez rtk. Meilleur code, sessions plus longues, coûts réduits.', es: 'Instala rtk. Mejor código, sesiones más largas, menores costos.', de: 'Installiere rtk. Besserer Code, längere Sessions, geringere Kosten.', zh: '安装 rtk。更好的代码，更长的会话，更低的成本。', ja: 'rtk をインストール。より良いコード、より長いセッション、より低いコスト。' },
   'cta.share':   { en: 'Share rtk', fr: 'Partager rtk', es: 'Compartir rtk', de: 'rtk teilen', zh: '分享 rtk', ja: 'rtk を共有' },
 
-  'starred.label': { en: 'Starred by developers at', fr: 'Staré par des développeurs chez', es: 'Starred por desarrolladores en', de: 'Gestarrt von Entwicklern bei', zh: '来自这些公司的开发者已加星', ja: 'これらの企業の開発者がスター済み' },
-
   'demo.title': { en: 'See the difference', fr: 'Voyez la différence', es: 'Mira la diferencia', de: 'Sieh den Unterschied', zh: '查看差异', ja: '違いを見る' },
   'demo.sub':   { en: 'Real outputs, real savings. Side-by-side comparison on actual commands.', fr: 'Des sorties réelles, des économies réelles. Comparaison côte à côte sur de vraies commandes.', es: 'Salidas reales, ahorros reales. Comparación lado a lado con comandos reales.', de: 'Echte Ausgaben, echte Einsparungen. Seite-an-Seite-Vergleich mit echten Befehlen.', zh: '真实输出，真实节省。实际命令的并排对比。', ja: '実際の出力、実際の節約。実コマンドの並列比較。' },
 
