@@ -1,0 +1,149 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import Proof from '../../components/landing/Proof.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'RTK', item: 'https://www.rtk-ai.app/' },
+      { '@type': 'ListItem', position: 2, name: 'Token Savings', item: 'https://www.rtk-ai.app/savings/' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'RTK Token Savings — Measured Data from 2,900+ Real Commands',
+    description: 'RTK removes an average of 89% of CLI output noise, measured across 2,900+ real-world commands. Savings by command: cargo test (91.8%), git status (80.8%), find (78.3%), grep (49.5%). One developer saved 138 million tokens over several weeks.',
+    url: 'https://www.rtk-ai.app/savings/',
+    datePublished: '2026-04-01',
+    dateModified: buildDate,
+    author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    publisher: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    about: { '@type': 'SoftwareApplication', name: 'RTK — Rust Token Killer', url: 'https://www.rtk-ai.app' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    name: 'RTK CLI Token Savings — Measured Data',
+    description: 'Token savings measurements across 2,900+ real-world developer commands. Data covers cargo, git, grep, find, and other CLI tools used in AI-assisted development sessions.',
+    url: 'https://www.rtk-ai.app/savings/',
+    creator: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+    license: 'https://opensource.org/licenses/MIT',
+    temporalCoverage: '2025/2026',
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'Average CLI noise removed', value: '89%' },
+      { '@type': 'PropertyValue', name: 'cargo test savings', value: '91.8%' },
+      { '@type': 'PropertyValue', name: 'git status savings', value: '80.8%' },
+      { '@type': 'PropertyValue', name: 'find savings', value: '78.3%' },
+      { '@type': 'PropertyValue', name: 'grep savings', value: '49.5%' },
+      { '@type': 'PropertyValue', name: 'Total commands measured', value: '2900+' },
+    ],
+  },
+]
+---
+<Layout
+  title="RTK Token Savings — Measured Data | rtk-ai"
+  description="89% average CLI noise removed, measured across 2,900+ real commands. cargo test saves 91.8%, git status 80.8%, grep 49.5%. One developer saved 138M tokens in weeks."
+  schemaOrg={schemaOrg}
+  ogType="article"
+  image="/og-savings.png"
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader />
+
+  <main id="main-content">
+
+    <!-- Hero compact -->
+    <section class="subpage-hero">
+      <nav class="rtk-subnav" aria-label="RTK pages">
+        <a href="/">RTK</a>
+        <span aria-hidden="true">/</span>
+        <strong>Token Savings</strong>
+      </nav>
+      <h1>89% average noise removed,<br><span style="color:var(--accent)">measured across real commands.</span></h1>
+      <p class="subpage-sub">
+        Not a synthetic benchmark. These numbers come from 2,900+ actual developer sessions
+        running cargo, git, grep, find, and everything else you use daily.
+      </p>
+    </section>
+
+    <Proof />
+
+    <!-- Footer CTA -->
+    <section class="cta">
+      <div class="section-inner">
+        <h2>Ready to cut your token usage<br><span style="color:var(--accent)">by 89%?</span></h2>
+        <p class="section-sub">Install RTK. Zero config. Zero workflow change.</p>
+        <div class="subpage-cta">
+          <a href="/#install" class="btn btn-primary">Install RTK &rarr;</a>
+          <a href="/vs/" class="btn btn-ghost">Compare tools</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <SiteFooter />
+  <SearchModal />
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* RTK landing sub-page breadcrumb */
+  .rtk-subnav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .rtk-subnav a { color: var(--accent); text-decoration: none; }
+  .rtk-subnav a:hover { text-decoration: underline; }
+  .rtk-subnav span { color: var(--text-dim); }
+  .rtk-subnav strong { color: var(--text); }
+
+  /* Compact hero for sub-pages */
+  .subpage-hero {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 120px 24px 60px;
+    text-align: center;
+  }
+  .subpage-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  .subpage-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+  }
+  .subpage-cta {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+
+<script>
+  import { initReveal } from '../../scripts/reveal'
+  initReveal()
+</script>

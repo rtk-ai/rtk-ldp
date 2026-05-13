@@ -40,8 +40,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Clone RTK repo
-        run: git clone --depth 1 --branch master https://github.com/rtk-ai/rtk.git ./rtk-repo
+        run: git clone --depth 1 --branch ${{ vars.RTK_DOCS_REF || 'master' }} https://github.com/rtk-ai/rtk.git ./rtk-repo
         # If private: use https://x-access-token:${{ secrets.RTK_REPO_PAT }}@github.com/rtk-ai/rtk.git
+        # Pin to a specific tag: set repo variable RTK_DOCS_REF=v1.5.0 in GitHub Settings → Variables → Repository variables
 
       - name: Prepare docs content
         run: RTK_REPO_PATH=./rtk-repo node scripts/prepare-docs.mjs

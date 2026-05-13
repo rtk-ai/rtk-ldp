@@ -1,0 +1,61 @@
+---
+// Capabilities — "Context Forge" suite section
+// Shows RTK + ICM + Vox as a coherent 3-tool suite
+import { t, type Lang } from '../../lib/i18n'
+import Eyebrow from './Eyebrow.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+
+const tools = [
+  {
+    label: 'RTK',
+    verbKey: 'caps.rtk.verb',
+    color: 'var(--accent)',
+    href: '/#install',
+    descKey: 'caps.rtk.desc',
+    statKey: 'caps.rtk.stat',
+  },
+  {
+    label: 'ICM',
+    verbKey: 'caps.icm.verb',
+    color: 'var(--cyan)',
+    href: '/icm/',
+    descKey: 'caps.icm.desc',
+    statKey: 'caps.icm.stat',
+  },
+  {
+    label: 'Vox',
+    verbKey: 'caps.vox.verb',
+    color: 'var(--violet)',
+    href: '/vox/',
+    descKey: 'caps.vox.desc',
+    statKey: 'caps.vox.stat',
+  },
+]
+---
+
+<section class="capabilities section-calm" aria-labelledby="capabilities-title">
+  <div class="capabilities-inner">
+    <Eyebrow label={t('eyebrow.context_forge', lang)} />
+    <h2 id="capabilities-title" class="capabilities-title">
+      <span>{t('caps.title_1', lang)}</span> <span class="gradient-text">{t('caps.title_2', lang)}</span>
+    </h2>
+    <p class="capabilities-sub">{t('caps.sub', lang)}</p>
+
+    <div class="capabilities-grid">
+      {tools.map((tool) => (
+        <a href={tool.href} class="capabilities-card card-muted">
+          <div class="capabilities-card-header">
+            <span class="capabilities-label" style={`color: ${tool.color}`}>{tool.label}</span>
+            <span class="capabilities-verb">{t(tool.verbKey, lang)}</span>
+          </div>
+          <p class="capabilities-desc">{t(tool.descKey, lang)}</p>
+          <span class="capabilities-stat pill-neutral">{t(tool.statKey, lang)}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

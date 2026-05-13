@@ -48,6 +48,17 @@ pnpm preview  # Preview dist/
 
 Push sur `main` → deploy automatique via GitHub Actions.
 
+### Épingler la version des docs RTK en CI
+
+La variable repo `RTK_DOCS_REF` contrôle le tag/branche cloné en CI (défaut : `master`).
+
+Pour épingler à un tag spécifique :
+1. GitHub → Settings → Variables → Repository variables
+2. Créer `RTK_DOCS_REF` = `v1.5.0` (ou le tag voulu)
+3. Le prochain build clonera ce tag au lieu de `master`
+
+Supprimer la variable pour revenir sur `master` automatiquement.
+
 ---
 
 ## Architecture
@@ -181,11 +192,11 @@ Ne pas bloquer ces bots — c'est critique pour la visibilité GEO.
 
 | Page | Composant nav |
 |------|--------------|
-| Landing (`/`) | `src/components/landing/Nav.astro` |
-| Produits (`/vox/`, `/icm/`) | `src/components/landing/ProductNav.astro` |
+| Landing (`/`) | `src/components/global/SiteHeader.astro` (variant="landing") |
+| Produits (`/vox/`, `/icm/`) | `src/components/global/SiteHeader.astro` (variant="product") |
 | Docs (`/guide/**`) | `src/components/global/Header.astro` (Starlight override) |
 
-Les anchor links dans Nav.astro utilisent des chemins absolus (`/#problem`, `/#install`) pour fonctionner depuis n'importe quelle page.
+Les anchor links dans SiteHeader.astro utilisent des chemins absolus (`/#problem`, `/#install`) pour fonctionner depuis n'importe quelle page.
 
 ---
 
