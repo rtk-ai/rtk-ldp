@@ -1,30 +1,30 @@
 /**
  * global.css — RTK dark-only design tokens + resets
- * Palette: A — Zinc neutre (retenue, voir .claude/palettes.md)
+ * Palette source: rtk-ldp/index.html :root (L106-132)
  */
 
 /* Google Fonts loaded via <link> in Layout.astro (preconnect + non-blocking) */
 
 /* ── Design Tokens ─────────────────────────────────────────────────── */
 :root {
-  /* Backgrounds — Zinc neutre (palette A) */
-  --bg:            #09090b;
-  --bg-alt:        #0c0c0e;
-  --bg-card:       #121215;
-  --bg-card-hover: #18181b;
-  --bg-elevated:   #1f1f23;
-  --bg-glass:      rgba(9, 9, 11, 0.80);
+  /* Backgrounds */
+  --bg:            #0d1117;
+  --bg-alt:        #161b22;
+  --bg-card:       #21262d;
+  --bg-card-hover: #2d333b;
+  --bg-elevated:   #2d333b;
+  --bg-glass:      rgba(13, 17, 23, 0.82);
 
   /* Borders */
-  --border:        #1f1f23;
-  --border-light:  #2a2a2e;
+  --border:        #30363d;
+  --border-light:  #3d444d;
 
   /* Text */
-  --text:          #f4f4f5;
-  --text-bright:   #ffffff;
-  --text-muted:    #a1a1aa;
-  --text-dim:      #86868e;
-  --text-on-accent: #09090b;
+  --text:          #e6edf3;
+  --text-bright:   #f0f6fc;
+  --text-muted:    #94a3b8;
+  --text-dim:      #7e8ca6;
+  --text-on-accent: #0d1117;
 
   /* Brand colors */
   --accent:        #00e599;
