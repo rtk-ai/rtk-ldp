@@ -1,0 +1,269 @@
+---
+// Layers section — 4-layer diagram showing where RTK sits in the AI token stack
+---
+<section class="layers-section" id="layers" aria-labelledby="layers-title">
+  <div class="section-inner">
+    <div class="section-num">02</div>
+    <h2 id="layers-title">Other tools intercept the API.<br><span class="layers-accent">RTK intercepts the terminal.</span></h2>
+    <p class="section-sub">
+      There are four layers where you can reduce token usage. Only one works with every billing model — including Claude Code Max &amp; Pro.
+    </p>
+
+    <div class="layers-diagram" role="list" aria-label="Token optimization layers">
+
+      <div class="layer layer-rtk" role="listitem" aria-current="true">
+        <div class="layer-badge">L1</div>
+        <div class="layer-content">
+          <div class="layer-name">
+            <span class="layer-tool">RTK — CLI proxy</span>
+            <span class="layer-tag">you are here</span>
+          </div>
+          <p class="layer-desc">Intercepts terminal output before it enters any AI context window. Works at the process level — no API key, no account, no billing dependency.</p>
+          <div class="layer-examples">
+            <code>rtk git status</code>
+            <code>rtk cargo test</code>
+            <code>rtk grep</code>
+          </div>
+        </div>
+        <div class="layer-stat">−89%<span>avg tokens</span></div>
+      </div>
+
+      <div class="layer layer-other" role="listitem">
+        <div class="layer-badge">L2</div>
+        <div class="layer-content">
+          <div class="layer-name">
+            <span class="layer-tool">MCP servers</span>
+          </div>
+          <p class="layer-desc">Inject curated context inside the agent loop. Compress inside, not before. Complementary — stack with RTK.</p>
+          <div class="layer-examples muted">
+            <code>context-mode</code>
+            <code>Serena</code>
+            <code>token-savior</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer layer-other" role="listitem">
+        <div class="layer-badge">L3</div>
+        <div class="layer-content">
+          <div class="layer-name">
+            <span class="layer-tool">Output style flags</span>
+          </div>
+          <p class="layer-desc">Shorten AI responses via prompting. Trims outputs, not inputs. Also complementary.</p>
+          <div class="layer-examples muted">
+            <code>Caveman</code>
+            <code>--uc flags</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="layer layer-blind" role="listitem">
+        <div class="layer-badge">L4</div>
+        <div class="layer-content">
+          <div class="layer-name">
+            <span class="layer-tool">API gateways</span>
+            <span class="layer-tag layer-tag-warn">blind on Max &amp; Pro</span>
+          </div>
+          <p class="layer-desc">Intercept the API key. But Claude Code Max and Pro route through Anthropic's subscription — there's no API key to intercept.</p>
+          <div class="layer-examples muted">
+            <code>Bifrost</code>
+            <code>Helicone</code>
+            <code>Portkey</code>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="layers-callout">
+      RTK is the only token optimizer that works on <strong>Claude Code Max &amp; Pro</strong> — because there's no API key to intercept.
+    </p>
+
+  </div>
+</section>
+
+<style>
+.layers-section {
+  background: var(--bg-alt);
+}
+
+.layers-accent {
+  color: var(--accent);
+}
+
+.layers-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: var(--space-8) 0;
+}
+
+/* Base layer row */
+.layer {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: var(--space-5);
+  align-items: start;
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  transition: border-color 0.2s;
+}
+
+/* RTK highlighted row */
+.layer-rtk {
+  border-color: var(--accent);
+  background: rgba(0, 229, 153, 0.04);
+}
+
+/* Blind spot row */
+.layer-blind {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Badge */
+.layer-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--text-dim);
+  padding-top: 3px;
+}
+
+.layer-rtk .layer-badge {
+  color: var(--accent);
+}
+
+/* Content */
+.layer-content {
+  min-width: 0;
+}
+
+.layer-name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+
+.layer-tool {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-bright);
+}
+
+.layer-rtk .layer-tool {
+  color: var(--accent);
+}
+
+.layer-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: rgba(0, 229, 153, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(0, 229, 153, 0.25);
+  white-space: nowrap;
+}
+
+.layer-tag-warn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+
+.layer-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 var(--space-3);
+}
+
+.layer-other .layer-desc,
+.layer-blind .layer-desc {
+  color: var(--text-dim);
+}
+
+.layer-examples {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.layer-examples code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 229, 153, 0.08);
+  color: var(--accent);
+  border: 1px solid rgba(0, 229, 153, 0.15);
+}
+
+.layer-examples.muted code {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  border-color: var(--border);
+}
+
+/* Stat badge on RTK row */
+.layer-stat {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: right;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.layer-stat span {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  text-align: right;
+  margin-top: 2px;
+}
+
+/* Callout */
+.layers-callout {
+  padding: var(--space-5) var(--space-6);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: rgba(0, 229, 153, 0.04);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.layers-callout strong {
+  color: var(--text-bright);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .layer {
+    grid-template-columns: 32px 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .layer-stat {
+    grid-column: 2;
+    text-align: left;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .layer-examples {
+    gap: var(--space-2);
+  }
+}
+</style>

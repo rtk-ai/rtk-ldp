@@ -1,0 +1,36 @@
+# RTK — Rust Token Killer
+
+> Open-source CLI proxy that compresses command outputs before they reach the AI context window. 60-90% token reduction with zero workflow changes. Works with Claude Code, Cursor, Gemini CLI, GitHub Copilot, Aider, and any terminal-based AI assistant. Written in Rust, MIT licensed, no telemetry, no API keys.
+
+## Products
+
+- [RTK](https://www.rtk-ai.app/): CLI proxy for AI coding tools. Compresses git, cargo, grep, find, docker, kubectl, and 50+ CLI commands before output enters the AI context window. Average 89% noise reduction measured across 2,900+ real-world commands. `rtk init --global` installs a PreToolUse hook in Claude Code that works transparently. Session analytics via `rtk gain`.
+- [Vox](https://www.rtk-ai.app/vox/): Local-first text-to-speech CLI for Claude Code. Hear task completions aloud (~50ms on macOS), get spoken summaries, clone your voice from a 10-second sample. 3 TTS backends: macOS say, MLX-powered qwen (Apple Silicon), pure-Rust qwen-native (Metal + CUDA). 8 MCP tools. 100% local, zero API calls, MIT licensed.
+- [ICM — Infinite Context Memory](https://www.rtk-ai.app/icm/): Persistent memory for AI agents. Single Rust binary, SQLite storage, 22 MCP tools. Episodic memories with temporal decay (4 importance levels), semantic knowledge graphs with typed relations, hybrid BM25+vector search. Auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, VS Code, Gemini Code Assist, Zed, and Amp. 100% local, zero API keys, MIT licensed.
+- [RTK Cloud](https://www.rtk-ai.app/cloud/): Team analytics, shared token savings dashboards, and org-wide hook deployment for AI coding tools. Coming soon — join the waitlist.
+
+## Data & Comparisons
+
+- [Token Savings — Measured Data](https://www.rtk-ai.app/savings/): 89% average CLI noise removed, measured across 2,900+ real-world commands. Per-command: cargo test 91.8%, git status 80.8%, find 78.3%, grep 49.5%. One developer saved 138 million tokens over several weeks. Full methodology and per-command breakdown.
+- [RTK vs AI Coding Tools](https://www.rtk-ai.app/vs/): RTK token compression benchmarks across Claude Code, Cursor, Gemini CLI, GitHub Copilot, Aider, and Windsurf. RTK compresses CLI output before it reaches any AI context window, regardless of which tool is in use.
+
+## Documentation
+
+- [Guide — Overview](https://www.rtk-ai.app/docs/): Full RTK documentation index — installation, configuration, command reference, supported agents, analytics, and troubleshooting.
+- [Installation](https://www.rtk-ai.app/docs/getting-started/installation/): Install RTK via Homebrew (`brew install rtk-ai/tap/rtk`) or Cargo (`cargo install rtk`). Verify with `rtk --version`.
+- [Quick Start](https://www.rtk-ai.app/docs/getting-started/quick-start/): Run `rtk init --global` to install the Claude Code hook. Start saving tokens immediately with your existing workflow.
+- [Configuration](https://www.rtk-ai.app/docs/getting-started/configuration/): Customize RTK filters, adjust output formats, and configure per-project settings via `rtk config`.
+- [Supported Agents](https://www.rtk-ai.app/docs/getting-started/supported-agents/): Full list of AI coding tools and terminal environments compatible with RTK.
+- [rtk gain — Analytics](https://www.rtk-ai.app/docs/analytics/gain/): Session and global token savings analytics. `rtk gain` shows savings per command and total tokens saved. `rtk gain -p` shows per-project breakdown.
+- [rtk discover](https://www.rtk-ai.app/docs/analytics/discover/): Analyze Claude Code session history to identify commands that weren't proxied through RTK. Find missed savings opportunities.
+- [What RTK Covers](https://www.rtk-ai.app/docs/resources/what-rtk-covers/): Complete list of supported command ecosystems: Git, Cargo, GitHub CLI, pnpm, Next.js, TypeScript, ESLint, Prettier, Vitest, Playwright, Prisma, Docker, kubectl, and more.
+- [Troubleshooting](https://www.rtk-ai.app/docs/resources/troubleshooting/): Common issues and solutions — hook not firing, savings not recorded, command not recognized.
+- [Telemetry](https://www.rtk-ai.app/docs/resources/telemetry/): RTK collects zero telemetry. No data leaves your machine. Full offline operation.
+
+## Other
+
+- [Team](https://www.rtk-ai.app/team/): The people behind RTK — founder Patrick Szymkowiak and core maintainers.
+- [RSS Feed](https://www.rtk-ai.app/rss.xml): Product updates, new releases, and changelog entries.
+- [GitHub — RTK](https://github.com/rtk-ai/rtk): Source code, issues, and releases for RTK CLI.
+- [GitHub — Vox](https://github.com/rtk-ai/vox): Source code, issues, and releases for Vox.
+- [GitHub — ICM](https://github.com/rtk-ai/icm): Source code, issues, and releases for ICM.

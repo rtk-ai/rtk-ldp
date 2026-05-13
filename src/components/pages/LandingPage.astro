@@ -6,6 +6,7 @@ import Hero from '../landing/Hero.astro'
 import Capabilities from '../landing/Capabilities.astro'
 import CompatibilityStrip from '../landing/CompatibilityStrip.astro'
 import Problem from '../landing/Problem.astro'
+import Layers from '../landing/Layers.astro'
 import DemoSlideshow from '../landing/DemoSlideshow.astro'
 import Proof from '../landing/Proof.astro'
 import ToolComparison from '../landing/ToolComparison.astro'
@@ -122,7 +123,7 @@ const schemaOrg = {
     {
       '@type': 'HowTo',
       '@id': 'https://www.rtk-ai.app/#howto-install',
-      name: 'How to install RTK and reduce Claude Code token usage by 60-90%',
+      name: 'How to install RTK and reduce AI coding token usage by 60-90%',
       description:
         'Install RTK (Rust Token Killer) in under 2 minutes and activate the automatic command compression hook. No workflow changes required.',
       totalTime: 'PT2M',
@@ -140,7 +141,7 @@ const schemaOrg = {
           '@type': 'HowToStep',
           position: 2,
           name: 'Activate the auto-rewrite hook',
-          text: 'Run rtk init --global to install the PreToolUse hook in Claude Code. This transparently rewrites Bash tool calls to rtk equivalents, compressing output before it reaches the context window.',
+          text: 'Run rtk init --claude-code for Claude Code (installs a PreToolUse hook) or rtk init --global for other AI tools (installs a shell hook). Both transparently rewrite commands to rtk equivalents, compressing output before it reaches the context window.',
           url: 'https://www.rtk-ai.app/#install',
         },
         {
@@ -157,14 +158,14 @@ const schemaOrg = {
       '@id': 'https://www.rtk-ai.app/#webpage',
       url: 'https://www.rtk-ai.app/',
       name: 'RTK — Rust Token Killer',
-      description: 'RTK reduces Claude Code token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. Free, open source, MIT, written in Rust.',
+      description: 'RTK reduces AI coding token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. Free, open source, MIT, written in Rust.',
       inLanguage: 'en',
       dateModified: buildDate,
       isPartOf: { '@type': 'WebSite', name: 'RTK', url: 'https://www.rtk-ai.app' },
       publisher: { '@id': 'https://www.rtk-ai.app/#organization' },
       speakable: {
         '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', '.hero-context', '.faq-answer', '.session-note'],
+        cssSelector: ['h1', '.hero-context', '.session-note', '.problem-intro'],
       },
     },
   ],
@@ -172,7 +173,7 @@ const schemaOrg = {
 ---
 <Layout
   title="RTK — Rust Token Killer"
-  description="RTK reduces Claude Code token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. MIT licensed."
+  description="RTK reduces AI coding token usage by 60-90% — measured across 2,900+ real commands. 89% avg noise removed, 3x longer sessions, zero config. MIT licensed."
   schemaOrg={schemaOrg}
 >
   <a href="#main-content" class="skip-to-content">Skip to content</a>
@@ -182,6 +183,7 @@ const schemaOrg = {
     <CompatibilityStrip />
     <Capabilities lang={lang} />
     <Problem lang={lang} />
+    <Layers lang={lang} />
     <DemoSlideshow lang={lang} />
     <Proof lang={lang} />
     <ToolComparison lang={lang} />
