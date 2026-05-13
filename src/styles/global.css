@@ -8,21 +8,21 @@
 /* ── Design Tokens ─────────────────────────────────────────────────── */
 :root {
   /* Backgrounds */
-  --bg: #060b18;
-  --bg-alt: #0c1225;
-  --bg-card: #0f1629;
-  --bg-card-hover: #151d35;
+  --bg: #0d1117;
+  --bg-alt: #161b22;
+  --bg-card: #21262d;
+  --bg-card-hover: #2d333b;
 
   /* Borders */
-  --border: #1a2344;
-  --border-light: #243056;
+  --border: #30363d;
+  --border-light: #3d444d;
 
   /* Text */
-  --text: #e2e8f0;
-  --text-bright: #f8fafc;
+  --text: #e6edf3;
+  --text-bright: #f0f6fc;
   --text-muted: #94a3b8;
   --text-dim: #7e8ca6;
-  --text-on-accent: #060b18;
+  --text-on-accent: #0d1117;
 
   /* Brand colors */
   --accent: #00e599;
@@ -43,8 +43,8 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Backgrounds (extended) */
-  --bg-elevated: #1a2244;
-  --bg-glass: rgba(6, 11, 24, 0.82);
+  --bg-elevated: #2d333b;
+  --bg-glass: rgba(13, 17, 23, 0.82);
 
   /* Layout */
   --max-w: 1140px;
