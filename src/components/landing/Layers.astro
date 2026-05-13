@@ -1,12 +1,12 @@
 ---
-// Layers section — 4-layer diagram showing where RTK sits in the AI token stack
+// Layers section: 4-layer diagram showing where RTK sits in the AI token stack
 ---
 <section class="layers-section" id="layers" aria-labelledby="layers-title">
   <div class="section-inner">
     <div class="section-num">02</div>
     <h2 id="layers-title">Other tools intercept the API.<br><span class="layers-accent">RTK intercepts the terminal.</span></h2>
     <p class="section-sub">
-      There are four layers where you can reduce token usage. Only one works with every billing model — including Claude Code Max &amp; Pro.
+      There are four layers where you can reduce token usage. Only one works with every billing model, including Claude Code Max &amp; Pro.
     </p>
 
     <div class="layers-diagram" role="list" aria-label="Token optimization layers">
@@ -18,7 +18,7 @@
             <span class="layer-tool">RTK — CLI proxy</span>
             <span class="layer-tag">you are here</span>
           </div>
-          <p class="layer-desc">Intercepts terminal output before it enters any AI context window. Works at the process level — no API key, no account, no billing dependency.</p>
+          <p class="layer-desc">Intercepts terminal output before it enters any AI context window. Works at the process level: no API key, no account, no billing dependency.</p>
           <div class="layer-examples">
             <code>rtk git status</code>
             <code>rtk cargo test</code>
@@ -34,7 +34,7 @@
           <div class="layer-name">
             <span class="layer-tool">MCP servers</span>
           </div>
-          <p class="layer-desc">Inject curated context inside the agent loop. Compress inside, not before. Complementary — stack with RTK.</p>
+          <p class="layer-desc">Inject curated context inside the agent loop. Compress inside, not before. Complementary, stack with RTK.</p>
           <div class="layer-examples muted">
             <code>context-mode</code>
             <code>Serena</code>
@@ -64,7 +64,7 @@
             <span class="layer-tool">API gateways</span>
             <span class="layer-tag layer-tag-warn">blind on Max &amp; Pro</span>
           </div>
-          <p class="layer-desc">Intercept the API key. But Claude Code Max and Pro route through Anthropic's subscription — there's no API key to intercept.</p>
+          <p class="layer-desc">Intercept the API key. But Claude Code Max and Pro route through Anthropic's subscription. No API key to intercept.</p>
           <div class="layer-examples muted">
             <code>Bifrost</code>
             <code>Helicone</code>
@@ -76,7 +76,7 @@
     </div>
 
     <p class="layers-callout">
-      RTK is the only token optimizer that works on <strong>Claude Code Max &amp; Pro</strong> — because there's no API key to intercept.
+      RTK is the only token optimizer that works on <strong>Claude Code Max &amp; Pro</strong>. No API key to intercept.
     </p>
 
   </div>

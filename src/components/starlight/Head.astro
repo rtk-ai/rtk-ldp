@@ -1,6 +1,6 @@
 ---
 /**
- * Starlight Head override — adds dynamic BreadcrumbList JSON-LD
+ * Starlight Head override: adds dynamic BreadcrumbList JSON-LD
  * based on the current page URL.
  */
 import Default from '@astrojs/starlight/components/Head.astro'
@@ -42,7 +42,7 @@ const breadcrumbSchema = {
   })),
 }
 ---
-<!-- Force dark mode before first paint — dark-only site -->
+<!-- Force dark mode before first paint: dark-only site -->
 <script is:inline>
   try { localStorage.setItem('starlight-theme', 'dark') } catch(e) {}
   document.documentElement.setAttribute('data-theme', 'dark')

@@ -31,7 +31,7 @@ const schema = {
         'Neural TTS via MLX-powered qwen backend (~500ms, Apple Silicon)',
         'Cross-platform pure-Rust qwen-native backend (~300ms, Metal & CUDA GPU)',
         'Voice cloning from 10-second audio sample',
-        '100% local — no API keys, no cloud, no data leaves your machine',
+        '100% local: no API keys, no cloud, no data leaves your machine',
         '8 MCP tools for Claude Code integration via vox init mcp',
         'Cross-platform: macOS, Linux, WSL',
       ],
@@ -60,7 +60,7 @@ const schema = {
           name: 'How do I install Vox and connect it to Claude Code?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh — then run vox init mcp to register Vox as an MCP server in Claude Code. This exposes 8 MCP tools including vox_speak, vox_clone_add, and vox_config_set.',
+            text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh, then run vox init mcp to register Vox as an MCP server in Claude Code. This exposes 8 MCP tools including vox_speak, vox_clone_add, and vox_config_set.',
           },
         },
         {
@@ -68,7 +68,7 @@ const schema = {
           name: 'What TTS backends does Vox support?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Vox supports three backends: (1) say — macOS native NSSpeechSynthesizer, ~50ms latency, instant startup, dozens of built-in voices; (2) qwen — MLX-powered neural TTS on Apple Silicon, ~500ms, high-quality speech with voice cloning, ~1.2GB model auto-download; (3) qwen-native — pure Rust implementation, ~300ms, cross-platform with Metal & CUDA GPU support, no Python dependencies.',
+            text: 'Vox supports three backends: (1) say: macOS native NSSpeechSynthesizer, ~50ms latency, instant startup, dozens of built-in voices; (2) qwen: MLX-powered neural TTS on Apple Silicon, ~500ms, high-quality speech with voice cloning, ~1.2GB model auto-download; (3) qwen-native: pure Rust implementation, ~300ms, cross-platform with Metal & CUDA GPU support, no Python dependencies.',
           },
         },
         {
@@ -93,7 +93,7 @@ const schema = {
           '@type': 'HowToStep',
           position: 1,
           name: 'Install Vox',
-          text: 'Run: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh — supports macOS, Linux, and WSL.',
+          text: 'Run: curl -fsSL https://raw.githubusercontent.com/rtk-ai/vox/main/install.sh | sh (supports macOS, Linux, and WSL).',
           url: 'https://www.rtk-ai.app/vox/#install',
         },
         {

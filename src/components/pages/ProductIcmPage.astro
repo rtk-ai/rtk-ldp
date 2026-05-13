@@ -27,13 +27,13 @@ const schema = {
     downloadUrl: 'https://github.com/rtk-ai/icm',
     author: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
     featureList: [
-      'Episodic memories with temporal decay — 4 importance levels, automatic memory aging',
+      'Episodic memories with temporal decay: 4 importance levels, automatic memory aging',
       'Semantic knowledge graphs with typed relations (depends_on, contradicts, refines)',
       'Hybrid BM25 + vector cosine similarity search (384-dim BAAI/bge-small embeddings)',
       '22 MCP tools exposed via Model Context Protocol',
       'Auto-configures 14 AI editors via icm init (Claude Code, Cursor, Windsurf, VS Code, and more)',
-      '100% local — SQLite storage, local embeddings, zero API keys, zero cloud',
-      'Single binary, zero dependencies — no Docker, no Python, no Qdrant',
+      '100% local: SQLite storage, local embeddings, zero API keys, zero cloud',
+      'Single binary, zero dependencies: no Docker, no Python, no Qdrant',
       ],
     },
     {
@@ -52,7 +52,7 @@ const schema = {
         name: 'How does ICM memory decay work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'ICM uses 4 importance levels: critical (never decays), high (slow decay), medium (normal decay), and low (fast decay — fades in days). Memories are stored with a timestamp and importance score. Trivial details like debug notes fade naturally while critical architectural decisions remain permanently. This mirrors human memory prioritization without manual cleanup.',
+          text: 'ICM uses 4 importance levels: critical (never decays), high (slow decay), medium (normal decay), and low (fast decay, fades in days). Memories are stored with a timestamp and importance score. Trivial details like debug notes fade naturally while critical architectural decisions remain permanently. This mirrors human memory prioritization without manual cleanup.',
         },
       },
       {
@@ -60,7 +60,7 @@ const schema = {
         name: 'How does ICM compare to Mem0 and other AI memory tools?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Mem0 ($24M funded, 41K GitHub stars) requires cloud infrastructure and API keys. Zep/Graphiti (20K stars) requires Neo4j and an OpenAI API key. mcp-memory-service (1.3K stars) is MCP-native but lacks knowledge graphs and temporal decay. ICM offers a single Rust binary with SQLite — no Docker, no Python, no cloud. It combines hybrid BM25+vector search, knowledge graphs, and temporal decay in one zero-dependency binary that installs with a single cargo install command.',
+          text: 'Mem0 ($24M funded, 41K GitHub stars) requires cloud infrastructure and API keys. Zep/Graphiti (20K stars) requires Neo4j and an OpenAI API key. mcp-memory-service (1.3K stars) is MCP-native but lacks knowledge graphs and temporal decay. ICM offers a single Rust binary with SQLite: no Docker, no Python, no cloud. It combines hybrid BM25+vector search, knowledge graphs, and temporal decay in one zero-dependency binary that installs with a single cargo install command.',
         },
       },
       {
@@ -68,7 +68,7 @@ const schema = {
         name: 'How do I install ICM and connect it to my AI editor?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Install with: cargo install icm — then run icm init to auto-configure your editors. ICM detects and configures 14 editors automatically. For Claude Code specifically, it registers ICM as an MCP server exposing all 22 tools. No manual JSON editing required.',
+          text: 'Install with cargo install icm, then run icm init to auto-configure your editors. ICM detects and configures 14 editors automatically. For Claude Code specifically, it registers ICM as an MCP server exposing all 22 tools. No manual JSON editing required.',
         },
       },
       {
@@ -93,7 +93,7 @@ const schema = {
           '@type': 'HowToStep',
           position: 1,
           name: 'Install ICM',
-          text: 'Run: cargo install icm — or install from source: cargo install --git https://github.com/rtk-ai/icm. Pre-built binaries are also available on the GitHub releases page.',
+          text: 'Run: cargo install icm. Or install from source: cargo install --git https://github.com/rtk-ai/icm. Pre-built binaries are also available on the GitHub releases page.',
           url: 'https://www.rtk-ai.app/icm/#install',
         },
         {

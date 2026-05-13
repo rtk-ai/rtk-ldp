@@ -39,7 +39,7 @@ export const rssEntries: RssEntry[] = [
     type: 'new_doc',
     title: 'Docs: Filter Workflow guide',
     date: 'Apr 5, 2026',
-    description: 'New documentation page explaining how RTK filters work end-to-end — from raw command output to compressed token-efficient results.',
+    description: 'New documentation page explaining how RTK filters work end-to-end, from raw command output to compressed token-efficient results.',
     link: 'https://www.rtk-ai.app/guide/filter-workflow/',
   },
   {

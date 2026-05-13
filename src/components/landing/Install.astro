@@ -1,5 +1,5 @@
 ---
-// Install section — persona tabs + 3 install methods + hook activation
+// Install section: persona tabs + 3 install methods + hook activation
 import { t, type Lang } from '../../lib/i18n'
 import Eyebrow from './Eyebrow.astro'
 
@@ -131,7 +131,7 @@ const personas = [
 </section>
 
 <script>
-  // Persona tab switcher — plain JS, no framework
+  // Persona tab switcher: plain JS, no framework
   const tabs = document.querySelectorAll<HTMLButtonElement>('.persona-tab')
   const panels = document.querySelectorAll<HTMLElement>('.persona-panel')
   const step2Cmd = document.getElementById('install-step-2-cmd')
