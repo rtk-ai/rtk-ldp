@@ -31,6 +31,33 @@ try {
 
 const buildDate = new Date().toISOString().split('T')[0]
 
+const faqItems = [
+  {
+    q: 'What is RTK (Rust Token Killer)?',
+    a: 'RTK is an open-source CLI tool that compresses command outputs before they reach the AI context window. It reduces token usage by 60-90% with zero configuration changes, enabling longer AI coding sessions and lower API costs. RTK is written in Rust, MIT licensed, and works transparently with Claude Code, Cursor, and any terminal-based AI assistant.',
+  },
+  {
+    q: 'How many tokens does RTK actually save?',
+    a: 'Based on measurements across 7,061 real-world commands, RTK removes an average of 83.7% of CLI output noise. Command-level savings: cargo test (91.8%), git status (80.8%), find (78.3%), grep (49.5%). Average across all sessions: 89% noise removed.',
+  },
+  {
+    q: 'Is RTK free? Are there usage limits?',
+    a: 'RTK is completely free. It is open source under the MIT license, with source code available on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required, no telemetry, and no accounts. RTK Cloud (waitlist) will offer additional team features.',
+  },
+  {
+    q: 'Which AI coding tools and commands does RTK support?',
+    a: 'RTK works with Claude Code (Anthropic), Cursor, Gemini CLI, Aider, Windsurf, GitHub Copilot, OpenAI Codex, and Cline. It supports all major CLI commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
+  },
+  {
+    q: 'How does RTK work without changing my workflow?',
+    a: 'Running rtk init --claude-code installs a PreToolUse hook in Claude Code settings that automatically rewrites Bash commands to rtk equivalents. For other AI tools, rtk init --global installs a shell hook. Either way, you keep using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes needed.',
+  },
+  {
+    q: 'Does RTK affect code quality or AI reasoning accuracy?',
+    a: 'No. RTK removes verbose boilerplate and repetitive output noise, not meaningful content. Test failures, error messages, diffs, and stack traces are preserved in full. The AI receives the same essential information with 89% less noise, which typically improves reasoning quality by reducing context pollution.',
+  },
+]
+
 // Single @graph block — links all entities, preferred by Google & AI search engines
 const schemaOrg = {
   '@context': 'https://schema.org',
@@ -83,6 +110,12 @@ const schemaOrg = {
       '@type': 'FAQPage',
       '@id': 'https://www.rtk-ai.app/faq/',
       url: 'https://www.rtk-ai.app/faq/',
+      dateModified: buildDate,
+      mainEntity: faqItems.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
     },
     {
       '@type': 'HowTo',
@@ -129,7 +162,7 @@ const schemaOrg = {
       publisher: { '@id': 'https://www.rtk-ai.app/#organization' },
       speakable: {
         '@type': 'SpeakableSpecification',
-        cssSelector: ['h1', '.hero-context', '.session-note', '.problem-intro'],
+        cssSelector: ['h1', '.hero-sub', '.session-note', '.section-sub'],
       },
     },
   ],
