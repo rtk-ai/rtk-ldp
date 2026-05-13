@@ -9,9 +9,6 @@ const { lang } = Astro.props
 ---
 <section class="proof-section" id="proof">
   <div class="section-inner">
-    <div class="section-viking reveal">
-      <img src="/assets/illustrations/viking-proof.webp" alt="Viking king on throne with 88.9% holographic display" loading="lazy" width="1920" height="1047">
-    </div>
     <h2 class="reveal">{t('proof.title', lang)}</h2>
     <p class="section-sub reveal" set:html={t('proof.sub', lang)}></p>
 
