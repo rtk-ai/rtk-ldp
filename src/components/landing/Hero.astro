@@ -1,5 +1,5 @@
 ---
-// Hero section: two-column: content left, terminal right (Identity Redesign v2)
+// Hero section — two-column: content left, terminal right (Identity Redesign v2)
 import { t, type Lang } from '../../lib/i18n'
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
 }
 const { lang } = Astro.props
 
-let stars = 47000
+let stars = 31000
 
 try {
   const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
@@ -45,8 +45,8 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
-          <span class="stat-value">83.7%</span>
-          <span class="stat-label">reduction on 7,061 real commands</span>
+          <span class="stat-value">2,900+</span>
+          <span class="stat-label">commands measured</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">

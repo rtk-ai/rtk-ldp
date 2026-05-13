@@ -1,5 +1,5 @@
 ---
-// Proof section: 2 real rtk gain screenshots from a happy developer
+// Proof section — 2 real rtk gain screenshots from a happy developer
 import { t, type Lang } from '../../lib/i18n'
 
 interface Props {
@@ -9,10 +9,10 @@ const { lang } = Astro.props
 ---
 <section class="proof-section" id="proof">
   <div class="section-inner">
-    <h2 class="reveal">{t('proof.title', lang)}</h2>
-    <p class="section-sub reveal" set:html={t('proof.sub', lang)}></p>
+    <h2 >{t('proof.title', lang)}</h2>
+    <p class="section-sub" set:html={t('proof.sub', lang)}></p>
 
-    <div class="proof-row reveal">
+    <div class="proof-row">
       <div class="proof-text">
         <h3>{t('proof.h1', lang)}</h3>
         <p set:html={t('proof.d1', lang)}></p>
@@ -23,7 +23,7 @@ const { lang } = Astro.props
       </div>
     </div>
 
-    <div class="proof-row proof-row-reverse reveal">
+    <div class="proof-row proof-row-reverse">
       <div class="proof-text">
         <h3>{t('proof.h2', lang)}</h3>
         <p>{t('proof.d2', lang)}</p>
@@ -37,7 +37,7 @@ const { lang } = Astro.props
 </section>
 
 <style>
-.proof-section { background: var(--bg-alt); }
+.proof-section { background: var(--bg-card); }
 
 .proof-row {
   display: flex;
@@ -85,11 +85,10 @@ const { lang } = Astro.props
 }
 
 .proof-img img:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   box-shadow:
     0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(0, 229, 153, 0.15),
-    0 24px 80px rgba(0, 0, 0, 0.35);
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
 }
 
 @media (max-width: 768px) {
@@ -97,16 +96,4 @@ const { lang } = Astro.props
   .proof-img { max-width: 100%; }
 }
 
-.proof-viking {
-  text-align: center;
-  margin: 48px 0;
-}
-.proof-viking img {
-  max-width: 560px;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(0,229,153,0.2);
-  box-shadow: 0 12px 60px rgba(0,0,0,0.5), 0 0 60px rgba(0,229,153,0.08);
-}
 </style>

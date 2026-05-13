@@ -1,7 +1,6 @@
 ---
-// Install section: persona tabs + 3 install methods + hook activation
+// Install section — persona tabs + 3 install methods + hook activation
 import { t, type Lang } from '../../lib/i18n'
-import Eyebrow from './Eyebrow.astro'
 
 interface Props {
   lang: Lang
@@ -32,12 +31,12 @@ const personas = [
 
 <section class="install-section" id="install">
   <div class="section-inner">
-    <div class="section-num">04</div>
+    <div class="section-num">03</div>
     <h2>{t('install.title', lang)}</h2>
     <p class="section-sub">{t('install.sub', lang)}</p>
 
     <!-- Persona tabs -->
-    <div class="persona-tabs reveal" role="tablist" aria-label={t('aria.choose_ai_tool', lang)}>
+    <div class="persona-tabs" role="tablist" aria-label={t('aria.choose_ai_tool', lang)}>
       {personas.map((p, i) => (
         <button
           class={`persona-tab${i === 0 ? ' persona-tab--active' : ''}`}
@@ -53,7 +52,7 @@ const personas = [
     </div>
 
     <!-- Install cards (same for all personas) -->
-    <div class="install-grid reveal">
+    <div class="install-grid">
       <div class="install-card install-primary">
         <h3>{t('install.quick', lang)}</h3>
         <p>{t('install.quick_desc', lang)}</p>
@@ -92,7 +91,7 @@ const personas = [
     </div>
 
     <!-- Persona-specific hook command -->
-    <div class="install-setup reveal">
+    <div class="install-setup">
       <h3>{t('install.hook', lang)}</h3>
       {personas.map((p, i) => (
         <div
@@ -108,7 +107,7 @@ const personas = [
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
             </button>
           </div>
-          <p class="install-note"><span>{t(p.noteKey, lang)}</span> <a href="/guide/getting-started/installation/" class="install-docs-link">{t('ui.install_docs_link', lang)}</a></p>
+          <p class="install-note"><span>{t(p.noteKey, lang)}</span> <a href="/docs/getting-started/installation/" class="install-docs-link">{t('ui.install_docs_link', lang)}</a></p>
         </div>
       ))}
 
@@ -131,7 +130,7 @@ const personas = [
 </section>
 
 <script>
-  // Persona tab switcher: plain JS, no framework
+  // Persona tab switcher — plain JS, no framework
   const tabs = document.querySelectorAll<HTMLButtonElement>('.persona-tab')
   const panels = document.querySelectorAll<HTMLElement>('.persona-panel')
   const step2Cmd = document.getElementById('install-step-2-cmd')
@@ -162,7 +161,7 @@ const personas = [
 </script>
 
 <style>
-.install-section { background: var(--bg-alt); }
+.install-section { background: var(--bg-card); }
 
 .install-docs-link {
   color: var(--accent);

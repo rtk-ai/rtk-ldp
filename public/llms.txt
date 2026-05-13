@@ -4,14 +4,14 @@
 
 ## Products
 
-- [RTK](https://www.rtk-ai.app/): CLI proxy for AI coding tools. Compresses git, cargo, grep, find, docker, kubectl, and 30+ CLI ecosystems before output enters the AI context window. Average 89% noise reduction; HN-verified 83.7% across 7,061 real commands. `rtk init --claude-code` installs a PreToolUse hook in Claude Code that works transparently. Session analytics via `rtk gain`.
+- [RTK](https://www.rtk-ai.app/): CLI proxy for AI coding tools. Compresses git, cargo, grep, find, docker, kubectl, and 50+ CLI commands before output enters the AI context window. Average 89% noise reduction measured across 2,900+ real-world commands. `rtk init --global` installs a PreToolUse hook in Claude Code that works transparently. Session analytics via `rtk gain`.
 - [Vox](https://www.rtk-ai.app/vox/): Local-first text-to-speech CLI for Claude Code. Hear task completions aloud (~50ms on macOS), get spoken summaries, clone your voice from a 10-second sample. 3 TTS backends: macOS say, MLX-powered qwen (Apple Silicon), pure-Rust qwen-native (Metal + CUDA). 8 MCP tools. 100% local, zero API calls, MIT licensed.
 - [ICM — Infinite Context Memory](https://www.rtk-ai.app/icm/): Persistent memory for AI agents. Single Rust binary, SQLite storage, 22 MCP tools. Episodic memories with temporal decay (4 importance levels), semantic knowledge graphs with typed relations, hybrid BM25+vector search. Auto-configures 14 AI editors including Claude Code, Cursor, Windsurf, VS Code, Gemini Code Assist, Zed, and Amp. 100% local, zero API keys, MIT licensed.
 - [RTK Cloud](https://www.rtk-ai.app/cloud/): Team analytics, shared token savings dashboards, and org-wide hook deployment for AI coding tools. Coming soon — join the waitlist.
 
 ## Data & Comparisons
 
-- [Token Savings — Measured Data](https://www.rtk-ai.app/savings/): 89% average CLI noise removed. HN-verified measurement: 83.7% reduction across 7,061 real commands (24.6M tokens saved). Per-command: cargo test 91.8%, git status 80.8%, find 78.3%, grep 49.5%. Full methodology and per-command breakdown.
+- [Token Savings — Measured Data](https://www.rtk-ai.app/savings/): 89% average CLI noise removed, measured across 2,900+ real-world commands. Per-command: cargo test 91.8%, git status 80.8%, find 78.3%, grep 49.5%. One developer saved 138 million tokens over several weeks. Full methodology and per-command breakdown.
 - [RTK vs AI Coding Tools](https://www.rtk-ai.app/vs/): RTK token compression benchmarks across Claude Code, Cursor, Gemini CLI, GitHub Copilot, Aider, and Windsurf. RTK compresses CLI output before it reaches any AI context window, regardless of which tool is in use.
 
 ## Documentation

@@ -1,5 +1,5 @@
 ---
-// ToolComparison: 8 AI tool cards with session callout + expandable detail
+// ToolComparison — 8 AI tool cards with session callout + expandable detail
 import { t, type Lang } from '../../lib/i18n'
 
 interface Props {
@@ -9,10 +9,10 @@ const { lang } = Astro.props
 ---
 <section class="comparison" id="compare">
   <div class="section-inner">
-    <h2 class="reveal">{t('compare.title', lang)}</h2>
-    <p class="section-sub reveal">{t('compare.sub', lang)}</p>
+    <h2 >{t('compare.title', lang)}</h2>
+    <p class="section-sub">{t('compare.sub', lang)}</p>
 
-    <div class="session-callout reveal">
+    <div class="session-callout">
       <p class="session-headline">{t('compare.session_headline', lang)}</p>
       <div class="session-stats-row">
         <div class="session-stat">
@@ -33,7 +33,7 @@ const { lang } = Astro.props
 
     <div class="tool-cards">
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Claude Code</span>
           <span class="tool-type type-terminal">Terminal</span>
@@ -47,7 +47,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_cc', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Cursor</span>
           <span class="tool-type type-ide">IDE</span>
@@ -61,7 +61,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_cursor', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">OpenAI Codex</span>
           <span class="tool-type type-agent">Agent</span>
@@ -75,7 +75,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_codex', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Windsurf</span>
           <span class="tool-type type-ide">IDE</span>
@@ -89,7 +89,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_windsurf', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Gemini CLI</span>
           <span class="tool-type type-terminal">Terminal</span>
@@ -103,7 +103,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_gemini', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Aider</span>
           <span class="tool-type type-terminal">Terminal</span>
@@ -117,7 +117,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_aider', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">GitHub Copilot</span>
           <span class="tool-type type-ide">IDE</span>
@@ -131,7 +131,7 @@ const { lang } = Astro.props
         <div class="tool-card-detail">{t('compare.detail_copilot', lang)}</div>
       </div>
 
-      <div class="tool-card reveal">
+      <div class="tool-card">
         <div class="tool-card-header">
           <span class="tool-card-name">Cline / Roo</span>
           <span class="tool-type type-agent">VS Code</span>
@@ -197,8 +197,7 @@ const { lang } = Astro.props
 
 .tool-card:hover {
   border-color: var(--border-light);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .tool-card-header {
@@ -262,18 +261,17 @@ const { lang } = Astro.props
   font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.55;
-  background: rgba(0, 229, 153, 0.02);
 }
 
 .session-callout {
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0, 229, 153, 0.03) 100%);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius-lg);
   padding: 28px 32px;
   margin: 40px 0 12px;
-  text-align: center;
-  box-shadow: var(--shadow-card), 0 0 0 1px rgba(0, 229, 153, 0.04) inset;
+  text-align: left;
+  box-shadow: var(--shadow-card);
 }
 
 .session-headline {
@@ -285,7 +283,7 @@ const { lang } = Astro.props
 
 .session-stats-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-8);
   margin-bottom: var(--space-4);
   flex-wrap: wrap;
@@ -294,7 +292,7 @@ const { lang } = Astro.props
 .session-stat {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .session-num {
@@ -318,7 +316,7 @@ const { lang } = Astro.props
   font-size: 0.78rem;
   color: var(--text-dim);
   max-width: 560px;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.5;
 }
 
