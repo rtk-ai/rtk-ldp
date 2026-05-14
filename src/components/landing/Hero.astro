@@ -1,5 +1,5 @@
 ---
-// Hero section — OSS badge, GitHub stars, headline, stats, terminal demo, viking image
+// Hero section — two-column: content left, terminal right (Identity Redesign v2)
 import { t, type Lang } from '../../lib/i18n'
 
 interface Props {
@@ -8,7 +8,6 @@ interface Props {
 const { lang } = Astro.props
 
 let stars = 31000
-let forks = 1900
 
 try {
   const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
@@ -19,264 +18,182 @@ try {
   if (res.ok) {
     const data = await res.json()
     if (data.stargazers_count) stars = data.stargazers_count
-    if (data.forks_count) forks = data.forks_count
   }
 } catch {}
 
 const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(stars)
 ---
 <section class="hero">
-  <div class="hero-with-viking">
-    <div class="hero-content">
-      <div class="hero-badges">
-        <span class="hero-badge badge-oss">{t('hero.badge_oss', lang)}</span>
-        <span class="hero-badge badge-stars" id="github-stars-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span id="github-stars-count">{starsLabel}</span> stars
-        </span>
-      </div>
+  <div class="hero-inner">
 
-      <h1>
-        <span>{t('hero.title_1', lang)}</span><br>
-        <span>{t('hero.title_2', lang)}</span> <span class="gradient-text">{t('hero.title_3', lang)}</span>
+    <!-- Left: content -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">// {t('hero.badge_oss', lang)}</div>
+
+      <h1 class="hero-h1">
+        {t('hero.title_1', lang)}<br>
+        {t('hero.title_2', lang)}<br>
+        <span class="hero-accent">{t('hero.title_3', lang)}</span>
       </h1>
 
-      <p class="hero-sub">
-        <span>{t('hero.sub_1', lang)}</span>
-        <strong>{t('hero.sub_2', lang)}</strong>
-      </p>
+      <p class="hero-sub">{t('hero.sub_1', lang)} {t('hero.sub_2', lang)}</p>
 
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-value">89%</span>
-          <span class="stat-label">{t('hero.stat_pct_label', lang)}</span>
+          <span class="stat-label">avg noise removed</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
-          <span class="stat-value">3x</span>
-          <span class="stat-label">{t('hero.stat_3x_label', lang)}</span>
+          <span class="stat-value">2,900+</span>
+          <span class="stat-label">commands measured</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
-          <span class="stat-value">30+</span>
-          <span class="stat-label">{t('hero.stat_cmds_label', lang)}</span>
+          <span class="stat-value" id="github-stars-count">{starsLabel}</span>
+          <span class="stat-label">GitHub stars</span>
         </div>
       </div>
-
-      <details class="hero-context-details">
-        <summary class="hero-context-toggle">Why RTK? The numbers.</summary>
-        <p class="hero-context">
-          89% noise reduction measured across 2,900+ real-world dev commands: <code>cargo test</code> 91.8%, <code>git status</code> 80.8%, <code>find</code> 78.3%, <code>grep</code> 49.5%. Free, open source (MIT, Rust).
-        </p>
-      </details>
 
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <span>{t('hero.cta_star', lang)}</span>
         </a>
       </div>
     </div>
 
-    <div class="hero-viking">
-      <img src="/assets/illustrations/viking-hero.webp" alt="Viking warrior smashing token noise with his axe" loading="eager" fetchpriority="high" decoding="async" width="1920" height="1047">
-    </div>
-  </div>
+    <!-- Right: terminal -->
+    <div class="hero-terminal-col">
+      <div class="terminal-demo">
+        <div class="terminal-header" aria-hidden="true">
+          <div class="terminal-dot r"></div>
+          <div class="terminal-dot y"></div>
+          <div class="terminal-dot g"></div>
+          <span class="terminal-title">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-block">
+            <span class="dim">// before</span><br>
+            <span class="prompt">$</span> <span class="cmd">git status</span><br>
+            <span class="waste">On branch main</span><br>
+            <span class="waste">Your branch is up to date with 'origin/main'.</span><br>
+            <span class="waste">&nbsp;</span><br>
+            <span class="waste">Changes not staged for commit:</span><br>
+            <span class="waste">&nbsp; (use "git add &lt;file&gt;..." to update)</span><br>
+            <span class="waste">&nbsp; (use "git restore &lt;file&gt;..." to discard)</span><br>
+            <span class="waste">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;src/styles/global.css</span><br>
+            <span class="waste">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;modified:&nbsp;&nbsp;src/components/Hero.astro</span><br>
+            <span class="waste">&nbsp;</span><br>
+            <span class="waste">no changes added to commit</span>
+          </div>
 
-  <!-- Terminal Demo -->
-  <div class="terminal-demo">
-    <div class="terminal-header">
-      <div class="terminal-dot r"></div>
-      <div class="terminal-dot y"></div>
-      <div class="terminal-dot g"></div>
-      <span class="terminal-title">Terminal</span>
+          <div class="terminal-divider"></div>
+
+          <div class="terminal-block">
+            <span class="dim">// after</span><br>
+            <span class="prompt">$</span> <span class="cmd">rtk git status</span><br>
+            <span class="ok">M</span> <span class="ok-file">src/styles/global.css</span><br>
+            <span class="ok">M</span> <span class="ok-file">src/components/Hero.astro</span><br>
+            <span class="saving">&#x2193; 80.8% tokens saved</span>
+          </div>
+
+          <div class="terminal-prompt-line">
+            <span class="prompt">$</span> <span class="cursor-blink" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-compat">
+        <span class="compat-label">Works with</span>
+        <div class="compat-tools">
+          <span>Claude Code</span>
+          <span>Cursor</span>
+          <span>Gemini CLI</span>
+          <span>Aider</span>
+          <span>Windsurf</span>
+          <span>Copilot</span>
+          <span>Codex</span>
+          <span>Cline</span>
+        </div>
+      </div>
     </div>
-    <div class="terminal-body" id="terminal-body">
-      <span class="prompt">$</span> <span class="cmd">rtk gain</span>
-      <br><br>
-      <span class="output">&#x1F4CA; RTK Token Savings</span>
-      <br>
-      <span class="dim">════════════════════════════════════════</span>
-      <br><br>
-      <span class="output">Total commands:</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">2,927</span>
-      <br>
-      <span class="output">Input tokens:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="waste-badge">11.6M</span>
-      <br>
-      <span class="output">Output tokens:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1.4M</span>
-      <br>
-      <span class="output">Tokens saved:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight" style="font-size:1em">10.3M (89.2%)</span>
-      <br><br>
-      <span class="output">By Command:</span>
-      <br>
-      <span class="dim">────────────────────────────────────────</span>
-      <br>
-      <span class="dim">Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Count&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Avg%</span>
-      <br>
-      <span class="output">rtk find</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">324</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">6.8M</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">78.3%</span>
-      <br>
-      <span class="output">rtk git status</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">215</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">1.4M</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">80.8%</span>
-      <br>
-      <span class="output">rtk grep</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">227</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">786.7K</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">49.5%</span>
-      <br>
-      <span class="output">rtk cargo test</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dim">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">50.1K</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="highlight">91.8%</span>
-      <br><br>
-      <span class="prompt">$</span> <span class="cursor-blink"></span>
-    </div>
+
   </div>
 </section>
 
 <style>
-/* === Hero === */
 .hero {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 140px 24px 60px;
-  text-align: center;
-  position: relative;
+  padding: 140px 24px 80px;
 }
 
-/* Glow behind hero */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-.hero-badges {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: var(--space-6);
-  position: relative;
-}
-
-.hero-badge {
-  display: inline-flex;
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
   align-items: center;
-  gap: 6px;
-  padding: 6px var(--space-4);
-  border-radius: var(--radius-pill);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
 }
 
-.badge-oss {
-  background: var(--accent-dim);
+/* ── Left column ── */
+.hero-content {
+  min-width: 0;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-5);
+}
+
+.hero-h1 {
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  margin: 0 0 var(--space-5);
+  color: var(--text-bright);
+}
+
+.hero-accent {
   color: var(--accent);
 }
 
-.badge-stars {
-  background: var(--violet-dim);
-  color: var(--violet);
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.2); }
-  50% { box-shadow: 0 0 12px 4px rgba(167, 139, 250, 0.15); }
-}
-
-.hero h1 {
-  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.08;
-  letter-spacing: -0.035em;
-  margin-bottom: 20px;
-  position: relative;
-}
-
 .hero-sub {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--text-muted);
-  max-width: 640px;
-  margin: 0 auto 36px;
   line-height: 1.7;
-  position: relative;
-}
-.hero-sub strong { color: var(--text); }
-
-.hero-context {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  max-width: 600px;
-  margin: 0 auto 28px;
-  line-height: 1.65;
-}
-.hero-context code {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.8em;
-  color: var(--cyan);
-  background: var(--cyan-dim);
-  padding: 1px 5px;
-  border-radius: var(--radius-xs);
-}
-
-/* Hero context — collapsible SEO block */
-.hero-context-details {
-  margin-top: var(--space-5);
-  max-width: var(--hero-subhead-max-w);
-}
-
-.hero-context-toggle {
-  font-size: var(--text-sm);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.hero-context-toggle::before {
-  content: '//';
-  opacity: 0.5;
-}
-
-.hero-context-details[open] .hero-context-toggle {
-  color: var(--text-muted);
-}
-
-.hero-context-details .hero-context {
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  max-width: var(--hero-subhead-max-w);
+  margin: 0 0 var(--space-6);
+  max-width: 480px;
 }
 
 .hero-stats {
   display: flex;
   align-items: center;
-  gap: var(--space-9);
-  margin: var(--space-5) 0;
+  gap: var(--space-7);
+  margin-bottom: var(--space-7);
 }
 
-.stat { text-align: center; }
+.stat { text-align: left; }
 
 .stat-value {
   font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--accent);
-  text-shadow: none;
   display: block;
+  line-height: 1;
 }
 
 .stat-label {
   font-size: var(--text-xs);
   color: var(--text-dim);
   display: block;
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
 }
 
 .stat-sep {
@@ -289,22 +206,20 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
 .hero-cta {
   display: flex;
   gap: var(--space-3);
-  justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: var(--space-8);
-  position: relative;
 }
 
-/* === Terminal Demo in Hero === */
+/* ── Right column ── */
+.hero-terminal-col {
+  min-width: 0;
+}
+
 .terminal-demo {
-  max-width: 640px;
-  margin: 0 auto;
-  border: 1px solid rgba(0, 229, 153, 0.18);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius);
   background: var(--bg-card);
   overflow: hidden;
-  position: relative;
-  box-shadow: 0 28px 72px rgba(0, 229, 153, 0.07), 0 8px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-elevated);
 }
 
 .terminal-header {
@@ -312,7 +227,7 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   align-items: center;
   gap: var(--space-2);
   padding: 12px 16px;
-  background: rgba(15, 22, 41, 0.8);
+  background: var(--bg-elevated);
   border-bottom: 1px solid var(--border);
 }
 
@@ -329,78 +244,97 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   margin-left: 8px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--text-muted);
+  color: var(--text-dim);
 }
 
 .terminal-body {
   padding: 20px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  line-height: 1.7;
-  min-height: 200px;
+  line-height: 1.75;
 }
 
-.terminal-body .prompt { color: var(--accent); font-weight: 600; }
-.terminal-body .cmd { color: var(--text-bright); }
-.terminal-body .output { color: var(--text-muted); }
-.terminal-body .highlight { color: var(--accent); font-weight: 600; }
-.terminal-body .highlight-cyan { color: var(--cyan); }
-.terminal-body .highlight-violet { color: var(--violet); }
-.terminal-body .dim { color: var(--text-dim); }
+.terminal-block {
+  margin-bottom: 0;
+}
+
+.terminal-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 14px 0;
+}
+
+.terminal-prompt-line {
+  margin-top: 10px;
+}
+
+.terminal-body .prompt   { color: var(--accent); font-weight: 600; }
+.terminal-body .cmd      { color: var(--text-bright); }
+.terminal-body .dim      { color: var(--text-dim); }
+.terminal-body .waste    { color: var(--text-dim); opacity: 0.55; }
+.terminal-body .ok       { color: var(--accent); font-weight: 600; }
+.terminal-body .ok-file  { color: var(--text-muted); }
+.terminal-body .saving   { color: var(--accent); font-size: 0.72rem; }
 
 .cursor-blink {
   display: inline-block;
   width: 8px;
-  height: 16px;
+  height: 14px;
   background: var(--accent);
-  animation: blink 1s step-end infinite;
   vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
   50% { opacity: 0; }
 }
 
-/* Hero Viking */
-.hero-with-viking {
+/* ── Compat strip ── */
+.hero-compat {
   display: flex;
   align-items: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.hero-content {
-  flex: 1;
-  min-width: 0;
-  text-align: left;
-}
-.hero-content .hero-badges,
-.hero-content .hero-stats,
-.hero-content .hero-cta {
-  justify-content: flex-start;
-}
-.hero-viking {
-  flex: 0 0 auto;
-  max-width: 440px;
-}
-.hero-viking img {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
-  box-shadow: 0 12px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,229,153,0.1), 0 0 80px rgba(0,229,153,0.06);
-  animation: viking-float 6s ease-in-out infinite;
-}
-@keyframes viking-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
+.compat-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.compat-tools {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.compat-tools span {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-9);
+  }
   .hero { padding: 120px 20px 60px; }
-  .hero-stats { gap: 20px; }
-  .stat-value { font-size: var(--text-2xl); }
-  .hero-with-viking { flex-direction: column; gap: var(--space-6); }
-  .hero-viking { max-width: 320px; }
+  .hero-h1 { font-size: clamp(2.4rem, 7vw, 3.5rem); }
+  .hero-sub { max-width: none; }
+  .hero-stats { gap: var(--space-5); }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { gap: var(--space-4); }
+  .stat-value { font-size: 1.25rem; }
 }
 </style>

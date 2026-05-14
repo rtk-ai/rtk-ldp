@@ -34,7 +34,7 @@ const schemaOrg = [
     name: 'AI Coding Tools Compatible with RTK',
     description: 'AI coding assistants that benefit from RTK token compression: Claude Code, Cursor, Gemini CLI, GitHub Copilot, Aider, and more.',
     url: 'https://www.rtk-ai.app/vs/',
-    numberOfItems: 6,
+    numberOfItems: 8,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Claude Code', url: 'https://claude.ai/code' },
       { '@type': 'ListItem', position: 2, name: 'Cursor', url: 'https://cursor.sh' },
@@ -42,6 +42,8 @@ const schemaOrg = [
       { '@type': 'ListItem', position: 4, name: 'GitHub Copilot', url: 'https://github.com/features/copilot' },
       { '@type': 'ListItem', position: 5, name: 'Aider', url: 'https://aider.chat' },
       { '@type': 'ListItem', position: 6, name: 'Windsurf', url: 'https://codeium.com/windsurf' },
+      { '@type': 'ListItem', position: 7, name: 'OpenAI Codex', url: 'https://openai.com/blog/openai-codex' },
+      { '@type': 'ListItem', position: 8, name: 'Cline / Roo', url: 'https://github.com/clinebot/cline' },
     ],
   },
 ]
@@ -104,7 +106,6 @@ const schemaOrg = [
     font-size: 0.875rem;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
-    justify-content: center;
     flex-wrap: wrap;
   }
   .rtk-subnav a { color: var(--accent); text-decoration: none; }
@@ -117,7 +118,7 @@ const schemaOrg = [
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 120px 24px 60px;
-    text-align: center;
+    text-align: left;
   }
   .subpage-hero h1 {
     font-size: clamp(1.8rem, 4vw, 3rem);
@@ -130,18 +131,16 @@ const schemaOrg = [
     font-size: 1.1rem;
     color: var(--text-muted);
     max-width: 640px;
-    margin: 0 auto 36px;
+    margin: 0 0 36px;
     line-height: 1.7;
   }
   .subpage-cta {
     display: flex;
     gap: var(--space-3);
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
 </style>
 
 <script>
-  import { initReveal } from '../../scripts/reveal'
-  initReveal()
 </script>

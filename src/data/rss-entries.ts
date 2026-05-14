@@ -23,14 +23,14 @@ export const rssEntries: RssEntry[] = [
   },
   {
     type: 'new_page',
-    title: 'RTK vs AI coding tools — comparison page',
+    title: 'RTK vs AI coding tools: comparison page',
     date: 'May 9, 2026',
     description: 'New comparison page showing RTK token savings across Claude Code, Cursor, Gemini CLI, Copilot, Aider, and other AI assistants. RTK compresses CLI output at the proxy layer, so any tool benefits.',
     link: 'https://www.rtk-ai.app/vs/',
   },
   {
     type: 'new_page',
-    title: 'RTK token savings data — dedicated page',
+    title: 'RTK token savings data: dedicated page',
     date: 'May 9, 2026',
     description: 'Proof page with measured savings across 2,900+ real commands. cargo test at 91.8%, git status at 80.8%, grep at 49.5%. One developer tracked 138 million tokens saved over several weeks.',
     link: 'https://www.rtk-ai.app/savings/',
@@ -39,7 +39,7 @@ export const rssEntries: RssEntry[] = [
     type: 'new_doc',
     title: 'Docs: Filter Workflow guide',
     date: 'Apr 5, 2026',
-    description: 'New documentation page explaining how RTK filters work end-to-end — from raw command output to compressed token-efficient results.',
+    description: 'New documentation page explaining how RTK filters work end-to-end, from raw command output to compressed token-efficient results.',
     link: 'https://www.rtk-ai.app/guide/filter-workflow/',
   },
   {

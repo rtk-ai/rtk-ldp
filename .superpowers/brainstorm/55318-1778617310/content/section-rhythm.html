@@ -1,0 +1,169 @@
+<style>
+  .preview-wrap { display: flex; flex-direction: column; gap: 12px; }
+  .layout-card {
+    background: #0d1322;
+    border: 1px solid #1e2a45;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .layout-card:hover { border-color: #00e599; }
+  .layout-card.selected { border-color: #00e599; box-shadow: 0 0 0 2px rgba(0,229,153,0.2); }
+  .layout-card-header {
+    padding: 14px 20px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #1e2a45;
+  }
+  .layout-letter {
+    width: 28px; height: 28px; border-radius: 6px;
+    background: #1a2540; border: 1px solid #243258;
+    display: flex; align-items: center; justify-content: center;
+    font-family: monospace; font-size: 12px; font-weight: 700; color: #00e599;
+    flex-shrink: 0;
+  }
+  .layout-meta h3 { margin: 0; font-size: 14px; font-weight: 600; color: #f8fafc; }
+  .layout-meta p { margin: 2px 0 0; font-size: 11px; color: #64748b; }
+  .layout-preview { padding: 12px 20px 16px; }
+
+  /* wireframe atoms */
+  .w-label { height: 5px; border-radius: 3px; background: #243258; }
+  .w-h { height: 10px; border-radius: 3px; background: #2e3d5f; }
+  .w-h-accent { background: #00e599 !important; }
+  .w-text { height: 5px; border-radius: 3px; background: #1e2a45; }
+  .w-block { border-radius: 5px; padding: 7px; }
+  .w-line { display: flex; gap: 4px; margin-bottom: 3px; }
+  .w-btn { height: 14px; border-radius: 4px; background: #00e599; width: 44px; }
+
+  /* Section sim */
+  .sim-page { border-radius: 6px; overflow: hidden; }
+  .sim-section { padding: 12px 14px; }
+</style>
+
+<h2>Comment séparer les sections ?</h2>
+<p class="subtitle">Trois traitements de fond. Même layout full left-align.</p>
+
+<div class="preview-wrap">
+
+  <!-- Option A: fond unique, whitespace seul -->
+  <div class="layout-card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="layout-card-header">
+      <div class="layout-letter">A</div>
+      <div class="layout-meta">
+        <h3>Fond unique — whitespace seul</h3>
+        <p>Tout sur #0a0f1c. Sections séparées uniquement par l'espace vertical. Le plus épuré.</p>
+      </div>
+    </div>
+    <div class="layout-preview">
+      <div class="sim-page" style="background:#0a0f1c;">
+        <div class="sim-section" style="padding-bottom:16px;">
+          <div class="w-label" style="width:70px;margin-bottom:6px;"></div>
+          <div class="w-h" style="width:55%;margin-bottom:2px;"></div>
+          <div class="w-h w-h-accent" style="width:25%;margin-bottom:5px;"></div>
+          <div class="w-text" style="width:80%;margin-bottom:2px;"></div>
+          <div class="w-text" style="width:60%;margin-bottom:6px;"></div>
+          <div class="w-btn"></div>
+        </div>
+        <!-- gap spacer -->
+        <div style="height:12px;background:#0a0f1c;"></div>
+        <div class="sim-section" style="padding-top:0;">
+          <div class="w-label" style="width:60px;margin-bottom:5px;"></div>
+          <div class="w-h" style="width:45%;margin-bottom:6px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;">
+            <div class="w-block" style="background:#0f1625;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+            <div class="w-block" style="background:#0f1625;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+            <div class="w-block" style="background:#0f1625;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+          </div>
+        </div>
+        <div style="height:12px;background:#0a0f1c;"></div>
+        <div class="sim-section" style="padding-top:0;">
+          <div class="w-label" style="width:50px;margin-bottom:5px;"></div>
+          <div class="w-h" style="width:40%;margin-bottom:3px;"></div>
+          <div class="w-text" style="width:70%;margin-bottom:2px;"></div>
+          <div class="w-text" style="width:55%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option B: thin border-top entre sections -->
+  <div class="layout-card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="layout-card-header">
+      <div class="layout-letter">B</div>
+      <div class="layout-meta">
+        <h3>Thin border-top — séparation nette</h3>
+        <p>Fond unique + une ligne 1px entre sections. Structuré sans alterner les couleurs.</p>
+      </div>
+    </div>
+    <div class="layout-preview">
+      <div class="sim-page" style="background:#0a0f1c;">
+        <div class="sim-section" style="padding-bottom:14px;">
+          <div class="w-label" style="width:70px;margin-bottom:6px;"></div>
+          <div class="w-h" style="width:55%;margin-bottom:2px;"></div>
+          <div class="w-h w-h-accent" style="width:25%;margin-bottom:5px;"></div>
+          <div class="w-text" style="width:80%;margin-bottom:2px;"></div>
+          <div class="w-text" style="width:60%;margin-bottom:6px;"></div>
+          <div class="w-btn"></div>
+        </div>
+        <div style="height:1px;background:#1e2a45;margin:0 14px;"></div>
+        <div class="sim-section">
+          <div class="w-label" style="width:60px;margin-bottom:5px;"></div>
+          <div class="w-h" style="width:45%;margin-bottom:6px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;">
+            <div class="w-block" style="background:#0f1625;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+            <div class="w-block" style="background:#0f1625;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+            <div class="w-block" style="background:#0f1625;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+          </div>
+        </div>
+        <div style="height:1px;background:#1e2a45;margin:0 14px;"></div>
+        <div class="sim-section">
+          <div class="w-label" style="width:50px;margin-bottom:5px;"></div>
+          <div class="w-h" style="width:40%;margin-bottom:3px;"></div>
+          <div class="w-text" style="width:70%;margin-bottom:2px;"></div>
+          <div class="w-text" style="width:55%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option C: sections alternées subtil bg-card -->
+  <div class="layout-card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="layout-card-header">
+      <div class="layout-letter">C</div>
+      <div class="layout-meta">
+        <h3>Bandes très subtiles — bg / bg-card</h3>
+        <p>#0a0f1c → #0f1625 (delta quasi invisible). Donne du rythme sans l'effet "template coloré".</p>
+      </div>
+    </div>
+    <div class="layout-preview">
+      <div class="sim-page" style="background:#0a0f1c;border:1px solid #1e2a45;">
+        <div class="sim-section" style="background:#0a0f1c;padding-bottom:14px;">
+          <div class="w-label" style="width:70px;margin-bottom:6px;"></div>
+          <div class="w-h" style="width:55%;margin-bottom:2px;"></div>
+          <div class="w-h w-h-accent" style="width:25%;margin-bottom:5px;"></div>
+          <div class="w-text" style="width:80%;margin-bottom:2px;"></div>
+          <div class="w-text" style="width:60%;margin-bottom:6px;"></div>
+          <div class="w-btn"></div>
+        </div>
+        <div class="sim-section" style="background:#0f1625;">
+          <div class="w-label" style="width:60px;margin-bottom:5px;"></div>
+          <div class="w-h" style="width:45%;margin-bottom:6px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;">
+            <div class="w-block" style="background:#141c30;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+            <div class="w-block" style="background:#141c30;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+            <div class="w-block" style="background:#141c30;border:1px solid #1e2a45;"><div class="w-h w-h-accent" style="width:50%;margin-bottom:3px;"></div><div class="w-text" style="width:90%;"></div></div>
+          </div>
+        </div>
+        <div class="sim-section" style="background:#0a0f1c;">
+          <div class="w-label" style="width:50px;margin-bottom:5px;"></div>
+          <div class="w-h" style="width:40%;margin-bottom:3px;"></div>
+          <div class="w-text" style="width:70%;margin-bottom:2px;"></div>
+          <div class="w-text" style="width:55%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
