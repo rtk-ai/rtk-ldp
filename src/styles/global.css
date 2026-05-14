@@ -1,30 +1,30 @@
 /**
  * global.css — RTK dark-only design tokens + resets
- * Palette source: rtk-ldp/index.html :root (L106-132)
+ * Palette: B — Slate dark
  */
 
 /* Google Fonts loaded via <link> in Layout.astro (preconnect + non-blocking) */
 
 /* ── Design Tokens ─────────────────────────────────────────────────── */
 :root {
-  /* Backgrounds */
-  --bg:            #0d1117;
-  --bg-alt:        #161b22;
-  --bg-card:       #21262d;
-  --bg-card-hover: #2d333b;
-  --bg-elevated:   #2d333b;
-  --bg-glass:      rgba(13, 17, 23, 0.82);
+  /* Backgrounds — Slate dark (palette B) */
+  --bg:            #0a0f1c;
+  --bg-alt:        #0d1322;
+  --bg-card:       #0f1625;
+  --bg-card-hover: #141c30;
+  --bg-elevated:   #1a2540;
+  --bg-glass:      rgba(10, 15, 28, 0.82);
 
   /* Borders */
-  --border:        #30363d;
-  --border-light:  #3d444d;
+  --border:        #1e2a45;
+  --border-light:  #243258;
 
   /* Text */
-  --text:          #e6edf3;
-  --text-bright:   #f0f6fc;
+  --text:          #e8edf5;
+  --text-bright:   #f8fafc;
   --text-muted:    #94a3b8;
-  --text-dim:      #7e8ca6;
-  --text-on-accent: #0d1117;
+  --text-dim:      #64748b;
+  --text-on-accent: #0a0f1c;
 
   /* Brand colors */
   --accent:        #00e599;
