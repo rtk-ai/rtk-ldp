@@ -6,32 +6,114 @@ import SearchModal from '../../components/global/SearchModal.astro'
 
 const buildDate = new Date().toISOString().split('T')[0]
 
-const faqItems = [
+const faqSections = [
   {
-    q: 'What is RTK (Rust Token Killer)?',
-    a: 'RTK is an open-source CLI tool that compresses command outputs before they reach the AI context window. It reduces token usage by 60-90% with zero configuration changes, enabling longer AI coding sessions and lower API costs. RTK is written in Rust, MIT licensed, and works transparently with Claude Code, Cursor, and any terminal-based AI assistant.',
+    title: 'How it works',
+    id: 'how-it-works',
+    items: [
+      {
+        q: 'What is RTK (Rust Token Killer)?',
+        a: 'RTK is an open-source CLI tool that compresses command outputs before they reach the AI context window. It reduces token usage by 60–90% with zero configuration changes, enabling longer AI coding sessions and lower API costs. Written in Rust, MIT licensed, it works transparently with Claude Code, Cursor, and any terminal-based AI assistant.',
+      },
+      {
+        q: 'How does RTK work?',
+        a: 'RTK sits between your terminal and your AI tool. When you run rtk git status, it captures the raw output, applies token-optimized filters, and returns only what the AI actually needs (no boilerplate, no repeated context, no verbose headers). The filtering adds less than 10ms of latency and requires no changes to your existing commands.',
+      },
+      {
+        q: 'Does RTK modify my code or git history?',
+        a: 'Never. RTK only intercepts and filters what commands print to stdout. It does not touch your source files, your git repository, or any data at rest.',
+      },
+      {
+        q: 'What is context engineering, and where does RTK fit?',
+        a: 'Context engineering is the practice of managing what information AI models receive across an entire coding session. RTK operates at Layer 1 (the CLI level), filtering noise before it ever enters the context window. This makes it the only token optimization tool that works regardless of billing plan, IDE, or AI provider.',
+      },
+      {
+        q: 'What is the performance overhead of RTK?',
+        a: 'RTK adds under 10ms per command. For operations that take seconds (test suites, builds, git diffs), the overhead is effectively zero. Single static binary, no daemon, no background process, no network calls during filtering.',
+      },
+    ],
   },
   {
-    q: 'How many tokens does RTK actually save?',
-    a: 'Based on measurements across 2,900+ real-world commands, RTK removes an average of 89% of CLI output noise. Command-level savings: cargo test (91.8% savings), git status (80.8%), find (78.3%), grep (49.5%). A developer who ran 15,720 commands saved 138 million tokens over several weeks, tracked live via rtk gain.',
+    title: 'Token savings',
+    id: 'token-savings',
+    items: [
+      {
+        q: 'How many tokens does RTK actually save?',
+        a: 'Based on measurements across 2,900+ real-world commands, RTK removes an average of 89% of CLI output noise. Command-level savings: cargo test (91.8%), git status (80.8%), find (78.3%), grep (49.5%). A developer who ran 15,720 commands saved 138 million tokens over several weeks, tracked live via rtk gain.',
+      },
+      {
+        q: 'Which commands have the highest token savings?',
+        a: 'Test runners deliver the most dramatic reductions. rtk vitest run saves up to 99.6% by surfacing only failing tests, while rtk cargo test cuts ~90% by suppressing passing logs. Git operations fall in the 75–92% range (git log saves 92.3% on a 100-commit span). Build and lint outputs: 70–87%.',
+      },
+      {
+        q: 'How do I track my savings?',
+        a: 'Run rtk gain to see cumulative savings, average efficiency rate, and per-command breakdown. Use rtk gain -p for a per-project view, or rtk discover to analyze your Claude Code session history and identify commands you\'re running without RTK.',
+      },
+      {
+        q: 'Why does reducing tokens improve AI output quality, not just cost?',
+        a: 'When a context window fills with git status boilerplate, passing test logs, and verbose headers, the AI loses focus on the actual code. Stripping that noise keeps your real code changes proportionally larger in the window, which reduces hallucination and off-topic suggestions well before you factor in cost.',
+      },
+    ],
   },
   {
-    q: 'Is RTK free? Are there usage limits?',
-    a: 'RTK is completely free. It is open source under the MIT license, with source code available on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required, no telemetry, and no accounts. RTK Cloud (waitlist) will offer additional team features.',
+    title: 'Installation & compatibility',
+    id: 'installation',
+    items: [
+      {
+        q: 'How do I install RTK?',
+        a: 'Three options: run the one-liner curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh, install via Homebrew with brew install rtk, or build from source with cargo install rtk. All three produce the same single binary with no runtime dependencies.',
+      },
+      {
+        q: 'Does RTK work on Windows?',
+        a: 'Yes. Pre-built binaries for Windows are available on the GitHub Releases page. You can also install via cargo install rtk with the Rust toolchain on Windows.',
+      },
+      {
+        q: 'Which AI coding tools does RTK support?',
+        a: 'RTK works with Claude Code (native PreToolUse/PostToolUse hooks), Cursor, Gemini CLI, Cline, Windsurf, GitHub Copilot, Codex, Aider, Kilo Code, OpenCode, and any tool that reads terminal output. That\'s 13 agents total, each with automatic command rewriting.',
+      },
+      {
+        q: 'Does RTK work with Claude Max and Pro subscriptions?',
+        a: 'Yes, and it\'s a meaningful differentiator. API-level token optimization tools cannot intercept traffic on Claude Max/Pro plans because there is no API key to hook into. RTK operates at the terminal level, upstream of any billing mode, so it works whether you are on API, Max, or Pro.',
+      },
+      {
+        q: 'Does RTK work in CI/CD pipelines?',
+        a: 'Yes. RTK is a static binary with no daemon, no authentication, and no setup beyond placing the binary in your PATH. Add it to your CI environment and prefix commands: rtk cargo test, rtk cargo build, rtk lint all work identically to local usage.',
+      },
+      {
+        q: 'How does RTK work without changing my workflow?',
+        a: 'Running rtk init --claude-code installs a PreToolUse hook in Claude Code settings that automatically rewrites Bash commands to rtk equivalents. For other tools, rtk init --global installs a shell hook at the process level. Your existing commands stay the same; RTK intercepts and compresses the output before it reaches the context window.',
+      },
+      {
+        q: 'Does RTK affect code quality or AI reasoning accuracy?',
+        a: 'No. RTK removes verbose boilerplate and repetitive output noise, not meaningful content. Test failures, error messages, diffs, and stack traces are preserved in full. The AI receives the same essential information with 89% less noise, which typically improves reasoning accuracy by cutting out irrelevant clutter.',
+      },
+    ],
   },
   {
-    q: 'Which AI coding tools and commands does RTK support?',
-    a: 'RTK works with Claude Code (Anthropic), Cursor, Gemini CLI, Aider, and any AI assistant that reads terminal output. It supports all major CLI commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
-  },
-  {
-    q: 'How does RTK work without changing my workflow?',
-    a: 'Running rtk init --claude-code installs a PreToolUse hook in Claude Code settings that automatically rewrites Bash commands to rtk equivalents. For other AI tools, rtk init --global installs a shell hook that works at the process level. Either way, you keep using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes to prompts or workflows needed.',
-  },
-  {
-    q: 'Does RTK affect code quality or AI reasoning accuracy?',
-    a: 'No. RTK removes verbose boilerplate and repetitive output noise, not meaningful content. Test failures, error messages, diffs, and stack traces are preserved in full. The AI receives the same essential information with 89% less noise, which typically improves reasoning quality by reducing context pollution.',
+    title: 'Privacy & open source',
+    id: 'privacy',
+    items: [
+      {
+        q: 'Is RTK free? Are there usage limits?',
+        a: 'RTK is completely free and open source under the MIT license (source on GitHub), with no usage limits, no API keys, and no account required. RTK Cloud (currently on waitlist) will add team features.',
+      },
+      {
+        q: 'Does RTK collect my code or commands?',
+        a: 'No. All output processing happens locally. The optional anonymous telemetry tracks only which command categories you use and aggregate savings counts, never file contents, command arguments, or any identifiable information. It\'s opt-in and off by default.',
+      },
+      {
+        q: 'How do I disable RTK telemetry?',
+        a: 'Set telemetry = false in your .rtk.toml configuration file, or run rtk config set telemetry false. It was designed opt-in and GDPR-compliant from day one.',
+      },
+      {
+        q: 'Is RTK safe for corporate environments?',
+        a: 'Yes. RTK is a local binary that makes no network calls during filtering, with source code open on GitHub and fully auditable. Telemetry is opt-in and captures no content data. Many teams already run it in CI/CD pipelines and enterprise environments.',
+      },
+    ],
   },
 ]
+
+const allItems = faqSections.flatMap((s) => s.items)
 
 const schemaOrg = [
   {
@@ -47,7 +129,7 @@ const schemaOrg = [
     '@type': 'FAQPage',
     url: 'https://www.rtk-ai.app/faq/',
     dateModified: buildDate,
-    mainEntity: faqItems.map(({ q, a }) => ({
+    mainEntity: allItems.map(({ q, a }) => ({
       '@type': 'Question',
       name: q,
       acceptedAnswer: { '@type': 'Answer', text: a },
@@ -74,19 +156,39 @@ const schemaOrg = [
       </nav>
       <h1>Frequently asked questions.</h1>
       <p class="subpage-sub">
-        Everything you need to know about RTK — what it does, how it works, and what it costs (nothing).
+        Everything you need to know about RTK: what it does, how it works, and what it costs (nothing).
       </p>
     </section>
 
     <section class="faq-page-section">
       <div class="section-inner">
-        <div class="faq-list">
-          {faqItems.map(({ q, a }) => (
-            <details class="faq-item">
-              <summary class="faq-question">{q}</summary>
-              <p class="faq-answer">{a}</p>
-            </details>
-          ))}
+        <div class="faq-layout">
+          <nav class="faq-sidebar" aria-label="FAQ categories">
+            {faqSections.map((section, i) => (
+              <button
+                class={`faq-nav-item${i === 0 ? ' faq-nav-item--active' : ''}`}
+                data-target={section.id}
+                type="button"
+              >
+                {section.title}
+              </button>
+            ))}
+          </nav>
+
+          <div class="faq-panels">
+            {faqSections.map((section, i) => (
+              <div class="faq-panel" id={`panel-${section.id}`} hidden={i !== 0 || undefined}>
+                <div class="faq-list">
+                  {section.items.map(({ q, a }) => (
+                    <details class="faq-item">
+                      <summary class="faq-question">{q}</summary>
+                      <p class="faq-answer">{a}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -106,6 +208,30 @@ const schemaOrg = [
 
   <SiteFooter />
   <SearchModal />
+
+  <script>
+    const navItems = document.querySelectorAll<HTMLButtonElement>('.faq-nav-item')
+    const panels = document.querySelectorAll<HTMLElement>('.faq-panel')
+
+    navItems.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target
+
+        // Update nav active state
+        navItems.forEach((b) => b.classList.remove('faq-nav-item--active'))
+        btn.classList.add('faq-nav-item--active')
+
+        // Show matching panel, hide others
+        panels.forEach((panel) => {
+          if (panel.id === `panel-${target}`) {
+            panel.removeAttribute('hidden')
+          } else {
+            panel.setAttribute('hidden', '')
+          }
+        })
+      })
+    })
+  </script>
 </Layout>
 
 <style is:global>
@@ -155,4 +281,96 @@ const schemaOrg = [
 
 <style>
   .faq-page-section { background: var(--bg-card); }
+
+  /* Two-column layout */
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* Left sidebar */
+  .faq-sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .faq-nav-item {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    padding: 8px 0 8px 14px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+
+  .faq-nav-item:hover {
+    color: var(--text);
+  }
+
+  .faq-nav-item--active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  /* Right panels */
+  .faq-panels {
+    min-width: 0;
+  }
+
+  .faq-panel[hidden] {
+    display: none;
+  }
+
+  /* Mobile: horizontal pill tabs */
+  @media (max-width: 768px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .faq-sidebar {
+      position: static;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .faq-sidebar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .faq-nav-item {
+      flex-shrink: 0;
+      width: auto;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+      font-size: 0.84rem;
+    }
+
+    .faq-nav-item:hover {
+      border-color: var(--text-dim);
+    }
+
+    .faq-nav-item--active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  }
 </style>
