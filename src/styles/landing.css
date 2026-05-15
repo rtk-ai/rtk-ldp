@@ -456,6 +456,11 @@ section h2 {
   min-width: 0;
 }
 
+.code-block code::before {
+  content: '$ ';
+  font-weight: 600;
+}
+
 .code-block-wide {
   max-width: 360px;
   margin: 0 auto;

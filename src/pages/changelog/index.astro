@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import { rssEntries } from '../../data/rss-entries'
+
+const badgeColor: Record<string, string> = {
+  release:     'var(--accent)',
+  new_feature: 'var(--cyan)',
+  new_page:    'var(--cyan)',
+  new_doc:     'var(--cyan)',
+  performance: 'var(--violet)',
+}
+
+const badgeLabel: Record<string, string> = {
+  release:     'Release',
+  new_feature: 'New feature',
+  new_page:    'New page',
+  new_doc:     'New doc',
+  performance: 'Performance',
+}
+---
+<Layout
+  title="Changelog — RTK"
+  description="New releases, features, and improvements to RTK — the CLI proxy that reduces AI coding token usage by 60-90%."
+>
+  <SiteHeader lang="en" />
+  <main id="main-content">
+    <div class="changelog-wrap">
+
+      <div class="changelog-header">
+        <div>
+          <h1>Changelog</h1>
+          <p class="changelog-sub">New updates and improvements to RTK.</p>
+        </div>
+        <a href="/rss.xml" class="rss-btn" aria-label="RSS feed">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/>
+            <circle cx="5" cy="19" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          RSS feed
+        </a>
+      </div>
+
+      <ol class="changelog-list">
+        {rssEntries.map((entry) => (
+          <li class="changelog-entry">
+            <time class="entry-date">{entry.date}</time>
+            <span
+              class="entry-badge"
+              style={`color:${badgeColor[entry.type] ?? 'var(--text-muted)'};border-color:${badgeColor[entry.type] ?? 'var(--border)'}`}
+            >
+              {badgeLabel[entry.type] ?? entry.type}
+            </span>
+            <div class="entry-body">
+              <a href={entry.link} class="entry-title" target="_blank" rel="noopener">
+                {entry.title}
+              </a>
+              <p class="entry-desc">{entry.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+    </div>
+  </main>
+  <SiteFooter />
+</Layout>
+
+<style>
+.changelog-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+}
+
+.changelog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+  margin: 0 0 8px;
+}
+
+.changelog-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.rss-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.rss-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.changelog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.changelog-entry {
+  display: grid;
+  grid-template-columns: 110px auto 1fr;
+  gap: 12px 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.entry-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.entry-body { min-width: 0; }
+
+.entry-title {
+  display: block;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.15s;
+}
+.entry-title:hover { color: var(--accent); }
+
+.entry-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .changelog-entry {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .entry-date { grid-column: 1; }
+  .entry-badge { grid-column: 2; }
+  .entry-body { grid-column: 1 / -1; }
+  .changelog-header { flex-direction: column; }
+}
+</style>
