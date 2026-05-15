@@ -4,6 +4,36 @@ import SiteHeader from '../../components/global/SiteHeader.astro'
 import SiteFooter from '../../components/global/SiteFooter.astro'
 import { rssEntries } from '../../data/rss-entries'
 
+interface GhRelease {
+  tag: string
+  name: string
+  date: string
+  url: string
+  prerelease: boolean
+}
+
+let releases: GhRelease[] = []
+
+try {
+  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
+  const token = process.env.GITHUB_TOKEN
+  if (token) headers['Authorization'] = `Bearer ${token}`
+
+  const res = await fetch('https://api.github.com/repos/rtk-ai/rtk/releases?per_page=30', { headers })
+  if (res.ok) {
+    const data = await res.json()
+    releases = data.map((r: Record<string, unknown>) => ({
+      tag: r.tag_name as string,
+      name: (r.name as string) || (r.tag_name as string),
+      date: new Date(r.published_at as string).toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric',
+      }),
+      url: r.html_url as string,
+      prerelease: r.prerelease as boolean,
+    }))
+  }
+} catch {}
+
 const badgeColor: Record<string, string> = {
   release:     'var(--accent)',
   new_feature: 'var(--cyan)',
@@ -42,34 +72,93 @@ const badgeLabel: Record<string, string> = {
         </a>
       </div>
 
-      <ol class="changelog-list">
-        {rssEntries.map((entry) => (
-          <li class="changelog-entry">
-            <time class="entry-date">{entry.date}</time>
-            <span
-              class="entry-badge"
-              style={`color:${badgeColor[entry.type] ?? 'var(--text-muted)'};border-color:${badgeColor[entry.type] ?? 'var(--border)'}`}
-            >
-              {badgeLabel[entry.type] ?? entry.type}
-            </span>
-            <div class="entry-body">
-              <a href={entry.link} class="entry-title" target="_blank" rel="noopener">
-                {entry.title}
-              </a>
-              <p class="entry-desc">{entry.description}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <div class="changelog-tabs" role="tablist" aria-label="Changelog sections">
+        <button class="tab-btn tab-btn--active" role="tab" aria-selected="true" aria-controls="panel-updates" id="tab-updates">
+          What's new
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-releases" id="tab-releases">
+          Releases
+        </button>
+      </div>
+
+      <div id="panel-updates" role="tabpanel" aria-labelledby="tab-updates">
+        <ol class="changelog-list">
+          {rssEntries.map((entry) => (
+            <li class="changelog-entry">
+              <time class="entry-date">{entry.date}</time>
+              <span
+                class="entry-badge"
+                style={`color:${badgeColor[entry.type] ?? 'var(--text-muted)'};border-color:${badgeColor[entry.type] ?? 'var(--border)'}`}
+              >
+                {badgeLabel[entry.type] ?? entry.type}
+              </span>
+              <div class="entry-body">
+                <a href={entry.link} class="entry-title" target="_blank" rel="noopener">
+                  {entry.title}
+                </a>
+                <p class="entry-desc">{entry.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div id="panel-releases" role="tabpanel" aria-labelledby="tab-releases" hidden>
+        {releases.length > 0 ? (
+          <ol class="changelog-list">
+            {releases.map((r) => (
+              <li class="changelog-entry">
+                <time class="entry-date">{r.date}</time>
+                <span
+                  class="entry-badge"
+                  style={`color:var(--accent);border-color:var(--accent)`}
+                >
+                  {r.prerelease ? 'Pre-release' : 'Release'}
+                </span>
+                <div class="entry-body">
+                  <a href={r.url} class="entry-title" target="_blank" rel="noopener">
+                    {r.name !== r.tag ? `${r.name} (${r.tag})` : r.tag}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p class="releases-fallback">
+            See all releases on <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener">GitHub</a>.
+          </p>
+        )}
+      </div>
 
     </div>
   </main>
   <SiteFooter />
 </Layout>
 
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn')
+  const panels = document.querySelectorAll<HTMLElement>('[role="tabpanel"]')
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('aria-controls')!
+
+      tabs.forEach((t) => {
+        t.classList.remove('tab-btn--active')
+        t.setAttribute('aria-selected', 'false')
+      })
+      panels.forEach((p) => { p.hidden = true })
+
+      tab.classList.add('tab-btn--active')
+      tab.setAttribute('aria-selected', 'true')
+      document.getElementById(target)!.hidden = false
+    })
+  })
+</script>
+
 <style>
 .changelog-wrap {
-  max-width: 760px;
+  max-width: var(--max-w);
   margin: 0 auto;
   padding: 100px 24px 80px;
 }
@@ -79,7 +168,7 @@ const badgeLabel: Record<string, string> = {
   justify-content: space-between;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 h1 {
@@ -114,6 +203,33 @@ h1 {
 .rss-btn:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+
+.changelog-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 10px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab-btn:hover {
+  color: var(--text);
+}
+.tab-btn--active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .changelog-list {
@@ -167,6 +283,19 @@ h1 {
   color: var(--text-muted);
   line-height: 1.65;
   margin: 0;
+}
+
+.releases-fallback {
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.releases-fallback a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.releases-fallback a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 600px) {
