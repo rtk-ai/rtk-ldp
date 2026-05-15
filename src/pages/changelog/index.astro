@@ -157,10 +157,14 @@ const badgeLabel: Record<string, string> = {
 </script>
 
 <style>
+  @import '../../styles/landing.css';
+
 .changelog-wrap {
-  max-width: var(--max-w);
+  max-width: 1140px;
+  width: 100%;
   margin: 0 auto;
   padding: 100px 24px 80px;
+  box-sizing: border-box;
 }
 
 .changelog-header {
@@ -213,9 +217,13 @@ h1 {
 }
 
 .tab-btn {
+  appearance: none;
+  -webkit-appearance: none;
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
+  border-radius: 0;
+  outline: none;
   margin-bottom: -1px;
   padding: 10px 20px;
   font-family: var(--font-mono);
@@ -223,9 +231,14 @@ h1 {
   color: var(--text-dim);
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s;
+  -webkit-font-smoothing: antialiased;
 }
 .tab-btn:hover {
   color: var(--text);
+}
+.tab-btn:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
 }
 .tab-btn--active {
   color: var(--accent);
