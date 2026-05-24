@@ -39,7 +39,8 @@ const faqSections = [
     items: [
       {
         q: 'How many tokens does RTK actually save?',
-        a: 'Based on measurements across 2,900+ real-world commands, RTK removes an average of 89% of CLI output noise. Command-level savings: cargo test (91.8%), git status (80.8%), find (78.3%), grep (49.5%). A developer who ran 15,720 commands saved 138 million tokens over several weeks, tracked live via rtk gain. See the full breakdown on the savings page.',
+        a: 'Based on measurements across 2,900+ real-world commands, RTK removes an average of 89% of CLI output noise. Command-level savings: cargo test (91.8%), git status (80.8%), find (78.3%), grep (49.5%). A developer who ran 15,720 commands saved 138 million tokens over several weeks, tracked live via rtk gain.',
+        link: { href: '/savings/', text: 'See the full breakdown →' },
       },
       {
         q: 'Which commands have the highest token savings?',
@@ -179,10 +180,13 @@ const schemaOrg = [
             {faqSections.map((section, i) => (
               <div class="faq-panel" id={`panel-${section.id}`} hidden={i !== 0 || undefined}>
                 <div class="faq-list">
-                  {section.items.map(({ q, a }) => (
+                  {section.items.map((item) => (
                     <details class="faq-item">
-                      <summary class="faq-question">{q}</summary>
-                      <p class="faq-answer">{a}</p>
+                      <summary class="faq-question">{item.q}</summary>
+                      <p class="faq-answer">{item.a}</p>
+                      {item.link && (
+                        <a href={item.link.href} class="faq-link">{item.link.text}</a>
+                      )}
                     </details>
                   ))}
                 </div>

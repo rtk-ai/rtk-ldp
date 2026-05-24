@@ -182,20 +182,12 @@ starlight-toc a:hover {
   color: var(--sl-color-orange-high);
 }
 
-/* ── Language select dropdown z-index fix ───────────────────────────── */
+/* ── Hide Starlight's built-in locale selector ───────────────────────
+   We use our own custom header with a globe dropdown.
+   Starlight still generates locale links — hide them to prevent overlap
+   with the right sidebar / "On this page" panel.                      */
 starlight-locale-select,
 .sl-hidden-locale-list,
-[aria-label="Select language"] + *,
-.locale-select-dropdown {
-  z-index: 200 !important;
-  position: relative;
-}
-
-/* Ensure the locale select sits above right-sidebar and TOC */
-.header sl-select,
-header sl-select,
-.header [data-type="locale"],
-header [data-type="locale"] {
-  position: relative;
-  z-index: 200;
+[data-pagefind-ignore] starlight-locale-select {
+  display: none !important;
 }
