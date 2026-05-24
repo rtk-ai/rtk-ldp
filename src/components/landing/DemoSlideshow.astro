@@ -19,6 +19,8 @@ const { lang } = Astro.props
         <button class="slide-tab" data-slide="1">git diff</button>
         <button class="slide-tab" data-slide="2">git status</button>
         <button class="slide-tab" data-slide="3">find</button>
+        <button class="slide-tab" data-slide="4">vitest run</button>
+        <button class="slide-tab" data-slide="5">ls -la</button>
       </div>
 
       <div class="slideshow-viewport">
@@ -207,6 +209,92 @@ src/parser/ error.rs formatter.rs</code></pre>
             </div>
           </div>
         </div>
+        <!-- Slide 4: vitest run -->
+        <div class="slide" data-index="4">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">vitest run</span>
+                <span class="demo-tokens">~3,400 tokens</span>
+              </div>
+              <pre><code> ✓ src/utils/format.test.ts (3)
+ ✓ src/utils/parse.test.ts (8)
+ ✓ src/api/users.test.ts (12)
+ ✓ src/api/orders.test.ts (9)
+ ✗ src/components/Cart.test.tsx (2)
+   × CartTotal renders with discounts
+     AssertionError: expected 42.00 to equal 37.80
+   × CartTotal handles empty cart
+     TypeError: Cannot read prop 'total' of undefined
+ ✓ src/hooks/useAuth.test.ts (5)
+ ✓ src/hooks/useCart.test.ts (7)
+ ✓ src/pages/Checkout.test.tsx (4)
+ ✓ src/pages/Home.test.tsx (6)
+
+ Test Files  1 failed | 7 passed (8)
+      Tests  2 failed | 54 passed (56)
+   Start at  14:22:41
+   Duration  4.2s (transform 210ms, setup 95ms)</code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk vitest run</span>
+                <span class="demo-tokens">~51 tokens</span>
+                <span class="demo-savings">-98%</span>
+              </div>
+              <pre><code>&#x2717; 2 failures in 1 file
+
+src/components/Cart.test.tsx
+  &#x2717; CartTotal renders with discounts
+    expected 42.00 to equal 37.80
+  &#x2717; CartTotal handles empty cart
+    Cannot read prop 'total' of undefined
+
+2 failed | 54 passed (4.2s)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: ls -la -->
+        <div class="slide" data-index="5">
+          <div class="demo-grid">
+            <div class="demo-card">
+              <div class="demo-card-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-label">ls -la</span>
+                <span class="demo-tokens">~210 tokens</span>
+              </div>
+              <pre><code>total 64
+drwxr-xr-x  14 user  staff   448B  3 Sep 09:12 .
+drwxr-xr-x  24 user  staff   768B  1 Sep 15:30 ..
+-rw-r--r--   1 user  staff  1.2K 30 Aug 11:45 .gitignore
+-rw-r--r--   1 user  staff  2.3K  2 Sep 16:22 Cargo.toml
+drwxr-xr-x   3 user  staff    96B 28 Aug 09:10 docs
+drwxr-xr-x   2 user  staff    64B  1 Sep 11:25 examples
+-rw-r--r--   1 user  staff   18K  3 Sep 09:12 index.html
+-rw-r--r--   1 user  staff   892B 29 Aug 14:33 install.sh
+-rw-r--r--   1 user  staff  1.1K 28 Aug 09:08 LICENSE
+-rw-r--r--   1 user  staff  3.4K  2 Sep 09:15 README.md
+drwxr-xr-x  18 user  staff   576B  3 Sep 09:11 src
+drwxr-xr-x   4 user  staff   128B  1 Sep 16:47 tests</code></pre>
+            </div>
+            <div class="demo-card demo-after">
+              <div class="demo-card-header">
+                <span class="demo-dot green"></span>
+                <span class="demo-label">rtk ls -la</span>
+                <span class="demo-tokens">~42 tokens</span>
+                <span class="demo-savings">-80%</span>
+              </div>
+              <pre><code>src/ (18 files)  tests/ (4 files)
+docs/ (3 files)  examples/ (2 files)
+
+Cargo.toml  README.md  install.sh
+index.html  LICENSE  .gitignore</code></pre>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="slideshow-controls">
@@ -218,6 +306,8 @@ src/parser/ error.rs formatter.rs</code></pre>
           <span class="dot" data-slide="1"></span>
           <span class="dot" data-slide="2"></span>
           <span class="dot" data-slide="3"></span>
+          <span class="dot" data-slide="4"></span>
+          <span class="dot" data-slide="5"></span>
         </div>
         <button class="slide-arrow slide-next" aria-label={t('aria.next', lang)}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>

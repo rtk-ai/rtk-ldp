@@ -11,13 +11,13 @@ const personas = [
   {
     id: 'claude-code',
     tabKey: 'install.tab.cc',
-    initCmd: 'rtk init --claude-code',
+    initCmd: 'rtk init --global',
     noteKey: 'install.note.cc',
   },
   {
     id: 'cursor',
     tabKey: 'install.tab.cursor',
-    initCmd: 'rtk init --cursor',
+    initCmd: 'rtk init --global --cursor',
     noteKey: 'install.note.cursor',
   },
   {
@@ -85,7 +85,7 @@ const personas = [
         <h3>{t('install.binaries', lang)}</h3>
         <p>{t('install.binaries_desc', lang)}</p>
         <div class="code-block">
-          <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link">{t('install.releases', lang)}</a>
+          <a href="https://github.com/rtk-ai/rtk/releases/latest" target="_blank" rel="noopener" class="releases-link">{t('install.releases', lang)}</a>
         </div>
       </div>
     </div>
@@ -118,7 +118,7 @@ const personas = [
         </div>
         <div class="install-step">
           <span class="install-step-num">2</span>
-          <code id="install-step-2-cmd">rtk init --claude-code</code>
+          <code id="install-step-2-cmd">rtk init --global</code>
         </div>
         <div class="install-step">
           <span class="install-step-num">3</span>

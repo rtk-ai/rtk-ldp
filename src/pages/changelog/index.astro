@@ -1,0 +1,324 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import { rssEntries } from '../../data/rss-entries'
+
+interface GhRelease {
+  tag: string
+  name: string
+  date: string
+  url: string
+  prerelease: boolean
+}
+
+let releases: GhRelease[] = []
+
+try {
+  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
+  const token = process.env.GITHUB_TOKEN
+  if (token) headers['Authorization'] = `Bearer ${token}`
+
+  const res = await fetch('https://api.github.com/repos/rtk-ai/rtk/releases?per_page=30', { headers })
+  if (res.ok) {
+    const data = await res.json()
+    releases = data.map((r: Record<string, unknown>) => ({
+      tag: r.tag_name as string,
+      name: (r.name as string) || (r.tag_name as string),
+      date: new Date(r.published_at as string).toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric',
+      }),
+      url: r.html_url as string,
+      prerelease: r.prerelease as boolean,
+    }))
+  }
+} catch {}
+
+const badgeColor: Record<string, string> = {
+  release:     'var(--accent)',
+  new_feature: 'var(--cyan)',
+  new_page:    'var(--cyan)',
+  new_doc:     'var(--cyan)',
+  performance: 'var(--violet)',
+}
+
+const badgeLabel: Record<string, string> = {
+  release:     'Release',
+  new_feature: 'New feature',
+  new_page:    'New page',
+  new_doc:     'New doc',
+  performance: 'Performance',
+}
+---
+<Layout
+  title="Changelog — RTK"
+  description="New releases, features, and improvements to RTK — the CLI proxy that reduces AI coding token usage by 60-90%."
+>
+  <SiteHeader lang="en" />
+  <main id="main-content">
+    <div class="changelog-wrap">
+
+      <div class="changelog-header">
+        <div>
+          <h1>Changelog</h1>
+          <p class="changelog-sub">New updates and improvements to RTK.</p>
+        </div>
+        <a href="/rss.xml" class="rss-btn" aria-label="RSS feed">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/>
+            <circle cx="5" cy="19" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          RSS feed
+        </a>
+      </div>
+
+      <div class="changelog-tabs" role="tablist" aria-label="Changelog sections">
+        <button class="tab-btn tab-btn--active" role="tab" aria-selected="true" aria-controls="panel-updates" id="tab-updates">
+          What's new
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-releases" id="tab-releases">
+          Releases
+        </button>
+      </div>
+
+      <div id="panel-updates" role="tabpanel" aria-labelledby="tab-updates">
+        <ol class="changelog-list">
+          {rssEntries.map((entry) => (
+            <li class="changelog-entry">
+              <time class="entry-date">{entry.date}</time>
+              <span
+                class="entry-badge"
+                style={`color:${badgeColor[entry.type] ?? 'var(--text-muted)'};border-color:${badgeColor[entry.type] ?? 'var(--border)'}`}
+              >
+                {badgeLabel[entry.type] ?? entry.type}
+              </span>
+              <div class="entry-body">
+                <a href={entry.link} class="entry-title" target="_blank" rel="noopener">
+                  {entry.title}
+                </a>
+                <p class="entry-desc">{entry.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div id="panel-releases" role="tabpanel" aria-labelledby="tab-releases" hidden>
+        {releases.length > 0 ? (
+          <ol class="changelog-list">
+            {releases.map((r) => (
+              <li class="changelog-entry">
+                <time class="entry-date">{r.date}</time>
+                <span
+                  class="entry-badge"
+                  style={`color:var(--accent);border-color:var(--accent)`}
+                >
+                  {r.prerelease ? 'Pre-release' : 'Release'}
+                </span>
+                <div class="entry-body">
+                  <a href={r.url} class="entry-title" target="_blank" rel="noopener">
+                    {r.name !== r.tag ? `${r.name} (${r.tag})` : r.tag}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p class="releases-fallback">
+            See all releases on <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener">GitHub</a>.
+          </p>
+        )}
+      </div>
+
+    </div>
+  </main>
+  <SiteFooter />
+</Layout>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn')
+  const panels = document.querySelectorAll<HTMLElement>('[role="tabpanel"]')
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('aria-controls')!
+
+      tabs.forEach((t) => {
+        t.classList.remove('tab-btn--active')
+        t.setAttribute('aria-selected', 'false')
+      })
+      panels.forEach((p) => { p.hidden = true })
+
+      tab.classList.add('tab-btn--active')
+      tab.setAttribute('aria-selected', 'true')
+      document.getElementById(target)!.hidden = false
+    })
+  })
+</script>
+
+<style>
+  @import '../../styles/landing.css';
+
+.changelog-wrap {
+  max-width: 1140px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 100px 24px 80px;
+  box-sizing: border-box;
+}
+
+.changelog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+  margin: 0 0 8px;
+}
+
+.changelog-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.rss-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.rss-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.changelog-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.tab-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  outline: none;
+  margin-bottom: -1px;
+  padding: 10px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  -webkit-font-smoothing: antialiased;
+}
+.tab-btn:hover {
+  color: var(--text);
+}
+.tab-btn:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+.tab-btn--active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.changelog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.changelog-entry {
+  display: grid;
+  grid-template-columns: 110px auto 1fr;
+  gap: 12px 16px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.entry-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.entry-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.entry-body { min-width: 0; }
+
+.entry-title {
+  display: block;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  margin-bottom: 6px;
+  transition: color 0.15s;
+}
+.entry-title:hover { color: var(--accent); }
+
+.entry-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.releases-fallback {
+  padding: 40px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+.releases-fallback a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.releases-fallback a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .changelog-entry {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .entry-date { grid-column: 1; }
+  .entry-badge { grid-column: 2; }
+  .entry-body { grid-column: 1 / -1; }
+  .changelog-header { flex-direction: column; }
+}
+</style>

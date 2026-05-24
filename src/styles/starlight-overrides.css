@@ -181,3 +181,13 @@ starlight-toc a:hover {
 .starlight-aside--caution .starlight-aside__content {
   color: var(--sl-color-orange-high);
 }
+
+/* ── Hide Starlight's built-in locale selector ───────────────────────
+   We use our own custom header with a globe dropdown.
+   Starlight still generates locale links — hide them to prevent overlap
+   with the right sidebar / "On this page" panel.                      */
+starlight-locale-select,
+.sl-hidden-locale-list,
+[data-pagefind-ignore] starlight-locale-select {
+  display: none !important;
+}

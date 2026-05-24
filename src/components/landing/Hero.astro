@@ -7,7 +7,7 @@ interface Props {
 }
 const { lang } = Astro.props
 
-let stars = 31000
+let stars = 47000
 
 try {
   const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
@@ -22,6 +22,9 @@ try {
 } catch {}
 
 const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(stars)
+const countupStars = stars >= 1000 ? (stars / 1000).toFixed(1) : String(stars)
+const starsDecimals = stars >= 1000 ? '1' : '0'
+const starsSuffix = stars >= 1000 ? 'k' : ''
 ---
 <section class="hero">
   <div class="hero-inner">
@@ -40,26 +43,25 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
 
       <div class="hero-stats">
         <div class="stat">
-          <span class="stat-value">89%</span>
+          <span class="stat-value" data-countup="89" data-suffix="%">89%</span>
           <span class="stat-label">avg noise removed</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
-          <span class="stat-value">2,900+</span>
+          <span class="stat-value" data-countup="2900" data-suffix="+" data-comma>2,900+</span>
           <span class="stat-label">commands measured</span>
         </div>
         <div class="stat-sep"></div>
         <div class="stat">
-          <span class="stat-value" id="github-stars-count">{starsLabel}</span>
+          <span class="stat-value" id="github-stars-count" data-countup={countupStars} data-suffix={starsSuffix} data-decimal={starsDecimals}>{starsLabel}</span>
           <span class="stat-label">GitHub stars</span>
         </div>
       </div>
 
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
-        <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <span>{t('hero.cta_star', lang)}</span>
+        <a href="/docs/" class="btn btn-ghost">
+          {t('ui.nav_docs', lang)}
         </a>
       </div>
     </div>
@@ -123,6 +125,46 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   </div>
 </section>
 
+<script>
+  const els = document.querySelectorAll<HTMLElement>('[data-countup]')
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        observer.unobserve(entry.target)
+        const el = entry.target as HTMLElement
+        const target = parseFloat(el.dataset.countup ?? '0')
+        const suffix = el.dataset.suffix ?? ''
+        const comma = 'comma' in el.dataset
+        const decimals = parseInt(el.dataset.decimal ?? '0')
+        const duration = 1400
+        const t0 = performance.now()
+
+        const tick = (now: number) => {
+          const p = Math.min((now - t0) / duration, 1)
+          const eased = 1 - Math.pow(1 - p, 3)
+          const val = eased * target
+          let text: string
+          if (decimals > 0) {
+            text = val.toFixed(decimals)
+          } else if (comma) {
+            text = Math.round(val).toLocaleString()
+          } else {
+            text = String(Math.round(val))
+          }
+          el.textContent = text + suffix
+          if (p < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      })
+    },
+    { threshold: 0.3 }
+  )
+
+  els.forEach((el) => observer.observe(el))
+</script>
+
 <style>
 .hero {
   max-width: var(--max-w);
@@ -160,7 +202,10 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
 }
 
 .hero-accent {
-  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-sub {

@@ -234,15 +234,23 @@
 
 .btn-sm { padding: 6px 14px; font-size: 0.8rem; }
 
+@keyframes btn-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 229, 153, 0); }
+  50%       { box-shadow: 0 0 16px 4px rgba(0, 229, 153, 0.28); }
+}
+
 .btn-primary {
   background: var(--accent);
   color: var(--bg);
   border-color: var(--accent);
   font-weight: 700;
+  animation: btn-glow-pulse 2.8s ease-in-out infinite;
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
+  animation: none;
+  box-shadow: 0 0 20px 6px rgba(0, 229, 153, 0.35);
 }
 
 .btn-ghost {
@@ -454,6 +462,11 @@ section h2 {
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+}
+
+.code-block code::before {
+  content: '$ ';
+  font-weight: 600;
 }
 
 .code-block-wide {
@@ -703,9 +716,19 @@ section h2 {
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--text-muted);
-  padding: 0 20px 18px;
+  padding: 0 20px 10px;
   margin: 0;
 }
+
+.faq-link {
+  display: inline-block;
+  margin: 0 20px 18px;
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.faq-link:hover { text-decoration: underline; }
 
 /* === Viking Illustrations === */
 .viking-illustration {
