@@ -202,7 +202,10 @@ const starsSuffix = stars >= 1000 ? 'k' : ''
 }
 
 .hero-accent {
-  color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-sub {
