@@ -1,0 +1,361 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import SiteHeader from '../../components/global/SiteHeader.astro'
+import SiteFooter from '../../components/global/SiteFooter.astro'
+import SearchModal from '../../components/global/SearchModal.astro'
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'RTK Benchmark Results',
+  description:
+    'Token, cost and reliability measurements comparing Claude Code sessions with and without RTK (Rust Token Killer), grouped by RTK version and language ecosystem.',
+  url: 'https://www.rtk-ai.app/benchmarks/',
+  creator: { '@type': 'Organization', name: 'RTK AI', url: 'https://www.rtk-ai.app' },
+  license: 'https://opensource.org/licenses/MIT',
+  dateModified: buildDate,
+  keywords: ['RTK', 'Claude Code', 'token savings', 'benchmark', 'LLM tooling'],
+}
+---
+<Layout
+  title="RTK Benchmarks — Token & Cost Savings by Ecosystem | rtk-ai"
+  description="Measured RTK savings across JavaScript, TypeScript, Python, Rust, Go and .NET — cost, tokens, pass rate and p-values, per RTK version. Interactive charts and downloadable reports."
+  image="/og-image.png"
+  schemaOrg={schemaOrg}
+>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <SiteHeader />
+
+  <main id="main-content" class="bench">
+    <section class="bench-hero">
+      <div class="section-inner">
+        <div class="bench-badge">Open data &middot; ON vs OFF &middot; Updated {buildDate}</div>
+        <h1>RTK <span class="gradient-text">benchmarks</span></h1>
+        <p class="bench-sub">
+          Real Claude Code sessions, run with and without RTK on the same tasks.
+          Browse by <strong>RTK version</strong>, then by <strong>ecosystem</strong>.
+        </p>
+        <p class="bench-meta" id="bench-meta"></p>
+      </div>
+    </section>
+
+    <section class="bench-app section-inner">
+      <!-- Mobile selector -->
+      <div class="bench-mobile-nav">
+        <select id="bench-mobile-select" aria-label="Select version and ecosystem"></select>
+      </div>
+
+      <div class="bench-layout">
+        <!-- Sidebar -->
+        <nav class="bench-sidebar" id="bench-sidebar" aria-label="Benchmark navigation">
+          <div class="bench-sidebar-loading">Loading…</div>
+        </nav>
+
+        <!-- Content panel -->
+        <div class="bench-panel" id="bench-panel">
+          <div class="bench-empty" id="bench-empty" hidden>
+            <h2>No benchmark data yet</h2>
+            <p>Results haven't been published. Check back soon, or run the benchmark suite and publish the export.</p>
+          </div>
+
+          <div class="bench-content" id="bench-content" hidden>
+            <header class="bench-content-head">
+              <div>
+                <h2 id="bench-title">—</h2>
+                <p id="bench-subtitle" class="bench-content-sub"></p>
+              </div>
+              <div class="bench-pdf-links" id="bench-pdf-links"></div>
+            </header>
+
+            <!-- KPI cards -->
+            <div class="bench-kpis" id="bench-kpis"></div>
+
+            <!-- Charts row 1: Savings + Causal chain -->
+            <div class="bench-charts">
+              <div class="bench-card">
+                <h3 id="bench-bar-title">Savings by ecosystem</h3>
+                <div class="bench-chart-wrap"><canvas id="bench-bar-chart"></canvas></div>
+              </div>
+              <div class="bench-card">
+                <h3>Causal chain</h3>
+                <div class="bench-chart-wrap"><canvas id="bench-causal-chart"></canvas></div>
+              </div>
+            </div>
+
+            <!-- Chart row 2: Version-over-version trend (full width) -->
+            <div class="bench-card bench-trend-card">
+              <h3 id="bench-trend-title">Version-over-version</h3>
+              <div class="bench-chart-wrap bench-chart-wrap--short"><canvas id="bench-trend-chart"></canvas></div>
+            </div>
+
+            <!-- Detail table -->
+            <div class="bench-card bench-table-card">
+              <h3>Detail</h3>
+              <div class="bench-table-scroll">
+                <table class="bench-table" id="bench-table"></table>
+              </div>
+              <p class="bench-table-note">
+                Savings % = (1 − ON / OFF) × 100; positive means RTK reduced the metric.
+                p-values are Welch's t-test (ON vs OFF, pooled across sessions). CI is the 95% interval over per-run cost savings.
+              </p>
+            </div>
+
+            <!-- Token composition + causal chain (rendered by JS when data available) -->
+            <div id="bench-extra"></div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+  <SearchModal />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" is:inline></script>
+  <script src="/scripts/benchmarks.js" is:inline></script>
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing.css';
+
+  /* ── Benchmarks page ─────────────────────────────────────────────── */
+  .bench { padding-top: 60px; }
+
+  .bench-hero {
+    padding: 72px 0 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background:
+      radial-gradient(ellipse 600px 240px at 50% 0%, var(--accent-glow), transparent 70%),
+      var(--bg);
+  }
+  .bench-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+  }
+  .bench-hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+  }
+  .bench-sub {
+    color: var(--text-muted);
+    font-size: var(--text-lg);
+    max-width: 620px;
+    margin: 0 auto 10px;
+    line-height: 1.6;
+  }
+  .bench-sub strong { color: var(--text); }
+  .bench-meta {
+    color: var(--text-dim);
+    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+  }
+
+  .bench-app { padding: 32px 24px 80px; }
+
+  .bench-mobile-nav { display: none; margin-bottom: 20px; }
+  .bench-mobile-nav select {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg-card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .bench-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .bench-sidebar {
+    position: sticky;
+    top: 80px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    padding: 10px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+  }
+  .bench-sidebar-loading { color: var(--text-dim); font-size: var(--text-sm); padding: 8px; }
+  .bench-vgroup { margin-bottom: 4px; }
+  .bench-vgroup-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    color: var(--text-bright);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+  }
+  .bench-vgroup-toggle:hover { background: var(--bg-card-hover); }
+  .bench-vgroup-toggle .chev { transition: transform 0.15s; color: var(--text-dim); }
+  .bench-vgroup[data-open="false"] .chev { transform: rotate(-90deg); }
+  .bench-vgroup[data-open="false"] .bench-vlinks { display: none; }
+  .bench-latest-tag {
+    font-size: 0.62rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+  }
+  .bench-vlinks { padding: 2px 0 6px 6px; }
+  .bench-vlink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    padding: 6px 10px;
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .bench-vlink:hover { color: var(--text); background: var(--bg-card-hover); }
+  .bench-vlink.active {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--accent-dim);
+    font-weight: 600;
+  }
+  .bench-eco-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .bench-vlink .samples { margin-left: auto; color: var(--text-dim); font-size: 0.68rem; font-family: var(--font-mono); }
+
+  /* Panel */
+  .bench-panel { min-width: 0; }
+  .bench-empty {
+    border: 1px dashed var(--border-light);
+    border-radius: var(--radius);
+    padding: 48px 24px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .bench-empty h2 { color: var(--text-bright); margin-bottom: 8px; }
+
+  .bench-content-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .bench-content-head h2 { font-size: var(--text-3xl); letter-spacing: -0.02em; }
+  .bench-content-sub { color: var(--text-muted); font-size: var(--text-sm); margin-top: 4px; }
+
+  .bench-pdf-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .bench-pdf-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .bench-pdf-link:hover { color: var(--text); border-color: var(--accent); text-decoration: none; }
+
+  /* KPI cards */
+  .bench-kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .bench-kpi {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    padding: 16px 18px;
+  }
+  .bench-kpi-label { color: var(--text-dim); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .bench-kpi-value { font-family: var(--font-mono); font-size: 1.7rem; font-weight: 700; margin-top: 6px; letter-spacing: -0.02em; }
+  .bench-kpi-value.pos { color: var(--accent); }
+  .bench-kpi-value.neg { color: var(--red); }
+  .bench-kpi-value.neutral { color: var(--text-bright); }
+  .bench-kpi-foot { color: var(--text-dim); font-size: var(--text-xs); margin-top: 4px; }
+
+  /* Cards / charts */
+  .bench-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    padding: 18px 20px;
+  }
+  .bench-card h3 { font-size: var(--text-base); color: var(--text-bright); margin-bottom: 14px; }
+  .bench-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .bench-chart-wrap { position: relative; height: 280px; }
+
+  /* Table */
+  .bench-table-card { overflow: hidden; }
+  .bench-table-scroll { overflow-x: auto; }
+  .bench-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+  .bench-table th, .bench-table td { padding: 9px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border); }
+  .bench-table th:first-child, .bench-table td:first-child { text-align: left; }
+  .bench-table thead th { color: var(--text-dim); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+  .bench-table tbody tr:hover { background: var(--bg-card-hover); }
+  .bench-table .num { font-family: var(--font-mono); }
+  .bench-table .pos { color: var(--accent); }
+  .bench-table .neg { color: var(--red); }
+  .bench-table .muted { color: var(--text-dim); }
+  .bench-table .eco-cell { display: flex; align-items: center; gap: 8px; }
+  .bench-table .sig { color: var(--accent); font-weight: 700; }
+  .bench-table .metric-section-head td { background: var(--bg-card-hover); color: var(--text-dim); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 12px; border-bottom: 1px solid var(--border); }
+  .bench-table .metric-row td:first-child { padding-left: 20px; }
+  .bench-table .win-on { color: var(--accent); font-weight: 600; }
+  .bench-table .win-off { color: var(--red); font-weight: 600; }
+  .bench-table-note { color: var(--text-dim); font-size: var(--text-xs); margin-top: 12px; line-height: 1.5; }
+
+  .bench-trend-card { margin-bottom: 16px; }
+  .bench-chart-wrap--short { height: 200px; }
+  #bench-extra { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+  .bench-causal-chain p { color: var(--text-muted); font-size: var(--text-sm); line-height: 1.65; margin: 0; }
+
+  @media (max-width: 880px) {
+    .bench-layout { grid-template-columns: 1fr; }
+    .bench-sidebar { display: none; }
+    .bench-mobile-nav { display: block; }
+    .bench-charts { grid-template-columns: 1fr; }
+    .bench-kpis { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
