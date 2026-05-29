@@ -3,9 +3,39 @@ import IconGitHub from '../ui/icons/IconGitHub.astro'
 import IconKofi from '../ui/icons/IconKofi.astro'
 import IconDiscord from '../ui/icons/IconDiscord.astro'
 import IconSearch from '../ui/icons/IconSearch.astro'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { t, LOCALES, type Lang } from '../../lib/i18n'
+
+interface Props {
+  variant?: 'landing' | 'product'
+  product?: 'vox' | 'icm'
+  lang?: Lang
+}
+
+const { variant = 'landing', product, lang = 'en' } = Astro.props
+const isLanding = variant === 'landing'
+const isVox = product === 'vox'
+const isIcm = product === 'icm'
+const githubUrl = isVox
+  ? 'https://github.com/rtk-ai/vox'
+  : isIcm
+  ? 'https://github.com/rtk-ai/icm'
+  : 'https://github.com/rtk-ai/rtk'
+
+const currentLocale = (Astro.currentLocale ?? 'en') as Lang
+
+function stripLocalePrefix(path: string): string {
+  const NON_DEFAULT = ['fr', 'es', 'de', 'zh', 'ja']
+  return path.replace(new RegExp(`^/(${NON_DEFAULT.join('|')})/`), '/')
+}
+
+const currentPath = stripLocalePrefix(Astro.url.pathname)
+
+const voxHref = getRelativeLocaleUrl(currentLocale, 'vox/')
+const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
 ---
 
-<nav class="nav" id="main-nav">
+<nav class="nav" id="main-nav" aria-label={t('aria.main_nav', lang)}>
   <div class="nav-inner">
 
     <!-- Logo -->
@@ -52,10 +82,16 @@ import IconSearch from '../ui/icons/IconSearch.astro'
 
     <!-- Mobile right: search + hamburger -->
     <div class="nav-mobile-right">
-      <button id="search-trigger-mobile" class="search-trigger search-trigger-mobile" aria-label="Search (Cmd+K)">
-        <IconSearch size={18} />
-      </button>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+      {isLanding ? (
+        <button id="search-trigger-mobile" class="search-trigger search-trigger-mobile" aria-label={t('aria.search', lang)}>
+          <IconSearch size={18} />
+        </button>
+      ) : (
+        <button id="search-trigger" class="search-trigger search-trigger-mobile" aria-label={t('aria.search', lang)}>
+          <IconSearch size={18} />
+        </button>
+      )}
+      <button class="nav-hamburger" id="nav-hamburger" aria-label={t('aria.open_menu', lang)} aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -75,18 +111,33 @@ import IconSearch from '../ui/icons/IconSearch.astro'
       <a href="/benchmarks/">Benchmarks</a>
     </div>
     <div class="nav-drawer-actions">
-      <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">☕ Support</a>
-      <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">Discord</a>
-      <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">GitHub</a>
+      {isLanding ? (
+        <>
+          <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_support', lang)}</a>
+          <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_discord', lang)}</a>
+          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_github', lang)}</a>
+        </>
+      ) : (
+        <>
+          {!isVox && (
+            <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm nav-btn-discord" target="_blank" rel="noopener">Discord</a>
+          )}
+          <a href={githubUrl} class="btn btn-sm" target="_blank" rel="noopener">GitHub</a>
+        </>
+      )}
     </div>
-    <div class="nav-drawer-lang">
-      <button class="lang-btn active" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="fr">FR</button>
-      <button class="lang-btn" data-lang="es">ES</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="zh">ZH</button>
-      <button class="lang-btn" data-lang="ja">JA</button>
-    </div>
+    {isLanding && (
+      <div class="nav-drawer-lang" role="navigation" aria-label="Language switcher">
+        {LOCALES.map(l => (
+          <a
+            href={getRelativeLocaleUrl(l, currentPath)}
+            class={`lang-btn${l === currentLocale ? ' active' : ''}`}
+            hreflang={l}
+            aria-current={l === currentLocale ? 'true' : undefined}
+          >{l.toUpperCase()}</a>
+        ))}
+      </div>
+    )}
   </div>
 </div>
 <div class="nav-overlay" id="nav-overlay"></div>
@@ -121,10 +172,345 @@ import IconSearch from '../ui/icons/IconSearch.astro'
   overlay?.addEventListener('click', closeDrawer)
   drawer?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeDrawer))
 
-  // On landing: mobile search delegates to desktop search trigger
   if (searchMobile) {
     searchMobile.addEventListener('click', () => { searchDesktop?.click() })
   }
 
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer() })
+
+  const langDropdown = document.querySelector('.lang-dropdown')
+  document.addEventListener('click', (e) => {
+    if (langDropdown?.hasAttribute('open') && !langDropdown.contains(e.target as Node)) {
+      langDropdown.removeAttribute('open')
+    }
+  })
+  langDropdown?.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => langDropdown.removeAttribute('open'))
+  })
 </script>
+
+<style>
+/* === Nav === */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg-glass);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-bright);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.nav-logo:hover { text-decoration: none; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+
+.nav-link-vox { color: var(--violet) !important; }
+.nav-link-icm { color: #38bdf8 !important; }
+
+.nav-badge-soon {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(0, 229, 153, 0.12);
+  color: var(--accent);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 2px;
+  line-height: 1.4;
+}
+
+/* Nav anchor links */
+.nav-link {
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-link:hover { color: var(--text); text-decoration: none; }
+
+/* Nav visual divider */
+.nav-divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-light);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* Icon-only nav buttons */
+.nav-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.nav-icon-btn:hover { color: var(--text); background: var(--bg-card-hover); text-decoration: none; }
+.nav-icon-btn--discord:hover { color: #7289da; }
+
+/* Ghost nav button (GitHub + mobile drawer) */
+.btn-ghost-nav {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  gap: 6px;
+}
+.btn-ghost-nav:hover { color: var(--text-bright); border-color: var(--border-light); background: var(--bg-card-hover); text-decoration: none; }
+
+/* Mobile right controls */
+.nav-mobile-right {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.search-trigger-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 6px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s;
+}
+.search-trigger-mobile:hover { color: var(--text-bright); }
+
+/* Hamburger button */
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.nav-hamburger:hover { border-color: var(--accent); }
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* Mobile drawer */
+.nav-drawer {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 100vw);
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+  overflow-y: auto;
+}
+.nav-drawer.open { transform: translateX(0); }
+
+.nav-drawer-inner {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.nav-drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-drawer-links a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-drawer-links a:hover { background: var(--bg-card-hover); color: var(--text-bright); }
+
+.nav-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.nav-drawer-actions .btn { justify-content: center; }
+
+.nav-drawer-lang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Overlay */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+}
+.nav-overlay.open { display: block; }
+
+/* === Language Switcher === */
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  margin-left: 8px;
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.lang-btn {
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+  letter-spacing: 0.02em;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.lang-btn:hover { color: var(--text); text-decoration: none; }
+.lang-btn.active {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .lang-switch { margin-left: 0; }
+}
+
+/* Search trigger (Nav) */
+.search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  transition: border-color 0.2s, color 0.2s;
+  min-height: 36px;
+}
+.search-trigger:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+.search-trigger-kbd {
+  font-size: 0.62rem;
+  padding: 0.1rem 0.3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  color: var(--text-dim);
+  font-family: inherit;
+}
+@media (max-width: 768px) {
+  .search-trigger-label,
+  .search-trigger-kbd { display: none; }
+  .search-trigger { padding: 0.4rem; }
+}
+
+/* Vox / ICM logo variants */
+.nav-sep {
+  color: var(--border);
+  font-weight: 400;
+  margin: 0 2px;
+}
+
+.logo-text-accent {
+  color: var(--violet);
+  font-weight: 700;
+}
+
+.logo-text-icm {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-mobile-right { display: flex; }
+  .nav-links a:not(.btn) { display: none; }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* Nav: tighter on tablet */
+  .nav-links { gap: 14px; }
+  .nav-link-hide-md { display: none; }
+  .search-trigger-label { display: none; }
+  .search-trigger-kbd { display: none; }
+}
+</style>

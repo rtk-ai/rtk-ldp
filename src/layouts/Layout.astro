@@ -3,6 +3,8 @@
  * Layout.astro — base shell for RTK landing pages (index, /team, /benchmarks, /404).
  * Starlight pages use their own layout via the docs collection.
  */
+import { NON_DEFAULT_LOCALES } from '../lib/i18n'
+
 export interface Props {
   title?: string
   description?: string
@@ -26,6 +28,12 @@ const {
 const siteUrl = 'https://www.rtk-ai.app'
 const canonical = canonicalUrl ?? siteUrl + Astro.url.pathname
 const ogImage = image.startsWith('http') ? image : siteUrl + image
+
+function stripLocalePrefix(path: string): string {
+  const NON_DEFAULT = ['fr', 'es', 'de', 'zh', 'ja']
+  return path.replace(new RegExp(`^/(${NON_DEFAULT.join('|')})/`), '/')
+}
+const canonicalPath = stripLocalePrefix(Astro.url.pathname)
 
 // If the page passes a @graph object, use it directly (page owns its WebPage entity).
 // Otherwise auto-inject a WebPage schema and combine with page schemas.
@@ -60,7 +68,7 @@ const allSchemas = hasGraph
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang={Astro.currentLocale ?? 'en'} data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -70,6 +78,13 @@ const allSchemas = hasGraph
     <meta name="description" content={description} />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonical} />
+
+    <!-- hreflang alternates -->
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${canonicalPath}`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${canonicalPath}`} />
+    {NON_DEFAULT_LOCALES.map(l => (
+      <link rel="alternate" hreflang={l} href={`${siteUrl}/${l}${canonicalPath}`} />
+    ))}
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />

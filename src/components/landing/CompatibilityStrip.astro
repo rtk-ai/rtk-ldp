@@ -1,0 +1,24 @@
+---
+// CompatibilityStrip — "Works with" pill row (inserted between Hero and Problem)
+const tools = [
+  'Claude Code',
+  'Cursor',
+  'Aider',
+  'Gemini CLI',
+  'OpenAI Codex',
+  'Cline',
+  'Windsurf',
+  'GitHub Copilot',
+]
+---
+
+<div class="compat-strip">
+  <div class="compat-inner">
+    <span class="compat-label">Works with</span>
+    <ul class="compat-pills" role="list" aria-label="Compatible AI tools">
+      {tools.map((tool) => (
+        <li class="pill-neutral">{tool}</li>
+      ))}
+    </ul>
+  </div>
+</div>

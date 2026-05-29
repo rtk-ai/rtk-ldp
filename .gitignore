@@ -31,3 +31,5 @@ src/data/docs-search-entries.ts
 
 # Next.js (not used here but just in case)
 .next/
+claudedocs/
+.worktrees

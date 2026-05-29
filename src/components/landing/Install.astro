@@ -1,61 +1,119 @@
 ---
-// Install section — 3 install methods + hook activation + 3-step visual guide
+// Install section — persona tabs + 3 install methods + hook activation
+import { t, type Lang } from '../../lib/i18n'
+import Eyebrow from './Eyebrow.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+
+const personas = [
+  {
+    id: 'claude-code',
+    tabKey: 'install.tab.cc',
+    initCmd: 'rtk init --claude-code',
+    noteKey: 'install.note.cc',
+  },
+  {
+    id: 'cursor',
+    tabKey: 'install.tab.cursor',
+    initCmd: 'rtk init --cursor',
+    noteKey: 'install.note.cursor',
+  },
+  {
+    id: 'other',
+    tabKey: 'install.tab.other',
+    initCmd: 'rtk init --global',
+    noteKey: 'install.note.other',
+  },
+]
 ---
+
 <section class="install-section" id="install">
   <div class="section-inner">
     <div class="section-viking reveal">
       <img src="/assets/illustrations/viking-install.webp" alt="Viking slamming axe into ground creating green energy shockwave" loading="lazy" width="1920" height="1047">
     </div>
-    <h2 class="reveal" data-i18n="install.title">Get started in 30 seconds</h2>
-    <p class="section-sub reveal" data-i18n="install.sub">Install, activate the auto-rewrite hook, and every command is compressed automatically.</p>
+    <Eyebrow label={t('eyebrow.get_started', lang)} />
+    <h2 class="reveal">{t('install.title', lang)}</h2>
+    <p class="section-sub reveal">{t('install.sub', lang)}</p>
 
+    <!-- Persona tabs -->
+    <div class="persona-tabs reveal" role="tablist" aria-label={t('aria.choose_ai_tool', lang)}>
+      {personas.map((p, i) => (
+        <button
+          class={`persona-tab${i === 0 ? ' persona-tab--active' : ''}`}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={`persona-panel-${p.id}`}
+          id={`persona-tab-${p.id}`}
+          data-persona={p.id}
+        >
+          {t(p.tabKey, lang)}
+        </button>
+      ))}
+    </div>
+
+    <!-- Install cards (same for all personas) -->
     <div class="install-grid reveal">
       <div class="install-card install-primary">
-        <h3 data-i18n="install.quick">Quick Install</h3>
-        <p data-i18n="install.quick_desc">One-liner for Linux &amp; macOS</p>
+        <h3>{t('install.quick', lang)}</h3>
+        <p>{t('install.quick_desc', lang)}</p>
         <div class="code-block">
           <code>curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh</code>
-          <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label="Copy">
+          <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
       </div>
 
       <div class="install-card">
-        <h3 data-i18n="install.brew">Via Homebrew</h3>
-        <p data-i18n="install.brew_desc">macOS &amp; Linux</p>
+        <h3>{t('install.brew', lang)}</h3>
+        <p>{t('install.brew_desc', lang)}</p>
         <div class="code-block">
           <code>brew install rtk</code>
-          <button class="copy-btn" data-copy="brew install rtk" aria-label="Copy">
+          <button class="copy-btn" data-copy="brew install rtk" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
         <div class="code-block">
           <code>brew upgrade rtk</code>
-          <button class="copy-btn" data-copy="brew upgrade rtk" aria-label="Copy">
+          <button class="copy-btn" data-copy="brew upgrade rtk" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
       </div>
 
       <div class="install-card">
-        <h3 data-i18n="install.binaries">Pre-built Binaries</h3>
-        <p data-i18n="install.binaries_desc">macOS, Linux, Windows</p>
+        <h3>{t('install.binaries', lang)}</h3>
+        <p>{t('install.binaries_desc', lang)}</p>
         <div class="code-block">
-          <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link" data-i18n="install.releases">Download from Releases &rarr;</a>
+          <a href="https://github.com/rtk-ai/rtk/releases" target="_blank" rel="noopener" class="releases-link">{t('install.releases', lang)}</a>
         </div>
       </div>
     </div>
 
+    <!-- Persona-specific hook command -->
     <div class="install-setup reveal">
-      <h3 data-i18n="install.hook">Then activate the auto-rewrite hook</h3>
-      <div class="code-block code-block-wide">
-        <code>rtk init --global</code>
-        <button class="copy-btn" data-copy="rtk init --global" aria-label="Copy">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-        </button>
-      </div>
-      <p class="install-note" data-i18n="install.hook_note">This installs a PreToolUse hook that transparently rewrites Bash commands to rtk equivalents. <a href="/docs/getting-started/installation/" class="install-docs-link">Full install guide →</a></p>
+      <h3>{t('install.hook', lang)}</h3>
+      {personas.map((p, i) => (
+        <div
+          id={`persona-panel-${p.id}`}
+          class={`persona-panel${i === 0 ? ' persona-panel--active' : ''}`}
+          role="tabpanel"
+          aria-labelledby={`persona-tab-${p.id}`}
+          hidden={i !== 0}
+        >
+          <div class="code-block code-block-wide">
+            <code>{p.initCmd}</code>
+            <button class="copy-btn" data-copy={p.initCmd} aria-label={t('aria.copy', lang)}>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            </button>
+          </div>
+          <p class="install-note"><span>{t(p.noteKey, lang)}</span> <a href="/guide/getting-started/installation/" class="install-docs-link">{t('ui.install_docs_link', lang)}</a></p>
+        </div>
+      ))}
 
       <div class="install-steps">
         <div class="install-step">
@@ -64,7 +122,7 @@
         </div>
         <div class="install-step">
           <span class="install-step-num">2</span>
-          <code>rtk init --global</code>
+          <code id="install-step-2-cmd">rtk init --claude-code</code>
         </div>
         <div class="install-step">
           <span class="install-step-num">3</span>
@@ -74,3 +132,124 @@
     </div>
   </div>
 </section>
+
+<script>
+  // Persona tab switcher — plain JS, no framework
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.persona-tab')
+  const panels = document.querySelectorAll<HTMLElement>('.persona-panel')
+  const step2Cmd = document.getElementById('install-step-2-cmd')
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const persona = tab.dataset.persona
+
+      tabs.forEach((t) => {
+        t.classList.toggle('persona-tab--active', t === tab)
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false')
+      })
+
+      panels.forEach((panel) => {
+        const isActive = panel.id === `persona-panel-${persona}`
+        panel.classList.toggle('persona-panel--active', isActive)
+        panel.hidden = !isActive
+      })
+
+      // Update step 2 command label
+      const activePanel = document.getElementById(`persona-panel-${persona}`)
+      if (step2Cmd && activePanel) {
+        const cmd = activePanel.querySelector('code')?.textContent
+        if (cmd) step2Cmd.textContent = cmd
+      }
+    })
+  })
+</script>
+
+<style>
+.install-section { background: var(--bg-alt); }
+
+.install-docs-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+.install-docs-link:hover { text-decoration: underline; }
+
+.install-steps {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.install-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+
+.install-step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.install-step code {
+  color: var(--accent);
+  font-size: 0.78rem;
+}
+
+.persona-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-7);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+}
+
+.persona-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: var(--space-3) var(--space-5);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  margin-bottom: -1px;
+}
+
+.persona-tab:hover {
+  color: var(--text-muted);
+}
+
+.persona-tab--active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.persona-panel {
+  display: block;
+}
+
+.persona-panel[hidden] {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .install-steps { flex-direction: column; align-items: center; }
+}
+</style>
