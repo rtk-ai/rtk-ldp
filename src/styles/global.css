@@ -96,7 +96,9 @@
 }
 
 html {
-  overflow-x: hidden;
+  /* clip (not hidden) prevents horizontal scroll without creating a scroll
+     container — keeps `position: sticky` working for descendants. */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -111,7 +113,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   margin: 0;
 }
 
