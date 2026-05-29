@@ -36,7 +36,7 @@ const LANDING_ENTRIES: SearchEntry[] = [
   { id: 'docs-home', title: 'RTK Documentation', keywords: 'docs documentation guide reference technical features filters', category: 'Docs', url: '/docs/', source: 'docs' },
 
   // Links
-  { id: 'github-repo', title: 'RTK on GitHub', keywords: 'github repo source code open source mit stars fork', category: 'Links', url: 'https://github.com/rtk-ai/rtk', source: 'landing' },
+  { id: 'github-repo', title: 'RTK on GitHub', keywords: 'github repo source code open source apache stars fork', category: 'Links', url: 'https://github.com/rtk-ai/rtk', source: 'landing' },
   { id: 'discord', title: 'Discord Community', keywords: 'discord community chat support help questions', category: 'Links', url: 'https://discord.gg/RySmvNF5kF', source: 'landing' },
   { id: 'kofi', title: 'Support RTK (ko-fi)', keywords: 'support donate kofi sponsor coffee', category: 'Links', url: 'https://ko-fi.com/patrickszymkowiak', source: 'landing' },
 ]

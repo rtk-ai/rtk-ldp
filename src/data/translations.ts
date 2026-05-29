@@ -26,7 +26,7 @@ export const T: Record<string, Record<Lang, string>> = {
   'nav.cloud':   { en: 'Cloud',   fr: 'Cloud',    es: 'Cloud',         de: 'Cloud',       zh: '云端',  ja: 'クラウド' },
   'nav.install': { en: 'Install', fr: 'Installer', es: 'Instalar',     de: 'Installieren', zh: '安装', ja: 'インストール' },
 
-  'hero.badge_oss': { en: 'Open Source · MIT · Rust', fr: 'Open Source · MIT · Rust', es: 'Open Source · MIT · Rust', de: 'Open Source · MIT · Rust', zh: '开源 · MIT · Rust', ja: 'オープンソース · MIT · Rust' },
+  'hero.badge_oss': { en: 'Open Source · Apache 2.0 · Rust', fr: 'Open Source · Apache 2.0 · Rust', es: 'Open Source · Apache 2.0 · Rust', de: 'Open Source · Apache 2.0 · Rust', zh: '开源 · Apache 2.0 · Rust', ja: 'オープンソース · Apache 2.0 · Rust' },
   'hero.title_1':   { en: 'Your AI agent is drowning', fr: 'Votre agent IA se noie', es: 'Tu agente IA se ahoga', de: 'Dein KI-Agent ertrinkt', zh: '你的 AI 代理正淹没在', ja: 'AI エージェントは' },
   'hero.title_2':   { en: 'in CLI noise.', fr: 'dans le bruit CLI.', es: 'en ruido del CLI.', de: 'im CLI-Rauschen.', zh: 'CLI 噪音中。', ja: 'CLI ノイズに埋もれている。' },
   'hero.title_3':   { en: 'Fix it.', fr: 'Résolvez ça.', es: 'Arréglalo.', de: 'Beheb das.', zh: '解决它。', ja: '解決しよう。' },
