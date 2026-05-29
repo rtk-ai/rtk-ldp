@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import starlight from '@astrojs/starlight'
-import tailwind from '@astrojs/tailwind'
 import { remarkDocsLinks } from './plugins/remark-docs-links.mjs'
 import { readdirSync, existsSync } from 'fs'
 import { resolve, dirname } from 'path'
@@ -18,6 +17,14 @@ function hasContent(tab) {
 export default defineConfig({
   site: 'https://www.rtk-ai.app',
   trailingSlash: 'always',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr', 'es', 'de', 'zh', 'ja'],
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: false,
+    },
+  },
   redirects: {
     // Backcompat: old /guide/ URLs → new /docs/
     '/guide/': '/docs/',
@@ -33,7 +40,19 @@ export default defineConfig({
     '/guide/resources/troubleshooting/': '/docs/resources/troubleshooting/',
   },
   integrations: [
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          fr: 'fr-FR',
+          es: 'es-ES',
+          de: 'de-DE',
+          zh: 'zh-CN',
+          ja: 'ja-JP',
+        },
+      },
+    }),
     starlight({
       title: 'RTK',
       description: 'RTK — Rust Token Killer. Reduce Claude Code token usage by 60-90%.',
@@ -94,7 +113,6 @@ export default defineConfig({
         }] : []),
       ],
     }),
-    tailwind({ applyBaseStyles: false }),
   ],
   markdown: {
     remarkPlugins: [remarkDocsLinks],

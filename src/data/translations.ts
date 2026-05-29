@@ -67,8 +67,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'cta.sub':     { en: 'Install rtk. Better code, longer sessions, lower costs.', fr: 'Installez rtk. Meilleur code, sessions plus longues, coûts réduits.', es: 'Instala rtk. Mejor código, sesiones más largas, menores costos.', de: 'Installiere rtk. Besserer Code, längere Sessions, geringere Kosten.', zh: '安装 rtk。更好的代码，更长的会话，更低的成本。', ja: 'rtk をインストール。より良いコード、より長いセッション、より低いコスト。' },
   'cta.share':   { en: 'Share rtk', fr: 'Partager rtk', es: 'Compartir rtk', de: 'rtk teilen', zh: '分享 rtk', ja: 'rtk を共有' },
 
-  'starred.label': { en: 'Starred by developers at', fr: 'Staré par des développeurs chez', es: 'Starred por desarrolladores en', de: 'Gestarrt von Entwicklern bei', zh: '来自这些公司的开发者已加星', ja: 'これらの企業の開発者がスター済み' },
-
   'demo.title': { en: 'See the difference', fr: 'Voyez la différence', es: 'Mira la diferencia', de: 'Sieh den Unterschied', zh: '查看差异', ja: '違いを見る' },
   'demo.sub':   { en: 'Real outputs, real savings. Side-by-side comparison on actual commands.', fr: 'Des sorties réelles, des économies réelles. Comparaison côte à côte sur de vraies commandes.', es: 'Salidas reales, ahorros reales. Comparación lado a lado con comandos reales.', de: 'Echte Ausgaben, echte Einsparungen. Seite-an-Seite-Vergleich mit echten Befehlen.', zh: '真实输出，真实节省。实际命令的并排对比。', ja: '実際の出力、実際の節約。実コマンドの並列比較。' },
 
@@ -150,4 +148,61 @@ export const T: Record<string, Record<Lang, string>> = {
   'share.post_bsky':          { en: 'Post on Bluesky', fr: 'Poster sur Bluesky', es: 'Publicar en Bluesky', de: 'Auf Bluesky posten', zh: '发布到 Bluesky', ja: 'Bluesky に投稿' },
   'share.linkedin':           { en: 'LinkedIn', fr: 'LinkedIn', es: 'LinkedIn', de: 'LinkedIn', zh: 'LinkedIn', ja: 'LinkedIn' },
   'share.copy':               { en: 'Copy', fr: 'Copier', es: 'Copiar', de: 'Kopieren', zh: '复制', ja: 'コピー' },
+
+  // Capabilities / Context Forge section
+  'caps.title_1':   { en: 'One forge.', fr: 'Une forge.', es: 'Una forja.', de: 'Eine Schmiede.', zh: '一个锻造厂。', ja: '一つの鍛冶場。' },
+  'caps.title_2':   { en: 'Three tools.', fr: 'Trois outils.', es: 'Tres herramientas.', de: 'Drei Werkzeuge.', zh: '三个工具。', ja: '三つのツール。' },
+  'caps.sub':       { en: 'RTK, ICM, and Vox share one philosophy: open source, Rust, zero telemetry, local-first.', fr: 'RTK, ICM et Vox partagent une philosophie : open source, Rust, zéro télémétrie, local-first.', es: 'RTK, ICM y Vox comparten una filosofía: open source, Rust, cero telemetría, local-first.', de: 'RTK, ICM und Vox teilen eine Philosophie: Open Source, Rust, null Telemetrie, local-first.', zh: 'RTK、ICM 和 Vox 共享一种理念：开源、Rust、零遥测、本地优先。', ja: 'RTK、ICM、Vox は同じ哲学を共有：オープンソース、Rust、ゼロテレメトリー、ローカルファースト。' },
+  'caps.rtk.verb':  { en: 'Compress', fr: 'Compresse', es: 'Comprime', de: 'Komprimiert', zh: '压缩', ja: '圧縮' },
+  'caps.rtk.desc':  { en: 'Commands, file reads, tests — compressed 60-90% before they reach your model context. Zero config.', fr: "Commandes, lectures de fichiers, tests — compressés à 60-90% avant d'atteindre votre contexte. Zéro config.", es: 'Comandos, lecturas de archivos, tests — comprimidos 60-90% antes de llegar al contexto. Sin config.', de: 'Befehle, Datei-Reads, Tests — 60-90% komprimiert bevor sie das Kontextfenster erreichen. Null Config.', zh: '命令、文件读取、测试——在到达模型上下文之前压缩 60-90%。零配置。', ja: 'コマンド、ファイル読み取り、テスト—モデルコンテキストに到達する前に 60-90% 圧縮。ゼロ設定。' },
+  'caps.rtk.stat':  { en: '89% noise removed', fr: '89% de bruit supprimé', es: '89% de ruido eliminado', de: '89% Rauschen entfernt', zh: '89% 噪音消除', ja: '89% ノイズ除去' },
+  'caps.icm.verb':  { en: 'Remember', fr: 'Mémorise', es: 'Recuerda', de: 'Erinnert', zh: '记忆', ja: '記憶' },
+  'caps.icm.desc':  { en: 'Persistent memory across sessions. Your agent picks up where it left off — decisions, errors, context.', fr: "Mémoire persistante entre les sessions. Votre agent reprend là où il s'était arrêté — décisions, erreurs, contexte.", es: 'Memoria persistente entre sesiones. Tu agente retoma donde lo dejó — decisiones, errores, contexto.', de: 'Persistenter Speicher über Sitzungen. Dein Agent macht weiter, wo er aufgehört hat — Entscheidungen, Fehler, Kontext.', zh: '跨会话的持久记忆。你的代理从上次停下的地方继续——决策、错误、上下文。', ja: 'セッション間の永続メモリ。エージェントが中断した場所から再開—決定、エラー、コンテキスト。' },
+  'caps.icm.stat':  { en: 'Infinite context memory', fr: 'Mémoire de contexte infinie', es: 'Memoria de contexto infinita', de: 'Unendlicher Kontextspeicher', zh: '无限上下文记忆', ja: '無限コンテキストメモリ' },
+  'caps.vox.verb':  { en: 'Speak', fr: 'Parle', es: 'Habla', de: 'Spricht', zh: '说话', ja: '発話' },
+  'caps.vox.desc':  { en: 'Voice output for your AI agent. Three TTS backends, four Claude Code integration modes.', fr: "Sortie vocale pour votre agent IA. Trois backends TTS, quatre modes d'intégration Claude Code.", es: 'Salida de voz para tu agente IA. Tres backends TTS, cuatro modos de integración Claude Code.', de: 'Sprachausgabe für deinen KI-Agenten. Drei TTS-Backends, vier Claude Code-Integrationsmodi.', zh: '为 AI 代理提供语音输出。三个 TTS 后端，四种 Claude Code 集成模式。', ja: 'AI エージェントの音声出力。3 つの TTS バックエンド、4 つの Claude Code 統合モード。' },
+  'caps.vox.stat':  { en: '3 TTS backends', fr: '3 backends TTS', es: '3 backends TTS', de: '3 TTS-Backends', zh: '3 个 TTS 后端', ja: '3 つの TTS バックエンド' },
+
+  // Install — persona tabs and notes
+  'install.tab.cc':     { en: 'Claude Code', fr: 'Claude Code', es: 'Claude Code', de: 'Claude Code', zh: 'Claude Code', ja: 'Claude Code' },
+  'install.tab.cursor': { en: 'Cursor', fr: 'Cursor', es: 'Cursor', de: 'Cursor', zh: 'Cursor', ja: 'Cursor' },
+  'install.tab.other':  { en: 'Other AI CLI', fr: 'Autre CLI IA', es: 'Otro CLI de IA', de: 'Anderes KI-CLI', zh: '其他 AI CLI', ja: 'その他 AI CLI' },
+  'install.note.cc':    { en: 'Installs PreToolUse hook in Claude Code settings.json — every Bash call is rewritten automatically.', fr: 'Installe un hook PreToolUse dans Claude Code settings.json — chaque appel Bash est réécrit automatiquement.', es: 'Instala hook PreToolUse en Claude Code settings.json — cada llamada Bash se reescribe automáticamente.', de: 'Installiert PreToolUse-Hook in Claude Code settings.json — jeder Bash-Aufruf wird automatisch umgeschrieben.', zh: '在 Claude Code settings.json 中安装 PreToolUse 钩子——每个 Bash 调用都会自动重写。', ja: 'Claude Code settings.json に PreToolUse フックをインストール—すべての Bash 呼び出しが自動的に書き換えられます。' },
+  'install.note.cursor':{ en: "Configures Cursor's .cursorrules to pipe Bash commands through rtk.", fr: 'Configure le .cursorrules de Cursor pour router les commandes Bash via rtk.', es: 'Configura .cursorrules de Cursor para enrutar comandos Bash a través de rtk.', de: 'Konfiguriert Cursors .cursorrules, um Bash-Befehle durch rtk zu leiten.', zh: '配置 Cursor 的 .cursorrules，将 Bash 命令通过 rtk 传输。', ja: 'Cursor の .cursorrules を設定して Bash コマンドを rtk 経由でパイプします。' },
+  'install.note.other': { en: 'Installs a global shell hook — works with Aider, Gemini CLI, Codex, Windsurf, and any terminal AI tool.', fr: 'Installe un hook shell global — fonctionne avec Aider, Gemini CLI, Codex, Windsurf et tout outil IA terminal.', es: 'Instala un hook de shell global — funciona con Aider, Gemini CLI, Codex, Windsurf y cualquier herramienta IA terminal.', de: 'Installiert einen globalen Shell-Hook — funktioniert mit Aider, Gemini CLI, Codex, Windsurf und jedem Terminal-KI-Tool.', zh: '安装全局 shell 钩子——适用于 Aider、Gemini CLI、Codex、Windsurf 以及任何终端 AI 工具。', ja: 'グローバルシェルフックをインストール—Aider、Gemini CLI、Codex、Windsurf、あらゆるターミナル AI ツールに対応。' },
+
+  // ── Eyebrow labels ────────────────────────────────────────────────────────
+  'eyebrow.get_started':   { en: 'get started',       fr: 'commencer',         es: 'empezar',           de: 'loslegen',          zh: '快速开始',   ja: 'はじめる' },
+  'eyebrow.context_forge': { en: 'context forge',     fr: 'context forge',     es: 'context forge',     de: 'context forge',     zh: 'context forge', ja: 'context forge' },
+  'eyebrow.ship_it':       { en: 'ship it',           fr: 'ship it',           es: 'ship it',           de: 'ship it',           zh: '发布',       ja: 'ship it' },
+  'eyebrow.problem':       { en: '01 — the problem',  fr: '01 — le problème',  es: '01 — el problema',  de: '01 — das Problem',  zh: '01 — 问题所在', ja: '01 — 問題' },
+
+  // ── Generic UI strings ────────────────────────────────────────────────────
+  'ui.terminal_title':    { en: 'Terminal',              fr: 'Terminal',             es: 'Terminal',             de: 'Terminal',             zh: '终端',          ja: 'ターミナル' },
+  'ui.hero_why_numbers':  { en: 'Why RTK? The numbers.', fr: 'Pourquoi RTK ? Les chiffres.', es: '¿Por qué RTK? Los números.', de: 'Warum RTK? Die Zahlen.', zh: '为什么选 RTK？数据说话。', ja: 'なぜ RTK？数字で見る。' },
+  'ui.github_stars':      { en: 'stars',                fr: 'étoiles',              es: 'estrellas',            de: 'Sterne',               zh: '星标',          ja: 'スター' },
+  'ui.works_with':        { en: 'Works with',           fr: 'Compatible avec',      es: 'Compatible con',       de: 'Kompatibel mit',       zh: '兼容',          ja: '対応ツール' },
+  'ui.install_docs_link': { en: 'Full install guide →', fr: 'Guide complet →',      es: 'Guía completa →',      de: 'Vollständige Anleitung →', zh: '完整安装指南 →', ja: '完全インストールガイド →' },
+  'ui.nav_docs':          { en: 'Docs',                 fr: 'Docs',                 es: 'Docs',                 de: 'Docs',                 zh: '文档',          ja: 'ドキュメント' },
+  'ui.nav_discord':       { en: 'Discord',              fr: 'Discord',              es: 'Discord',              de: 'Discord',              zh: 'Discord',       ja: 'Discord' },
+  'ui.nav_github':        { en: 'GitHub',               fr: 'GitHub',               es: 'GitHub',               de: 'GitHub',               zh: 'GitHub',        ja: 'GitHub' },
+  'ui.nav_support':       { en: '☕ Support',           fr: '☕ Soutenir',          es: '☕ Apoyar',            de: '☕ Unterstützen',      zh: '☕ 支持',        ja: '☕ サポート' },
+
+  // ── ARIA labels ───────────────────────────────────────────────────────────
+  'aria.copy':            { en: 'Copy',                 fr: 'Copier',               es: 'Copiar',               de: 'Kopieren',             zh: '复制',          ja: 'コピー' },
+  'aria.prev':            { en: 'Previous',             fr: 'Précédent',            es: 'Anterior',             de: 'Zurück',               zh: '上一个',        ja: '前へ' },
+  'aria.next':            { en: 'Next',                 fr: 'Suivant',              es: 'Siguiente',            de: 'Weiter',               zh: '下一个',        ja: '次へ' },
+  'aria.pause_slideshow': { en: 'Pause slideshow',      fr: 'Mettre en pause',      es: 'Pausar presentación',  de: 'Diashow pausieren',    zh: '暂停幻灯片',    ja: 'スライドショーを一時停止' },
+  'aria.resume_slideshow':{ en: 'Resume slideshow',     fr: 'Reprendre la lecture', es: 'Reanudar presentación', de: 'Diashow fortsetzen',  zh: '继续幻灯片',    ja: 'スライドショーを再開' },
+  'aria.choose_ai_tool':  { en: 'Choose your AI tool',  fr: 'Choisissez votre outil IA', es: 'Elige tu herramienta IA', de: 'Wähle dein KI-Tool', zh: '选择你的 AI 工具', ja: 'AI ツールを選択' },
+  'aria.main_nav':        { en: 'Main navigation',      fr: 'Navigation principale', es: 'Navegación principal', de: 'Hauptnavigation',     zh: '主导航',        ja: 'メインナビゲーション' },
+  'aria.open_menu':       { en: 'Open menu',            fr: 'Ouvrir le menu',       es: 'Abrir menú',           de: 'Menü öffnen',          zh: '打开菜单',      ja: 'メニューを開く' },
+  'aria.close_menu':      { en: 'Close menu',           fr: 'Fermer le menu',       es: 'Cerrar menú',          de: 'Menü schließen',       zh: '关闭菜单',      ja: 'メニューを閉じる' },
+  'aria.search':          { en: 'Search (Cmd+K)',        fr: 'Rechercher (Cmd+K)',   es: 'Buscar (Cmd+K)',       de: 'Suche (Cmd+K)',        zh: '搜索（Cmd+K）', ja: '検索（Cmd+K）' },
+  'aria.support_kofi':    { en: 'Support on Ko-fi',     fr: 'Soutenir sur Ko-fi',   es: 'Apoyar en Ko-fi',     de: 'Unterstützen auf Ko-fi', zh: '在 Ko-fi 上支持', ja: 'Ko-fi でサポート' },
+  'aria.join_discord':    { en: 'Join Discord',         fr: 'Rejoindre Discord',    es: 'Unirse a Discord',     de: 'Discord beitreten',    zh: '加入 Discord',  ja: 'Discord に参加' },
+  'aria.compat_tools':    { en: 'Compatible AI tools',  fr: 'Outils IA compatibles', es: 'Herramientas IA compatibles', de: 'Kompatible KI-Tools', zh: '兼容的 AI 工具', ja: '対応 AI ツール' },
+  'aria.share_x':         { en: 'Share on X',           fr: 'Partager sur X',       es: 'Compartir en X',       de: 'Auf X teilen',         zh: '分享到 X',      ja: 'X でシェア' },
+  'aria.share_bsky':      { en: 'Share on Bluesky',     fr: 'Partager sur Bluesky', es: 'Compartir en Bluesky', de: 'Auf Bluesky teilen',   zh: '分享到 Bluesky', ja: 'Bluesky でシェア' },
+  'aria.share_linkedin':  { en: 'Share on LinkedIn',    fr: 'Partager sur LinkedIn', es: 'Compartir en LinkedIn', de: 'Auf LinkedIn teilen', zh: '分享到 LinkedIn', ja: 'LinkedIn でシェア' },
 }

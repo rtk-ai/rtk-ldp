@@ -60,7 +60,7 @@ RTK_REPO_PATH=../rtk node scripts/prepare-docs.mjs
 `,
     'utf-8'
   )
-  process.exit(0)
+  process.exit(process.env.CI ? 1 : 0)
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────

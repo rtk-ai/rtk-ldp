@@ -62,6 +62,9 @@
   --space-10: 5rem;      /* 80px */
   --space-11: 6.25rem;   /* 100px */
   --space-12: 8.75rem;   /* 140px */
+  /* Calm-mode section padding (added for Context Forge redesign) */
+  --space-13: 9rem;      /* 144px */
+  --space-14: 11.25rem;  /* 180px — final CTA / hero breathing room */
 
   /* Typography scale */
   --text-xs: 0.75rem;    /* 12px */
@@ -88,6 +91,26 @@
   --shadow-glow-green: 0 0 32px rgba(0, 229, 153, 0.10);
   --shadow-glow-violet: 0 0 32px rgba(167, 139, 250, 0.10);
   --shadow-glow-cyan: 0 0 32px rgba(56, 189, 248, 0.10);
+
+  /* Card — muted baseline (no glow, no shadow, neutral) */
+  --card-muted-bg: var(--bg-card);
+  --card-muted-border: var(--border);
+  --card-muted-radius: var(--radius);
+
+  /* Pill — neutral compatibility tag */
+  --pill-bg: var(--bg-card);
+  --pill-border: var(--border-light);
+  --pill-text: var(--text-muted);
+  --pill-padding: 0.5rem 0.875rem;
+
+  /* Section eyebrow — `// 01 — label` mono style */
+  --eyebrow-color: var(--text-dim);
+  --eyebrow-size: var(--text-xs);
+  --eyebrow-font: var(--font-mono);
+  --eyebrow-tracking: 0.08em;
+
+  /* Hero subhead constraint */
+  --hero-subhead-max-w: 32rem;
 }
 
 /* ── Base resets ───────────────────────────────────────────────────── */

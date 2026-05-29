@@ -1,0 +1,8 @@
+---
+// Eyebrow — reusable `// label` mono section label
+interface Props {
+  label: string
+}
+const { label } = Astro.props
+---
+<span class="eyebrow">{`// ${label}`}</span>
