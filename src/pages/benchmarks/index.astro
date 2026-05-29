@@ -104,9 +104,12 @@ const schemaOrg = {
               </div>
             </div>
 
-            <!-- Detail table -->
-            <div class="bench-card bench-table-card">
-              <h3>Detail</h3>
+            <!-- Detail table (collapsed by default) -->
+            <details class="bench-card bench-table-card">
+              <summary class="bench-table-summary">
+                <h3>Detail</h3>
+                <span class="bench-table-chev" aria-hidden="true">▾</span>
+              </summary>
               <div class="bench-table-scroll">
                 <table class="bench-table" id="bench-table"></table>
               </div>
@@ -114,7 +117,7 @@ const schemaOrg = {
                 Savings % = (1 − ON / OFF) × 100; positive means RTK reduced the metric.
                 p-values are Welch's t-test (ON vs OFF, pooled across sessions).
               </p>
-            </div>
+            </details>
 
             <div id="bench-extra"></div>
 
@@ -328,6 +331,21 @@ const schemaOrg = {
 
   /* Table */
   .bench-table-card { overflow: hidden; }
+  .bench-table-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .bench-table-summary::-webkit-details-marker { display: none; }
+  .bench-table-summary h3 { margin-bottom: 0; }
+  .bench-table-chev { color: var(--text-dim); transition: transform 0.15s ease; }
+  .bench-table-card[open] .bench-table-summary { margin-bottom: 14px; }
+  .bench-table-card[open] .bench-table-chev { transform: rotate(180deg); }
+  .bench-table-summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius-sm); }
   .bench-table-scroll { overflow-x: auto; }
   .bench-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
   .bench-table th, .bench-table td { padding: 9px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--border); }
