@@ -4,6 +4,7 @@
  * based on the current page URL.
  */
 import Default from '@astrojs/starlight/components/Head.astro'
+import GoogleTag from '../global/GoogleTag.astro'
 
 const { entry, ...rest } = Astro.props
 
@@ -43,4 +44,5 @@ const breadcrumbSchema = {
 }
 ---
 <Default {...Astro.props} />
+<GoogleTag />
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
