@@ -218,12 +218,15 @@ def main():
     access   = os.environ.get("AWS_ACCESS_KEY_ID") or os.environ.get("OVH_S3_ACCESS_KEY", "")
     secret   = os.environ.get("AWS_SECRET_ACCESS_KEY") or os.environ.get("OVH_S3_SECRET_KEY", "")
 
-    missing = [k for k, v in {
-        "OVH_S3_ENDPOINT": endpoint,
-        "OVH_S3_BUCKET": bucket,
-        "AWS_ACCESS_KEY_ID / OVH_S3_ACCESS_KEY": access,
-        "AWS_SECRET_ACCESS_KEY / OVH_S3_SECRET_KEY": secret,
-    }.items() if not v]
+    missing = []
+    if not endpoint:
+        missing.append("OVH_S3_ENDPOINT")
+    if not bucket:
+        missing.append("OVH_S3_BUCKET")
+    if not access:
+        missing.append("AWS_ACCESS_KEY_ID / OVH_S3_ACCESS_KEY")
+    if not secret:
+        missing.append("AWS_SECRET_ACCESS_KEY / OVH_S3_SECRET_KEY")
     if missing:
         print(f"error: missing env vars: {', '.join(missing)}", file=sys.stderr)
         sys.exit(1)
