@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-06-12T12:26:14.142623+00:00",
+  "versions": [
+    "0.42.3"
+  ],
+  "ecosystems": [
+    "github",
+    "js",
+    "python",
+    "rust",
+    "ts"
+  ],
+  "latest_version": "0.42.3",
+  "total_runs": 5,
+  "total_sessions": 100
+}

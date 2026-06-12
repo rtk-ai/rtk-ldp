@@ -55,7 +55,7 @@
   var state = { index: null, versions: {}, trend: [], cur: null, latestRelease: null };
 
   function $(id) { return document.getElementById(id); }
-  var elSidebar, elMobile, elEmpty, elContent, elTitle, elSubtitle, elPdf, elKpis, elTable, elExtra;
+  var elSidebar, elMobile, elEmpty, elContent, elTitle, elSubtitle, elPdf, elData, elKpis, elTable, elExtra;
 
   function getJSON(path) {
     return fetch(path, { cache: 'no-cache' }).then(function (r) {
@@ -246,6 +246,7 @@
       ' · pass rate ' + fmtRate(m.pass_rate.on) + ' ON / ' + fmtRate(m.pass_rate.off) + ' OFF';
 
     renderPdf(cur, vdata, m);
+    renderData(cur, vdata);
     renderKpis(m, isAll);
     renderImpact(m);
     renderTable(cur, vdata, m);
@@ -256,11 +257,9 @@
     elPdf.textContent = '';
     var links = [];
     if (cur.scope === 'all') {
+      // Only the combined report here — per-ecosystem PDFs live in their own section.
       if (vdata.pdf_combined_public_url)
         links.push({ url: vdata.pdf_combined_public_url, label: 'All ecosystems (combined)' });
-      (vdata.ecosystems || []).forEach(function (e) {
-        if (e.pdf_public_url) links.push({ url: e.pdf_public_url, label: ecoMeta(e.ecosystem).name });
-      });
     } else if (m.pdf_public_url) {
       links.push({ url: m.pdf_public_url, label: ecoMeta(cur.scope).name + ' report (PDF)' });
     }
@@ -271,23 +270,38 @@
       elPdf.appendChild(span);
       return;
     }
-    var SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+    appendDownloadLinks(elPdf, links);
+  }
+
+  var DOWNLOAD_SVG = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+  function appendDownloadLinks(el, links) {
     links.forEach(function (l) {
       var a = document.createElement('a');
       a.className = 'bench-pdf-link';
       a.href = l.url;
       a.setAttribute('download', '');
-      a.innerHTML = SVG + esc(l.label);
-      elPdf.appendChild(a);
+      a.innerHTML = DOWNLOAD_SVG;
+      a.appendChild(document.createTextNode(l.label));
+      el.appendChild(a);
     });
   }
 
-  function kpiCard(label, value, cls, foot) {
+  // Raw CSV downloads for the current scope, built at fetch time from data/
+  // (see scripts/fetch-benchmarks.py) and listed in metrics.json data_downloads.
+  function renderData(cur, vdata) {
+    if (!elData) return;
+    elData.textContent = '';
+    var downloads = (vdata.data_downloads || {})[cur.scope] || [];
+    appendDownloadLinks(elData, downloads);
+  }
+
+  function kpiCard(label, value, cls, foot, isSig) {
     var el = document.createElement('div');
     el.className = 'bench-kpi';
     el.innerHTML =
       '<div class="bench-kpi-label">' + esc(label) + '</div>' +
-      '<div class="bench-kpi-value ' + esc(cls) + '">' + esc(value) + '</div>' +
+      '<div class="bench-kpi-value ' + esc(cls) + '">' + esc(value) +
+        (isSig ? ' <span class="sig" title="p &lt; 0.05">*</span>' : '') + '</div>' +
       '<div class="bench-kpi-foot">' + esc(foot) + '</div>';
     return el;
   }
@@ -305,8 +319,8 @@
       bashFoot = 'ON ' + fmtBytes(b.on_mean) + ' vs OFF ' + fmtBytes(b.off_mean) + ' avg/run';
       costFoot = 'ON ' + fmtUsd(c.on_mean_usd) + ' vs OFF ' + fmtUsd(c.off_mean_usd) + ' avg/run';
     }
-    elKpis.appendChild(kpiCard('Bash output savings', fmtPct(b.savings_pct), signClass(b.savings_pct), bashFoot));
-    elKpis.appendChild(kpiCard('Cost savings', fmtPct(c.savings_pct), signClass(c.savings_pct), costFoot));
+    elKpis.appendChild(kpiCard('Bash output savings', fmtPct(b.savings_pct), sig(b.p_value) ? signClass(b.savings_pct) : 'neutral', bashFoot, sig(b.p_value)));
+    elKpis.appendChild(kpiCard('Cost savings', fmtPct(c.savings_pct), sig(c.p_value) ? signClass(c.savings_pct) : 'neutral', costFoot, sig(c.p_value)));
   }
 
   // "Savings chain": RTK's direct, big win on Bash output cascades downstream
@@ -380,8 +394,10 @@
     });
   }
 
+  // The * marker has no color of its own — it inherits the cell's (see .sig in the page CSS).
   function cellPct(x, p) {
-    return '<td class="num ' + signClass(x) + '">' + fmtPct(x) + (sig(p) ? ' <span class="sig" title="p &lt; 0.05">*</span>' : '') + '</td>';
+    var cls = sig(p) ? signClass(x) : 'muted';
+    return '<td class="num ' + cls + '">' + fmtPct(x) + (sig(p) ? ' <span class="sig" title="p &lt; 0.05">*</span>' : '') + '</td>';
   }
   function fmtDur(ms) {
     if (!ms) return '—';
@@ -400,9 +416,9 @@
   }
   function winner(savPct, pVal) {
     if (savPct === null || savPct === undefined) return '<td>—</td>';
-    var sig = pVal !== undefined && pVal < 0.05;
-    if (savPct > 0)  return '<td class="win-on">'  + (sig ? '✓ RTK' : '~ RTK') + '</td>';
-    if (savPct < 0)  return '<td class="win-off">' + (sig ? '✗ OFF' : '~ OFF') + '</td>';
+    var isSig = sig(pVal);
+    if (savPct > 0)  return isSig ? '<td class="win-on">✓ RTK</td>' : '<td class="muted">~ RTK</td>';
+    if (savPct < 0)  return isSig ? '<td class="win-off">✗ OFF</td>' : '<td class="muted">~ OFF</td>';
     return '<td>Tie</td>';
   }
 
@@ -504,7 +520,7 @@
   function cacheRefs() {
     elSidebar = $('bench-sidebar'); elMobile = $('bench-mobile-select');
     elEmpty = $('bench-empty'); elContent = $('bench-content'); elTitle = $('bench-title');
-    elSubtitle = $('bench-subtitle'); elPdf = $('bench-pdf-links'); elKpis = $('bench-kpis');
+    elSubtitle = $('bench-subtitle'); elPdf = $('bench-pdf-links'); elData = $('bench-data-links'); elKpis = $('bench-kpis');
     elTable = $('bench-table');
     elExtra = $('bench-extra');
   }

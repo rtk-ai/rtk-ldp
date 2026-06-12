@@ -110,6 +110,7 @@ const schemaOrg = {
                 <h3>Detail</h3>
                 <span class="bench-table-chev" aria-hidden="true">▾</span>
               </summary>
+              <div class="bench-pdf-links bench-data-links" id="bench-data-links"></div>
               <div class="bench-table-scroll">
                 <table class="bench-table" id="bench-table"></table>
               </div>
@@ -284,7 +285,8 @@ const schemaOrg = {
   .bench-content-head h2 { font-size: var(--text-3xl); letter-spacing: -0.02em; }
   .bench-content-sub { color: var(--text-muted); font-size: var(--text-sm); margin-top: 4px; }
 
-  .bench-pdf-links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .bench-pdf-links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
+  .bench-data-links { justify-content: flex-start; margin-bottom: 14px; }
   .bench-pdf-link {
     display: inline-flex;
     align-items: center;
@@ -357,7 +359,7 @@ const schemaOrg = {
   .bench-table .neg { color: var(--red); }
   .bench-table .muted { color: var(--text-dim); }
   .bench-table .eco-cell { display: flex; align-items: center; gap: 8px; }
-  .bench-table .sig { color: var(--accent); font-weight: 700; }
+  .sig { font-weight: 700; } /* inherits the value's color (green/red) */
   .bench-table .metric-section-head td { background: var(--bg-card-hover); color: var(--text-dim); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 12px; border-bottom: 1px solid var(--border); }
   .bench-table .metric-row td:first-child { padding-left: 20px; }
   .bench-table .win-on { color: var(--accent); font-weight: 600; }

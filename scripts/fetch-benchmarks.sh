@@ -56,7 +56,8 @@ DEST="$REPO_ROOT/public/data/benchmarks"
 mkdir -p "$DEST"
 
 echo "Add-only sync s3://${BUCKET}/benchmarks/ → public/data/benchmarks/"
-echo "  (never overwrites or deletes local files — only downloads what's missing)"
+echo "  (never overwrites or deletes local files — only downloads what's missing;"
+echo "   index.json and trend.json are rebuilt locally from all versions)"
 
 # List all remote keys, then copy only the ones missing locally. We avoid
 # `aws s3 sync` here because it overwrites changed files and `--delete` removes
@@ -74,6 +75,12 @@ while IFS= read -r key; do
   [[ -z "$key" || "$key" == "None" ]] && continue
   rel="${key#benchmarks/}"
   [[ -z "$rel" ]] && continue                      # skip the prefix itself
+  # Only mirror what the /benchmarks/ page uses: metrics.json, data/, reports/public/.
+  # (index.json / trend.json are rebuilt locally from all versions below.)
+  case "$rel" in
+    */metrics.json|*/data/*|*/reports/public/*) ;;
+    *) continue ;;
+  esac
   local_path="$DEST/$rel"
   if [[ -e "$local_path" ]]; then
     skipped=$((skipped + 1))
@@ -85,6 +92,8 @@ while IFS= read -r key; do
   echo "  ↓ $rel"
   added=$((added + 1))
 done < <(printf '%s\n' "$keys" | tr '\t' '\n')
+
+python3 "$SCRIPT_DIR/fetch-benchmarks.py" --rebuild-only
 
 echo
 echo "✓ Done. ${added} added, ${skipped} kept (already present)."

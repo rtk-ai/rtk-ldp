@@ -39,6 +39,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+
+      - name: Fetch benchmark dashboard data from OVH S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.OVH_S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.OVH_S3_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.OVH_S3_REGION }}
+          OVH_S3_ENDPOINT: ${{ secrets.OVH_S3_ENDPOINT }}
+          OVH_S3_BUCKET: ${{ secrets.OVH_S3_BUCKET }}
+        run: |
+          # Add-only: committed versions are never overwritten and versions
+          # absent from S3 are never deleted.
+          if [ -n "$OVH_S3_BUCKET" ]; then
+            pip install --quiet boto3
+            python3 scripts/fetch-benchmarks.py \
+              || echo "::warning::benchmark fetch failed; building with committed data"
+          else
+            echo "::notice::OVH S3 not configured; skipping benchmark data fetch"
+          fi
+
       - name: Clone RTK repo
         run: git clone --depth 1 --branch ${{ vars.RTK_DOCS_REF || 'master' }} https://github.com/rtk-ai/rtk.git ./rtk-repo
         # If private: use https://x-access-token:${{ secrets.RTK_REPO_PAT }}@github.com/rtk-ai/rtk.git
