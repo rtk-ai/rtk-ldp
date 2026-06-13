@@ -231,7 +231,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: 10px 22px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   font-weight: 600;
   font-size: 0.9rem;
   font-family: var(--font-body);
