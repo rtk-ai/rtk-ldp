@@ -1,0 +1,148 @@
+---
+/**
+ * Google tag (gtag.js) — GA4 property G-G4YK0ST6ZW with Consent Mode v2.
+ * gtag always loads but starts with consent denied: no cookie is set until
+ * the visitor accepts; non-consented traffic sends cookieless pings that
+ * GA4 uses for behavioral modeling.
+ * The choice is persisted in localStorage('rtk-consent'): 'granted' | 'denied'.
+ * Included in both head shells: Layout.astro (landing/product)
+ * and starlight/Head.astro (docs).
+ * Reopen the banner from anywhere with window.rtkConsentReset().
+ */
+---
+<style is:inline>
+  .consent-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 3000;
+    max-width: 560px;
+    margin-inline: auto;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-body);
+  }
+  .consent-banner p {
+    margin: 0;
+    flex: 1 1 260px;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  .consent-banner .consent-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .consent-banner button {
+    min-height: 44px;
+    padding: 8px 18px;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .consent-banner .consent-accept {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: var(--text-on-accent);
+  }
+  .consent-banner .consent-accept:hover { background: var(--accent-hover); }
+  .consent-banner .consent-decline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+  .consent-banner .consent-decline:hover { color: var(--text); border-color: var(--border-light); }
+</style>
+<script is:inline>
+  (function () {
+    var KEY = 'rtk-consent';
+    var GA_ID = 'G-G4YK0ST6ZW';
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+
+    var choice = null;
+    try { choice = localStorage.getItem(KEY); } catch (e) {}
+
+    // Consent Mode v2 — defaults must be set before gtag.js loads.
+    window.gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: choice === 'granted' ? 'granted' : 'denied'
+    });
+    window.gtag('js', new Date());
+    window.gtag('config', GA_ID);
+
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+
+    function store(value) {
+      try { localStorage.setItem(KEY, value); } catch (e) {}
+    }
+
+    function showBanner() {
+      if (document.getElementById('consent-banner')) return;
+      var banner = document.createElement('div');
+      banner.id = 'consent-banner';
+      banner.className = 'consent-banner';
+      banner.setAttribute('role', 'dialog');
+      banner.setAttribute('aria-label', 'Cookie consent');
+
+      var text = document.createElement('p');
+      text.textContent = 'This site uses cookies for analytics. Do you accept?';
+
+      var actions = document.createElement('div');
+      actions.className = 'consent-actions';
+
+      var decline = document.createElement('button');
+      decline.className = 'consent-decline';
+      decline.textContent = 'Decline';
+      decline.addEventListener('click', function () {
+        store('denied');
+        banner.remove();
+        window.gtag('consent', 'update', { analytics_storage: 'denied' });
+      });
+
+      var accept = document.createElement('button');
+      accept.className = 'consent-accept';
+      accept.textContent = 'Accept';
+      accept.addEventListener('click', function () {
+        store('granted');
+        banner.remove();
+        window.gtag('consent', 'update', { analytics_storage: 'granted' });
+      });
+
+      actions.appendChild(decline);
+      actions.appendChild(accept);
+      banner.appendChild(text);
+      banner.appendChild(actions);
+      document.body.appendChild(banner);
+    }
+
+    function onReady(fn) {
+      if (document.body) fn();
+      else document.addEventListener('DOMContentLoaded', fn);
+    }
+
+    if (choice !== 'granted' && choice !== 'denied') onReady(showBanner);
+
+    window.rtkConsentReset = function () {
+      try { localStorage.removeItem(KEY); } catch (e) {}
+      onReady(showBanner);
+    };
+  })();
+</script>

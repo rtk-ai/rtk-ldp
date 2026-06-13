@@ -4,6 +4,7 @@
  * Starlight pages use their own layout via the docs collection.
  */
 import { NON_DEFAULT_LOCALES } from '../lib/i18n'
+import GoogleTag from '../components/global/GoogleTag.astro'
 
 export interface Props {
   title?: string
@@ -73,6 +74,8 @@ const allSchemas = hasGraph
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#060b18" />
+
+    <GoogleTag />
 
     <title>{title}</title>
     <meta name="description" content={description} />
