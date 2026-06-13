@@ -1,0 +1,1493 @@
+run_id,vm_name,group,pair_index,turn_number,message_id,tool_use_id,tool_name,command,is_rtk_prefixed,description,stdout_bytes,stderr_bytes,content_bytes,is_error,input_tokens,cache_read_input_tokens,cache_creation_input_tokens,output_tokens,has_tool,timestamp,content_preview,stop_reason,interrupted,is_image,elapsed_since_prev_ms
+20260606-144003,rtk-bench-on-0,on,0,1,msg_01RBByi5JMyqgLrtx29FhvYC,toolu_01BMHKMc5ccWWjYLqqT5vzeq,Bash,ls -la,False,List files in current directory,791,0,791,False,5,21972,4398,8,True,2026-06-06T12:41:19.946Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-0,on,0,2,msg_01Cj9JfpCQF73Z82UtekGR1W,toolu_01DAU2XyeGCmXpTeEp7C6iJG,Bash,cat pyproject.toml,False,Show pyproject.toml content,4119,0,4119,False,1,26370,599,66,True,2026-06-06T12:41:22.117Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2171
+20260606-144003,rtk-bench-on-0,on,0,3,msg_01YVpdUT7VrHPQht51sUfFrd,toolu_01TbdvffS4PbMTxqZu8eWumQ,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src/,4,0,4,False,1,26969,2295,59,True,2026-06-06T12:41:24.717Z,1206,,False,False,2600
+20260606-144003,rtk-bench-on-0,on,0,4,msg_016JCVpysotMHYtpHTA6MxAt,toolu_012CtfVtDHPfmbhuLxhgLP2K,Bash,git log --oneline -10,False,Show last 10 git commits,665,0,665,False,1,29264,120,62,True,2026-06-06T12:41:27.188Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2471
+20260606-144003,rtk-bench-on-0,on,0,5,msg_01T2sErgToLE4evMPPjXtAgz,toolu_01RNCidZXMPRPbJUgpceQSuC,Bash,pip list 2>&1,False,List installed Python packages,476,0,476,False,1,29384,396,65,True,2026-06-06T12:41:29.495Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2307
+20260606-144003,rtk-bench-on-0,on,0,6,msg_01PEwDup51pn4n2y6gYLAKBj,toolu_019gst4Bv4Sj2yWBD7R9knCa,Bash,pip list --outdated 2>&1,False,List outdated Python packages,227,0,227,False,1,29780,356,63,True,2026-06-06T12:41:33.365Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,3870
+20260606-144003,rtk-bench-on-0,on,0,7,msg_01WA6gv6xcUVR8u5gnU5t8gp,toolu_01VTaZ5RnBaMZXC9v69FsWhS,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix/,0,0,5381,True,1,30136,197,68,True,2026-06-06T12:41:37.674Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  E713 (2x)
+  F821 (2x)
+  E71",,False,False,4309
+20260606-144003,rtk-bench-on-0,on,0,8,msg_01T1Kgf8jRze6erRP521Q5fZ,toolu_01PtJRgLaS3q51Mc5s1scy9m,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics,0,0,1226,True,1,30333,2759,63,True,2026-06-06T12:41:40.106Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2432
+20260606-144003,rtk-bench-on-0,on,0,9,msg_01Ht6bGaKgxXLmvq7UtMkbMK,toolu_01JiwTJHDxw2kxf9aZ53dAxr,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33092,687,61,True,2026-06-06T12:41:43.642Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,3536
+20260606-144003,rtk-bench-on-0,on,0,10,msg_01V8CKzqJWFZPtD1bDQ5q2nZ,toolu_01WH5PXottWDsgbeamdpyEtE,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and head 200 lines,23048,0,23048,False,1,33779,262,66,True,2026-06-06T12:41:52.184Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,8542
+20260606-144003,rtk-bench-on-0,on,0,11,msg_016bUx2VS2ThpsPcjhayDqFQ,toolu_01HrVoLHAttx4kMBF71y7myf,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Run mypy and tail last 5 lines,304,0,304,False,1,34041,9049,49,True,2026-06-06T12:41:55.495Z,"src/pretix/helpers/migrations/0001_initial.py (1 errors)
+  L12: [var-annotated] Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")
+
+src/pretix/control/forms/orders.py (",,False,False,3311
+20260606-144003,rtk-bench-on-0,on,0,12,msg_01AgphBQddoecZekhMAsv3nq,toolu_017mYoHSQkUT4P6a57pJk6Bv,Bash,pip show django 2>&1,False,Show django package info,0,0,49,True,1,43090,324,62,True,2026-06-06T12:41:57.775Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2280
+20260606-144003,rtk-bench-on-0,on,0,13,msg_017M7m9MwQBqyLCs9ggS7btk,,,,False,,0,0,0,False,1,43414,137,45,False,,,,False,False,0
+20260606-144003,rtk-bench-off-0,off,0,1,msg_019dRhazxy9Eypsjqgyrv99F,toolu_016EfHjmBD96p7bgmdNM7fjY,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,21972,4167,8,True,2026-06-06T12:41:19.689Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:41 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-0,off,0,2,msg_0116Pq6bFBnxtoKPm6Sz7WjG,toolu_014LC7uoekWuWW7Xq9am42Zh,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26139,1703,63,True,2026-06-06T12:41:21.860Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2171
+20260606-144003,rtk-bench-off-0,off,0,3,msg_01X8UCiPcDy67F5kD9gkwGos,toolu_011vXwX5Dh8ifimm6ft76hLJ,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,27842,2296,51,True,2026-06-06T12:41:24.056Z,1206,,False,False,2196
+20260606-144003,rtk-bench-off-0,off,0,4,msg_01JBrT6nYArLet1UM4vNaRBf,toolu_014joKVDRQW6uNXM1SYe5Rkq,Bash,git log --oneline -10,False,Show 10 most recent commits,665,0,665,False,1,30138,119,62,True,2026-06-06T12:41:26.799Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2743
+20260606-144003,rtk-bench-off-0,off,0,5,msg_017xoHJc5f38mVWk91cQDNZg,toolu_012xPhRVxDQbqH2nA6Bps5j5,Bash,pip list 2>&1,False,List installed pip packages,416,0,416,False,1,30257,397,67,True,2026-06-06T12:41:29.058Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2259
+20260606-144003,rtk-bench-off-0,off,0,6,msg_01VaSotgz5Dtq95LwawpK5SB,toolu_013Ubj1F7Rh9SGB1gjK5QFs7,Bash,pip list --outdated 2>&1,False,List outdated pip packages,196,0,196,False,1,30654,281,66,True,2026-06-06T12:41:32.777Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3719
+20260606-144003,rtk-bench-off-0,off,0,7,msg_01CWJnpttyhyMRfdtkPVYaT5,toolu_0124dx1uMzmwCPm2dGZVgYfM,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check,0,0,10040,True,1,30935,215,59,True,2026-06-06T12:41:36.651Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,3874
+20260606-144003,rtk-bench-off-0,off,0,8,msg_012ipeP37GTzCtfCYdRvDvV8,toolu_01WpwpXT1q6tfMjho9KG4E6P,Bash,ruff check src/pretix/ --statistics 2>&1,False,Get ruff violations by rule,0,0,900,True,1,31150,4444,63,True,2026-06-06T12:41:39.963Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,3312
+20260606-144003,rtk-bench-off-0,off,0,9,msg_01AneijzYYFXzEoFetPZUqq6,toolu_01XvFnV5mA7PdEJ58aYpQ2f5,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,10040,True,1,35594,567,61,True,2026-06-06T12:41:42.603Z,"Exit code 2
+error: Failed to format src/pretix/presale/context.py: Invalid document: Expected end tag of kind Group but found Indent.
+error: Failed to format src/pretix/presale/views/widget.py: Invali",,False,False,2640
+20260606-144003,rtk-bench-off-0,off,0,10,msg_01D88xKetFMd74MshZeLDoww,toolu_01C8ig8hkcgd4d7jFeSdjwFf,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show top errors,26071,0,26071,False,1,36161,4603,36,True,2026-06-06T12:41:55.558Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,12955
+20260606-144003,rtk-bench-off-0,off,0,11,msg_019JkACS2JtUfVPhTGJnY1mm,toolu_01DzYsSr1KrEP5ze5UJzZZUd,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Show mypy error summary,860,0,860,False,1,40764,11162,63,True,2026-06-06T12:42:01.984Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,6426
+20260606-144003,rtk-bench-off-0,off,0,12,msg_01UqaeJn4Djp1mMuNNdjpT8q,toolu_01MuLvKy1qGm5UBu8p6Awsjn,Bash,pip show django 2>&1,False,Show Django version info,0,0,49,True,1,51926,466,62,True,2026-06-06T12:42:06.506Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,4522
+20260606-144003,rtk-bench-off-0,off,0,13,msg_01LBL3SQa5EzJ18CejvWdL5X,,,,False,,0,0,0,False,1,52392,138,45,False,,,,False,False,0
+20260606-144003,rtk-bench-on-1,on,1,1,msg_01KUPXaHMUKmEFpM8nrrKhSM,toolu_01AsvSiNR9oMcinfDQVP8rX2,Bash,ls -la,False,List directory contents,791,0,791,False,5,21972,4398,8,True,2026-06-06T12:41:19.809Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-1,on,1,2,msg_01Xx1oXxyNf8ucUDewjvrLSi,toolu_01DsHbfw9ECb1fq57AotHGb9,Bash,cat pyproject.toml,False,Show pyproject.toml content,4119,0,4119,False,1,26370,590,63,True,2026-06-06T12:41:21.759Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,1950
+20260606-144003,rtk-bench-on-1,on,1,3,msg_01UBxthhkiA4ACEiqYrTkByz,toolu_018ZGDFVEfFW1vk6YjR4foKQ,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,26960,2295,51,True,2026-06-06T12:41:23.934Z,1206,,False,False,2175
+20260606-144003,rtk-bench-on-1,on,1,4,msg_014SvRR6xvo3TpDLxibcjMAA,toolu_01F4euioGxjDkegR9mtJqRvX,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,29255,119,69,True,2026-06-06T12:41:28.478Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,4544
+20260606-144003,rtk-bench-on-1,on,1,5,msg_01G4gVPbzxUdgjd5GknAwzFC,toolu_01DxJ4uwXsEckeppEtkFJ9PD,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29374,393,67,True,2026-06-06T12:41:30.894Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2416
+20260606-144003,rtk-bench-on-1,on,1,6,msg_0153pcfxYy1q1onj7wxCP3nQ,toolu_01PLTdJtYXqHs5Si41s6HQEn,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29767,356,65,True,2026-06-06T12:41:35.042Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,4148
+20260606-144003,rtk-bench-on-1,on,1,7,msg_01DiGAakygSjGrV55ToPqx5G,toolu_01W94dNTUtSaQKiwGwXaENtz,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix,0,0,5392,True,1,30123,197,51,True,2026-06-06T12:41:38.373Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  E713 (2x)
+  F821 (2x)
+  E40",,False,False,3331
+20260606-144003,rtk-bench-on-1,on,1,8,msg_015vcsTGsHc9kKifsCRLbenL,toolu_01TQSHRpE4YDTMsbFoHmbWoP,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff stats,0,0,1226,True,1,30320,2765,55,True,2026-06-06T12:41:40.713Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2340
+20260606-144003,rtk-bench-on-1,on,1,9,msg_01DRc11MAZbpkaTY8V2xpNvu,toolu_01KGQxsdLFRjq6NbFjXptgTs,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33085,686,71,True,2026-06-06T12:41:44.330Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,3617
+20260606-144003,rtk-bench-on-1,on,1,10,msg_01J1Kw3t43CEF8p1iGhQpTJi,toolu_01YTsiyAPHd6muTCCBzRqL7m,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,23048,0,23048,False,1,33771,262,66,True,2026-06-06T12:41:53.395Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,9065
+20260606-144003,rtk-bench-on-1,on,1,11,msg_01NRjXxGke4gHUNJ1BSZYX6p,toolu_01GTDeksczqFTqb5yJXmPhJP,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Show mypy summary,345,0,345,False,1,34033,9050,59,True,2026-06-06T12:41:55.949Z,"src/pretix/plugins/webcheckin/views.py (1 errors)
+  L30: [assignment] Incompatible types in assignment (expression has type ""AnyPermissionOf"", base class ""EventPermissionRequiredMixin"" de...
+
+src/pret",,False,False,2554
+20260606-144003,rtk-bench-on-1,on,1,12,msg_018UTiXg8DNNTWxAJZwG3oBz,toolu_01X6SeXD7PUkmB6LCMj5Z1QQ,Bash,pip show django 2>&1,False,Show installed Django package info,0,0,49,True,1,43083,279,67,True,2026-06-06T12:41:58.313Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2364
+20260606-144003,rtk-bench-on-1,on,1,13,msg_01T7qBf2EpNyrpTq5Y7uvGzF,,,,False,,0,0,0,False,1,43362,140,52,False,,,,False,False,0
+20260606-144003,rtk-bench-off-1,off,1,1,msg_013K2Q9h3vWd8Sgo4dZxi8fT,toolu_01K5bYTEGySXFdZH6ffhAQFi,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,21972,4167,8,True,2026-06-06T12:41:19.623Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:41 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:40 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-1,off,1,2,msg_012mgPv6ZwtwKDi9orGksHke,toolu_019YWE2Y1tU5yc35B2qLm9b9,Bash,cat pyproject.toml,False,Show project metadata and dependencies,4119,0,4119,False,1,26139,1703,63,True,2026-06-06T12:41:21.657Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2033
+20260606-144003,rtk-bench-off-1,off,1,3,msg_014u5C1BvKxNRHamicFzNpYt,toolu_01XbmT3g8EMhTBSx38urEt72,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,27842,2296,50,True,2026-06-06T12:41:24.071Z,1206,,False,False,2414
+20260606-144003,rtk-bench-off-1,off,1,4,msg_019UZfTfMzHgVF3GPm59dcyz,toolu_01V4ptgj6XL3DK1pM9hmdNo7,Bash,git log --oneline -10,False,Show recent commit messages,665,0,665,False,1,30138,119,69,True,2026-06-06T12:41:26.568Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2497
+20260606-144003,rtk-bench-off-1,off,1,5,msg_014Uo7NpaQeGS35gPvv1xpen,toolu_017P5B9LHN7oRkfpDX9mb3b6,Bash,pip list 2>&1,False,Show all installed Python packages,416,0,416,False,1,30257,395,64,True,2026-06-06T12:41:28.945Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2377
+20260606-144003,rtk-bench-off-1,off,1,6,msg_01NH1RzAvD4CG21rA8XKZDF1,toolu_01B8DqEsGzWWm1C5SsbcNejH,Bash,pip list --outdated 2>&1,False,Show outdated Python packages,196,0,196,False,1,30652,283,71,True,2026-06-06T12:41:32.639Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3694
+20260606-144003,rtk-bench-off-1,off,1,7,msg_014G3w6d2ncUU8ZK9HDBxwU2,toolu_01X6XwNYDG7YY63EXgySei5Y,Bash,ruff check src/pretix/ 2>&1,False,Run ruff lint check,0,0,10040,True,1,30935,216,68,True,2026-06-06T12:41:36.200Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,3561
+20260606-144003,rtk-bench-off-1,off,1,8,msg_01PQeoyYUohv163TCMbLEEid,toolu_01NaeRimU5dKHAWfecdtjiGr,Bash,ruff check src/pretix/ --statistics 2>&1,False,Get ruff violation statistics,0,0,900,True,1,31151,4446,63,True,2026-06-06T12:41:38.833Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2633
+20260606-144003,rtk-bench-off-1,off,1,9,msg_01GkLhqnxQZJ4NKtuYM73p8T,toolu_01WUo2SnkN8kB8vY46UBXBTt,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,10040,True,1,35597,567,61,True,2026-06-06T12:41:41.055Z,"Exit code 2
+error: Failed to format src/pretix/presale/context.py: Invalid document: Expected end tag of kind Group but found Indent.
+error: Failed to format src/pretix/presale/views/widget.py: Invali",,False,False,2222
+20260606-144003,rtk-bench-off-1,off,1,10,msg_016CywAUwja1Gr6jKUUjxr5E,toolu_01WMoHyGxbrGfxmp7rCusuVm,Bash,ruff format --check src/pretix/ 2>&1 | tail -5,False,Get tail of ruff format check output,238,0,238,False,1,36164,4603,71,True,2026-06-06T12:41:45.394Z,"Would reformat: src/pretix/testutils/scope.py
+Would reformat: src/pretix/testutils/sessions.py
+Would reformat: src/pretix/testutils/settings.py
+Would reformat: src/pretix/urls.py
+862 files would be re",,False,False,4339
+20260606-144003,rtk-bench-off-1,off,1,11,msg_01QeHpuTpKTdi6eqbYDZrc8L,toolu_015urAWXgn2zp1cE6AKVWxyD,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,26071,0,26071,False,1,40767,406,31,True,2026-06-06T12:41:58.982Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,13588
+20260606-144003,rtk-bench-off-1,off,1,12,msg_017HWwZomuHzc4KXWaCZ1Boy,toolu_01RGpECdg5bzp74pCT5txXcm,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary,860,0,860,False,1,41173,10950,63,True,2026-06-06T12:42:05.173Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,6191
+20260606-144003,rtk-bench-off-1,off,1,13,msg_01EpJH82FYr86RXnuTtwvKNB,toolu_01XbYeP2jmck2WfU25rYxVWF,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | grep -oE '\[[a-z-]+\]$' | sort | uniq -c | sort -rn | head -10,False,Count mypy error types,212,0,212,False,1,52123,465,48,True,2026-06-06T12:42:08.583Z,"    448 [assignment]
+    137 [attr-defined]
+     78 [var-annotated]
+     41 [arg-type]
+     26 [override]
+     20 [misc]
+     18 [return-value]
+     16 [return]
+     13 [union-attr]
+     10 [annotatio",,False,False,3410
+20260606-144003,rtk-bench-off-1,off,1,14,msg_01XDT1xuKVhBsZUTCtk9aCDa,toolu_01AiGP96yJ4kPPTbxGk6ao8d,Bash,pip show django 2>&1,False,Show installed Django package details,0,0,49,True,1,52588,301,63,True,2026-06-06T12:42:12.615Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,4032
+20260606-144003,rtk-bench-off-1,off,1,15,msg_012poerQu51BdRxUczttyL6J,,,,False,,0,0,0,False,1,52889,140,39,False,,,,False,False,0
+20260606-144003,rtk-bench-on-2,on,2,1,msg_01Gq9x3hcSGeypRcy6T9zkLi,toolu_01KMQk9G5cV6bAxU2hFcDLrY,Bash,ls -la,False,List files in current directory,791,0,791,False,5,21972,4398,8,True,2026-06-06T12:41:19.425Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-2,on,2,2,msg_01762oh5KR1chaFJ1x2mtnMf,toolu_011LW3N11nSTGsTCvXUjVc4g,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26370,587,66,True,2026-06-06T12:41:21.376Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,1951
+20260606-144003,rtk-bench-on-2,on,2,3,msg_01AtEdmQqoK16G5ep76V7o5a,toolu_01XBbo74mkw3w8KF4E36wky6,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,26957,2296,51,True,2026-06-06T12:41:23.679Z,1206,,False,False,2303
+20260606-144003,rtk-bench-on-2,on,2,4,msg_01LWZ3hdbPG17QJ6FnBpNFt5,toolu_01WpC3TGNRUQYqQm9wd9PYT7,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,29253,119,68,True,2026-06-06T12:41:25.503Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1824
+20260606-144003,rtk-bench-on-2,on,2,5,msg_01NRjZo5XN1Hx4cThvVCgfuC,toolu_01JMRrpcKAdMsYnesnP2ntR5,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29372,393,67,True,2026-06-06T12:41:28.270Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2767
+20260606-144003,rtk-bench-on-2,on,2,6,msg_01Rdydf1Y14YHaZpsr9VkS4o,toolu_01YZGhbf4D6W886SAzPa9tu1,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29765,356,65,True,2026-06-06T12:41:36.539Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,8269
+20260606-144003,rtk-bench-on-2,on,2,7,msg_014aCQBucVqgQoYH2RCAFtYC,toolu_01UADrWa21aUDyQNJwdVcDCP,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix,0,0,5392,True,1,30121,197,67,True,2026-06-06T12:41:39.157Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  F821 (2x)
+  E713 (2x)
+  E71",,False,False,2618
+20260606-144003,rtk-bench-on-2,on,2,8,msg_01GtmBs2c6yQMKfnBF3MSdG1,toolu_01TXH7zVZGy5seyMT26hmsWy,Bash,ruff check src/pretix/ --statistics 2>&1,False,Run ruff check with statistics,0,0,1226,True,1,30318,2765,63,True,2026-06-06T12:41:42.168Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,3011
+20260606-144003,rtk-bench-on-2,on,2,9,msg_01DQ86RoghzG4sfe4Cdv1pvE,toolu_01MBzUwKND9VkmVMsFAzigEJ,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33083,689,61,True,2026-06-06T12:41:44.899Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,2731
+20260606-144003,rtk-bench-on-2,on,2,10,msg_01PfmaX5jsJKBjYWDVTCTokr,toolu_01Xh2Qghj14rjN9FwCY67FUS,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,23048,0,23048,False,1,33772,262,66,True,2026-06-06T12:41:53.560Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,8661
+20260606-144003,rtk-bench-on-2,on,2,11,msg_01MMhGNyYF8njc87zqkuMiZu,toolu_017ZL5SezZYcURPPvFDt4gBH,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Run mypy show last 5 lines,390,0,390,False,1,34034,9050,50,True,2026-06-06T12:41:57.167Z,"src/pretix/base/models/tax.py (1 errors)
+  L463: [assignment] Incompatible default for parameter ""gross_price_is_tax_rate"" (default has type ""None"", parameter has type ""Decimal"")
+    PEP 484 prohibits",,False,False,3607
+20260606-144003,rtk-bench-on-2,on,2,12,msg_01BCPkBWQrDnVDgXnsZdZ814,toolu_01KSqU9TPkKZ1tkdsB4HjJGd,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,43084,342,63,True,2026-06-06T12:41:59.381Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2214
+20260606-144003,rtk-bench-on-2,on,2,13,msg_01XZP8TsfEdZyXtznsAxaQcn,,,,False,,0,0,0,False,1,43426,138,1,False,,,,False,False,0
+20260606-144003,rtk-bench-off-2,off,2,1,msg_018RUTaBqS5SkpKrcQ2rMCdX,toolu_01L1dRciBCbjFU4ZETkbCXsi,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,0,True,2026-06-06T12:42:43.645Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:42 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-2,off,2,2,msg_01Nyn83no5AqDTcRxsKuefpo,toolu_0114jpfSzcxmuy719SLdiQuu,Bash,cat pyproject.toml,False,Display pyproject.toml contents,4119,0,4119,False,1,26139,1704,63,True,2026-06-06T12:42:46.543Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2898
+20260606-144003,rtk-bench-off-2,off,2,3,msg_01CZZL9JB4XeituAwQFFubiV,toolu_012CXRpn9KvfpQgSxo5maAQa,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src/,4,0,4,False,1,27843,2296,51,True,2026-06-06T12:42:50.837Z,1206,,False,False,4294
+20260606-144003,rtk-bench-off-2,off,2,4,msg_01StjjVu6c8E4HerKhKqwnYG,toolu_01X95gVkRGLBBELehbbuwhAn,Bash,git log --oneline -10,False,Show last 10 commit messages,665,0,665,False,1,30139,120,62,True,2026-06-06T12:42:52.739Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1902
+20260606-144003,rtk-bench-off-2,off,2,5,msg_01A89nqpws2eD5gUygejKVg5,toolu_01RXUXjoXG7sFuh2Ykh3XLXu,Bash,pip list 2>&1,False,List installed Python packages,416,0,416,False,1,30259,397,62,True,2026-06-06T12:42:55.529Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2790
+20260606-144003,rtk-bench-off-2,off,2,6,msg_014QRmBPDy4bjSGqQ61oxgfe,toolu_01Pt7fEUCH5xYkSBkbQjLTBF,Bash,pip list --outdated 2>&1,False,List outdated Python packages,196,0,196,False,1,30656,281,66,True,2026-06-06T12:42:59.069Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3540
+20260606-144003,rtk-bench-off-2,off,2,7,msg_01Hnq3M6fZPzHjyJK9hdN8nE,toolu_01FceWTQWKjNPvMBDvmbexmn,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on pretix source,0,0,10040,True,1,30937,215,59,True,2026-06-06T12:43:01.942Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2873
+20260606-144003,rtk-bench-off-2,off,2,8,msg_01RBon74jniYibxwnXupSDAs,toolu_01ENbgGNpcJZ9yHXW7t4fWJt,Bash,ruff check src/pretix/ --statistics 2>&1,False,Get ruff violation statistics,0,0,900,True,1,31152,4449,55,True,2026-06-06T12:43:04.264Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2322
+20260606-144003,rtk-bench-off-2,off,2,9,msg_019MTs2Vs99sLMZB6Y2vTiet,toolu_01CNGPHSfoHgie6KAygCuA6p,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff format conformance,0,0,10040,True,1,35601,567,61,True,2026-06-06T12:43:06.926Z,"Exit code 2
+error: Failed to format src/pretix/presale/context.py: Invalid document: Expected end tag of kind Group but found Indent.
+error: Failed to format src/pretix/presale/views/widget.py: Invali",,False,False,2662
+20260606-144003,rtk-bench-off-2,off,2,10,msg_01SfEywh7AxjqdoGqABFwwJz,toolu_01FntSayqvzJpfQ9xQcsuFyC,Bash,"ruff format --check src/pretix/ 2>&1 | grep -c ""Would reformat""",False,Count files needing reformat,3,0,3,False,1,36168,4604,41,True,2026-06-06T12:43:10.651Z,862,,False,False,3725
+20260606-144003,rtk-bench-off-2,off,2,11,msg_01K5h5X5nhuujEZbqg41b467,toolu_01KpMqLpqvJC1JuhX9Yr3HPj,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy on src and show first 200 lines,26071,0,26071,False,1,40772,309,57,True,2026-06-06T12:43:26.770Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,16119
+20260606-144003,rtk-bench-off-2,off,2,12,msg_016nH5Yyabbt1CYcPzHyHXBA,toolu_018Y3jKbFcwAjysDSTFneU9t,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary line,860,0,860,False,1,41081,10943,55,True,2026-06-06T12:43:34.014Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,7244
+20260606-144003,rtk-bench-off-2,off,2,13,msg_01UHqqgVMA1du5ijgT63373r,toolu_011qnt76q5esKc3Q3AmYM7ed,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,52024,466,62,True,2026-06-06T12:43:36.175Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2161
+20260606-144003,rtk-bench-off-2,off,2,14,msg_01U2kUEwoiSLPEtBNtb79dKo,,,,False,,0,0,0,False,1,52490,138,51,False,,,,False,False,0
+20260606-144003,rtk-bench-on-3,on,3,1,msg_01Q1gAmKLBJZG2EtyeyKigwU,toolu_01FGBLkCyvnyL9tZLedMbsLY,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,0,True,2026-06-06T12:42:44.166Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-3,on,3,2,msg_01LJMmdFUPf5H6uYJAsUsdsk,toolu_015XxAGqPQLSbjpc6evEdwfv,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26370,584,63,True,2026-06-06T12:42:48.150Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,3984
+20260606-144003,rtk-bench-on-3,on,3,3,msg_01UHtDwXqhLwshvT15LdEUCN,toolu_01L4mgRRHsGLfu48cBrJ4tE4,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,26954,2296,51,True,2026-06-06T12:42:51.711Z,1206,,False,False,3561
+20260606-144003,rtk-bench-on-3,on,3,4,msg_01B1X9GB2GPzoCHZ6EkQ34Ko,toolu_01KBvrpgWNiNrfhLJPggNX6d,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,29250,119,66,True,2026-06-06T12:42:55.426Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,3715
+20260606-144003,rtk-bench-on-3,on,3,5,msg_01Y2KHaQdvjUcphiDGBXnxWs,toolu_01Kc2s2GvqD8kXNN25KrymKF,Bash,pip list 2>&1,False,List installed packages,476,0,476,False,1,29369,395,62,True,2026-06-06T12:42:58.244Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2818
+20260606-144003,rtk-bench-on-3,on,3,6,msg_01JwYmtth9uLq9MqXbXnHfP2,toolu_01YAjUennRkgNbYPq77XUAUh,Bash,pip list --outdated 2>&1,False,List outdated packages,227,0,227,False,1,29764,354,65,True,2026-06-06T12:43:02.453Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,4209
+20260606-144003,rtk-bench-on-3,on,3,7,msg_01TqQz1n9NM5aWxF9aNrYaZG,toolu_01WgZQzu4p629hZf5FZHRemH,Bash,ruff check src/pretix/ 2>&1,False,Run ruff lint check,0,0,5394,True,1,30118,195,68,True,2026-06-06T12:43:04.641Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  F821 (2x)
+  E713 (2x)
+  E40",,False,False,2188
+20260606-144003,rtk-bench-on-3,on,3,8,msg_01QunYJbWSHbzd6UBv1TGNup,toolu_01X5X6zMUNX83XwhgJadymKx,Bash,ruff check src/pretix/ --statistics 2>&1,False,Ruff statistics,0,0,1226,True,1,30313,2762,63,True,2026-06-06T12:43:07.076Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2435
+20260606-144003,rtk-bench-on-3,on,3,9,msg_015EKKQ9Skx15nfkSEVvfDkP,toolu_01WN4pzT495D35Uq6cWLeroV,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff format,0,0,398,True,1,33075,686,61,True,2026-06-06T12:43:10.395Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,3319
+20260606-144003,rtk-bench-on-3,on,3,10,msg_01DyFtucK2v4rjPwMPcWH6eW,toolu_01CLbobSyfRFUPfvPKQWDKsP,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,23048,0,23048,False,1,33761,260,68,True,2026-06-06T12:43:25.013Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,14618
+20260606-144003,rtk-bench-on-3,on,3,11,msg_01GA68CyxcHZYrXvnUhacppH,toolu_016zeqzDhGRRy7mWS7nRgkfY,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Mypy summary tail,320,0,320,False,1,34021,9050,57,True,2026-06-06T12:43:29.305Z,"src/pretix/plugins/banktransfer/apps.py (1 errors)
+  L45: [var-annotated] Need type annotation for ""navigation_links""
+
+src/pretix/plugins/ticketoutputpdf/ticketoutput.py (1 errors)
+  L129: [arg-type] ",,False,False,4292
+20260606-144003,rtk-bench-on-3,on,3,12,msg_0118T9FS34z5qqCwnSYDTCCQ,toolu_01FJKN3ikPt5AXMmrT4HAXoJ,Bash,pip show django 2>&1,False,Show django package info,0,0,49,True,1,43071,337,62,True,2026-06-06T12:43:32.319Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,3014
+20260606-144003,rtk-bench-on-3,on,3,13,msg_01EWae18eDBeikzZCbNqp5Go,,,,False,,0,0,0,False,1,43408,137,1,False,,,,False,False,0
+20260606-144003,rtk-bench-off-3,off,3,1,msg_019FyihR8QYbP299JzsxhGr2,toolu_01GWkpjPb8bVuHiYs9Q5crfP,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,8,True,2026-06-06T12:42:43.968Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:42 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-3,off,3,2,msg_01HMFQSsNcxYvukhf2jDMcDc,toolu_01MTBk9PfNqBPYCvwssXtngJ,Bash,cat pyproject.toml,False,Display pyproject.toml contents,4119,0,4119,False,1,26139,1705,63,True,2026-06-06T12:42:47.214Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,3246
+20260606-144003,rtk-bench-off-3,off,3,3,msg_01E6gZ1qtG3PhYEDWiLkaAfi,toolu_017uo3ASjD4BnYkM5QpPNoNK,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src directory,4,0,4,False,1,27844,2296,59,True,2026-06-06T12:42:51.057Z,1206,,False,False,3843
+20260606-144003,rtk-bench-off-3,off,3,4,msg_01CUinSHpLYLDvjq9ZCvECFQ,toolu_0119Mf13tDQnz6wNfUucfyqh,Bash,git log --oneline -10,False,Show recent git commits,665,0,665,False,1,30140,121,62,True,2026-06-06T12:42:52.992Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1935
+20260606-144003,rtk-bench-off-3,off,3,5,msg_01D3aXdjcLd6q4EsyndpEw7W,toolu_01F6uUXEh1wYih5MRJ6oneD4,Bash,pip list 2>&1,False,List installed pip packages,416,0,416,False,1,30261,394,69,True,2026-06-06T12:42:55.146Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2154
+20260606-144003,rtk-bench-off-3,off,3,6,msg_01DXBypMwnAfHaCS7U6oDbnr,toolu_01WJi6wX9g1HrcjfhGabKc8g,Bash,pip list --outdated 2>&1,False,List outdated pip packages,196,0,196,False,1,30655,281,65,True,2026-06-06T12:42:58.515Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3369
+20260606-144003,rtk-bench-off-3,off,3,7,msg_01PbLG2Q3Qny6swXbRLA9ohj,toolu_01GyWGDsSqkLrDhUGAAH8z6D,Bash,ruff check src/pretix/ 2>&1 | tail -50,False,Run ruff check on pretix source,1504,0,1504,False,1,30936,215,57,True,2026-06-06T12:43:00.731Z,"49 | COMPRESS_PRECOMPILERS = ()
+50 | TEMPLATES[0]['OPTIONS']['loaders'] = (
+51 |     ('django.template.loaders.cached.Loader', template_loaders),
+   |                                               ^^^",,False,False,2216
+20260606-144003,rtk-bench-off-3,off,3,8,msg_018tnyFvooyHPaGYYMLsEEPg,toolu_016Cx4LHxZpDB3uhJkeC7UTi,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics,0,0,900,True,1,31151,901,63,True,2026-06-06T12:43:07.298Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,6567
+20260606-144003,rtk-bench-off-3,off,3,9,msg_01CZtQYFBoXNynwf8b6GNJ9g,toolu_016DGhiEr6jATEveVktrJM3d,Bash,ruff format --check src/pretix/ 2>&1 | tail -20,False,Check ruff formatting,960,0,960,False,1,32052,565,67,True,2026-06-06T12:43:09.801Z,"Would reformat: src/pretix/presale/views/locale.py
+Would reformat: src/pretix/presale/views/oidc_op.py
+Would reformat: src/pretix/presale/views/order.py
+Would reformat: src/pretix/presale/views/organi",,False,False,2503
+20260606-144003,rtk-bench-off-3,off,3,10,msg_014VwBqcVDJVVb4c7cWNACgN,toolu_01GdmMtgpAW8gfxn1qbup4Fr,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy on pretix,26071,0,26071,False,1,32617,544,68,True,2026-06-06T12:43:21.639Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,11838
+20260606-144003,rtk-bench-off-3,off,3,11,msg_01P7ovQLdT8aT3TXiAbfWn6i,toolu_01JhoRArdWiSuPqN3eMCkm5f,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy error summary,860,0,860,False,1,33161,11022,36,True,2026-06-06T12:43:28.988Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,7349
+20260606-144003,rtk-bench-off-3,off,3,12,msg_018ShmpkdEynvb4pSri1df7Q,toolu_019BMghYNbfy3KMnrfCJXmBM,Bash,pip show django 2>&1,False,Show installed django package info,0,0,49,True,1,44183,533,67,True,2026-06-06T12:43:32.100Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,3112
+20260606-144003,rtk-bench-off-3,off,3,13,msg_015cgMidt1jWQNM6Dd65HYdt,,,,False,,0,0,0,False,1,44716,139,49,False,,,,False,False,0
+20260606-144003,rtk-bench-on-4,on,4,1,msg_01RjAZ2DpE6FKh49hvkx3oNt,toolu_01NqCmAQRY8CGxApVXqTgbMB,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,8,True,2026-06-06T12:42:44.789Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-4,on,4,2,msg_01HRsZHvRdXqs43YCgyb5yLZ,toolu_01QdLGTjp9XaF8vi41FiahR7,Bash,cat pyproject.toml,False,Show pyproject.toml content,4119,0,4119,False,1,26370,602,66,True,2026-06-06T12:42:48.773Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,3984
+20260606-144003,rtk-bench-on-4,on,4,3,msg_01WyLNWnxaqxaLpxaHv821Fe,toolu_01SmJZoSSnHxSSroh2mazPye,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,26972,2295,51,True,2026-06-06T12:42:52.081Z,1206,,False,False,3308
+20260606-144003,rtk-bench-on-4,on,4,4,msg_0147SkSNGu8qki96cUMbeiBU,toolu_01RtC7Z5k23UDgWrXZ233duy,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,29267,119,66,True,2026-06-06T12:42:54.504Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2423
+20260606-144003,rtk-bench-on-4,on,4,5,msg_018XrjFRqm7ZpaouTrorJrrW,toolu_01PFcENFRTYpVj2kHu2nQVsh,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29386,395,67,True,2026-06-06T12:42:56.929Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2425
+20260606-144003,rtk-bench-on-4,on,4,6,msg_013hkiUtBnpiYXCNicrVnxeZ,toolu_01ACBSZND5C2ZNKWdiNhBoir,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29781,356,65,True,2026-06-06T12:43:01.691Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,4762
+20260606-144003,rtk-bench-on-4,on,4,7,msg_01GMjy46NidRoe712rELWFti,toolu_01WRPUzS8kmtFYF3Ry4yxFxn,Bash,ruff check src/pretix/ 2>&1,False,Run ruff lint on src/pretix,0,0,5392,True,1,30137,197,68,True,2026-06-06T12:43:04.134Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  F821 (2x)
+  E713 (2x)
+  E40",,False,False,2443
+20260606-144003,rtk-bench-on-4,on,4,8,msg_017VkncRJkdqw3SNTTt8YUEB,toolu_01UhWrS1NLk52vFQP2vefA7w,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics,0,0,1226,True,1,30334,2766,55,True,2026-06-06T12:43:06.581Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2447
+20260606-144003,rtk-bench-on-4,on,4,9,msg_016bQT5oDBnaUzpYreA8wawB,toolu_01HS6MpYd5FgsHhmjocdqTx6,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33100,687,61,True,2026-06-06T12:43:09.636Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,3055
+20260606-144003,rtk-bench-on-4,on,4,10,msg_01PrQrreCnB7f9a79aq1E1qz,toolu_019ATcMNzpzugMkgX7L3xwy5,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and view first 200 lines,23048,0,23048,False,1,33787,262,68,True,2026-06-06T12:43:18.061Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,8425
+20260606-144003,rtk-bench-on-4,on,4,11,msg_01L6cPC1NBNZH9SEGcoQRbSe,toolu_01QnGXzCRJYs1zwzHLxECULc,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary tail,397,0,397,False,1,34049,9050,73,True,2026-06-06T12:43:21.913Z,"    PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+    Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade yo",,False,False,3852
+20260606-144003,rtk-bench-on-4,on,4,12,msg_01YEUq3tav8jJnbfcbozNRPL,toolu_01NewUgSJYfvqJHRp2SsFPbr,Bash,pip show django 2>&1,False,Show django package info,0,0,49,True,1,43099,347,63,True,2026-06-06T12:43:24.436Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2523
+20260606-144003,rtk-bench-on-4,on,4,13,msg_01UVjsLBRc5zHhhqGXjhGc24,,,,False,,0,0,0,False,1,43446,137,47,False,,,,False,False,0
+20260606-144003,rtk-bench-off-4,off,4,1,msg_01Pu1qpdJAQVq6p3T2F92ZaG,toolu_01Ryfn5Ue6EujF5e6Bvmqfrz,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,0,True,2026-06-06T12:42:44.365Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:42 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-4,off,4,2,msg_01KFau72pQzfeJNqardnx3a5,toolu_01SLAdQE1XAxhVa9Snw7UC8y,Bash,cat pyproject.toml,False,Read pyproject.toml,4119,0,4119,False,1,26139,1721,63,True,2026-06-06T12:42:48.008Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,3643
+20260606-144003,rtk-bench-off-4,off,4,3,msg_01J8pmRvxbG2pfZtLe87anNk,toolu_01StKjuAn944V83yq4WJjNWP,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,27860,2294,59,True,2026-06-06T12:42:50.756Z,1206,,False,False,2748
+20260606-144003,rtk-bench-off-4,off,4,4,msg_012WgpP99bXPbSePvtynP14S,toolu_017r1iB35o57VZvqagoF2DqF,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,30154,119,69,True,2026-06-06T12:42:52.580Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1824
+20260606-144003,rtk-bench-off-4,off,4,5,msg_01HuH2WJmQyyk4FhyxRgXgoW,toolu_015CyDCeVmrLBKu6PH6YQN7Q,Bash,pip list 2>&1,False,List installed packages,416,0,416,False,1,30273,393,68,True,2026-06-06T12:42:58.551Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,5971
+20260606-144003,rtk-bench-off-4,off,4,6,msg_01Gsj653ngZR387bhoco2YP2,toolu_01AYBUwsxDpAefTf3pz5iQJu,Bash,pip list --outdated 2>&1,False,List outdated packages,196,0,196,False,1,30666,279,65,True,2026-06-06T12:43:02.202Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3651
+20260606-144003,rtk-bench-off-4,off,4,7,msg_0195m6LARC9dcFoiGNQ7iPsU,toolu_01T9qyfRu1UNooNWdnt7SaEe,Bash,ruff check src/pretix/ 2>&1 | tail -60,False,Run ruff check on pretix source,1799,0,1799,False,1,30945,213,62,True,2026-06-06T12:43:07.615Z,"49 | COMPRESS_PRECOMPILERS = ()
+50 | TEMPLATES[0]['OPTIONS']['loaders'] = (
+   | ^^^^^^^^^
+51 |     ('django.template.loaders.cached.Loader', template_loaders),
+52 | )
+   |
+
+F405 `template_loaders` ma",,False,False,5413
+20260606-144003,rtk-bench-off-4,off,4,8,msg_01R67oRTbuerGUf4euFnmv9N,toolu_01KJHGoSWwzu9t9aa7W6QLJW,Bash,ruff check src/pretix/ --statistics 2>&1,False,Ruff statistics by rule,0,0,900,True,1,31158,1052,63,True,2026-06-06T12:43:09.591Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,1976
+20260606-144003,rtk-bench-off-4,off,4,9,msg_01MBVK9TE1Sa9WCwRnDUV7za,toolu_017pXBUpUEgQtYU7EZ81h7tf,Bash,ruff format --check src/pretix/ 2>&1 | tail -20,False,Ruff format check,960,0,960,False,1,32210,567,67,True,2026-06-06T12:43:11.987Z,"Would reformat: src/pretix/presale/views/locale.py
+Would reformat: src/pretix/presale/views/oidc_op.py
+Would reformat: src/pretix/presale/views/order.py
+Would reformat: src/pretix/presale/views/organi",,False,False,2396
+20260606-144003,rtk-bench-off-4,off,4,10,msg_011QW1d5rb25M5rjTgphy9t2,toolu_017gLZgTg3dpuJTaENJJ9az1,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy on pretix source,26071,0,26071,False,1,32777,542,64,True,2026-06-06T12:43:27.190Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,15203
+20260606-144003,rtk-bench-off-4,off,4,11,msg_01XKWw2kFr3XvPDMuwDz32jv,toolu_01RbFkgbpGizDtUwQ6Dzteur,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary,860,0,860,False,1,33319,11023,58,True,2026-06-06T12:43:35.103Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,7913
+20260606-144003,rtk-bench-off-4,off,4,12,msg_013umMbf4GGQBir7jcKzNzfa,toolu_01Hajya2dEnsW31ZUsMkeAwM,Bash,pip show django 2>&1,False,Show django package info,0,0,49,True,1,44342,536,62,True,2026-06-06T12:43:37.457Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2354
+20260606-144003,rtk-bench-off-4,off,4,13,msg_012eVqzmXKS4695XMSSEcV5y,,,,False,,0,0,0,False,1,44878,137,1,False,,,,False,False,0
+20260606-144003,rtk-bench-on-5,on,5,1,msg_01HU9diJN3WNvuD1D7zCCaVU,toolu_01N2BSofm85v3DNYwdfWwaFD,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,0,True,2026-06-06T12:44:01.864Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-5,on,5,2,msg_01Csaceu4Qs8BcjWEYt2jNV4,toolu_01KUTorHyzqqVaeYBGjPMHsq,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26370,603,63,True,2026-06-06T12:44:04.378Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2514
+20260606-144003,rtk-bench-on-5,on,5,3,msg_01W5x7QmsZ9cXMmBWSEKTqV2,toolu_019HDvv74SpfS1rxzXRqG3K9,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src/,4,0,4,False,1,26973,2296,51,True,2026-06-06T12:44:07.936Z,1206,,False,False,3558
+20260606-144003,rtk-bench-on-5,on,5,4,msg_011LrJFRcAHhry4TDJSY6zdB,toolu_01WA1sxdfMxDvBb51xYMZej4,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,29269,120,69,True,2026-06-06T12:44:09.918Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1982
+20260606-144003,rtk-bench-on-5,on,5,5,msg_01AqnsRVA3jN2pn5S2Liheh2,toolu_019tjPSvincmo3c91fRn7ySd,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29389,393,62,True,2026-06-06T12:44:12.091Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2173
+20260606-144003,rtk-bench-on-5,on,5,6,msg_01VtkZN7VEfrX7tbwgz7kdqs,toolu_01FG6V7cdxCWjSA9k6oHZuVy,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29782,356,65,True,2026-06-06T12:44:15.990Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,3899
+20260606-144003,rtk-bench-on-5,on,5,7,msg_018WPDUi6t1zxsmSTEgtpnLZ,toolu_01NDstciqcsJSpyCw4LEuQVr,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix/,0,0,5394,True,1,30138,197,67,True,2026-06-06T12:44:18.419Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  E713 (2x)
+  F821 (2x)
+  E71",,False,False,2429
+20260606-144003,rtk-bench-on-5,on,5,8,msg_01Wue6qrFtVgvZXD39WBHEDH,toolu_01Er4NQaHFEsqvTtfnVJ2xW3,Bash,ruff check src/pretix/ --statistics 2>&1,False,Get ruff statistics,0,0,1226,True,1,30335,2767,63,True,2026-06-06T12:44:21.142Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2723
+20260606-144003,rtk-bench-on-5,on,5,9,msg_01KgLHukE9z3MrDKiudNTtAR,toolu_01P7yfnzjy9ghqS9JdB3xzHU,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33102,687,61,True,2026-06-06T12:44:23.967Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,2825
+20260606-144003,rtk-bench-on-5,on,5,10,msg_01VirCRVvgQKAHBJ4Eqsm7bD,toolu_0164oGjpT4nSd9B4WvLacFvb,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and get first 200 lines,23048,0,23048,False,1,33789,262,68,True,2026-06-06T12:44:35.643Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,11676
+20260606-144003,rtk-bench-on-5,on,5,11,msg_011QLZacA4ZzADdioKdt3SGX,toolu_01AJitnZDH6X8Br5vwBxUcFr,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary,230,0,230,False,1,34051,9050,39,True,2026-06-06T12:44:41.434Z,"src/pretix/control/forms/vouchers.py (1 errors)
+  L401: [misc] Assignment to variable ""e"" outside except: block
+
+src/pretix/plugins/banktransfer/apps.py (1 errors)
+  L45: [var-annotated] Need type ann",,False,False,5791
+20260606-144003,rtk-bench-on-5,on,5,12,msg_01TgxsJ2vXnxRy2DRJSeBM1x,toolu_01PVFpBdxSoirzJbfnLaqjH7,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,43101,303,62,True,2026-06-06T12:44:44.033Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2599
+20260606-144003,rtk-bench-on-5,on,5,13,msg_01XcPMk4wHjxFt7jbFWKg2UU,,,,False,,0,0,0,False,1,43404,138,1,False,,,,False,False,0
+20260606-144003,rtk-bench-off-5,off,5,1,msg_018G1EMD2Ggdo3evhTQwYCua,toolu_01YLTux3CmfeFwhEdLqGza4S,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,0,True,2026-06-06T12:44:01.561Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:44 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:40 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-5,off,5,2,msg_01MSg9gH7bJ3YvBvDb421C6P,toolu_01JW7CGsBYiD5xKfnV1dxCpe,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26139,1706,63,True,2026-06-06T12:44:04.022Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2461
+20260606-144003,rtk-bench-off-5,off,5,3,msg_01NCWPg8jmwp8w8bhXn7fqRm,toolu_01UHt9SBvFGQMhVtDcyrNAkc,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,27845,2296,51,True,2026-06-06T12:44:08.086Z,1206,,False,False,4064
+20260606-144003,rtk-bench-off-5,off,5,4,msg_01S1ZEHgqKhE6shT6nu1d1Ph,toolu_01VHV14BGztK9BKbVhX8Rw8h,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,30141,119,66,True,2026-06-06T12:44:12.674Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,4588
+20260606-144003,rtk-bench-off-5,off,5,5,msg_0149LFfzLd9hCcPgu7rFgrmd,toolu_01DkVLiw2NGER947ae9UQE2E,Bash,pip list 2>&1,False,List installed pip packages,416,0,416,False,1,30260,395,62,True,2026-06-06T12:44:15.060Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2386
+20260606-144003,rtk-bench-off-5,off,5,6,msg_01BW1nQWVk1p5gKvYySr6TWr,toolu_01HGN1SbpQEkazs259kgiT2x,Bash,pip list --outdated 2>&1,False,List outdated pip packages,196,0,196,False,1,30655,281,72,True,2026-06-06T12:44:18.587Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3527
+20260606-144003,rtk-bench-off-5,off,5,7,msg_01N3K3fFz5pNf3jriQ15jCFL,toolu_01E4iDX9vTdDuq71PHRNuage,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on pretix source,0,0,10040,True,1,30936,215,59,True,2026-06-06T12:44:20.967Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2380
+20260606-144003,rtk-bench-off-5,off,5,8,msg_019zGgwWQD64xWR4f5ig5zSV,toolu_01RjUUH5rumLmporuL8j5xab,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff violation statistics,0,0,900,True,1,31151,4449,63,True,2026-06-06T12:44:23.992Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,3025
+20260606-144003,rtk-bench-off-5,off,5,9,msg_01R8CCFdeVWY6kX17FfeJdcz,toolu_01DhBpfAduHoDWQcQMtuVCmk,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,10040,True,1,35600,567,61,True,2026-06-06T12:44:27.358Z,"Exit code 2
+error: Failed to format src/pretix/presale/context.py: Invalid document: Expected end tag of kind Group but found Indent.
+error: Failed to format src/pretix/presale/views/widget.py: Invali",,False,False,3366
+20260606-144003,rtk-bench-off-5,off,5,10,msg_019LgQS4S8LXJSmm4axvgx6t,toolu_018RDAHXrzcXFXfqst4TuSGu,Bash,ruff format --check src/pretix/ 2>&1 | tail -5,False,Show ruff format check summary,238,0,238,False,1,36167,4603,54,True,2026-06-06T12:44:31.143Z,"Would reformat: src/pretix/testutils/scope.py
+Would reformat: src/pretix/testutils/sessions.py
+Would reformat: src/pretix/testutils/settings.py
+Would reformat: src/pretix/urls.py
+862 files would be re",,False,False,3785
+20260606-144003,rtk-bench-off-5,off,5,11,msg_012Rnpf4rCtnyzmbkBzsJM1c,toolu_01WK1dqHYPhVHCu19fNA4NTN,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and head 200 lines,26071,0,26071,False,1,40770,400,64,True,2026-06-06T12:44:40.979Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,9836
+20260606-144003,rtk-bench-off-5,off,5,12,msg_01VJz3vXRBdTzT2BghJoEASe,toolu_01NBvnYcxWrvAjn2oPa9jQ4N,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy total error count from summary,860,0,860,False,1,41170,10882,55,True,2026-06-06T12:44:47.792Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,6813
+20260606-144003,rtk-bench-off-5,off,5,13,msg_01LNesFsR7zSPjpxpnG6n9dy,toolu_01XbmH3vznzQDJnAhcDUxrPZ,Bash,pip show django 2>&1,False,Show django package info,0,0,49,True,1,52052,469,52,True,2026-06-06T12:44:50.215Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2423
+20260606-144003,rtk-bench-off-5,off,5,14,msg_013B6jTLHH6SUm8dVZAWgnf2,,,,False,,0,0,0,False,1,52521,137,40,False,,,,False,False,0
+20260606-144003,rtk-bench-on-6,on,6,1,msg_01CJU3XAET32nPnxUBT2AWji,toolu_012wDzjj1d2rraUNhHP53jVc,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,8,True,2026-06-06T12:44:02.051Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-6,on,6,2,msg_01RMEkHv7qnEKKAtYPvMJ1Ev,toolu_01T53AhmVv7WYjtTXNoiDAAU,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26370,601,66,True,2026-06-06T12:44:04.576Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2525
+20260606-144003,rtk-bench-on-6,on,6,3,msg_01FP14cfDbEJJ3whvTbBzCeA,toolu_01UwXLSHEeA6wG2jkeqtFmmW,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src/,4,0,4,False,1,26971,2296,51,True,2026-06-06T12:44:07.782Z,1206,,False,False,3206
+20260606-144003,rtk-bench-on-6,on,6,4,msg_01PEmnJR4N2Z5UByUgmhnqhv,toolu_014kELuuhq8ugSTXVDXRdsRF,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,29267,120,66,True,2026-06-06T12:44:09.883Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2101
+20260606-144003,rtk-bench-on-6,on,6,5,msg_01SaFJBEYpKyXLQhzjNYsnC9,toolu_01QJ33gCwCtyPzpPqWguyQ3u,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29387,395,67,True,2026-06-06T12:44:12.714Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2831
+20260606-144003,rtk-bench-on-6,on,6,6,msg_01NWBSndyrYFpqfr5cQF3Lyw,toolu_01GkiKz76Y148SvkWrdFPf2u,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29782,356,63,True,2026-06-06T12:44:16.786Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,4072
+20260606-144003,rtk-bench-on-6,on,6,7,msg_01Hx26D9MykKZNFmVbPXAx3u,toolu_01UvGDzRFS2zHuoeP9r3ikH5,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix,0,0,5394,True,1,30138,197,68,True,2026-06-06T12:44:20.717Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  F821 (2x)
+  E713 (2x)
+  E71",,False,False,3931
+20260606-144003,rtk-bench-on-6,on,6,8,msg_01TS1ynkkXmoS9JM2gwmBnRu,toolu_01TSpyV4LdoupfHjtmV1cvua,Bash,ruff check src/pretix/ --statistics 2>&1,False,Get ruff statistics,0,0,1226,True,1,30335,2766,55,True,2026-06-06T12:44:23.907Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,3190
+20260606-144003,rtk-bench-on-6,on,6,9,msg_01GS7g7rBGXPzsKkBgZkHsKC,toolu_01DydpPmfFYPRtodcT4TG3ex,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33101,687,61,True,2026-06-06T12:44:27.050Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,3143
+20260606-144003,rtk-bench-on-6,on,6,10,msg_01WCyb95AxJwLBz1NH95oy9p,toolu_01UsAj3pvg3dq84JciSd9NY2,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy on src/pretix and head output,23048,0,23048,False,1,33788,262,60,True,2026-06-06T12:44:35.762Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,8712
+20260606-144003,rtk-bench-on-6,on,6,11,msg_01VnwT9bTf8C8XdX2ByZDNtc,toolu_013YsyJgTaXEsKQcAdNB74xS,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy error summary,259,0,259,False,1,34050,9051,37,True,2026-06-06T12:44:41.746Z,"src/pretix/base/services/tax.py (1 errors)
+  L422: [var-annotated] Need type annotation for ""d""
+
+src/pretix/helpers/migrations/0001_initial.py (1 errors)
+  L12: [var-annotated] Need type annotation fo",,False,False,5984
+20260606-144003,rtk-bench-on-6,on,6,12,msg_01E7Px3Kwz8mW5HffY9nmYYu,toolu_01D6zd7JxZJL48KVgC3paYkh,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,43101,332,62,True,2026-06-06T12:44:44.106Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2360
+20260606-144003,rtk-bench-on-6,on,6,13,msg_01Uq7TXEGyYroAFNSveAeauS,,,,False,,0,0,0,False,1,43433,138,1,False,,,,False,False,0
+20260606-144003,rtk-bench-off-6,off,6,1,msg_01Jq3bBMxNATGJbPyk2rio3R,toolu_01XMrVdnKwUrHMyUCyuTQmL6,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,0,True,2026-06-06T12:44:02.296Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:44 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-6,off,6,2,msg_01HbuNfREgn8EveFew99BBXy,toolu_018fxms24ZJATTxVvUCZgiBk,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26139,1722,63,True,2026-06-06T12:44:06.988Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,4692
+20260606-144003,rtk-bench-off-6,off,6,3,msg_018i51gQRvNEAJD4bc1j3zdM,toolu_01EWKibx8SvVthFka9LehaJy,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src directory,4,0,4,False,1,27861,2296,51,True,2026-06-06T12:44:09.639Z,1206,,False,False,2651
+20260606-144003,rtk-bench-off-6,off,6,4,msg_01FA5dPRdzUxDRry4yULBLv6,toolu_016qtB7bMy6FeBvWdEZeZyqW,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,30157,121,62,True,2026-06-06T12:44:12.247Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2608
+20260606-144003,rtk-bench-off-6,off,6,5,msg_01XD7LYVsPwcDNB6c6zFKHGs,toolu_01No4s5fRYQUumKNR7Z8V7n6,Bash,pip list 2>&1,False,List installed Python packages,416,0,416,False,1,30278,393,67,True,2026-06-06T12:44:14.981Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2734
+20260606-144003,rtk-bench-off-6,off,6,6,msg_01HsjpAZPpGv88Z3twrAegvy,toolu_019Bi7omNh8NkseJpix2zAS5,Bash,pip list --outdated 2>&1,False,List outdated Python packages,196,0,196,False,1,30671,281,72,True,2026-06-06T12:44:18.818Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3837
+20260606-144003,rtk-bench-off-6,off,6,7,msg_01FzhRimpdq7p2iDSaq1kN8j,toolu_01SNXbSUuAubgcZb5GtT5NoM,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on pretix source,0,0,10040,True,1,30952,215,59,True,2026-06-06T12:44:21.416Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2598
+20260606-144003,rtk-bench-off-6,off,6,8,msg_012j9UVh6bMiLw3gda1dAJfi,toolu_01AeMJhFeb3QAJZP5uBVWPFx,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff check statistics,0,0,900,True,1,31167,4449,63,True,2026-06-06T12:44:24.181Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2765
+20260606-144003,rtk-bench-off-6,off,6,9,msg_01319vttz6MGaUXrLfJnfnzv,toolu_015TK91bnh4Zhvs9JS549q1D,Bash,ruff format --check src/pretix/ 2>&1,False,Check formatting issues with ruff,0,0,10040,True,1,35616,566,61,True,2026-06-06T12:44:27.322Z,"Exit code 2
+error: Failed to format src/pretix/presale/context.py: Invalid document: Expected end tag of kind Group but found Indent.
+error: Failed to format src/pretix/presale/views/widget.py: Invali",,False,False,3141
+20260606-144003,rtk-bench-off-6,off,6,10,msg_015C5FWtLEAe8xBzL9DAdQdM,toolu_017osq8DpgCcq2H2NEKTT9tz,Bash,ruff format --check src/pretix/ 2>&1 | tail -5,False,Show ruff format summary tail,238,0,238,False,1,36182,4606,52,True,2026-06-06T12:44:30.662Z,"Would reformat: src/pretix/testutils/scope.py
+Would reformat: src/pretix/testutils/sessions.py
+Would reformat: src/pretix/testutils/settings.py
+Would reformat: src/pretix/urls.py
+862 files would be re",,False,False,3340
+20260606-144003,rtk-bench-off-6,off,6,11,msg_01YaSNtpc3kmnByMBpHgpXmC,toolu_01TgHbaxk79NmNEn53e1ZiFu,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,26071,0,26071,False,1,40788,370,35,True,2026-06-06T12:44:41.327Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,10665
+20260606-144003,rtk-bench-off-6,off,6,12,msg_01QegEuLQLrCT3aQj1sWdN6N,toolu_01LrmtsGMKgK8saThohaQv1y,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy error count summary,860,0,860,False,1,41158,10931,63,True,2026-06-06T12:44:48.169Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,6842
+20260606-144003,rtk-bench-off-6,off,6,13,msg_014Ko1HiZq1ZPFS2TCGvGXqy,toolu_01AzmTNU7HwFPLhmDZU4JaKX,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,52089,467,63,True,2026-06-06T12:44:51.020Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2851
+20260606-144003,rtk-bench-off-6,off,6,14,msg_01RqeE1kLakUFCSaj7MiBh6p,,,,False,,0,0,0,False,1,52556,138,47,False,,,,False,False,0
+20260606-144003,rtk-bench-on-7,on,7,1,msg_013pSnazjBsqAJ7V8Ytu6XC6,toolu_01FDoGxjJcawuNJ36S6f6jAg,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,8,True,2026-06-06T12:44:02.443Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-7,on,7,2,msg_01DAFAy9qXmc5HbeiRn7scW3,toolu_017iGPXK2edRnfibnpwSKCgf,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26370,601,63,True,2026-06-06T12:44:04.852Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2409
+20260606-144003,rtk-bench-on-7,on,7,3,msg_01K8g8JNZeBpSTS598MiVMuh,toolu_01TgZpDgF2QFUu71swgjEpsr,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,26971,2296,51,True,2026-06-06T12:44:08.373Z,1206,,False,False,3521
+20260606-144003,rtk-bench-on-7,on,7,4,msg_01PpgEMD6fm4UEJKpJRH1u45,toolu_016nnUkf3hG4BxSLhbk7c5xt,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,29267,119,69,True,2026-06-06T12:44:10.615Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2242
+20260606-144003,rtk-bench-on-7,on,7,5,msg_01Mp39iHEL81rTFVkjtBWjFH,toolu_01MToi7uCfbbxaodBKPHeniH,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29386,395,62,True,2026-06-06T12:44:12.828Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2213
+20260606-144003,rtk-bench-on-7,on,7,6,msg_01AtkY7q9C6x2otCaAZDpps3,toolu_01NC1DTjDhiGzF2SMxDABEMi,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29781,356,65,True,2026-06-06T12:44:16.661Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,3833
+20260606-144003,rtk-bench-on-7,on,7,7,msg_013EKvsWj7WiDJ5K5nXXroy2,toolu_01A7oGbm1R9jDbLujnjjJBVv,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix,0,0,5392,True,1,30137,197,68,True,2026-06-06T12:44:19.668Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  E713 (2x)
+  F821 (2x)
+  E40",,False,False,3007
+20260606-144003,rtk-bench-on-7,on,7,8,msg_01LTC1i742cAxSnP1BHwh5p6,toolu_01NaeK6vqEWLpXjagWo9dwf2,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics,0,0,1226,True,1,30334,2765,63,True,2026-06-06T12:44:21.771Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2103
+20260606-144003,rtk-bench-on-7,on,7,9,msg_015rMAKTYv3UGr3mTEgThD7M,toolu_01TQBC3wUE78TPVrFQbDMeLX,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33099,687,68,True,2026-06-06T12:44:24.433Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,2662
+20260606-144003,rtk-bench-on-7,on,7,10,msg_01R8qwsfaECCPRhKth617EZz,toolu_01DNmZFNnSksQhafxLAvmodb,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,23048,0,23048,False,1,33786,262,69,True,2026-06-06T12:44:33.723Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,9290
+20260606-144003,rtk-bench-on-7,on,7,11,msg_01HRcRCjJWAW8tPWn8nMZDok,toolu_0181ZEiHCtCNApjxdr6Y8vru,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Run mypy and show last 5 lines,399,0,399,False,1,34048,9050,36,True,2026-06-06T12:44:37.764Z,"    PEP 484 prohibits implicit Optional. Accordingly, mypy has changed its default to no_implicit_optional=True
+    Use https://github.com/hauntsaninja/no_implicit_optional to automatically upgrade yo",,False,False,4041
+20260606-144003,rtk-bench-on-7,on,7,12,msg_01K4uPCq4qXD7xp8e5xsTvav,toolu_014qLwwRYEq3wWLijXeQKdJd,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,43098,351,62,True,2026-06-06T12:44:40.271Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2507
+20260606-144003,rtk-bench-on-7,on,7,13,msg_01C2WwTTE8uXCgTzSYE8XEXH,,,,False,,0,0,0,False,1,43449,138,1,False,,,,False,False,0
+20260606-144003,rtk-bench-off-7,off,7,1,msg_01GnLSNLiQcKgJmYPwUSmoSD,toolu_01H4eNTeWjvczM1K6nzCiA6v,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,0,True,2026-06-06T12:45:23.527Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:45 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-7,off,7,2,msg_013NR6C8Uc9XLfZJT8PxTYzF,toolu_01ECUknJwGtGAEsQmDUWdCcd,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26139,1704,63,True,2026-06-06T12:45:25.526Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,1999
+20260606-144003,rtk-bench-off-7,off,7,3,msg_01EYooPPuPaaYaMPMHTky6dP,toolu_01MdW8Y6hz2ZPJJQPgwbvNKv,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,27843,2296,51,True,2026-06-06T12:45:28.896Z,1206,,False,False,3370
+20260606-144003,rtk-bench-off-7,off,7,4,msg_01AcEZfJPGaopN1p6hUqC49g,toolu_012CiBTBVfUfk9PCXVTPgMVr,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,30139,119,61,True,2026-06-06T12:45:30.996Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2100
+20260606-144003,rtk-bench-off-7,off,7,5,msg_01JXWM7xspGuYuWX4MuM4NhC,toolu_0143LayjG3DZJt6F8UiskUek,Bash,pip list 2>&1,False,List installed Python packages,416,0,416,False,1,30258,393,62,True,2026-06-06T12:45:33.227Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2231
+20260606-144003,rtk-bench-off-7,off,7,6,msg_01KrgbmaYRLULo51sVJYeBsw,toolu_012MRUVSwYpjK3LBVGbYArPn,Bash,pip list --outdated 2>&1,False,List outdated Python packages,196,0,196,False,1,30651,281,63,True,2026-06-06T12:45:37.014Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,3787
+20260606-144003,rtk-bench-off-7,off,7,7,msg_01SLdArYBgy8pyeVUzy7ebuw,toolu_018GsEJzbN8uaBXKc1j9aorf,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check,0,0,10040,True,1,30932,215,68,True,2026-06-06T12:45:39.971Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2957
+20260606-144003,rtk-bench-off-7,off,7,8,msg_01R2oXUuhqvyz5u5hAGkwB5m,toolu_01LnZbbd3krvRxtHFA4U7WK3,Bash,ruff check src/pretix/ --statistics 2>&1,False,Ruff violations stats,0,0,900,True,1,31147,4444,63,True,2026-06-06T12:45:41.951Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,1980
+20260606-144003,rtk-bench-off-7,off,7,9,msg_018jfwe1BDkk3UuS4NvbamtL,toolu_018gnqvmWPnAdAEsdoe5v7eH,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,10040,True,1,35591,565,61,True,2026-06-06T12:45:44.219Z,"Exit code 2
+error: Failed to format src/pretix/presale/context.py: Invalid document: Expected end tag of kind Group but found Indent.
+error: Failed to format src/pretix/presale/views/widget.py: Invali",,False,False,2268
+20260606-144003,rtk-bench-off-7,off,7,10,msg_01R1TLkZjHFGN2iv2dKeoo4g,toolu_01HuTe2bzEqfAPgKNVnfQjcQ,Bash,ruff format --check src/pretix/ 2>&1 | tail -5,False,Get summary of ruff format check,238,0,238,False,1,36156,4603,59,True,2026-06-06T12:45:46.800Z,"Would reformat: src/pretix/testutils/scope.py
+Would reformat: src/pretix/testutils/sessions.py
+Would reformat: src/pretix/testutils/settings.py
+Would reformat: src/pretix/urls.py
+862 files would be re",,False,False,2581
+20260606-144003,rtk-bench-off-7,off,7,11,msg_018tffAVzt4keXt9iv8QkKMA,toolu_01QtwY5oGfAdLWX8iyLCryKC,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy first 200 lines,26071,0,26071,False,1,40759,370,38,True,2026-06-06T12:46:01.415Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,14615
+20260606-144003,rtk-bench-off-7,off,7,12,msg_01VDeVTVi9Nv8ADXiAsULFyD,toolu_01M2hL2s9NESu8AEKfKkopdY,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy error summary,860,0,860,False,1,41129,10937,55,True,2026-06-06T12:46:08.621Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,7206
+20260606-144003,rtk-bench-off-7,off,7,13,msg_01MVq9yq2TD7GM8j1VyDmewj,toolu_01YaWCEg4Pn8QGjdzAYYFmQ8,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,52066,466,66,True,2026-06-06T12:46:11.000Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2379
+20260606-144003,rtk-bench-off-7,off,7,14,msg_01MfGACJg7zVpSoBWZUPSwXv,,,,False,,0,0,0,False,1,52532,138,42,False,,,,False,False,0
+20260606-144003,rtk-bench-on-8,on,8,1,msg_01Ciy5sdxLornHJHtLeA4Mgc,toolu_01YNvEV2xuXPJsxgafA3FxxB,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,0,True,2026-06-06T12:45:23.901Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-8,on,8,2,msg_016Ju7jkJ6RtEnmtUw19vdRd,toolu_012afuFFJbTvfrrcE4th2tUM,Bash,cat pyproject.toml,False,Display project configuration,4119,0,4119,False,1,26370,583,66,True,2026-06-06T12:45:26.185Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2284
+20260606-144003,rtk-bench-on-8,on,8,3,msg_01BNciYtoKBRTX1GpnQhuesF,toolu_01ByJdbepKwtAhxqRVPC3zyw,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,26953,2291,59,True,2026-06-06T12:45:28.443Z,1206,,False,False,2258
+20260606-144003,rtk-bench-on-8,on,8,4,msg_01MQ4utfnSMgub7nfBg8WABo,toolu_01RpnWHvgMvqJuEhw7bnW8mK,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,29244,119,66,True,2026-06-06T12:45:31.136Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,2693
+20260606-144003,rtk-bench-on-8,on,8,5,msg_01AJwRd54GyAW4BWz5bv5EcH,toolu_01CBg9TAk1LZrAz5ws9v8G3W,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29363,395,67,True,2026-06-06T12:45:33.564Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2428
+20260606-144003,rtk-bench-on-8,on,8,6,msg_011VYRNqyanCXCbyQU2MwcjD,toolu_01BMcSZBBPmi92TkF8DQBJjV,Bash,pip list --outdated 2>&1,False,List outdated packages,227,0,227,False,1,29758,356,71,True,2026-06-06T12:45:37.647Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,4083
+20260606-144003,rtk-bench-on-8,on,8,7,msg_01ESczh5C2Bs66HdyW9GTkfS,toolu_015kmxGqA2qP2LpPMX6AA4Av,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on source,0,0,5392,True,1,30114,195,68,True,2026-06-06T12:45:40.753Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  E713 (2x)
+  F821 (2x)
+  E40",,False,False,3106
+20260606-144003,rtk-bench-on-8,on,8,8,msg_01L21tf8epx2f1MvYVBM4BMn,toolu_01TBjPaxP9SKdbf7JyBu8HUh,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics,0,0,1226,True,1,30309,2761,63,True,2026-06-06T12:45:43.219Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2466
+20260606-144003,rtk-bench-on-8,on,8,9,msg_01RkpeH4ChodHRZruzXkhxyj,toolu_01GbsFWUUbxQ44p2nA2FwvgJ,Bash,ruff format --check src/pretix/ 2>&1,False,Check formatting,0,0,398,True,1,33070,687,61,True,2026-06-06T12:45:45.680Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,2461
+20260606-144003,rtk-bench-on-8,on,8,10,msg_01Uda2zjVh3rSMicyGFbkQ1y,toolu_01R6Ndyd1DwPoMXiTDSVCpzu,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show top errors,23048,0,23048,False,1,33757,259,66,True,2026-06-06T12:45:57.904Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,12224
+20260606-144003,rtk-bench-on-8,on,8,11,msg_01623G3eZdqfcmmh4baP88Cn,toolu_01DAeW4XsBrDFA2eVjUaSBUw,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary,215,0,215,False,1,34016,9047,55,True,2026-06-06T12:46:01.822Z,"src/pretix/base/services/tax.py (1 errors)
+  L422: [var-annotated] Need type annotation for ""d""
+
+src/pretix/plugins/ticketoutputpdf/apps.py (1 errors)
+  L54: [var-annotated] Need type annotation for """,,False,False,3918
+20260606-144003,rtk-bench-on-8,on,8,12,msg_01TJRotQS95q7WLraJbYQnjD,toolu_01VEGCCPdajMhx1WgP5rpVPB,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,43063,268,66,True,2026-06-06T12:46:05.635Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,3813
+20260606-144003,rtk-bench-on-8,on,8,13,msg_012ZJmw5miFmKKZnEtNQLP3L,,,,False,,0,0,0,False,1,43331,138,1,False,,,,False,False,0
+20260606-144003,rtk-bench-off-8,off,8,1,msg_01ML2ab2dQTbcHnx1A3tPWNM,toolu_01MvRaTuGnNRbupEJK3M6Ygu,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,8,True,2026-06-06T12:45:23.777Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:40 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:45 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:40 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-8,off,8,2,msg_01LxdvR4eDCgEPd3fmXR8gBE,toolu_012EtFXCfsuPBxZbfq4sR7q2,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26139,1722,63,True,2026-06-06T12:45:25.833Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2056
+20260606-144003,rtk-bench-off-8,off,8,3,msg_012on1NVafxX6CZKK4hsmYqt,toolu_0165XDByoC8gPXV4nT8ppop3,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src/,4,0,4,False,1,27861,2296,59,True,2026-06-06T12:45:27.900Z,1206,,False,False,2067
+20260606-144003,rtk-bench-off-8,off,8,4,msg_01AMfVMdaEH9fjtNnajm9sNF,toolu_0123DSTzRni9q3VjdMRqFvCK,Bash,git log --oneline -10,False,Show recent commits,665,0,665,False,1,30157,120,62,True,2026-06-06T12:45:29.734Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1834
+20260606-144003,rtk-bench-off-8,off,8,5,msg_01TNw1AmrjxVjzUNLogvCakX,toolu_01YZ7UqHfPNx6akzmULU687y,Bash,pip list 2>&1,False,List installed packages,416,0,416,False,1,30277,393,62,True,2026-06-06T12:45:32.028Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2294
+20260606-144003,rtk-bench-off-8,off,8,6,msg_013QFeBji5MgE6D4o2keZ5Se,toolu_01TW4DSSFLYnfiufQX1tenng,Bash,pip list --outdated 2>&1,False,List outdated packages,196,0,196,False,1,30670,279,66,True,2026-06-06T12:45:37.878Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,5850
+20260606-144003,rtk-bench-off-8,off,8,7,msg_014HdoshuLCbY2sdBVdHup6H,toolu_01NwHKT9e74oP5rPu4uPxcF5,Bash,ruff check src/pretix/ 2>&1 | tail -50,False,Run ruff check on src/pretix,1504,0,1504,False,1,30949,213,57,True,2026-06-06T12:45:41.492Z,"49 | COMPRESS_PRECOMPILERS = ()
+50 | TEMPLATES[0]['OPTIONS']['loaders'] = (
+51 |     ('django.template.loaders.cached.Loader', template_loaders),
+   |                                               ^^^",,False,False,3614
+20260606-144003,rtk-bench-off-8,off,8,8,msg_01MKnjRK4zKMmSVUNuiBv6rC,toolu_014gBii9sKiqfPd7nnMXTHJt,Bash,ruff check src/pretix/ --statistics 2>&1,False,Get ruff statistics,0,0,900,True,1,31162,902,63,True,2026-06-06T12:45:43.933Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2441
+20260606-144003,rtk-bench-off-8,off,8,9,msg_01JaFJj5eiR6kgH7SXbnt14m,toolu_014P3osyqK7TMe5gWZ74WhfP,Bash,ruff format --check src/pretix/ 2>&1 | tail -20,False,Check ruff format issues,960,0,960,False,1,32064,565,67,True,2026-06-06T12:45:46.167Z,"Would reformat: src/pretix/presale/views/locale.py
+Would reformat: src/pretix/presale/views/oidc_op.py
+Would reformat: src/pretix/presale/views/order.py
+Would reformat: src/pretix/presale/views/organi",,False,False,2234
+20260606-144003,rtk-bench-off-8,off,8,10,msg_01JWNmbuLGV7NfX2QzqmCi3n,toolu_01682wduZkmufM3inxZ6SYVn,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,26071,0,26071,False,1,32629,544,64,True,2026-06-06T12:46:00.195Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,14028
+20260606-144003,rtk-bench-off-8,off,8,11,msg_011fFNVMCBAic5VkX8khNY2x,toolu_011wHsLDnv8Uvk5rK1RjLt2G,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Get mypy summary tail,860,0,860,False,1,33173,11026,51,True,2026-06-06T12:46:08.127Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,7932
+20260606-144003,rtk-bench-off-8,off,8,12,msg_01GqUBpcK6Y9SCa7M2CxgQPC,toolu_01QTgexCJC7rnPq2WgrLLSKe,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,44199,529,62,True,2026-06-06T12:46:10.316Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2189
+20260606-144003,rtk-bench-off-8,off,8,13,msg_01LsKUs2v1c2NndS4Ls5s9Ch,,,,False,,0,0,0,False,1,44728,138,51,False,,,,False,False,0
+20260606-144003,rtk-bench-on-9,on,9,1,msg_017nHr7EtsWWwCM2tQPP9CsN,toolu_018bW46h6wk2ztwLnEtR9mAy,Bash,ls -la,False,List files in current directory,791,0,791,False,5,26370,0,8,True,2026-06-06T12:45:23.650Z,"755  .git/
+755  .github/
+755  _build/
+755  deployment/
+755  doc/
+755  res/
+755  src/
+644  .clabot  708B
+644  .codecov.yml  531B
+644  .dockerignore  97B
+644  .editorconfig  119B
+644  .gitattributes  87",,False,False,0
+20260606-144003,rtk-bench-on-9,on,9,2,msg_01WcMVfZcV1DnsRWtNeg2xFm,toolu_01KuB2uAbmMMu3RToN2eqFfN,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26971,0,66,True,2026-06-06T12:45:26.000Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2350
+20260606-144003,rtk-bench-on-9,on,9,3,msg_01VM3NpMdFWGwn7ocStbdjff,toolu_019fxAVNfqpoKEWxEHSY41x2,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src/,4,0,4,False,1,29267,0,51,True,2026-06-06T12:45:28.127Z,1206,,False,False,2127
+20260606-144003,rtk-bench-on-9,on,9,4,msg_01A4KVL9HejT6K7DesWuWP2q,toolu_01AdJa8BcoANK1cp6Z2yqRoQ,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,29267,120,66,True,2026-06-06T12:45:30.049Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1922
+20260606-144003,rtk-bench-on-9,on,9,5,msg_016kNTPiciHcTruVghMQuuVz,toolu_01HXpmQYp7E9PuoVSUh8j7Z8,Bash,pip list 2>&1,False,List installed pip packages,476,0,476,False,1,29387,395,62,True,2026-06-06T12:45:32.367Z,"pip list: 15 packages
+???????????????????????????????????????
+
+[A]
+  ast_serialize (0.5.0)
+
+[I]
+  iniconfig (2.3.0)
+
+[L]
+  librt (0.11.0)
+
+[M]
+  mypy (2.1.0)
+  mypy_extensions (1.1.0)
+
+[P]
+  packaging",,False,False,2318
+20260606-144003,rtk-bench-on-9,on,9,6,msg_01SHzTTVdMHuRtsUfpfokwxr,toolu_01Jn5ZxJLCL7iki3wM2y5shk,Bash,pip list --outdated 2>&1,False,List outdated pip packages,227,0,227,False,1,29782,356,72,True,2026-06-06T12:45:39.831Z,"pip list: 4 packages
+???????????????????????????????????????
+
+[P]
+  pip (24.0)
+
+[R]
+  ruff (0.15.14)
+
+[S]
+  setuptools (68.1.2)
+
+[W]
+  wheel (0.42.0)",,False,False,7464
+20260606-144003,rtk-bench-on-9,on,9,7,msg_01FuKbMrk3ix6VJqXTmer6ay,toolu_01Tvv1EkyE6pDK9k14w442vv,Bash,ruff check src/pretix/ 2>&1,False,Run ruff check on src/pretix/,0,0,5394,True,1,30138,197,68,True,2026-06-06T12:45:42.960Z,"Exit code 1
+Ruff: 354 issues in 133 files (69 fixable)
+???????????????????????????????????????
+Top rules:
+  F401 (142x)
+  E722 (100x)
+  E741 (94x)
+  F405 (8x)
+  F841 (4x)
+  E713 (2x)
+  F821 (2x)
+  E40",,False,False,3129
+20260606-144003,rtk-bench-on-9,on,9,8,msg_01NwZAD5DAEHKroCN57umAye,toolu_01EjFU9C9ff4buJRs7mX8VQ9,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics,0,0,1226,True,1,30335,2767,63,True,2026-06-06T12:45:45.271Z,"Exit code 1
+Ruff check (JSON parse failed: missing field `message` at line 8 column 3)
+[
+  {
+    ""code"": ""F401"",
+    ""name"": ""unused-import"",
+    ""count"": 142,
+    ""fixable"": false,
+    ""fixable_count",,False,False,2311
+20260606-144003,rtk-bench-on-9,on,9,9,msg_014oW1nJSag4Wa3Tej29bD5p,toolu_01WMhkTzvDsCUgFauBhi7Ngb,Bash,ruff format --check src/pretix/ 2>&1,False,Check ruff formatting,0,0,398,True,1,33102,687,61,True,2026-06-06T12:45:47.438Z,"Exit code 2
+Ruff format: 862 files need formatting
+???????????????????????????????????????
+1. _base_settings.py
+2. _build.py
+3. _build_settings.py
+4. apps.py
+5. device.py
+6. devicesecurity.py
+7. permi",,False,False,2167
+20260606-144003,rtk-bench-on-9,on,9,10,msg_01SMcDrAwNnbk3tZ66VdRunV,toolu_01MdVP82bJFVRFHGFwVsiXhA,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,23048,0,23048,False,1,33789,262,58,True,2026-06-06T12:45:56.001Z,"src/pretix/api/serializers/orderchange.py:85: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
+src/pretix/api/serializers/o",,False,False,8563
+20260606-144003,rtk-bench-on-9,on,9,11,msg_018EzAmb7gptN2dw2TwGz2ia,toolu_01AcW66qAfGquuR5VfAS6AFS,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Show mypy summary tail,306,0,306,False,1,34051,9050,44,True,2026-06-06T12:45:59.504Z,"src/pretix/plugins/ticketoutputpdf/migrations/0005_merge_20180805_1436.py (1 errors)
+  L15: [var-annotated] Need type annotation for ""operations"" (hint: ""operations: list[<type>] = ..."")
+
+src/pretix/p",,False,False,3503
+20260606-144003,rtk-bench-on-9,on,9,12,msg_014Z6NuRDuAZsmgseEdWr5Wr,toolu_01EvQgNZXEAvA3NL6XumTK1c,Bash,pip show django 2>&1,False,Show Django package info,0,0,49,True,1,43101,336,68,True,2026-06-06T12:46:01.638Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,2134
+20260606-144003,rtk-bench-on-9,on,9,13,msg_0145jfLs7VAVuBVibGTt7P4F,,,,False,,0,0,0,False,1,43437,138,44,False,,,,False,False,0
+20260606-144003,rtk-bench-off-9,off,9,1,msg_01AC1TDWtkBRbmrHKMpxHsYX,toolu_01AHUKJaxTH93xYPsbqWLnLL,Bash,ls -la,False,List files in current directory,2178,0,2178,False,5,26139,0,8,True,2026-06-06T12:45:24.352Z,"total 364
+drwxr-xr-x 9 ubuntu ubuntu   4096 Jun  6 12:41 .
+drwxr-x--- 1 ubuntu ubuntu   4096 Jun  6 12:45 ..
+-rw-r--r-- 1 ubuntu ubuntu    708 Jun  6 12:41 .clabot
+-rw-r--r-- 1 ubuntu ubuntu    531 Ju",,False,False,0
+20260606-144003,rtk-bench-off-9,off,9,2,msg_0114LeHhUi4QJQ65Nk7QCVfD,toolu_016Aj4wFhSQrhG2qgXbRQbuT,Bash,cat pyproject.toml,False,Show pyproject.toml contents,4119,0,4119,False,1,26139,1726,63,True,2026-06-06T12:45:26.980Z,"[project]
+name = ""pretix""
+dynamic = [""version""]
+description = ""Reinventing presales, one ticket at a time""
+readme = ""README.rst""
+requires-python = "">=3.11""
+license = {file = ""LICENSE""}
+keywords = [""ti",,False,False,2628
+20260606-144003,rtk-bench-off-9,off,9,3,msg_017htQouqUPANUY6Rs63czsb,toolu_01M8aGGD5QbGrU3Ftd3Y8v1x,Bash,"find src/ -name ""*.py"" | wc -l",False,Count Python files in src,4,0,4,False,1,27865,2296,59,True,2026-06-06T12:45:29.213Z,1206,,False,False,2233
+20260606-144003,rtk-bench-off-9,off,9,4,msg_01Gf3kBrVkLhPVb2G6JS4o6C,toolu_012r113SsGgnkBMixxq34ouZ,Bash,git log --oneline -10,False,Show last 10 commits,665,0,665,False,1,30161,119,62,True,2026-06-06T12:45:31.162Z,"93469d3 SubEvent details: Fix incorrect signal usage
+329b118 Update aiohttp requirement from ==3.13.* to ==3.14.* (#6245)
+748054d Add read-only details page for subevents (#6151)
+721b179 Add support f",,False,False,1949
+20260606-144003,rtk-bench-off-9,off,9,5,msg_01PGfWn2jV7u4BLQzxZuoZTr,toolu_01LSeRabyrRGNa1iuHw5WvF4,Bash,pip list 2>&1,False,List installed packages,416,0,416,False,1,30280,395,62,True,2026-06-06T12:45:33.671Z,"Package           Version
+----------------- -------
+ast_serialize     0.5.0
+iniconfig         2.3.0
+librt             0.11.0
+mypy              2.1.0
+mypy_extensions   1.1.0
+packaging         26.2
+path",,False,False,2509
+20260606-144003,rtk-bench-off-9,off,9,6,msg_01BFmoMaxxQYND8sTBA86q8q,toolu_01ETb9VCpo2eMJoUZrBzXMx3,Bash,pip list --outdated 2>&1,False,List outdated packages,196,0,196,False,1,30675,279,55,True,2026-06-06T12:45:39.296Z,"Package    Version Latest  Type
+---------- ------- ------- -----
+pip        24.0    26.1.2  wheel
+ruff       0.15.14 0.15.16 wheel
+setuptools 68.1.2  82.0.1  wheel
+wheel      0.42.0  0.47.0  wheel",,False,False,5625
+20260606-144003,rtk-bench-off-9,off,9,7,msg_01NZnPD31if3ggjLWgU26u2i,toolu_01HjFz66mDWaU28sfnp2cV3n,Bash,ruff check src/pretix/ 2>&1 | tail -50,False,Run ruff check on source,1504,0,1504,False,1,30954,213,62,True,2026-06-06T12:45:42.286Z,"49 | COMPRESS_PRECOMPILERS = ()
+50 | TEMPLATES[0]['OPTIONS']['loaders'] = (
+51 |     ('django.template.loaders.cached.Loader', template_loaders),
+   |                                               ^^^",,False,False,2990
+20260606-144003,rtk-bench-off-9,off,9,8,msg_016T8BhrbSte8YEtXfwiwYE7,toolu_01WJLiKZD66bZwEmrACMUpj9,Bash,ruff check src/pretix/ --statistics 2>&1,False,Show ruff statistics by rule,0,0,900,True,1,31167,898,63,True,2026-06-06T12:45:44.399Z,"Exit code 1
+warning: Invalid `# noqa` directive on src/pretix/base/exporter.py:51: expected a comma-separated list of codes (e.g., `# noqa: F401, F841`).
+warning: Invalid `# noqa` directive on src/pre",,False,False,2113
+20260606-144003,rtk-bench-off-9,off,9,9,msg_01Y3qEwtBJuUWyeP44v6W5uL,toolu_01VJB4mmhUbpW3gRKUrAtm9c,Bash,ruff format --check src/pretix/ 2>&1 | tail -30,False,Check ruff format issues,1469,0,1469,False,1,32065,568,59,True,2026-06-06T12:45:46.778Z,"Would reformat: src/pretix/presale/management/commands/updatestyles.py
+Would reformat: src/pretix/presale/middleware.py
+Would reformat: src/pretix/presale/style.py
+Would reformat: src/pretix/presale/u",,False,False,2379
+20260606-144003,rtk-bench-off-9,off,9,10,msg_01SJqxVRgsyyDs2oFkZYh1T8,toolu_012FJuQ124THHCbpaMsWDohb,Bash,mypy --ignore-missing-imports --no-error-summary src/pretix/ 2>&1 | head -200,False,Run mypy and show first 200 lines,26071,0,26071,False,1,32633,763,64,True,2026-06-06T12:45:56.578Z,"src/pretix/plugins/returnurl/migrations/0001_initial.py:8: error: Need type annotation for ""dependencies"" (hint: ""dependencies: list[<type>] = ..."")  [var-annotated]
+src/pretix/plugins/returnurl/migra",,False,False,9800
+20260606-144003,rtk-bench-off-9,off,9,11,msg_01Nqtmg3d93sTCCiMSR1R4QH,toolu_01QKSRtLXFhXdN24FDzBrLo5,Bash,mypy --ignore-missing-imports src/pretix/ 2>&1 | tail -5,False,Show mypy summary tail,860,0,860,False,1,33396,11026,45,True,2026-06-06T12:46:03.700Z,"src/pretix/plugins/ticketoutputpdf/views.py:160: error: Incompatible types in assignment (expression has type ""str"", base class ""EventPermissionRequiredMixin"" defined the type as ""None"")  [assignment]",,False,False,7122
+20260606-144003,rtk-bench-off-9,off,9,12,msg_016xKiJbQyUhGUUSHQ6A7LEe,toolu_01FCvWYB2uCRa3ktG1uAU36m,Bash,pip show django 2>&1,False,Show django package info,0,0,49,True,1,44422,522,67,True,2026-06-06T12:46:08.200Z,"Exit code 1
+WARNING: Package(s) not found: django",,False,False,4500
+20260606-144003,rtk-bench-off-9,off,9,13,msg_0173pmqU46nq7taVHuiRju2E,,,,False,,0,0,0,False,1,44944,137,49,False,,,,False,False,0

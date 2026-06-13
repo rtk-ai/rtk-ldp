@@ -1,0 +1,414 @@
+{
+  "version": "0.42.3",
+  "ecosystems": [
+    {
+      "ecosystem": "github",
+      "sample_size_on": 10,
+      "sample_size_off": 10,
+      "cost": {
+        "savings_pct": 14.31,
+        "on_mean_usd": 0.2753,
+        "off_mean_usd": 0.3213,
+        "p_value": 0.0,
+        "ci_95": [
+          14.31,
+          14.31
+        ]
+      },
+      "tokens": {
+        "savings_pct": 7.45,
+        "on_mean": 367994,
+        "off_mean": 397595,
+        "p_value": 0.0
+      },
+      "bash_bytes": {
+        "savings_pct": 63.66,
+        "on_mean": 7642,
+        "off_mean": 21025,
+        "p_value": 0.0
+      },
+      "pass_rate": {
+        "on": 1.0,
+        "off": 1.0
+      },
+      "api_calls": {
+        "on_mean": 13.0,
+        "off_mean": 13.0
+      },
+      "duration_ms": {
+        "on_mean": 57937,
+        "off_mean": 54214
+      },
+      "run_count": 1,
+      "pdf_public_url": "/data/benchmarks/0.42.3/reports/public/github.pdf",
+      "token_composition": {
+        "off": {
+          "cache_read": 385780,
+          "cache_creation": 11798,
+          "uncached": 17,
+          "total": 397595
+        },
+        "on": {
+          "cache_read": 362199,
+          "cache_creation": 5778,
+          "uncached": 17,
+          "total": 367994
+        }
+      },
+      "causal_chain": "RTK reduced bash output by 63.7%, cutting total input tokens by 7.4% and cost by 14.3%. Token mix (ON): cache read 98% / cache write 2% / uncached 0% vs OFF: 97% / 3% / 0%."
+    },
+    {
+      "ecosystem": "js",
+      "sample_size_on": 10,
+      "sample_size_off": 10,
+      "cost": {
+        "savings_pct": 21.4,
+        "on_mean_usd": 0.4615,
+        "off_mean_usd": 0.5872,
+        "p_value": 0.0,
+        "ci_95": [
+          21.4,
+          21.4
+        ]
+      },
+      "tokens": {
+        "savings_pct": 18.48,
+        "on_mean": 551773,
+        "off_mean": 676889,
+        "p_value": 0.0
+      },
+      "bash_bytes": {
+        "savings_pct": 38.74,
+        "on_mean": 36460,
+        "off_mean": 59513,
+        "p_value": 0.0
+      },
+      "pass_rate": {
+        "on": 1.0,
+        "off": 1.0
+      },
+      "api_calls": {
+        "on_mean": 15.1,
+        "off_mean": 15.2
+      },
+      "duration_ms": {
+        "on_mean": 66239,
+        "off_mean": 65311
+      },
+      "run_count": 1,
+      "pdf_public_url": "/data/benchmarks/0.42.3/reports/public/js.pdf",
+      "token_composition": {
+        "off": {
+          "cache_read": 646827,
+          "cache_creation": 30043,
+          "uncached": 19,
+          "total": 676889
+        },
+        "on": {
+          "cache_read": 533701,
+          "cache_creation": 18053,
+          "uncached": 19,
+          "total": 551773
+        }
+      },
+      "causal_chain": "RTK reduced bash output by 38.7%, cutting total input tokens by 18.5% and cost by 21.4%. Token mix (ON): cache read 97% / cache write 3% / uncached 0% vs OFF: 96% / 4% / 0%."
+    },
+    {
+      "ecosystem": "python",
+      "sample_size_on": 10,
+      "sample_size_off": 10,
+      "cost": {
+        "savings_pct": 16.6,
+        "on_mean_usd": 0.3815,
+        "off_mean_usd": 0.4575,
+        "p_value": 0.0019,
+        "ci_95": [
+          16.6,
+          16.6
+        ]
+      },
+      "tokens": {
+        "savings_pct": 11.19,
+        "on_mean": 433180,
+        "off_mean": 487748,
+        "p_value": 0.0054
+      },
+      "bash_bytes": {
+        "savings_pct": 24.6,
+        "on_mean": 36711,
+        "off_mean": 48689,
+        "p_value": 0.0024
+      },
+      "pass_rate": {
+        "on": 1.0,
+        "off": 1.0
+      },
+      "api_calls": {
+        "on_mean": 13.0,
+        "off_mean": 13.6
+      },
+      "duration_ms": {
+        "on_mean": 51246,
+        "off_mean": 57801
+      },
+      "run_count": 1,
+      "pdf_public_url": "/data/benchmarks/0.42.3/reports/public/python.pdf",
+      "token_composition": {
+        "off": {
+          "cache_read": 463433,
+          "cache_creation": 24297,
+          "uncached": 18,
+          "total": 487748
+        },
+        "on": {
+          "cache_read": 414954,
+          "cache_creation": 18209,
+          "uncached": 17,
+          "total": 433180
+        }
+      },
+      "causal_chain": "RTK reduced bash output by 24.6%, cutting total input tokens by 11.2% and cost by 16.6%. Token mix (ON): cache read 96% / cache write 4% / uncached 0% vs OFF: 95% / 5% / 0%."
+    },
+    {
+      "ecosystem": "rust",
+      "sample_size_on": 10,
+      "sample_size_off": 10,
+      "cost": {
+        "savings_pct": 36.58,
+        "on_mean_usd": 0.2183,
+        "off_mean_usd": 0.3443,
+        "p_value": 0.0,
+        "ci_95": [
+          36.58,
+          36.58
+        ]
+      },
+      "tokens": {
+        "savings_pct": 25.27,
+        "on_mean": 280956,
+        "off_mean": 375985,
+        "p_value": 0.0
+      },
+      "bash_bytes": {
+        "savings_pct": 78.06,
+        "on_mean": 5720,
+        "off_mean": 26071,
+        "p_value": 0.0
+      },
+      "pass_rate": {
+        "on": 1.0,
+        "off": 1.0
+      },
+      "api_calls": {
+        "on_mean": 10.0,
+        "off_mean": 11.8
+      },
+      "duration_ms": {
+        "on_mean": 63776,
+        "off_mean": 68654
+      },
+      "run_count": 1,
+      "pdf_public_url": "/data/benchmarks/0.42.3/reports/public/rust.pdf",
+      "token_composition": {
+        "off": {
+          "cache_read": 361154,
+          "cache_creation": 14815,
+          "uncached": 16,
+          "total": 375985
+        },
+        "on": {
+          "cache_read": 275809,
+          "cache_creation": 5133,
+          "uncached": 14,
+          "total": 280956
+        }
+      },
+      "causal_chain": "RTK reduced bash output by 78.1%, cutting total input tokens by 25.3% and cost by 36.6%. Token mix (ON): cache read 98% / cache write 2% / uncached 0% vs OFF: 96% / 4% / 0%."
+    },
+    {
+      "ecosystem": "ts",
+      "sample_size_on": 10,
+      "sample_size_off": 10,
+      "cost": {
+        "savings_pct": 12.37,
+        "on_mean_usd": 0.6498,
+        "off_mean_usd": 0.7415,
+        "p_value": 0.0266,
+        "ci_95": [
+          12.37,
+          12.37
+        ]
+      },
+      "tokens": {
+        "savings_pct": -1.96,
+        "on_mean": 867298,
+        "off_mean": 850638,
+        "p_value": 0.6958
+      },
+      "bash_bytes": {
+        "savings_pct": 36.46,
+        "on_mean": 34397,
+        "off_mean": 54132,
+        "p_value": 0.0
+      },
+      "pass_rate": {
+        "on": 1.0,
+        "off": 1.0
+      },
+      "api_calls": {
+        "on_mean": 22.2,
+        "off_mean": 19.6
+      },
+      "duration_ms": {
+        "on_mean": 81335,
+        "off_mean": 82055
+      },
+      "run_count": 1,
+      "pdf_public_url": "/data/benchmarks/0.42.3/reports/public/ts.pdf",
+      "token_composition": {
+        "off": {
+          "cache_read": 814333,
+          "cache_creation": 36282,
+          "uncached": 24,
+          "total": 850638
+        },
+        "on": {
+          "cache_read": 846787,
+          "cache_creation": 20484,
+          "uncached": 26,
+          "total": 867298
+        }
+      },
+      "causal_chain": "RTK reduced bash output by 36.5%, cutting total input tokens by -2.0% and cost by 12.4%. Token mix (ON): cache read 98% / cache write 2% / uncached 0% vs OFF: 96% / 4% / 0%."
+    }
+  ],
+  "aggregate": {
+    "ecosystem": "all",
+    "sample_size_on": 50,
+    "sample_size_off": 50,
+    "cost": {
+      "savings_pct": 18.98,
+      "on_mean_usd": 0.3973,
+      "off_mean_usd": 0.4903,
+      "p_value": 0.0048,
+      "ci_95": [
+        8.17,
+        32.33
+      ]
+    },
+    "tokens": {
+      "savings_pct": 10.31,
+      "on_mean": 500240,
+      "off_mean": 557771,
+      "p_value": 0.1532
+    },
+    "bash_bytes": {
+      "savings_pct": 42.26,
+      "on_mean": 24186,
+      "off_mean": 41886,
+      "p_value": 0.0
+    },
+    "pass_rate": {
+      "on": 1.0,
+      "off": 1.0
+    },
+    "api_calls": {
+      "on_mean": 14.7,
+      "off_mean": 14.6
+    },
+    "duration_ms": {
+      "on_mean": 64106,
+      "off_mean": 65607
+    },
+    "run_count": 5,
+    "pdf_public_url": null,
+    "token_composition": {
+      "off": {
+        "cache_read": 534305,
+        "cache_creation": 23447,
+        "uncached": 19,
+        "total": 557771
+      },
+      "on": {
+        "cache_read": 486690,
+        "cache_creation": 13531,
+        "uncached": 19,
+        "total": 500240
+      }
+    },
+    "causal_chain": "RTK reduced bash output by 42.3%, cutting total input tokens by 10.3% and cost by 19.0%. Token mix (ON): cache read 97% / cache write 3% / uncached 0% vs OFF: 96% / 4% / 0%."
+  },
+  "run_count": 5,
+  "sample_size": 100,
+  "pdf_combined_public_url": "/data/benchmarks/0.42.3/reports/public/_combined.pdf",
+  "data_downloads": {
+    "all": [
+      {
+        "label": "Download turns data (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/turns-all.csv"
+      },
+      {
+        "label": "Session summaries (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/session-summaries-all.csv"
+      },
+      {
+        "label": "All sessions (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/all_sessions.csv"
+      },
+      {
+        "label": "Per-run summary (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/per_run_summary.csv"
+      }
+    ],
+    "github": [
+      {
+        "label": "Download turns data (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/turns-github.csv"
+      },
+      {
+        "label": "Session summaries (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/session-summaries-github.csv"
+      }
+    ],
+    "js": [
+      {
+        "label": "Download turns data (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/turns-js.csv"
+      },
+      {
+        "label": "Session summaries (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/session-summaries-js.csv"
+      }
+    ],
+    "python": [
+      {
+        "label": "Download turns data (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/turns-python.csv"
+      },
+      {
+        "label": "Session summaries (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/session-summaries-python.csv"
+      }
+    ],
+    "rust": [
+      {
+        "label": "Download turns data (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/turns-rust.csv"
+      },
+      {
+        "label": "Session summaries (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/session-summaries-rust.csv"
+      }
+    ],
+    "ts": [
+      {
+        "label": "Download turns data (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/turns-ts.csv"
+      },
+      {
+        "label": "Session summaries (CSV)",
+        "url": "/data/benchmarks/0.42.3/data/session-summaries-ts.csv"
+      }
+    ]
+  }
+}

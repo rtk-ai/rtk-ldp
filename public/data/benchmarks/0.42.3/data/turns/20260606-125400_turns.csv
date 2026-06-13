@@ -1,0 +1,1314 @@
+run_id,vm_name,group,pair_index,turn_number,message_id,tool_use_id,tool_name,command,is_rtk_prefixed,description,stdout_bytes,stderr_bytes,content_bytes,is_error,input_tokens,cache_read_input_tokens,cache_creation_input_tokens,output_tokens,has_tool,timestamp,content_preview,stop_reason,interrupted,is_image,elapsed_since_prev_ms
+20260606-125400,rtk-bench-on-0,on,0,1,msg_01UngmgTHXdzNGc4A3rREYGf,toolu_01DE1uevNKyD3UxzzjfMwsm2,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,0,True,2026-06-06T10:54:40.723Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-0,on,0,2,msg_01JrTJQL1y6nVMNNscGFEgb9,toolu_01VGejWNcofyLkeSByuwsJeT,Bash,cat package.json,False,Display package.json contents,6475,0,6475,False,1,26373,494,62,True,2026-06-06T10:54:44.189Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,3466
+20260606-125400,rtk-bench-on-0,on,0,3,msg_011ZXTfGeLNLt9uNa5Qinv23,toolu_01NJTq71iXh2FDSQ9VFVQh7W,Bash,git log --oneline -10,False,Show recent commit history,548,0,548,False,1,26867,3381,62,True,2026-06-06T10:54:46.252Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2063
+20260606-125400,rtk-bench-on-0,on,0,4,msg_01WvLvZ7aA82pHACZLMub3Mz,toolu_012k6Psb7qUNNdzcQsMP6ZQY,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,30248,344,56,True,2026-06-06T10:54:48.485Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2233
+20260606-125400,rtk-bench-on-0,on,0,5,msg_01QcKdpVofv2Exw5AUhRjgg5,toolu_01CaQeKhUbHmr4e6H2tFGyUA,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30592,603,62,True,2026-06-06T10:55:01.581Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,13096
+20260606-125400,rtk-bench-on-0,on,0,6,msg_01M8cBgiYH1C76TB4HYzyp6z,toolu_01T9wUaEuWJJ9FMwfqjfhFJj,Bash,npm audit 2>&1,False,Audit dependencies for vulnerabilities,0,0,7731,True,1,31195,708,63,True,2026-06-06T10:55:04.796Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3215
+20260606-125400,rtk-bench-on-0,on,0,7,msg_01WZ695ZVrtz3CAE4T8wmow4,toolu_011PFBq1y8A1YNz692ZLwXU6,Bash,npm outdated 2>&1,False,Check outdated packages,0,0,5336,True,1,31903,3694,63,True,2026-06-06T10:55:08.650Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3854
+20260606-125400,rtk-bench-on-0,on,0,8,msg_01WfrmJkPgKzPViJA27LBHyS,toolu_01PAFTo2wgwfftixbHoH5PxJ,Bash,npm ls --depth=2 2>&1,False,List dependency tree to depth 2,30000,0,2216,False,1,35597,1860,67,True,2026-06-06T10:55:11.430Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/9e02c8b8-5962-419f-b6e2-110bf54e4367/tool-results/btmneywlb.txt
+
+Preview (",,False,False,2780
+20260606-125400,rtk-bench-on-0,on,0,9,msg_01SMfRwnARV7qNVuVeAye9Cd,toolu_01MEdSEd12gda9cnvShpBTzT,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Lint src with custom rules,897,0,897,False,1,37457,1386,52,True,2026-06-06T10:55:19.230Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,7800
+20260606-125400,rtk-bench-on-0,on,0,10,msg_01ANa6XbKi3DBXqWb8XDujBG,toolu_01SyaqLEtCDygQ8xwjCmov6P,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,51,True,1,38843,536,63,True,2026-06-06T10:55:25.192Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,5962
+20260606-125400,rtk-bench-on-0,on,0,11,msg_01Afa7D7YRk86qkY5ExtriAS,toolu_017wYAvM42AVrxErQKzN8YJd,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,39379,294,50,True,2026-06-06T10:55:32.034Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,6842
+20260606-125400,rtk-bench-on-0,on,0,12,msg_01UT2g2KmKZ4BvVbL6J2y5kR,toolu_01RdKhZeB5FG2jEyNBMYKZrq,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests with Jest,32,0,32,False,1,39673,4373,34,True,2026-06-06T10:56:13.880Z,PASS (2168) FAIL (0) skipped (3),,False,False,41846
+20260606-125400,rtk-bench-on-0,on,0,13,msg_016Ui8mwnAEYGuYpRXHZM1qB,toolu_01QNatVpJ6tpt7LMvkRPAuGi,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,44046,203,58,True,2026-06-06T10:56:19.883Z,487,,False,False,6003
+20260606-125400,rtk-bench-on-0,on,0,14,msg_014d3e2EZhUVTPsbmc8H6zx3,toolu_01DnLQ5NmA8tnUokNm2PCm51,Bash,"find src -type f -name ""*.js"" | wc -l",False,Count source JS files,3,0,3,False,1,44249,143,52,True,2026-06-06T10:56:21.989Z,133,,False,False,2106
+20260606-125400,rtk-bench-on-0,on,0,15,msg_014afYZubm8ZVLHEiNbCBqhM,,,,False,,0,0,0,False,1,44392,118,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-0,off,0,1,msg_01MTtwgaM5J8jo7rucFGXY8A,toolu_014GktoJTyPV4KxBcG8MwibQ,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T10:54:47.360Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 10:54 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-0,off,0,2,msg_01T8ZBZ6Z1JtyYR6tGkXHh4W,toolu_014dHPoXPwVXYB76ZTU82FPY,Bash,cat package.json,False,Show package.json content,6475,0,6475,False,1,30020,1515,59,True,2026-06-06T10:54:49.532Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2172
+20260606-125400,rtk-bench-off-0,off,0,3,msg_01EM5jQ3qvSJrYNcRLexpCXT,toolu_01RSmzN7EHvvxMU3Ca5y2mde,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,31535,3380,66,True,2026-06-06T10:54:51.503Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,1971
+20260606-125400,rtk-bench-off-0,off,0,4,msg_01XKe6yGWs2qQfBGM9TZrxUi,toolu_01EkwoEcU9DdwfgmnUFgt9oq,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments,1094,0,1094,False,1,34915,345,63,True,2026-06-06T10:54:53.701Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2198
+20260606-125400,rtk-bench-off-0,off,0,5,msg_01AsdJezK6ufziiz9Xp6po7a,toolu_0167Jy4x9bsdKXB6PNh6SquH,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,35260,601,66,True,2026-06-06T10:55:43.817Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,50116
+20260606-125400,rtk-bench-off-0,off,0,6,msg_01ATuk2bG8Fn3oduBeN6QEfA,toolu_01SQR5rX35B1ymjJjHVqknzh,Bash,npm audit 2>&1,False,Show npm audit vulnerabilities,0,0,7731,True,1,35861,732,62,True,2026-06-06T10:55:49.637Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,5820
+20260606-125400,rtk-bench-off-0,off,0,7,msg_01K7TFF8iczd18epLN5PxMdk,toolu_01ETXZSQD9PcAD3XJW4DQERf,Bash,npm outdated 2>&1,False,Show outdated packages,0,0,5336,True,1,36593,3692,63,True,2026-06-06T10:55:53.636Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3999
+20260606-125400,rtk-bench-off-0,off,0,8,msg_01134JiRTtwBHHG6qHG1nP6f,toolu_015r9Ew2H526QBdTiyyXt7De,Bash,npm ls --depth=2 2>&1,False,Show dependency tree depth 2,30000,0,2216,False,1,40285,1860,49,True,2026-06-06T10:55:56.646Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/264ec5e1-221b-4e33-a99b-0edac90642da/tool-results/bbdys1qdy.txt
+
+Preview (",,False,False,3010
+20260606-125400,rtk-bench-off-0,off,0,9,msg_0141CyjsSQh1WP9NS7KVZGzf,toolu_01NF2WzjYCQxrFEcXmC4Ari3,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with custom rules,10839,0,10839,False,1,42145,1386,64,True,2026-06-06T10:56:17.179Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,20533
+20260606-125400,rtk-bench-off-0,off,0,10,msg_017g77Yu5a7diBggweqQvD2d,toolu_01MiVpvQbFpjCe3sMpFKsppb,Bash,npx prettier --check --single-quote src/ 2>&1,False,Run Prettier format check,0,0,8444,True,1,43531,4867,63,True,2026-06-06T10:56:31.913Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,14734
+20260606-125400,rtk-bench-off-0,off,0,11,msg_01Qx62grzsXAd5ZeWnFQcdZg,toolu_014eeBe9n7KGB7eCQSRbnFJ8,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,48398,4614,68,True,2026-06-06T10:56:40.620Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,8707
+20260606-125400,rtk-bench-off-0,off,0,12,msg_01W3jza14wgVE2TpEQZv1RSc,toolu_01SvKQv9T6Z7Bib7jLbeCqep,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -cE ""error TS""",False,Count TypeScript errors,3,0,3,False,1,53012,4361,47,True,2026-06-06T10:56:49.396Z,487,,False,False,8776
+20260606-125400,rtk-bench-off-0,off,0,13,msg_01TAd5fUzpkLMi9JEDbVkxLz,toolu_013TuApnEWZm9QVcKZuTu4tK,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,5365,0,5365,False,1,57373,239,61,True,2026-06-06T10:57:41.287Z,"PASS test/unit/service-broker.spec.js (5.965 s)
+PASS test/unit/transit.spec.js (5.735 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.",,False,False,51891
+20260606-125400,rtk-bench-off-0,off,0,14,msg_0177BpvZH2tsrzPRC1JG3dfQ,toolu_011jjxVKrmbJEJ1S5G4LPAmx,Glob,,False,,0,0,2695,False,1,57612,2837,45,True,2026-06-06T10:57:45.171Z,"src/async-storage.js
+src/constants.js
+src/context.js
+src/cachers/memory-lru.js
+src/cachers/memory.js
+src/cachers/redis.js
+src/cachers/base.js
+src/cachers/index.js
+src/cpu-usage.js
+src/health.js
+src/lo",,False,False,3884
+20260606-125400,rtk-bench-off-0,off,0,15,msg_017Hu6VMT63Vau6QYsjNsU7X,,,,False,,0,0,0,False,1,60449,1392,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-1,on,1,1,msg_01Xgbk6kxv2Ri9QRPbgHp71f,toolu_01Wn84buNJE4Rorf1LSTtQ5j,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,8,True,2026-06-06T10:54:42.126Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-1,on,1,2,msg_01APmgru1NNQ1PDH3RykabdU,toolu_01GPr1egEq91fQ78TPHLQv1g,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,26373,497,63,True,2026-06-06T10:54:45.334Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,3208
+20260606-125400,rtk-bench-on-1,on,1,3,msg_01T68oQdV2pf9bs2YpcWhyj4,toolu_01KoVLj3X5RD3QyCZNBuJQRF,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,26870,3381,68,True,2026-06-06T10:54:47.333Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,1999
+20260606-125400,rtk-bench-on-1,on,1,4,msg_01TtJWPvHbwmpyb91FQ6nPe3,toolu_014QjFnZYPZBNHUiY3ac1SMP,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in source,1094,0,1094,False,1,30251,345,64,True,2026-06-06T10:54:49.448Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2115
+20260606-125400,rtk-bench-on-1,on,1,5,msg_01TKuW6cBaEAw2Npb81At1rG,toolu_01STZLv19z5UKWwNKQHhW9A4,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30596,603,62,True,2026-06-06T10:55:41.802Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,52354
+20260606-125400,rtk-bench-on-1,on,1,6,msg_01LxA4zTG12Rd98ZWWWVxBEa,toolu_01Hnv7oA7NvqciGDKJx2VtMy,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,31199,732,62,True,2026-06-06T10:55:45.445Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3643
+20260606-125400,rtk-bench-on-1,on,1,7,msg_01C6536SvC3yzzBTpCrwCKGS,toolu_01RLsAttLi3ia4ZQKgT8qkHH,Bash,npm outdated 2>&1,False,Check for outdated packages,0,0,5336,True,1,31931,3685,64,True,2026-06-06T10:55:51.961Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,6516
+20260606-125400,rtk-bench-on-1,on,1,8,msg_01YV8bRs6wsp6ZxVXxYtsiS1,toolu_01P2RP7XuhxopJZDtTMceYzA,Bash,npm ls --depth=2 2>&1,False,Show dependency tree,30000,0,2216,False,1,35616,1861,57,True,2026-06-06T10:55:55.753Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/c95b2472-72cc-464a-b1b1-56e2765c01cf/tool-results/bgbkf5zu9.txt
+
+Preview (",,False,False,3792
+20260606-125400,rtk-bench-on-1,on,1,9,msg_01Wu6LHkztX8eM2WkpLtttsH,toolu_01RCFuRRiQWBjAzK4a8QMcei,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src,897,0,897,False,1,37477,1385,73,True,2026-06-06T10:56:16.394Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,20641
+20260606-125400,rtk-bench-on-1,on,1,10,msg_012U2sZPXkJJgQt4bAmQYswW,toolu_01SpgboHeTVTp6pvSL2bUiQo,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,51,True,1,38862,612,63,True,2026-06-06T10:56:30.137Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,13743
+20260606-125400,rtk-bench-on-1,on,1,11,msg_017C33Y6AzCoxFXiup3xeAEP,toolu_01Xrwinzf43QMdot8JAi4WPw,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,39474,318,49,True,2026-06-06T10:56:38.417Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,8280
+20260606-125400,rtk-bench-on-1,on,1,12,msg_01JnCSSLKWv9GSYPqdVTf4Jv,toolu_012MtAr9tp5URUx9qTh5Dqxh,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,39792,4433,45,True,2026-06-06T10:56:48.083Z,487,,False,False,9666
+20260606-125400,rtk-bench-on-1,on,1,13,msg_01FFrhmjEKufQ1zfXLe1pGAL,toolu_014L1NKEQviRcgAHzMd5nSZR,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,32,0,32,False,1,44225,222,46,True,2026-06-06T10:57:38.795Z,PASS (2168) FAIL (0) skipped (3),,False,False,50712
+20260606-125400,rtk-bench-on-1,on,1,14,msg_01R38ZBY66cHwFFsTS59P8RA,toolu_01Chk7mjPmExmurzugqzM1tX,Glob,,False,,0,0,2696,False,1,44447,170,69,True,2026-06-06T10:57:41.488Z,"src/cachers/base.js
+src/async-storage.js
+src/constants.js
+src/context.js
+src/cpu-usage.js
+src/cachers/memory-lru.js
+src/cachers/memory.js
+src/cachers/redis.js
+src/cachers/index.js
+src/loggers/bunyan.j",,False,False,2693
+20260606-125400,rtk-bench-on-1,on,1,15,msg_01S861CEy5sSPpdvCWFBCssD,,,,False,,0,0,0,False,1,44617,1344,49,False,,,,False,False,0
+20260606-125400,rtk-bench-off-1,off,1,1,msg_016DXwu9KMZazvSXuw4q4pso,toolu_01CtD3qevPwCJUTsro4eivRL,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T10:54:41.391Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 10:54 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-1,off,1,2,msg_011ibNDjvg7hcwEwixZUPdMW,toolu_01LajEwKMDuhFs3UyFNw5p2r,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,30020,1496,62,True,2026-06-06T10:54:45.281Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,3890
+20260606-125400,rtk-bench-off-1,off,1,3,msg_01SKG7tHDjc4qd9U3YUETM62,toolu_01Fy8vF6NCLv8A4tbnCvuJBg,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,31516,3381,65,True,2026-06-06T10:54:47.679Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2398
+20260606-125400,rtk-bench-off-1,off,1,4,msg_019VTPJX8atZG6ccv65oF9yB,toolu_01M94couKQBY7sz2pw5Coy3F,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,34897,345,56,True,2026-06-06T10:54:49.797Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2118
+20260606-125400,rtk-bench-off-1,off,1,5,msg_01FssJLc62ibMchJurTuaS7r,toolu_01AveoNJuEqVqoJ1b6cS6kUt,Bash,npm install 2>&1,False,Install dependencies,1423,0,1423,False,1,35242,603,68,True,2026-06-06T10:55:41.150Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,51353
+20260606-125400,rtk-bench-off-1,off,1,6,msg_01YANZJq4XD4RrMXNA6vHKSt,toolu_01REH1AmGPhuapPuNjU4JKpc,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,35845,730,63,True,2026-06-06T10:55:45.113Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3963
+20260606-125400,rtk-bench-off-1,off,1,7,msg_01Yc5e3BWXvZv2W5Pruxzyii,toolu_01RL3f5WxXf69u5QFGkWBt2d,Bash,npm outdated 2>&1,False,Show outdated packages,0,0,5336,True,1,36575,3685,63,True,2026-06-06T10:55:51.794Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,6681
+20260606-125400,rtk-bench-off-1,off,1,8,msg_01DNjYVHwufQCK1wREiE9GPZ,toolu_017JCZqQRirEEk6b4FqzgzUT,Bash,npm ls --depth=2 2>&1 | head -200,False,Show dependency tree depth=2,9518,0,9518,False,1,40260,1860,54,True,2026-06-06T10:55:55.792Z,"moleculer@0.15.0 /home/ubuntu/bench-codebase
++-- @emnapi/core@1.5.0 extraneous
+| +-- @emnapi/wasi-threads@1.1.0 deduped
+| `-- tslib@2.8.1
++-- @emnapi/runtime@1.5.0 extraneous
+| `-- tslib@2.8.1 deduped",,False,False,3998
+20260606-125400,rtk-bench-off-1,off,1,9,msg_01BiJnxhHrFPRPJ8syaM6ecg,toolu_01MCgTunD6iCEyCBsrUCcKeD,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1 | tail -100",False,Run ESLint with custom rules on src,6105,0,6105,False,1,42120,5474,37,True,2026-06-06T10:56:17.041Z,"  175:7  warning  'res' is never reassigned. Use 'const' instead      prefer-const
+  179:8  warning  'item' is never reassigned. Use 'const' instead     prefer-const
+  235:7  warning  'service' is nev",,False,False,21249
+20260606-125400,rtk-bench-off-1,off,1,10,msg_01KCW7U5QnCupRjUMNBukUA6,toolu_01AeosZe6NN1brcg7gMqXqtQ,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1 | grep -E ""no-console|prefer-const"" | awk '{print $NF}' | sort | uniq -c",False,Count ESLint violations by rule,20,0,20,False,1,47594,2816,50,True,2026-06-06T10:56:33.358Z,    101 prefer-const,,False,False,16317
+20260606-125400,rtk-bench-off-1,off,1,11,msg_012VeCTKDfU5u7AAwEXkrWJn,toolu_01QgJNZJA1mrNPk3XVTzZuyS,Bash,npx prettier --check --single-quote src/ 2>&1 | tail -50,False,Check Prettier formatting,1766,0,1766,False,1,50410,355,37,True,2026-06-06T10:56:48.249Z,"[warn] src/tracing/exporters/newrelic.js
+[warn] src/tracing/exporters/zipkin.d.ts
+[warn] src/tracing/exporters/zipkin.js
+[warn] src/tracing/index.d.ts
+[warn] src/tracing/index.js
+[warn] src/tracing/ra",,False,False,14891
+20260606-125400,rtk-bench-off-1,off,1,12,msg_01TvcJwuVi4Lme7j2sNVxiSV,toolu_01GeVysSokkSG9oHJ7NBnR1V,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | tail -50,False,TypeScript strict check,5956,0,5956,False,1,50765,1193,50,True,2026-06-06T10:56:57.819Z,"src/middlewares/transmit/compression.js(46,6): error TS7034: Variable 'logger' implicitly has type 'any' in some locations where its type cannot be determined.
+src/middlewares/transmit/compression.js(",,False,False,9570
+20260606-125400,rtk-bench-off-1,off,1,13,msg_01Sq7LXEVmQmeayZ5i8cqdny,toolu_01TxCDkU4px67SaVdQF2q433,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -cE ""error TS[0-9]+""",False,Count TypeScript strict errors,3,0,3,False,1,51958,2707,58,True,2026-06-06T10:57:03.665Z,487,,False,False,5846
+20260606-125400,rtk-bench-off-1,off,1,14,msg_017mHPdgesUJQtJy9Xa2Ubne,toolu_01UukkpSgws63GyXbDKxTDtq,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1 | tail -40,False,Run jest unit tests,1587,0,1587,False,1,54665,176,60,True,2026-06-06T10:57:53.682Z,"PASS test/unit/cachers/lock.spec.js
+PASS test/unit/registry/discoverers/local.spec.js
+PASS test/unit/tracing/exporters/index.spec.js
+PASS test/unit/serializers/msgpack.spec.js
+PASS test/unit/serialize",,False,False,50017
+20260606-125400,rtk-bench-off-1,off,1,15,msg_01HN127GwfBPfJmTfk6EKwhc,toolu_01QgrqSUwn9yQEcrpsxZA7CX,Glob,,False,,0,0,2689,False,1,54841,941,48,True,2026-06-06T10:58:02.272Z,"src/constants.js
+src/cachers/memory-lru.js
+src/cachers/memory.js
+src/cachers/redis.js
+src/cachers/base.js
+src/cachers/index.js
+src/async-storage.js
+src/loggers/bunyan.js
+src/loggers/base.js
+src/contex",,False,False,8590
+20260606-125400,rtk-bench-off-1,off,1,16,msg_01MVCvApTYdxz5dUwzq2igAt,toolu_019rUjq1rFzMXkigtJzutt8L,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" \) | wc -l",False,Count source files,3,0,3,False,1,55782,1596,61,True,2026-06-06T10:58:04.699Z,134,,False,False,2427
+20260606-125400,rtk-bench-off-1,off,1,17,msg_015qnKJV2ohhTbyz9v83fFwW,,,,False,,0,0,0,False,1,57378,131,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-2,on,2,1,msg_0115GFDeR8Q1FdZ2VpW35WL9,toolu_016TPwgsyhML4yGyJQ8yDbpD,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,0,True,2026-06-06T10:54:42.059Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-2,on,2,2,msg_01KRuxJxE1VBoro6t2ePSSew,toolu_01LUEBPfygL5YeKw6VpSsMME,Bash,cat package.json,False,Print package.json contents,6475,0,6475,False,1,26851,0,59,True,2026-06-06T10:54:45.169Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,3110
+20260606-125400,rtk-bench-on-2,on,2,3,msg_01HtCSfQcvkdoa9mNs98duxn,toolu_017iq8BRhxBbssp1sRgAAaFc,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,26851,3381,64,True,2026-06-06T10:54:47.574Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2405
+20260606-125400,rtk-bench-on-2,on,2,4,msg_01UUdFytVsdWiL3dV5XAHsNs,toolu_01J1gBfZKTWadGXM3t8TZSSZ,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,30232,345,56,True,2026-06-06T10:54:49.893Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2319
+20260606-125400,rtk-bench-on-2,on,2,5,msg_01BtBx1vJ1ZEcCLpPQKQcWe5,toolu_01R8ncJRmy5zm4vzWNcrv9Yy,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30577,603,68,True,2026-06-06T10:55:41.719Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,51826
+20260606-125400,rtk-bench-on-2,on,2,6,msg_01PcmmwyzmfSMRF1QMrcR6Er,toolu_01W3EH1o6hGrnXm2peSj5Bqb,Bash,npm audit 2>&1,False,Audit npm packages,0,0,7731,True,1,31180,732,66,True,2026-06-06T10:55:45.384Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3665
+20260606-125400,rtk-bench-on-2,on,2,7,msg_01Gb7DEWViqa9uthM5FRQooU,toolu_01RuGVrnbu2XD2WrpMXcMxHu,Bash,npm outdated 2>&1,False,Check for outdated dependencies,0,0,5336,True,1,31912,3686,64,True,2026-06-06T10:55:52.608Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,7224
+20260606-125400,rtk-bench-on-2,on,2,8,msg_01NC7j7K3DRoiGV1LfyKQ17Y,toolu_01VU1gH1RAvdoQjCRyFNgDUB,Bash,npm ls --depth=2 2>&1,False,Show dependency tree at depth 2,30000,0,2216,False,1,35598,1863,66,True,2026-06-06T10:55:55.949Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/ee791a44-7c43-4874-8125-f939ef96ba4f/tool-results/bd9rly0r7.txt
+
+Preview (",,False,False,3341
+20260606-125400,rtk-bench-on-2,on,2,9,msg_01C1gKqXmdVYqkVc98vjzxbh,toolu_017C92wXiUzng8xESjqj9byG,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with custom rules,897,0,897,False,1,37461,1388,55,True,2026-06-06T10:56:17.127Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,21178
+20260606-125400,rtk-bench-on-2,on,2,10,msg_01UK3JEG2RrLQ2TE9evTgzFS,toolu_017jx9Mt31MRaFG9hSfF43og,Bash,npx prettier --check --single-quote src/ 2>&1,False,Run prettier check,0,0,51,True,1,38849,608,63,True,2026-06-06T10:56:32.469Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,15342
+20260606-125400,rtk-bench-on-2,on,2,11,msg_01L1SctpWoAipzK7LBYqAfAk,toolu_01KwodEoyckz59rvPf2epfzu,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,39457,315,56,True,2026-06-06T10:56:47.782Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,15313
+20260606-125400,rtk-bench-on-2,on,2,12,msg_01RgY39QTEc6rsvq7ThXc5tk,toolu_011FD4p6iAWFVsqetp4yKiGL,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TS strict errors,3,0,3,False,1,39772,4573,40,True,2026-06-06T10:56:57.913Z,487,,False,False,10131
+20260606-125400,rtk-bench-on-2,on,2,13,msg_01KcVLXjd7udc39QG1aG8Wow,toolu_01KssGgPbvoHeJqGmeEDiYTZ,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests with bail,32,0,32,False,1,44345,207,61,True,2026-06-06T10:57:47.316Z,PASS (2168) FAIL (0) skipped (3),,False,False,49403
+20260606-125400,rtk-bench-on-2,on,2,14,msg_012KgjHoK8ojZAVg3xq96FCd,toolu_01N4nWPGG9z6ayyWaBTctRuq,Bash,"find src -type f -name ""*.js"" | wc -l",False,Count JS source files,3,0,3,False,1,44552,173,50,True,2026-06-06T10:57:51.562Z,133,,False,False,4246
+20260606-125400,rtk-bench-on-2,on,2,15,msg_013hFLoiJoqFVJ5famgMw24x,,,,False,,0,0,0,False,1,44725,276,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-2,off,2,1,msg_01BuDd4854EfAw5nsSbzWtC4,toolu_01MMPre2DsiZDUWiTg7NuTEg,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,0,True,2026-06-06T10:58:30.159Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 10:58 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-2,off,2,2,msg_01GcDinTXGVAbtbUkiPrvq9v,toolu_01RJiYbdTWRgyxjvXFFCMYEo,Bash,cat package.json,False,Display package.json contents,6475,0,6475,False,1,30020,1512,59,True,2026-06-06T10:58:33.087Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2928
+20260606-125400,rtk-bench-off-2,off,2,3,msg_01YJh67PyQmV3h3fyhEMnZLL,toolu_01VGVjqvWaJS6vkgSRSWK5RN,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,31532,3381,68,True,2026-06-06T10:58:35.349Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2262
+20260606-125400,rtk-bench-off-2,off,2,4,msg_01F19mTV6Mbt8pTjxSfTYswH,toolu_011WuS4Levc23DKjU3AhYPmg,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in source,1094,0,1094,False,1,34913,345,64,True,2026-06-06T10:58:38.106Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2757
+20260606-125400,rtk-bench-off-2,off,2,5,msg_0155N6Npy12nzYdvDWX7tdkU,toolu_019o66TbTdn3P6MS2ndz1fp6,Bash,npm install 2>&1,False,Install dependencies,1423,0,1423,False,1,35258,603,68,True,2026-06-06T10:59:01.142Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,23036
+20260606-125400,rtk-bench-off-2,off,2,6,msg_016XpfDBan6Ug2kjUvs2Ye9x,toolu_01BqZbz6abS3YLiD18G59GNC,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,35861,730,62,True,2026-06-06T10:59:05.612Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,4470
+20260606-125400,rtk-bench-off-2,off,2,7,msg_012i2ecUx3RhDdUEUXdTy6TU,toolu_01EsvfLni8MpXK6MyDJWauPC,Bash,npm outdated 2>&1,False,Show outdated packages,0,0,5336,True,1,36591,3685,64,True,2026-06-06T10:59:09.047Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3435
+20260606-125400,rtk-bench-off-2,off,2,8,msg_01DShw1JnekmFsfyLuCj5WQY,toolu_011sqRMW8XsbbzTA4s6WM7B5,Bash,npm ls --depth=2 2>&1,False,Show dependency tree at depth 2,30000,0,2216,False,1,40276,1860,67,True,2026-06-06T10:59:12.346Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/c04dcc86-edd4-4d3f-923d-cbc7d0784566/tool-results/bc8rici0o.txt
+
+Preview (",,False,False,3299
+20260606-125400,rtk-bench-off-2,off,2,9,msg_011VyyaYMQm3pyKuXLo2b9Kh,toolu_01VKeZLZZf19GhpxBvR3bmMZ,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with extra rules,10839,0,10839,False,1,42136,1389,52,True,2026-06-06T10:59:18.927Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,6581
+20260606-125400,rtk-bench-off-2,off,2,10,msg_01HX8oYX3XCALZKmX9nZ8XgE,toolu_01HqezYwtqmij1fsW4cz3aDr,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,8444,True,1,43525,4826,63,True,2026-06-06T10:59:24.470Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,5543
+20260606-125400,rtk-bench-off-2,off,2,11,msg_01BzEzf7aBwUCZk8V9KMduYu,toolu_013541ykrEVZWrVWrt26Le4M,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,48351,4615,42,True,2026-06-06T10:59:29.791Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,5321
+20260606-125400,rtk-bench-off-2,off,2,12,msg_013fpfCNB1yiX7DLzrJQLP3a,toolu_01Nbtuc7KaYh18ZeYf6ZhF99,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,52966,4366,48,True,2026-06-06T10:59:35.103Z,487,,False,False,5312
+20260606-125400,rtk-bench-off-2,off,2,13,msg_01YEPipKYWEWmKaZQ2hWhmhs,toolu_01KmDHigomyDcNbRjdurhaLS,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run Jest unit tests,5355,0,5355,False,1,57332,208,61,True,2026-06-06T11:00:17.223Z,"PASS test/unit/service-broker.spec.js
+PASS test/unit/transit.spec.js (5.389 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.js
+PASS te",,False,False,42120
+20260606-125400,rtk-bench-off-2,off,2,14,msg_01X8sNGvA6UE1Ycg5dZnRGs5,toolu_01CnSoBu1Hd3ZcSqgtRCNNn5,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" -o -name ""*.d.ts"" \) | wc -l",False,Count source files,3,0,3,False,1,57540,2833,57,True,2026-06-06T11:00:20.037Z,249,,False,False,2814
+20260606-125400,rtk-bench-off-2,off,2,15,msg_01E4EjYY8x1jJfxPXzEyTJXS,,,,False,,0,0,0,False,1,60373,143,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-3,on,3,1,msg_011aT2NJX5FbMuBdDQjbTTYJ,toolu_01M3rs2FBgYR6VMFbpa34Com,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,0,True,2026-06-06T10:58:29.741Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-3,on,3,2,msg_01J7sLEjvrAAvbJvVN7bUi7s,toolu_011tCH9xdh6WJLjf7Pdnpu5a,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,26373,493,62,True,2026-06-06T10:58:32.616Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2875
+20260606-125400,rtk-bench-on-3,on,3,3,msg_013cwrA6GL1PVKUMeo5HS4NB,toolu_018GX2xXsaLXPJqfB4r7isQT,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,26866,3381,62,True,2026-06-06T10:58:35.069Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2453
+20260606-125400,rtk-bench-on-3,on,3,4,msg_01HAYrhRRn6b268ChE8uYtsr,toolu_01AdgNCdCdKpqk1StWKoAZn1,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME markers in src,1094,0,1094,False,1,30247,345,63,True,2026-06-06T10:58:39.422Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,4353
+20260606-125400,rtk-bench-on-3,on,3,5,msg_01TLMH5AQn1Kfekn2siSmsxw,toolu_018raDVYXU9P7mWJrh2eF9Yd,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30592,603,62,True,2026-06-06T10:59:04.094Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,24672
+20260606-125400,rtk-bench-on-3,on,3,6,msg_01BE3za5s7pTmwQeG9NRWxQi,toolu_018ANe9GRysLQQ9d6ZT7ZULR,Bash,npm audit 2>&1,False,Audit npm dependencies for vulnerabilities,0,0,7731,True,1,31195,708,62,True,2026-06-06T10:59:08.456Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,4362
+20260606-125400,rtk-bench-on-3,on,3,7,msg_0135RYFjX5RbmG7yMLERwHXS,toolu_01TTC5gAib1FoQ1ucokAvoUT,Bash,npm outdated 2>&1,False,List outdated npm packages,0,0,5336,True,1,31903,3696,63,True,2026-06-06T10:59:12.035Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3579
+20260606-125400,rtk-bench-on-3,on,3,8,msg_01Aagq4jKb5rDqWCxirEmdWo,toolu_01D4aU4yNg881YEvWSaCidD3,Bash,npm ls --depth=2 2>&1,False,List dependency tree depth 2,30000,0,2216,False,1,35599,1861,57,True,2026-06-06T10:59:15.353Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/2243570d-f4be-4a68-a1e9-18a1628d48ce/tool-results/bl4gfx6ok.txt
+
+Preview (",,False,False,3318
+20260606-125400,rtk-bench-on-3,on,3,9,msg_015uVPR5mMUWmTb3RP9GVqQF,toolu_01BhxrhnJEicbMKpsiET9qB8,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src,897,0,897,False,1,37460,1388,58,True,2026-06-06T10:59:24.304Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,8951
+20260606-125400,rtk-bench-on-3,on,3,10,msg_01RuNqoiVVwpDHAEibQo3Mgp,toolu_01HNCoKnguJoKSzcgxSnB79z,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check prettier formatting,0,0,51,True,1,38848,578,63,True,2026-06-06T10:59:29.595Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,5291
+20260606-125400,rtk-bench-on-3,on,3,11,msg_014fhvvq4gmPkViG167Y9A8i,toolu_01BsA3gY46txgTCd3Nyn6Cse,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,TypeScript strict check,0,0,10040,True,1,39426,293,49,True,2026-06-06T10:59:35.404Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,5809
+20260606-125400,rtk-bench-on-3,on,3,12,msg_01Xgy6meoAX4XAtnD6apBQcJ,toolu_01WHmuHe6UbpVLxNydjDw5sg,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TS errors,3,0,3,False,1,39719,4343,53,True,2026-06-06T10:59:41.524Z,487,,False,False,6120
+20260606-125400,rtk-bench-on-3,on,3,13,msg_01RLtSzPKj3BGQEXG2ugqWBq,toolu_019yF9T9oKw2G4RX374CZuYW,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,32,0,32,False,1,44062,177,53,True,2026-06-06T11:00:22.958Z,PASS (2168) FAIL (0) skipped (3),,False,False,41434
+20260606-125400,rtk-bench-on-3,on,3,14,msg_01WXmtn4RMGsLKdBcWAspiwa,toolu_01Bjiop5Vrwkgg38UVhhCWUY,Bash,"ls src/ | wc -l && find src/ -type f -name ""*.js"" | wc -l",False,Count source files,6,0,6,False,1,44239,170,47,True,2026-06-06T11:00:25.989Z,"43
+133",,False,False,3031
+20260606-125400,rtk-bench-on-3,on,3,15,msg_012DGyQfSNC9Emh4Tp2UoajD,,,,False,,0,0,0,False,1,44409,131,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-3,off,3,1,msg_01JoCei2tGcUZWhcDfs498L7,toolu_01PcShv6C9Z4ZvonNBcjc5KQ,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T10:58:30.466Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 10:58 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-3,off,3,2,msg_01QFUnjKfL25Vjdjf9zJvjb8,toolu_01JS56LzmC22RanuAGfeyhH3,Bash,cat package.json,False,Display package.json contents,6475,0,6475,False,1,30020,1515,63,True,2026-06-06T10:58:32.951Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2485
+20260606-125400,rtk-bench-off-3,off,3,3,msg_019pa9NZbArJtDRDCCvifX7Z,toolu_016BCTprsj7LhFo7fNXzGrCG,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,31535,3381,62,True,2026-06-06T10:58:35.236Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2285
+20260606-125400,rtk-bench-off-3,off,3,4,msg_01YLzt7rjbViFuX7vDxp6UQ1,toolu_01WJLE8yS1wfPGBZaJGrZ5SU,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO/FIXME comments in src,1094,0,1094,False,1,34916,345,63,True,2026-06-06T10:58:38.086Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2850
+20260606-125400,rtk-bench-off-3,off,3,5,msg_01JUNGgUCxgMGtQP4jzN217w,toolu_01MmPbfkoWkfMkNK4vdCfDqX,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,35261,603,66,True,2026-06-06T10:59:08.057Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,29971
+20260606-125400,rtk-bench-off-3,off,3,6,msg_01KN3dzXuv5twZjUntbq6aM6,toolu_01Y66Fp2vXmLXA8WJanpSrtJ,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,35864,732,63,True,2026-06-06T10:59:11.277Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3220
+20260606-125400,rtk-bench-off-3,off,3,7,msg_01W1avAE3keAJosNxrfXWVaC,toolu_01Ba4nL9QVQGeY8ipfWAby2P,Bash,npm outdated 2>&1,False,List outdated npm packages,0,0,5336,True,1,36596,3685,63,True,2026-06-06T10:59:16.624Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,5347
+20260606-125400,rtk-bench-off-3,off,3,8,msg_01FB3EjbDzWuK95UpkDcJeh7,toolu_01Y6uvVwdkYW96hpRXfwcEEp,Bash,npm ls --depth=2 2>&1,False,List dependency tree to depth 2,30000,0,2216,False,1,40281,1861,68,True,2026-06-06T10:59:21.625Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/fe6c3633-58c9-4211-b215-c6f18e3cb2e0/tool-results/bigit3qlp.txt
+
+Preview (",,False,False,5001
+20260606-125400,rtk-bench-off-3,off,3,9,msg_016paRJnVLFt5dn7cXv5Gs5k,toolu_01Lyxqwi3cKA757qpLwfNDJ3,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with no-console and prefer-const rules,10839,0,10839,False,1,42142,1389,63,True,2026-06-06T10:59:31.581Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,9956
+20260606-125400,rtk-bench-off-3,off,3,10,msg_01Ui6m3CKMXMk17QUPtCLxxR,toolu_01LCZHEpxe8pySQF5YjP2tXV,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,8444,True,1,43531,4833,63,True,2026-06-06T10:59:38.394Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,6813
+20260606-125400,rtk-bench-off-3,off,3,11,msg_01EuucbCf7rndGs51YB5RWc6,toolu_01BCx8JsLsYjgrZ1hsSGsnfN,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,48364,4615,47,True,2026-06-06T10:59:44.541Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,6147
+20260606-125400,rtk-bench-off-3,off,3,12,msg_014ghJPyN2rsKfGcbZNVxsjo,toolu_01Pf6xESaMk4GLBQLHgUqsUa,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,52979,4382,62,True,2026-06-06T10:59:50.531Z,487,,False,False,5990
+20260606-125400,rtk-bench-off-3,off,3,13,msg_01FZw4hhmieoLbgrsXpiu8C5,toolu_01XzYJHhNmZLJgWvAsSF7p83,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,5364,0,5364,False,1,57361,209,61,True,2026-06-06T11:00:35.417Z,"PASS test/unit/service-broker.spec.js (5.013 s)
+PASS test/unit/transit.spec.js (5.53 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.j",,False,False,44886
+20260606-125400,rtk-bench-off-3,off,3,14,msg_01QcnGanEn3kYyE7TfynQiv4,toolu_01FjzKjW4z8Gu5Evamw5so8s,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" \) | wc -l",False,Count source files,3,0,3,False,1,57570,2837,65,True,2026-06-06T11:00:39.063Z,134,,False,False,3646
+20260606-125400,rtk-bench-off-3,off,3,15,msg_01WwXvgD2kvRuShNPYSmvLgG,,,,False,,0,0,0,False,1,60407,131,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-4,on,4,1,msg_015GfnzPP1pB2sqr3eDNK7uN,toolu_01QzrLfiv1h5642tRJjzsK9Z,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,0,True,2026-06-06T10:58:30.802Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-4,on,4,2,msg_01Q3FQHY7F8gykLdhPMGv53i,toolu_01Ax6dioXpw2M3QjhTPrPPqt,Bash,cat package.json,False,Display package.json contents,6475,0,6475,False,1,26373,479,62,True,2026-06-06T10:58:33.310Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2508
+20260606-125400,rtk-bench-on-4,on,4,3,msg_01E7NwgRSMy41mPoo1iNWSBN,toolu_01P8EEiHttAVYZm68jqpX5Fi,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,26852,3381,67,True,2026-06-06T10:58:35.308Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,1998
+20260606-125400,rtk-bench-on-4,on,4,4,msg_01Dgh8QiRBKCCAGQ6HyK5PgP,toolu_015syfFPbHvBMFKLGjrDhoX5,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,30233,345,56,True,2026-06-06T10:58:41.667Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,6359
+20260606-125400,rtk-bench-on-4,on,4,5,msg_01HrJUbDdvXQTb6wpMEhPWNX,toolu_01Q5NFExYC6B4Vv7n8LntTNf,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30578,603,62,True,2026-06-06T10:59:02.906Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,21239
+20260606-125400,rtk-bench-on-4,on,4,6,msg_01Y9vuTtwH6us9vPvskhkPbt,toolu_01YaxyQjPPvBwKyWt1wssJZT,Bash,npm audit 2>&1,False,Audit npm packages for vulnerabilities,0,0,7731,True,1,31181,732,63,True,2026-06-06T10:59:06.052Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3146
+20260606-125400,rtk-bench-on-4,on,4,7,msg_01YBuCEjKkd5mdB9svsEBVsT,toolu_01CFtJ7QXAHecq3s8NNFdKyf,Bash,npm outdated 2>&1,False,List outdated packages,0,0,5336,True,1,31913,3694,63,True,2026-06-06T10:59:09.498Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3446
+20260606-125400,rtk-bench-on-4,on,4,8,msg_01LHyRjGD2tnb1VTPLtMYF5J,toolu_01Y6CJAZbdSVPZSHQMyMrESU,Bash,npm ls --depth=2 2>&1,False,List installed dependencies up to depth 2,30000,0,2216,False,1,35607,1859,57,True,2026-06-06T10:59:13.338Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/c967066e-e50e-4da4-a168-13a7e2e80f80/tool-results/bmpx8d2ed.txt
+
+Preview (",,False,False,3840
+20260606-125400,rtk-bench-on-4,on,4,9,msg_013T8PCPnAdYpZeR2ywsics7,toolu_019Ku4WpMGdMNuaP6xzcp7Yc,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with custom rules on src,897,0,897,False,1,37466,1390,45,True,2026-06-06T10:59:22.095Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,8757
+20260606-125400,rtk-bench-on-4,on,4,10,msg_016DVrBvm74isZbQRVr3DXt3,toolu_01VRR6tjNmjqCsJB4Wcr2ui7,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting on src,0,0,51,True,1,38856,604,63,True,2026-06-06T10:59:27.644Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,5549
+20260606-125400,rtk-bench-on-4,on,4,11,msg_01JETdCmjy4yTrxEACXD9yMT,toolu_01XU8zA9Eg9d3T2WdgBGvrvK,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict type check,0,0,10040,True,1,39460,320,46,True,2026-06-06T10:59:36.457Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,8813
+20260606-125400,rtk-bench-on-4,on,4,12,msg_01C9RfpvRpMdmwgrqeGQC32z,toolu_01G2aSJbVSXmhAvtN9ZrbDpP,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,39780,4390,40,True,2026-06-06T10:59:46.048Z,487,,False,False,9591
+20260606-125400,rtk-bench-on-4,on,4,13,msg_015NfsPQts9uxMmXkrjb1fMH,toolu_01DuLCZpV85BZot9UneESKjw,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests with bail,32,0,32,False,1,44170,385,54,True,2026-06-06T11:00:29.245Z,PASS (2168) FAIL (0) skipped (3),,False,False,43197
+20260606-125400,rtk-bench-on-4,on,4,14,msg_01Ww45mso6iFqmMn1JD7ogn4,toolu_01JgQJ1m3UVexjnyimNo91fe,Glob,,False,,0,0,2698,False,1,44555,173,71,True,2026-06-06T11:00:31.504Z,"src/constants.js
+src/context.js
+src/cachers/memory-lru.js
+src/cachers/memory.js
+src/cachers/redis.js
+src/cachers/base.js
+src/cachers/index.js
+src/async-storage.js
+src/loggers/bunyan.js
+src/loggers/bas",,False,False,2259
+20260606-125400,rtk-bench-on-4,on,4,15,msg_01DdDWgbbyAtAPkDqVyhb1Ps,,,,False,,0,0,0,False,1,44728,1346,34,False,,,,False,False,0
+20260606-125400,rtk-bench-off-4,off,4,1,msg_019FoZL9KWbcrZ4QJd9drPup,toolu_01LU6XF3r2Auycdb4PT5cadV,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T10:58:30.240Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 10:58 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-4,off,4,2,msg_01AGR1sgUqqsJ7EdC4qxRbjV,toolu_01QNDFEmVi5T8ZvuRuRfpU1Y,Bash,cat package.json,False,Display package.json contents,6475,0,6475,False,1,30020,1512,67,True,2026-06-06T10:58:32.379Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2139
+20260606-125400,rtk-bench-off-4,off,4,3,msg_01HFpcPGAF3RiY7Hppq29FSe,toolu_01WKvQnMmsoTweN3oWqFe1oQ,Bash,git log --oneline -10,False,Show recent commit history,548,0,548,False,1,31532,3381,68,True,2026-06-06T10:58:34.590Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2211
+20260606-125400,rtk-bench-off-4,off,4,4,msg_01EQN6L7zXT38okUvMX9S9St,toolu_01R8vjximdgd9FdfkfP2FDz9,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,34913,344,63,True,2026-06-06T10:58:37.686Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,3096
+20260606-125400,rtk-bench-off-4,off,4,5,msg_016gbaK67xHeDXz5K2sJCco5,toolu_016TBDukAct2vLBuFooKUSF8,Bash,npm install 2>&1,False,Install dependencies,1423,0,1423,False,1,35257,603,62,True,2026-06-06T10:59:04.078Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,26392
+20260606-125400,rtk-bench-off-4,off,4,6,msg_014y59LFX9PZqaSkQMbdSsVk,toolu_01GdTch1gx5DjZxeRBQtDFyJ,Bash,npm audit 2>&1,False,Run npm security audit,0,0,7731,True,1,35860,730,69,True,2026-06-06T10:59:07.459Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3381
+20260606-125400,rtk-bench-off-4,off,4,7,msg_01E3MM92qZamChwxYC6QoG8h,toolu_011HdkGDdvP9uV6T3DF74L2q,Bash,npm outdated 2>&1,False,Check outdated packages,0,0,5336,True,1,36590,3686,66,True,2026-06-06T10:59:12.310Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,4851
+20260606-125400,rtk-bench-off-4,off,4,8,msg_01Gj78k68pYiJ32AkYU6414z,toolu_01SQdgLqDhw6LwVrokGmLHyd,Bash,npm ls --depth=2 2>&1,False,List dependency tree to depth 2,30000,0,2216,False,1,40276,1860,66,True,2026-06-06T10:59:16.469Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/216a1f70-61cc-42f7-a38b-f53402db87af/tool-results/b1lbx3tgv.txt
+
+Preview (",,False,False,4159
+20260606-125400,rtk-bench-off-4,off,4,9,msg_01YXpd8vFsdYtKQGQ3bMa83X,toolu_01F4vdkZop5pBxFosztL3Eoh,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src,10839,0,10839,False,1,42136,1387,55,True,2026-06-06T10:59:23.709Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,7240
+20260606-125400,rtk-bench-off-4,off,4,10,msg_01UhzkF1uHKNL3bdiCr7CYKa,toolu_01L6hdEQ6YjJNfqSQ976ftSq,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check prettier formatting,0,0,8444,True,1,43523,4823,63,True,2026-06-06T10:59:31.918Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,8209
+20260606-125400,rtk-bench-off-4,off,4,11,msg_012KSfyhh3zm7esQzpjrh6UN,toolu_012JJiGrr8fPK6XPeDeV1N1V,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | tail -50,False,Run TypeScript strict check,5956,0,5956,False,1,48346,4614,58,True,2026-06-06T10:59:39.291Z,"src/middlewares/transmit/compression.js(46,6): error TS7034: Variable 'logger' implicitly has type 'any' in some locations where its type cannot be determined.
+src/middlewares/transmit/compression.js(",,False,False,7373
+20260606-125400,rtk-bench-off-4,off,4,12,msg_0179CWXwT4iubrX2GU1ahnJ2,toolu_01RPfawXbzHuCf5UPPYRqfuX,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count total TypeScript errors,3,0,3,False,1,52960,2709,58,True,2026-06-06T10:59:46.220Z,487,,False,False,6929
+20260606-125400,rtk-bench-off-4,off,4,13,msg_01KcyqbxTGPeZ3DfHxNkMohg,toolu_01TvjvHsUVWbY1rof6GxxrVC,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1 | tail -60,False,Run unit tests,2430,0,2430,False,1,55669,168,67,True,2026-06-06T11:00:31.103Z,"PASS test/unit/loggers/winston.spec.js
+PASS test/unit/metrics/types/base.spec.js
+PASS test/unit/middlewares/timeout.spec.js
+PASS test/unit/serializers/json-extended.spec.js
+PASS test/unit/middlewares/",,False,False,44883
+20260606-125400,rtk-bench-off-4,off,4,14,msg_01T4bFb4RbevyF2SuFSy2B6H,toolu_015ysTz8HQcTos7S9PwHTdfZ,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" \) | wc -l",False,Count source files,3,0,3,False,1,55837,1364,52,True,2026-06-06T11:00:34.062Z,134,,False,False,2959
+20260606-125400,rtk-bench-off-4,off,4,15,msg_01Qx2pd16eGUduYND396Pnf6,,,,False,,0,0,0,False,1,57201,174,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-5,on,5,1,msg_012U4sz4yyQ2Ua9icWtbqkmQ,toolu_01NtdmX8HzxRsvgokeRutDCf,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,8,True,2026-06-06T11:01:04.960Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-5,on,5,2,msg_01FwtnkQWqKVZRpRx2WvBAAa,toolu_01XVqkL1vDTvDAhWY5L4qvxa,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,26850,0,66,True,2026-06-06T11:01:07.259Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2299
+20260606-125400,rtk-bench-on-5,on,5,3,msg_01YPDqxtCsK22jVtPsja1rX8,toolu_01WkMGqvpvSh9D84BUNAX7Us,Bash,git log --oneline -10,False,Show recent commit history,548,0,548,False,1,30231,0,62,True,2026-06-06T11:01:09.388Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2129
+20260606-125400,rtk-bench-on-5,on,5,4,msg_01YYmJFX39T4Am88dcDupheP,toolu_01UdmzRpAXdbdJQL3pS7KH81,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Search for TODO/FIXME comments in src,1094,0,1094,False,1,30575,0,64,True,2026-06-06T11:01:11.839Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2451
+20260606-125400,rtk-bench-on-5,on,5,5,msg_011pwTgy8KFmHGYwT21shtdR,toolu_01Axy6TFWTd3vb2w6AX1AL8c,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30575,604,66,True,2026-06-06T11:01:32.563Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,20724
+20260606-125400,rtk-bench-on-5,on,5,6,msg_01W3GBFVU1gRLrgUxe1gP7fB,toolu_01XCHofAMJox5xJBuagEJwSk,Bash,npm audit 2>&1,False,Run npm security audit,0,0,7731,True,1,31179,732,63,True,2026-06-06T11:01:36.858Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,4295
+20260606-125400,rtk-bench-on-5,on,5,7,msg_01JE1DY5gCmCavNtyoM2huEp,toolu_01X95vaCc6begAcJ5jK83z7k,Bash,npm outdated 2>&1,False,List outdated packages,0,0,5336,True,1,31911,3686,64,True,2026-06-06T11:01:40.846Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3988
+20260606-125400,rtk-bench-on-5,on,5,8,msg_01TqGMvrwQ4dEjAqeXpWZKx2,toolu_01U7xcKFUH7kxYYmTvVmCew3,Bash,npm ls --depth=2 2>&1,False,Show dependency tree at depth 2,30000,0,2216,False,1,35597,1859,57,True,2026-06-06T11:01:43.700Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/db27da21-f249-43cb-8627-ff31ba807902/tool-results/bg1l2vjg9.txt
+
+Preview (",,False,False,2854
+20260606-125400,rtk-bench-on-5,on,5,9,msg_01FiSxFb4g3G8mvtMYhA8hLv,toolu_01XAmGPvMkqeeEreVYed1eLE,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with extra rules,897,0,897,False,1,37456,1386,50,True,2026-06-06T11:01:52.541Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,8841
+20260606-125400,rtk-bench-on-5,on,5,10,msg_01Q7wmcsb5WQM1UNvah3a9fV,toolu_01Xw1zfxTs8AQsE1WUMTMyuP,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,51,True,1,38842,633,63,True,2026-06-06T11:01:58.043Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,5502
+20260606-125400,rtk-bench-on-5,on,5,11,msg_0133EbKMSE9uBMC7csA72enx,toolu_01YPXo7hyeBFKyJvfAHVf9wM,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,39475,318,45,True,2026-06-06T11:02:06.098Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,8055
+20260606-125400,rtk-bench-on-5,on,5,12,msg_01KzhpXAg3idxyM3D1gxqJQ4,toolu_01M1KyUaFNUwQ9uybYLVHXW4,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,39793,4625,42,True,2026-06-06T11:02:11.805Z,487,,False,False,5707
+20260606-125400,rtk-bench-on-5,on,5,13,msg_015f7yiK8QHVXeHQSA8syvcM,toolu_01RZBLc34GLh3DxvEDHCM1cy,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit test suite,32,0,32,False,1,44418,242,61,True,2026-06-06T11:02:55.618Z,PASS (2168) FAIL (0) skipped (3),,False,False,43813
+20260606-125400,rtk-bench-on-5,on,5,14,msg_01A8da91M8r8LdfYLagEawvS,toolu_01FayhUGq6ksCd7PVxHrEywn,Bash,"ls src | wc -l && find src -name ""*.js"" | wc -l",False,Count source files,6,0,6,False,1,44660,171,44,True,2026-06-06T11:02:58.201Z,"43
+133",,False,False,2583
+20260606-125400,rtk-bench-on-5,on,5,15,msg_01H1kzaYZjR8FeouGQ8BBauv,,,,False,,0,0,0,False,1,44831,124,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-5,off,5,1,msg_01XyjXoZQzp5jpd86TXbYqcw,toolu_011CVk8a3ADnJbdjntt5Gk7z,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T11:01:04.956Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:01 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-5,off,5,2,msg_01Xbyui9oDYQbmYCNAmJ5Lc1,toolu_01GLLgrc3er2eVJGUAnokfMC,Bash,cat package.json,False,Show package.json content,6475,0,6475,False,1,30020,1510,62,True,2026-06-06T11:01:07.692Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2736
+20260606-125400,rtk-bench-off-5,off,5,3,msg_01JKLep8WrMBhGYGHVXvwihn,toolu_01GxuFurWHBDdtTYMaBeBDff,Bash,git log --oneline -10,False,Show recent git commits,548,0,548,False,1,31530,3380,62,True,2026-06-06T11:01:10.288Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2596
+20260606-125400,rtk-bench-off-5,off,5,4,msg_01SKJ9GcrzE1hKQQzz1yrTYR,toolu_0182XgsaPXWXX9fjsNxtZVj7,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODOs and FIXMEs in src,1094,0,1094,False,1,34910,344,56,True,2026-06-06T11:01:13.981Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,3693
+20260606-125400,rtk-bench-off-5,off,5,5,msg_0153MRzdTKugfD7ynkEVPrMn,toolu_01BM1QKC3BTcraJ6MM5J4J5P,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,35254,604,66,True,2026-06-06T11:01:32.679Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,18698
+20260606-125400,rtk-bench-off-5,off,5,6,msg_01SZ2cfwHCCCxu9Jx5fPvj9P,toolu_01AXtFLXtNTeYSyZFwMtbyfV,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,35858,732,62,True,2026-06-06T11:01:36.965Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,4286
+20260606-125400,rtk-bench-off-5,off,5,7,msg_01QGZJdCY12aw1umdinQjWsk,toolu_01NGcymosboz2KTxFos6DLZN,Bash,npm outdated 2>&1,False,Check outdated packages,0,0,5336,True,1,36590,3685,63,True,2026-06-06T11:01:40.586Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3621
+20260606-125400,rtk-bench-off-5,off,5,8,msg_017oFATR1Nj91WpbN2iDRCzJ,toolu_011KBBuUJBdhHHD6oLxiZbDc,Bash,npm ls --depth=2 2>&1,False,List installed packages tree,30000,0,2216,False,1,40275,1860,57,True,2026-06-06T11:01:44.244Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/b7de7eed-91a7-4fb3-bb77-dbeeda6a97c3/tool-results/bmv6edje8.txt
+
+Preview (",,False,False,3658
+20260606-125400,rtk-bench-off-5,off,5,9,msg_01TCzpbwz5dcmLhJERrFeS5d,toolu_011qRoCiHxSpCiftQWDo3WPR,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src,10839,0,10839,False,1,42135,1387,32,True,2026-06-06T11:01:52.968Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,8724
+20260606-125400,rtk-bench-off-5,off,5,10,msg_01FReS2cRz2eMKSxu44CGyjm,toolu_01Rp9pnG8VydtEqNREC3Lhuf,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,8444,True,1,43522,4877,47,True,2026-06-06T11:02:00.150Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,7182
+20260606-125400,rtk-bench-off-5,off,5,11,msg_01R6VuyNZFng5KLjWm4TPUJT,toolu_01ThSNKo8gcvxAe1nLQPSJA3,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,48399,4679,31,True,2026-06-06T11:02:06.210Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,6060
+20260606-125400,rtk-bench-off-5,off,5,12,msg_01RTBqntXyPLGNasu7BmnE8f,toolu_016jWnfCayt8wXyMYpNtU1Jz,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,53078,4379,57,True,2026-06-06T11:02:11.409Z,487,,False,False,5199
+20260606-125400,rtk-bench-off-5,off,5,13,msg_01BqTcuDLRuPwuciYsNdu1Av,toolu_01Qdn1rGssGsfg6vzGzjv5Nv,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run Jest unit tests,5364,0,5364,False,1,57457,208,61,True,2026-06-06T11:02:53.560Z,"PASS test/unit/service-broker.spec.js (5.01 s)
+PASS test/unit/transit.spec.js (5.401 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.j",,False,False,42151
+20260606-125400,rtk-bench-off-5,off,5,14,msg_01Pbh5Rxp99qeX9fTnY1zz9F,toolu_01EWunr8uLpZHuShLnw8ae73,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" -o -name ""*.d.ts"" \) | wc -l",False,Count source files,3,0,3,False,1,57665,2840,41,True,2026-06-06T11:02:56.274Z,249,,False,False,2714
+20260606-125400,rtk-bench-off-5,off,5,15,msg_01UmmHWszqPBfoFQ2CAod4Jy,,,,False,,0,0,0,False,1,60505,143,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-6,on,6,1,msg_017VyzdNVuv926LWNHMhcfZz,toolu_01MVC41AvdFoYURaTnJHedqh,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,8,True,2026-06-06T11:01:04.996Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-6,on,6,2,msg_01UBHZMhidBaQSBZGVDjx5fQ,toolu_01159E4hxGQSLhtArMfqnMPq,Bash,cat package.json,False,Display package.json contents,6475,0,6475,False,1,26870,0,67,True,2026-06-06T11:01:07.127Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2131
+20260606-125400,rtk-bench-on-6,on,6,3,msg_01YLVhHjNeRKQrrj7u2qZ57m,toolu_0174YXXFbGpmD85PkA9zEtiF,Bash,git log --oneline -10,False,Show recent commit history,548,0,548,False,1,26870,3381,62,True,2026-06-06T11:01:09.335Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2208
+20260606-125400,rtk-bench-on-6,on,6,4,msg_018Jbf4JHy2vF3e3pgzDeFcS,toolu_01YCpEa9qLTECZXPG9nLhCiq,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME markers in source,1094,0,1094,False,1,30251,344,63,True,2026-06-06T11:01:11.546Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2211
+20260606-125400,rtk-bench-on-6,on,6,5,msg_01GE1s2JzGAhpPLKVWtdjFa8,toolu_01ADZHtFkER2QsoSXHgJeYca,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30595,603,66,True,2026-06-06T11:01:47.946Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,36400
+20260606-125400,rtk-bench-on-6,on,6,6,msg_01A8DmRc6ymG3Q3uSCMFbDJJ,toolu_01DG2FQnL6BRtZBjx4gYX2td,Bash,npm audit 2>&1,False,Audit npm packages for vulnerabilities,0,0,7731,True,1,31198,732,62,True,2026-06-06T11:01:51.831Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3885
+20260606-125400,rtk-bench-on-6,on,6,7,msg_014VpwN9Kcw5kq4ErAABJthC,toolu_017YkR7GzPnbLRoGXLbMJuUG,Bash,npm outdated 2>&1,False,List outdated npm packages,0,0,5336,True,1,31930,3694,63,True,2026-06-06T11:01:55.717Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3886
+20260606-125400,rtk-bench-on-6,on,6,8,msg_01U5XwUe5zjcsDroJ5D836op,toolu_01Ty2n1hKd3UCNA4b1Srh29W,Bash,npm ls --depth=2 2>&1,False,List installed packages two levels deep,30000,0,2216,False,1,35624,1861,56,True,2026-06-06T11:01:59.426Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/3c044769-f747-4f5d-b042-5c2afc4c5208/tool-results/bg7hfisnz.txt
+
+Preview (",,False,False,3709
+20260606-125400,rtk-bench-on-6,on,6,9,msg_01KUo1xcHs3LgNTrPCSnjXCi,toolu_01B6gtAbJwDQ3J7qc8XpQfz6,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on source directory,897,0,897,False,1,37485,1419,55,True,2026-06-06T11:02:10.386Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,10960
+20260606-125400,rtk-bench-on-6,on,6,10,msg_01VaGdjJh16pPi3ddnDx34vL,toolu_01DmsAeqkAVYJe7LvaDNuSgd,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check code formatting with Prettier,0,0,51,True,1,38904,561,63,True,2026-06-06T11:02:16.505Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,6119
+20260606-125400,rtk-bench-on-6,on,6,11,msg_01AVfKV5dMTwmanQEiyGohbi,toolu_01UNvzFBfgYtvFYFWKfdJECb,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict checks,0,0,10040,True,1,39465,320,64,True,2026-06-06T11:02:24.536Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,8031
+20260606-125400,rtk-bench-on-6,on,6,12,msg_01AQXHJTc15Yz698qrvzuT35,toolu_01H6BMkAKikQ8ubMHeeguN1X,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,39785,4460,59,True,2026-06-06T11:02:29.589Z,487,,False,False,5053
+20260606-125400,rtk-bench-on-6,on,6,13,msg_01HcMZSjCDiYP4Woc3gAxgdX,toolu_01QQNZ7QzQL5BBFwfU6kgL8F,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests with Jest,32,0,32,False,1,44245,212,53,True,2026-06-06T11:03:16.760Z,PASS (2168) FAIL (0) skipped (3),,False,False,47171
+20260606-125400,rtk-bench-on-6,on,6,14,msg_01Xrd5WF26Nr2H9sMf29Fvna,toolu_01WKhoQg5UigaRKgqigWQQgm,Bash,"find src -name ""*.js"" | wc -l",False,Count source files in src directory,3,0,3,False,1,44457,174,36,True,2026-06-06T11:03:19.495Z,133,,False,False,2735
+20260606-125400,rtk-bench-on-6,on,6,15,msg_01MmjNynkbzMkLpchMwnskwS,,,,False,,0,0,0,False,1,44631,163,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-6,off,6,1,msg_01Q6pzeLZsUgoKeXXtoruzcq,toolu_019TJJYSMgD9dbyLcjoCi67L,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T11:01:05.580Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:01 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-6,off,6,2,msg_018bzGVC3aXoSVCWMzeXsdii,toolu_01T48n39csV4iR2nZsH3HSuf,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,30020,1515,59,True,2026-06-06T11:01:07.827Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2247
+20260606-125400,rtk-bench-off-6,off,6,3,msg_016qJopn8dYmiEuYVGfzDaqC,toolu_01XnK8pXUfwoiVZtFsmfaBXH,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,31535,3381,68,True,2026-06-06T11:01:13.669Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,5842
+20260606-125400,rtk-bench-off-6,off,6,4,msg_01F1ykkyrr1e9xnncLvQx2aC,toolu_0156V8es1FgWxyfM1PFj4y83,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,34916,345,64,True,2026-06-06T11:01:17.061Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,3392
+20260606-125400,rtk-bench-off-6,off,6,5,msg_01G8ZRCPbTTpogtDMPVCZaJT,toolu_01TN8neRcuzhLG3nqurDVxef,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,35261,603,62,True,2026-06-06T11:01:50.098Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,33037
+20260606-125400,rtk-bench-off-6,off,6,6,msg_01RxLqZUGQMmW5Tet2gwcd3o,toolu_018LFN9qaErQrUeiAZXzA6pn,Bash,npm audit 2>&1,False,Run npm security audit,0,0,7731,True,1,35864,732,69,True,2026-06-06T11:01:53.759Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3661
+20260606-125400,rtk-bench-off-6,off,6,7,msg_017kHVzL4VawupbzjKfPmCtB,toolu_01XhUYzmrERv2uQxVtQJAdeY,Bash,npm outdated 2>&1,False,Check for outdated packages,0,0,5336,True,1,36596,3686,63,True,2026-06-06T11:01:59.459Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,5700
+20260606-125400,rtk-bench-off-6,off,6,8,msg_01Y6mwnn7CnNB8LouHK7K8s2,toolu_0164Hvy13L9skmpXBouctdiv,Bash,npm ls --depth=2 2>&1,False,List dependency tree to depth 2,30000,0,2216,False,1,40282,1861,67,True,2026-06-06T11:02:02.677Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/8737c4e7-d757-46e8-ad82-0901bb4d5ec2/tool-results/bzbjgotde.txt
+
+Preview (",,False,False,3218
+20260606-125400,rtk-bench-off-6,off,6,9,msg_01KcNEzn61WUicALWyy1NT9o,toolu_01FxNPKpJnhcZWnAZcEosgcb,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src directory,10839,0,10839,False,1,42143,1389,55,True,2026-06-06T11:02:14.384Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,11707
+20260606-125400,rtk-bench-off-6,off,6,10,msg_013wzoTu61GF73SWRfg7EaPp,toolu_01WpXcNoBCQDA79qJxHUMEnA,Bash,npx prettier --check --single-quote src/ 2>&1,False,Run Prettier format check,0,0,8444,True,1,43532,4825,55,True,2026-06-06T11:02:21.921Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,7537
+20260606-125400,rtk-bench-off-6,off,6,11,msg_01FLnKmQzBYfnjjMkSnAeowe,toolu_01WfSLXWaif4wzPsXnZZBGbR,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,48357,4614,48,True,2026-06-06T11:02:27.601Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,5680
+20260606-125400,rtk-bench-off-6,off,6,12,msg_01EY1MX5XpnY7SHXzcyR3rbH,toolu_01WKn57jPSF1HRMfsShZajMf,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,52971,4374,36,True,2026-06-06T11:02:35.292Z,487,,False,False,7691
+20260606-125400,rtk-bench-off-6,off,6,13,msg_01C3ZiiWywPeGKGGaow32fed,toolu_01Cx5et52adgKqqCzMKEyEpQ,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,5355,0,5355,False,1,57345,234,53,True,2026-06-06T11:03:19.992Z,"PASS test/unit/service-broker.spec.js
+PASS test/unit/transit.spec.js (5.415 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.js
+PASS te",,False,False,44700
+20260606-125400,rtk-bench-off-6,off,6,14,msg_014vP5oyPV4bgNnNKd1wdDSA,toolu_016XDVpFJdXkHUxsakVa8G7t,Bash,"find src -type f -name ""*.js"" | wc -l",False,Count source JS files,3,0,3,False,1,57579,2830,51,True,2026-06-06T11:03:22.672Z,133,,False,False,2680
+20260606-125400,rtk-bench-off-6,off,6,15,msg_01SpkBiYp8H1WVBTaUC9sAZW,,,,False,,0,0,0,False,1,60409,149,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-7,on,7,1,msg_01ARpGZSBq9iHQ62H8wwwHr4,toolu_01F2sYK88YxWQpKC3YKtrs5S,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,8,True,2026-06-06T11:01:05.075Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-7,on,7,2,msg_01SaFqatu9BkFvLd8bsP2XtA,toolu_01XzpYijSeJ7zvd1jR4Y6y8P,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,26870,0,62,True,2026-06-06T11:01:07.372Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2297
+20260606-125400,rtk-bench-on-7,on,7,3,msg_013yWHUMoJ1LsCf1BUwYQUZS,toolu_01PdnwJaS9j3HfE7Wxf2ZLoq,Bash,git log --oneline -10,False,Show recent commit log,548,0,548,False,1,30251,0,68,True,2026-06-06T11:01:09.447Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2075
+20260606-125400,rtk-bench-on-7,on,7,4,msg_01LMfD5T1Gom5PioZeLfduRn,toolu_01NcGYmBqb7zZV8PMFey41en,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO/FIXME comments in src,1094,0,1094,False,1,30251,344,56,True,2026-06-06T11:01:13.213Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,3766
+20260606-125400,rtk-bench-on-7,on,7,5,msg_018zD2zPSrBcsSUkD63SzSS7,toolu_01TovEo9H7eLBnLkAqvRTRM4,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30595,603,62,True,2026-06-06T11:01:48.231Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,35018
+20260606-125400,rtk-bench-on-7,on,7,6,msg_01TrGxGXSCQVY41cDYyCWqFX,toolu_01MsfJfDo9XZNzsgdpDQipe7,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,31198,732,62,True,2026-06-06T11:01:52.072Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3841
+20260606-125400,rtk-bench-on-7,on,7,7,msg_01ExuK9Un7bR72iyZXbmR4Qc,toolu_01GA1K2eEa1mHRbdkHG3dDdN,Bash,npm outdated 2>&1,False,List outdated packages,0,0,5336,True,1,31930,3685,68,True,2026-06-06T11:01:55.616Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3544
+20260606-125400,rtk-bench-on-7,on,7,8,msg_01YW7WMmJgLHV32QF7TRz1kF,toolu_01AeUguxwYwycJ3VaLm4Sbuj,Bash,npm ls --depth=2 2>&1,False,List installed dependencies tree,30000,0,2216,False,1,35615,1859,57,True,2026-06-06T11:01:59.304Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/9ab9c0d6-57cc-46e1-8acd-37577bb4ab72/tool-results/bsj65im6g.txt
+
+Preview (",,False,False,3688
+20260606-125400,rtk-bench-on-7,on,7,9,msg_01GjnMkgafvJCwjPBYUMRjFf,toolu_01TEZgZX3mouWAvY2b8Hg2YN,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src directory,897,0,897,False,1,37474,1388,56,True,2026-06-06T11:02:12.652Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,13348
+20260606-125400,rtk-bench-on-7,on,7,10,msg_018HuGpX15zFNMP6nz9z6qWC,toolu_014TTJUrqUcREDvTLr5cHigy,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,51,True,1,38862,636,63,True,2026-06-06T11:02:20.584Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,7932
+20260606-125400,rtk-bench-on-7,on,7,11,msg_01CwuAao1ezH634LjcCCF4UA,toolu_01SptB93TMYjjBr9JPmcLZuB,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,39498,318,70,True,2026-06-06T11:02:33.005Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,12421
+20260606-125400,rtk-bench-on-7,on,7,12,msg_01AfC3YatV4fdVbfxeCV3JS4,toolu_011NzfjTKA6w2h6qLDLJ9fuu,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,39816,4862,40,True,2026-06-06T11:02:38.443Z,487,,False,False,5438
+20260606-125400,rtk-bench-on-7,on,7,13,msg_01VioecEJhaKf8KYyN9hpaTo,toolu_01RSr8p9aoYr51C6JJSYGhTj,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests with Jest,32,0,32,False,1,44678,222,60,True,2026-06-06T11:03:23.259Z,PASS (2168) FAIL (0) skipped (3),,False,False,44816
+20260606-125400,rtk-bench-on-7,on,7,14,msg_0132F874Uo1hpvzNWn79BuJ7,toolu_01QKaKbUZAZhrXULbiEvKzPA,Glob,,False,,0,0,2709,False,1,44900,174,39,True,2026-06-06T11:03:26.073Z,"src/async-storage.js
+src/constants.js
+src/context.js
+src/cpu-usage.js
+src/cachers/memory-lru.js
+src/cachers/memory.js
+src/cachers/redis.js
+src/cachers/base.js
+src/cachers/index.js
+src/loggers/bunyan.j",,False,False,2814
+20260606-125400,rtk-bench-on-7,on,7,15,msg_017v4W9wYoLm9Se7kY1PbQen,,,,False,,0,0,0,False,1,45074,1399,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-7,off,7,1,msg_01ECE92gBKaJd8s9Xjheaes5,toolu_01KywdrQw86VvUYArCsetkCW,Bash,ls -la,False,List directory contents,1927,0,1927,False,5,30020,0,8,True,2026-06-06T11:03:59.629Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:03 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-7,off,7,2,msg_015TqGyfFCX4sew5o1xJMjH5,toolu_01CKPdRTuGL3zCqJXzxtWn1F,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,30020,1513,62,True,2026-06-06T11:04:01.851Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2222
+20260606-125400,rtk-bench-off-7,off,7,3,msg_01QsVTnZSZKj7SL2b9LSxd5n,toolu_014VPES3xaEzfyrfXTxNMqFw,Bash,git log --oneline -10,False,Show recent commit history,548,0,548,False,1,31533,3381,68,True,2026-06-06T11:04:04.010Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2159
+20260606-125400,rtk-bench-off-7,off,7,4,msg_0116CskRBJ6mUMuFPS4CqKf4,toolu_011K2k5z5MFLgAcKCPNsNrqw,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments,1094,0,1094,False,1,34914,344,64,True,2026-06-06T11:04:08.130Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,4120
+20260606-125400,rtk-bench-off-7,off,7,5,msg_01KxFhQEiHrsaDbiKCvAdRHb,toolu_01B2Ticia5Uwcr2aXirqyuXt,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,35258,601,65,True,2026-06-06T11:04:33.118Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,24988
+20260606-125400,rtk-bench-off-7,off,7,6,msg_01JEFfYfR3ihB1exfbec7ERM,toolu_01L7qHxTYC23f3st2p14ZYxm,Bash,npm audit 2>&1,False,Audit npm dependencies,0,0,7731,True,1,35859,732,63,True,2026-06-06T11:04:37.022Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3904
+20260606-125400,rtk-bench-off-7,off,7,7,msg_012vZAsENqQWQoMBRekPJ2NM,toolu_01MVA6PeDqXMvnN5TrhiaUdS,Bash,npm outdated 2>&1,False,List outdated packages,0,0,5336,True,1,36591,3688,63,True,2026-06-06T11:04:41.923Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,4901
+20260606-125400,rtk-bench-off-7,off,7,8,msg_01523cXFNs9mG64JQJC21U5o,toolu_01CHYcEMQ5QMu2qB6EB1oXCQ,Bash,npm ls --depth=2 2>&1,False,Show dependency tree to depth 2,30000,0,2216,False,1,40279,1859,66,True,2026-06-06T11:04:44.906Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/19474164-4e4b-432c-96a0-d7f04af19819/tool-results/b47z7vffe.txt
+
+Preview (",,False,False,2983
+20260606-125400,rtk-bench-off-7,off,7,9,msg_01XaDGwPrKWfmRCrSQbxrF7c,toolu_018gV9apNaPyYXCgR9KqACGQ,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint on src directory,10839,0,10839,False,1,42138,1385,53,True,2026-06-06T11:04:57.056Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,12150
+20260606-125400,rtk-bench-off-7,off,7,10,msg_01WKUZ2v8D4mczUNBoQgDyyJ,toolu_01QNVAn38n2dom7JqY8K2iQt,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,8444,True,1,43523,4825,63,True,2026-06-06T11:05:05.133Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,8077
+20260606-125400,rtk-bench-off-7,off,7,11,msg_011WJ3jG3nBDtiQEneViWVjr,toolu_014zyMztv7KoRxkkHyYqczZk,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,TypeScript strict check,0,0,10040,True,1,48348,4615,47,True,2026-06-06T11:05:11.660Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,6527
+20260606-125400,rtk-bench-off-7,off,7,12,msg_011qE613udgLzptLKAMCDQfc,toolu_016mkCmcRvmx1Z2RZaJZmX3h,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,52963,4394,46,True,2026-06-06T11:05:18.493Z,487,,False,False,6833
+20260606-125400,rtk-bench-off-7,off,7,13,msg_01J9b4S3UnTWwCkYjnTQgUuo,toolu_014CeUVZw5nvgKruo1G1nj4C,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests with bail,5355,0,5355,False,1,57357,167,60,True,2026-06-06T11:06:01.468Z,"PASS test/unit/service-broker.spec.js
+PASS test/unit/transit.spec.js (5.425 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.js
+PASS te",,False,False,42975
+20260606-125400,rtk-bench-off-7,off,7,14,msg_01TSsiKaTw3wfgQ7yEciARc5,toolu_018AC6oLCQb6Gp5PpS7gvY1g,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" -o -name ""*.d.ts"" \) | wc -l",False,Count source files,3,0,3,False,1,57524,2833,57,True,2026-06-06T11:06:04.201Z,249,,False,False,2733
+20260606-125400,rtk-bench-off-7,off,7,15,msg_01S4BtWZmpmGnmut7b6g9DBF,,,,False,,0,0,0,False,1,60357,143,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-8,on,8,1,msg_013Vx2CrJtU2N57xGJ7GiW7b,toolu_014nyUXTraTQiiESmhznQNPW,Bash,ls -la,False,List directory contents,611,0,611,False,5,26373,0,0,True,2026-06-06T11:03:58.924Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-8,on,8,2,msg_0185Wjb6ktjwXjKhifqCx1b1,toolu_01FVZWG1BmqtGB9iv6LWr7xP,Bash,cat package.json,False,Read package.json contents,6475,0,6475,False,1,26373,494,66,True,2026-06-06T11:04:00.751Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,1827
+20260606-125400,rtk-bench-on-8,on,8,3,msg_012qexTxEkvBj2Xz2PEeh5oe,toolu_017fn8U46szfjew8soYVkmuP,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,26867,3381,68,True,2026-06-06T11:04:02.898Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2147
+20260606-125400,rtk-bench-on-8,on,8,4,msg_01D3pDxUcRLdQ5pcdXQ5BwFq,toolu_01PUt3k3zUSrYUUDPyENDYBF,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in source,1094,0,1094,False,1,30248,345,64,True,2026-06-06T11:04:05.088Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2190
+20260606-125400,rtk-bench-on-8,on,8,5,msg_01FJSod2H7F7dkHdNBspbGd2,toolu_01T8cBPSyNToh12WRrk2jirZ,Bash,npm install 2>&1,False,Install dependencies,1423,0,1423,False,1,30593,603,62,True,2026-06-06T11:04:31.220Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,26132
+20260606-125400,rtk-bench-on-8,on,8,6,msg_01Gmxu1UH4VNpGq3FLFsxVQk,toolu_01XHNcAb94vPmZsLudFEwSRY,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,31196,730,70,True,2026-06-06T11:04:35.634Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,4414
+20260606-125400,rtk-bench-on-8,on,8,7,msg_01G9U1snWLQfWfx175k37ix4,toolu_012rcXZNznnv5z55iFKb8Js9,Bash,npm outdated 2>&1,False,Check for outdated packages,0,0,5336,True,1,31926,3685,63,True,2026-06-06T11:04:39.332Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3698
+20260606-125400,rtk-bench-on-8,on,8,8,msg_01RrBtzuRsVYBNc777Th41Bx,toolu_014CDiK3kZwWqDvJXkn9gdHk,Bash,npm ls --depth=2 2>&1,False,List dependency tree depth 2,30000,0,2216,False,1,35611,1861,66,True,2026-06-06T11:04:55.733Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/93011600-a664-4449-bfa7-58357c00f4a9/tool-results/btimb9n06.txt
+
+Preview (",,False,False,16401
+20260606-125400,rtk-bench-on-8,on,8,9,msg_01NiWrx16k4V9VePpByh1ATH,toolu_01D2eZeUUQp454UpiVuAo6fx,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with warnings,897,0,897,False,1,37472,1382,48,True,2026-06-06T11:05:04.863Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,9130
+20260606-125400,rtk-bench-on-8,on,8,10,msg_01HtDwgMXejrwm2PLpcWZhF4,toolu_01KUmh21Ah8xQZbB79n966rp,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,51,True,1,38854,619,63,True,2026-06-06T11:05:10.565Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,5702
+20260606-125400,rtk-bench-on-8,on,8,11,msg_01DqDc842mC4XWhjGt7hfHAo,toolu_01TmjQszTVqGGy9iDFP7toyX,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run TypeScript strict check,0,0,10040,True,1,39473,318,54,True,2026-06-06T11:05:20.320Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,9755
+20260606-125400,rtk-bench-on-8,on,8,12,msg_01LYYTTeU5jAzAK2UUMzgQ7U,toolu_01PbE6YgHkK3PvUUVU9FcCCM,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,39791,4488,39,True,2026-06-06T11:05:25.786Z,487,,False,False,5466
+20260606-125400,rtk-bench-on-8,on,8,13,msg_01Ak87iCvwyfvN1KDj3cJzNJ,toolu_01GNFrd9VZkmawDZPFffjnEg,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run jest unit tests,32,0,32,False,1,44279,207,60,True,2026-06-06T11:06:08.622Z,PASS (2168) FAIL (0) skipped (3),,False,False,42836
+20260606-125400,rtk-bench-on-8,on,8,14,msg_01N3vBKCyodQYbHiqXHTLevd,toolu_01Hft6cTPqxnfZdQS2fqWhGo,Glob,,False,,0,0,2710,False,1,44486,172,50,True,2026-06-06T11:06:11.077Z,"src/constants.js
+src/cachers/memory-lru.js
+src/cachers/memory.js
+src/cachers/redis.js
+src/cachers/base.js
+src/cachers/index.js
+src/async-storage.js
+src/loggers/base.js
+src/context.js
+src/cpu-usage.js
+",,False,False,2455
+20260606-125400,rtk-bench-on-8,on,8,15,msg_01DnfV79ptYZkg9gqiYdGYFx,toolu_01PJntPpdheg8TfdEq1yHzNn,Bash,"find src -name ""*.js"" -type f | wc -l",False,Count source JS files,3,0,3,False,1,44658,1346,60,True,2026-06-06T11:06:14.679Z,133,,False,False,3602
+20260606-125400,rtk-bench-on-8,on,8,16,msg_01S8qfc8nErjtgEBjNELyddN,,,,False,,0,0,0,False,1,46004,118,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-8,off,8,1,msg_012Hi77sK3S5rj7Vf7BKwrVp,toolu_01NQigaR9pGGubK2avKUukQX,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,0,True,2026-06-06T11:03:58.538Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:03 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-8,off,8,2,msg_01F2LTBXPgNt9PiksPd5Xcvs,toolu_019Hu1vz3pAD37i2CQMJqhfb,Bash,cat package.json,False,Read package.json contents,6475,0,6475,False,1,30020,1519,66,True,2026-06-06T11:04:00.604Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2066
+20260606-125400,rtk-bench-off-8,off,8,3,msg_011QjTCa7CdtqEasxpdXLZ9t,toolu_01MjKSoKjv35CiTJ9mKpK9MA,Bash,git log --oneline -10,False,Show recent commits,548,0,548,False,1,31539,3381,62,True,2026-06-06T11:04:03.123Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2519
+20260606-125400,rtk-bench-off-8,off,8,4,msg_018z4BvRz4vqUaXcXSBGLDzj,toolu_01Veu1XyTHh33LeufVjueqS8,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME comments in src,1094,0,1094,False,1,34920,343,56,True,2026-06-06T11:04:05.364Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2241
+20260606-125400,rtk-bench-off-8,off,8,5,msg_012DiShsrZPep28AUdhy354v,toolu_018agZcAPyZtwZPyDAPyffQA,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,35263,603,62,True,2026-06-06T11:04:32.318Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,26954
+20260606-125400,rtk-bench-off-8,off,8,6,msg_01TvvhXwNvrrKpTuT76BxpX3,toolu_01KWugKgQYYrU74vB3b2zLpK,Bash,npm audit 2>&1,False,Run npm security audit,0,0,7731,True,1,35866,732,63,True,2026-06-06T11:04:35.917Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,3599
+20260606-125400,rtk-bench-off-8,off,8,7,msg_01Sz5eHrzwMWcp3ikjYidk2L,toolu_019nqy37AYk49XkdS7Vt3R51,Bash,npm outdated 2>&1,False,Check for outdated packages,0,0,5336,True,1,36598,3686,63,True,2026-06-06T11:04:39.598Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,3681
+20260606-125400,rtk-bench-off-8,off,8,8,msg_01W77p7h6ix6HeygiUgHeaSm,toolu_019TXyVjprHvbo6XvqtaNSEd,Bash,npm ls --depth=2 2>&1,False,List dependency tree to depth 2,30000,0,2216,False,1,40284,1861,67,True,2026-06-06T11:04:43.124Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/a3273fb1-ee8d-4bd4-9b1c-916e6fe7b787/tool-results/bzruejkhr.txt
+
+Preview (",,False,False,3526
+20260606-125400,rtk-bench-off-8,off,8,9,msg_014egFxMzPMt88sn1ed6D3vM,toolu_01C4LKSUkjtMB4sVw1QxFkWY,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with no-console and prefer-const rules,10839,0,10839,False,1,42145,1391,45,True,2026-06-06T11:04:53.025Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,9901
+20260606-125400,rtk-bench-off-8,off,8,10,msg_01GbmDEMkTnBnKFNvCqTZ2Br,toolu_01RbophdVuCtSAHBWG1bdaJ1,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,8444,True,1,43536,4891,91,True,2026-06-06T11:05:00.273Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,7248
+20260606-125400,rtk-bench-off-8,off,8,11,msg_01Bc5hNZAbXK7qeYK5MGo5Dp,toolu_01G1x1Q43NuKFNUA6s9C5B49,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,TypeScript strict type check,0,0,10040,True,1,48427,4670,47,True,2026-06-06T11:05:06.664Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,6391
+20260606-125400,rtk-bench-off-8,off,8,12,msg_01BGS26ByNanojVkhP2fFqRx,toolu_01DySpqA7b9gN9tQYziWQp7D,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict mode errors,3,0,3,False,1,53097,4371,41,True,2026-06-06T11:05:13.735Z,487,,False,False,7071
+20260606-125400,rtk-bench-off-8,off,8,13,msg_01LJFxJmtoYWuYZuL5Kc2Yyp,toolu_017AGHVpTwaeRwvdJWKquWic,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,5355,0,5355,False,1,57468,243,61,True,2026-06-06T11:05:56.896Z,"PASS test/unit/service-broker.spec.js
+PASS test/unit/transit.spec.js (5.429 s)
+PASS test/unit/middlewares/tracing.spec.js
+PASS test/unit/service.spec.js
+PASS test/unit/transporters/tcp.spec.js
+PASS te",,False,False,43161
+20260606-125400,rtk-bench-off-8,off,8,14,msg_01U8pB5BZrhLQHdTGdqRszgB,toolu_01KL7mH66ZYA2jgYZGuENMue,Bash,"find src -type f -name ""*.js"" | wc -l",False,Count source .js files,3,0,3,False,1,57711,2830,28,True,2026-06-06T11:05:59.922Z,133,,False,False,3026
+20260606-125400,rtk-bench-off-8,off,8,15,msg_01T5PMq2MJ263MBSF9ZW2taB,,,,False,,0,0,0,False,1,60541,156,1,False,,,,False,False,0
+20260606-125400,rtk-bench-on-9,on,9,1,msg_01TuQP6A4srY24bqDMbTeS2r,toolu_01L38J9dJZoSNrQQEf84K6iP,Bash,ls -la,False,List files in current directory,611,0,611,False,5,26373,0,8,True,2026-06-06T11:03:59.848Z,"755  .claude/
+755  .git/
+755  .github/
+755  .vscode/
+755  benchmark/
+755  bin/
+755  dev/
+755  docs/
+755  examples/
+755  src/
+755  test/
+755  types/
+644  .codeclimate.yml  638B
+644  .editorconfig  619B",,False,False,0
+20260606-125400,rtk-bench-on-9,on,9,2,msg_01VwY4BYuEwSCirLEMszSZbE,toolu_01QJzg1m97F83e6HGDFNqe2H,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,26373,498,62,True,2026-06-06T11:04:01.925Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2077
+20260606-125400,rtk-bench-on-9,on,9,3,msg_011npxFJqoXBSMCR2fBbuVZB,toolu_01HZQsdG1DT7TNsa7xqUWGfY,Bash,git log --oneline -10,False,Show recent commits,548,0,548,False,1,26871,3381,67,True,2026-06-06T11:04:04.104Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2179
+20260606-125400,rtk-bench-on-9,on,9,4,msg_01GExQq8P6pEsgm2DfEqPkwF,toolu_01QeEYoREWN3vKTuv1F4MYWr,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO and FIXME markers in src,1094,0,1094,False,1,30252,343,63,True,2026-06-06T11:04:06.159Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2055
+20260606-125400,rtk-bench-on-9,on,9,5,msg_01LN5kVNMCS3WaWMmz83yxBh,toolu_013BeKRafnhdAMB6tSRoZbgb,Bash,npm install 2>&1,False,Install npm dependencies,1423,0,1423,False,1,30595,603,66,True,2026-06-06T11:04:31.708Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,25549
+20260606-125400,rtk-bench-on-9,on,9,6,msg_01R69SQKdSHkzKts2p33Go6i,toolu_01U3dJJib1VtW3QGUGBc4SVg,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,31198,732,62,True,2026-06-06T11:04:35.941Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,4233
+20260606-125400,rtk-bench-on-9,on,9,7,msg_01Mdm521w9XLMdeizEQeURp1,toolu_01Ba1cD7Q6Cc6khJgpgDKUSq,Bash,npm outdated 2>&1,False,List outdated dependencies,0,0,5336,True,1,31930,3685,64,True,2026-06-06T11:04:40.269Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,4328
+20260606-125400,rtk-bench-on-9,on,9,8,msg_01S5rrC8PatoKDDJCWTTLDx4,toolu_01Q5VzFYY84ogXvbEyvK3YQn,Bash,npm ls --depth=2 2>&1,False,List dependency tree,30000,0,2216,False,1,35615,1861,57,True,2026-06-06T11:04:43.785Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/76cf4e58-c9b2-4aad-b230-05b3908a42ee/tool-results/b2mlid2i2.txt
+
+Preview (",,False,False,3516
+20260606-125400,rtk-bench-on-9,on,9,9,msg_0132Gqdzu82gFfhcetK5UgJt,toolu_01Aw5rWvsL1ou3kNnBheNMyQ,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with custom rules,897,0,897,False,1,37476,1384,45,True,2026-06-06T11:04:56.494Z,"ESLint: 0 errors, 101 warnings in 41 files
+???????????????????????????????????????
+Top rules:
+  prefer-const (101x)
+
+Top files:
+  src/service-broker.js (6 issues)
+    prefer-const (6)
+  src/strategies",,False,False,12709
+20260606-125400,rtk-bench-on-9,on,9,10,msg_011WMHHGGJfEknniuSAQ2JLk,toolu_019LXq93x7Auw7Z7X3uDTAzZ,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check prettier formatting,0,0,51,True,1,38860,598,63,True,2026-06-06T11:05:04.012Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,7518
+20260606-125400,rtk-bench-on-9,on,9,11,msg_012wMb5gAM48uSjvuJyMoXRA,toolu_01YAmBZWBDvehFFxDBZEdJkx,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1,False,Run strict TypeScript check,0,0,10040,True,1,39458,317,43,True,2026-06-06T11:05:12.931Z,"Exit code 2
+src/metrics/commons.js(13,5): error TS7034: Variable 'v8' implicitly has type 'any' in some locations where its type cannot be determined.
+src/metrics/commons.js(26,2): error TS2683: 'this",,False,False,8919
+20260606-125400,rtk-bench-on-9,on,9,12,msg_01LCagEgsqQwXi1XbZtQYZ7q,toolu_01XrFdxPcfwFsL2TSBKrdeio,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript strict errors,3,0,3,False,1,39775,4604,42,True,2026-06-06T11:05:19.286Z,487,,False,False,6355
+20260606-125400,rtk-bench-on-9,on,9,13,msg_018Ka4a2GLwh1KTw5rXBchyK,toolu_016SkFC8u11CYgcFbJkfQdqt,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1,False,Run unit tests,32,0,32,False,1,44379,212,60,True,2026-06-06T11:06:02.550Z,PASS (2168) FAIL (0) skipped (3),,False,False,43264
+20260606-125400,rtk-bench-on-9,on,9,14,msg_01TJz5P2pgZNdHUcA7LRs6Sb,toolu_015Ap862MCtGjJeGcvo1WsrA,Bash,"ls src/ | wc -l && find src -name ""*.js"" | wc -l",False,Count source files,6,0,6,False,1,44591,170,55,True,2026-06-06T11:06:05.754Z,"43
+133",,False,False,3204
+20260606-125400,rtk-bench-on-9,on,9,15,msg_01DkbtxcTzZV5XjVuEzZH33L,,,,False,,0,0,0,False,1,44761,126,1,False,,,,False,False,0
+20260606-125400,rtk-bench-off-9,off,9,1,msg_01QoqJ3VXJLyi7nJ2DosJkfL,toolu_01KcQAT5Y9MLtdrMLtAuZm5M,Bash,ls -la,False,List files in current directory,1927,0,1927,False,5,30020,0,8,True,2026-06-06T11:03:59.720Z,"total 1300
+drwxr-xr-x 14 ubuntu ubuntu   4096 Jun  6 10:54 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:03 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 10:54 .claude
+-rw-r--r--  1 ubuntu ubuntu    6",,False,False,0
+20260606-125400,rtk-bench-off-9,off,9,2,msg_01DQgWtPh1bth8rhvfXvWPY7,toolu_0111QHqzpezBcJ4ToSfooBw7,Bash,cat package.json,False,Show package.json contents,6475,0,6475,False,1,30020,1508,62,True,2026-06-06T11:04:02.449Z,"{
+  ""name"": ""moleculer"",
+  ""version"": ""0.15.0"",
+  ""description"": ""Fast & powerful microservices framework for Node.JS"",
+  ""main"": ""index.js"",
+  ""type"": ""commonjs"",
+  ""exports"": {
+    ""."": {
+      ""typ",,False,False,2729
+20260606-125400,rtk-bench-off-9,off,9,3,msg_01E3ZMUdsUFAy9GHGhQci2np,toolu_01DYCgeWiGk4ieeXndVKTAsV,Bash,git log --oneline -10,False,Show last 10 commits,548,0,548,False,1,31528,3381,65,True,2026-06-06T11:04:04.500Z,"2787603 ci: use Node 24 for publish workflow (npm v11 required for trusted publishing)
+ea63c2f ci: remove redundant tests from publish workflow, add workflow_dispatch
+4469ee6 ci: add registry-url to s",,False,False,2051
+20260606-125400,rtk-bench-off-9,off,9,4,msg_01DcMnSLXChJADhTKB5NgqoZ,toolu_01EsB949oR5mFbkL2CEhVwf4,Bash,"grep -rn ""TODO\|FIXME"" src/ || true",False,Find TODO/FIXME comments in src/,1094,0,1094,False,1,34909,345,56,True,2026-06-06T11:04:06.878Z,"src/registry/discoverers/etcd3.js:38:	 * TODO:
+src/transit.js:575:				// TODO: It's incorrect because the chunks may receive in random order, so it processes an empty meta.
+src/transit.js:610:			// TO",,False,False,2378
+20260606-125400,rtk-bench-off-9,off,9,5,msg_01Kyz1sMHnfXUTVoj5zjtcbQ,toolu_01HBhWSY4coVaviFdsUpGnVS,Bash,npm install 2>&1,False,Install dependencies,1423,0,1423,False,1,35254,604,62,True,2026-06-06T11:04:31.754Z,"npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'moleculer@0.15.0',
+npm warn EBADENGINE   required: { node: '>= 22.x.x' },
+npm warn EBADENGINE   current: { node: 'v20.20.2', np",,False,False,24876
+20260606-125400,rtk-bench-off-9,off,9,6,msg_01NmwLhTGm1hN1MQL6sfc5SN,toolu_01CBQQy14v2YtjztgrNgn6NC,Bash,npm audit 2>&1,False,Run npm audit,0,0,7731,True,1,35858,730,63,True,2026-06-06T11:04:39.968Z,"Exit code 1
+# npm audit report
+
+@opentelemetry/auto-instrumentations-node  <=0.74.0
+Severity: high
+Depends on vulnerable versions of @opentelemetry/sdk-node
+Prometheus exporter process crash via malfo",,False,False,8214
+20260606-125400,rtk-bench-off-9,off,9,7,msg_01GTKeWtUiZVUoSoeEgYD9yq,toolu_01XW2ij5jnqnY7V5eeqL3ix4,Bash,npm outdated 2>&1,False,Show outdated packages,0,0,5336,True,1,36588,3685,67,True,2026-06-06T11:04:44.372Z,"Exit code 1
+Package                                     Current   Wanted        Latest  Location                                                 Depended by
+@opentelemetry/auto-instrumentations-node  ",,False,False,4404
+20260606-125400,rtk-bench-off-9,off,9,8,msg_017JA7fcpJJCDxuKkiS5giGh,toolu_01JeodsaYduhoo83vnKkXHDv,Bash,npm ls --depth=2 2>&1,False,List dependency tree to depth 2,30000,0,2216,False,1,40273,1860,57,True,2026-06-06T11:04:49.540Z,"<persisted-output>
+Output too large (39.8KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/ac5e91b6-148b-417b-b6ca-fd672c42e17e/tool-results/bk1n3a8jw.txt
+
+Preview (",,False,False,5168
+20260606-125400,rtk-bench-off-9,off,9,9,msg_01K5ZfiHoRgfx83zL6b7t1fN,toolu_013hhHtSuuAW1DyCHoaya2GU,Bash,"npx eslint src/ --rule '{""no-console"":""warn"",""prefer-const"":""warn""}' 2>&1",False,Run ESLint with custom rules,10839,0,10839,False,1,42133,1390,34,True,2026-06-06T11:04:58.661Z,"/home/ubuntu/bench-codebase/src/cachers/index.js
+  23:6  warning  'n' is never reassigned. Use 'const' instead            prefer-const
+  47:7  warning  'CacherClass' is never reassigned. Use 'const' i",,False,False,9121
+20260606-125400,rtk-bench-off-9,off,9,10,msg_01AfJFi7zU79VAzWKeTwv8dW,toolu_01MA7chH9koM1CrUNwkyYHKG,Bash,npx prettier --check --single-quote src/ 2>&1,False,Check Prettier formatting,0,0,8444,True,1,43523,4885,46,True,2026-06-06T11:05:07.098Z,"Exit code 1
+Checking formatting...
+[warn] src/async-storage.d.ts
+[warn] src/async-storage.js
+[warn] src/cachers/base.d.ts
+[warn] src/cachers/base.js
+[warn] src/cachers/index.d.ts
+[warn] src/cachers/in",,False,False,8437
+20260606-125400,rtk-bench-off-9,off,9,11,msg_01TVzGmYHZxqbrWaHVRMMYF3,toolu_01YAVuS5RA2dxHbpnw1kN3Ht,Bash,npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | tail -100,False,Run TypeScript strict check,12685,0,12685,False,1,48408,4671,61,True,2026-06-06T11:05:13.036Z,"src/middlewares/metrics.js(414,19): error TS7006: Parameter 'next' implicitly has an 'any' type.
+src/middlewares/metrics.js(424,24): error TS2683: 'this' implicitly has type 'any' because it does not ",,False,False,5938
+20260606-125400,rtk-bench-off-9,off,9,12,msg_019MixP4V8EC4W8Y7iddcK9x,toolu_015L8keJzimKvJxQmPYNog1g,Bash,"npx tsc --strict --allowJs --checkJs --noEmit 2>&1 | grep -c ""error TS""",False,Count TypeScript errors,3,0,3,False,1,53079,5665,58,True,2026-06-06T11:05:19.751Z,487,,False,False,6715
+20260606-125400,rtk-bench-off-9,off,9,13,msg_017HMWruR5aYZYDAGVemuWKm,toolu_01GiWJ1vKt3JWLi5pJDf76ox,Bash,npx jest --bail --maxWorkers=1 test/unit 2>&1 | tail -60,False,Run unit tests with bail,2429,0,2429,False,1,58744,167,60,True,2026-06-06T11:06:02.115Z,"PASS test/unit/loggers/winston.spec.js
+PASS test/unit/metrics/types/base.spec.js
+PASS test/unit/middlewares/timeout.spec.js
+PASS test/unit/serializers/json-extended.spec.js
+PASS test/unit/middlewares/",,False,False,42364
+20260606-125400,rtk-bench-off-9,off,9,14,msg_017TY97wNcP9tF1G8FBz5UeC,toolu_01JQZZzSsECqdCQZKD2sLX3Z,Bash,"find src -type f \( -name ""*.js"" -o -name ""*.mjs"" -o -name ""*.ts"" \) | wc -l",False,Count source files,3,0,3,False,1,58911,1367,49,True,2026-06-06T11:06:04.835Z,249,,False,False,2720
+20260606-125400,rtk-bench-off-9,off,9,15,msg_01CQP6MGZtwA95sb6croaV6q,,,,False,,0,0,0,False,1,60278,170,1,False,,,,False,False,0

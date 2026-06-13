@@ -1,0 +1,48 @@
+name: Fetch benchmark data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch benchmark data from OVH S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.OVH_S3_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.OVH_S3_SECRET_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.OVH_S3_REGION }}
+          OVH_S3_ENDPOINT: ${{ secrets.OVH_S3_ENDPOINT }}
+          OVH_S3_BUCKET: ${{ secrets.OVH_S3_BUCKET }}
+        run: |
+          pip install --quiet boto3
+          python3 scripts/fetch-benchmarks.py
+
+      - name: Commit and push changes
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain public/data/benchmarks)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No new benchmark data."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/benchmarks
+          git commit -m "chore(benchmarks): sync benchmark data from S3"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Pushes made with GITHUB_TOKEN do not fire the push trigger of other
+      # workflows, so the deploy must be dispatched explicitly.
+      - name: Trigger deploy
+        if: steps.commit.outputs.changed == 'true' && github.ref_name == 'master'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref master

@@ -46,74 +46,38 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
 
     <!-- Desktop nav links -->
     <div class="nav-links" id="nav-links">
-      {isLanding ? (
-        <>
-          <a href="/#problem" class="nav-link">{t('nav.why', lang)}</a>
-          <a href="/#demo" class="nav-link">{t('nav.demo', lang)}</a>
-          <a href="/vs/" class="nav-link nav-link-hide-md">{t('nav.tools', lang)}</a>
-          <a href="/#install" class="nav-link">{t('nav.install', lang)}</a>
-          <span class="nav-divider" aria-hidden="true"></span>
-          <a href="/guide/" class="nav-link">{t('ui.nav_docs', lang)}</a>
-          <a href="/cloud/" class="nav-link nav-link-hide-md nav-link-cloud">Cloud <span class="nav-badge-soon">soon</span></a>
-          <span class="nav-divider" aria-hidden="true"></span>
-          <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title={t('aria.join_discord', lang)} aria-label={t('aria.join_discord', lang)}>
-            <IconDiscord size={16} />
-          </a>
-          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">
-            <IconGitHub size={14} />
-            {t('ui.nav_github', lang)}
-          </a>
-          <button id="search-trigger" class="search-trigger" aria-label={t('aria.search', lang)}>
-            <IconSearch size={15} />
-            <span class="search-trigger-label">Search</span>
-            <kbd class="search-trigger-kbd">⌘K</kbd>
-          </button>
-          <details class="lang-dropdown">
-            <summary class="lang-globe-btn" aria-label="Change language">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </summary>
-            <div class="lang-panel">
-              {LOCALES.map(l => (
-                <a
-                  href={getRelativeLocaleUrl(l, currentPath)}
-                  class={`lang-btn${l === currentLocale ? ' active' : ''}`}
-                  hreflang={l}
-                  aria-current={l === currentLocale ? 'true' : undefined}
-                >{l.toUpperCase()}</a>
-              ))}
-            </div>
-          </details>
-        </>
-      ) : (
-        <>
-          {isVox ? (
-            <>
-              <a href="#features">Features</a>
-              <a href="#backends">Backends</a>
-              <a href="#install">Install</a>
-              <a href="#integration">Integration</a>
-              <a href="/icm/" class="nav-link-icm">ICM</a>
-            </>
-          ) : (
-            <>
-              <a href="#features">Features</a>
-              <a href="#models">Models</a>
-              <a href="#tools">Live Demo</a>
-              <a href="#compare">Compare</a>
-              <a href="#install">Install</a>
-              <a href="/vox/" class="nav-link-vox">Vox</a>
-              <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm nav-btn-discord" target="_blank" rel="noopener">
-                <IconDiscord size={15} />
-                Discord
-              </a>
-            </>
-          )}
-          <a href={githubUrl} class="btn btn-sm" target="_blank" rel="noopener">
-            <IconGitHub size={15} />
-            GitHub
-          </a>
-        </>
-      )}
+      <a href="/#problem" class="nav-link" data-i18n="nav.why">Why</a>
+      <a href="/#demo" class="nav-link" data-i18n="nav.demo">Demo</a>
+      <a href="/#compare" class="nav-link nav-link-hide-md" data-i18n="nav.tools">Tools</a>
+      <a href="/#install" class="nav-link" data-i18n="nav.install">Install</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="/guide/" class="nav-link">Docs</a>
+      <a href="/benchmarks/" class="nav-link">Benchmarks</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title="Support on Ko-fi" aria-label="Support on Ko-fi">
+        <IconKofi size={16} />
+      </a>
+      <a href="https://discord.gg/RySmvNF5kF" class="nav-icon-btn nav-icon-btn--discord" target="_blank" rel="noopener" title="Join Discord" aria-label="Join Discord">
+        <IconDiscord size={16} />
+      </a>
+      <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">
+        <IconGitHub size={14} />
+        GitHub
+      </a>
+      <button id="search-trigger" class="search-trigger" aria-label="Search (Cmd+K)">
+        <IconSearch size={15} />
+        <span class="search-trigger-label">Search</span>
+        <kbd class="search-trigger-kbd">⌘K</kbd>
+      </button>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="zh">ZH</button>
+        <button class="lang-btn" data-lang="ja">JA</button>
+      </div>
     </div>
 
     <!-- Mobile right: search + hamburger -->
@@ -139,31 +103,12 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
 <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <div class="nav-drawer-inner">
     <div class="nav-drawer-links">
-      {isLanding ? (
-        <>
-          <a href="/#problem">{t('nav.why', lang)}</a>
-          <a href="/#demo">{t('nav.demo', lang)}</a>
-          <a href="/vs/">{t('nav.tools', lang)}</a>
-          <a href="/#install">{t('nav.install', lang)}</a>
-          <a href="/guide/">{t('ui.nav_docs', lang)}</a>
-          <a href="/cloud/">Cloud <span class="nav-badge-soon">soon</span></a>
-        </>
-      ) : isVox ? (
-        <>
-          <a href="#features">Features</a>
-          <a href="#backends">Backends</a>
-          <a href="#install">Install</a>
-          <a href="#integration">Integration</a>
-        </>
-      ) : (
-        <>
-          <a href="#features">Features</a>
-          <a href="#models">Models</a>
-          <a href="#tools">Live Demo</a>
-          <a href="#compare">Compare</a>
-          <a href="#install">Install</a>
-        </>
-      )}
+      <a href="/#problem" data-i18n="nav.why">Why</a>
+      <a href="/#demo" data-i18n="nav.demo">Demo</a>
+      <a href="/#compare" data-i18n="nav.tools">Tools</a>
+      <a href="/#install" data-i18n="nav.install">Install</a>
+      <a href="/guide/">Docs</a>
+      <a href="/benchmarks/">Benchmarks</a>
     </div>
     <div class="nav-drawer-actions">
       {isLanding ? (

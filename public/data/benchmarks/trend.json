@@ -1,0 +1,43 @@
+[
+  {
+    "version": "0.42.3",
+    "cost_savings_pct": 18.98,
+    "token_savings_pct": 10.31,
+    "bash_savings_pct": 42.26,
+    "pass_rate_on": 1.0,
+    "pass_rate_off": 1.0,
+    "sample_size": 100,
+    "ecosystems": {
+      "github": {
+        "cost_savings_pct": 14.31,
+        "token_savings_pct": 7.45,
+        "bash_savings_pct": 63.66,
+        "sample_size": 20
+      },
+      "js": {
+        "cost_savings_pct": 21.4,
+        "token_savings_pct": 18.48,
+        "bash_savings_pct": 38.74,
+        "sample_size": 20
+      },
+      "python": {
+        "cost_savings_pct": 16.6,
+        "token_savings_pct": 11.19,
+        "bash_savings_pct": 24.6,
+        "sample_size": 20
+      },
+      "rust": {
+        "cost_savings_pct": 36.58,
+        "token_savings_pct": 25.27,
+        "bash_savings_pct": 78.06,
+        "sample_size": 20
+      },
+      "ts": {
+        "cost_savings_pct": 12.37,
+        "token_savings_pct": -1.96,
+        "bash_savings_pct": 36.46,
+        "sample_size": 20
+      }
+    }
+  }
+]

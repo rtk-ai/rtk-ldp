@@ -1,0 +1,2057 @@
+run_id,vm_name,group,pair_index,turn_number,message_id,tool_use_id,tool_name,command,is_rtk_prefixed,description,stdout_bytes,stderr_bytes,content_bytes,is_error,input_tokens,cache_read_input_tokens,cache_creation_input_tokens,output_tokens,has_tool,timestamp,content_preview,stop_reason,interrupted,is_image,elapsed_since_prev_ms
+20260606-132242,rtk-bench-on-0,on,0,1,msg_01FuYVeeuTFxPCzaZUTzu5ST,toolu_01K4SAXGufnSUnREqC4AFT8o,Bash,ls -la,False,List files in current directory,566,0,566,False,5,21972,4443,8,True,2026-06-06T11:23:22.659Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-0,on,0,2,msg_017FDniF5PZKjHZ12k5sQ2vK,toolu_01NwaB1S5vNghoMTpAe27FyE,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26415,437,67,True,2026-06-06T11:23:24.750Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2091
+20260606-132242,rtk-bench-on-0,on,0,3,msg_01EmTabADMYRNUS2ogcxr3m4,toolu_01MF42SbG53C77ow7M6z9aJh,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,26852,3611,59,True,2026-06-06T11:23:26.760Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2009
+20260606-132242,rtk-bench-on-0,on,0,4,msg_012T6aabCQHkhMu1EtPUXANJ,toolu_01SUr5By1z2zTdWkD4WnRvwD,Bash,tree -L 2 src/,False,Show src tree structure,494,0,494,False,1,30463,2631,62,True,2026-06-06T11:23:29.356Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2596
+20260606-132242,rtk-bench-on-0,on,0,5,msg_012s5maqu7pqFX92HPJPTP6T,toolu_01VGHrEpin9kHXoxKHXXQKnh,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33094,378,62,True,2026-06-06T11:23:31.794Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2438
+20260606-132242,rtk-bench-on-0,on,0,6,msg_01MZ44b6Pd9PU6K6h7eLho4d,toolu_01S9afcuobjq5m2T1PWz6iBP,Bash,git log --stat -5,False,Show last 5 commits with stats,1244,0,1244,False,1,33472,591,60,True,2026-06-06T11:23:34.115Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2321
+20260606-132242,rtk-bench-on-0,on,0,7,msg_019FGVEgCmdaj9eCf4fMZUjX,toolu_01G91sH48QgMPd86UYx8iQqU,Bash,git shortlog -sn,False,Show contributors,0,0,31,False,1,34063,684,68,True,2026-06-06T11:23:36.986Z,(Bash completed with no output),,False,False,2871
+20260606-132242,rtk-bench-on-0,on,0,8,msg_01QwhhDnh2GDrp3g6tNqg3ma,toolu_019RLdYPqiJVZw6PWcXNweo1,Bash,git shortlog -sn HEAD | head -50,False,Show contributors with HEAD ref,383,0,383,False,1,34747,117,49,True,2026-06-06T11:23:39.952Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2966
+20260606-132242,rtk-bench-on-0,on,0,9,msg_01AWevA6JFW8DY1bDRASJ8Zq,toolu_01H8iaX21URM7yujhvKDsN8Z,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,14240,0,14240,False,1,34864,336,67,True,2026-06-06T11:23:42.260Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2308
+20260606-132242,rtk-bench-on-0,on,0,10,msg_01FWoaDWrJzM9eZNLZZGtHZG,toolu_01MvGQ9F8AMu4tzzrUB6LzX9,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,35200,6657,57,True,2026-06-06T11:23:47.161Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,4901
+20260606-132242,rtk-bench-on-0,on,0,11,msg_01R7j6hnyZw3aFQumPrmvSbU,toolu_019vVW8gx3Qputk63Gyuftnu,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,41857,334,46,True,2026-06-06T11:23:49.963Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2802
+20260606-132242,rtk-bench-on-0,on,0,12,msg_01T2XNvY69F4psnXwUHikLJ5,toolu_018uCqDr3MKyRNDjoALjnTC5,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42191,364,64,True,2026-06-06T11:23:52.887Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2924
+20260606-132242,rtk-bench-on-0,on,0,13,msg_01VLXU6PYchpX7YzahN3LYMu,toolu_01NAFXewvxBWLiHAsaiLbXC7,Bash,which pnpm || npm install -g pnpm 2>&1 | tail -20,False,Check pnpm availability,1027,0,1027,False,1,42555,184,53,True,2026-06-06T11:23:55.936Z,"npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error",,False,False,3049
+20260606-132242,rtk-bench-on-0,on,0,14,msg_01NFfVzQUBUFUPHvWqYDpTRZ,toolu_01SRcbLyWyZexLsJReeH25AQ,Bash,corepack enable pnpm 2>&1 && which pnpm,False,Enable pnpm via corepack,0,0,717,True,1,42739,539,52,True,2026-06-06T11:23:58.834Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,2898
+20260606-132242,rtk-bench-on-0,on,0,15,msg_01SNyH9tugTjxUZvKDTCfDqb,toolu_016TrmgmgdCAi2YymVGac1ox,Bash,npm install -g --prefix ~/.local pnpm@10.33.0 2>&1 | tail -5,False,Install pnpm to local prefix,84,0,84,False,1,43278,488,49,True,2026-06-06T11:24:02.459Z,"added 1 package in 1s
+
+1 package is looking for funding
+  run `npm fund` for details",,False,False,3625
+20260606-132242,rtk-bench-on-0,on,0,16,msg_01PutQbaVQ9LqoJb7rH6ZmrU,toolu_015NZvZcCG8abX7ro7KUUDWt,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && pnpm install 2>&1 | tail -30",False,Install dependencies with pnpm,727,0,727,False,1,43766,170,57,True,2026-06-06T11:24:43.526Z,"+ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/jest 30.0.0
++ @types/node 24.12.4
++ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugi",,False,False,41067
+20260606-132242,rtk-bench-on-0,on,0,17,msg_01WVCLviKF9UA6ciXsEcvSwz,toolu_01CucrekU1mr9geFnEjYPnFb,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx tsc --noEmit 2>&1 | tail -30",False,Run TypeScript type check,27,0,27,False,1,43936,626,72,True,2026-06-06T11:24:55.947Z,TypeScript: No errors found,,False,False,12421
+20260606-132242,rtk-bench-on-0,on,0,18,msg_01GYkRhrJ6FZx7cvGHtCS9ym,toolu_018FVqEchsazzbBmDudX8eNZ,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx prettier --check ""src/**/*.ts"" 2>&1",False,Run prettier check on src,0,0,51,True,1,44562,180,68,True,2026-06-06T11:25:00.418Z,"Exit code 1
+Prettier: All files formatted correctly",,False,False,4471
+20260606-132242,rtk-bench-on-0,on,0,19,msg_01JRQuxWYMKv33snPWbJvwgB,toolu_01P12pLZtSeNjgsqyYzwxhu7,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx vitest run 2>&1 | tail -40",False,Run vitest tests,167,0,167,False,1,44742,198,49,True,2026-06-06T11:25:04.508Z,"[RTK:PASSTHROUGH] vitest parser: All parsing tiers failed
+undefined
+?ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL? Command ""vitest"" not found
+
+Did you mean ""pnpm exec jest""?",,False,False,4090
+20260606-132242,rtk-bench-on-0,on,0,20,msg_01EZDn5eQuMWV6S6wLZ3Nz9Q,toolu_01APdKqGM4bLhwB5gaREwM8o,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && pnpm test 2>&1 | tail -30",False,Run jest test suite,206,0,206,False,1,44940,320,49,True,2026-06-06T11:25:46.102Z,"> swr@2.4.1 test /home/ubuntu/bench-codebase
+> jest
+
+
+Test Suites: 34 passed, 34 total
+Tests:       5 skipped, 360 passed, 365 total
+Snapshots:   6 passed, 6 total
+Time:        36.766 s
+Ran all test s",,False,False,41594
+20260606-132242,rtk-bench-on-0,on,0,21,msg_01AFJvnpXv94W8TXd23wwBND,,,,False,,0,0,0,False,1,45260,540,1,False,,,,False,False,0
+20260606-132242,rtk-bench-off-0,off,0,1,msg_013pUkBbhiHsxdWhePAnvC6j,toolu_01EnUrwfgGcNsSuPBgKk5mYm,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,21972,4212,8,True,2026-06-06T11:23:21.602Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:23 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-0,off,0,2,msg_01JXBNEnyKRa1bsy5GPARUZR,toolu_01JXk1Vh76z8d9GNEGThKagG,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26184,1382,67,True,2026-06-06T11:23:28.451Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,6849
+20260606-132242,rtk-bench-off-0,off,0,3,msg_01WLPqKYxKTF2bQ7d7yYvFZo,toolu_011oDHV9nzxC8DVP29hh88n8,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,27566,3611,58,True,2026-06-06T11:23:30.818Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2367
+20260606-132242,rtk-bench-off-0,off,0,4,msg_013WJqZbG2sNurr3m5M43fFm,toolu_01MxigLUXRDQDRaLUcgikA3N,Bash,tree -L 2 src/,False,Show src directory tree,519,0,519,False,1,31177,2631,62,True,2026-06-06T11:23:34.235Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,3417
+20260606-132242,rtk-bench-off-0,off,0,5,msg_01N6J7jK6cyrNVxUGU9FnnEJ,toolu_015KoF7BqUkFVUKvbVgxsMP2,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33808,388,66,True,2026-06-06T11:23:36.516Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2281
+20260606-132242,rtk-bench-off-0,off,0,6,msg_01G6hEnNYpUNmLAc7wj4yoiW,toolu_01SHxPw4bK9ztXhXFDRpdCJW,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34196,591,68,True,2026-06-06T11:23:39.271Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,2755
+20260606-132242,rtk-bench-off-0,off,0,7,msg_01Kx3SkiwzSvpNX7rCaAVkt6,toolu_01RsfbSevDkwVfRkrQf6tczA,Bash,git shortlog -sn,False,Show contributor counts,0,0,31,False,1,34787,1778,61,True,2026-06-06T11:23:41.332Z,(Bash completed with no output),,False,False,2061
+20260606-132242,rtk-bench-off-0,off,0,8,msg_01JmivM8mNx9RbNohaX1meSn,toolu_017o1Mbx9jEaZVU39ULWezEf,Bash,git shortlog -sn --no-pager | cat,False,Show contributor counts non-interactively,538,0,538,False,1,36565,119,50,True,2026-06-06T11:23:46.785Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,5453
+20260606-132242,rtk-bench-off-0,off,0,9,msg_01SyniAAp1Cuzu5wMZZNcc1U,toolu_01DNySHPVqH3NRLwayeKeYSi,Bash,git --no-pager shortlog -sn HEAD,False,Show contributor counts,383,0,383,False,1,36684,327,49,True,2026-06-06T11:23:49.302Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2517
+20260606-132242,rtk-bench-off-0,off,0,10,msg_013ueBU2LUg35KqCv19LrvvD,toolu_01URrDWAqqhuqtsanCFWSXYS,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,27028,0,27028,False,1,37011,332,57,True,2026-06-06T11:23:51.933Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2631
+20260606-132242,rtk-bench-off-0,off,0,11,msg_018o57sH1RD6upc67fhdcdhV,toolu_01HGjSXj77RYPcDxNdcJoadR,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,37343,13997,2,True,2026-06-06T11:23:54.741Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2808
+20260606-132242,rtk-bench-off-0,off,0,12,msg_016JfZez5fMTF2aUjubGsAXJ,toolu_01NeSdJ4y9kwgHPsmDTCenJD,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,51340,203,64,True,2026-06-06T11:23:57.130Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2389
+20260606-132242,rtk-bench-off-0,off,0,13,msg_01UZTqSp1NUVeCL3KZYaVGd2,toolu_01XqzWDYkoYisd2Jz7FMnmne,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51543,308,67,True,2026-06-06T11:23:59.559Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2429
+20260606-132242,rtk-bench-off-0,off,0,14,msg_01LjccApngeJfi65TxJPkiin,toolu_01J85TVyr1yu6RTyW4ZADn3T,Bash,which npm node npx; npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Check tools and install pnpm,1067,0,1067,False,1,51851,168,44,True,2026-06-06T11:24:03.140Z,"/usr/bin/npm
+/usr/bin/node
+/usr/bin/npx
+npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:7",,False,False,3581
+20260606-132242,rtk-bench-off-0,off,0,15,msg_01Xi2PtNsf1o2hrmEcvw6rQv,toolu_01TNUaXTyg9Yc9AJSJKc7b1e,Bash,npx --yes pnpm@10.33.0 install 2>&1 | tail -40,False,Run pnpm install via npx,980,0,980,False,1,52019,601,49,True,2026-06-06T11:24:44.083Z,"+ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.39
++ @testing-library/dom 10.4.1
++ @testing-library/jest-dom 6.9.1
++ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/",,False,False,40943
+20260606-132242,rtk-bench-off-0,off,0,16,msg_01SmCipDEbhXRRxqHtJaQiwg,toolu_01LHkNNFm4iCrdnoJDbYwhQG,Bash,npx tsc --noEmit 2>&1 | tail -50,False,Type-check the project,0,0,31,False,1,52620,753,72,True,2026-06-06T11:24:56.616Z,(Bash completed with no output),,False,False,12533
+20260606-132242,rtk-bench-off-0,off,0,17,msg_01KfsXAYdF7KKCtFAtTpvpd7,toolu_0191yAv7JK2bXJU4e8XusFM7,Bash,"npx tsc --noEmit 2>&1; echo ""EXIT=$?""",False,Confirm tsc exit code,6,0,6,False,1,53373,155,49,True,2026-06-06T11:25:01.131Z,EXIT=0,,False,False,4515
+20260606-132242,rtk-bench-off-0,off,0,18,msg_018MwrLZSNXA2woz7fumQTCg,toolu_01BEmiCdwgkk8K7M4khEC9XX,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1",False,Run prettier check on src,0,0,142,True,1,53528,201,65,True,2026-06-06T11:25:04.793Z,"Exit code 1
+Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3662
+20260606-132242,rtk-bench-off-0,off,0,19,msg_019GFnU8DB8fgakHjr32g9g2,toolu_01Tvz1oQPBCx32k9YvVLSHCB,Bash,npx vitest run 2>&1 | tail -50,False,Run vitest,1935,0,1935,False,1,53729,215,70,True,2026-06-06T11:25:32.598Z,"      3| test.describe('suspense with undefined key', () => {
+       |      ^
+      4|   test('should render correctly when key is undefined', async ({ page ?
+      5|     await page.goto('./suspense-",,False,False,27805
+20260606-132242,rtk-bench-off-0,off,0,20,msg_01GFrJ5scLKBivzuRExeC2rV,,,,False,,0,0,0,False,1,53944,1312,48,False,,,,False,False,0
+20260606-132242,rtk-bench-on-1,on,1,1,msg_01Ri13Xoj8yLBbs6EsGku7rT,toolu_01SPSDfWVRe5wdfKCTZv9ASF,Bash,ls -la,False,List files in current directory,566,0,566,False,5,21972,4443,8,True,2026-06-06T11:23:22.457Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-1,on,1,2,msg_01UQp7i7WECU651fttgcshW8,toolu_01Lb4eYBiMazHA8Tm5XApRGu,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files sorted,6825,0,6825,False,1,26415,454,67,True,2026-06-06T11:23:24.842Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2385
+20260606-132242,rtk-bench-on-1,on,1,3,msg_01BJ2iYu7VLZe8eHpAmUngHs,toolu_01VcdycNoFm43e4wHCv64KoR,Bash,cat package.json,False,Show package.json contents,5323,0,5323,False,1,26869,3614,59,True,2026-06-06T11:23:26.885Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2043
+20260606-132242,rtk-bench-on-1,on,1,4,msg_01HaQJpj178YS3PLQCjXJoLD,toolu_01GysvyRGSt9oCLrwdzsSEhM,Bash,tree -L 2 src/,False,Show src directory tree,494,0,494,False,1,30483,2633,66,True,2026-06-06T11:23:28.952Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2067
+20260606-132242,rtk-bench-on-1,on,1,5,msg_01JGSemXapEQ88iy4dsp9Txm,toolu_013ZSbD9inxdjWADUMuXzawX,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33116,378,62,True,2026-06-06T11:23:30.884Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,1932
+20260606-132242,rtk-bench-on-1,on,1,6,msg_01AyxyBsMHRRqrH3mvfHT5F3,toolu_019Jx3n5MwaFiEc7j8ToaG3j,Bash,git log --stat -5,False,Show last 5 commits with file stats,1244,0,1244,False,1,33494,591,65,True,2026-06-06T11:23:32.787Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,1903
+20260606-132242,rtk-bench-on-1,on,1,7,msg_01LquQ9ZXTtmdGWdoj39FPab,toolu_01Tj6MEqHB69pVdAv5vLyrv6,Bash,git shortlog -sn,False,Show contributor counts,0,0,31,False,1,34085,685,61,True,2026-06-06T11:23:34.845Z,(Bash completed with no output),,False,False,2058
+20260606-132242,rtk-bench-on-1,on,1,8,msg_016FaHeokTYuV8fcxaAbg7mh,toolu_01LG18tsKSezaVj3is63eop6,Bash,git shortlog -sn HEAD,False,Show contributor counts non-interactive,383,0,383,False,1,34770,119,52,True,2026-06-06T11:23:37.062Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2217
+20260606-132242,rtk-bench-on-1,on,1,9,msg_01JpjufffoTUceEWKwP3umUG,toolu_011pEjN9tiHzNY2B1n44gPdH,Bash,git diff HEAD~3..HEAD,False,Diff last 3 commits,14240,0,14240,False,1,34889,332,67,True,2026-06-06T11:23:39.969Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2907
+20260606-132242,rtk-bench-on-1,on,1,10,msg_01JThmbofwAzHrbs5GSm8Eej,toolu_011tXvSW4EFYctJEws7rjTzg,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers in src,109,0,109,False,1,35221,6686,68,True,2026-06-06T11:23:42.460Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2491
+20260606-132242,rtk-bench-on-1,on,1,11,msg_012JiwmWBoBhPbN1RFB2NTmr,toolu_01PJUQ14aBduMRVNrtrvpifG,Bash,"grep -rn ""as any"" src/",False,Find as any casts in src,443,0,443,False,1,41907,336,45,True,2026-06-06T11:23:50.442Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,7982
+20260606-132242,rtk-bench-on-1,on,1,12,msg_01Y4qaCgw5Aq1JZtkN4HRm8v,toolu_01S156qcmExd6nFWSTsE5a6x,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42243,365,64,True,2026-06-06T11:23:53.649Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,3207
+20260606-132242,rtk-bench-on-1,on,1,13,msg_01B3iMdMZC3Y4nFXk3kkgZAr,toolu_017CoEfxoBuoFUVyKdrqPq1L,Bash,which pnpm; pnpm --version 2>&1,False,Check pnpm availability,0,0,56,True,1,42608,184,68,True,2026-06-06T11:23:55.585Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,1936
+20260606-132242,rtk-bench-on-1,on,1,14,msg_01MSfWUQzogKngV63cT3NdkZ,toolu_01D6V9Vew8QV9LMRUneo3asV,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -5,False,Install pnpm globally,314,0,314,False,1,42792,153,46,True,2026-06-06T11:24:02.236Z,"npm notice New major version of npm available! 10.8.2 -> 11.16.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+npm notice To update run: npm install -g npm@11.16.0
+npm notice
+",,False,False,6651
+20260606-132242,rtk-bench-on-1,on,1,15,msg_01EJQhKMFkx8oPnDqrPUw1i9,toolu_01JiYw77yBawSNFX6UuRe4KW,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm globally show errors,1320,0,1320,False,1,42945,296,61,True,2026-06-06T11:24:05.080Z,"npm error     at async /usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async [reifyPackages] (",,False,False,2844
+20260606-132242,rtk-bench-on-1,on,1,16,msg_01BKNrDZbCSEDAWfKc38Cq3P,toolu_01NfsPTuv7G96an6RrKTH9Xn,Bash,npx -y pnpm@10.33.0 install 2>&1 | tail -30,False,Use npx to run pnpm install,745,0,745,False,1,43241,709,55,True,2026-06-06T11:24:44.754Z,"+ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugin 8.48.0
++ @typescript-eslint/parser 8.48.0
++ bunchee 6.6.2
++ eslint 9.39.1
++ eslint-config-prettier 10.1.",,False,False,39674
+20260606-132242,rtk-bench-on-1,on,1,17,msg_01T85Zm4CoFfK6oMTySYZ649,toolu_01F8nwwLR2x2yC5w7XxojSzN,Bash,npx tsc --noEmit 2>&1,False,TypeScript type-check,27,0,27,False,1,43950,611,67,True,2026-06-06T11:24:57.038Z,TypeScript: No errors found,,False,False,12284
+20260606-132242,rtk-bench-on-1,on,1,18,msg_016hMXqjBVs26GwtbTAv5nd3,toolu_01Nmmkkb81T7PWjui4N9aQRD,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1",False,Run prettier check on src,0,0,104,True,1,44561,151,65,True,2026-06-06T11:24:59.938Z,"Exit code 1
+rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2)",,False,False,2900
+20260606-132242,rtk-bench-on-1,on,1,19,msg_011XeMpNYBdARdTRrZSz5QbR,toolu_019tyTPdZR9Gy43dZZ74DXvg,Bash,"node_modules/.bin/prettier --check ""src/**/*.ts"" 2>&1",False,Run prettier from local node_modules,0,0,142,True,1,44712,197,64,True,2026-06-06T11:25:03.273Z,"Exit code 1
+Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3335
+20260606-132242,rtk-bench-on-1,on,1,20,msg_01SUBz2ExkXn3g3G8u7mrHLc,toolu_014mppG3GfwKfbmvidgsQ2KY,Bash,npx vitest run 2>&1,False,Run vitest tests,0,0,104,True,1,44909,225,65,True,2026-06-06T11:25:05.648Z,"Exit code 1
+rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2)",,False,False,2375
+20260606-132242,rtk-bench-on-1,on,1,21,msg_01A2wK1c4WQU8apnzWVMu1Eo,,,,False,,0,0,0,False,1,45134,327,48,False,,,,False,False,0
+20260606-132242,rtk-bench-off-1,off,1,1,msg_01XMQDj2MjJ3pCQiGBZtRfps,toolu_01CLEdiVkJHH4AMJsDor2nTE,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,21972,4212,8,True,2026-06-06T11:23:21.650Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:23 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-1,off,1,2,msg_018rgM7aqvPpy5Snjrj3RtSD,toolu_01X7KKHrEttsJADN6scaQBks,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find and sort all TypeScript files,6825,0,6825,False,1,26184,1368,59,True,2026-06-06T11:23:23.761Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2111
+20260606-132242,rtk-bench-off-1,off,1,3,msg_01QGEMypCsBB4rjxZUdipqxj,toolu_01JxTrLQ4fKLT4jqCjBjUmVc,Bash,cat package.json,False,Display package.json contents,5323,0,5323,False,1,27552,3614,66,True,2026-06-06T11:23:25.807Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2045
+20260606-132242,rtk-bench-off-1,off,1,4,msg_01QqLKQTjNBeCWNd14SDizTf,toolu_01YZQnzcXsvxFXvaRQ7qkpiF,Bash,tree -L 2 src/,False,Show src directory tree to depth 2,519,0,519,False,1,31166,2633,62,True,2026-06-06T11:23:28.063Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2256
+20260606-132242,rtk-bench-off-1,off,1,5,msg_018P4WFoLd4Cr1zsWRj2zi56,toolu_01LRdBcLhVVmFvUGteiCwgaL,Bash,git log --oneline -20,False,Show last 20 commits oneline,1005,0,1005,False,1,33799,393,62,True,2026-06-06T11:23:30.067Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2004
+20260606-132242,rtk-bench-off-1,off,1,6,msg_01WrUuDCaTW2yCYok63jikkv,toolu_01SxpZS1BMxB9NXc553kgE69,Bash,git log --stat -5,False,Show stats for last 5 commits,3653,0,3653,False,1,34192,594,60,True,2026-06-06T11:23:32.613Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,2546
+20260606-132242,rtk-bench-off-1,off,1,7,msg_01ViLMaHCz64VewDnKUhNi6i,toolu_01SqzuTB3CYRXfmEqcCfCoQm,Bash,git shortlog -sn,False,Show committer counts,0,0,31,False,1,34786,1778,51,True,2026-06-06T11:23:34.800Z,(Bash completed with no output),,False,False,2187
+20260606-132242,rtk-bench-off-1,off,1,8,msg_01PsPG2Nt4GKke3bL3KAyWrB,toolu_01KhFqq4huehy18LvWPoYmBK,Bash,git shortlog -sn --no-pager HEAD,False,Show committer counts (non-interactive),0,0,552,True,1,36564,118,57,True,2026-06-06T11:23:37.065Z,"Exit code 129
+error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer ",,False,False,2265
+20260606-132242,rtk-bench-off-1,off,1,9,msg_013iZCHzRjTaiXLyzX5zG97y,toolu_01AtABpbWhPphVZXkyrKFEuP,Bash,git --no-pager shortlog -sn HEAD,False,Show committer counts non-paged,383,0,383,False,1,36682,344,60,True,2026-06-06T11:23:39.920Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2855
+20260606-132242,rtk-bench-off-1,off,1,10,msg_0191bZ8u97gPf5h9yDG1ahV4,toolu_01EjyzkdL3nDruT8vGuk1EuJ,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,27028,0,27028,False,1,37026,335,71,True,2026-06-06T11:23:42.119Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2199
+20260606-132242,rtk-bench-off-1,off,1,11,msg_018Y4bcDjb8JRgPiCTdS9dvF,toolu_01GTbzt8jay2kXaFcjgx3xQh,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,37361,14023,64,True,2026-06-06T11:23:47.823Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,5704
+20260606-132242,rtk-bench-off-1,off,1,12,msg_01LiVHRFc2wmqREedMmW53i4,toolu_01HofzTdWL37W7145YP6HXrr,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,51384,271,69,True,2026-06-06T11:23:50.153Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2330
+20260606-132242,rtk-bench-off-1,off,1,13,msg_0158HKWQPv52aLAHmD3GTsTH,toolu_01LcgMxtg7ciBDLt4N5CZwPw,Bash,pnpm install 2>&1,False,Install dependencies via pnpm,0,0,56,True,1,51655,308,67,True,2026-06-06T11:23:52.961Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2808
+20260606-132242,rtk-bench-off-1,off,1,14,msg_01Ap56trQRkKZSnP2zCmuShb,toolu_013MK91NLzN9e8pJx9pLm4nc,Bash,npx pnpm install 2>&1 | tail -50,False,Install dependencies via npx pnpm,1329,0,1329,False,1,51963,173,61,True,2026-06-06T11:24:43.045Z,"+ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @eslint/js 9.39.1
++ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.3",,False,False,50084
+20260606-132242,rtk-bench-off-1,off,1,15,msg_012iQpuhyLocJrkHFgqpLAoV,toolu_01VAU58i2W7RE4ouzE1DhJxW,Bash,npx tsc --noEmit 2>&1,False,Run TypeScript type check,0,0,31,False,1,52136,933,67,True,2026-06-06T11:24:51.180Z,(Bash completed with no output),,False,False,8135
+20260606-132242,rtk-bench-off-1,off,1,16,msg_01Kvm2KWRKRfkdmuvov6ggeT,toolu_01VUmyhsADiptPauug6AyFfE,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1",False,Check Prettier formatting on src,0,0,142,True,1,53069,152,62,True,2026-06-06T11:24:54.984Z,"Exit code 1
+Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3804
+20260606-132242,rtk-bench-off-1,off,1,17,msg_01MAHJjtMYJS4XZJF9yD6JXA,toolu_01CjcWNUM7g3GLpw1xDbouCy,Bash,npx vitest run 2>&1,False,Run vitest test suite,0,0,10682,True,1,53221,218,72,True,2026-06-06T11:25:22.131Z,"Exit code 1
+npm warn exec The following package was not found and will be installed: vitest@4.1.8
+
+ RUN  v4.1.8 /home/ubuntu/bench-codebase
+
+ ? test/use-swr-local-mutation.test.tsx (0 test)
+ ? test/us",,False,False,27147
+20260606-132242,rtk-bench-off-1,off,1,18,msg_01VAbVrnSf9QsEwUFWyawFgZ,,,,False,,0,0,0,False,1,53439,5458,76,False,,,,False,False,0
+20260606-132242,rtk-bench-on-2,on,2,1,msg_015EjXhpvvRPoXaLCSn6wk6R,toolu_01BzfnCULbzSHB8JvFe2qHXB,Bash,ls -la,False,List files in current directory,566,0,566,False,5,21972,4443,8,True,2026-06-06T11:23:22.184Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-2,on,2,2,msg_01Fa1pPxRVCtwKeRAR5pv6fT,toolu_01NMDLsc77wGmQKW7ZhGLF5Q,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26415,439,59,True,2026-06-06T11:23:24.284Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2100
+20260606-132242,rtk-bench-on-2,on,2,3,msg_01FkueLQtMPvXkLLx6Y8duZg,toolu_01QCPux2kzXKixWBADTGyRn4,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,26854,3611,59,True,2026-06-06T11:23:26.571Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2287
+20260606-132242,rtk-bench-on-2,on,2,4,msg_01VHxpMgmzpgebVrG1UJAi1f,toolu_012i66AS72x5KGU6NBUa5iA6,Bash,tree -L 2 src/,False,Show source tree,494,0,494,False,1,30465,2631,63,True,2026-06-06T11:23:28.551Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,1980
+20260606-132242,rtk-bench-on-2,on,2,5,msg_019fc8qvVgtJeNjBcuHcAUmJ,toolu_01PeSzBwuJDGpVg1Fmvsprdv,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33096,376,66,True,2026-06-06T11:23:30.518Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,1967
+20260606-132242,rtk-bench-on-2,on,2,6,msg_01KNVNAs6WaPxkPdMyKHPrar,toolu_01PcH8mfNepGZ9KSbo4Lqxxz,Bash,git log --stat -5,False,Show last 5 commits with file changes,1244,0,1244,False,1,33472,591,65,True,2026-06-06T11:23:32.764Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2246
+20260606-132242,rtk-bench-on-2,on,2,7,msg_017fCHjGKbdUtY6b22G7cPJP,toolu_012MMBDaZpEf61tDqJiAzAc8,Bash,git shortlog -sn,False,List contributors with commit counts,0,0,31,False,1,34063,685,61,True,2026-06-06T11:23:35.448Z,(Bash completed with no output),,False,False,2684
+20260606-132242,rtk-bench-on-2,on,2,8,msg_01Dzhoi2cJmKKrCZ7BZbrR8a,toolu_01T3vdZVD1mVQN5RqPrrBWux,Bash,git shortlog -sn HEAD,False,List contributors with commit counts on HEAD,383,0,383,False,1,34748,121,65,True,2026-06-06T11:23:37.320Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,1872
+20260606-132242,rtk-bench-on-2,on,2,9,msg_01W2U2nCdaXX7FgfLa6Znhne,toolu_01TocJehqwSDoWs2hNjiWrN6,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,14240,0,14240,False,1,34869,334,67,True,2026-06-06T11:23:40.727Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,3407
+20260606-132242,rtk-bench-on-2,on,2,10,msg_018suHjQWqivd63zaF1Bg42M,toolu_01Po94JdNjwzmm3r2bqJm8Lj,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers in src,109,0,109,False,1,35203,6657,57,True,2026-06-06T11:23:45.521Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,4794
+20260606-132242,rtk-bench-on-2,on,2,11,msg_01SnzNaV3GGDGP81Whwgc8BL,toolu_01QH3Vmf7sGPNsDy3Pcoxzmd,Bash,"grep -rn ""as any"" src/",False,Find as any casts in src,443,0,443,False,1,41860,336,68,True,2026-06-06T11:23:49.201Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,3680
+20260606-132242,rtk-bench-on-2,on,2,12,msg_01SALGJTuoGSZKamqRVjzubv,toolu_01MJcDyYfJvLXeR7d6hKXyti,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42196,310,64,True,2026-06-06T11:23:51.529Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2328
+20260606-132242,rtk-bench-on-2,on,2,13,msg_01WcxigeX7WGcyzXjWhJro9W,toolu_01RnP2Yu7KLgRoJrD9MZf7e1,Bash,which pnpm npm node; pnpm --version 2>&1 || true,False,Check pnpm availability,69,0,69,False,1,42506,184,45,True,2026-06-06T11:23:54.319Z,"/usr/bin/npm
+/usr/bin/node
+/bin/bash: line 1: pnpm: command not found",,False,False,2790
+20260606-132242,rtk-bench-on-2,on,2,14,msg_01XCXscCf2kL5hvzmdFa51ZC,toolu_013EkNML4xBGLoQgVWbEjMr7,Bash,corepack enable pnpm 2>&1 || npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm,1733,0,1733,False,1,42690,163,49,True,2026-06-06T11:24:02.778Z,"Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at async EnableComm",,False,False,8459
+20260606-132242,rtk-bench-on-2,on,2,15,msg_01SANjCdEQhJKJCdsTXv5VCH,toolu_01RUivjHsx4TX6u8Dc7E8f2T,Bash,"npm install --prefix /tmp/pnpm-install pnpm@10.33.0 2>&1 | tail -5 && export PATH=""/tmp/pnpm-install/node_modules/.bin:$PATH"" && pnpm install 2>&1 | tail -30",False,Install pnpm locally and run install,812,0,812,False,1,42853,969,53,True,2026-06-06T11:24:44.353Z,"added 1 package in 1s
+
+1 package is looking for funding
+  run `npm fund` for details
++ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/jest 30.0.0
++ @types/node 24.12.4
++ @types/",,False,False,41575
+20260606-132242,rtk-bench-on-2,on,2,16,msg_01NbacXCpGvs5WSU8q8p3pCs,toolu_01Pasa672WBFKsnY6CDhax8J,Bash,npx tsc --noEmit 2>&1 | tail -50,False,Run TypeScript type check,27,0,27,False,1,43822,708,64,True,2026-06-06T11:24:57.029Z,TypeScript: No errors found,,False,False,12676
+20260606-132242,rtk-bench-on-2,on,2,17,msg_01Qrf3vVJ2NA8gfu7nnegtdX,toolu_01MUq7eBqpvKsx7yxgFiLWXp,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Check prettier formatting,92,0,92,False,1,44530,158,71,True,2026-06-06T11:24:59.271Z,rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2),,False,False,2242
+20260606-132242,rtk-bench-on-2,on,2,18,msg_01E19xZwCratjARXwwVUuodK,toolu_01YMQbvsp5yVpnq6LLchXQM5,Bash,"node_modules/.bin/prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Run prettier check via local binary,130,0,130,False,1,44688,188,61,True,2026-06-06T11:25:02.958Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3687
+20260606-132242,rtk-bench-on-2,on,2,19,msg_01GmPc6ngDp9jb4r6SM1WoJ4,toolu_011QiqdRVZ5r2HmqP8EvwU6B,Bash,npx vitest run 2>&1 | tail -50,False,Run vitest tests,92,0,92,False,1,44876,215,68,True,2026-06-06T11:25:05.134Z,rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2),,False,False,2176
+20260606-132242,rtk-bench-on-2,on,2,20,msg_01WSyymcuyxFZKqcfTAYoXKz,toolu_01GZwiCEjdwm3d99SMoqEZ9s,Bash,"node_modules/.bin/vitest run 2>&1 | tail -20 || echo ""VITEST NOT INSTALLED (project uses Jest)""",False,Confirm vitest absent,70,0,70,False,1,45091,175,39,True,2026-06-06T11:25:08.606Z,/bin/bash: line 1: node_modules/.bin/vitest: No such file or directory,,False,False,3472
+20260606-132242,rtk-bench-on-2,on,2,21,msg_01XFgfkQJBtEPWqnZy1wXHLo,,,,False,,0,0,0,False,1,45266,393,1,False,,,,False,False,0
+20260606-132242,rtk-bench-off-2,off,2,1,msg_018E9MYp8mBuspdbvM6FHtJw,toolu_018WgQhS67f6FHnB677kwAVQ,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,26184,0,8,True,2026-06-06T11:26:15.190Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:26 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-2,off,2,2,msg_012ESUFBfqBTbhTbQcxaQGzb,toolu_01QqKWSPVGGDFMsSmsr87gBy,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26184,1384,57,True,2026-06-06T11:26:17.357Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2167
+20260606-132242,rtk-bench-off-2,off,2,3,msg_0161ZPXFdaEuLPxPZtUJPhfJ,toolu_01VoUp9FfWYFSjL3bNK1t4Fh,Bash,cat package.json,False,Show package.json,5323,0,5323,False,1,27568,3611,59,True,2026-06-06T11:26:19.501Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2144
+20260606-132242,rtk-bench-off-2,off,2,4,msg_01MAWMP2XTZWh5imT6ieFb4J,toolu_015STe2WFW7ZW5Z7dTF6apEF,Bash,tree -L 2 src/,False,Show src directory tree,519,0,519,False,1,31179,2631,62,True,2026-06-06T11:26:21.590Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2089
+20260606-132242,rtk-bench-off-2,off,2,5,msg_01ER1sfb6T8vHEqK3ab3p3i2,toolu_011bWnwcsuZK41xp1SJPhxZt,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33810,388,66,True,2026-06-06T11:26:26.727Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,5137
+20260606-132242,rtk-bench-off-2,off,2,6,msg_01XatHHjYbZ3tzjx3KDwtMaF,toolu_016tPuydbFc6PtbmiWuDiwhv,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34198,591,60,True,2026-06-06T11:26:29.233Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,2506
+20260606-132242,rtk-bench-off-2,off,2,7,msg_01PzRRfVwAow5LBUDU7uY8Z8,toolu_01LUtydygjb5RJKRTcfvcPRi,Bash,git shortlog -sn,False,Show contributor counts,0,0,31,False,1,34789,1778,61,True,2026-06-06T11:26:31.246Z,(Bash completed with no output),,False,False,2013
+20260606-132242,rtk-bench-off-2,off,2,8,msg_01UtEmZLHVxSuGA6Ln1xXjDC,toolu_01Etc9o2k1os2gSXTzohDuoi,Bash,git shortlog -sn HEAD,False,Show contributor counts on HEAD,383,0,383,False,1,36567,119,45,True,2026-06-06T11:26:33.980Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2734
+20260606-132242,rtk-bench-off-2,off,2,9,msg_019nKmirJM1tKEHLbhzxb8SD,toolu_01KSD3rYo9dPJqUBUdb5SpQV,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,27028,0,27028,False,1,36686,368,67,True,2026-06-06T11:26:36.364Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2384
+20260606-132242,rtk-bench-off-2,off,2,10,msg_01KXMEkZA5H8xDDcPbJMuBgy,toolu_01UpH4ZDwRZxhK1wernW9pDn,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers in src,109,0,109,False,1,37054,13854,53,True,2026-06-06T11:26:38.776Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2412
+20260606-132242,rtk-bench-off-2,off,2,11,msg_01MSiGPDPuYv8cnAZqp94Rwt,toolu_016QFQgQwewjvg1AZVoHQP6j,Bash,"grep -rn ""as any"" src/",False,Find 'as any' casts in src,443,0,443,False,1,50908,336,43,True,2026-06-06T11:26:41.912Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,3136
+20260606-132242,rtk-bench-off-2,off,2,12,msg_01CtTXzdMPM6WNokDTKnG4Qy,toolu_01Sn3MmS1s68jXJfLbCweTVK,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51244,376,68,True,2026-06-06T11:26:45.397Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,3485
+20260606-132242,rtk-bench-off-2,off,2,13,msg_01JE6AKGy6uwZXRFjSqdjFhi,toolu_0196A8bDzTP4cBrsjsFBtET5,Bash,npx --yes pnpm@10.33.0 install 2>&1 | tail -50,False,Install dependencies via npx pnpm,1329,0,1329,False,1,51620,168,48,True,2026-06-06T11:27:20.965Z,"+ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @eslint/js 9.39.1
++ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.3",,False,False,35568
+20260606-132242,rtk-bench-off-2,off,2,14,msg_01XtpjYHTM2EA4HYd7QSyxUS,toolu_01HMS2FZccZSREQn9wLGPehT,Bash,npx tsc --noEmit 2>&1,False,Type-check the project,0,0,31,False,1,51788,1011,67,True,2026-06-06T11:27:28.637Z,(Bash completed with no output),,False,False,7672
+20260606-132242,rtk-bench-off-2,off,2,15,msg_012fnHme4jf9dy4uzPnZTNNs,toolu_013GgSWZtRjaTYkiScDX7xeo,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1",False,Check prettier formatting,0,0,142,True,1,52799,149,72,True,2026-06-06T11:27:32.414Z,"Exit code 1
+Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3777
+20260606-132242,rtk-bench-off-2,off,2,16,msg_01N9Hv7f3oxLUYrPJSpmVs1A,toolu_01NcpaaeGfjo6BupXpxxDmZr,Bash,npx vitest run 2>&1,False,Run vitest tests,0,0,10682,True,1,52948,251,72,True,2026-06-06T11:28:00.453Z,"Exit code 1
+npm warn exec The following package was not found and will be installed: vitest@4.1.8
+
+ RUN  v4.1.8 /home/ubuntu/bench-codebase
+
+ ? test/use-swr-local-mutation.test.tsx (0 test)
+ ? test/us",,False,False,28039
+20260606-132242,rtk-bench-off-2,off,2,17,msg_011PnpSrRomrEqfEze2QvEWm,,,,False,,0,0,0,False,1,53199,5457,44,False,,,,False,False,0
+20260606-132242,rtk-bench-on-3,on,3,1,msg_018wCEWdbNijsqgeXMffposu,toolu_01CQJTqb3qkYRMNnagzuhg5j,Bash,ls -la,False,List files in current directory,566,0,566,False,5,26415,0,8,True,2026-06-06T11:26:16.177Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-3,on,3,2,msg_01Bjf4FRpio5oEmyGNEcnnVa,toolu_011HdJhi2ZnpaATR8uGNYfLr,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files sorted,6825,0,6825,False,1,26415,438,67,True,2026-06-06T11:26:18.155Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,1978
+20260606-132242,rtk-bench-on-3,on,3,3,msg_015vkE4x6M9bHSH2jU6W2b4s,toolu_012UkUhuLXoNZAdz6yDy9RdJ,Bash,cat package.json,False,View package.json,5323,0,5323,False,1,26853,3614,59,True,2026-06-06T11:26:20.310Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2155
+20260606-132242,rtk-bench-on-3,on,3,4,msg_01LqkuoF2cBFZdUp3Fhsc63c,toolu_01Fa52g5VF9SUs8drZU4qUZc,Bash,tree -L 2 src/,False,Show src directory tree to 2 levels,494,0,494,False,1,30467,2630,63,True,2026-06-06T11:26:22.322Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2012
+20260606-132242,rtk-bench-on-3,on,3,5,msg_013P8oNRcyH9omdiVoKrQWkL,toolu_01FtGQvBUCu38SfqvG5bMFVs,Bash,git log --oneline -20,False,Show last 20 commits oneline,1005,0,1005,False,1,33097,384,69,True,2026-06-06T11:26:24.368Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2045
+20260606-132242,rtk-bench-on-3,on,3,6,msg_01Hcq4pFStXKo1hfrrhoL8zW,toolu_01Dr7j8wrv85NChwtnXMZAQ5,Bash,git log --stat -5,False,Show last 5 commits with stats,1244,0,1244,False,1,33481,594,61,True,2026-06-06T11:26:26.577Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2209
+20260606-132242,rtk-bench-on-3,on,3,7,msg_01V64haUdPjSPCrLYetrVy3k,toolu_0199iv9knN5WVH1WTtKky2wC,Bash,git shortlog -sn,False,List contributors with commit counts,0,0,31,False,1,34075,684,61,True,2026-06-06T11:26:29.143Z,(Bash completed with no output),,False,False,2566
+20260606-132242,rtk-bench-on-3,on,3,8,msg_01Maa6SiruTczjC5RmZcWme2,toolu_01QaShAEK7vHRHaV9115Zq9p,Bash,git shortlog -sn HEAD,False,List contributors from HEAD,383,0,383,False,1,34759,121,55,True,2026-06-06T11:26:31.287Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2144
+20260606-132242,rtk-bench-on-3,on,3,9,msg_01WDkZsLAvUrj5Ph4NYGWaUV,toolu_01BAXaxdD8FwCtmVGjFViYPE,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,14240,0,14240,False,1,34880,329,67,True,2026-06-06T11:26:33.489Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2202
+20260606-132242,rtk-bench-on-3,on,3,10,msg_019TpnqiHUkTzmRMhLMJXfgs,toolu_01V57fUop5P2yicZrWDprGd4,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers in src,109,0,109,False,1,35209,6657,57,True,2026-06-06T11:26:35.688Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2199
+20260606-132242,rtk-bench-on-3,on,3,11,msg_01DsAFAif6L4BhCyGrA3ZTj8,toolu_015z2kTh6UDxAWZWegEBdp5P,Bash,"grep -rn ""as any"" src/",False,"Find ""as any"" casts in src",443,0,443,False,1,41866,336,47,True,2026-06-06T11:26:38.687Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2999
+20260606-132242,rtk-bench-on-3,on,3,12,msg_01MvXNt2pXEtgcuHoE5HVwRd,toolu_01KmhhmVF3PNm44kWaa1wSNS,Bash,pnpm install 2>&1,False,Install dependencies via pnpm,0,0,110,True,1,42202,369,64,True,2026-06-06T11:26:40.978Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2291
+20260606-132242,rtk-bench-on-3,on,3,13,msg_013xyWwkhNWC2paWocB1V6Aa,toolu_018wiRNAQwThAWAFDKSZcvya,Bash,which pnpm npm yarn 2>&1; pnpm --version 2>&1 || true,False,Find available package managers,55,0,55,False,1,42571,189,52,True,2026-06-06T11:26:43.145Z,"/usr/bin/npm
+/bin/bash: line 1: pnpm: command not found",,False,False,2167
+20260606-132242,rtk-bench-on-3,on,3,14,msg_01Uf2GGGfjTTkbzYRrJQmYTS,toolu_01QkdrcL5GCnWjG8u6PDrWR3,Bash,corepack enable 2>&1 && corepack pnpm install 2>&1 | tail -40,False,Enable corepack and install via pnpm,0,0,717,True,1,42760,159,45,True,2026-06-06T11:26:46.589Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,3444
+20260606-132242,rtk-bench-on-3,on,3,15,msg_01ApLYDBNFYhMnWvtwT3zM5q,toolu_013uFX6ZtvBqw13bm1RsmQZt,Bash,"npm install -g pnpm@10.33.0 --prefix ~/.local 2>&1 | tail -10 && export PATH=""$HOME/.local/bin:$PATH"" && pnpm --version",False,Install pnpm locally and check version,303,0,303,False,1,42919,570,46,True,2026-06-06T11:26:51.486Z,"added 1 package in 1s
+
+1 package is looking for funding
+  run `npm fund` for details
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.16.0
+npm notice Changelog: https://github.co",,False,False,4897
+20260606-132242,rtk-bench-on-3,on,3,16,msg_0167NDqzMZurmUCMfY9QtfbA,toolu_018gYekXTXEktzbqcKzfu4mB,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && pnpm install 2>&1 | tail -30",False,Run pnpm install,727,0,727,False,1,43489,325,68,True,2026-06-06T11:27:28.957Z,"+ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/jest 30.0.0
++ @types/node 24.12.4
++ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugi",,False,False,37471
+20260606-132242,rtk-bench-on-3,on,3,17,msg_016QZrBK4MVyPdJ9Pm3Ujme5,toolu_017AfVJhYP7eL4GUn1p7kkWo,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx tsc --noEmit 2>&1 | tail -50",False,Run TypeScript check,27,0,27,False,1,43814,622,68,True,2026-06-06T11:27:39.590Z,TypeScript: No errors found,,False,False,10633
+20260606-132242,rtk-bench-on-3,on,3,18,msg_01PvzjnBGm6y5YTyNqgUk5MM,toolu_016HT35fF8LVoAbFdbhpXzz8,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx prettier --check ""src/**/*.ts"" 2>&1 | tail -40",False,Check prettier formatting,39,0,39,False,1,44436,179,72,True,2026-06-06T11:27:43.566Z,Prettier: All files formatted correctly,,False,False,3976
+20260606-132242,rtk-bench-on-3,on,3,19,msg_01TXTctK3HWNhAJw1fajs93J,toolu_01WXc3Mh7iMNqjgiGkxBL6gx,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx vitest run 2>&1 | tail -40",False,Run vitest tests,167,0,167,False,1,44615,189,72,True,2026-06-06T11:27:47.839Z,"[RTK:PASSTHROUGH] vitest parser: All parsing tiers failed
+undefined
+?ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL? Command ""vitest"" not found
+
+Did you mean ""pnpm exec jest""?",,False,False,4273
+20260606-132242,rtk-bench-on-3,on,3,20,msg_016MKzVe8naeU5qBTyrrZiiY,toolu_011wiZmejSJS5iLDByZVXhNH,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && pnpm test 2>&1 | tail -20",False,Run jest tests to get pass/fail counts,206,0,206,False,1,44804,258,47,True,2026-06-06T11:28:33.328Z,"> swr@2.4.1 test /home/ubuntu/bench-codebase
+> jest
+
+
+Test Suites: 34 passed, 34 total
+Tests:       5 skipped, 360 passed, 365 total
+Snapshots:   6 passed, 6 total
+Time:        36.448 s
+Ran all test s",,False,False,45489
+20260606-132242,rtk-bench-on-3,on,3,21,msg_01QVhy7iH43YGcMnCc5BEQnM,,,,False,,0,0,0,False,1,45062,713,1,False,,,,False,False,0
+20260606-132242,rtk-bench-off-3,off,3,1,msg_01JhFERhMtXA7aMDgs46zVZB,toolu_01MHE71csuxPmBoCphGx3n9f,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,26184,0,0,True,2026-06-06T11:26:15.616Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:26 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-3,off,3,2,msg_01SiW9dfkRcpUzLEN8muvW25,toolu_01DW9cfzVq8F4xPH7Sz3kY7u,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files sorted,6825,0,6825,False,1,26184,1384,57,True,2026-06-06T11:26:17.727Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2111
+20260606-132242,rtk-bench-off-3,off,3,3,msg_012XnmmCDbrBmebnEAFA3v4z,toolu_015JjKscTJtK5DPU3UFisF5g,Bash,cat package.json,False,Show package.json content,5323,0,5323,False,1,27568,3614,58,True,2026-06-06T11:26:19.717Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,1990
+20260606-132242,rtk-bench-off-3,off,3,4,msg_012RDMVm9XWWxeG6EhtdaGdv,toolu_01HoyDPwnT3SU7pXafPLgLpu,Bash,tree -L 2 src/,False,Show source structure two levels deep,519,0,519,False,1,31182,2632,63,True,2026-06-06T11:26:22.059Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2342
+20260606-132242,rtk-bench-off-3,off,3,5,msg_01VoE3K13ts3oBxmXuqdPYgu,toolu_017XSaULMwxSXfBsTZWDvsFS,Bash,git log --oneline -20,False,Show recent 20 commits,1005,0,1005,False,1,33814,391,61,True,2026-06-06T11:26:24.160Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2101
+20260606-132242,rtk-bench-off-3,off,3,6,msg_01TKVmvTgy2DfsyWaafrdWC7,toolu_018aptAsiKZs5x94LCBuCTZA,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34205,592,61,True,2026-06-06T11:26:26.101Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,1941
+20260606-132242,rtk-bench-off-3,off,3,7,msg_01S93j3y5D62JjH2yrAzkmod,toolu_01XyjMoH2u3pndAS9eVDnWWL,Bash,git shortlog -sn,False,Show contributors sorted by commits,0,0,31,False,1,34797,1778,61,True,2026-06-06T11:26:29.023Z,(Bash completed with no output),,False,False,2922
+20260606-132242,rtk-bench-off-3,off,3,8,msg_01Hz5oLTemuvegwpAEYxJvMP,toolu_01TjuRHS8KpCZkTw7LApkSGZ,Bash,git shortlog -sn HEAD,False,Show contributors sorted by commits via HEAD,383,0,383,False,1,36575,123,55,True,2026-06-06T11:26:31.110Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2087
+20260606-132242,rtk-bench-off-3,off,3,9,msg_01QxMji546zykdevBBJ54Agu,toolu_01QfuSEYThK72ghVvv68uRBz,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,27028,0,27028,False,1,36698,336,67,True,2026-06-06T11:26:35.850Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,4740
+20260606-132242,rtk-bench-off-3,off,3,10,msg_01561wH4zHonR1GrAuYC1k2p,toolu_018dL3K4LpynjZYx29Zw7RRz,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO FIXME HACK markers in src,109,0,109,False,1,37034,13854,53,True,2026-06-06T11:26:38.811Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2961
+20260606-132242,rtk-bench-off-3,off,3,11,msg_01PJbrYhBf2YQyZeG9Nw8RBW,toolu_01NqGTVzYUrHU3gaAnWrHRuD,Bash,"grep -rn ""as any"" src/",False,Find 'as any' casts in src,443,0,443,False,1,50888,334,39,True,2026-06-06T11:26:42.529Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,3718
+20260606-132242,rtk-bench-off-3,off,3,12,msg_01RQxd3thGDp71acCGuaGn2a,toolu_01BNKTcHKi87q5pasqLsMokG,Bash,pnpm install 2>&1,False,Install dependencies via pnpm,0,0,56,True,1,51222,432,63,True,2026-06-06T11:26:45.358Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2829
+20260606-132242,rtk-bench-off-3,off,3,13,msg_01QQv4KPA8kepf6Ag7e9vT33,toolu_01JrKJMw3c2JF9756zTYE5NN,Bash,npx tsc --noEmit 2>&1,False,Type check via tsc,0,0,973,True,1,51654,173,68,True,2026-06-06T11:26:49.812Z,"Exit code 1
+npm warn exec The following package was not found and will be installed: tsc@2.0.4
+npm warn deprecated tsc@2.0.4: Package no longer supported. Contact Support at https://www.npmjs.com/supp",,False,False,4454
+20260606-132242,rtk-bench-off-3,off,3,14,msg_019tGSDSwdZ2Qb7fBLG9E869,toolu_01Bo3LaKJC6iNMNLCUxw6qqe,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1",False,Check formatting via prettier,0,0,495,True,1,51827,474,51,True,2026-06-06T11:26:54.382Z,"Exit code 1
+npm warn exec The following package was not found and will be installed: prettier@3.8.3
+Checking formatting...
+[warn] src/_internal/types.ts
+[warn] src/_internal/utils/env.ts
+[warn] src/_i",,False,False,4570
+20260606-132242,rtk-bench-off-3,off,3,15,msg_01HebZnDpBE34HZ3SwRK2eZM,toolu_012evqJswdM7NyMLQ4G63Nco,Bash,npx vitest run 2>&1,False,Run vitest tests,0,0,11036,True,1,52301,423,43,True,2026-06-06T11:27:30.222Z,"Exit code 1
+npm warn exec The following package was not found and will be installed: vitest@4.1.8
+
+ RUN  v4.1.8 /home/ubuntu/bench-codebase
+
+ ? test/use-swr-local-mutation.test.tsx (0 test)
+ ? test/us",,False,False,35840
+20260606-132242,rtk-bench-off-3,off,3,16,msg_01HPAwg5Vp6pHVp8PzFWDMrS,,,,False,,0,0,0,False,1,52724,6318,1,False,,,,False,False,0
+20260606-132242,rtk-bench-on-4,on,4,1,msg_01NJMQ1xMU6RbnRcrWT4TzGe,toolu_0189yhPe8Q31Y6WZHRuP4bgX,Bash,ls -la,False,List directory contents,566,0,566,False,5,26415,0,8,True,2026-06-06T11:26:15.442Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-4,on,4,2,msg_01WG6SEnvHp794hPNSKFeN2S,toolu_012y4pF4D3i1XyHyxdkbNND3,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26415,435,67,True,2026-06-06T11:26:17.361Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,1919
+20260606-132242,rtk-bench-on-4,on,4,3,msg_01R3YaGobpJfh6gVgzWgiVoJ,toolu_01Xjqx83M1ZS2vbVeGCvrYmh,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,26850,3611,59,True,2026-06-06T11:26:19.288Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,1927
+20260606-132242,rtk-bench-on-4,on,4,4,msg_01SyNrJWB6hnh9P8AS49NUkf,toolu_01AJL3Yefquqcn74BPyjgW6N,Bash,tree -L 2 src/,False,Show src directory tree,494,0,494,False,1,30461,2631,68,True,2026-06-06T11:26:21.266Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,1978
+20260606-132242,rtk-bench-on-4,on,4,5,msg_01DSd8yzYKvH4x6hNuzHzCuh,toolu_01PK2CuCFdn3wES21cdqCD4y,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33092,378,66,True,2026-06-06T11:26:23.601Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2335
+20260606-132242,rtk-bench-on-4,on,4,6,msg_01Udu78CFkbmpSEeEmZoRUK7,toolu_014VX5nW7YNurFadi2Jrat9N,Bash,git log --stat -5,False,Show stats for last 5 commits,1244,0,1244,False,1,33470,591,60,True,2026-06-06T11:26:26.598Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2997
+20260606-132242,rtk-bench-on-4,on,4,7,msg_01QHeNmURMin5rhb6BUaXA5D,toolu_013yR9f1t8XqMm4s8hB7svAc,Bash,git shortlog -sn,False,Show contributors by commit count,0,0,31,False,1,34061,684,61,True,2026-06-06T11:26:29.217Z,(Bash completed with no output),,False,False,2619
+20260606-132242,rtk-bench-on-4,on,4,8,msg_01VHhoHCMjxUCn3jAZ6azsr4,toolu_014V89XAyt1BPVCim9hpJWXb,Bash,git shortlog -sn --no-pager | head -50,False,Show contributors with head limit,538,0,538,False,1,34745,121,49,True,2026-06-06T11:26:31.691Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,2474
+20260606-132242,rtk-bench-on-4,on,4,9,msg_01UDbABmDTTumPet88c2cwET,toolu_01XjV7hM423yB51sbcNjuzoK,Bash,git --no-pager shortlog -sn HEAD,False,Show contributors,383,0,383,False,1,34866,325,60,True,2026-06-06T11:26:33.678Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,1987
+20260606-132242,rtk-bench-on-4,on,4,10,msg_01QTsSEkuJBMUZGWNVAFagba,toolu_01Nrv517BdT9mUoEj65aoZg1,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,14240,0,14240,False,1,35191,330,66,True,2026-06-06T11:26:36.446Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2768
+20260606-132242,rtk-bench-on-4,on,4,11,msg_01RgqRjSRjNTKFmqXHnhYdFa,toolu_0178RRQwX7kqzRTuRBtVsBtF,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers in src,109,0,109,False,1,35521,6800,61,True,2026-06-06T11:26:38.978Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2532
+20260606-132242,rtk-bench-on-4,on,4,12,msg_01N283Wu4BAj7apsL7ksQ1E5,toolu_012ahBXx62xCA1Mwy3KMVUEw,Bash,"grep -rn ""as any"" src/",False,Find as any casts in src,443,0,443,False,1,42321,193,54,True,2026-06-06T11:26:41.051Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2073
+20260606-132242,rtk-bench-on-4,on,4,13,msg_01P2U22UYaQdXv9PbmUeShge,toolu_01XjAHvbXq4f5o1CzVEWHxUx,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42514,310,63,True,2026-06-06T11:26:43.254Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2203
+20260606-132242,rtk-bench-on-4,on,4,14,msg_01JAjG7pUrkhY6qY8dVrn89X,toolu_01B6tExc3ZhiMzaNxFc744WB,Bash,which pnpm || corepack enable pnpm 2>&1 | head -10,False,Check pnpm location,705,0,705,False,1,42824,184,45,True,2026-06-06T11:26:45.714Z,"Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at async EnableComm",,False,False,2460
+20260606-132242,rtk-bench-on-4,on,4,15,msg_017XiECsGG6Cf6n5fgPZoAS3,toolu_01Uxx3iQEgQ1D5Xm5Bz8cxAM,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -5,False,Install pnpm via npm,314,0,314,False,1,43008,473,56,True,2026-06-06T11:26:51.453Z,"npm notice New major version of npm available! 10.8.2 -> 11.16.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+npm notice To update run: npm install -g npm@11.16.0
+npm notice
+",,False,False,5739
+20260606-132242,rtk-bench-on-4,on,4,16,msg_01MbXf7kxxxMYpu69ebRdSTH,toolu_0118vyG55CJ7JUb3VUAei4q8,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm via npm verbose,1320,0,1320,False,1,43481,297,68,True,2026-06-06T11:26:53.998Z,"npm error     at async /usr/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20
+npm error     at async Promise.allSettled (index 0)
+npm error     at async [reifyPackages] (",,False,False,2545
+20260606-132242,rtk-bench-on-4,on,4,17,msg_0177gyDMBmvczekp7YNo1eMq,toolu_01GvRKJXStEcWjruhypmbUpA,Bash,npm install --prefix ~/.local -g pnpm@10.33.0 2>&1 | tail -5 && ls ~/.local/bin/,False,Install pnpm to user local dir,381,0,381,False,1,43778,710,48,True,2026-06-06T11:26:59.092Z,"added 1 package in 2s
+
+1 package is looking for funding
+  run `npm fund` for details
+claude -> /home/ubuntu/.local/share/claude/versions/2.1.146  49B
+dmypy  234B
+mypy  230B
+mypyc  213B
+pnpm -> ../lib/",,False,False,5094
+20260606-132242,rtk-bench-on-4,on,4,18,msg_01AqH5Y1i16y5vZ5WDg5dMc1,toolu_01E8wYbKxuSN2jYJRzhoqK8M,Bash,export PATH=$HOME/.local/bin:$PATH && pnpm install 2>&1 | tail -30,False,Run pnpm install,727,0,727,False,1,44488,392,68,True,2026-06-06T11:27:27.286Z,"+ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/jest 30.0.0
++ @types/node 24.12.4
++ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugi",,False,False,28194
+20260606-132242,rtk-bench-on-4,on,4,19,msg_01Kik4b2WHSwTmmGRX146tV7,toolu_01CKgAsWV4QFdPRt76qSvJL9,Bash,npx tsc --noEmit 2>&1 | tail -30,False,Run TypeScript type check,27,0,27,False,1,44880,621,61,True,2026-06-06T11:27:38.796Z,TypeScript: No errors found,,False,False,11510
+20260606-132242,rtk-bench-on-4,on,4,20,msg_01RHhCiovknAzaqStLbBiXye,toolu_015LrCWnH4vDWUJeuTGtHvqA,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -20",False,Run prettier check on src,39,0,39,False,1,45501,158,63,True,2026-06-06T11:27:43.083Z,Prettier: All files formatted correctly,,False,False,4287
+20260606-132242,rtk-bench-on-4,on,4,21,msg_01RmS3Eft9Ba9NeN3zuhyX9F,toolu_017e9UVd5VssLGRkF8sZQDK1,Bash,npx vitest run 2>&1 | tail -40,False,Run vitest tests,167,0,167,False,1,45659,310,72,True,2026-06-06T11:27:46.774Z,"[RTK:PASSTHROUGH] vitest parser: All parsing tiers failed
+undefined
+?ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL? Command ""vitest"" not found
+
+Did you mean ""pnpm exec jest""?",,False,False,3691
+20260606-132242,rtk-bench-on-4,on,4,22,msg_014zKwP8L7UyvKza5HKurtWK,,,,False,,0,0,0,False,1,45969,236,39,False,,,,False,False,0
+20260606-132242,rtk-bench-off-4,off,4,1,msg_01D9udEPsdZDkVC6N8Sz1C1R,toolu_01X7GzZBDLXkUvQ68MbTRynf,Bash,ls -la,False,List directory contents,1762,0,1762,False,5,26184,0,0,True,2026-06-06T11:26:18.227Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:26 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-4,off,4,2,msg_01ViSndZRiEjtD8MnsFZRphr,toolu_01YJ5bw1MRH9Gc2VrEnacvT4,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find TypeScript files,6825,0,6825,False,1,26184,1380,57,True,2026-06-06T11:26:20.351Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2124
+20260606-132242,rtk-bench-off-4,off,4,3,msg_01DByGT2RmY8za7Lg9sfnix3,toolu_01Jk5U7wanNosWzSLyrV6rQK,Bash,cat package.json,False,Display package.json contents,5323,0,5323,False,1,27564,3610,60,True,2026-06-06T11:26:23.589Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,3238
+20260606-132242,rtk-bench-off-4,off,4,4,msg_01N4hTmRDhdPwBW6fvG2M4at,toolu_01B7kbv5kAHW5hK1zKE48hS8,Bash,tree -L 2 src/,False,Show source directory tree,519,0,519,False,1,31174,2740,66,True,2026-06-06T11:26:25.855Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2266
+20260606-132242,rtk-bench-off-4,off,4,5,msg_01EaXn75fm4rjftDqrr4W86B,toolu_013dmt1cdvPZfA8Kxc1mKzKS,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33914,388,66,True,2026-06-06T11:26:28.671Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2816
+20260606-132242,rtk-bench-off-4,off,4,6,msg_011PzH6SNmqQPEZ3hZnfatcD,toolu_01B89aRDwzE1xXeUQ3Gxc62c,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34302,591,65,True,2026-06-06T11:26:30.609Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,1938
+20260606-132242,rtk-bench-off-4,off,4,7,msg_01SNs8UZfrbdFLpkesft6dRK,toolu_017wQo4nbkKrvu1HSdMiu8Js,Bash,git shortlog -sn,False,Show contributor summary,0,0,31,False,1,34893,1778,61,True,2026-06-06T11:26:32.563Z,(Bash completed with no output),,False,False,1954
+20260606-132242,rtk-bench-off-4,off,4,8,msg_013gMjGaofT8HGG7TvQa5kub,toolu_013y5dpH4gKsqduP2DHDC5vJ,Bash,git shortlog -sn --no-pager | cat,False,Show contributor summary,538,0,538,False,1,36671,119,48,True,2026-06-06T11:26:35.464Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,2901
+20260606-132242,rtk-bench-off-4,off,4,9,msg_01NQnnYVmksrQuA8oDJcThff,toolu_01A1aNXFWcYACCFyqXH4bc6x,Bash,git --no-pager shortlog -sn HEAD,False,Show contributor summary without pager,383,0,383,False,1,36790,371,60,True,2026-06-06T11:26:37.489Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2025
+20260606-132242,rtk-bench-off-4,off,4,10,msg_01FhqyntBcAPLhbKLLxXz33X,toolu_01XhvN9dDSEHs9KUS8zzwgP5,Bash,git diff HEAD~3..HEAD,False,Show diff between HEAD~3 and HEAD,27028,0,27028,False,1,37161,335,58,True,2026-06-06T11:26:39.963Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2474
+20260606-132242,rtk-bench-off-4,off,4,11,msg_01LDLwQDBvez72vE2Vvj1Csa,toolu_014G4wMRRjeFSzmnRyWbJzNE,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Search for TODO/FIXME/HACK markers,109,0,109,False,1,37496,14038,44,True,2026-06-06T11:26:42.839Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2876
+20260606-132242,rtk-bench-off-4,off,4,12,msg_01E5z1VDUdo4N8H6Wm6P3omE,toolu_01CSiiNWrWTyFgFTiRh5QuQS,Bash,"grep -rn ""as any"" src/",False,Search for as any casts,443,0,443,False,1,51534,246,64,True,2026-06-06T11:26:45.241Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2402
+20260606-132242,rtk-bench-off-4,off,4,13,msg_01EGpDq7Rch6qMWNBmDh4SqD,toolu_012rGQoZYGxBwG6TUkpEznWm,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51780,309,63,True,2026-06-06T11:26:48.687Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,3446
+20260606-132242,rtk-bench-off-4,off,4,14,msg_014cqZ2BnfyYzH7kvmzBtTAb,toolu_01DamGPzLk4gis7S9JULMZm7,Bash,which npm node && node --version && npm --version,False,Check available package managers,42,0,42,False,1,52089,168,54,True,2026-06-06T11:26:51.730Z,"/usr/bin/npm
+/usr/bin/node
+v20.20.2
+10.8.2",,False,False,3043
+20260606-132242,rtk-bench-off-4,off,4,15,msg_01GcgmzGDJTDc3VxnMmZZ5bk,toolu_01FM99X4TkGKjAbUbo7H1C7k,Bash,corepack enable 2>&1 && corepack prepare pnpm@10.33.0 --activate 2>&1 || npm install -g pnpm 2>&1,False,Enable corepack or install pnpm,0,0,2502,True,1,52257,216,51,True,2026-06-06T11:26:55.657Z,"Exit code 243
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at as",,False,False,3927
+20260606-132242,rtk-bench-off-4,off,4,16,msg_01SpXdCR7xTX1N93rbszo9sQ,toolu_01Ju1o9LP9PCcfkp3bAGp8B3,Bash,npm install -g --prefix=$HOME/.npm-global pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm to user prefix,84,0,84,False,1,52473,1309,60,True,2026-06-06T11:27:01.080Z,"added 1 package in 3s
+
+1 package is looking for funding
+  run `npm fund` for details",,False,False,5423
+20260606-132242,rtk-bench-off-4,off,4,17,msg_01TTvijXMWKjy1kwHFs32n5H,toolu_01X1icZVQBnNLFo5wiWgRND7,Bash,"export PATH=""$HOME/.npm-global/bin:$PATH"" && pnpm install 2>&1 | tail -60",False,Run pnpm install,1760,0,1760,False,1,53782,200,68,True,2026-06-06T11:27:26.453Z,"Progress: resolved 699, reused 0, downloaded 698, added 698
+Progress: resolved 699, reused 0, downloaded 699, added 698
+Progress: resolved 699, reused 0, downloaded 699, added 699, done
+.../node_modul",,False,False,25373
+20260606-132242,rtk-bench-off-4,off,4,18,msg_01QGwAyKDx6ydNrniWbi9mYN,toolu_01J5WqsfRJsJwG2VY5GJv4fr,Bash,"export PATH=""$HOME/.npm-global/bin:$PATH"" && npx tsc --noEmit 2>&1 | tail -40",False,Run TypeScript type check,0,0,31,False,1,53982,1149,64,True,2026-06-06T11:27:37.533Z,(Bash completed with no output),,False,False,11080
+20260606-132242,rtk-bench-off-4,off,4,19,msg_01HhWxNomtrydZPnAFSJERC8,toolu_014UhpekpWEZWsUbZqhFzdng,Bash,"export PATH=""$HOME/.npm-global/bin:$PATH"" && npx tsc --noEmit; echo ""EXIT: $?""",False,Confirm tsc exit code,7,0,7,False,1,55131,183,61,True,2026-06-06T11:27:42.615Z,EXIT: 0,,False,False,5082
+20260606-132242,rtk-bench-off-4,off,4,20,msg_018ALcbmhrz3itNqQMjSxQSS,toolu_014mh4RvXUAUXafkESLQ9iVN,Bash,"export PATH=""$HOME/.npm-global/bin:$PATH"" && npx prettier --check ""src/**/*.ts"" 2>&1 | tail -20",False,Run prettier check on src,130,0,130,False,1,55314,227,72,True,2026-06-06T11:27:47.661Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,5046
+20260606-132242,rtk-bench-off-4,off,4,21,msg_01U5t8AZ1nm3s6jzLRqWSrsE,toolu_01GdgeZm2yZhqHbij8kFJzBf,Bash,"export PATH=""$HOME/.npm-global/bin:$PATH"" && npx vitest run 2>&1 | tail -30",False,Run vitest tests,1040,0,1040,False,1,55541,374,64,True,2026-06-06T11:28:21.109Z,"Error: Cannot find package 'swr/_internal' imported from /home/ubuntu/bench-codebase/test/unit/utils.test.tsx
+ ? test/unit/utils.test.tsx:4:1
+      2|  * @jest-environment @edge-runtime/jest-environme",,False,False,33448
+20260606-132242,rtk-bench-off-4,off,4,22,msg_01GWPa65fTpyKeQR7gy8QmiV,toolu_019G1oQ4yGfvYLL5h78wicmG,Bash,"export PATH=""$HOME/.npm-global/bin:$PATH"" && timeout 540 pnpm test 2>&1 | tail -30",False,Run jest test suite (alternative to vitest),205,0,205,False,1,55915,904,44,True,2026-06-06T11:29:03.992Z,"> swr@2.4.1 test /home/ubuntu/bench-codebase
+> jest
+
+
+Test Suites: 34 passed, 34 total
+Tests:       5 skipped, 360 passed, 365 total
+Snapshots:   6 passed, 6 total
+Time:        37.15 s
+Ran all test su",,False,False,42883
+20260606-132242,rtk-bench-off-4,off,4,23,msg_0168GYwF3sT1sr1U4F798iSv,,,,False,,0,0,0,False,1,56819,387,57,False,,,,False,False,0
+20260606-132242,rtk-bench-on-5,on,5,1,msg_01SjsUehDX2wk1b63X6pabyh,toolu_0177AKxD6B9hzqMVPhq4reNZ,Bash,ls -la,False,List files in current directory,566,0,566,False,5,26415,0,8,True,2026-06-06T11:29:34.983Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-5,on,5,2,msg_01RyCpKbVRxvHexYc3mUmGxw,toolu_01XyiT9VqnvvWASswDwm7ddR,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26415,459,65,True,2026-06-06T11:29:37.073Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2090
+20260606-132242,rtk-bench-on-5,on,5,3,msg_017bckZZz6qEhi4Kk1z5Vxuv,toolu_01PSUfkzKMFSWntYh2wBm8fv,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,26874,3611,58,True,2026-06-06T11:29:42.631Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,5558
+20260606-132242,rtk-bench-on-5,on,5,4,msg_016cW49F9R4X45gm469Rsrrg,toolu_01UgnB4c21B9RvmP7hAq5Gdo,Bash,tree -L 2 src/,False,Show src directory tree,494,0,494,False,1,30485,2631,67,True,2026-06-06T11:29:44.563Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,1932
+20260606-132242,rtk-bench-on-5,on,5,5,msg_01QZHNW4uFAMPbnWviBCWhFm,toolu_018MF9W3NGRaXJ7SoQohVGuD,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33116,378,65,True,2026-06-06T11:29:46.996Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2433
+20260606-132242,rtk-bench-on-5,on,5,6,msg_01HU6yLDg9zQNDnKQjBaQzY2,toolu_01AvsZrJqm54ZJvnf1agLbzr,Bash,git log --stat -5,False,Show last 5 commits with stats,1244,0,1244,False,1,33494,591,68,True,2026-06-06T11:29:49.069Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2073
+20260606-132242,rtk-bench-on-5,on,5,7,msg_016582c4YyxYSiwp8R4oysGf,toolu_01RA2AFA63YLx4QNwLivzvu3,Bash,git shortlog -sn,False,Show contributors by commit count,0,0,31,False,1,34085,684,61,True,2026-06-06T11:29:52.820Z,(Bash completed with no output),,False,False,3751
+20260606-132242,rtk-bench-on-5,on,5,8,msg_01TkcsJgVdkwjPX2XTif6NKf,toolu_01G6RKy4brTFxJgzHpuyDgK2,Bash,git shortlog -sn HEAD,False,Show contributors with HEAD ref,383,0,383,False,1,34769,121,39,True,2026-06-06T11:29:55.717Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2897
+20260606-132242,rtk-bench-on-5,on,5,9,msg_01RwoK8aW8ixcMMiYhp1o5GA,toolu_01LiGfCby98eh72qw5FTvUCW,Bash,git diff HEAD~3..HEAD,False,Diff of last 3 commits,14240,0,14240,False,1,34890,381,67,True,2026-06-06T11:29:58.267Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2550
+20260606-132242,rtk-bench-on-5,on,5,10,msg_01MmePiT1w46uSbXiXTyqpLT,toolu_0175DCgXEHUmpFv47d25at77,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,35271,6656,57,True,2026-06-06T11:30:00.739Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2472
+20260606-132242,rtk-bench-on-5,on,5,11,msg_01RryExKxhFRSvkq216NQKM1,toolu_01SYPt9oo29Dg5Z2wiKrcoHc,Bash,"grep -rn ""as any"" src/",False,Find as any casts in src,443,0,443,False,1,41927,334,68,True,2026-06-06T11:30:04.795Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,4056
+20260606-132242,rtk-bench-on-5,on,5,12,msg_01We9qJLWH8KmaAgwGrzSxqX,toolu_01PCFijEf6kPGn96aH4CfGrN,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42261,310,64,True,2026-06-06T11:30:07.061Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2266
+20260606-132242,rtk-bench-on-5,on,5,13,msg_01WUBeooHjfGYj2FDzDwQ5CZ,toolu_01C75VWGxSMS7FwWoEyPWrsA,Bash,which pnpm; pnpm --version 2>&1 || npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Check for pnpm availability,1070,0,1070,False,1,42571,184,63,True,2026-06-06T11:30:10.009Z,"/bin/bash: line 1: pnpm: command not found
+npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.j",,False,False,2948
+20260606-132242,rtk-bench-on-5,on,5,14,msg_01HNJZdwRJEn962aS9X2GcvH,toolu_011Z15wtJZeCYfoXqCpdyKCA,Bash,npx --yes pnpm@10.33.0 install 2>&1 | tail -30,False,Install via npx pnpm,745,0,745,False,1,42755,579,53,True,2026-06-06T11:30:59.532Z,"+ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugin 8.48.0
++ @typescript-eslint/parser 8.48.0
++ bunchee 6.6.2
++ eslint 9.39.1
++ eslint-config-prettier 10.1.",,False,False,49523
+20260606-132242,rtk-bench-on-5,on,5,15,msg_016xgsNRL5bmwiC1h6izhzRi,toolu_01W3dwMj2HH7NPweh13B22oU,Bash,npx tsc --noEmit 2>&1 | tail -30,False,Type check with tsc,27,0,27,False,1,43334,610,61,True,2026-06-06T11:31:08.109Z,TypeScript: No errors found,,False,False,8577
+20260606-132242,rtk-bench-on-5,on,5,16,msg_01HuifDK4xJnDRMnTkua2gRX,toolu_01XDqYwrypkoD6QGnyKXoKPZ,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Check formatting with prettier,92,0,92,False,1,43944,156,68,True,2026-06-06T11:31:10.582Z,rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2),,False,False,2473
+20260606-132242,rtk-bench-on-5,on,5,17,msg_016GQsiRhmYExVrAS18uJ6x3,toolu_01GbziPmpXdEdGUVRUuiSztE,Bash,"./node_modules/.bin/prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Run prettier from local node_modules,130,0,130,False,1,44100,189,68,True,2026-06-06T11:31:14.231Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3649
+20260606-132242,rtk-bench-on-5,on,5,18,msg_01GDdPUYv5kXFDiiq1uBzu31,toolu_01XHiFhf7nJwz9QzPPmCvaPu,Bash,npx vitest run 2>&1 | tail -50,False,Run vitest tests,92,0,92,False,1,44289,217,68,True,2026-06-06T11:31:16.344Z,rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2),,False,False,2113
+20260606-132242,rtk-bench-on-5,on,5,19,msg_01AsfEzYXa4TztGpHhn67kjP,toolu_01BsXhm2Wh2fK3khfX1dgJga,Bash,npx --yes vitest run 2>&1 | tail -60,False,Run vitest with --yes flag,3532,0,3532,False,1,44506,175,45,True,2026-06-06T11:31:50.073Z," ? TestTypeImpl._currentSuite node_modules/.pnpm/playwright@1.57.0/node_modules/playwright/lib/common/testType.js:75:13
+ ? TestTypeImpl._describe node_modules/.pnpm/playwright@1.57.0/node_modules/play",,False,False,33729
+20260606-132242,rtk-bench-on-5,on,5,20,msg_01BvjwCt3BmbS5zBoiQ7JFC5,toolu_01SGZ5saKGK9ErBTc3KuuFfU,Bash,"npx --yes vitest run 2>&1 | grep -E ""(Test Files|Tests|FAIL|PASS)"" | tail -20",False,Get vitest summary,1510,0,1510,False,1,44681,1985,57,True,2026-06-06T11:32:11.208Z," FAIL  test/use-swr-revalidate.test.tsx [ test/use-swr-revalidate.test.tsx ]
+ FAIL  test/use-swr-server.test.tsx [ test/use-swr-server.test.tsx ]
+ FAIL  test/use-swr-streaming-ssr.test.tsx [ test/use-",,False,False,21135
+20260606-132242,rtk-bench-on-5,on,5,21,msg_01QW42R3hXgRqpLLzGQB1ADE,,,,False,,0,0,0,False,1,46666,1182,54,False,,,,False,False,0
+20260606-132242,rtk-bench-off-5,off,5,1,msg_01Q3T1W3NHXDZDGPCtjesT1k,toolu_01XHGGntHsT2K7hVcCzJhEKX,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,0,24563,0,True,2026-06-06T11:29:36.035Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:29 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-5,off,5,2,msg_012pYiR8Gjo5zfbcsV9pcJah,toolu_01HS4U1BVryq5graHHiL7awE,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,0,27335,67,True,2026-06-06T11:29:38.815Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2780
+20260606-132242,rtk-bench-off-5,off,5,3,msg_01GY3cFGrAfu5xhU4fbffAPi,toolu_01PRe8GMH8dmCCVnvgzXSApz,Bash,cat package.json,False,Show package.json contents,5323,0,5323,False,1,27335,3730,59,True,2026-06-06T11:29:41.054Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2239
+20260606-132242,rtk-bench-off-5,off,5,4,msg_01GTgsMuvRLzgHYHHsv6pjBS,toolu_01PGjcAv4MkZh8HA1Gf5JGFK,Bash,tree -L 2 src/,False,Show src directory tree,519,0,519,False,1,31065,2633,67,True,2026-06-06T11:29:43.314Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2260
+20260606-132242,rtk-bench-off-5,off,5,5,msg_01FQc5cU8fn61h66CVf5LLje,toolu_01Fkk8ZEzkhpFdyqmn5NNSQE,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33698,388,66,True,2026-06-06T11:29:45.302Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,1988
+20260606-132242,rtk-bench-off-5,off,5,6,msg_01C4JBXLqX9huY775LU9UVMi,toolu_01RBBadi57UCqvqp5inyLUWg,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34086,591,61,True,2026-06-06T11:29:47.857Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,2555
+20260606-132242,rtk-bench-off-5,off,5,7,msg_013RUkETdMUzWS96D7ThZQEm,toolu_01NJYzc2a1ELSSjrfTKrnkKW,Bash,git shortlog -sn,False,Show contributors by commit count,0,0,31,False,1,34677,1778,61,True,2026-06-06T11:29:50.080Z,(Bash completed with no output),,False,False,2223
+20260606-132242,rtk-bench-off-5,off,5,8,msg_017bmd3ZVQfUpVLFKc8sZ4uA,toolu_01VzrFJyr4UJmm1eKEv47imF,Bash,git shortlog -sn --no-pager | cat,False,Show contributor commit counts,538,0,538,False,1,36455,121,50,True,2026-06-06T11:29:53.204Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,3124
+20260606-132242,rtk-bench-off-5,off,5,9,msg_018XeCgKcWSKPckA4sAaPXZK,toolu_01CLkF4trmDj3FJLWCExyTzp,Bash,git --no-pager shortlog -sn HEAD,False,Show contributor commit counts,383,0,383,False,1,36576,324,57,True,2026-06-06T11:29:55.588Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2384
+20260606-132242,rtk-bench-off-5,off,5,10,msg_01WJWyApXivAWKdeJDZq7pnN,toolu_01X7Aj7HFpQXvnHHKrCs46Fd,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,27028,0,27028,False,1,36900,334,67,True,2026-06-06T11:29:58.014Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2426
+20260606-132242,rtk-bench-off-5,off,5,11,msg_01GtYrEYMc7rVtdwYvSeem8d,toolu_0153gBGigmocVHX87Mr73GPk,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Search for TODO/FIXME/HACK markers,109,0,109,False,1,37234,13997,62,True,2026-06-06T11:30:02.555Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,4541
+20260606-132242,rtk-bench-off-5,off,5,12,msg_0115fpFiA8DKaXMCmDvQdD3T,toolu_01PH1zCa5qfn8gnv8bW5S2va,Bash,"grep -rn ""as any"" src/",False,Search for 'as any' casts,443,0,443,False,1,51231,280,70,True,2026-06-06T11:30:04.730Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2175
+20260606-132242,rtk-bench-off-5,off,5,13,msg_01KujxPa6W1Fw3u5YuJrMpgc,toolu_01VUCDb1fABpUdb7px4WUXTm,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51511,312,70,True,2026-06-06T11:30:07.035Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2305
+20260606-132242,rtk-bench-off-5,off,5,14,msg_01HTej1xntsXJXP9fiWMoTHq,toolu_01RszvErQNGdz32q6YQr3yGv,Bash,which npm node; node --version; npm --version,False,Check available tools,42,0,42,False,1,51823,144,56,True,2026-06-06T11:30:09.650Z,"/usr/bin/npm
+/usr/bin/node
+v20.20.2
+10.8.2",,False,False,2615
+20260606-132242,rtk-bench-off-5,off,5,15,msg_01MxcF7bXwNVQuBq8kyUcggc,toolu_01TynYPbjYPTZy11DuW6icSQ,Bash,npx --yes pnpm@10.33.0 install 2>&1 | tail -40,False,Install with pnpm via npx,1063,0,1063,False,1,51967,143,45,True,2026-06-06T11:30:51.677Z,"+ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/jest 30.0.0
++ @types/node 24.12.4
++ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugi",,False,False,42027
+20260606-132242,rtk-bench-off-5,off,5,16,msg_01VFNVgwyzgo83GzTSwxpPm1,toolu_013m21KbU6VdhVW58Nqwa4SE,Bash,npx tsc --noEmit 2>&1 | tail -50,False,Run TypeScript type check,0,0,31,False,1,52110,766,72,True,2026-06-06T11:30:59.954Z,(Bash completed with no output),,False,False,8277
+20260606-132242,rtk-bench-off-5,off,5,17,msg_013zPZYSNoBZQm4s9grrBuo8,toolu_01PHVKArHgMNHUwxX75LVx2q,Bash,"npx tsc --noEmit; echo ""EXIT_CODE=$?""",False,Run TypeScript type check with exit code,11,0,11,False,1,52876,158,61,True,2026-06-06T11:31:05.411Z,EXIT_CODE=0,,False,False,5457
+20260606-132242,rtk-bench-off-5,off,5,18,msg_01VAoS3QwKTzZ8LE2a4PQqnC,toolu_01H1ma55Wt4vXG3A7wkDKpyM,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -40",False,Check prettier formatting,130,0,130,False,1,53034,167,71,True,2026-06-06T11:31:12.693Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,7282
+20260606-132242,rtk-bench-off-5,off,5,19,msg_01SNx5ooALF1W89s9yposQvJ,toolu_01Rbx8fKaBo2DH6wnMxr1KFe,Bash,npx vitest run 2>&1 | tail -40,False,Run vitest test suite,1376,0,1376,False,1,53201,206,72,True,2026-06-06T11:31:47.254Z,"      2|  * @jest-environment @edge-runtime/jest-environment
+      3|  */
+      4| import { unstable_serialize } from 'swr'
+       | ^
+      5| import { stableHash } from 'swr/_internal'
+      6|
+
+???",,False,False,34561
+20260606-132242,rtk-bench-off-5,off,5,20,msg_01QNFzXoR91VBfRuSFXNTS3M,,,,False,,0,0,0,False,1,53407,910,45,False,,,,False,False,0
+20260606-132242,rtk-bench-on-6,on,6,1,msg_01HXBJkDUnmzpW9fE1pxkpde,toolu_01XA3Tx1Xbz3sptMAx9HrdKg,Bash,ls -la,False,List files in current directory,566,0,566,False,5,26415,0,8,True,2026-06-06T11:29:34.215Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-6,on,6,2,msg_016emS4B2aRSsT767PvZf5vc,toolu_01Sdy29XK4ZXbnLLjsYnC6ra,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26415,446,67,True,2026-06-06T11:29:36.460Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2245
+20260606-132242,rtk-bench-on-6,on,6,3,msg_01F9C71qHL1EGS8qmfW18tmx,toolu_016BsSqgru6z2CYaopgXRzCo,Bash,cat package.json,False,View package.json,5323,0,5323,False,1,26861,3611,61,True,2026-06-06T11:29:38.556Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2096
+20260606-132242,rtk-bench-on-6,on,6,4,msg_01NWUEX3Q8H5n389cUyYdQRF,toolu_0146amBXwm9VxPQpdiuk4xgv,Bash,tree -L 2 src/,False,Show src directory tree,494,0,494,False,1,30472,2630,66,True,2026-06-06T11:29:40.659Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2103
+20260606-132242,rtk-bench-on-6,on,6,5,msg_01DbeLrB9foCpdyufzpwmmC1,toolu_01MtaX5zmccG2kQBNiStfgq7,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33102,378,66,True,2026-06-06T11:29:42.673Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2013
+20260606-132242,rtk-bench-on-6,on,6,6,msg_016PVG3cs54W446Uk1TuAuTu,toolu_015DQE8VPjjPeKiPTmU8rHFA,Bash,git log --stat -5,False,Show last 5 commits with stats,1244,0,1244,False,1,33480,591,65,True,2026-06-06T11:29:44.609Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,1936
+20260606-132242,rtk-bench-on-6,on,6,7,msg_01KkT9jxsMqB6fkHY4YWWHFu,toolu_01LZQTFPxUHnL6gFrSE7mrNE,Bash,git shortlog -sn,False,Show contributors and commit counts,0,0,31,False,1,34071,684,61,True,2026-06-06T11:29:46.965Z,(Bash completed with no output),,False,False,2356
+20260606-132242,rtk-bench-on-6,on,6,8,msg_01DkQU8YxqdCKMq88GMJ67dz,toolu_01EExtETryrwz1ZpcGM6fJxN,Bash,git shortlog -sn --no-pager HEAD,False,Show contributors with explicit HEAD,0,0,552,True,1,34755,122,60,True,2026-06-06T11:29:50.882Z,"Exit code 129
+error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer ",,False,False,3917
+20260606-132242,rtk-bench-on-6,on,6,9,msg_018kdLTYet3Xg7VmWCGy1kfR,toolu_01USNsv2DNjXfD6HJWy73MFk,Bash,git --no-pager shortlog -sn HEAD,False,Show contributors and commit counts (no pager),383,0,383,False,1,34877,344,60,True,2026-06-06T11:29:53.478Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2596
+20260606-132242,rtk-bench-on-6,on,6,10,msg_01TRaKk1hWAPxjR55nWBYqKr,toolu_01TJNM2Rb1Fg3VU9qYwpFSUp,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,14240,0,14240,False,1,35221,340,67,True,2026-06-06T11:30:00.961Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,7483
+20260606-132242,rtk-bench-on-6,on,6,11,msg_014jWuNGYMELSW4daUz6KT5L,toolu_015g8jq4w6w86cbt6cWnG5PC,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,35561,6800,55,True,2026-06-06T11:30:04.841Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,3880
+20260606-132242,rtk-bench-on-6,on,6,12,msg_01DZ3haABpBbvnN3ikqUxiZb,toolu_01Pjr9WUu1sbyQvHmAZcUKEj,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,42361,191,65,True,2026-06-06T11:30:06.970Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2129
+20260606-132242,rtk-bench-on-6,on,6,13,msg_01H6icNtr4MX2gPCzQ6aMF6e,toolu_01K8QoeQ3Zcyz2F9r5FaumnS,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42552,308,67,True,2026-06-06T11:30:09.588Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2618
+20260606-132242,rtk-bench-on-6,on,6,14,msg_012Vkw5y5dfxzUdsgYFAJihh,toolu_01UkPc5vCFzD7rL6QgHFK2Ga,Bash,which pnpm || npm install -g pnpm@10.33.0 2>&1 | tail -5,False,Check for pnpm or install it,314,0,314,False,1,42860,184,45,True,2026-06-06T11:30:13.771Z,"npm notice New major version of npm available! 10.8.2 -> 11.16.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+npm notice To update run: npm install -g npm@11.16.0
+npm notice
+",,False,False,4183
+20260606-132242,rtk-bench-on-6,on,6,15,msg_01Pdc7F93Dz7mCU5NuqRxjDw,toolu_01K6B62J5QRbBstM1k3zE2FA,Bash,npx --yes pnpm@10.33.0 install 2>&1 | tail -30,False,Install with npx pnpm,743,0,743,False,1,43044,304,55,True,2026-06-06T11:30:56.251Z,"+ @types/react 19.2.7
++ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugin 8.48.0
++ @typescript-eslint/parser 8.48.0
++ bunchee 6.6.2
++ eslint 9.39.1
++ eslint-config-prettier 10.1.",,False,False,42480
+20260606-132242,rtk-bench-on-6,on,6,16,msg_01TemTGonzawUny5rohzmMqA,toolu_0138ALB6cLwNxqWv2xowLBso,Bash,npx tsc --noEmit 2>&1 | tail -50,False,Run TypeScript type check,27,0,27,False,1,43348,608,64,True,2026-06-06T11:31:06.342Z,TypeScript: No errors found,,False,False,10091
+20260606-132242,rtk-bench-on-6,on,6,17,msg_01He4rgxm37xczFuNtaC2qoi,toolu_01Uehcoj8kcGKCA3VrjEN1or,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Check prettier formatting,92,0,92,False,1,43956,158,63,True,2026-06-06T11:31:09.474Z,rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2),,False,False,3132
+20260606-132242,rtk-bench-on-6,on,6,18,msg_0145NsRtLzVLDALhzxRZeCuT,toolu_01Y6mfYkYkqEYkuuXWW4WgcY,Bash,"npx --yes prettier@2.8.8 --check ""src/**/*.ts"" 2>&1 | tail -30",False,Check prettier formatting with explicit version,130,0,130,False,1,44114,188,59,True,2026-06-06T11:31:15.028Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,5554
+20260606-132242,rtk-bench-on-6,on,6,19,msg_01UKego79hpGfbNRMizzsHot,toolu_0116qi6fRjUebiRxqeVc4EtV,Bash,npx vitest run 2>&1 | tail -50,False,Run vitest tests,92,0,92,False,1,44302,221,68,True,2026-06-06T11:31:17.999Z,rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2),,False,False,2971
+20260606-132242,rtk-bench-on-6,on,6,20,msg_01PSv7MGeB9WiZ9aguAh8L5X,toolu_01XstZTvN3uqQBTtCQu71y2c,Bash,npx jest 2>&1 | tail -20,False,Run Jest tests as alternative,90,0,90,False,1,44523,175,52,True,2026-06-06T11:31:25.061Z,rtk: Failed to run jest: Failed to execute command: No such file or directory (os error 2),,False,False,7062
+20260606-132242,rtk-bench-on-6,on,6,21,msg_014NpawGc7gz5n8EDTF7pFjb,toolu_01F9enzc1Pbc8Tm3CL75HbTQ,Bash,npx --yes jest 2>&1 | tail -20,False,Run Jest tests with npx --yes,152,0,152,False,1,44698,560,61,True,2026-06-06T11:32:06.108Z,"Test Suites: 34 passed, 34 total
+Tests:       5 skipped, 360 passed, 365 total
+Snapshots:   6 passed, 6 total
+Time:        37.511 s
+Ran all test suites.",,False,False,41047
+20260606-132242,rtk-bench-on-6,on,6,22,msg_01DME8eVFGyvEd9Ek1Sx1ftH,,,,False,,0,0,0,False,1,45258,223,1,False,,,,False,False,0
+20260606-132242,rtk-bench-off-6,off,6,1,msg_01MMv3wNy86hWuMkYuW7URj3,toolu_01TsdBkMKsyj2ZYasmtHuvKa,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,26184,0,0,True,2026-06-06T11:29:34.568Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:29 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-6,off,6,2,msg_01WijhL5z9vY9193iai5pQAM,toolu_01PBnC2yM5veXhWgudZBq6bY,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TS/TSX files,6825,0,6825,False,1,26184,1381,59,True,2026-06-06T11:29:37.383Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2815
+20260606-132242,rtk-bench-off-6,off,6,3,msg_01E6AeGQfzwaBeP84XVi9xt9,toolu_01SMgPFAyfUH88jdtYtHTyMJ,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,27565,3612,62,True,2026-06-06T11:29:39.432Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2049
+20260606-132242,rtk-bench-off-6,off,6,4,msg_01T7Ghzdrrr7dqwEVzQBpZDu,toolu_01A9iYoBUmdbF7m7r6a1Jhkm,Bash,tree -L 2 src/,False,Display src directory tree,519,0,519,False,1,31177,2631,67,True,2026-06-06T11:29:41.680Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2248
+20260606-132242,rtk-bench-off-6,off,6,5,msg_01VbbpgcdGQrm4M8i6M5bNRQ,toolu_01WSGM7JvNLg4gsiCQRNTKP4,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33808,388,66,True,2026-06-06T11:29:43.574Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,1894
+20260606-132242,rtk-bench-off-6,off,6,6,msg_013tVez9Ub98uukoMvfd5Xng,toolu_01Xm9gKRFuNF1mogdDaRQygT,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34196,591,60,True,2026-06-06T11:29:45.661Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,2087
+20260606-132242,rtk-bench-off-6,off,6,7,msg_01GoSJVFaKNrKFGiFAnTsiyt,toolu_01L3f1UYRoYniW6BpvHSnV31,Bash,git shortlog -sn,False,Show contributor commit counts,0,0,31,False,1,34787,1778,61,True,2026-06-06T11:29:48.069Z,(Bash completed with no output),,False,False,2408
+20260606-132242,rtk-bench-off-6,off,6,8,msg_01GmEAB43hLafeCPFVYPGWdo,toolu_01BggJgepzEcgDn8HHw6K2Se,Bash,git shortlog -sn HEAD,False,Show contributor commit counts from HEAD,383,0,383,False,1,36565,121,102,True,2026-06-06T11:29:51.725Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,3656
+20260606-132242,rtk-bench-off-6,off,6,9,msg_01TiCRH6bodfPigbNpzT96ox,toolu_01Dm5QtmXxUXWVNgmKy8rjYV,Bash,git diff HEAD~3..HEAD,False,Show diff from last 3 commits,27028,0,27028,False,1,36686,381,57,True,2026-06-06T11:29:53.771Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2045
+20260606-132242,rtk-bench-off-6,off,6,10,msg_01NzxW8GGntNeQEHCB3URSgt,toolu_014aZyFNDfP1jZ1PNWTveYzA,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers in src,109,0,109,False,1,37067,13854,57,True,2026-06-06T11:29:56.943Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,3172
+20260606-132242,rtk-bench-off-6,off,6,11,msg_015xXibN8oa54L3NHvuZxaq6,toolu_01NGLLUog7pfn1wMWLjeSjhw,Bash,"grep -rn ""as any"" src/",False,Count 'as any' casts in src,443,0,443,False,1,50921,336,45,True,2026-06-06T11:29:59.586Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2643
+20260606-132242,rtk-bench-off-6,off,6,12,msg_013aXqyU1yZ6ygW9kbtuQBJG,toolu_01YCKAqsW9UPpxEn3WPa2mhi,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51257,359,70,True,2026-06-06T11:30:01.669Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2083
+20260606-132242,rtk-bench-off-6,off,6,13,msg_01UVWKsX13V9zXQms1zHrxix,toolu_01TndB8r351P2oEVTUpPttfP,Bash,which pnpm npm node corepack; node --version 2>&1; npm --version 2>&1,False,Check available package managers,60,0,60,False,1,51616,168,44,True,2026-06-06T11:30:04.252Z,"/usr/bin/npm
+/usr/bin/node
+/usr/bin/corepack
+v20.20.2
+10.8.2",,False,False,2583
+20260606-132242,rtk-bench-off-6,off,6,14,msg_01H78QxVNXprNZQxZ3YVKBnb,toolu_015Kyw8SY8dSy9Z8yB49aRao,Bash,corepack enable && corepack prepare pnpm@10.33.0 --activate 2>&1 | tail -20,False,Enable pnpm via corepack,0,0,717,True,1,51784,172,55,True,2026-06-06T11:30:07.184Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,2932
+20260606-132242,rtk-bench-off-6,off,6,15,msg_019jqxS2CskemV1mMF5xvpsm,toolu_01U9yQLoqhzQV6prPqsj2y6y,Bash,npm install -g pnpm@10.33.0 --prefix=$HOME/.local 2>&1 | tail -10 && export PATH=$HOME/.local/bin:$PATH && which pnpm && pnpm --version,False,Install pnpm locally,332,0,332,False,1,51956,528,63,True,2026-06-06T11:30:12.324Z,"added 1 package in 1s
+
+1 package is looking for funding
+  run `npm fund` for details
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.16.0
+npm notice Changelog: https://github.co",,False,False,5140
+20260606-132242,rtk-bench-off-6,off,6,16,msg_016zMtqvijYgquNiMMsVre7V,toolu_01DenjpqXsuL3Ho32pVLHbxU,Bash,export PATH=$HOME/.local/bin:$PATH && pnpm install 2>&1 | tail -50,False,Install dependencies via pnpm,1195,0,1195,False,1,52484,350,68,True,2026-06-06T11:30:52.339Z,"dependencies:
++ dequal 2.0.3
++ use-sync-external-store 1.6.0
+
+devDependencies:
++ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @",,False,False,40015
+20260606-132242,rtk-bench-off-6,off,6,17,msg_01WcxJy5axa8eURHqowySdaB,toolu_01GzYQP6CyGDiHTLkMzkumYG,Bash,export PATH=$HOME/.local/bin:$PATH && npx tsc --noEmit 2>&1 | tail -50,False,Run TypeScript type-check,0,0,31,False,1,52834,896,72,True,2026-06-06T11:31:03.305Z,(Bash completed with no output),,False,False,10966
+20260606-132242,rtk-bench-off-6,off,6,18,msg_01UeuZpJL6KD3tQaDWVNJ6jD,toolu_01J3WAk7zEVpkSiBhJZ9a8Ar,Bash,"export PATH=$HOME/.local/bin:$PATH && npx tsc --noEmit; echo ""EXIT=$?""",False,Verify tsc exit code,6,0,6,False,1,53730,180,51,True,2026-06-06T11:31:08.307Z,EXIT=0,,False,False,5002
+20260606-132242,rtk-bench-off-6,off,6,19,msg_01JfRjMjuARHzYcvkk6ueQi5,toolu_01CkNsWRwjTS6XuoTgb6crtH,Bash,"export PATH=$HOME/.local/bin:$PATH && npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Check prettier formatting,130,0,130,False,1,53910,219,68,True,2026-06-06T11:31:12.078Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3771
+20260606-132242,rtk-bench-off-6,off,6,20,msg_01SJHHjB9B76CYZEEzzQ3s4S,toolu_017QFUtgicoa6z5NnH2SBFke,Bash,export PATH=$HOME/.local/bin:$PATH && npx vitest run 2>&1 | tail -40,False,Run vitest tests,1376,0,1376,False,1,54129,227,72,True,2026-06-06T11:31:42.905Z,"      2|  * @jest-environment @edge-runtime/jest-environment
+      3|  */
+      4| import { unstable_serialize } from 'swr'
+       | ^
+      5| import { stableHash } from 'swr/_internal'
+      6|
+
+???",,False,False,30827
+20260606-132242,rtk-bench-off-6,off,6,21,msg_01RJsq6sHtGS9o814smzJxmB,,,,False,,0,0,0,False,1,54356,1072,33,False,,,,False,False,0
+20260606-132242,rtk-bench-on-7,on,7,1,msg_01BtnXpJCjcmoNQgfuP7v1Fk,toolu_01X6ZRzMbRZMyXXvTgYPBYQz,Bash,ls -la,False,List files in current directory,566,0,566,False,5,26415,0,8,True,2026-06-06T11:29:34.697Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-7,on,7,2,msg_01Xw8Urdyq96YS1Ag5hEMyH3,toolu_01HTYeAeMVZLQQvurm7WBphm,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find TypeScript files,6825,0,6825,False,1,26415,439,67,True,2026-06-06T11:29:37.388Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2691
+20260606-132242,rtk-bench-on-7,on,7,3,msg_01Pyj61XchFWjqVWUe53wMAQ,toolu_019su7LbbKafWm5n8BhBG1a8,Bash,cat package.json,False,Show package.json,5323,0,5323,False,1,26854,3610,70,True,2026-06-06T11:29:40.509Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,3121
+20260606-132242,rtk-bench-on-7,on,7,4,msg_01G2gA29KFf8N9kXS23ARJ7A,toolu_019dtzzUySnskWjtJK3fXF67,Bash,tree -L 2 src/,False,Show src/ tree,494,0,494,False,1,30464,2678,63,True,2026-06-06T11:29:42.650Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2141
+20260606-132242,rtk-bench-on-7,on,7,5,msg_01Mdzu32UTyuZfA7NGgAxYLK,toolu_01HMfptCDP5hFoqD3AhGyj5Q,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33142,378,65,True,2026-06-06T11:29:44.724Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2074
+20260606-132242,rtk-bench-on-7,on,7,6,msg_019pyP8nRX32uBHzZ5ggww1v,toolu_01WW8yJuB5jHshibj79QZ8do,Bash,git log --stat -5,False,Show last 5 commits with stats,1244,0,1244,False,1,33520,591,65,True,2026-06-06T11:29:47.579Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2855
+20260606-132242,rtk-bench-on-7,on,7,7,msg_01YRXUnAqcKhModUskZCGZK4,toolu_01W3aBgF82FcsCPMJc6ZXTkh,Bash,git shortlog -sn,False,Show contributors by commit count,0,0,31,False,1,34111,684,61,True,2026-06-06T11:29:49.975Z,(Bash completed with no output),,False,False,2396
+20260606-132242,rtk-bench-on-7,on,7,8,msg_01MS6t2yCvDm5iisqkNxN5tT,toolu_019TF8E4nn5U2VbQkQ2yDEXf,Bash,git shortlog -sn --no-pager HEAD | head -200,False,List contributors via HEAD,538,0,538,False,1,34795,121,49,True,2026-06-06T11:29:53.018Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,3043
+20260606-132242,rtk-bench-on-7,on,7,9,msg_018BeqEc4rxifmNYQ4ZDSEpW,toolu_01CrwuPTNCgW6PYrUngoW59g,Bash,git log --format='%an' | sort | uniq -c | sort -rn | head -50,False,Count commits per author,403,0,403,False,1,34916,329,47,True,2026-06-06T11:29:56.443Z,"     12 promer94
+      9 vercel-release-bot
+      7 Jiachi Liu
+      3 Shu Ding
+      3 0xPierre
+      2 yusheng chen
+      1 ???
+      1 Yuta Osawa
+      1 Victor Grachev
+      1 Tomohiro Yamada
+    ",,False,False,3425
+20260606-132242,rtk-bench-on-7,on,7,10,msg_01WbtUvqA7TYgTnkD4jQ8J83,toolu_01DeujyhJ2N9d4TUJzhivtGt,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,14240,0,14240,False,1,35245,341,67,True,2026-06-06T11:29:58.347Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,1904
+20260606-132242,rtk-bench-on-7,on,7,11,msg_01EPM4mNMJUCArrt3ZqU8Td7,toolu_016WWMnfSXg1VmASky9GsXSi,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK comments in src/,109,0,109,False,1,35586,6800,55,True,2026-06-06T11:30:03.257Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,4910
+20260606-132242,rtk-bench-on-7,on,7,12,msg_015FgLHxv3QyMLpDNCALP7Ht,toolu_01Gbij3mB4PeWjakDDwdkTzJ,Bash,"grep -rn ""as any"" src/",False,Find 'as any' casts in src/,443,0,443,False,1,42386,194,53,True,2026-06-06T11:30:05.761Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2504
+20260606-132242,rtk-bench-on-7,on,7,13,msg_015ohcNcbGQ1gyefHBn6ibuH,toolu_01TwtVNZ4unjN5ps6j94XmbF,Bash,pnpm install 2>&1,False,Install dependencies via pnpm,0,0,110,True,1,42580,314,67,True,2026-06-06T11:30:07.921Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2160
+20260606-132242,rtk-bench-on-7,on,7,14,msg_01QHUZRE9oTB4vVBQkLT7fX2,toolu_01EGy11ty6AMQVD2g61cbPdS,Bash,which pnpm; which npm; ls node_modules 2>&1 | head -5,False,Check pnpm/npm availability,81,0,81,False,1,42894,189,48,True,2026-06-06T11:30:12.296Z,"/usr/bin/npm
+/usr/bin/ls: cannot access 'node_modules': No such file or directory",,False,False,4375
+20260606-132242,rtk-bench-on-7,on,7,15,msg_01RRyRZLucqJoqrvNhX7ZKp6,toolu_01Vf1WKbcTsktpSpremorPkP,Bash,corepack enable && corepack prepare pnpm@10.33.0 --activate 2>&1 | tail -20,False,Enable corepack and prepare pnpm,0,0,717,True,1,43083,168,43,True,2026-06-06T11:30:15.852Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,3556
+20260606-132242,rtk-bench-on-7,on,7,16,msg_01PewDEEbKZSk9KT8aZBV33y,toolu_014qRx13kdjAR5qz9qSmyS2K,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm globally via npm,1027,0,1027,False,1,43251,566,68,True,2026-06-06T11:30:19.809Z,"npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error",,False,False,3957
+20260606-132242,rtk-bench-on-7,on,7,17,msg_014zib5ohVZuYN8iws2GUUhu,toolu_01NaG1jNgyUJSipTs8yaqjr2,Bash,npm install --prefix /home/ubuntu/.local pnpm@10.33.0 2>&1 | tail -10 && ls /home/ubuntu/.local/node_modules/.bin/pnpm,False,Install pnpm locally to user prefix,156,0,156,False,1,43817,566,54,True,2026-06-06T11:30:25.480Z,"added 1 package in 3s
+
+1 package is looking for funding
+  run `npm fund` for details
+/home/ubuntu/.local/node_modules/.bin/pnpm -> ../pnpm/bin/pnpm.cjs  20B",,False,False,5671
+20260606-132242,rtk-bench-on-7,on,7,18,msg_01A5RyMzJaUcMFugEHNMhkDd,toolu_01R9rLDK2nHQ2DgNs2hSxGsz,Bash,/home/ubuntu/.local/node_modules/.bin/pnpm install 2>&1 | tail -30,False,Run pnpm install,724,0,724,False,1,44383,278,68,True,2026-06-06T11:30:54.536Z,"+ @types/use-sync-external-store 1.5.0
++ @typescript-eslint/eslint-plugin 8.48.0
++ @typescript-eslint/parser 8.48.0
++ bunchee 6.6.2
++ eslint 9.39.1
++ eslint-config-prettier 10.1.8
++ eslint-plugin-jest",,False,False,29056
+20260606-132242,rtk-bench-on-7,on,7,19,msg_01SUQoATqSSJyDnYvHr7txgd,toolu_017Z1HhzYfeS2ur8bGjkFWyc,Bash,npx tsc --noEmit 2>&1 | tail -50,False,Run TypeScript type check,27,0,27,False,1,44661,604,64,True,2026-06-06T11:31:03.694Z,TypeScript: No errors found,,False,False,9158
+20260606-132242,rtk-bench-on-7,on,7,20,msg_01SdG5TnSUzUyU4xARKMqTqD,toolu_011Qxp6YVwwp9uD5wK4qLbEs,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Run prettier check on src/,92,0,92,False,1,45265,158,63,True,2026-06-06T11:31:06.266Z,rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2),,False,False,2572
+20260606-132242,rtk-bench-on-7,on,7,21,msg_01GaQmW6tZAzm4UBTWUJBHHd,toolu_01YKL6Szu47kbx6sWkkoeRbp,Bash,"node_modules/.bin/prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Run prettier check via node_modules,130,0,130,False,1,45423,332,65,True,2026-06-06T11:31:11.393Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,5127
+20260606-132242,rtk-bench-on-7,on,7,22,msg_01Kh5HC93JZqLLdcV9S8jJWy,toolu_01M1xbPdDLGVa6VK3Dbfrgwi,Bash,npx vitest run 2>&1 | tail -50,False,Run vitest test suite,92,0,92,False,1,45755,216,68,True,2026-06-06T11:31:13.814Z,rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2),,False,False,2421
+20260606-132242,rtk-bench-on-7,on,7,23,msg_01VinpXsK1Qc9KWNkAHFcRZp,toolu_01RbiBd5Awjz6DUGwj9zwegZ,Bash,"ls node_modules/.bin/ | grep -E ""vitest|jest""",False,Look for vitest/jest binaries,10,0,10,False,1,45971,176,40,True,2026-06-06T11:31:18.634Z,jest  994B,,False,False,4820
+20260606-132242,rtk-bench-on-7,on,7,24,msg_01WRHEbs7cQXX9rssNwVi2JX,toolu_015Chp1MwxZB7b6Tv4AUgkw8,Bash,node_modules/.bin/jest 2>&1 | tail -40,False,Run jest (project's test runner) since vitest isn't installed,152,0,152,False,1,46147,309,65,True,2026-06-06T11:31:58.565Z,"Test Suites: 34 passed, 34 total
+Tests:       5 skipped, 360 passed, 365 total
+Snapshots:   6 passed, 6 total
+Time:        36.807 s
+Ran all test suites.",,False,False,39931
+20260606-132242,rtk-bench-on-7,on,7,25,msg_014qZAy1hhaDrYCXoDpZyskd,,,,False,,0,0,0,False,1,46456,234,40,False,,,,False,False,0
+20260606-132242,rtk-bench-off-7,off,7,1,msg_019BmDZ4y2UpwUMsdRdWDFTV,toolu_019ggzST9767t73kJvrcN8Js,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,26184,0,8,True,2026-06-06T11:32:45.495Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:32 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-7,off,7,2,msg_01CKBXWKjwpvwe2C44gRsVaV,toolu_01R696xiwaZHfRSEXoigBJza,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26184,1381,65,True,2026-06-06T11:32:50.621Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,5126
+20260606-132242,rtk-bench-off-7,off,7,3,msg_01FjCzt1FyGntSTn39PaaWTf,toolu_01G5bRp2jnkSmGRAQ1SnsDW2,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,27565,3611,65,True,2026-06-06T11:32:52.494Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,1873
+20260606-132242,rtk-bench-off-7,off,7,4,msg_01Smp4SWgtYwhaXrf6H6fk4D,toolu_018emKsQSGabWNB1ZLCiMGCC,Bash,tree -L 2 src/,False,"Tree of src directory, 2 levels",519,0,519,False,1,31176,2631,68,True,2026-06-06T11:32:54.527Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2033
+20260606-132242,rtk-bench-off-7,off,7,5,msg_0122CFPqvkTFis4EZRWq9WUg,toolu_01NSzyQWpkwewMYHx7LVYbiP,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33807,394,64,True,2026-06-06T11:32:56.444Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,1917
+20260606-132242,rtk-bench-off-7,off,7,6,msg_01WeSQZwkxEi7ydyzjDnRbLh,toolu_011zaPse2wa2SgRAdRmdkjUk,Bash,git log --stat -5,False,Show stats for last 5 commits,3653,0,3653,False,1,34201,591,60,True,2026-06-06T11:32:58.398Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,1954
+20260606-132242,rtk-bench-off-7,off,7,7,msg_01EDZLq3Jvaiig2hAJKuxSow,toolu_018AqZDcBjq2dwG4qZw2D3Ry,Bash,git shortlog -sn,False,List contributors by commit count,0,0,31,False,1,34792,1778,61,True,2026-06-06T11:33:00.559Z,(Bash completed with no output),,False,False,2161
+20260606-132242,rtk-bench-off-7,off,7,8,msg_01JaczEDQxH8pbciQSZYxhBJ,toolu_017rb8ieZuciBBvqpiTYuGqi,Bash,git --no-pager shortlog -sn,False,List contributors by commit count (no pager),0,0,31,False,1,36570,120,63,True,2026-06-06T11:33:03.392Z,(Bash completed with no output),,False,False,2833
+20260606-132242,rtk-bench-off-7,off,7,9,msg_01YYNDPoCBXsTkNG1w2VXhHd,toolu_014NKNTddDpStn3WRfGz6w5w,Bash,git shortlog -sn HEAD | head -100,False,List contributors by commit count (HEAD scoped),383,0,383,False,1,36690,174,51,True,2026-06-06T11:33:06.130Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2738
+20260606-132242,rtk-bench-off-7,off,7,10,msg_01LHzqjAHrkUCg4qgVLsipyM,toolu_0197ESuhoshFHoAihJk11czi,Bash,git diff HEAD~3..HEAD,False,Diff of last 3 commits,27028,0,27028,False,1,36864,341,67,True,2026-06-06T11:33:08.713Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2583
+20260606-132242,rtk-bench-off-7,off,7,11,msg_01Hnjmy1X8pZXTsRuB5UMG1Y,toolu_01MAH6rDRuPtF5v1N7ZUddtU,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,37205,14031,38,True,2026-06-06T11:33:13.826Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,5113
+20260606-132242,rtk-bench-off-7,off,7,12,msg_01239rtMjziUxPeCj32ExiaE,toolu_01GnQrZy7q5581gByv8YLVuq,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,51236,255,64,True,2026-06-06T11:33:17.083Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,3257
+20260606-132242,rtk-bench-off-7,off,7,13,msg_016n6mGB18PqkNu3djHM4Je7,toolu_01DXr76omUpoVfeFV1HqZeqn,Bash,pnpm install 2>&1,False,Install dependencies via pnpm,0,0,56,True,1,51491,308,63,True,2026-06-06T11:33:19.487Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2404
+20260606-132242,rtk-bench-off-7,off,7,14,msg_015s6BaaDuKgGYav6BBDLWcy,toolu_01MXmdCCtQyXkH3ZFkWU9Zoo,Bash,npx pnpm install 2>&1 | tail -50,False,Install via npx pnpm,1329,0,1329,False,1,51799,173,61,True,2026-06-06T11:34:03.563Z,"+ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @eslint/js 9.39.1
++ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.3",,False,False,44076
+20260606-132242,rtk-bench-off-7,off,7,15,msg_0115AtFhEE53JKbZE3FwnKKp,toolu_01QxTYZixB37gsrDHGADPHQ6,Bash,npx tsc --noEmit 2>&1,False,Run TypeScript type check,0,0,31,False,1,51972,967,67,True,2026-06-06T11:34:14.565Z,(Bash completed with no output),,False,False,11002
+20260606-132242,rtk-bench-off-7,off,7,16,msg_01BxyjenJBo2jdRHN4ZPxLDc,toolu_014nbEXfsmvorj5PAyUDEwMV,Bash,"npx tsc --noEmit; echo ""EXIT_CODE=$?""",False,Run TSC and check exit code,11,0,11,False,1,52939,152,62,True,2026-06-06T11:34:23.445Z,EXIT_CODE=0,,False,False,8880
+20260606-132242,rtk-bench-off-7,off,7,17,msg_01Xd6txc3jqdVgAwNj2DH7WM,toolu_012zEmYC7ovEw8UXpR2338eN,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1",False,Run prettier check on src,0,0,142,True,1,53091,210,72,True,2026-06-06T11:34:27.487Z,"Exit code 1
+Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,4042
+20260606-132242,rtk-bench-off-7,off,7,18,msg_01XipqZ5RD4FFwoGCKAmS4oX,toolu_01AV8rhbrS1uwxaHjFLKSL51,Bash,npx vitest run 2>&1 | tail -80,False,Run vitest tests,4008,0,4008,False,1,53301,215,60,True,2026-06-06T11:35:08.037Z,"- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test",,False,False,40550
+20260606-132242,rtk-bench-off-7,off,7,19,msg_011HeAAJriz9zoRiRYk6cgvR,,,,False,,0,0,0,False,1,53516,2064,49,False,,,,False,False,0
+20260606-132242,rtk-bench-on-8,on,8,1,msg_01DSGQWrfb9QSRAkskfkkP5P,toolu_01L6TFjw8XhsdJDjPoeBb6vu,Bash,ls -la,False,List files in current directory,566,0,566,False,5,26415,0,8,True,2026-06-06T11:32:44.744Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-8,on,8,2,msg_01ECsG9jDqpgLQAzAP57SZ1u,toolu_01EMd87anfjypswgcDtZG7ua,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26415,455,67,True,2026-06-06T11:32:46.618Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,1874
+20260606-132242,rtk-bench-on-8,on,8,3,msg_01FTfnxQCXoN6uj9ZcH6iL1U,toolu_0129g1DSQPo7DBBj9KAru7XP,Bash,cat package.json,False,Show package.json,5323,0,5323,False,1,26870,3611,59,True,2026-06-06T11:32:48.496Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,1878
+20260606-132242,rtk-bench-on-8,on,8,4,msg_01Eb8UCZQCepLMJhGTW7HTYA,toolu_018rG2i8LTRqQHv9XFfA5vsv,Bash,tree -L 2 src/,False,Show src directory structure,494,0,494,False,1,30481,2631,63,True,2026-06-06T11:32:51.762Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,3266
+20260606-132242,rtk-bench-on-8,on,8,5,msg_01Qh5nQR1kK9PCUHWsWd5Hga,toolu_01QRHnpbxKuXtJwh3mvqD2yN,Bash,git log --oneline -20,False,Show recent commit history,1005,0,1005,False,1,33112,378,65,True,2026-06-06T11:32:54.227Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2465
+20260606-132242,rtk-bench-on-8,on,8,6,msg_01TpBbGUyrGMKUjzm8bpzEfD,toolu_01Nkxpr2gs5S9rjJUoF557Cg,Bash,git log --stat -5,False,Show stats for last 5 commits,1244,0,1244,False,1,33490,590,68,True,2026-06-06T11:32:56.458Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,2231
+20260606-132242,rtk-bench-on-8,on,8,7,msg_017XfzptwdMy8GLmh5R3HZMb,toolu_01CsX4URcb1uihqJGEHDir4A,Bash,git shortlog -sn,False,Show contributors and commit counts,0,0,31,False,1,34080,684,62,True,2026-06-06T11:32:58.458Z,(Bash completed with no output),,False,False,2000
+20260606-132242,rtk-bench-on-8,on,8,8,msg_01Tdqf7sx6STZBrmQaTvbEEv,toolu_011NzpY7EgUZcro1zVmw7hMN,Bash,git shortlog -sn --no-pager HEAD 2>&1 | head -50,False,List contributors with commit counts,538,0,538,False,1,34764,122,57,True,2026-06-06T11:33:00.950Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,2492
+20260606-132242,rtk-bench-on-8,on,8,9,msg_01Nk9mRLyVLbGPDDJdxcAC6S,toolu_01Lc7x3JdVHU6eB3SsFHJ9uh,Bash,git --no-pager shortlog -sn HEAD 2>&1 | head -50,False,List contributors with commit counts,383,0,383,False,1,34886,335,69,True,2026-06-06T11:33:03.470Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2520
+20260606-132242,rtk-bench-on-8,on,8,10,msg_01RsGgrYxeyZuSGumcfmQqet,toolu_01KYQdts1FCUwAme4BLYxcCN,Bash,git diff HEAD~3..HEAD,False,Diff last 3 commits,14240,0,14240,False,1,35221,344,68,True,2026-06-06T11:33:06.351Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2881
+20260606-132242,rtk-bench-on-8,on,8,11,msg_01JT6BoeS18MCVzutcowwQjy,toolu_01TJsaPWPcK2ywy3Za6RUmXE,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Search for TODO/FIXME/HACK in src,109,0,109,False,1,35565,6829,53,True,2026-06-06T11:33:08.877Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2526
+20260606-132242,rtk-bench-on-8,on,8,12,msg_015cHhbV5kEpktDhquFBHNvt,toolu_01LGvQBfmFixgW623kg6qs3n,Bash,"grep -rn ""as any"" src/",False,Search for as any casts in src,443,0,443,False,1,42394,192,65,True,2026-06-06T11:33:12.990Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,4113
+20260606-132242,rtk-bench-on-8,on,8,13,msg_018iT8QHdPq6urngBo4vSXuq,toolu_01N8GWTd7HEeFKScARTPtFfW,Bash,pnpm install 2>&1,False,Install dependencies with pnpm,0,0,110,True,1,42586,311,70,True,2026-06-06T11:33:16.753Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,3763
+20260606-132242,rtk-bench-on-8,on,8,14,msg_01JSbAXfps3vdtLPtLooZGBK,toolu_01TJkNnvQ7Tt4BN3zcSbF88J,Bash,which pnpm; which npm; which npx; which node,False,Check for installed Node-related tools,39,0,39,False,1,42897,189,51,True,2026-06-06T11:33:19.433Z,"/usr/bin/npm
+/usr/bin/npx
+/usr/bin/node",,False,False,2680
+20260606-132242,rtk-bench-on-8,on,8,15,msg_012KFR4T87fXcxvfEQJf17aH,toolu_01CZo87q8exp2BL3Nit8uEBj,Bash,corepack enable && corepack prepare pnpm@10.33.0 --activate 2>&1 | tail -20,False,Enable corepack and install pnpm 10.33.0,0,0,717,True,1,43086,149,38,True,2026-06-06T11:33:24.475Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,5042
+20260606-132242,rtk-bench-on-8,on,8,16,msg_01AkGdDfpzRWwTVijRrs2TUK,toolu_014pMKC5PovGesC7nVCAqZuV,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm globally via npm,1027,0,1027,False,1,43235,667,68,True,2026-06-06T11:33:27.802Z,"npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error",,False,False,3327
+20260606-132242,rtk-bench-on-8,on,8,17,msg_01AaxfWvxwMkQBFpoNhsSJcp,toolu_01JcF9vh3NYxqFiAojyXqVuG,Bash,mkdir -p ~/.local/bin && npm install --prefix ~/.local pnpm@10.33.0 2>&1 | tail -10,False,Install pnpm to user-local directory,84,0,84,False,1,43902,566,55,True,2026-06-06T11:33:32.267Z,"added 1 package in 2s
+
+1 package is looking for funding
+  run `npm fund` for details",,False,False,4465
+20260606-132242,rtk-bench-on-8,on,8,18,msg_01C8NU54eDhJ7VeYvYjkQbqj,toolu_01CDhT7QA4ntriSbzTmiBu8D,Bash,"export PATH=""$HOME/.local/node_modules/.bin:$PATH"" && pnpm install 2>&1 | tail -40",False,Run pnpm install using local pnpm,993,0,993,False,1,44468,208,57,True,2026-06-06T11:34:05.676Z,"+ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @eslint/js 9.39.1
++ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.3",,False,False,33409
+20260606-132242,rtk-bench-on-8,on,8,19,msg_01CM3Q5Sg9zANZftZW1NyQSi,toolu_01TKxca3gzBahD4pNnnrgUHY,Bash,npx tsc --noEmit 2>&1 | tail -40,False,Run TypeScript type-check,27,0,27,False,1,44676,808,61,True,2026-06-06T11:34:14.099Z,TypeScript: No errors found,,False,False,8423
+20260606-132242,rtk-bench-on-8,on,8,20,msg_01CGBNukKY5DyoAhoM3kYodz,toolu_01LmWnjL8trDcYcV1Wgcgegs,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -20",False,Check formatting with prettier,92,0,92,False,1,45484,159,71,True,2026-06-06T11:34:16.402Z,rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2),,False,False,2303
+20260606-132242,rtk-bench-on-8,on,8,21,msg_01ELyvwbkeriBDTnF9Z17TYa,toolu_013htSuZiHnG9wXtyyXjrf3q,Bash,"./node_modules/.bin/prettier --check ""src/**/*.ts"" 2>&1 | tail -20",False,Run prettier check via local binary,130,0,130,False,1,45643,332,68,True,2026-06-06T11:34:19.780Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?",,False,False,3378
+20260606-132242,rtk-bench-on-8,on,8,22,msg_01NaLZcT8c8qiFtwUcxegVKk,toolu_01EP2QSX6TdEukcoKk6F8LWc,Bash,npx vitest run 2>&1 | tail -30,False,Run vitest tests,92,0,92,False,1,45975,216,70,True,2026-06-06T11:34:22.252Z,rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2),,False,False,2472
+20260606-132242,rtk-bench-on-8,on,8,23,msg_01D4Zf4ThDPYMnjf4nH48u4t,toolu_01BsGAxSXNv6gEVhj68Sss1n,Bash,./node_modules/.bin/jest 2>&1 | tail -30,False,Run jest test suite (vitest not present),152,0,152,False,1,46191,175,44,True,2026-06-06T11:35:03.663Z,"Test Suites: 34 passed, 34 total
+Tests:       5 skipped, 360 passed, 365 total
+Snapshots:   6 passed, 6 total
+Time:        36.337 s
+Ran all test suites.",,False,False,41411
+20260606-132242,rtk-bench-on-8,on,8,24,msg_01M4Q6EDB6qJgEumM2AnJpDH,,,,False,,0,0,0,False,1,46366,342,1,False,,,,False,False,0
+20260606-132242,rtk-bench-off-8,off,8,1,msg_01CyBsBVwFMYDyn1u1eSVQeA,toolu_01SxkiFuKv7tu5STp6aQWEGY,Bash,ls -la,False,List directory contents,1762,0,1762,False,5,26184,0,8,True,2026-06-06T11:32:44.991Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:32 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-8,off,8,2,msg_01Bn4F6e1WuwCxBg2QjudA4v,toolu_01GizHqmuVpW1ZUgTeSXzNTM,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TS/TSX files,6825,0,6825,False,1,26184,1380,57,True,2026-06-06T11:32:47.115Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2124
+20260606-132242,rtk-bench-off-8,off,8,3,msg_01NKEGbYr6M3ujah8tYTTNwB,toolu_01AJzP5csFUoTpptkzZkPFY4,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,27564,3612,58,True,2026-06-06T11:32:49.009Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,1894
+20260606-132242,rtk-bench-off-8,off,8,4,msg_01EvVv5jMxA6C9fiiGuo6WS4,toolu_015VTivPRrYiwTtkz2CWWyuL,Bash,tree -L 2 src/,False,Show source tree,519,0,519,False,1,31176,2631,63,True,2026-06-06T11:32:51.382Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2373
+20260606-132242,rtk-bench-off-8,off,8,5,msg_01KLFS27URWKq9aemRj3A4sE,toolu_01W8zz1segATBuJEpPRTX9Ji,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33807,386,66,True,2026-06-06T11:32:53.458Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2076
+20260606-132242,rtk-bench-off-8,off,8,6,msg_017FgNR6wTJBWm9yYAzH87GD,toolu_01M2ftbeLtPSfcXBzv1wv7Kt,Bash,git log --stat -5,False,Show last 5 commits with stats,3653,0,3653,False,1,34193,591,61,True,2026-06-06T11:32:56.957Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,3499
+20260606-132242,rtk-bench-off-8,off,8,7,msg_014JJrikYFFQSK3ZKxjgtPLm,toolu_0138tmMAoVL4WB2QNYRU8e6T,Bash,git shortlog -sn,False,Count commits per contributor,0,0,31,False,1,34784,1778,61,True,2026-06-06T11:32:59.079Z,(Bash completed with no output),,False,False,2122
+20260606-132242,rtk-bench-off-8,off,8,8,msg_01B9wKYkGujegEFotWpc9Apq,toolu_016h54woN5UGZ3XAfRbDRCZi,Bash,git shortlog -sn --no-pager | head -100,False,Count commits per contributor,538,0,538,False,1,36562,120,47,True,2026-06-06T11:33:01.420Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,2341
+20260606-132242,rtk-bench-off-8,off,8,9,msg_011j1GgREVtTrFuHzeE4K4Kz,toolu_01LQsaTXCQSRx3haTN2M3rRv,Bash,git --no-pager shortlog -sn HEAD,False,Count commits per contributor,383,0,383,False,1,36682,324,60,True,2026-06-06T11:33:04.995Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,3575
+20260606-132242,rtk-bench-off-8,off,8,10,msg_01Ux9UteWeKZ3tQQnXTMi4FL,toolu_016YmZRwYEJP8NXJ8UBYLQHQ,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,27028,0,27028,False,1,37006,333,68,True,2026-06-06T11:33:08.482Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,3487
+20260606-132242,rtk-bench-off-8,off,8,11,msg_01MWnhPNhvS74NW3Bjo2FDpW,toolu_01SxUyZfS7tdFtaTCzH2Lwkb,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,37339,14028,33,True,2026-06-06T11:33:12.356Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,3874
+20260606-132242,rtk-bench-off-8,off,8,12,msg_019jWE79vdeArRGQfvKqjUxn,toolu_01SKGA1caGcL52d4eoCH2eM2,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,51367,295,65,True,2026-06-06T11:33:15.331Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,2975
+20260606-132242,rtk-bench-off-8,off,8,13,msg_01TxjrMbiJW7Btz8F2hnSDBG,toolu_01MaPxnzP4b787uWrFCwTfpL,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51662,308,68,True,2026-06-06T11:33:17.603Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,2272
+20260606-132242,rtk-bench-off-8,off,8,14,msg_01HGUzHWsUFpsVzk3LJ31FnT,toolu_01H3CKJNoTeMCVTVpfScgvab,Bash,"which pnpm npm npx; ls /usr/local/bin/ | grep -E ""pnpm|npm|node"" 2>&1; node --version 2>&1; npm --version 2>&1",False,Check tool availability,41,0,41,False,1,51970,168,49,True,2026-06-06T11:33:20.358Z,"/usr/bin/npm
+/usr/bin/npx
+v20.20.2
+10.8.2",,False,False,2755
+20260606-132242,rtk-bench-off-8,off,8,15,msg_0117zxPKenmfM4mVFMft6q9w,toolu_01Tqo4d67E37zMxo8dUtGGoC,Bash,npm install -g pnpm@10.33.0 2>&1 | tail -20,False,Install pnpm globally,1027,0,1027,False,1,52138,194,56,True,2026-06-06T11:33:25.354Z,"npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error",,False,False,4996
+20260606-132242,rtk-bench-off-8,off,8,16,msg_018gYDHR3kqF1RTcNhB7Pdfq,toolu_01TMvfx4iypJ1Kv5j9oXzGWE,Bash,npx --yes pnpm@10.33.0 install 2>&1 | tail -40,False,Install via npx pnpm,980,0,980,False,1,52332,563,49,True,2026-06-06T11:34:11.803Z,"+ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.39
++ @testing-library/dom 10.4.1
++ @testing-library/jest-dom 6.9.1
++ @testing-library/react 16.3.0
++ @type-challenges/utils 0.1.1
++ @types/",,False,False,46449
+20260606-132242,rtk-bench-off-8,off,8,17,msg_01VJYpTXZ7iJEjdDcFbTTiZB,toolu_01QRpJmxLrr1EtTKBA4XTH4V,Bash,npx tsc --noEmit 2>&1,False,Run TypeScript type checking,0,0,31,False,1,52895,752,67,True,2026-06-06T11:34:20.487Z,(Bash completed with no output),,False,False,8684
+20260606-132242,rtk-bench-off-8,off,8,18,msg_018MijG6iTCuknZyGBHB9rbu,toolu_01LghVuMUQesGLWvrYtnQtRM,Bash,"npx tsc --noEmit 2>&1; echo ""EXIT=$?""",False,Run TypeScript type checking,6,0,6,False,1,53647,153,70,True,2026-06-06T11:34:25.168Z,EXIT=0,,False,False,4681
+20260606-132242,rtk-bench-off-8,off,8,19,msg_01GkBNSJa3ZHteoJhXiMjbMq,toolu_01FfCxrMko2NKe4zoTzHsyn8,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1; echo ""EXIT=$?""",False,Run prettier check,137,0,137,False,1,53800,161,69,True,2026-06-06T11:34:28.651Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?
+EXIT=1",,False,False,3483
+20260606-132242,rtk-bench-off-8,off,8,20,msg_01U1SYBTw6nXWTGGBLd6Fcnf,toolu_01GfuqKjqCCv3egCgD6KpbKE,Bash,"npx vitest run 2>&1 | tail -60; echo ""EXIT=$?""",False,Run vitest tests,2721,0,2721,False,1,53961,217,69,True,2026-06-06T11:35:08.909Z,"- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test",,False,False,40258
+20260606-132242,rtk-bench-off-8,off,8,21,msg_01TWHNJ2mdpfjm4mcogZfUy5,,,,False,,0,0,0,False,1,54178,1656,46,False,,,,False,False,0
+20260606-132242,rtk-bench-on-9,on,9,1,msg_01CNL7CQAaLMQ8oMqY8DgBxT,toolu_016oUmq7KdRhiuRofzzA77Jv,Bash,ls -la,False,List files in current directory,566,0,566,False,5,26415,0,0,True,2026-06-06T11:32:45.075Z,"755  .codesandbox/
+755  .git/
+755  .github/
+755  .husky/
+755  _internal/
+755  e2e/
+755  examples/
+755  immutable/
+755  infinite/
+755  mutation/
+755  scripts/
+755  src/
+755  subscription/
+755  test/
+64",,False,False,0
+20260606-132242,rtk-bench-on-9,on,9,2,msg_01ELs4ix9BL5KgWAK8FsbVVr,toolu_01CK3P3YwjEyMAfazryo96mY,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26854,0,59,True,2026-06-06T11:32:47.297Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2222
+20260606-132242,rtk-bench-on-9,on,9,3,msg_01VY9H2jLHSv4oZjPi1gDMjZ,toolu_019aNzP2fpPBL1yBTWizcHo9,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,30465,0,58,True,2026-06-06T11:32:49.347Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2050
+20260606-132242,rtk-bench-on-9,on,9,4,msg_01PtddtxWbXB4RogGyiA2cP4,toolu_01LhHv1TSonacBQo8bEoYwRM,Bash,tree -L 2 src/,False,Show src directory tree,494,0,494,False,1,33096,0,63,True,2026-06-06T11:32:51.390Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2043
+20260606-132242,rtk-bench-on-9,on,9,5,msg_01FUqd7kTnsA9pzNeazQrtSR,toolu_01W2D2RQY13ykrREXCPLHxxX,Bash,git log --oneline -20,False,Show last 20 commits,1005,0,1005,False,1,33096,378,66,True,2026-06-06T11:32:53.250Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,1860
+20260606-132242,rtk-bench-on-9,on,9,6,msg_01DSyCfw4upMGvzzvTmUEKZk,toolu_0196KGdYLQPJ18cDhn5Z4op2,Bash,git log --stat -5,False,Show last 5 commits with stats,1244,0,1244,False,1,33474,591,59,True,2026-06-06T11:32:55.169Z,"f8d4995 chore: remove the axios examples (#4263) (2 days ago) <Jiachi Liu>
+examples/axios-typescript/README.md               | 30 ------------
+  examples/axios-typescript/libs/useRequest.ts      | 60 ",,False,False,1919
+20260606-132242,rtk-bench-on-9,on,9,7,msg_01KnDrASWgCg1b725WNwb8Gx,toolu_01JxHnJUAs8XyW38RNbp6yD1,Bash,git shortlog -sn,False,Show contributor commit counts,0,0,31,False,1,34065,684,61,True,2026-06-06T11:33:00.364Z,(Bash completed with no output),,False,False,5195
+20260606-132242,rtk-bench-on-9,on,9,8,msg_01Cqur7f1uNNw1HbEJjKbudw,toolu_012LPtp4spr6CREZhYh16ueZ,Bash,git shortlog -sn --no-pager HEAD | head -100,False,Show contributor commit counts from HEAD,538,0,538,False,1,34749,121,53,True,2026-06-06T11:33:03.089Z,"error: unknown option `--no-pager'
+usage: git shortlog [<options>] [<revision-range>] [[--] <path>...]
+   or: git log --pretty=short | git shortlog [<options>]
+
+    -c, --[no-]committer  group by comm",,False,False,2725
+20260606-132242,rtk-bench-on-9,on,9,9,msg_01SxFnieY9EzGKbZBwXxVhHM,toolu_01BDywmFM13L84Jx7t8Ljp1b,Bash,git --no-pager shortlog -sn HEAD,False,Show contributor commit counts,383,0,383,False,1,34870,334,68,True,2026-06-06T11:33:05.948Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,2859
+20260606-132242,rtk-bench-on-9,on,9,10,msg_01R6ETF4kTDVPtRt68rT8tD4,toolu_017BzDZ5W4V4HRYUDYmG4e4s,Bash,git diff HEAD~3..HEAD,False,Show diff of last 3 commits,14240,0,14240,False,1,35204,334,67,True,2026-06-06T11:33:08.326Z,".github/workflows/install/action.yml              |  8 +--
+ .github/workflows/test-canary.yml                 |  2 +-
+ .github/workflows/test-legacy-react.yml           |  2 +-
+ .github/workflows/test",,False,False,2378
+20260606-132242,rtk-bench-on-9,on,9,11,msg_01216a9mg4vUy8eW1Rh8Toid,toolu_01PR3chZMnwif2HcFr5FMToQ,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Find TODO/FIXME/HACK markers,109,0,109,False,1,35538,6800,57,True,2026-06-06T11:33:13.126Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,4800
+20260606-132242,rtk-bench-on-9,on,9,12,msg_018R55j31FJLwt3HNWzdimqh,toolu_0173EYFkxKgjkfBeTGchsQWc,Bash,"grep -rn ""as any"" src/",False,Find as any casts,443,0,443,False,1,42338,191,64,True,2026-06-06T11:33:16.710Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,3584
+20260606-132242,rtk-bench-on-9,on,9,13,msg_018d69fVp3dxJqeCrD6ixXRG,toolu_016JEciQYiCcZJ1r5xK1bjSy,Bash,pnpm install 2>&1,False,Install dependencies,0,0,110,True,1,42529,308,63,True,2026-06-06T11:33:19.502Z,"Exit code 1
+rtk: Failed to run pnpm install: Failed to execute command: No such file or directory (os error 2)",,False,False,2792
+20260606-132242,rtk-bench-on-9,on,9,14,msg_01TMsGKm97qKqnQcKN2kiRYr,toolu_01Ud1bd9rcKhRNRsihyk4Hk6,Bash,which pnpm || npm install -g pnpm 2>&1 | tail -20,False,Check for pnpm or install it,1027,0,1027,False,1,42837,184,53,True,2026-06-06T11:33:22.578Z,"npm error     at async Npm.exec (/usr/lib/node_modules/npm/lib/npm.js:207:9)
+npm error     at async module.exports (/usr/lib/node_modules/npm/lib/cli/entry.js:74:5) {
+npm error   errno: -13,
+npm error",,False,False,3076
+20260606-132242,rtk-bench-on-9,on,9,15,msg_01E1iVR4gAJDNqjTSDBdHUW1,toolu_0166rSiXo9TctxckdM5C7f7s,Bash,corepack enable && corepack pnpm install 2>&1 | tail -40,False,Try pnpm via corepack,0,0,717,True,1,43021,541,41,True,2026-06-06T11:33:26.745Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,4167
+20260606-132242,rtk-bench-on-9,on,9,16,msg_01NsTpkUBqtvxoCC9JoyhbnN,toolu_01GH5haHN4xd51Md2iubwM5t,Bash,npm install --prefix /tmp/pnpm-install pnpm 2>&1 | tail -5,False,Install pnpm locally to /tmp,84,0,84,False,1,43562,582,60,True,2026-06-06T11:33:34.839Z,"added 1 package in 4s
+
+1 package is looking for funding
+  run `npm fund` for details",,False,False,8093
+20260606-132242,rtk-bench-on-9,on,9,17,msg_01JeXaMqvLGx9V9Rd6jr4AT9,toolu_011nNengwsEUf2xu3bH25TG7,Bash,/tmp/pnpm-install/node_modules/.bin/pnpm install 2>&1 | tail -40,False,Run pnpm install,248,0,248,False,1,44144,194,68,True,2026-06-06T11:33:38.435Z,"?ERROR? Command failed with ENOENT: pnpm add pnpm@10.33.0 --loglevel=error --ignore-scripts --config.strict-dep-builds=false --config.node-linker=hoisted --config.bin=bin --ignore-workspace
+spawnSync ",,False,False,3596
+20260606-132242,rtk-bench-on-9,on,9,18,msg_01Sn6qPS4P2KEFSudsfvXpvv,toolu_012yFSea93mfDYYsJvWEgq7G,Bash,export PATH=/tmp/pnpm-install/node_modules/.bin:$PATH && pnpm install 2>&1 | tail -40,False,Run pnpm install with PATH,993,0,993,False,1,44338,277,65,True,2026-06-06T11:34:08.291Z,"+ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @eslint/js 9.39.1
++ @playwright/test 1.57.0
++ @swc/core 1.15.3
++ @swc/jest 0.2.3",,False,False,29856
+20260606-132242,rtk-bench-on-9,on,9,19,msg_019ZfWKtCKMHwKH4KqjYPb8w,toolu_01XJxo54CGbqQuXzmX4vMeHd,Bash,npx tsc --noEmit 2>&1 | tail -50,False,Run TypeScript type check,27,0,27,False,1,44615,809,64,True,2026-06-06T11:34:15.998Z,TypeScript: No errors found,,False,False,7707
+20260606-132242,rtk-bench-on-9,on,9,20,msg_01SkiZftWRJDh6EexqQrdCUr,toolu_01EhBxsQgpj92HvS64gEEhjc,Bash,"npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Run prettier check,92,0,92,False,1,45424,158,63,True,2026-06-06T11:34:18.322Z,rtk: Failed to run prettier: Failed to spawn process: No such file or directory (os error 2),,False,False,2324
+20260606-132242,rtk-bench-on-9,on,9,21,msg_01RMWvcCRnzAWHHnh7sXmgwQ,toolu_01NyrSqDFZrGCMZ2DoUZcvbb,Bash,"export PATH=/tmp/pnpm-install/node_modules/.bin:$PATH && npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30",False,Run prettier check with PATH,39,0,39,False,1,45582,329,57,True,2026-06-06T11:34:22.609Z,Prettier: All files formatted correctly,,False,False,4287
+20260606-132242,rtk-bench-on-9,on,9,22,msg_01BuDXzbw2EqqcX5R9T73bi2,toolu_0183KsgXCsmSoHpk7i56yd2X,Bash,npx vitest run 2>&1 | tail -30,False,Run vitest tests,92,0,92,False,1,45911,200,60,True,2026-06-06T11:34:24.968Z,rtk: Failed to run vitest: Failed to execute command: No such file or directory (os error 2),,False,False,2359
+20260606-132242,rtk-bench-on-9,on,9,23,msg_016FpiQjZCm3DtrK94u94GP5,toolu_01ENWqK76r4hPHcMzhm3ExDw,Bash,export PATH=/tmp/pnpm-install/node_modules/.bin:$PATH && npx jest 2>&1 | tail -40,False,Run jest test suite,31,0,31,False,1,46111,175,39,True,2026-06-06T11:35:08.994Z,PASS (360) FAIL (0) skipped (5),,False,False,44026
+20260606-132242,rtk-bench-on-9,on,9,24,msg_01NKdFLjuCYTFSjQhMH3sPy1,,,,False,,0,0,0,False,1,46286,430,1,False,,,,False,False,0
+20260606-132242,rtk-bench-off-9,off,9,1,msg_01KM4oMkmqzvTUaVJwpUqjg2,toolu_012T8pUdFtW7JDgHw7GKFHzQ,Bash,ls -la,False,List files in current directory,1762,0,1762,False,5,26184,0,0,True,2026-06-06T11:32:44.690Z,"total 360
+drwxr-xr-x 16 ubuntu ubuntu   4096 Jun  6 11:23 .
+drwxr-x---  1 ubuntu ubuntu   4096 Jun  6 11:32 ..
+drwxr-xr-x  2 ubuntu ubuntu   4096 Jun  6 11:23 .codesandbox
+-rw-r--r--  1 ubuntu ubuntu ",,False,False,0
+20260606-132242,rtk-bench-off-9,off,9,2,msg_01XZn6bKEqxRDfX8vRiPZvR1,toolu_01BMqYYUUnYRfEQrGvGmhNMt,Bash,"find . -name ""*.ts"" -o -name ""*.tsx"" | sort",False,Find all TypeScript files,6825,0,6825,False,1,26184,1379,65,True,2026-06-06T11:32:47.510Z,"./e2e/site/app/basic-ssr/block.tsx
+./e2e/site/app/basic-ssr/page.tsx
+./e2e/site/app/concurrent-transition/page.tsx
+./e2e/site/app/concurrent-transition/transition-demo.tsx
+./e2e/site/app/issue-2702/pa",,False,False,2820
+20260606-132242,rtk-bench-off-9,off,9,3,msg_018VAxJjbu6nxUPqtYGz8G7V,toolu_01KoL9U1z8V5ZxKz7ucCnLjM,Bash,cat package.json,False,Read package.json,5323,0,5323,False,1,27563,3611,59,True,2026-06-06T11:32:49.526Z,"{
+  ""name"": ""swr"",
+  ""version"": ""2.4.1"",
+  ""description"": ""React Hooks library for remote data fetching"",
+  ""keywords"": [
+    ""swr"",
+    ""react"",
+    ""hooks"",
+    ""request"",
+    ""cache"",
+    ""fetch""
+ ",,False,False,2016
+20260606-132242,rtk-bench-off-9,off,9,4,msg_01J3FS2L4xzgW4R2SNJM6YzB,toolu_01PyEiBDddDKWETFCzRM4NaM,Bash,tree -L 2 src/,False,Show src directory tree,519,0,519,False,1,31174,2631,62,True,2026-06-06T11:32:51.775Z,"src/
+|-- _internal
+|   |-- constants.ts
+|   |-- events.ts
+|   |-- index.react-server.ts
+|   |-- index.ts
+|   |-- types.ts
+|   `-- utils
+|-- immutable
+|   `-- index.ts
+|-- index
+|   |-- config.ts
+|   |",,False,False,2249
+20260606-132242,rtk-bench-off-9,off,9,5,msg_01A5Drk9skJuoF7yLHKiHEBB,toolu_01U96gCoH5BXDqEaEERjRSwn,Bash,git log --oneline -20,False,Show recent commits,1005,0,1005,False,1,33805,388,67,True,2026-06-06T11:32:54.545Z,"f8d4995 chore: remove the axios examples (#4263)
+e384af7 ci: update GitHub Actions for Node 24 (#4254)
+a376f88 chore: pin pnpm 10.33.0 (#4258)
+c39d701 fix: guard against double-unsubscribe removing wr",,False,False,2770
+20260606-132242,rtk-bench-off-9,off,9,6,msg_01Hx661SD5KTr2ybk3FqWKpB,toolu_01GzgwAY17CTFTL5eGVKLHmw,Bash,git log --stat -5,False,Show diff stats for last 5 commits,3653,0,3653,False,1,34193,589,68,True,2026-06-06T11:32:58.291Z,"commit f8d4995ac555f02a2784c8fc40bc819782c60568
+Author: Jiachi Liu <<email>>
+Date:   Thu Jun 4 19:31:38 2026 +0200
+
+    chore: remove the axios examples (#4263)
+
+ examples/axios-typescript/REA",,False,False,3746
+20260606-132242,rtk-bench-off-9,off,9,7,msg_01XXiXovH3rNxsRij33fjuNP,toolu_017UGJsLfa2Xt9tWgCTq7afK,Bash,git shortlog -sn,False,List contributors by commit count,0,0,31,False,1,34782,1780,61,True,2026-06-06T11:33:01.341Z,(Bash completed with no output),,False,False,3050
+20260606-132242,rtk-bench-off-9,off,9,8,msg_01Tz34DBZ6LsFRkkxRTd5W6A,toolu_016F5Nc6KJLyhrR8iJGLV45s,Bash,git shortlog -sn HEAD,False,List contributors by commit count from HEAD,383,0,383,False,1,36562,120,45,True,2026-06-06T11:33:05.324Z,"    12	promer94
+     9	vercel-release-bot
+     7	Jiachi Liu
+     3	0xPierre
+     3	Shu Ding
+     2	yusheng chen
+     1	Abhinav Mishra
+     1	Andrew Gadzik
+     1	Copilot
+     1	Gary Hunt
+     1	Luke S",,False,False,3983
+20260606-132242,rtk-bench-off-9,off,9,9,msg_01VhHZN1aeGyBXx1ZGf5pKvH,toolu_01PnW2JCgPUjDL9oiFux2SsR,Bash,git diff HEAD~3..HEAD,False,Show diff for last 3 commits,27028,0,27028,False,1,36682,388,67,True,2026-06-06T11:33:08.077Z,"diff --git a/.github/workflows/install/action.yml b/.github/workflows/install/action.yml
+index 4f7a790..8fd8296 100644
+--- a/.github/workflows/install/action.yml
++++ b/.github/workflows/install/action",,False,False,2753
+20260606-132242,rtk-bench-off-9,off,9,10,msg_013HxfKYE63FxxCrkiK9Q7Qw,toolu_01MHXL5C5nxNKsZkFNeUGQoS,Bash,"grep -rn ""TODO\|FIXME\|HACK"" src/ || true",False,Search for TODO/FIXME/HACK markers,109,0,109,False,1,37070,13854,68,True,2026-06-06T11:33:10.375Z,"src/index/use-swr.ts:615:    // FIXME:
+src/index/config.ts:3:// TODO: fix SWRConfig re-use issue with bundler",,False,False,2298
+20260606-132242,rtk-bench-off-9,off,9,11,msg_018SnQoKrQxYcEt72cZrirL6,toolu_01WqkfwqofbUhbRdgUHohNw9,Bash,"grep -rn ""as any"" src/",False,Count as any casts in src,443,0,443,False,1,50924,335,45,True,2026-06-06T11:33:13.748Z,"src/_internal/utils/shared.ts:21:  isFunction((x as any).then)
+src/_internal/utils/config-context.ts:47:      provider((extendedConfig as any).cache || defaultCache),
+src/_internal/utils/config-contex",,False,False,3373
+20260606-132242,rtk-bench-off-9,off,9,12,msg_013Wh4TTpF2J7qzSEmq6js1k,toolu_01P7VZb1avyLaXaCEJmGzacB,Bash,pnpm install 2>&1,False,Install dependencies,0,0,56,True,1,51259,356,63,True,2026-06-06T11:33:15.734Z,"Exit code 127
+/bin/bash: line 1: pnpm: command not found",,False,False,1986
+20260606-132242,rtk-bench-off-9,off,9,13,msg_014YuLyneZCKT3C54gixJdpK,toolu_01T4dqEujW31YEPTcfibZFgg,Bash,"which pnpm npm npx node corepack 2>&1; ls /usr/local/bin/ | grep -iE ""pnpm|npm|node"" 2>&1",False,Locate pnpm/npm tooling,57,0,57,False,1,51615,168,46,True,2026-06-06T11:33:18.585Z,"/usr/bin/npm
+/usr/bin/npx
+/usr/bin/node
+/usr/bin/corepack",,False,False,2851
+20260606-132242,rtk-bench-off-9,off,9,14,msg_011Jnbq6mMHZuYv3amS6k84C,toolu_013WYgDt16UbXr52bD3zaRNA,Bash,corepack enable && corepack prepare pnpm@10.33.0 --activate 2>&1 | tail -20,False,Enable corepack to provide pnpm,0,0,717,True,1,51783,199,55,True,2026-06-06T11:33:21.428Z,"Exit code 1
+Internal Error: EACCES: permission denied, symlink '../lib/node_modules/corepack/dist/pnpm.js' -> '/usr/bin/pnpm'
+    at async Object.symlink (node:internal/fs/promises:997:10)
+    at asyn",,False,False,2843
+20260606-132242,rtk-bench-off-9,off,9,15,msg_018bgjc1B8RSzBBgohJyPdCr,toolu_01NV164Dy8DKT2zFQGaUXumv,Bash,"mkdir -p ~/.local/bin && corepack enable --install-directory ~/.local/bin 2>&1 | tail -10 && export PATH=""$HOME/.local/bin:$PATH"" && which pnpm",False,Enable corepack into local bin,28,0,28,False,1,51982,530,56,True,2026-06-06T11:33:24.467Z,/home/ubuntu/.local/bin/pnpm,,False,False,3039
+20260606-132242,rtk-bench-off-9,off,9,16,msg_017ZJf6EDj6JHGrho55C9Dw8,toolu_01JboEFZVScAZgXfrSi6rSjY,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && pnpm install 2>&1 | tail -50",False,Run pnpm install,1197,0,1197,False,1,52512,220,68,True,2026-06-06T11:34:00.421Z,"dependencies:
++ dequal 2.0.3
++ use-sync-external-store 1.6.0
+
+devDependencies:
++ @arethetypeswrong/cli 0.18.2
++ @edge-runtime/jest-environment 4.0.0
++ @eslint/compat 2.0.0
++ @eslint/eslintrc 3.3.1
++ @",,False,False,35954
+20260606-132242,rtk-bench-off-9,off,9,17,msg_015RD76TimZaLvS9EdzqfNPM,toolu_012LzuoHCfojApgq9v16v34d,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx tsc --noEmit 2>&1 | tail -40",False,Run TypeScript type check,210,0,210,False,1,52732,895,72,True,2026-06-06T11:34:16.698Z,"npm notice
+npm notice New major version of npm available! 10.8.2 -> 11.16.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.16.0
+npm notice To update run: npm install -g npm@11.16.0
+",,False,False,16277
+20260606-132242,rtk-bench-off-9,off,9,18,msg_01LsoW7cBcHYJWyehm6mWfTN,toolu_01PAkjbTdVztUpT38cqidyrG,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx tsc --noEmit; echo ""EXITCODE=$?""",False,Confirm tsc exit code,10,0,10,False,1,53627,263,66,True,2026-06-06T11:34:21.107Z,EXITCODE=0,,False,False,4409
+20260606-132242,rtk-bench-off-9,off,9,19,msg_01FugGA4phfbpK2Y3bcTxU3a,toolu_017bicJcCP2oMtTtTYRqS2MY,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx prettier --check ""src/**/*.ts"" 2>&1 | tail -30; echo ""EXITCODE=$?""",False,Run prettier check,141,0,141,False,1,53890,228,68,True,2026-06-06T11:34:25.386Z,"Checking formatting...
+[warn] src/_internal/utils/env.ts
+[warn] Code style issues found in the above file. Forgot to run Prettier?
+EXITCODE=0",,False,False,4279
+20260606-132242,rtk-bench-off-9,off,9,20,msg_01PSVeupAsMSeYUijGFjBeVt,toolu_01EtR9Jt64U7UyCoYSSWiPTU,Bash,"export PATH=""$HOME/.local/bin:$PATH"" && npx vitest run 2>&1 | tail -30; echo ""EXITCODE=$?""",False,Run vitest tests,1052,0,1052,False,1,54118,249,72,True,2026-06-06T11:34:53.702Z,"Error: Cannot find package 'swr/_internal' imported from /home/ubuntu/bench-codebase/test/unit/utils.test.tsx
+ ? test/unit/utils.test.tsx:4:1
+      2|  * @jest-environment @edge-runtime/jest-environme",,False,False,28316
+20260606-132242,rtk-bench-off-9,off,9,21,msg_011fnxZoo9TzDZptK65pmTy1,,,,False,,0,0,0,False,1,54367,904,64,False,,,,False,False,0

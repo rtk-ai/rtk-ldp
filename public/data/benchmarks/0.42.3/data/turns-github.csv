@@ -1,0 +1,1021 @@
+run_id,vm_name,group,pair_index,turn_number,message_id,tool_use_id,tool_name,command,is_rtk_prefixed,description,stdout_bytes,stderr_bytes,content_bytes,is_error,input_tokens,cache_read_input_tokens,cache_creation_input_tokens,output_tokens,has_tool,timestamp,content_preview,stop_reason,interrupted,is_image,elapsed_since_prev_ms
+20260606-105005,rtk-bench-on-0,on,0,1,msg_012F1D68cWZ6fpoaYnB132w9,toolu_01Dn4RST8Ja8FKhcaKLPqXon,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,8,True,2026-06-06T08:52:01.798Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-0,on,0,2,msg_01C8Gn9RtM4Hu4vY1Jaem7rW,toolu_01CirZvJduLK6PQZEAKcP8d2,Bash,git branch -a,False,List all local and remote branches,5,0,5,False,1,26268,176,68,True,2026-06-06T08:52:04.084Z,* dev,,False,False,2286
+20260606-105005,rtk-bench-on-0,on,0,3,msg_01DBbArpV5EmZ3FD93Gho9LF,toolu_016iTxC3P6EBkKQuYLBEkwid,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26444,110,69,True,2026-06-06T08:52:05.920Z,"git branch
+* dev",,False,False,1836
+20260606-105005,rtk-bench-on-0,on,0,4,msg_01Y6qjk5g26uNREHrE1sf8CJ,toolu_01KFLSbbv6DY3XjwSZ93vjku,Bash,git stash list,False,Show stashed changes,10,0,10,False,1,26554,115,62,True,2026-06-06T08:52:07.855Z,No stashes,,False,False,1935
+20260606-105005,rtk-bench-on-0,on,0,5,msg_01LKWZrhPfxFJ7TunbJLJAHu,toolu_01L6GVCzp3Z4SiqQeqUD51VH,Bash,gh repo view,False,View repository information,130,0,130,False,1,26669,109,72,True,2026-06-06T08:52:10.959Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,3104
+20260606-105005,rtk-bench-on-0,on,0,6,msg_014ZTKtoywBRdYzKcSMAgdjU,toolu_01Sc7Xh82Wov85jS8WtjKrFW,Bash,gh pr list,False,List open pull requests,1617,0,1617,False,1,26778,158,72,True,2026-06-06T08:52:13.907Z,"Pull Requests
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write error message to stderr in CLI fail ... (chelslava)
+  [open] #31079 fix(tui): recover ",,False,False,2948
+20260606-105005,rtk-bench-on-0,on,0,7,msg_01QgGkzHVMyNj7jt971TnGj3,toolu_0151qAEdLBYqQvXRxPcjC5wT,Bash,gh pr view 27107,False,View PR #27107 details,1354,0,1354,False,1,26936,837,67,True,2026-06-06T08:52:16.414Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,2507
+20260606-105005,rtk-bench-on-0,on,0,8,msg_01ACXFJf8QfekrTC8WYLcYRw,toolu_01V1xqGxJcA537bSzQsEyDTP,Bash,gh pr checks 27107,False,View CI checks for PR #27107,0,0,1106,True,1,27773,724,72,True,2026-06-06T08:52:19.333Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,2919
+20260606-105005,rtk-bench-on-0,on,0,9,msg_01XzxLTzHcMvRKdyR9hHB4PD,toolu_01MEixcRQNw7ftpnk1jeiEpk,Bash,gh pr diff 27107,False,View diff for PR #27107,1253,0,1253,False,1,28497,637,66,True,2026-06-06T08:52:21.855Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2522
+20260606-105005,rtk-bench-on-0,on,0,10,msg_014G2VEuDqmtmwo9tcN6wan6,toolu_01SJix3T33E64XrRJDFsAkJL,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29134,727,64,True,2026-06-06T08:52:24.198Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2343
+20260606-105005,rtk-bench-on-0,on,0,11,msg_01VqBtqNwDqH3u1bN4GN2W9V,toolu_01XR3CsfBY9SuqPUM7ezaa8G,Bash,gh run list --limit 10,False,List 10 most recent workflow runs,359,0,359,False,1,29861,967,62,True,2026-06-06T08:52:27.409Z,"Workflow Runs
+  [time] triage [27057915153]
+  [time] duplicate-issues [27057915148]
+  [pending] opencode [27057857599]
+  [pending] review [27057857597]
+  [ok] duplicate-issues [27057753109]
+  [pending",,False,False,3211
+20260606-105005,rtk-bench-on-0,on,0,12,msg_01Gw4fatkogZFiqPz5xakThW,toolu_01TK1W6wdUbyzjUS2PkJnGLX,Bash,gh run view 25750630999,False,View details of run 25750630999,25,0,25,False,1,30828,274,52,True,2026-06-06T08:52:33.393Z,Workflow Run #25750630999,,False,False,5984
+20260606-105005,rtk-bench-on-0,on,0,13,msg_01FYo464zRvvVZj436xicfBR,,,,False,,0,0,0,False,1,31102,123,38,False,,,,False,False,0
+20260606-105005,rtk-bench-off-0,off,0,1,msg_013wsUo6cA6cQMaBodEsYheH,toolu_019F2ESzYpzpJDa6Agf6pJ8n,Bash,git status,False,Show working tree status,97,0,97,False,5,21972,4065,8,True,2026-06-06T08:51:41.568Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-0,off,0,2,msg_01P7xMyhuWsfhCP7w9Y8Bbrb,toolu_01Pk79uSih2JbsazuPxhsz5y,Bash,git branch -a,False,List all branches local and remote,62,0,62,False,1,26037,192,65,True,2026-06-06T08:51:43.689Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,2121
+20260606-105005,rtk-bench-off-0,off,0,3,msg_017CipvusxynAcBudXEReA9t,toolu_01KNiVpX6s9qACV6wXXnaJ6V,Bash,git branch -vv,False,Show branch tracking info,42,0,42,False,1,26229,141,62,True,2026-06-06T08:51:45.927Z,* dev 1399323 [origin/dev] chore: generate,,False,False,2238
+20260606-105005,rtk-bench-off-0,off,0,4,msg_019o6STmdoSdZibYuf2iRpTC,toolu_01BNobDhD5FKDzsFCh3Bd4tZ,Bash,git stash list,False,List stashed changes,0,0,31,False,1,26370,128,72,True,2026-06-06T08:51:52.095Z,(Bash completed with no output),,False,False,6168
+20260606-105005,rtk-bench-off-0,off,0,5,msg_01H8GtVUC7tNpACCJAfEk1FR,toolu_016kSGB5KsjzVfgcQbBcy2b3,Bash,gh repo view,False,Show repository info,5472,0,5472,False,1,26498,114,65,True,2026-06-06T08:51:59.692Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,7597
+20260606-105005,rtk-bench-off-0,off,0,6,msg_01Aqugqmno45yQ893VzNtUdU,toolu_018t6x1A7xroksaawAh16R3o,Bash,gh pr list,False,List open pull requests,3524,0,3524,False,1,26612,2356,66,True,2026-06-06T08:52:03.718Z,"31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-opencode-vim-ecosystem	OPEN	2026-06-06T08:39:45Z
+31082	fix(opencode): write error message to stderr in CLI fail handler	chelslava:fix/cli-fa",,False,False,4026
+20260606-105005,rtk-bench-off-0,off,0,7,msg_01QxUhaS9FQRp7CieYzk1pMk,toolu_017s7z5cv3KQ2rzdzaUPn2B7,Bash,gh pr view 27107,False,View PR 27107 details,1414,0,1414,False,1,28968,1940,51,True,2026-06-06T08:52:06.803Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3085
+20260606-105005,rtk-bench-off-0,off,0,8,msg_018DVainnNYcuipUgFPJLwTi,toolu_01Kw7u8syBXyGK99JBohyX3g,Bash,gh pr checks 27107,False,Show CI check status for PR 27107,0,0,1106,True,1,30908,745,66,True,2026-06-06T08:52:10.280Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3477
+20260606-105005,rtk-bench-off-0,off,0,9,msg_01TggW6FCgYbiNdSz3NqPQwT,toolu_01SAC24gqdpAwRyhM7nd1xHW,Bash,gh pr diff 27107,False,Show diff for PR 27107,1991,0,1991,False,1,31653,638,68,True,2026-06-06T08:52:12.806Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2526
+20260606-105005,rtk-bench-off-0,off,0,10,msg_011WuyowAJg1MXKQw9jSh2fY,toolu_012MBvtkwF6p7FxTzMbw71nx,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32291,1108,64,True,2026-06-06T08:52:15.272Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:51:50Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,2466
+20260606-105005,rtk-bench-off-0,off,0,11,msg_01PyfidW6EYysZZAJNcPBYyD,toolu_01XqDiKFk5L5e45aBczugs1k,Bash,gh run list --limit 10,False,List last 10 workflow runs,1500,0,1500,False,1,33399,1929,65,True,2026-06-06T08:52:18.469Z,"in_progress		Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.	triage	dev	issues	27057915153	24s	2026-06-06T08:51:53Z
+in_progress		Options key",,False,False,3197
+20260606-105005,rtk-bench-off-0,off,0,12,msg_01AoRDX1FEvyi8EZLm7BkKyJ,toolu_016w1mS6uwgTvnBaVcrUjrLF,Bash,gh run view 25750630999,False,View workflow run 25750630999,2042,0,2042,False,1,35328,809,52,True,2026-06-06T08:52:22.879Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,4410
+20260606-105005,rtk-bench-off-0,off,0,13,msg_01Ro89jmd4kMPspw5b76UYFb,,,,False,,0,0,0,False,1,36137,947,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-1,on,1,1,msg_01SpqLjAJqrCqEex3Bmz5Xdx,toolu_01CqzMvutuQeNWJmTYYJ8d2P,Bash,git status,False,Show working tree status,31,0,31,False,5,21972,4296,0,True,2026-06-06T08:51:41.194Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-1,on,1,2,msg_015CcH49fEPs4UoqJ51x8Vjc,toolu_01LyEZ6fYcwxB64rVjztJYkm,Bash,git branch -a,False,List all branches,5,0,5,False,1,26268,164,72,True,2026-06-06T08:51:51.052Z,* dev,,False,False,9858
+20260606-105005,rtk-bench-on-1,on,1,3,msg_01CP9N9DFfk9FdLj22bHpno5,toolu_01Q5hNbDLHMbkboCUuyBhwr7,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26432,106,60,True,2026-06-06T08:51:53.441Z,"git branch
+* dev",,False,False,2389
+20260606-105005,rtk-bench-on-1,on,1,4,msg_011x2H367mVi3ZwJNhyuwPKM,toolu_01JbjQuuheSNyY61RRaP7HRx,Bash,git stash list,False,List stashes,10,0,10,False,1,26538,115,63,True,2026-06-06T08:51:56.792Z,No stashes,,False,False,3351
+20260606-105005,rtk-bench-on-1,on,1,5,msg_01LpeJ7PU6MSaV53Nra1Szo9,toolu_01PAr1MXQFGsLkLX2KLc88tp,Bash,gh repo view,False,View repo info,130,0,130,False,1,26653,106,72,True,2026-06-06T08:52:01.684Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,4892
+20260606-105005,rtk-bench-on-1,on,1,6,msg_01GUMbbpfevveyBnsr1iAprG,toolu_01ALCfnBgK9VtGRahrPHRScx,Bash,gh pr list,False,List open PRs,1617,0,1617,False,1,26759,158,71,True,2026-06-06T08:52:04.055Z,"Pull Requests
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write error message to stderr in CLI fail ... (chelslava)
+  [open] #31079 fix(tui): recover ",,False,False,2371
+20260606-105005,rtk-bench-on-1,on,1,7,msg_01VVNKmv6pi8bPoGERkfG9GH,toolu_01K31Va1X3dcFXRnaio7GxNB,Bash,gh pr view 27107,False,View PR 27107,1354,0,1354,False,1,26917,836,61,True,2026-06-06T08:52:07.210Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,3155
+20260606-105005,rtk-bench-on-1,on,1,8,msg_01BxmKp5Uriu8JcSsWht4Q6R,toolu_01DjLrVaYXD1DxjRBsVcYDeJ,Bash,gh pr checks 27107,False,Check PR 27107 CI status,0,0,1106,True,1,27753,722,67,True,2026-06-06T08:52:10.889Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3679
+20260606-105005,rtk-bench-on-1,on,1,9,msg_017ZTdJRGJHVvAjgMfxKT1Jg,toolu_01PRq7QMRpzPCYa7rPC6Zndp,Bash,gh pr diff 27107,False,Show PR 27107 diff,1253,0,1253,False,1,28475,637,68,True,2026-06-06T08:52:19.542Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,8653
+20260606-105005,rtk-bench-on-1,on,1,10,msg_016C5M45RQaLFegvbWsp36MK,toolu_01JeAHYHGwDjBhA7TTzq4fXN,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29112,728,64,True,2026-06-06T08:52:21.868Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2326
+20260606-105005,rtk-bench-on-1,on,1,11,msg_01AzL7UG3zi3zgoN8CzEcZi1,toolu_01Sb3dFpmMTJJvtYHgkAcDRK,Bash,gh run list --limit 10,False,List last 10 workflow runs,359,0,359,False,1,29840,967,66,True,2026-06-06T08:52:24.786Z,"Workflow Runs
+  [time] triage [27057915153]
+  [time] duplicate-issues [27057915148]
+  [pending] opencode [27057857599]
+  [pending] review [27057857597]
+  [ok] duplicate-issues [27057753109]
+  [pending",,False,False,2918
+20260606-105005,rtk-bench-on-1,on,1,12,msg_01Vi1iFKX7aPowZVqHr3y5yV,toolu_012v87yHmBaVdHoBNmSmyrfS,Bash,gh run view 25750630999,False,View workflow run details,25,0,25,False,1,30807,272,52,True,2026-06-06T08:52:28.658Z,Workflow Run #25750630999,,False,False,3872
+20260606-105005,rtk-bench-on-1,on,1,13,msg_01PUPQxjbiAHQutAMwrvLMNM,,,,False,,0,0,0,False,1,31079,120,43,False,,,,False,False,0
+20260606-105005,rtk-bench-off-1,off,1,1,msg_01AEh94ZhSiLv23E8G5SjWnn,toolu_01DagXG1RaDdsEEV3th8UWap,Bash,git status,False,Show working tree status,97,0,97,False,5,21972,4065,8,True,2026-06-06T08:51:40.843Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-1,off,1,2,msg_01Q6rQBhAALMfnQpfqoPm4kF,toolu_01VWVqWWJYPFVRh8cYinLT2k,Bash,git branch -a,False,List all branches,62,0,62,False,1,26037,194,72,True,2026-06-06T08:51:46.682Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,5839
+20260606-105005,rtk-bench-off-1,off,1,3,msg_01YbMA4YaQziARXZSkcTnuyd,toolu_01QJpDYGVZrZ87sNuNJaJrH7,Bash,git branch -vv,False,List branches with tracking info,42,0,42,False,1,26231,137,63,True,2026-06-06T08:51:49.923Z,* dev 1399323 [origin/dev] chore: generate,,False,False,3241
+20260606-105005,rtk-bench-off-1,off,1,4,msg_01MzK2e2WUjTGztJkYT9ihZN,toolu_01GNoZHBLxNSzGBQyiEeuJUx,Bash,git stash list,False,List stashes,0,0,31,False,1,26368,128,71,True,2026-06-06T08:51:51.664Z,(Bash completed with no output),,False,False,1741
+20260606-105005,rtk-bench-off-1,off,1,5,msg_01VbnF8XS46Cok9MwNWPYoh5,toolu_018bmuDUnXQXe4iSCMoJZ6z3,Bash,gh repo view,False,View repository details,5472,0,5472,False,1,26496,112,72,True,2026-06-06T08:51:55.040Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,3376
+20260606-105005,rtk-bench-off-1,off,1,6,msg_01CSqRaBYCdD3eUNeaEsdvi1,toolu_01NupbWopgnFT5MALEzMvmiM,Bash,gh pr list,False,List open pull requests,3524,0,3524,False,1,26608,2355,66,True,2026-06-06T08:52:00.705Z,"31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-opencode-vim-ecosystem	OPEN	2026-06-06T08:39:45Z
+31082	fix(opencode): write error message to stderr in CLI fail handler	chelslava:fix/cli-fa",,False,False,5665
+20260606-105005,rtk-bench-off-1,off,1,7,msg_01MXjWeCkcLu3WvUdAXQzPRv,toolu_01BhR7No2EDVJ2Kj54M31ty1,Bash,gh pr view 27107,False,View PR #27107 details,1414,0,1414,False,1,28963,1940,59,True,2026-06-06T08:52:04.171Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3466
+20260606-105005,rtk-bench-off-1,off,1,8,msg_01K4U9VxSYFXtK4YxobvQRDv,toolu_01LTakUwAnWHDPiSL3V8RjGX,Bash,gh pr checks 27107,False,View PR #27107 checks,0,0,1106,True,1,30903,745,69,True,2026-06-06T08:52:09.334Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,5163
+20260606-105005,rtk-bench-off-1,off,1,9,msg_01UVrYd5GsMsyRnWpVpu1jxU,toolu_01LYjfKPsn3oyLiwiY1AGfUH,Bash,gh pr diff 27107,False,View PR #27107 diff,1991,0,1991,False,1,31648,635,63,True,2026-06-06T08:52:11.764Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2430
+20260606-105005,rtk-bench-off-1,off,1,10,msg_01BYnFcbtc6jPVrkDzGGswdo,toolu_01TFXPWDZaUmotU3tntK8qQH,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32283,1107,64,True,2026-06-06T08:52:14.227Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:51:50Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,2463
+20260606-105005,rtk-bench-off-1,off,1,11,msg_01EfJVuJoXTZUGBiUYt9f7mT,toolu_018KkBV8ZZmCN6QJTb1CugyA,Bash,gh run list --limit 10,False,List last 10 workflow runs,1500,0,1500,False,1,33390,1929,62,True,2026-06-06T08:52:19.480Z,"in_progress		Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.	triage	dev	issues	27057915153	26s	2026-06-06T08:51:53Z
+in_progress		Options key",,False,False,5253
+20260606-105005,rtk-bench-off-1,off,1,12,msg_01Uws3VJ7oKDsNHrWGhJfpLW,toolu_01UtQNhV1fmgXnVz1g7AZRZp,Bash,gh run view 25750630999,False,View workflow run details,2042,0,2042,False,1,35319,809,52,True,2026-06-06T08:52:23.321Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,3841
+20260606-105005,rtk-bench-off-1,off,1,13,msg_01EDq5PonML2fMU4YcNcGUbY,,,,False,,0,0,0,False,1,36128,943,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-2,on,2,1,msg_01Uexps1KPVfgNSXzFgcYCw2,toolu_01NtAKGseLSAFdZorzWenANN,Bash,git status,False,Show working tree status,31,0,31,False,5,21972,4296,0,True,2026-06-06T08:51:41.462Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-2,on,2,2,msg_01B877bwRywvCscaHawEtur5,toolu_01Qck1gArNHEbYftdLmCLaFo,Bash,git branch -a,False,List all branches,5,0,5,False,1,26268,162,72,True,2026-06-06T08:51:43.883Z,* dev,,False,False,2421
+20260606-105005,rtk-bench-on-2,on,2,3,msg_01LVPo1BVKajMJFgogHL295d,toolu_01QCnVqeEWyTczbRhBrzHVHD,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26430,106,67,True,2026-06-06T08:51:46.061Z,"git branch
+* dev",,False,False,2178
+20260606-105005,rtk-bench-on-2,on,2,4,msg_01LNrxyrqLb3ZgmgZ5kjFux8,toolu_01GRWtaCt8CLpawqYf4F2Pgd,Bash,git stash list,False,List stashes,10,0,10,False,1,26536,115,71,True,2026-06-06T08:51:49.981Z,No stashes,,False,False,3920
+20260606-105005,rtk-bench-on-2,on,2,5,msg_017uMDiELK3XGNuPBvq32rzQ,toolu_01EKc4TFa83EV6TyHaZTbLLG,Bash,gh repo view,False,View repo info,130,0,130,False,1,26651,106,72,True,2026-06-06T08:51:52.288Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,2307
+20260606-105005,rtk-bench-on-2,on,2,6,msg_01WGEbR4chiXmqAXwXggRgLN,toolu_01HvyZfya9CCXDZE4rs1BY5h,Bash,gh pr list,False,List open PRs,1617,0,1617,False,1,26757,158,65,True,2026-06-06T08:51:56.376Z,"Pull Requests
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write error message to stderr in CLI fail ... (chelslava)
+  [open] #31079 fix(tui): recover ",,False,False,4088
+20260606-105005,rtk-bench-on-2,on,2,7,msg_015XJLe6ZU1F5fTL78bwS37E,toolu_01QX9MRFRcbPhdy6eXERiM2Y,Bash,gh pr view 27107,False,View PR 27107,1354,0,1354,False,1,26915,836,67,True,2026-06-06T08:52:01.713Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,5337
+20260606-105005,rtk-bench-on-2,on,2,8,msg_017mbrxvjRn3ctK466aKKg22,toolu_01HG1FndYQNULVhazEAAfQzp,Bash,gh pr checks 27107,False,Check PR 27107 CI status,0,0,1106,True,1,27751,722,67,True,2026-06-06T08:52:09.881Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,8167
+20260606-105005,rtk-bench-on-2,on,2,9,msg_01MwN4t3PWMFHjVz7vby3epN,toolu_016eJoNrDVVW9kNDVZ7VqmKY,Bash,gh pr diff 27107,False,View PR 27107 diff,1253,0,1253,False,1,28473,637,65,True,2026-06-06T08:52:12.183Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2302
+20260606-105005,rtk-bench-on-2,on,2,10,msg_01XZaeGhupf2eJNHiUwRZPYN,toolu_01QinaUzgMtJH4v9e42GmSxf,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29110,727,64,True,2026-06-06T08:52:14.492Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2309
+20260606-105005,rtk-bench-on-2,on,2,11,msg_01SdupjqbjC8KwwJLiWFc5LF,toolu_017ULRDXfD1Vask6j6XymAgQ,Bash,gh run list --limit 10,False,List recent workflow runs,359,0,359,False,1,29837,967,68,True,2026-06-06T08:52:17.328Z,"Workflow Runs
+  [time] triage [27057915153]
+  [time] duplicate-issues [27057915148]
+  [pending] opencode [27057857599]
+  [pending] review [27057857597]
+  [ok] duplicate-issues [27057753109]
+  [pending",,False,False,2836
+20260606-105005,rtk-bench-on-2,on,2,12,msg_019Fge4u7WUwfMEkR9Dsa4TH,toolu_011u9mbMnNg8yQVHGHkbBWDV,Bash,gh run view 25750630999,False,View workflow run details,25,0,25,False,1,30804,270,52,True,2026-06-06T08:52:22.475Z,Workflow Run #25750630999,,False,False,5147
+20260606-105005,rtk-bench-on-2,on,2,13,msg_017YYxwnnovvMSEeKtu5JLL3,,,,False,,0,0,0,False,1,31074,120,31,False,,,,False,False,0
+20260606-105005,rtk-bench-off-2,off,2,1,msg_01EFU65kwJfM29J7B7L54an5,toolu_01LiT3dMjicavcgw6T3j1WXN,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:53:04.710Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-2,off,2,2,msg_015Mubb1jAXbPKJaTxdAYTnn,toolu_01AsZqERi3wq2Hww69rGDT6s,Bash,git branch -a,False,List all branches,62,0,62,False,1,26037,197,72,True,2026-06-06T08:53:07.379Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,2669
+20260606-105005,rtk-bench-off-2,off,2,3,msg_01KkpybwmvugLjrrUdCxNEZA,toolu_01CCiPXPyDwi6EiohqrYE32F,Bash,git branch -vv,False,List branches with tracking info,42,0,42,False,1,26234,137,63,True,2026-06-06T08:53:19.074Z,* dev 1399323 [origin/dev] chore: generate,,False,False,11695
+20260606-105005,rtk-bench-off-2,off,2,4,msg_01NqJKZjTYCtWAuBa5b2uT6y,toolu_0177o5n8JX6eK25HJtpe54gT,Bash,git stash list,False,List git stashes,0,0,31,False,1,26371,128,63,True,2026-06-06T08:53:23.321Z,(Bash completed with no output),,False,False,4247
+20260606-105005,rtk-bench-off-2,off,2,5,msg_01RL4KGH6K6mWgQpWwUz47Nn,toolu_013kWqw2iySCaULQCB3khNwN,Bash,gh repo view,False,View repository info,5472,0,5472,False,1,26499,113,70,True,2026-06-06T08:53:25.978Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,2657
+20260606-105005,rtk-bench-off-2,off,2,6,msg_01EP8RjT3SbsfgVyAg5b32rD,toolu_01RAACoEbKWS5ugSeGDJziJh,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26612,2355,59,True,2026-06-06T08:53:28.563Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,2585
+20260606-105005,rtk-bench-off-2,off,2,7,msg_015xiu9d9Ub5UqPzK7xudQWe,toolu_01PL4vdmAKexfGUUPCyJm9ck,Bash,gh pr view 27107,False,View PR #27107 details,1414,0,1414,False,1,28967,1948,38,True,2026-06-06T08:53:32.441Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3878
+20260606-105005,rtk-bench-off-2,off,2,8,msg_01CJRp47j5KByWHgZpkraMw1,toolu_016YDdoVmYoHuiGGanPvqfLx,Bash,gh pr checks 27107,False,Show CI checks for PR #27107,0,0,1106,True,1,30915,803,66,True,2026-06-06T08:53:35.572Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3131
+20260606-105005,rtk-bench-off-2,off,2,9,msg_013egTiyHjAxF1Hhxq1eosXM,toolu_0179cTazNZh27G9Grn9yTD7k,Bash,gh pr diff 27107,False,Show diff for PR #27107,1991,0,1991,False,1,31718,638,67,True,2026-06-06T08:53:38.035Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2463
+20260606-105005,rtk-bench-off-2,off,2,10,msg_01326iuYNyq6yfYu4SCX2JZi,toolu_01VWy7eou3xBXuhiDQXVqEKp,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32356,1108,64,True,2026-06-06T08:53:42.885Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,4850
+20260606-105005,rtk-bench-off-2,off,2,11,msg_01ReRuAjfPtW3cT7VTBLCcNJ,toolu_01NNr1mamMXv9Bv1fSYujrc8,Bash,gh run list --limit 10,False,List recent workflow runs,1629,0,1629,False,1,33464,1929,39,True,2026-06-06T08:53:47.040Z,"completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.empty()	review	dev	issue_comment	27057948631	1s	2026-06-06T08:53:30Z
+completed	skipped	[BUG] opencode a",,False,False,4155
+20260606-105005,rtk-bench-off-2,off,2,12,msg_019T4NEQT6Btujc1Tj6o9sPG,toolu_0156USAWmdRmwXBCsyxRe6Yy,Bash,gh run view 25750630999,False,View workflow run details,2042,0,2042,False,1,35393,876,52,True,2026-06-06T08:53:50.914Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,3874
+20260606-105005,rtk-bench-off-2,off,2,13,msg_01V6dsqjgrEzTELd7twxeBoD,,,,False,,0,0,0,False,1,36269,943,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-3,on,3,1,msg_01KsphoJHDobGTaw2eh3K5fJ,toolu_01JVfJ7Sp9yUgoM7fff6Dx66,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,8,True,2026-06-06T08:53:05.506Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-3,on,3,2,msg_012ThnxLKfqYMTtyc7FAd41A,toolu_01GDWmduQCH3rAYzQZnm5KnH,Bash,git branch -a,False,List all local and remote branches,5,0,5,False,1,26268,175,66,True,2026-06-06T08:53:07.322Z,* dev,,False,False,1816
+20260606-105005,rtk-bench-on-3,on,3,3,msg_012KNobWhp28gyT42CQzx96x,toolu_01UQVUf1PKMH9pDBmAJfopzi,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26443,110,69,True,2026-06-06T08:53:10.185Z,"git branch
+* dev",,False,False,2863
+20260606-105005,rtk-bench-on-3,on,3,4,msg_018Q7j7m76HNKzvoniRKhKDo,toolu_017YcAsfuiNhaJ5ppdqrf6Qs,Bash,git stash list,False,List stashes,10,0,10,False,1,26553,115,71,True,2026-06-06T08:53:13.172Z,No stashes,,False,False,2987
+20260606-105005,rtk-bench-on-3,on,3,5,msg_01TWD9xd4DzQerxtrPbnoFv8,toolu_01WPPh3JAkZwrDYaAuM67Uun,Bash,gh repo view,False,Show repository info,130,0,130,False,1,26668,106,65,True,2026-06-06T08:53:15.394Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,2222
+20260606-105005,rtk-bench-on-3,on,3,6,msg_01TkPT8EA4Ykem675QXFmB5X,toolu_01FT5bMLP6inT3ZbSgiv4MN3,Bash,gh pr list,False,List open PRs,1617,0,1617,False,1,26774,159,70,True,2026-06-06T08:53:17.792Z,"Pull Requests
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write error message to stderr in CLI fail ... (chelslava)
+  [open] #31079 fix(tui): recover ",,False,False,2398
+20260606-105005,rtk-bench-on-3,on,3,7,msg_01812Afai53H87WHjqn6ctq6,toolu_01LjxSqbeSjyCSNoCGrvgKNe,Bash,gh pr view 27107,False,View PR 27107 details,1354,0,1354,False,1,26933,836,67,True,2026-06-06T08:53:20.397Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,2605
+20260606-105005,rtk-bench-on-3,on,3,8,msg_019WEqpUEbnDUzjLeiscHvX6,toolu_01Ki1dFSH7WMnZifqDbZRjwR,Bash,gh pr checks 27107,False,Check CI status for PR 27107,0,0,1106,True,1,27769,724,68,True,2026-06-06T08:53:23.549Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3152
+20260606-105005,rtk-bench-on-3,on,3,9,msg_01XBSUJ3w53s8HLfoZfLm1RM,toolu_012XNuAvK5NeHDqCLbvVBQYt,Bash,gh pr diff 27107,False,Show PR 27107 diff,1253,0,1253,False,1,28493,637,66,True,2026-06-06T08:53:25.919Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2370
+20260606-105005,rtk-bench-on-3,on,3,10,msg_01UPoXzBr5bJcg3Viy7qj9sw,toolu_01Crnxtj5GLKFSq2Ko7WuP7k,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29130,728,64,True,2026-06-06T08:53:28.270Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2351
+20260606-105005,rtk-bench-on-3,on,3,11,msg_01Kr5VzJEo6yDHf3rQMDeKBv,toolu_015U6TnGUM232CfTg9D8rwRE,Bash,gh run list --limit 10,False,List 10 most recent workflow runs,364,0,364,False,1,29858,967,64,True,2026-06-06T08:53:31.384Z,"Workflow Runs
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [time] pr-standards [27057945777]
+  [pending] pr-management [27057945776]
+  [ok] triage [27057915153]
+  [ok] duplica",,False,False,3114
+20260606-105005,rtk-bench-on-3,on,3,12,msg_011HVYz9zwCufWLY9Yan9329,toolu_01PXyPd9BGYeyKVZsh2MkpHn,Bash,gh run view 25750630999,False,View specific workflow run details,25,0,25,False,1,30825,277,52,True,2026-06-06T08:53:35.128Z,Workflow Run #25750630999,,False,False,3744
+20260606-105005,rtk-bench-on-3,on,3,13,msg_018rduyr6zewZCqmDH5nBLKL,,,,False,,0,0,0,False,1,31102,122,1,False,,,,False,False,0
+20260606-105005,rtk-bench-off-3,off,3,1,msg_01XCEQa8cCv3QAR8G1o7qxTD,toolu_016wRsVCJsTh8NTSpxq2VuaH,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:53:12.958Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-3,off,3,2,msg_019koCA17F5K6qKUqR8tqemu,toolu_01K7d75xbc8ta7kzMxMFkxZz,Bash,git branch -a,False,List all branches,62,0,62,False,1,26037,191,64,True,2026-06-06T08:53:15.883Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,2925
+20260606-105005,rtk-bench-off-3,off,3,3,msg_01AjCYfwWGbmbU59Rw9Wg2kx,toolu_011KgmTcrMx3v93pJarr7uPX,Bash,git branch -vv,False,List branches with tracking info,42,0,42,False,1,26228,137,67,True,2026-06-06T08:53:17.820Z,* dev 1399323 [origin/dev] chore: generate,,False,False,1937
+20260606-105005,rtk-bench-off-3,off,3,4,msg_01ATcFgbEbytE3RgCiLDC7RH,toolu_01U7V4sxj5nsNuMYw1Z1Sc9m,Bash,git stash list,False,List stashed changes,0,0,31,False,1,26365,128,71,True,2026-06-06T08:53:19.732Z,(Bash completed with no output),,False,False,1912
+20260606-105005,rtk-bench-off-3,off,3,5,msg_017WoXeiHsZTLfVy3Q5hnb2B,toolu_01HkzE8NKRWeTawg6uKaqm8A,Bash,gh repo view,False,View repository details,5472,0,5472,False,1,26493,114,72,True,2026-06-06T08:53:22.506Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,2774
+20260606-105005,rtk-bench-off-3,off,3,6,msg_01WVKLacFCUfjL8rTkvAprRJ,toolu_01Awfes5V7ZykC4kPQCGZrci,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26607,2355,66,True,2026-06-06T08:53:24.906Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,2400
+20260606-105005,rtk-bench-off-3,off,3,7,msg_01M98jK7cnMKKwrtGQhdxL41,toolu_014fFsVuYwdjbM9vGf6VL4nV,Bash,gh pr view 27107,False,View PR 27107 details,1414,0,1414,False,1,28962,1948,62,True,2026-06-06T08:53:27.721Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,2815
+20260606-105005,rtk-bench-off-3,off,3,8,msg_01YZv15N5wK87vFRTW6K9ukv,toolu_01H46L4RSbHygiKQuX2xrZNs,Bash,gh pr checks 27107,False,Show PR 27107 CI check status,0,0,1106,True,1,30910,745,66,True,2026-06-06T08:53:30.615Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,2894
+20260606-105005,rtk-bench-off-3,off,3,9,msg_01TQhMGwtYMAvsC62EGgLcmG,toolu_014CtDozpyZfNsUWBL5oL4vV,Bash,gh pr diff 27107,False,Show PR 27107 diff,1991,0,1991,False,1,31655,638,68,True,2026-06-06T08:53:32.862Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2247
+20260606-105005,rtk-bench-off-3,off,3,10,msg_016TiaFKDkKEk2v6MqkDq3Ce,toolu_01TEUVfAybui5dnqNscyeQjN,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32293,1108,59,True,2026-06-06T08:53:38.079Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,5217
+20260606-105005,rtk-bench-off-3,off,3,11,msg_01N7EKYhnFpdELHn7ujPQYtW,toolu_01TPujjQDK4TvAgWh3SthvT2,Bash,gh run list --limit 10,False,List recent workflow runs,1629,0,1629,False,1,33401,1929,66,True,2026-06-06T08:53:41.115Z,"completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.empty()	review	dev	issue_comment	27057948631	1s	2026-06-06T08:53:30Z
+completed	skipped	[BUG] opencode a",,False,False,3036
+20260606-105005,rtk-bench-off-3,off,3,12,msg_0189UGAre9WG1aWpCRQxjipw,toolu_013nQsgNFuawnm8tWwxvu7GC,Bash,gh run view 25750630999,False,View workflow run details,2042,0,2042,False,1,35330,827,60,True,2026-06-06T08:53:44.730Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,3615
+20260606-105005,rtk-bench-off-3,off,3,13,msg_013LmeWDG3Ub9BjvLDStjfmm,,,,False,,0,0,0,False,1,36157,943,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-4,on,4,1,msg_01LsgAXAo7H91Y8JZMoFNudY,toolu_01S53JfkmRAZTVmiMWF5t5NK,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,8,True,2026-06-06T08:53:05.911Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-4,on,4,2,msg_01DwYBDVPht24BSa1RbYoZKj,toolu_01K2gZCeX8twM8pjDvF5qvsJ,Bash,git branch -a,False,List all branches,5,0,5,False,1,26268,167,72,True,2026-06-06T08:53:07.956Z,* dev,,False,False,2045
+20260606-105005,rtk-bench-on-4,on,4,3,msg_014ujsYjHKntLvKnmC8VFnUv,toolu_013nGfaYSTfTKvBCj4wXM9pB,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26435,106,60,True,2026-06-06T08:53:10.059Z,"git branch
+* dev",,False,False,2103
+20260606-105005,rtk-bench-on-4,on,4,4,msg_01VhnptWx7ZKbjYnhZdJ5ZBW,toolu_01Nba6RuL2uDG5pQ1MsxHjZc,Bash,git stash list,False,List stashes,10,0,10,False,1,26541,115,63,True,2026-06-06T08:53:13.842Z,No stashes,,False,False,3783
+20260606-105005,rtk-bench-on-4,on,4,5,msg_01Er9E9edG6FTSv3kK6yzT9t,toolu_01TpbAZYmJASrT16YokHXHe4,Bash,gh repo view,False,View repository info,130,0,130,False,1,26656,106,72,True,2026-06-06T08:53:16.242Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,2400
+20260606-105005,rtk-bench-on-4,on,4,6,msg_01VkPyXxmcF6haLzrSXnAi12,toolu_01W87TqMMsZ32ZEFTPMRFAGy,Bash,gh pr list,False,List open PRs,1659,0,1659,False,1,26762,158,72,True,2026-06-06T08:53:20.816Z,"Pull Requests
+  [open] #31090 fix(acp): use ExperimentalHttpApiServer.context instead o... (SXongin)
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write",,False,False,4574
+20260606-105005,rtk-bench-on-4,on,4,7,msg_01XqL47VmoGCiHuV9voCYUJs,toolu_016HbgyGwphqog1erbyB1eTH,Bash,gh pr view 27107,False,View PR 27107,1354,0,1354,False,1,26920,857,67,True,2026-06-06T08:53:23.291Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,2475
+20260606-105005,rtk-bench-on-4,on,4,8,msg_01X1VyD7QSf3YVcuTMVD7wGa,toolu_01PSK6sVVBYYyxc2CoP5gNBe,Bash,gh pr checks 27107,False,Get PR 27107 check status,0,0,1106,True,1,27777,722,69,True,2026-06-06T08:53:30.561Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,7270
+20260606-105005,rtk-bench-on-4,on,4,9,msg_01PtT7uD5RqufXDiqS7eDeaf,toolu_01WQhDj5oTpmQ6z5HSZXYdVQ,Bash,gh pr diff 27107,False,View PR 27107 diff,1253,0,1253,False,1,28499,636,65,True,2026-06-06T08:53:32.904Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2343
+20260606-105005,rtk-bench-on-4,on,4,10,msg_01VT2fNfhqDg6whaZ6RxKPG9,toolu_012T2ATLQbJiHF1itux3hRPc,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29135,727,64,True,2026-06-06T08:53:35.676Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2772
+20260606-105005,rtk-bench-on-4,on,4,11,msg_01RpvAZgSjFYNm39MKAmiYgH,toolu_01BjXtyNp9DH1czhq3bkQ6cm,Bash,gh run list --limit 10,False,List last 10 workflow runs,359,0,359,False,1,29862,967,64,True,2026-06-06T08:53:39.681Z,"Workflow Runs
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [ok] pr-standards [27057945777]
+  [time] pr-management [27057945776]
+  [ok] triage [27057915153]
+  [ok] duplicate-is",,False,False,4005
+20260606-105005,rtk-bench-on-4,on,4,12,msg_017sGGtsin66M4tBEBNSKwUN,toolu_01Q59bHra2unmZCymLpK4oYi,Bash,gh run view 25750630999,False,View run details for 25750630999,25,0,25,False,1,30829,275,52,True,2026-06-06T08:53:43.832Z,Workflow Run #25750630999,,False,False,4151
+20260606-105005,rtk-bench-on-4,on,4,13,msg_013p6aqqWtjgvd82V19Yaxgj,,,,False,,0,0,0,False,1,31104,123,34,False,,,,False,False,0
+20260606-105005,rtk-bench-off-4,off,4,1,msg_014CzptZdw5fA97a9Mrp2q29,toolu_01X7k93RKDkeqc3QbZxcC9GC,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:53:05.046Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-4,off,4,2,msg_01R6akibDdkFjEjbWhsdRsbL,toolu_01R5TM8MK4pBTMbQCU45E3mW,Bash,git branch -a,False,List all local and remote branches,62,0,62,False,1,26037,195,68,True,2026-06-06T08:53:06.810Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,1764
+20260606-105005,rtk-bench-off-4,off,4,3,msg_01H7V9fjsS5rqELYQLEVhU7z,toolu_019Y2dUw7gKS8FwJ9CbTb275,Bash,git branch -vv,False,Show branches with tracking info,42,0,42,False,1,26232,141,62,True,2026-06-06T08:53:09.133Z,* dev 1399323 [origin/dev] chore: generate,,False,False,2323
+20260606-105005,rtk-bench-off-4,off,4,4,msg_01Suxzvh9DxPweMzw4xJx2Ta,toolu_012GNhYzS4CH4YQu77qUsDVG,Bash,git stash list,False,List stashed changes,0,0,31,False,1,26373,129,71,True,2026-06-06T08:53:11.765Z,(Bash completed with no output),,False,False,2632
+20260606-105005,rtk-bench-off-4,off,4,5,msg_01Y22u1VP5msn12LVqovf6eR,toolu_017PQDKEiYnvULxeNP1oJNbg,Bash,gh repo view,False,View repo info,5472,0,5472,False,1,26502,114,72,True,2026-06-06T08:53:14.529Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,2764
+20260606-105005,rtk-bench-off-4,off,4,6,msg_0189fEGs4JiagpYFVedamGW7,toolu_01Con6ZwBaLwo2Bqd3DAhKpv,Bash,gh pr list,False,List open pull requests,3524,0,3524,False,1,26616,2355,66,True,2026-06-06T08:53:16.918Z,"31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-opencode-vim-ecosystem	OPEN	2026-06-06T08:39:45Z
+31082	fix(opencode): write error message to stderr in CLI fail handler	chelslava:fix/cli-fa",,False,False,2389
+20260606-105005,rtk-bench-off-4,off,4,7,msg_013MiTFqkUWGCJafE5gW7uHk,toolu_014kryKk1VshKBZUieXBdWqn,Bash,gh pr view 27107,False,View PR 27107,1414,0,1414,False,1,28971,1940,62,True,2026-06-06T08:53:20.169Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3251
+20260606-105005,rtk-bench-off-4,off,4,8,msg_018oe8BMUaGMPp54NZUYqfeM,toolu_01Kfrg1Rv2YbttFnNsZCffK4,Bash,gh pr checks 27107,False,Show CI checks for PR 27107,0,0,1106,True,1,30911,743,65,True,2026-06-06T08:53:25.614Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,5445
+20260606-105005,rtk-bench-off-4,off,4,9,msg_01VGW97yRvsUWm9Ugn3bep3x,toolu_01VaDbVCRwYTmABdUjYneE7K,Bash,gh pr diff 27107,False,Show diff for PR 27107,1991,0,1991,False,1,31654,638,68,True,2026-06-06T08:53:28.013Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2399
+20260606-105005,rtk-bench-off-4,off,4,10,msg_01JicqWA9QMM8yYoYmJH7DUF,toolu_018CSwvCWaW6Ff3dLyPDYiHW,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32292,1108,64,True,2026-06-06T08:53:32.852Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,4839
+20260606-105005,rtk-bench-off-4,off,4,11,msg_01Xd7YpcaWMdTnfdEG8PSF5W,toolu_01KGT2e9tuQrwomi4kcaXnZC,Bash,gh run list --limit 10,False,List recent workflow runs,1624,0,1624,False,1,33400,1929,65,True,2026-06-06T08:53:38.345Z,"completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.empty()	review	dev	issue_comment	27057948631	1s	2026-06-06T08:53:30Z
+in_progress		[BUG] opencode acp se",,False,False,5493
+20260606-105005,rtk-bench-off-4,off,4,12,msg_01Aie2LWtgWUKw7WWD9hdrAW,toolu_016CC1bApiPgv8YznY82U72m,Bash,gh run view 25750630999,False,View workflow run details,2042,0,2042,False,1,35329,825,52,True,2026-06-06T08:53:42.618Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,4273
+20260606-105005,rtk-bench-off-4,off,4,13,msg_014xWjkJKZSMuRxRM6ijUKMv,,,,False,,0,0,0,False,1,36154,943,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-5,on,5,1,msg_01TnxsWtq2GAskEzmonAmnc7,toolu_017XgRwqJFqa76wfSLcZ7YiV,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,0,True,2026-06-06T08:54:17.588Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-5,on,5,2,msg_01Kk8kai4jCjz9u2hxQe4paM,toolu_01Wx2xAh99rskPYo7fZJmK9Y,Bash,git branch -a,False,List all branches,5,0,5,False,1,26430,0,72,True,2026-06-06T08:54:19.645Z,* dev,,False,False,2057
+20260606-105005,rtk-bench-on-5,on,5,3,msg_01LNKVyuPZiFzKHzM1MHuw8U,toolu_016XdwxZ6L6WKpf6whVpZPwa,Bash,git branch -vv,False,Show verbose branch tracking,16,0,16,False,1,26536,0,64,True,2026-06-06T08:54:22.014Z,"git branch
+* dev",,False,False,2369
+20260606-105005,rtk-bench-on-5,on,5,4,msg_01MjRicxAZfGwi1GZtGvkHWv,toolu_016iWKmu5W2B1GjKKctbXVZj,Bash,git stash list,False,List git stashes,10,0,10,False,1,26536,117,63,True,2026-06-06T08:54:23.955Z,No stashes,,False,False,1941
+20260606-105005,rtk-bench-on-5,on,5,5,msg_01Bx6ZAEqNkYYq3aeHq658cU,toolu_011Q5JjAS9ihfwrgZt8VoC1b,Bash,gh repo view,False,View repository details,130,0,130,False,1,26653,107,64,True,2026-06-06T08:54:26.547Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,2592
+20260606-105005,rtk-bench-on-5,on,5,6,msg_019gcwoxEtTzNHvx9Emzwbwx,toolu_01JhHAsBAioZGUgN4MBSgd1M,Bash,gh pr list,False,List open pull requests,1659,0,1659,False,1,26760,158,72,True,2026-06-06T08:54:32.206Z,"Pull Requests
+  [open] #31090 fix(acp): use ExperimentalHttpApiServer.context instead o... (SXongin)
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write",,False,False,5659
+20260606-105005,rtk-bench-on-5,on,5,7,msg_01Dicx37yH1vbQC2GzRdgAKf,toolu_015uQZAt6Xx5hFwc1GieeobT,Bash,gh pr view 27107,False,View PR 27107 details,1354,0,1354,False,1,26918,858,67,True,2026-06-06T08:54:34.780Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,2574
+20260606-105005,rtk-bench-on-5,on,5,8,msg_013vTCK1B1TTXuYYeLKrJHCd,toolu_01EvCBnYbfsxUyPJB6ew3w1J,Bash,gh pr checks 27107,False,Check PR 27107 CI status,0,0,1106,True,1,27776,724,67,True,2026-06-06T08:54:38.315Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3535
+20260606-105005,rtk-bench-on-5,on,5,9,msg_01HEZF2LQFmjs5Wb4fdMeuqu,toolu_01Q3cjStJ4ruZh8Cu9ekSAMm,Bash,gh pr diff 27107,False,Show PR 27107 diff,1253,0,1253,False,1,28500,637,68,True,2026-06-06T08:54:40.983Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2668
+20260606-105005,rtk-bench-on-5,on,5,10,msg_014bVpvPqio39nY4b9WqfdAq,toolu_019x7upfY88cqHcu1F3xtbW9,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29137,728,64,True,2026-06-06T08:54:43.533Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2550
+20260606-105005,rtk-bench-on-5,on,5,11,msg_01Kxh5mgWDD9UQpQhaVyJeYY,toolu_01EKoTVB3AMuebuwFR79Sgux,Bash,gh run list --limit 10,False,List last 10 workflow runs,357,0,357,False,1,29865,967,62,True,2026-06-06T08:54:47.179Z,"Workflow Runs
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [ok] pr-standards [27057945777]
+  [ok] pr-management [27057945776]
+  [ok] triage [27057915153]
+  [ok] duplicate-issu",,False,False,3646
+20260606-105005,rtk-bench-on-5,on,5,12,msg_01FJEHybAiKYYHm43rTzrk8C,toolu_01XqrcsCHpBYBe4ja7CGBPfX,Bash,gh run view 25750630999,False,View specific workflow run,25,0,25,False,1,30832,276,52,True,2026-06-06T08:54:51.008Z,Workflow Run #25750630999,,False,False,3829
+20260606-105005,rtk-bench-on-5,on,5,13,msg_01QLoHBp5WRadksDVNBuEdaV,,,,False,,0,0,0,False,1,31108,121,40,False,,,,False,False,0
+20260606-105005,rtk-bench-off-5,off,5,1,msg_01UCxauugdHfKrGaVHschiCk,toolu_01MGq9g8RPDFZQNXJ81fbKRr,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,8,True,2026-06-06T08:54:18.101Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-5,off,5,2,msg_01MZFD13LgftZTnhTrYHkkN7,toolu_01UMY7JuAJPM5S6bnV4nxamQ,Bash,git branch -a,False,List all local and remote branches,62,0,62,False,1,26037,191,63,True,2026-06-06T08:54:20.222Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,2121
+20260606-105005,rtk-bench-off-5,off,5,3,msg_014pP4QCGXooeTTLkgqhvH8u,toolu_0171TrmDeagYE5jYkFvFZkRB,Bash,git branch -vv,False,Show local branches with tracking info,42,0,42,False,1,26228,141,62,True,2026-06-06T08:54:23.461Z,* dev 1399323 [origin/dev] chore: generate,,False,False,3239
+20260606-105005,rtk-bench-off-5,off,5,4,msg_01AqofZUWAFVKfgcnk8zUxC7,toolu_01XfuDjKWP1EYoz5c2EQrYYw,Bash,git stash list,False,List stashed changes,0,0,31,False,1,26369,130,71,True,2026-06-06T08:54:25.500Z,(Bash completed with no output),,False,False,2039
+20260606-105005,rtk-bench-off-5,off,5,5,msg_01LJi4aUiautF9eSp1Vtr16U,toolu_01XiiVrYg7Hu5tRAzBYkGuwJ,Bash,gh repo view,False,View repo info via gh CLI,5472,0,5472,False,1,26499,114,65,True,2026-06-06T08:54:29.977Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,4477
+20260606-105005,rtk-bench-off-5,off,5,6,msg_017wtLi5M3MygiWS6V75tJ6D,toolu_01L7ymTRxa1z473TEoHgGrvc,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26613,2361,63,True,2026-06-06T08:54:32.705Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,2728
+20260606-105005,rtk-bench-off-5,off,5,7,msg_013e8nGmeawJcJJX1WLXi39Q,toolu_01WkmiqNnGNfaMqCwB66mxT7,Bash,gh pr view 27107,False,View details of PR 27107,1414,0,1414,False,1,28974,1948,65,True,2026-06-06T08:54:36.329Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3624
+20260606-105005,rtk-bench-off-5,off,5,8,msg_01NzbAqfrAQowx5mtDUkFZyH,toolu_017UY3NWhgqYfwovc8vCBfuz,Bash,gh pr checks 27107,False,Show CI checks for PR 27107,0,0,1106,True,1,30922,745,65,True,2026-06-06T08:54:39.383Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3054
+20260606-105005,rtk-bench-off-5,off,5,9,msg_0164sXj2XUABwRMdb9deB2XB,toolu_01AF9b6DmFvVGRTckMTpKJo7,Bash,gh pr diff 27107,False,Show the diff of PR 27107,1991,0,1991,False,1,31667,638,63,True,2026-06-06T08:54:41.937Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2554
+20260606-105005,rtk-bench-off-5,off,5,10,msg_015LQhdzuCA6nimzKV4v4sk8,toolu_01VqXPS5yak91LQ6jTZ2qVRN,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32305,1109,64,True,2026-06-06T08:54:45.408Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,3471
+20260606-105005,rtk-bench-off-5,off,5,11,msg_01TPDj7MTJFPgYpvtYvgF6J4,toolu_01JGCyJWBB8hcW8Q4D8Cmu2e,Bash,gh run list --limit 10,False,List recent workflow runs,1634,0,1634,False,1,33414,1929,63,True,2026-06-06T08:54:50.648Z,"completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.empty()	review	dev	issue_comment	27057948631	1s	2026-06-06T08:53:30Z
+completed	skipped	[BUG] opencode a",,False,False,5240
+20260606-105005,rtk-bench-off-5,off,5,12,msg_01Dide5HMrqkdVgcfGgeYGQV,toolu_011TYQjPJapmLUH7kgHhK7ca,Bash,gh run view 25750630999,False,View details of workflow run 25750630999,2042,0,2042,False,1,35343,827,52,True,2026-06-06T08:54:54.786Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,4138
+20260606-105005,rtk-bench-off-5,off,5,13,msg_011ae5zYxnHbzm4LAorbwmx4,,,,False,,0,0,0,False,1,36170,949,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-6,on,6,1,msg_019AE6YC8jU9LfSdwNA7YrcV,toolu_01YZ1k1Ktnww913FhvPe7Z7H,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,0,True,2026-06-06T08:54:20.157Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-6,on,6,2,msg_011vBUwqRhFwdA5PPgyc1xhN,toolu_0172kDt7zaSoGEohkBtMM4oR,Bash,git branch -a,False,List all branches,5,0,5,False,1,26268,162,72,True,2026-06-06T08:54:22.342Z,* dev,,False,False,2185
+20260606-105005,rtk-bench-on-6,on,6,3,msg_01KnVK4DEem2dMEhCStuJuse,toolu_01VoHRsgvhvSvQzu7eD7Vgvc,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26430,106,60,True,2026-06-06T08:54:24.239Z,"git branch
+* dev",,False,False,1897
+20260606-105005,rtk-bench-on-6,on,6,4,msg_01QeyF7najKWGA2V4mkfn1v3,toolu_01JvvPUPeiWGP8uoGgDLLqSd,Bash,git stash list,False,List stashes,10,0,10,False,1,26536,115,63,True,2026-06-06T08:54:26.545Z,No stashes,,False,False,2306
+20260606-105005,rtk-bench-on-6,on,6,5,msg_01UoqoLkj5aRyY9ayvxuyAYk,toolu_01YXEE48FxWrH7jmRJMAuJ5c,Bash,gh repo view,False,View repository details,130,0,130,False,1,26651,106,72,True,2026-06-06T08:54:29.979Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,3434
+20260606-105005,rtk-bench-on-6,on,6,6,msg_017XW4f9BPQGKz4PKziV9ptC,toolu_01PV5kEu3rUTsE3E8SF9dxjm,Bash,gh pr list,False,List open pull requests,1659,0,1659,False,1,26757,158,71,True,2026-06-06T08:54:32.368Z,"Pull Requests
+  [open] #31090 fix(acp): use ExperimentalHttpApiServer.context instead o... (SXongin)
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write",,False,False,2389
+20260606-105005,rtk-bench-on-6,on,6,7,msg_01LYoL9gxoH4FVvVVQQcERRs,toolu_018ZVVvvRCDva4vyzW6NPAft,Bash,gh pr view 27107,False,View PR 27107 details,1354,0,1354,False,1,26915,858,67,True,2026-06-06T08:54:35.270Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,2902
+20260606-105005,rtk-bench-on-6,on,6,8,msg_018uCmyduc3KqucQBNFvxUxS,toolu_01LadrFBx7jWdT3PVHuKfieT,Bash,gh pr checks 27107,False,View PR 27107 check status,0,0,1106,True,1,27773,724,72,True,2026-06-06T08:54:38.888Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3618
+20260606-105005,rtk-bench-on-6,on,6,9,msg_01579eW9EixpB18HoMuVCe15,toolu_01MjtbibgTgi8UtUssyx6oDN,Bash,gh pr diff 27107,False,View PR 27107 diff,1253,0,1253,False,1,28497,635,68,True,2026-06-06T08:54:47.399Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,8511
+20260606-105005,rtk-bench-on-6,on,6,10,msg_014MNgxtvdoBDTx3AmYbcXrf,toolu_015dVPnbqRYB4iRUV5hqK68P,Bash,gh issue list,False,List open issues,1736,0,1736,False,1,29132,727,64,True,2026-06-06T08:54:50.168Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2769
+20260606-105005,rtk-bench-on-6,on,6,11,msg_01TsUFn7i1et2QdKAL9Qi7bj,toolu_01LNuLLJMHmxhwEtzKVfRXkt,Bash,gh run list --limit 10,False,List last 10 workflow runs,357,0,357,False,1,29859,967,68,True,2026-06-06T08:54:53.027Z,"Workflow Runs
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [ok] pr-standards [27057945777]
+  [ok] pr-management [27057945776]
+  [ok] triage [27057915153]
+  [ok] duplicate-issu",,False,False,2859
+20260606-105005,rtk-bench-on-6,on,6,12,msg_013GzyHau6u7Kgvz9oae5hoP,toolu_01SUYXiPfGdoA6vKLa7S3zo8,Bash,gh run view 25750630999,False,View workflow run 25750630999,25,0,25,False,1,30826,276,52,True,2026-06-06T08:54:58.693Z,Workflow Run #25750630999,,False,False,5666
+20260606-105005,rtk-bench-on-6,on,6,13,msg_01EiVagVV2U9g6LerF5iYjHp,,,,False,,0,0,0,False,1,31102,124,36,False,,,,False,False,0
+20260606-105005,rtk-bench-off-6,off,6,1,msg_01NiY3KRiM74X9Ts5G3eUBuC,toolu_011cj3F6itgjHdweYh2acvcG,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:54:18.574Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-6,off,6,2,msg_01SGX9zLSSqok9cLzTvGWB1a,toolu_0196GHzd5hmXXjvcL4Y7aUw1,Bash,git branch -a,False,List all local and remote branches,62,0,62,False,1,26037,193,68,True,2026-06-06T08:54:20.777Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,2203
+20260606-105005,rtk-bench-off-6,off,6,3,msg_015rd2ncBkEMWUxRgBPxnW7P,toolu_01Wh5dMcDqMzMb6h7eB8iHy5,Bash,git branch -vv,False,List local branches with tracking info,42,0,42,False,1,26230,141,67,True,2026-06-06T08:54:23.178Z,* dev 1399323 [origin/dev] chore: generate,,False,False,2401
+20260606-105005,rtk-bench-off-6,off,6,4,msg_01XqyQ3Z2yGznoHCX5Rk7QeC,toolu_01Ax2raM8ZLw8sfNJ8SwNih1,Bash,git stash list,False,List stashed changes,0,0,31,False,1,26371,129,72,True,2026-06-06T08:54:24.958Z,(Bash completed with no output),,False,False,1780
+20260606-105005,rtk-bench-off-6,off,6,5,msg_01VQGu1QnPEwM6tHMVSbn3F6,toolu_01Gvb34j7DtfQ9uH6fZAeE7Y,Bash,gh repo view,False,View repository details,5472,0,5472,False,1,26500,114,72,True,2026-06-06T08:54:27.689Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,2731
+20260606-105005,rtk-bench-off-6,off,6,6,msg_01Hu5A1hirANmhgTnawT8VF7,toolu_01Tue95xBBwMoFfBt8o13eFR,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26614,2355,62,True,2026-06-06T08:54:30.291Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,2602
+20260606-105005,rtk-bench-off-6,off,6,7,msg_01SbXkmhY771LfTi8MezvuN8,toolu_0166h6dutrdG1RdigeybEmsV,Bash,gh pr view 27107,False,View PR #27107 details,1414,0,1414,False,1,28969,1948,34,True,2026-06-06T08:54:33.944Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3653
+20260606-105005,rtk-bench-off-6,off,6,8,msg_01QBDbVqEiKNX7sZjdRGqtxy,toolu_01BeoKorPvLzjoLpvgqeQzDn,Bash,gh pr checks 27107,False,View CI checks for PR #27107,0,0,1106,True,1,30917,802,68,True,2026-06-06T08:54:38.352Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,4408
+20260606-105005,rtk-bench-off-6,off,6,9,msg_0143rD3pEfTv5a1FXW5haBNu,toolu_01PYo7u2bgi8oXvzeR7t9cLr,Bash,gh pr diff 27107,False,Show PR #27107 diff,1991,0,1991,False,1,31719,637,63,True,2026-06-06T08:54:44.081Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,5729
+20260606-105005,rtk-bench-off-6,off,6,10,msg_01JtyhrNDGdGqHkCBu311Qam,toolu_016xjz8AJopRbALsQAqGseUV,Bash,gh issue list,False,List open issues,3728,0,3728,False,1,32356,1108,64,True,2026-06-06T08:54:47.859Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,3778
+20260606-105005,rtk-bench-off-6,off,6,11,msg_01PcsAquGKLgphYKQiEKkoEa,toolu_012Mqa3Au1i4dN4VvptydkAd,Bash,gh run list --limit 10,False,List 10 most recent workflow runs,1634,0,1634,False,1,33464,1929,62,True,2026-06-06T08:54:51.626Z,"completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.empty()	review	dev	issue_comment	27057948631	1s	2026-06-06T08:53:30Z
+completed	skipped	[BUG] opencode a",,False,False,3767
+20260606-105005,rtk-bench-off-6,off,6,12,msg_01VLTfWEDkJ4X1i49EHGWyu3,toolu_01AL1oCiJSPAn58oC5wnwt2Q,Bash,gh run view 25750630999,False,View details of workflow run 25750630999,2042,0,2042,False,1,35393,831,60,True,2026-06-06T08:54:59.912Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,8286
+20260606-105005,rtk-bench-off-6,off,6,13,msg_01SZgSNm2r8wB84Ash4NeJ2D,,,,False,,0,0,0,False,1,36224,949,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-7,on,7,1,msg_01Sk2YBQTYjXnbDXtftuGFS2,toolu_01U1gtGC8vKEZKEbQ7sAtnED,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,0,True,2026-06-06T08:54:18.429Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-7,on,7,2,msg_01VhYgQ4GDzP3YC72ZZY457o,toolu_01U5v7XErmEH1qrhCHkqn6TH,Bash,git branch -a,False,List all local and remote branches,5,0,5,False,1,26268,176,68,True,2026-06-06T08:54:24.546Z,* dev,,False,False,6117
+20260606-105005,rtk-bench-on-7,on,7,3,msg_01TU5epKvB2bXipy9jLaqyyF,toolu_01CBX4uCwkdJwPzLUmbNrwLm,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26444,110,60,True,2026-06-06T08:54:27.279Z,"git branch
+* dev",,False,False,2733
+20260606-105005,rtk-bench-on-7,on,7,4,msg_01UiKzR6zbxNmX6h5PSJ42Fa,toolu_01UB1EabUpi6kCoVx2fnnB7F,Bash,git stash list,False,List git stashes,10,0,10,False,1,26554,115,69,True,2026-06-06T08:54:43.230Z,No stashes,,False,False,15951
+20260606-105005,rtk-bench-on-7,on,7,5,msg_019NZ5VQk9vRexCsuKjUZWtL,toolu_012W1Xca9468Y1fzMVZeyDe5,Bash,gh repo view,False,View repository details,130,0,130,False,1,26669,107,72,True,2026-06-06T08:54:47.245Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,4014
+20260606-105005,rtk-bench-on-7,on,7,6,msg_0158nwQk8rTEeuAcvHnksZ8p,toolu_01EHnsuigda53JY1Syj8JGRr,Bash,gh pr list,False,List open pull requests,1659,0,1659,False,1,26776,158,71,True,2026-06-06T08:54:50.991Z,"Pull Requests
+  [open] #31090 fix(acp): use ExperimentalHttpApiServer.context instead o... (SXongin)
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write",,False,False,3746
+20260606-105005,rtk-bench-on-7,on,7,7,msg_01LQrdcEEFJYWk8J6ML8t7wU,toolu_01WjF56kfk2moHXak9W3cki1,Bash,gh pr view 27107,False,View pull request #27107,1354,0,1354,False,1,26934,858,65,True,2026-06-06T08:54:56.306Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,5315
+20260606-105005,rtk-bench-on-7,on,7,8,msg_01LPBXcqJKxmxVGFSkjKvCnu,toolu_0145TKsY5dLg4VTGUPYP5osZ,Bash,gh pr checks 27107,False,View PR #27107 CI checks,0,0,1106,True,1,27792,723,68,True,2026-06-06T08:54:59.302Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,2996
+20260606-105005,rtk-bench-on-7,on,7,9,msg_01BDxh8tmyLLM83x7hhWExzY,toolu_01JzzdMHK8jjEMnvAeTapYVB,Bash,gh pr diff 27107,False,View PR #27107 diff,1253,0,1253,False,1,28515,637,65,True,2026-06-06T08:55:01.925Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2623
+20260606-105005,rtk-bench-on-7,on,7,10,msg_01KwHYTrbMQ4jrfDcCZyVmQN,toolu_0128yo1htFJBvZtEoWYLhw4Z,Bash,gh issue list,False,List open issues,1649,0,1649,False,1,29152,727,64,True,2026-06-06T08:55:04.302Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2377
+20260606-105005,rtk-bench-on-7,on,7,11,msg_01QVszcrd2Hv8o3J1gDUWD22,toolu_01FqP9Lx5fhZCnP39joNSq3F,Bash,gh run list --limit 10,False,List last 10 workflow runs,360,0,360,False,1,29879,933,66,True,2026-06-06T08:55:07.835Z,"Workflow Runs
+  [ok] compliance-close [27057974599]
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [ok] pr-standards [27057945777]
+  [ok] pr-management [27057945776]
+  [ok] tria",,False,False,3533
+20260606-105005,rtk-bench-on-7,on,7,12,msg_01Y6G2Cbt9NGNWa6HB2w77ps,toolu_01Y8H7H8nygWCoKFtsCLzw1c,Bash,gh run view 25750630999,False,View workflow run details,25,0,25,False,1,30812,278,52,True,2026-06-06T08:55:12.346Z,Workflow Run #25750630999,,False,False,4511
+20260606-105005,rtk-bench-on-7,on,7,13,msg_01TaGUKmCHhghz7FQs66WRLp,,,,False,,0,0,0,False,1,31090,120,39,False,,,,False,False,0
+20260606-105005,rtk-bench-off-7,off,7,1,msg_01WxQotZ65TQmCDWUwWerdeS,toolu_01FkmFgtVF5YzpbY7ajkBBgf,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:55:42.863Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-7,off,7,2,msg_01Nr7tE43pb9MXQ4JpZPvdTt,toolu_01VoHjEKRXTipPSDEhYfUSBC,Bash,git branch -a,False,List all branches,62,0,62,False,1,26231,0,72,True,2026-06-06T08:55:44.812Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,1949
+20260606-105005,rtk-bench-off-7,off,7,3,msg_01EHLzUa3aeDt6dncedziqV9,toolu_016LFpEsSnEMkyzmDr2NBURb,Bash,git branch -vv,False,List branches with tracking info,42,0,42,False,1,26368,0,67,True,2026-06-06T08:55:47.189Z,* dev 1399323 [origin/dev] chore: generate,,False,False,2377
+20260606-105005,rtk-bench-off-7,off,7,4,msg_01BaAYFbcnfkCne1wKuybGDV,toolu_01FFjQyTKjP7FCjSAi4E7ua7,Bash,git stash list,False,List git stashes,0,0,31,False,1,26496,0,63,True,2026-06-06T08:55:49.320Z,(Bash completed with no output),,False,False,2131
+20260606-105005,rtk-bench-off-7,off,7,5,msg_011FFCFjGX7e9wVUy2TBB8Zf,toolu_01QUpKpou8bK2qHaEN5M5cHc,Bash,gh repo view,False,View repository info,5472,0,5472,False,1,26496,113,70,True,2026-06-06T08:55:52.426Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,3106
+20260606-105005,rtk-bench-off-7,off,7,6,msg_014RzVRAtXYBLqD2673Y4MYT,toolu_011LFmFKTYw9bAacafrs5yUo,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26609,2355,63,True,2026-06-06T08:55:55.174Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,2748
+20260606-105005,rtk-bench-off-7,off,7,7,msg_01VYG6adYatVv7AjceCepk3K,toolu_01NWsfwUVCn7LUmKyBZhiDPf,Bash,gh pr view 27107,False,View PR 27107 details,1414,0,1414,False,1,28964,1948,52,True,2026-06-06T08:56:01.267Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,6093
+20260606-105005,rtk-bench-off-7,off,7,8,msg_01MHjRV5SUkmYET3vkr8bpsM,toolu_013cQ9afVTZ8nbBdMpLsZ6w5,Bash,gh pr checks 27107,False,Show CI check status for PR 27107,0,0,1106,True,1,30912,807,66,True,2026-06-06T08:56:05.565Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,4298
+20260606-105005,rtk-bench-off-7,off,7,9,msg_01BBcUTK6M9oA3P87kNHQLf7,toolu_01A3kWSxJrnv5HT2YVWUDhAC,Bash,gh pr diff 27107,False,View PR 27107 diff,1991,0,1991,False,1,31719,638,65,True,2026-06-06T08:56:08.292Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2727
+20260606-105005,rtk-bench-off-7,off,7,10,msg_013tWS28xWnW1WbWQRYY8LY3,toolu_017vUG5PqkKPHPYbTRxvtkdQ,Bash,gh issue list,False,List open issues,3414,0,3414,False,1,32357,1107,59,True,2026-06-06T08:56:11.011Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,2719
+20260606-105005,rtk-bench-off-7,off,7,11,msg_01WMSap3s64ihr425dcm9fJb,toolu_01EbLfup9cwraiWyZX1BidqU,Bash,gh run list --limit 10,False,List recent workflow runs,1604,0,1604,False,1,33464,1826,62,True,2026-06-06T08:56:14.201Z,"completed	success	compliance-close	compliance-close	dev	schedule	27057974599	11s	2026-06-06T08:54:52Z
+completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.e",,False,False,3190
+20260606-105005,rtk-bench-off-7,off,7,12,msg_016WLBqKefBhrQHGPKK62UeQ,toolu_01V24WgtUt7sFvdgxv7QJiHc,Bash,gh run view 25750630999,False,View workflow run 25750630999 details,2042,0,2042,False,1,35290,808,44,True,2026-06-06T08:56:18.461Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,4260
+20260606-105005,rtk-bench-off-7,off,7,13,msg_01TmNmMvdvCwBGGNvSNdhqSf,,,,False,,0,0,0,False,1,36098,949,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-8,on,8,1,msg_01XreeKXBPL34kVWKQDtvN1f,toolu_01N2n5tW2Qjgq8GAyWQ7KEs9,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,8,True,2026-06-06T08:55:42.412Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-8,on,8,2,msg_01YLRNhNHeRwJHyYtzeVEgeo,toolu_015yEaCxu9oZ6Yd9tYZW28E5,Bash,git branch -a,False,List all branches,5,0,5,False,1,26268,161,72,True,2026-06-06T08:55:46.100Z,* dev,,False,False,3688
+20260606-105005,rtk-bench-on-8,on,8,3,msg_01NqvfojrJ6jH7Ly9uCpUeYY,toolu_012CJ3FWLwpWGCPA8i1Mq4az,Bash,git branch -vv,False,List branches with tracking info,16,0,16,False,1,26429,106,60,True,2026-06-06T08:55:58.523Z,"git branch
+* dev",,False,False,12423
+20260606-105005,rtk-bench-on-8,on,8,4,msg_01F1W2m94kUNtaf1CuCEhjf8,toolu_01HnDtdwrjKGNm33xUMJWgXm,Bash,git stash list,False,List git stashes,10,0,10,False,1,26535,115,71,True,2026-06-06T08:56:01.518Z,No stashes,,False,False,2995
+20260606-105005,rtk-bench-on-8,on,8,5,msg_01R54FXEHhqshkaQ3qAf99ox,toolu_01ASKEgcJtT6nNkD3bCrzyVo,Bash,gh repo view,False,View GitHub repository info,130,0,130,False,1,26650,107,68,True,2026-06-06T08:56:08.078Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,6560
+20260606-105005,rtk-bench-on-8,on,8,6,msg_01L1m7HRBESgrmsEfBNGmZf6,toolu_01XQiJkkkDsEXH5meSNTzq9o,Bash,gh pr list,False,List open pull requests,1659,0,1659,False,1,26757,162,72,True,2026-06-06T08:56:10.501Z,"Pull Requests
+  [open] #31090 fix(acp): use ExperimentalHttpApiServer.context instead o... (SXongin)
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write",,False,False,2423
+20260606-105005,rtk-bench-on-8,on,8,7,msg_01SK8F3UpqgoRzGZWrDSfxqJ,toolu_016jRXvqzsNu71nJSi6YTVAr,Bash,gh pr view 27107,False,View PR 27107 details,1354,0,1354,False,1,26919,858,67,True,2026-06-06T08:56:13.000Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,2499
+20260606-105005,rtk-bench-on-8,on,8,8,msg_01Nu9ribrXsf7rhgkf9z4dqA,toolu_01Y12v4naSvsq7afStYkUCbq,Bash,gh pr checks 27107,False,Show CI checks for PR 27107,0,0,1106,True,1,27777,724,66,True,2026-06-06T08:56:16.093Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3093
+20260606-105005,rtk-bench-on-8,on,8,9,msg_01J1EEoZQdu7ZTktgCfgPQn3,toolu_017LaueaSDsaDVDg2GXAbzAR,Bash,gh pr diff 27107,False,Show diff for PR 27107,1253,0,1253,False,1,28501,638,70,True,2026-06-06T08:56:18.677Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,2584
+20260606-105005,rtk-bench-on-8,on,8,10,msg_01T65mLWM8rhML4tcD8ngH3c,toolu_015vviHBCMeV1Sd8THodstUC,Bash,gh issue list,False,List open issues,1649,0,1649,False,1,29139,728,64,True,2026-06-06T08:56:20.884Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2207
+20260606-105005,rtk-bench-on-8,on,8,11,msg_0199JB6HLfScxemir7tvP47g,toolu_01HCzsPenCdWAZnNyEHdS5a6,Bash,gh run list --limit 10,False,List last 10 workflow runs,360,0,360,False,1,29867,933,66,True,2026-06-06T08:56:24.048Z,"Workflow Runs
+  [ok] compliance-close [27057974599]
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [ok] pr-standards [27057945777]
+  [ok] pr-management [27057945776]
+  [ok] tria",,False,False,3164
+20260606-105005,rtk-bench-on-8,on,8,12,msg_01N2vm1zC1wkSBwHV2VudXTn,toolu_01BZ9adV2rQrJfzU2Ahh7uFq,Bash,gh run view 25750630999,False,View workflow run 25750630999,25,0,25,False,1,30800,278,52,True,2026-06-06T08:56:27.965Z,Workflow Run #25750630999,,False,False,3917
+20260606-105005,rtk-bench-on-8,on,8,13,msg_01XWEyppnvv2GwdpXAkZagUf,,,,False,,0,0,0,False,1,31078,124,44,False,,,,False,False,0
+20260606-105005,rtk-bench-off-8,off,8,1,msg_0156L8kPmNV5RjKZMRX29VFp,toolu_01KbC9BQVNASoiWavyM6NsMB,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:55:46.249Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-8,off,8,2,msg_01BPhgfyQwLBJLJSAEdaNdjm,toolu_01TwJ8mPAYrqKv72GxcJbefL,Bash,git branch -a,False,List all branches,62,0,62,False,1,26230,0,64,True,2026-06-06T08:55:48.144Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,1895
+20260606-105005,rtk-bench-off-8,off,8,3,msg_011ZjJFLZgQv1zdnhMaZ323g,toolu_01BjM1MfRNFFYP9jqjMELiEC,Bash,git branch -vv,False,List branches with tracking info,42,0,42,False,1,26230,137,66,True,2026-06-06T08:55:52.292Z,* dev 1399323 [origin/dev] chore: generate,,False,False,4148
+20260606-105005,rtk-bench-off-8,off,8,4,msg_01XdAtqQuTF2o7kYCxgvTvjm,toolu_01PQmXkjTFS1ktpFhsXnn6Qu,Bash,git stash list,False,List stashes,0,0,31,False,1,26367,128,71,True,2026-06-06T08:55:54.619Z,(Bash completed with no output),,False,False,2327
+20260606-105005,rtk-bench-off-8,off,8,5,msg_01X1ggXWYbw2dtooGM3VDmpR,toolu_01Bvz5ygF1jEEw3Ee6h5YgE9,Bash,gh repo view,False,View repo info,5472,0,5472,False,1,26495,112,72,True,2026-06-06T08:55:57.064Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,2445
+20260606-105005,rtk-bench-off-8,off,8,6,msg_01YDq8pdjPP5mTTUk4Zfo7gk,toolu_01TYXN7zCVUckTZRHvkUzfM8,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26607,2355,63,True,2026-06-06T08:55:59.742Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,2678
+20260606-105005,rtk-bench-off-8,off,8,7,msg_01VymGaMjW6XBwXgShfR1sQj,toolu_018ra4mYPhqFFZPNqxdfTudC,Bash,gh pr view 27107,False,View PR 27107 details,1414,0,1414,False,1,28962,1948,67,True,2026-06-06T08:56:02.758Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,3016
+20260606-105005,rtk-bench-off-8,off,8,8,msg_01NTR2o6P9jRastuyoWVzicB,toolu_01SmpGwHwBtBp3yihuhRbtLR,Bash,gh pr checks 27107,False,View PR 27107 CI checks,0,0,1106,True,1,30910,745,70,True,2026-06-06T08:56:05.790Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3032
+20260606-105005,rtk-bench-off-8,off,8,9,msg_01VaTzMW1FYJBKEDDsSjFAjB,toolu_0145zjhnJsKsap6uZrNE5Jzc,Bash,gh pr diff 27107,False,View PR 27107 diff,1991,0,1991,False,1,31655,637,65,True,2026-06-06T08:56:08.112Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2322
+20260606-105005,rtk-bench-off-8,off,8,10,msg_01UXnNqX6gmPMBufM9wWrqUj,toolu_01UdhDgW9vJizp6n2BZwE8ba,Bash,gh issue list,False,List open issues,3414,0,3414,False,1,32292,1107,59,True,2026-06-06T08:56:10.817Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,2705
+20260606-105005,rtk-bench-off-8,off,8,11,msg_01Lg9LgAfnYYHgUEo4RZzEEs,toolu_011fUgoV3Dy1bLy7ePQKUwUy,Bash,gh run list --limit 10,False,List last 10 workflow runs,1604,0,1604,False,1,33399,1826,63,True,2026-06-06T08:56:13.671Z,"completed	success	compliance-close	compliance-close	dev	schedule	27057974599	11s	2026-06-06T08:54:52Z
+completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.e",,False,False,2854
+20260606-105005,rtk-bench-off-8,off,8,12,msg_013S6tJgRwmoQkpcksMdu1TR,toolu_01GELhx5y8LLDrAtAwg6U2pL,Bash,gh run view 25750630999,False,View workflow run 25750630999,2042,0,2042,False,1,35225,810,52,True,2026-06-06T08:56:17.595Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,3924
+20260606-105005,rtk-bench-off-8,off,8,13,msg_01QsggnU2fXAY3C34oZ7Bgkf,,,,False,,0,0,0,False,1,36035,947,1,False,,,,False,False,0
+20260606-105005,rtk-bench-on-9,on,9,1,msg_01TMqL3pyQXwoZT5CaJGgfSy,toolu_01JwNujZ3e41wxVFqd3jyPNt,Bash,git status,False,Show working tree status,31,0,31,False,5,26268,0,0,True,2026-06-06T08:55:42.281Z,"* dev...origin/dev
+?? CLAUDE.md",,False,False,0
+20260606-105005,rtk-bench-on-9,on,9,2,msg_01U5htNxZNJAsMsPVyUFNvgM,toolu_01YKRUWzmHaZLexWyFADTMV4,Bash,git branch -a,False,List all branches,5,0,5,False,1,26268,173,72,True,2026-06-06T08:55:45.374Z,* dev,,False,False,3093
+20260606-105005,rtk-bench-on-9,on,9,3,msg_01EE3hmqHbYnfh71z8ALvRg7,toolu_017RqXzi6atZ4xqpVYMfhtss,Bash,git branch -vv,False,Show branch tracking info,16,0,16,False,1,26441,106,60,True,2026-06-06T08:55:47.549Z,"git branch
+* dev",,False,False,2175
+20260606-105005,rtk-bench-on-9,on,9,4,msg_01EfEwcfW5HEyXasEpQqnhid,toolu_0112VEt3SzMKcBLKaTebDYms,Bash,git stash list,False,List stashes,10,0,10,False,1,26547,115,71,True,2026-06-06T08:55:50.910Z,No stashes,,False,False,3361
+20260606-105005,rtk-bench-on-9,on,9,5,msg_017rv78zfh39tdjkWeVVQYDq,toolu_01Tzf7Ehtva124L8dsZmownv,Bash,gh repo view,False,View repository details,130,0,130,False,1,26662,106,72,True,2026-06-06T08:55:54.052Z,"anomalyco/opencode
+  [public]
+  The open source coding agent.
+  170616 stars | 20428 forks
+  https://github.com/anomalyco/opencode",,False,False,3142
+20260606-105005,rtk-bench-on-9,on,9,6,msg_014UJVxyHGfDgcAcx9XjxMa3,toolu_01Gek2LxWcEV1vQAPYU3ttpn,Bash,gh pr list,False,List open pull requests,1659,0,1659,False,1,26768,158,63,True,2026-06-06T08:55:56.896Z,"Pull Requests
+  [open] #31090 fix(acp): use ExperimentalHttpApiServer.context instead o... (SXongin)
+  [open] #31088 docs: add OpenCode Vim to ecosystem (leohenon)
+  [open] #31082 fix(opencode): write",,False,False,2844
+20260606-105005,rtk-bench-on-9,on,9,7,msg_01FEdRdmGivBCZ8ayKDY5iRw,toolu_01K93cSyMEFJTrTVqvDWneWq,Bash,gh pr view 27107,False,View PR 27107 details,1354,0,1354,False,1,26926,858,67,True,2026-06-06T08:56:00.569Z,"[merged] PR #27107: Remove Zod from core dependencies
+  kitlangton
+  MERGED | ?
+  Checks: 12/13 passed
+  [warn] 1 checks failed
+  https://github.com/anomalyco/opencode/pull/27107
+
+  ## Summary
+  - Rem",,False,False,3673
+20260606-105005,rtk-bench-on-9,on,9,8,msg_01QFPjrjyTR6fNxUzjDyh7FF,toolu_015AHhDwQ7tb58ru1w6LUAjf,Bash,gh pr checks 27107,False,View CI check status for PR 27107,0,0,1106,True,1,27784,724,65,True,2026-06-06T08:56:03.688Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,3119
+20260606-105005,rtk-bench-on-9,on,9,9,msg_01GCSgwTMv8ALFRStbvSCf45,toolu_014hkeuvCJBy4VYskECivEmt,Bash,gh pr diff 27107,False,View diff for PR 27107,1253,0,1253,False,1,28508,637,66,True,2026-06-06T08:56:07.275Z,"bun.lock
+  @@ -214,7 +214,6 @@
+  -        ""zod"": ""catalog:"",
+         },
+         ""devDependencies"": {
+           ""@tsconfig/bun"": ""catalog:"",
+  +0 -1
+
+packages/core/package.json
+  @@ -41,8 +41,7 @@
+ ",,False,False,3587
+20260606-105005,rtk-bench-on-9,on,9,10,msg_01KSXb7mcaB7aoLBSDVpnuZK,toolu_01VsevnF5xDseVnSvNF4brvz,Bash,gh issue list,False,List open issues,1649,0,1649,False,1,29145,727,64,True,2026-06-06T08:56:09.557Z,"Issues
+  [open] #31089 Options key is not working on MacOS for Keyboard pt-PT, a...
+  [open] #31087 prevent SSE event streams from unbounded memory growth
+  [open] #31086 crashing on start
+  [open] #3",,False,False,2282
+20260606-105005,rtk-bench-on-9,on,9,11,msg_01T3eUXgLAzNXvtUBiBsTDhG,toolu_01EwJzashij5rWaEkwNZJ7Nc,Bash,gh run list --limit 10,False,List last 10 workflow runs,360,0,360,False,1,29872,933,66,True,2026-06-06T08:56:12.630Z,"Workflow Runs
+  [ok] compliance-close [27057974599]
+  [pending] review [27057948631]
+  [pending] opencode [27057948617]
+  [ok] pr-standards [27057945777]
+  [ok] pr-management [27057945776]
+  [ok] tria",,False,False,3073
+20260606-105005,rtk-bench-on-9,on,9,12,msg_014Rof28Tgn3bvBzyfduxHg2,toolu_014o7YSpNgqNaNXZqC6p9qWq,Bash,gh run view 25750630999,False,View workflow run details,25,0,25,False,1,30805,278,52,True,2026-06-06T08:56:18.675Z,Workflow Run #25750630999,,False,False,6045
+20260606-105005,rtk-bench-on-9,on,9,13,msg_01Nn5ar3qHHGTpq1rP7gTDmm,,,,False,,0,0,0,False,1,31083,120,51,False,,,,False,False,0
+20260606-105005,rtk-bench-off-9,off,9,1,msg_01Hc4ETp6CVomYZK5Nkc2Yct,toolu_01CwpaJ98PLX6k8inVaajcuD,Bash,git status,False,Show working tree status,97,0,97,False,5,26037,0,0,True,2026-06-06T08:55:41.540Z,"On branch dev
+Your branch is up to date with 'origin/dev'.
+
+nothing to commit, working tree clean",,False,False,0
+20260606-105005,rtk-bench-off-9,off,9,2,msg_013HpYfgdq4pkQhWoXfZ2NJt,toolu_017YwFfXgoEqiW7yN7jWowi3,Bash,git branch -a,False,List all branches local and remote,62,0,62,False,1,26037,193,65,True,2026-06-06T08:55:43.838Z,"* dev
+  remotes/origin/HEAD -> origin/dev
+  remotes/origin/dev",,False,False,2298
+20260606-105005,rtk-bench-off-9,off,9,3,msg_01EssqbtUmuQSgr2dMCZDgka,toolu_01KnQG7TKatcAJBo7UKCwj7A,Bash,git branch -vv,False,List local branches with tracking info,42,0,42,False,1,26230,141,70,True,2026-06-06T08:55:45.664Z,* dev 1399323 [origin/dev] chore: generate,,False,False,1826
+20260606-105005,rtk-bench-off-9,off,9,4,msg_01YRCUbAcVcEy74FSRBqcN6Q,toolu_01UNYHzdmcpEuuf2Ar1n9n6R,Bash,git stash list,False,List stashes,0,0,31,False,1,26371,129,71,True,2026-06-06T08:55:50.839Z,(Bash completed with no output),,False,False,5175
+20260606-105005,rtk-bench-off-9,off,9,5,msg_01SNdJUmPeg84W8AGBdEpZHQ,toolu_014HnWGiEykenzjP2WcxqCk3,Bash,gh repo view,False,View repository information,5472,0,5472,False,1,26500,112,63,True,2026-06-06T08:55:53.290Z,"name:	anomalyco/opencode
+description:	The open source coding agent.
+--
+<p align=""center"">
+  <a href=""https://opencode.ai"">
+    <picture>
+      <source srcset=""packages/console/app/src/asset/logo-ornat",,False,False,2451
+20260606-105005,rtk-bench-off-9,off,9,6,msg_01RjaWA8EE3Ys5zHN6uDxB7U,toolu_01LVqJN4v1RoVL1HUg89ywmv,Bash,gh pr list,False,List open pull requests,3544,0,3544,False,1,26612,2355,66,True,2026-06-06T08:55:57.112Z,"31090	fix(acp): use ExperimentalHttpApiServer.context instead of Context.empty()	SXongin:fix/acp-context-empty	OPEN	2026-06-06T08:53:20Z
+31088	docs: add OpenCode Vim to ecosystem	leohenon:docs/add-ope",,False,False,3822
+20260606-105005,rtk-bench-off-9,off,9,7,msg_016CnDV4PhbgF2sNnWNt4byQ,toolu_01BJyoo5uVt4RFRmPiesg6Ve,Bash,gh pr view 27107,False,View PR 27107 details,1414,0,1414,False,1,28967,1948,62,True,2026-06-06T08:55:59.934Z,"title:	Remove Zod from core dependencies
+state:	MERGED
+author:	kitlangton (Kit Langton)
+labels:	contributor
+assignees:	
+reviewers:	
+projects:	
+milestone:	
+number:	27107
+url:	https://github.com/anomaly",,False,False,2822
+20260606-105005,rtk-bench-off-9,off,9,8,msg_01WuXMfBZ2uxd8d8WZ8ky6Di,toolu_0191ddV6KAvmWc9na45YyeV4,Bash,gh pr checks 27107,False,Show PR 27107 CI check status,0,0,1106,True,1,30915,745,66,True,2026-06-06T08:56:02.918Z,"Exit code 1
+unit (windows)	fail	39s	https://github.com/anomalyco/opencode/actions/runs/25750622906/job/75625722825	
+check-compliance	pass	4s	https://github.com/anomalyco/opencode/actions/runs/25750630",,False,False,2984
+20260606-105005,rtk-bench-off-9,off,9,9,msg_018ASCy31TSsWD9brEhBtbdh,toolu_011WS2N9N7dkivAHUzvRSpJ5,Bash,gh pr diff 27107,False,Show PR 27107 diff,1991,0,1991,False,1,31660,638,68,True,2026-06-06T08:56:05.805Z,"diff --git a/bun.lock b/bun.lock
+index 4268e5fb7d46..9ab93237d21c 100644
+--- a/bun.lock
++++ b/bun.lock
+@@ -214,7 +214,6 @@
+         ""npm-package-arg"": ""13.0.2"",
+         ""semver"": ""^7.6.3"",
+         """,,False,False,2887
+20260606-105005,rtk-bench-off-9,off,9,10,msg_01D7sUgMmXmRkYxcjtSgoXdK,toolu_01BEZD8zyFhstNesdP7sEFaC,Bash,gh issue list,False,List open issues,3414,0,3414,False,1,32298,1108,59,True,2026-06-06T08:56:08.915Z,"31089	OPEN	Options key is not working on MacOS for Keyboard pt-PT, and it is important to active @ to reference files.		2026-06-06T08:53:10Z
+31087	OPEN	prevent SSE event streams from unbounded memory ",,False,False,3110
+20260606-105005,rtk-bench-off-9,off,9,11,msg_01FyBp6prf1v48Bf8n5ha8Ev,toolu_01LE17enYVhTnkVSTfaNbrbb,Bash,gh run list --limit 10,False,List last 10 workflow runs,1604,0,1604,False,1,33406,1826,63,True,2026-06-06T08:56:12.107Z,"completed	success	compliance-close	compliance-close	dev	schedule	27057974599	11s	2026-06-06T08:54:52Z
+completed	skipped	[BUG] opencode acp session/new fails with ""No models available"" due to Context.e",,False,False,3192
+20260606-105005,rtk-bench-off-9,off,9,12,msg_01JPUNpXjuAVhSAVf3XjySvc,toolu_01RoEdfi57iBZWpbupY2SC47,Bash,gh run view 25750630999,False,View specific workflow run details,2042,0,2042,False,1,35232,810,52,True,2026-06-06T08:56:16.628Z,"? cleanup/core-zod-dependency pr-standards anomalyco/opencode#27107 ? 25750630999
+Triggered via pull_request_target about 24 days ago
+
+JOBS
+? check-standards in 3s (ID 75625677557)
+? check-compliance ",,False,False,4521
+20260606-105005,rtk-bench-off-9,off,9,13,msg_012Pu1Q2rg4Bf2pyQmtNnCXh,,,,False,,0,0,0,False,1,36042,945,1,False,,,,False,False,0

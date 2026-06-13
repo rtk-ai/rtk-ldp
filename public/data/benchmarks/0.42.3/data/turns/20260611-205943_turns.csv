@@ -1,0 +1,1005 @@
+run_id,vm_name,group,pair_index,turn_number,message_id,tool_use_id,tool_name,command,is_rtk_prefixed,description,stdout_bytes,stderr_bytes,content_bytes,is_error,input_tokens,cache_read_input_tokens,cache_creation_input_tokens,output_tokens,has_tool,timestamp,content_preview,stop_reason,interrupted,is_image,elapsed_since_prev_ms
+20260611-205943,rtk-bench-on-0,on,0,1,msg_01Qitsb1PVT95VUfqDmfJMj2,toolu_01Veic8X8cK9mLqkzGrBKb6m,Bash,ls -la,False,List files in current directory,241,0,241,False,5,21976,4249,1,True,2026-06-11T19:00:48.335Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-0,on,0,2,msg_01QznTtsYpBwX2JZh5PTGirz,toolu_01BCtoqvr3JJE6JwHHbkJaYS,Bash,cat Cargo.toml,False,Show Cargo.toml,942,0,942,False,1,26225,300,70,True,2026-06-11T19:00:50.789Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2454
+20260611-205943,rtk-bench-on-0,on,0,3,msg_01JbdYnMeB4CgCmF28Ka4zmk,toolu_01U67AnTFP1THzUT2DVcdcqh,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26525,565,58,True,2026-06-11T19:00:55.476Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,4687
+20260611-205943,rtk-bench-on-0,on,0,4,msg_015mB462Tt8Ks9UUpJGGHWQV,toolu_016GUwjYAoeJUr5qzfeGrf1H,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27090,470,68,True,2026-06-11T19:01:55.065Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 56.79s",,False,False,59589
+20260611-205943,rtk-bench-on-0,on,0,5,msg_01UTVgqapGrvvUApQs8S5Rvr,toolu_012xFTAABqRztZrpkaY56B5r,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27560,179,70,True,2026-06-11T19:02:48.520Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 48.56s",,False,False,53455
+20260611-205943,rtk-bench-on-0,on,0,6,msg_01GCUS2MXiUbiLK4iSZgMw8X,toolu_01BKug2Y4j553ew2Ls7EZ2Zz,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy with default lints,29,0,29,False,1,27739,179,61,True,2026-06-11T19:02:59.231Z,cargo clippy: No issues found,,False,False,10711
+20260611-205943,rtk-bench-on-0,on,0,7,msg_01TmHgwM2rw2BsXazKfB6Tev,toolu_014ekCELdPvi4xk4LdBQbm4r,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,3618,0,3618,False,1,27918,157,67,True,2026-06-11T19:03:07.313Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,8082
+20260611-205943,rtk-bench-on-0,on,0,8,msg_01NhuTwJakutRtW4kLzHzDrR,toolu_01NaXMcp3W6hXBQPtGaFj9ud,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28075,1840,63,True,2026-06-11T19:03:17.151Z,"cargo test: 166 passed (3 suites, 0.26s)",,False,False,9838
+20260611-205943,rtk-bench-on-0,on,0,9,msg_019vKXJ626Dn6bpcjEmq67dg,toolu_013WNUnWyTkoiX69ndjK155w,Bash,cargo install --list 2>&1,False,List installed cargo packages,40,0,40,False,1,29915,155,64,True,2026-06-11T19:03:20.007Z,"cargo install (package, 0 deps compiled)",,False,False,2856
+20260611-205943,rtk-bench-on-0,on,0,10,msg_0152c2age9ssUxdXUrLt9emn,,,,False,,0,0,0,False,1,30070,129,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-0,off,0,1,msg_014t4JZrS1dn2qhDV1QWCdSn,toolu_01KWqmz29JhNp3KPkpdPiEed,Bash,ls -la,False,List files in current directory,827,0,827,False,5,21976,4173,8,True,2026-06-11T19:00:48.760Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:00 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-0,off,0,2,msg_01V6c5UcWPpRzW13K8wif6Za,toolu_014vkQsJgr57wgoz7PZjYyqv,Bash,cat Cargo.toml,False,Display Cargo.toml contents,942,0,942,False,1,26149,776,70,True,2026-06-11T19:00:51.213Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2453
+20260611-205943,rtk-bench-off-0,off,0,3,msg_017f35wNSG4V9X6vMtpBRnhD,toolu_01KpnEDq4LVqBiohGTbLuxGa,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26925,567,58,True,2026-06-11T19:01:23.441Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,32228
+20260611-205943,rtk-bench-off-0,off,0,4,msg_01XtCG47m8aeGU8wYxbHFABB,toolu_019dTYHx6bXoez26A5yHZv96,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27492,470,68,True,2026-06-11T19:02:10.057Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded cassowary v0.3.0
+  Downloaded autocfg v1.5.0
+  Downloaded darling v0.23.0
+  Downloaded darling_core v0.23.0
+  Downloaded heck v0.5.0
+ ",,False,False,46616
+20260611-205943,rtk-bench-off-0,off,0,5,msg_01WLkbFaWEhjmKjhgmBq8gV1,toolu_016BCQ1EearxXYJGzr5EUBX3,Bash,cargo build 2>&1,False,Run cargo build,1760,0,1760,False,1,27962,2502,69,True,2026-06-11T19:03:20.893Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling scopeguard v1.2.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.29
+   Compiling lock_api v0.4.14
+",,False,False,70836
+20260611-205943,rtk-bench-off-0,off,0,6,msg_01WNBpEdkuR5fQGR62DSajbY,toolu_01QjHD1dDLjnJHkQ28Cbh1fj,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy default lints,127,0,127,False,1,30464,1094,60,True,2026-06-11T19:03:29.888Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.73s",,False,False,8995
+20260611-205943,rtk-bench-off-0,off,0,7,msg_01QurS5RzG49me3u5EKy3gvT,toolu_01Deoi61K53Lia6q9ezRH6jT,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,30000,0,2208,False,1,31558,210,63,True,2026-06-11T19:03:40.440Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/fef9e4be-5287-484e-b35f-c8502ff911f0/tool-results/b4s8l4ozc.txt
+
+Preview ",,False,False,10552
+20260611-205943,rtk-bench-off-0,off,0,8,msg_018PUyP1fL6byGMzxUMtWHu5,toolu_01Um9AHggKhTdzwQN69w27GT,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/fef9e4be-5287-484e-b35f-c8502ff911f0/tool-results/b4s8l4ozc.txt",False,Count clippy pedantic warnings,3,0,3,False,1,31768,1202,45,True,2026-06-11T19:03:44.577Z,621,,False,False,4137
+20260611-205943,rtk-bench-off-0,off,0,9,msg_012dwedZwPLiDZhZ1mYfY4cF,toolu_01XPx2aUSDw41YmHS2Bb2K8s,Bash,"grep -oE ""clippy::[a-z_]+"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/fef9e4be-5287-484e-b35f-c8502ff911f0/tool-results/b4s8l4ozc.txt | sort | uniq -c | sort -rn | head -20",False,Tally top clippy pedantic lints,599,0,599,False,1,32970,237,51,True,2026-06-11T19:03:47.933Z,"     90 clippy::pedantic
+     53 clippy::cast_possible_truncation
+      5 clippy::cast
+      3 clippy::needless
+      2 clippy::unreadable_literal
+      2 clippy::unreadable
+      2 clippy::unnecessar",,False,False,3356
+20260611-205943,rtk-bench-off-0,off,0,10,msg_01DzEaeWLZvmwzAa15tCjRGz,toolu_01TiFSRYpzMzeUdgc8wvjD2W,Bash,"grep -oE ""implied by .-W clippy::[a-z_]+."" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/fef9e4be-5287-484e-b35f-c8502ff911f0/tool-results/b4s8l4ozc.txt | sort | uniq -c | sort -rn | head -15",False,Tally pedantic lint categories,40,0,40,False,1,33207,486,46,True,2026-06-11T19:03:51.708Z,     44 implied by `-W clippy::pedantic`,,False,False,3775
+20260611-205943,rtk-bench-off-0,off,0,11,msg_01VNL12KkwWPqmoMZUrrWM55,toolu_011iDf7DrCeBgbJDgswmTN5D,Bash,cargo test 2>&1,False,Run cargo test,13957,0,13957,False,1,33693,383,50,True,2026-06-11T19:04:06.053Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.81s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,14345
+20260611-205943,rtk-bench-off-0,off,0,12,msg_01LtQ9YnMAoyQoTjJcRfzMRB,toolu_01GTPNhnKBQz64QmqnRpBd1N,Bash,cargo install --list 2>&1,False,List installed cargo packages,0,0,31,False,1,34076,6039,64,True,2026-06-11T19:04:10.587Z,(Bash completed with no output),,False,False,4534
+20260611-205943,rtk-bench-off-0,off,0,13,msg_01HJ31SVKbor5aJcVRCgbFdU,,,,False,,0,0,0,False,1,40115,123,74,False,,,,False,False,0
+20260611-205943,rtk-bench-on-1,on,1,1,msg_01LomXM2FNKgSHpXEABT18d7,toolu_018XahMABFSjzEKgQRrZVCn3,Bash,ls -la,False,List files in current directory,241,0,241,False,5,21976,4249,8,True,2026-06-11T19:00:48.037Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-1,on,1,2,msg_0118nUtEyn7qeczYb93DVDAG,toolu_012Vm6sL2bZSpDYG9Qr34WDG,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26225,273,66,True,2026-06-11T19:00:50.264Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2227
+20260611-205943,rtk-bench-on-1,on,1,3,msg_01QqS19FZkgm6GRW29DtctcQ,toolu_011fiiZvGJ6eMPFk8gesRSZi,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26498,567,58,True,2026-06-11T19:00:54.028Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,3764
+20260611-205943,rtk-bench-on-1,on,1,4,msg_01B7pp8aHyPfaT1Z4K3apk9B,toolu_01JH433F2iZnJJRLErCtWDPc,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27065,470,68,True,2026-06-11T19:01:56.097Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 57.42s",,False,False,62069
+20260611-205943,rtk-bench-on-1,on,1,5,msg_01MqPL93H4qGm7EH3PDFeG5c,toolu_01G7MpL25t7oxWPWi6sDqUra,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27535,155,70,True,2026-06-11T19:02:47.670Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.16s",,False,False,51573
+20260611-205943,rtk-bench-on-1,on,1,6,msg_0185iM6HHvpH2Jo47dcNkw2N,toolu_01YQeze4QB9GGF7Syxt9AsUL,Bash,cargo clippy --all-targets 2>&1,False,Run clippy with default lints,29,0,29,False,1,27690,155,69,True,2026-06-11T19:02:56.111Z,cargo clippy: No issues found,,False,False,8441
+20260611-205943,rtk-bench-on-1,on,1,7,msg_01JZBv3N1PzmMaAgbbYPTYNv,toolu_01VZHNzyAjPAoLmFmKLm7tpA,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy with pedantic lints,3598,0,3598,False,1,27845,130,65,True,2026-06-11T19:03:02.945Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,6834
+20260611-205943,rtk-bench-on-1,on,1,8,msg_012eAk3ioGwZqcfwLGsnUs3c,toolu_014UiB8DkdPQ6jpf5y4deUaD,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,27975,1806,63,True,2026-06-11T19:03:11.019Z,"cargo test: 166 passed (3 suites, 0.36s)",,False,False,8074
+20260611-205943,rtk-bench-on-1,on,1,9,msg_019Ge9xKg1xAkTxR9HXb8yCz,toolu_016VJvKPyMbyU8sudNmu8X9K,Bash,cargo install --list 2>&1,False,List installed cargo binaries,40,0,40,False,1,29781,131,64,True,2026-06-11T19:03:14.062Z,"cargo install (package, 0 deps compiled)",,False,False,3043
+20260611-205943,rtk-bench-on-1,on,1,10,msg_013jSSCJBVr9DYewCeojuqg4,,,,False,,0,0,0,False,1,29912,130,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-1,off,1,1,msg_014Nfw3nEB631Yc6roiMdadT,toolu_012czZo7qErXqUAK69YmdmPf,Bash,ls -la,False,List directory contents,827,0,827,False,5,21976,4173,8,True,2026-06-11T19:00:47.801Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:00 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-1,off,1,2,msg_01NzzHQ7XPDihhxE5Gm9wkWp,toolu_01XN8WvCLZGkL5BGgD8QaTBN,Bash,cat Cargo.toml,False,Read Cargo.toml,942,0,942,False,1,26149,760,68,True,2026-06-11T19:00:50.664Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2863
+20260611-205943,rtk-bench-off-1,off,1,3,msg_01Wna7gUraPzX9QeZN62cBjj,toolu_019RXrwKH2bTTnUAZipwbTbJ,Bash,"find . -name ""*.rs"" | sort",False,List all Rust source files,621,0,621,False,1,26909,565,66,True,2026-06-11T19:00:53.517Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2853
+20260611-205943,rtk-bench-off-1,off,1,4,msg_01A1mMcm4r8VZsiGV7Ay78kC,toolu_01Gv3GuaNKMyAwbLEYVMdeev,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27474,469,70,True,2026-06-11T19:01:54.045Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded cassowary v0.3.0
+  Downloaded cfg-if v1.0.4
+  Downloaded scopeguard v1.2.0
+  Downloaded castaway v0.2.4
+  Downloaded autocfg v1.5.0
+  ",,False,False,60528
+20260611-205943,rtk-bench-off-1,off,1,5,msg_01Wt976SnXnE112bKZ2QMZqY,toolu_01NRzT4qUo15kGDKTMs1s1Sb,Bash,cargo build 2>&1,False,Build the project,1760,0,1760,False,1,27943,2502,63,True,2026-06-11T19:02:45.614Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.29
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+",,False,False,51569
+20260611-205943,rtk-bench-off-1,off,1,6,msg_01PKmvyGTcT5K7JxfxUF5vhu,toolu_01ASaDavAc3odMc5ekh4QxGp,Bash,cargo clippy --all-targets 2>&1,False,Run default clippy lints,127,0,127,False,1,30445,1094,61,True,2026-06-11T19:02:50.326Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.21s",,False,False,4712
+20260611-205943,rtk-bench-off-1,off,1,7,msg_01JLLCd9U8kHymNioMvkuAVd,toolu_01UkVMVatJXjXJRNfDonq4GU,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run pedantic clippy lints,30000,0,2208,False,1,31539,207,65,True,2026-06-11T19:03:00.470Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/150f3464-2e09-479d-ab8f-4db17b679023/tool-results/b8gx5foc1.txt
+
+Preview ",,False,False,10144
+20260611-205943,rtk-bench-off-1,off,1,8,msg_01WGSH1yneMAX3Tgy4urJZ3d,toolu_01FtxSX1zaxdNK1pKsKLAzzh,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/150f3464-2e09-479d-ab8f-4db17b679023/tool-results/b8gx5foc1.txt",False,Count pedantic warnings,3,0,3,False,1,31746,1156,48,True,2026-06-11T19:03:04.607Z,621,,False,False,4137
+20260611-205943,rtk-bench-off-1,off,1,9,msg_01KgG7ThxkURNS1YvTZFqPp9,toolu_01XjPsuQVEZ5j36hYuK7EzDU,Bash,"grep -oE ""clippy::[a-z_]+"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/150f3464-2e09-479d-ab8f-4db17b679023/tool-results/b8gx5foc1.txt | sort | uniq -c | sort -rn | head -15",False,Top pedantic warning categories,442,0,442,False,1,32902,226,63,True,2026-06-11T19:03:08.193Z,"     90 clippy::pedantic
+     53 clippy::cast_possible_truncation
+      5 clippy::cast
+      3 clippy::needless
+      2 clippy::unreadable_literal
+      2 clippy::unreadable
+      2 clippy::unnecessar",,False,False,3586
+20260611-205943,rtk-bench-off-1,off,1,10,msg_01RLRbpbrAK8gVTELn1rcypq,toolu_01J62bAtnDSKSg77fwZYTcQs,Bash,"grep -oE ""implied by \`-W clippy::[a-z_]+"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/150f3464-2e09-479d-ab8f-4db17b679023/tool-results/b8gx5foc1.txt | sort | uniq -c | sort -rn | head -20",False,Top pedantic lint sources,39,0,39,False,1,33128,407,49,True,2026-06-11T19:03:12.091Z,     44 implied by `-W clippy::pedantic,,False,False,3898
+20260611-205943,rtk-bench-off-1,off,1,11,msg_01Bxx27JnASw1gzq1hxbiikS,toolu_01Wtm8ZHe6HEVrRpdtm29ueH,Bash,"grep -oE ""#[a-z_]+"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/150f3464-2e09-479d-ab8f-4db17b679023/tool-results/b8gx5foc1.txt | sort | uniq -c | sort -rn | head -20",False,Top warning kinds (alt grep),571,0,571,False,1,33535,379,59,True,2026-06-11T19:03:15.907Z,"    131 #uninlined_format_args
+     74 #doc_markdown
+     64 #must_use_candidate
+     52 #cast_possible_truncation
+     51 #cast_precision_loss
+     38 #unreadable_literal
+     34 #map_unwrap_or
+     ",,False,False,3816
+20260611-205943,rtk-bench-off-1,off,1,12,msg_016y4Evmemb4Vuo7shwjkAJQ,toolu_015AtiFBEnVPFrTU3XCWhQYL,Bash,cargo test 2>&1,False,Run all tests,13957,0,13957,False,1,33914,465,63,True,2026-06-11T19:03:23.116Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.97s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,7209
+20260611-205943,rtk-bench-off-1,off,1,13,msg_01WoxzkvjzJ5doXkjDoVnS7N,toolu_014Eruac1dQVK8ShR2Kv9b15,Bash,cargo install --list 2>&1,False,List installed cargo binaries,0,0,31,False,1,34379,5975,64,True,2026-06-11T19:03:26.252Z,(Bash completed with no output),,False,False,3136
+20260611-205943,rtk-bench-off-1,off,1,14,msg_01E3WbTGE1MPBgVCpzX2z5bb,,,,False,,0,0,0,False,1,40354,124,40,False,,,,False,False,0
+20260611-205943,rtk-bench-on-2,on,2,1,msg_01X5yHoMzPrtiCFSoL5jWQWd,toolu_017S7bgXinHYZ1AD2KjPwabw,Bash,ls -la,False,List files in current directory,241,0,241,False,5,21976,4249,8,True,2026-06-11T19:00:48.353Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-2,on,2,2,msg_01SLE1u4hf1NFXUngrs22Lk3,toolu_01XbMnAzv1MqcBhiUDF1inDu,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26225,297,66,True,2026-06-11T19:00:51.258Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2905
+20260611-205943,rtk-bench-on-2,on,2,3,msg_01X46M3tse7NYZALbuJu3KSA,toolu_01L11ZWaTbWqP3cACvu4Dw34,Bash,"find . -name ""*.rs"" | sort",False,List all Rust source files,621,0,621,False,1,26522,567,58,True,2026-06-11T19:00:53.530Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2272
+20260611-205943,rtk-bench-on-2,on,2,4,msg_01TgVxhx5CWCbY7hWSugMCUj,toolu_019LqtbnsQp1MTcb9mxsEZWQ,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27089,469,70,True,2026-06-11T19:01:56.061Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 58.99s",,False,False,62531
+20260611-205943,rtk-bench-on-2,on,2,5,msg_01QPSADoFMGEzK51DBmLgoHk,toolu_01UMQCCHc467hPwDUAD2uYCG,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27558,179,70,True,2026-06-11T19:02:47.703Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.47s",,False,False,51642
+20260611-205943,rtk-bench-on-2,on,2,6,msg_01WphzRbMhL5gsujUsRBHpiq,toolu_01UBeqbpuNVPLKVh31rig2eb,Bash,cargo clippy --all-targets 2>&1,False,Run clippy with default lints,29,0,29,False,1,27737,179,69,True,2026-06-11T19:02:58.764Z,cargo clippy: No issues found,,False,False,11061
+20260611-205943,rtk-bench-on-2,on,2,7,msg_01KixpMQfDiRUFKHTFLKVNU4,toolu_01MwsN76RTVqNkSdUqy8Fr8j,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy with pedantic lints,3594,0,3594,False,1,27916,154,51,True,2026-06-11T19:03:07.489Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,8725
+20260611-205943,rtk-bench-on-2,on,2,8,msg_014YpuZ9FajCCVtfJaqJryBu,toolu_01T89bymanGwZ3CRFH86egRQ,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28070,1827,66,True,2026-06-11T19:03:17.259Z,"cargo test: 166 passed (3 suites, 0.27s)",,False,False,9770
+20260611-205943,rtk-bench-on-2,on,2,9,msg_01KCkqcY8zL46XzbpDccCAVp,toolu_016ioQAKyNEJfVUBKyNLS1i3,Bash,cargo install --list 2>&1,False,List installed cargo crates,40,0,40,False,1,29897,155,64,True,2026-06-11T19:03:49.559Z,"cargo install (package, 0 deps compiled)",,False,False,32299
+20260611-205943,rtk-bench-on-2,on,2,10,msg_01SocRopLGAWi4nhgTDh6JM1,,,,False,,0,0,0,False,1,30052,129,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-2,off,2,1,msg_01GDWtfVHPyzSE3nzcuq1a2P,toolu_019u5Gv4UEcqLmZLzWT2TADx,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,1,True,2026-06-11T19:04:37.191Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:04 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-2,off,2,2,msg_01Se4nDqf5pTJ6R1PQVzUwE3,toolu_01AizGZ5G5JZ9CYiSYRZ5j17,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26149,776,66,True,2026-06-11T19:04:39.207Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2016
+20260611-205943,rtk-bench-off-2,off,2,3,msg_01Y4iaBxNiQtJF957VaWAARR,toolu_01BwurBY3KiPy8MrLQTdi2cQ,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files sorted,621,0,621,False,1,26925,567,58,True,2026-06-11T19:04:42.069Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2862
+20260611-205943,rtk-bench-off-2,off,2,4,msg_016xJLN9pRd9bYWvmdiGmM6p,toolu_012HvpNAqysAubdXuHrwazau,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27492,473,66,True,2026-06-11T19:05:42.406Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded signal-hook-mio v0.2.5
+  Downloaded bitflags v2.11.0
+  Downloaded castaway v0.2.4
+  Downloaded darling v0.23.0
+  Downloaded static_ass",,False,False,60337
+20260611-205943,rtk-bench-off-2,off,2,5,msg_012VqYSfai4zFSMoY8jfuHrN,toolu_01WAUB2gFaNn5st3GrmCJ5bo,Bash,cargo build 2>&1,False,Run cargo build,1760,0,1760,False,1,27965,2502,68,True,2026-06-11T19:06:35.975Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.29
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+",,False,False,53569
+20260611-205943,rtk-bench-off-2,off,2,6,msg_01KnFFgp5qYPAiS5oYo4nAir,toolu_01D3HJiPDHzugKKL27KCYM3M,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy default lints,127,0,127,False,1,30467,1061,63,True,2026-06-11T19:06:47.260Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.37s",,False,False,11285
+20260611-205943,rtk-bench-off-2,off,2,7,msg_011KNogDXVVeYfuN4d4vdJak,toolu_01MFgnURC8w9eiERmDBQ3bcm,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,30000,0,2208,False,1,31528,210,67,True,2026-06-11T19:06:58.524Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4474ca69-a0ff-4b8b-a570-fad6fb2c471d/tool-results/b4lvwns4d.txt
+
+Preview ",,False,False,11264
+20260611-205943,rtk-bench-off-2,off,2,8,msg_01YbZT5H1xvXJhZa4wDfpGos,toolu_01DcDZNQHKzt7TiK3722yvgj,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4474ca69-a0ff-4b8b-a570-fad6fb2c471d/tool-results/b4lvwns4d.txt; tail -20 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4474ca69-a0ff-4b8b-a570-fad6fb2c471d/tool-results/b4lvwns4d.txt",False,Count warnings and view tail of pedantic output,1245,0,1245,False,1,31738,1165,62,True,2026-06-11T19:07:02.429Z,"621
+1237 +         let kill_row = ports_area.y + 1 + 1 + live_ports + u16::try_from(app.orphan_ports.len());
+     |
+
+warning: `abtop` (lib) generated 552 warnings (run `cargo clippy --fix --lib -p abt",,False,False,3905
+20260611-205943,rtk-bench-off-2,off,2,9,msg_01XXrXxoFhxEDZJYPrVPMoot,toolu_01JzQcHSG7hs17S9wRMkBT8Y,Bash,cargo test 2>&1,False,Run cargo test,13957,0,13957,False,1,32903,875,63,True,2026-06-11T19:07:10.559Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.59s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,8130
+20260611-205943,rtk-bench-off-2,off,2,10,msg_017mxy5xsiH7mcXfutFDdWg8,toolu_01Hzf2fVhsbL8DCiPHwSGrN4,Bash,cargo install --list 2>&1,False,List installed cargo packages,0,0,31,False,1,33778,5976,64,True,2026-06-11T19:07:14.168Z,(Bash completed with no output),,False,False,3609
+20260611-205943,rtk-bench-off-2,off,2,11,msg_018gfe1NYkrKSLgpZjQhebUw,,,,False,,0,0,0,False,1,39754,266,45,False,,,,False,False,0
+20260611-205943,rtk-bench-on-3,on,3,1,msg_01L4UYzfWVt2U1mM9hyL8w5Y,toolu_01HsYzYQNjzEajCR9nAzAxw2,Bash,ls -la,False,List files in current directory,241,0,241,False,5,26225,0,1,True,2026-06-11T19:04:37.684Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-3,on,3,2,msg_01P3fRpF6WuTdmdcEz9m9m8P,toolu_01JaVHbEj2Ce7NZThP558MXX,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26225,298,67,True,2026-06-11T19:04:39.780Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2096
+20260611-205943,rtk-bench-on-3,on,3,3,msg_01TsampNqSUMuXcmBQKZ1Vuv,toolu_01VqS8cGLfNWKQ3xNoCrnhNd,Bash,"find . -name ""*.rs"" | sort",False,Find Rust source files,621,0,621,False,1,26523,567,58,True,2026-06-11T19:04:42.276Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2496
+20260611-205943,rtk-bench-on-3,on,3,4,msg_01PhrrecbBBAVR2BuvYCyBdm,toolu_01NkV5rC8REXPC3Dy7KisuLX,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27090,469,68,True,2026-06-11T19:05:41.931Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 56.00s",,False,False,59655
+20260611-205943,rtk-bench-on-3,on,3,5,msg_018Ru2AMeqDewAqUsvgy8wBq,toolu_01Gd8Kf49K1mTPkQzW1cxJxK,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27559,179,66,True,2026-06-11T19:06:36.119Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 50.34s",,False,False,54188
+20260611-205943,rtk-bench-on-3,on,3,6,msg_0157BSAwsUrprdsseCGwGuJo,toolu_016akPXoeCT79je8uq7DmvH5,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy default lints,29,0,29,False,1,27738,179,69,True,2026-06-11T19:06:46.609Z,cargo clippy: No issues found,,False,False,10490
+20260611-205943,rtk-bench-on-3,on,3,7,msg_01L6TqrvEP5iLrVXMcuLmZuu,toolu_01PvJtjEhxeLEYcWXvhSHwsw,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy pedantic lints,3653,0,3653,False,1,27917,156,65,True,2026-06-11T19:06:57.526Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,10917
+20260611-205943,rtk-bench-on-3,on,3,8,msg_01J9htr1xKDErXtMAN7wW4zA,toolu_01PiSYALotN6K81SfVzvZFMA,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28073,1852,68,True,2026-06-11T19:07:07.202Z,"cargo test: 166 passed (3 suites, 0.25s)",,False,False,9676
+20260611-205943,rtk-bench-on-3,on,3,9,msg_01GVcvANm8Z2JY1J4SQ5ZEWw,toolu_01USojvX3CUt65T6r1riyDva,Bash,cargo install --list 2>&1,False,List cargo installed packages,40,0,40,False,1,29925,155,64,True,2026-06-11T19:07:09.810Z,"cargo install (package, 0 deps compiled)",,False,False,2608
+20260611-205943,rtk-bench-on-3,on,3,10,msg_015PRbSzUKj8n7QcmmnjpQ5t,,,,False,,0,0,0,False,1,30080,129,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-3,off,3,1,msg_01FZjEx2dYiJHvsp3VMbD4GL,toolu_01B83aLg1JNVWVyTCDdfaCyt,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,1,True,2026-06-11T19:05:08.349Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:04 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-3,off,3,2,msg_01L2JSKMiU9L8Ds5ZH58Ej32,toolu_015DTxgEr3n7TUD6xkzdWysx,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26149,759,66,True,2026-06-11T19:05:11.841Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,3492
+20260611-205943,rtk-bench-off-3,off,3,3,msg_01HLCS5V8iZcbdBtUqeFRCHp,toolu_01X4wdVv7cdSjGrY6EcXSKMf,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files sorted,621,0,621,False,1,26908,567,58,True,2026-06-11T19:05:14.470Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2629
+20260611-205943,rtk-bench-off-3,off,3,4,msg_019y6yGbWgC3HHG9LPPcDaez,toolu_015jBVkXBi1FHbjVq31jKjGF,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27475,473,68,True,2026-06-11T19:05:58.159Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded castaway v0.2.4
+  Downloaded equivalent v1.0.2
+  Downloaded cfg-if v1.0.4
+  Downloaded cassowary v0.3.0
+  Downloaded scopeguard v1.2.0",,False,False,43689
+20260611-205943,rtk-bench-off-3,off,3,5,msg_016Bxw7Pq52ZSbF3JFFWUMWX,toolu_01QUfvxjay7hcpedpyJbB9RY,Bash,cargo build 2>&1,False,Run cargo build,1760,0,1760,False,1,27948,2502,69,True,2026-06-11T19:06:38.746Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.29
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+",,False,False,40587
+20260611-205943,rtk-bench-off-3,off,3,6,msg_01VwaMftUqbPakjU25s4C6Sb,toolu_01PBgLRhtzjrBXdFno6qH1Xa,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy with default lints,127,0,127,False,1,30450,1094,68,True,2026-06-11T19:06:48.808Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.16s",,False,False,10062
+20260611-205943,rtk-bench-off-3,off,3,7,msg_01MknuT6wsqfHWubPQUcz6pV,toolu_01NnKWMKQcDgyr5MP41xePMN,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,30000,0,2208,False,1,31544,211,51,True,2026-06-11T19:06:58.821Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4ad35c3f-2c41-4e6f-a45e-56b3f285fcbf/tool-results/byrbvpk1t.txt
+
+Preview ",,False,False,10013
+20260611-205943,rtk-bench-off-3,off,3,8,msg_01JLeE5LYkvfKAxohXZsFkNM,toolu_01ThLG8WB68qJCrKtykf1KwD,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4ad35c3f-2c41-4e6f-a45e-56b3f285fcbf/tool-results/byrbvpk1t.txt; grep -c ""^error"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4ad35c3f-2c41-4e6f-a45e-56b3f285fcbf/tool-results/byrbvpk1t.txt; tail -5 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4ad35c3f-2c41-4e6f-a45e-56b3f285fcbf/tool-results/byrbvpk1t.txt",False,Count clippy warnings and errors,342,0,342,False,1,31755,1167,41,True,2026-06-11T19:07:03.731Z,"621
+0
+1301 +         let kill_row = ports_area.y + 1 + 1 + u16::try_from(app.orphan_ports.len());
+     |
+
+warning: `abtop` (lib test) generated 614 warnings (547 duplicates) (run `cargo clippy --fix -",,False,False,4910
+20260611-205943,rtk-bench-off-3,off,3,9,msg_01UNEzVE9bUAASMxiPqn9NWb,toolu_01KLgCMXmShAJY4C7kQHBXQm,Bash,cargo test 2>&1,False,Run cargo test,13957,0,13957,False,1,32922,575,63,True,2026-06-11T19:07:17.640Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 9.91s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,13909
+20260611-205943,rtk-bench-off-3,off,3,10,msg_013XJnntamBGJhLvkfkWQD2G,toolu_01Kj2KNmnZPRuEctquyH72bm,Bash,cargo install --list 2>&1,False,List installed cargo packages,0,0,31,False,1,33497,5976,64,True,2026-06-11T19:07:20.316Z,(Bash completed with no output),,False,False,2676
+20260611-205943,rtk-bench-off-3,off,3,11,msg_018HX7j3U3MtEagqVgAfrNdz,,,,False,,0,0,0,False,1,39473,266,43,False,,,,False,False,0
+20260611-205943,rtk-bench-on-4,on,4,1,msg_01NUyGPfVJYFaVRbA1yHfvEG,toolu_01E2YfxYsdoG62MXma75ZU1P,Bash,ls -la,False,List directory contents,241,0,241,False,5,26225,0,1,True,2026-06-11T19:04:37.328Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-4,on,4,2,msg_01PkSsevgpDxutCCTu9W6361,toolu_012c2au43y9Sini4kW7tNE5x,Bash,cat Cargo.toml,False,Read Cargo.toml manifest,942,0,942,False,1,26225,277,68,True,2026-06-11T19:04:39.348Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2020
+20260611-205943,rtk-bench-on-4,on,4,3,msg_019X5kSFwuXMJSdSj8iSiegr,toolu_01Na14WNUVrcnXxGbhhzJMJY,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26502,568,58,True,2026-06-11T19:04:41.838Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2490
+20260611-205943,rtk-bench-on-4,on,4,4,msg_01LX48A9GjX46cnfessxWGHi,toolu_015RtYFzyj1bkG947yJ95GcH,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27070,470,70,True,2026-06-11T19:05:41.668Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 57.28s",,False,False,59830
+20260611-205943,rtk-bench-on-4,on,4,5,msg_01RStyWpS6Zf2TzM1Apn2dQF,toolu_018Qto1ZkH9u3NYHLq554ZRn,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27540,179,66,True,2026-06-11T19:06:35.340Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.80s",,False,False,53672
+20260611-205943,rtk-bench-on-4,on,4,6,msg_017PgN57jSRzD2Ad6AUpbYpf,toolu_01RNeXb8RJDn19UAvkmbquf4,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy default lints,29,0,29,False,1,27719,179,61,True,2026-06-11T19:06:45.247Z,cargo clippy: No issues found,,False,False,9907
+20260611-205943,rtk-bench-on-4,on,4,7,msg_01ELSMFbAKXjwXgWpRcpintt,toolu_011wK9RaTyUBrbJmNaqDUSzB,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy pedantic lints,3598,0,3598,False,1,27898,156,59,True,2026-06-11T19:06:57.150Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,11903
+20260611-205943,rtk-bench-on-4,on,4,8,msg_01U4fWBRWQmox2gqS3J4SSVB,toolu_01EFP2npEf6P5UWTXVJ4pdp6,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28054,1832,63,True,2026-06-11T19:07:06.693Z,"cargo test: 166 passed (3 suites, 0.44s)",,False,False,9543
+20260611-205943,rtk-bench-on-4,on,4,9,msg_01NtCGAPzoUBu6UKxT2YUBoc,toolu_01YBWDL64XZgVhXRRqqZDfHc,Bash,cargo install --list 2>&1,False,List installed cargo binaries,40,0,40,False,1,29886,155,64,True,2026-06-11T19:07:09.435Z,"cargo install (package, 0 deps compiled)",,False,False,2742
+20260611-205943,rtk-bench-on-4,on,4,10,msg_01QqCryudJUhuvpxm5c1er4H,,,,False,,0,0,0,False,1,30041,130,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-4,off,4,1,msg_01HjTG1jBkaSsAqWDgcYwrPH,toolu_01FG2nTtJV6AjzhGbHzBWBv4,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,8,True,2026-06-11T19:04:38.163Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:04 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-4,off,4,2,msg_01TJyAcMTiqer1ap4ThiwfHW,toolu_01MQVFPdM4QWVEcXg4jSCRsg,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26149,772,66,True,2026-06-11T19:04:40.165Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2001
+20260611-205943,rtk-bench-off-4,off,4,3,msg_01Wvz42Jdjqe1gKSxLPPnyfF,toolu_01GxRAgWJJVx6B74tDUB43Ut,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26921,567,66,True,2026-06-11T19:04:43.372Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,3207
+20260611-205943,rtk-bench-off-4,off,4,4,msg_012nojYa95GDKJCmQuMYrYhY,toolu_016bunnWdDnfGQjmpamLxu2y,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27488,470,66,True,2026-06-11T19:05:42.885Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded cfg-if v1.0.4
+  Downloaded castaway v0.2.4
+  Downloaded heck v0.5.0
+  Downloaded scopeguard v1.2.0
+  Downloaded cassowary v0.3.0
+  Dow",,False,False,59513
+20260611-205943,rtk-bench-off-4,off,4,5,msg_01KvsbUQGwSigTK222zGQUkL,toolu_01UzmjsJLLcibFdp11PZh8fz,Bash,cargo build 2>&1,False,Build the project,1760,0,1760,False,1,27958,2502,62,True,2026-06-11T19:06:36.742Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling scopeguard v1.2.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.29
+   Compiling lock_api v0.4.14
+",,False,False,53857
+20260611-205943,rtk-bench-off-4,off,4,6,msg_01PUFi9aUdqnX3sugCJkYccf,toolu_01Fq7y6ZTQnohzbvmeLqpSVS,Bash,cargo clippy --all-targets 2>&1,False,Run clippy default lints,127,0,127,False,1,30460,1093,61,True,2026-06-11T19:06:46.774Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.40s",,False,False,10032
+20260611-205943,rtk-bench-off-4,off,4,7,msg_01BkrGPEx3WF7VAWrnUScwTu,toolu_01WgBUisNSYDMc2hcxXxac1h,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy with pedantic lints,30000,0,2208,False,1,31553,207,69,True,2026-06-11T19:06:58.441Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/66d9fa43-61aa-412f-b018-bc194a50f1be/tool-results/be0wubs22.txt
+
+Preview ",,False,False,11667
+20260611-205943,rtk-bench-off-4,off,4,8,msg_01GLKqnvssSmS9xruYGXrr24,toolu_01VmZiFEXWX2hnmvcf9rPgGn,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/66d9fa43-61aa-412f-b018-bc194a50f1be/tool-results/be0wubs22.txt",False,Count pedantic clippy warnings,3,0,3,False,1,31760,1194,37,True,2026-06-11T19:07:01.836Z,621,,False,False,3395
+20260611-205943,rtk-bench-off-4,off,4,9,msg_01Gwt2CDou69FDL5mPE9pTKA,toolu_01Uh2oNFXV3qDsCumwUkqgjf,Bash,"grep -oE ""clippy::[a-z_]+"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/66d9fa43-61aa-412f-b018-bc194a50f1be/tool-results/be0wubs22.txt | sort | uniq -c | sort -rn | head -20",False,Top pedantic lint categories,599,0,599,False,1,32954,226,53,True,2026-06-11T19:07:05.031Z,"     90 clippy::pedantic
+     53 clippy::cast_possible_truncation
+      5 clippy::cast
+      3 clippy::needless
+      2 clippy::unreadable_literal
+      2 clippy::unreadable
+      2 clippy::unnecessar",,False,False,3195
+20260611-205943,rtk-bench-off-4,off,4,10,msg_019ew2PFjgHWm6Cvuabd1D2n,toolu_01KhCcMzaDCFZazZS2BPesic,Bash,"grep -oE ""\`-W clippy::[a-z_]+\`"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/66d9fa43-61aa-412f-b018-bc194a50f1be/tool-results/be0wubs22.txt | sort | uniq -c | sort -rn | head -15",False,Specific pedantic lints triggered,29,0,29,False,1,33180,480,55,True,2026-06-11T19:07:08.229Z,     88 `-W clippy::pedantic`,,False,False,3198
+20260611-205943,rtk-bench-off-4,off,4,11,msg_016E29PQ5HJAfybhZQ8GRyXN,toolu_01EosNkzTeUhUw9JexpXSDEg,Bash,cargo test 2>&1,False,Run all tests,13957,0,13957,False,1,33660,378,41,True,2026-06-11T19:07:16.442Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.40s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,8213
+20260611-205943,rtk-bench-off-4,off,4,12,msg_01RcAkHGfynqiQ6mVjddNGfi,toolu_013XofV8Ft4uoQ7qE6sAcwmH,Bash,cargo install --list 2>&1,False,List installed cargo binaries,0,0,31,False,1,34038,6037,64,True,2026-06-11T19:07:18.488Z,(Bash completed with no output),,False,False,2045
+20260611-205943,rtk-bench-off-4,off,4,13,msg_01EtPRY7SCvAw7456NKVHE53,,,,False,,0,0,0,False,1,40075,124,44,False,,,,False,False,0
+20260611-205943,rtk-bench-on-5,on,5,1,msg_01AGFGJMju3KrSyL4FaBby7y,toolu_01BSAPHKadQGrozLw8R2nvUo,Bash,ls -la,False,List files in current directory,241,0,241,False,5,26225,0,8,True,2026-06-11T19:07:51.531Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-5,on,5,2,msg_01RhxUE5AFnxsk3U7uZDwSz1,toolu_01617wN7rmg1axVct2CpSpec,Bash,cat Cargo.toml,False,Display Cargo.toml contents,942,0,942,False,1,26519,0,68,True,2026-06-11T19:08:24.266Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,32735
+20260611-205943,rtk-bench-on-5,on,5,3,msg_018GRStK5o393emTooEUiGwG,toolu_0186S1JVkqCvr6HQNuwkuN2h,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26519,567,66,True,2026-06-11T19:08:29.804Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,5538
+20260611-205943,rtk-bench-on-5,on,5,4,msg_01YDdkeM9be5wAf596eQ2eJa,toolu_012evrR627sZbVwpAZrsAu47,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27086,470,66,True,2026-06-11T19:09:39.719Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 06s",,False,False,69915
+20260611-205943,rtk-bench-on-5,on,5,5,msg_01CjExMtgaUAUUEv2m4J2ec3,toolu_012pqsr8xsUt1nyGyd5tQU3D,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27556,156,66,True,2026-06-11T19:10:32.160Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.57s",,False,False,52441
+20260611-205943,rtk-bench-on-5,on,5,6,msg_01YL33Eu31VUCH5Vh2CsNoVj,toolu_01EypDChQZqjdF1ui1iQffQ9,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy with default lints,29,0,29,False,1,27712,155,61,True,2026-06-11T19:10:40.482Z,cargo clippy: No issues found,,False,False,8322
+20260611-205943,rtk-bench-on-5,on,5,7,msg_01GeVCwqWc6Z6LA4z9v6naSq,toolu_01U5RT6dgTWA2AX1rRfRwZLD,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,3603,0,3603,False,1,27867,133,59,True,2026-06-11T19:10:50.655Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,10173
+20260611-205943,rtk-bench-on-5,on,5,8,msg_01QSSCTeiBbgRMM1SnGr9F5u,toolu_011f9u7bafq9rJdQb4mHVxAh,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28000,1806,63,True,2026-06-11T19:10:57.818Z,"cargo test: 166 passed (3 suites, 0.26s)",,False,False,7163
+20260611-205943,rtk-bench-on-5,on,5,9,msg_01Fk8Y6EsTSzLg8LFKugkzFw,toolu_01RN7BPjXpAui7EcrWrBfGS1,Bash,cargo install --list 2>&1,False,List installed cargo packages,40,0,40,False,1,29806,131,64,True,2026-06-11T19:11:00.035Z,"cargo install (package, 0 deps compiled)",,False,False,2217
+20260611-205943,rtk-bench-on-5,on,5,10,msg_01MigCUqdPHnSSFNSkcmWmLx,,,,False,,0,0,0,False,1,29937,129,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-5,off,5,1,msg_01HPLQHFX5CzPhqBytV5gNA6,toolu_01CxARiY39SnrPSsjy6uWyHk,Bash,ls -la,False,List directory contents,827,0,827,False,5,26149,0,8,True,2026-06-11T19:07:49.864Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:07 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-5,off,5,2,msg_01K5JGtTJbcxWfhfyzWERjww,toolu_013gLr6ugP6FRyxfFsnsdM6M,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26149,753,70,True,2026-06-11T19:07:52.145Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2281
+20260611-205943,rtk-bench-off-5,off,5,3,msg_011G97QaLBHuuFCAW64Q4gL8,toolu_015s9Dnge76BS18vB3X8PTVi,Bash,"find . -name ""*.rs"" | sort",False,List all Rust source files,621,0,621,False,1,26902,567,58,True,2026-06-11T19:07:54.457Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2312
+20260611-205943,rtk-bench-off-5,off,5,4,msg_01LPmh6Et22kT62jrihdVzoE,toolu_01N15SsKrWYasj38ECjB7Usk,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27469,469,68,True,2026-06-11T19:09:37.262Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded cassowary v0.3.0
+  Downloaded castaway v0.2.4
+  Downloaded cfg-if v1.0.4
+  Downloaded dirs v6.0.0
+  Downloaded signal-hook-mio v0.2.5
+",,False,False,102805
+20260611-205943,rtk-bench-off-5,off,5,5,msg_0121EQ89qB4y84GofUSbcM8d,toolu_01VvZv45kJReAw89SgiQixyj,Bash,cargo build 2>&1,False,Run cargo build,1760,0,1760,False,1,27938,2479,63,True,2026-06-11T19:10:31.538Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling log v0.4.29
+   Compiling smallvec v1.15.1
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+",,False,False,54276
+20260611-205943,rtk-bench-off-5,off,5,6,msg_01YGyBqvkFrcQQ6MsaaMJ8iV,toolu_01Bsqs7pvXuNybJ6hcJKwrpP,Bash,cargo clippy --all-targets 2>&1,False,Run clippy default lints,127,0,127,False,1,30417,1061,63,True,2026-06-11T19:10:39.850Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.54s",,False,False,8312
+20260611-205943,rtk-bench-off-5,off,5,7,msg_01M8v6CPSC5YEa2AgNLayi4p,toolu_01Dr2H6LChc9bzm2WjzXPaxv,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy pedantic lints,30000,0,2208,False,1,31478,207,67,True,2026-06-11T19:10:50.551Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4a22085e-12bf-4907-9b72-8e7a8bb52ed7/tool-results/bhidnv6z3.txt
+
+Preview ",,False,False,10701
+20260611-205943,rtk-bench-off-5,off,5,8,msg_014yiC8vnaKNZ3CHUB1MJ5U7,toolu_01M5V5hrdpjjVz7CquN5NNWd,Bash,"grep -c ""^warning"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4a22085e-12bf-4907-9b72-8e7a8bb52ed7/tool-results/bhidnv6z3.txt; tail -20 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/4a22085e-12bf-4907-9b72-8e7a8bb52ed7/tool-results/bhidnv6z3.txt",False,Count pedantic warnings and view summary,1206,0,1206,False,1,31685,1161,46,True,2026-06-11T19:10:54.088Z,"621
+1237 -         let kill_row = ports_area.y + 1 + 1 + live_ports + app.orphan_ports.len() as u16;
+1237 +         let kill_row = ports_area.y + 1 + 1 + live_ports + u16::try_from(app.orphan_ports.le",,False,False,3537
+20260611-205943,rtk-bench-off-5,off,5,9,msg_018wQqefyyG4PAT6ZM3MdgYh,toolu_01RzDPVvgvMV1v8tShRFNxPi,Bash,cargo test 2>&1,False,Run cargo test,13957,0,13957,False,1,32846,818,63,True,2026-06-11T19:11:02.251Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.17s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,8163
+20260611-205943,rtk-bench-off-5,off,5,10,msg_01LLB1iRePoTmX1kVLJd8yHY,toolu_01GzGDPfctvTojURkPsjkZeu,Bash,cargo install --list 2>&1,False,List installed cargo binaries,0,0,31,False,1,33664,5976,64,True,2026-06-11T19:11:04.424Z,(Bash completed with no output),,False,False,2173
+20260611-205943,rtk-bench-off-5,off,5,11,msg_01SDMtzdnrDi1GhGWARxumPs,,,,False,,0,0,0,False,1,39640,267,45,False,,,,False,False,0
+20260611-205943,rtk-bench-on-6,on,6,1,msg_01D1LNdAv3zEFZsD2UCWteev,toolu_017LjfwMUmnnvmW3WecYMkwJ,Bash,ls -la,False,List files in current directory,241,0,241,False,5,26225,0,1,True,2026-06-11T19:07:50.031Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-6,on,6,2,msg_01S8LrJaZCtqBcTgNLTEnLe4,toolu_01Du7rR9FCQuNMeM5qP2MA4G,Bash,cat Cargo.toml,False,Read Cargo.toml contents,942,0,942,False,1,26225,294,67,True,2026-06-11T19:07:52.115Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2084
+20260611-205943,rtk-bench-on-6,on,6,3,msg_014FEktn7fMZqHMebPffW6fi,toolu_01KiUiv2e3L5zwnfpZYenE2n,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26519,567,58,True,2026-06-11T19:07:54.079Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,1964
+20260611-205943,rtk-bench-on-6,on,6,4,msg_016w3MXYHycpinesVS6ityeu,toolu_01QasRitMEBNfb54aQLf8z3r,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27086,470,61,True,2026-06-11T19:08:23.610Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 27.17s",,False,False,29531
+20260611-205943,rtk-bench-on-6,on,6,5,msg_01T9QBiMQBFGSqTmTveTkuAP,toolu_01MDoT7YsVptdMBZwRgdDq1C,Bash,cargo build 2>&1,False,Build the project,101,0,101,False,1,27556,155,66,True,2026-06-11T19:09:20.005Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 53.78s",,False,False,56395
+20260611-205943,rtk-bench-on-6,on,6,6,msg_01WqPA4jCzv4ZTbfZtmAA2LS,toolu_01EoCDhW3BoC5v8TWU6PULYf,Bash,cargo clippy --all-targets 2>&1,False,Run default clippy lints,29,0,29,False,1,27711,153,61,True,2026-06-11T19:09:33.151Z,cargo clippy: No issues found,,False,False,13146
+20260611-205943,rtk-bench-on-6,on,6,7,msg_01BP3dtj9MHaSUAFpg3ZDxgK,toolu_01Uo1wKjP9mY9d4WcLfDE4My,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run pedantic clippy lints,3598,0,3598,False,1,27864,129,71,True,2026-06-11T19:09:46.430Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,13279
+20260611-205943,rtk-bench-on-6,on,6,8,msg_01SQXuwsKZnbGvBYxZA7CQia,toolu_01TERH8kXH9pDnU3Due1SZRk,Bash,cargo test 2>&1,False,Run cargo tests,40,0,40,False,1,27993,1805,63,True,2026-06-11T19:10:06.564Z,"cargo test: 166 passed (3 suites, 0.53s)",,False,False,20134
+20260611-205943,rtk-bench-on-6,on,6,9,msg_01Bsx2wa1yooVWuxbGbHUBPL,toolu_01H3UXbUtt1tE5gfP9jMFF9J,Bash,cargo install --list 2>&1,False,List installed cargo binaries,40,0,40,False,1,29798,132,64,True,2026-06-11T19:10:09.007Z,"cargo install (package, 0 deps compiled)",,False,False,2443
+20260611-205943,rtk-bench-on-6,on,6,10,msg_01GzFjVgkHZw1gMpU62wdEGA,,,,False,,0,0,0,False,1,29930,130,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-6,off,6,1,msg_01VbLbMRN8E3GvqJVWhxtsqY,toolu_01TwfEV5JLwcZVurAqmPGwnT,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,8,True,2026-06-11T19:07:49.644Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:07 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-6,off,6,2,msg_01RhYJnDKQCDUcLcdd4UBGhn,toolu_016ra3yez1WHWuEnWLtgDsss,Bash,cat Cargo.toml,False,Display Cargo.toml contents,942,0,942,False,1,26149,757,68,True,2026-06-11T19:07:51.769Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2125
+20260611-205943,rtk-bench-off-6,off,6,3,msg_014xKy1HSv8JABXBi7pZmDo7,toolu_01EWU5Whc4tsRgLfQEsVkvni,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files sorted,621,0,621,False,1,26906,567,68,True,2026-06-11T19:08:24.031Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,32262
+20260611-205943,rtk-bench-off-6,off,6,4,msg_01VbBq5CnUbccBnorWRSrBce,toolu_01Y7pmyx9ea4cmS99X8d3rdm,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27473,473,70,True,2026-06-11T19:09:36.751Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded castaway v0.2.4
+  Downloaded cfg-if v1.0.4
+  Downloaded bitflags v2.11.0
+  Downloaded cassowary v0.3.0
+  Downloaded darling v0.23.0
+  ",,False,False,72720
+20260611-205943,rtk-bench-off-6,off,6,5,msg_017i5LDSjAoJGaJH4CkfmEVy,toolu_019Y2WbwzEMtNTPuFKvzDjU1,Bash,cargo build 2>&1,False,Build the project,1760,0,1760,False,1,27946,2503,64,True,2026-06-11T19:10:31.145Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling log v0.4.29
+   Compiling scopeguard v1.2.0
+   Compiling smallvec v1.15.1
+   Compiling lock_api v0.4.14
+",,False,False,54394
+20260611-205943,rtk-bench-off-6,off,6,6,msg_017LmbGzoULTduqtmiLRPQTu,toolu_01E93aZekiLbTE6tZrnL74U2,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy with default lints,127,0,127,False,1,30449,1095,61,True,2026-06-11T19:10:40.581Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.78s",,False,False,9436
+20260611-205943,rtk-bench-off-6,off,6,7,msg_01LMKgrrgb5qQ2N4vLtofqp3,toolu_011hzVMzTzNXXCDfNQS2Y8Vi,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,30000,0,2208,False,1,31544,211,67,True,2026-06-11T19:10:50.597Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/3cd7697c-e527-4414-96fe-31125bfe03c7/tool-results/b85xbktjd.txt
+
+Preview ",,False,False,10016
+20260611-205943,rtk-bench-off-6,off,6,8,msg_01BdLqgnSn3QAUbjaTQw6wnG,toolu_01LGMuMQcVhjCtsnZrBrL2mW,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/3cd7697c-e527-4414-96fe-31125bfe03c7/tool-results/b85xbktjd.txt; echo ""---""; grep ""warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/3cd7697c-e527-4414-96fe-31125bfe03c7/tool-results/b85xbktjd.txt | sort | uniq -c | sort -rn | head -20; echo ""---""; tail -20 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/3cd7697c-e527-4414-96fe-31125bfe03c7/tool-results/b85xbktjd.txt",False,Summarize pedantic clippy warnings,2718,0,2718,False,1,31755,1161,37,True,2026-06-11T19:10:56.011Z,"621
+---
+    131 warning: variables can be used directly in the `format!` string
+     74 warning: item in documentation is missing backticks
+     50 warning: this method could have a `#[must_use]` attr",,False,False,5414
+20260611-205943,rtk-bench-off-6,off,6,9,msg_019fHVSZCkdAvZnHXLMEBWpe,toolu_01MQCRAEaFG6imPEnq2SC9sf,Bash,cargo test 2>&1,False,Run cargo test,13957,0,13957,False,1,32916,1527,63,True,2026-06-11T19:11:04.611Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.18s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c5",,False,False,8600
+20260611-205943,rtk-bench-off-6,off,6,10,msg_015AuxKgLyWxbCTy94XJprG6,toolu_016MkDnU33Ao3TXW3Z4BknyZ,Bash,cargo install --list 2>&1,False,List installed cargo packages,0,0,31,False,1,34443,5976,64,True,2026-06-11T19:11:07.140Z,(Bash completed with no output),,False,False,2529
+20260611-205943,rtk-bench-off-6,off,6,11,msg_01TUDayUEc26wtKicFmsGBck,,,,False,,0,0,0,False,1,40419,266,1,False,,,,False,False,0
+20260611-205943,rtk-bench-on-7,on,7,1,msg_014xY8uL23wYfzrMgeWqW1Sk,toolu_01J16y66CkAsdmJkzjQ1xY4J,Bash,ls -la,False,List files in current directory,241,0,241,False,5,26225,0,1,True,2026-06-11T19:07:49.933Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-7,on,7,2,msg_017Z4f3CXMxBbS1dFu4BLfkS,toolu_01K6MfrgdzVvoqKWVkunYJed,Bash,cat Cargo.toml,False,Display Cargo.toml contents,942,0,942,False,1,26225,295,67,True,2026-06-11T19:07:52.034Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2101
+20260611-205943,rtk-bench-on-7,on,7,3,msg_01KXMCmCxC4ur1w8p1SP43BB,toolu_01YS98sAxPLmdD6K3x7i8gjN,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files sorted,621,0,621,False,1,26520,567,58,True,2026-06-11T19:07:55.804Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,3770
+20260611-205943,rtk-bench-on-7,on,7,4,msg_01RyaRpkgeXVtCxfkxLFwm6V,toolu_01M8SxRV3UQHXhPBPLaQKun5,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27087,473,69,True,2026-06-11T19:08:25.752Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 27.16s",,False,False,29948
+20260611-205943,rtk-bench-on-7,on,7,5,msg_01Q9AvxJ6vC8JBnn9hQBjQLf,toolu_01WBNxiYKfWShJATqQccrTfN,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27560,155,70,True,2026-06-11T19:09:33.155Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 04s",,False,False,67403
+20260611-205943,rtk-bench-on-7,on,7,6,msg_0195hFkrnDiNcrUJBxt2mCxq,toolu_01WvNynfdLFRqTzBZqJWge5T,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy with default lints,29,0,29,False,1,27715,156,61,True,2026-06-11T19:09:46.746Z,cargo clippy: No issues found,,False,False,13591
+20260611-205943,rtk-bench-on-7,on,7,7,msg_01Xdx1mWcNzXNM7Z1hiowcrD,toolu_01KUDr8okV96ZfD7LZHsjvJL,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,3598,0,3598,False,1,27871,133,59,True,2026-06-11T19:10:02.422Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,15676
+20260611-205943,rtk-bench-on-7,on,7,8,msg_012YXacXEdzus12ZrJkEziqs,toolu_01JVD1nFs1b5w2mrsgdkcf2u,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28004,1809,63,True,2026-06-11T19:10:21.263Z,"cargo test: 166 passed (3 suites, 0.47s)",,False,False,18841
+20260611-205943,rtk-bench-on-7,on,7,9,msg_01SAR8PjNwt1TLaZWegTQPSX,toolu_01KyH1hM2cQrih5iu9uKsRaB,Bash,cargo install --list 2>&1,False,List globally installed cargo packages,40,0,40,False,1,29813,131,64,True,2026-06-11T19:10:26.993Z,"cargo install (package, 0 deps compiled)",,False,False,5730
+20260611-205943,rtk-bench-on-7,on,7,10,msg_01K71ZfetU3UZuVyeuAtCzua,,,,False,,0,0,0,False,1,29944,131,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-7,off,7,1,msg_01AVf6QHoD1S3RMSceAVqSAY,toolu_01LeAJi7QqfCuWvnhM2yoq9k,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,1,True,2026-06-11T19:11:29.176Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:11 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-7,off,7,2,msg_01LVWcKaVAENaT6BYXpnHQUh,toolu_01NQ83ad6fK9kiYZigDs4TdR,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26149,776,67,True,2026-06-11T19:11:31.239Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2063
+20260611-205943,rtk-bench-off-7,off,7,3,msg_01CZhvbzKLCazBaeaxM3nmwG,toolu_01VWqPa1kFx1ktAyZSspNRmD,Bash,"find . -name ""*.rs"" | sort",False,List all Rust source files,621,0,621,False,1,26925,567,71,True,2026-06-11T19:11:33.343Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2104
+20260611-205943,rtk-bench-off-7,off,7,4,msg_01D8REyXAnpJUzLuyu3GPiDb,toolu_01UHrMpeHoYHkXVkgKFQt7ue,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27492,469,70,True,2026-06-11T19:12:25.951Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded darling_core v0.23.0
+  Downloaded proc-macro2 v1.0.106
+  Downloaded strum v0.26.3
+  Downloaded scopeguard v1.2.0
+  Downloaded serde_co",,False,False,52608
+20260611-205943,rtk-bench-off-7,off,7,5,msg_01XSdYRfENUKseAxfhaghW4n,toolu_01RJZq2v5H6uJGRDWT2TANai,Bash,cargo build 2>&1,False,Run cargo build,1760,0,1760,False,1,27961,2502,67,True,2026-06-11T19:13:34.066Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling scopeguard v1.2.0
+   Compiling log v0.4.29
+   Compiling smallvec v1.15.1
+   Compiling lock_api v0.4.14
+",,False,False,68115
+20260611-205943,rtk-bench-off-7,off,7,6,msg_01GbbgXh56bK2EqnmRZpsEC4,toolu_01L6Xh5ueoiMcTLSBC7PRWV3,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy default lints,128,0,128,False,1,30463,1101,63,True,2026-06-11T19:13:47.552Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.67s",,False,False,13486
+20260611-205943,rtk-bench-off-7,off,7,7,msg_01FMzc2u52Fv2rLKZukbj3Le,toolu_014FfLBjYWfvAET9xCPKa1YU,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic warnings,30000,0,2208,False,1,31564,210,53,True,2026-06-11T19:14:02.674Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/691c5d75-1b32-4286-8368-fe9782429fed/tool-results/bo6f9msgz.txt
+
+Preview ",,False,False,15122
+20260611-205943,rtk-bench-off-7,off,7,8,msg_017TBms6okyKHK6ZgfPmrtJC,toolu_01JXR2hGpLRRy1mLso4bR7ZL,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/691c5d75-1b32-4286-8368-fe9782429fed/tool-results/bo6f9msgz.txt; tail -5 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/691c5d75-1b32-4286-8368-fe9782429fed/tool-results/bo6f9msgz.txt",False,Count clippy pedantic warnings and tail,341,0,341,False,1,31774,1198,55,True,2026-06-11T19:14:07.327Z,"621
+1301 +         let kill_row = ports_area.y + 1 + 1 + u16::try_from(app.orphan_ports.len());
+     |
+
+warning: `abtop` (lib test) generated 614 warnings (547 duplicates) (run `cargo clippy --fix --l",,False,False,4653
+20260611-205943,rtk-bench-off-7,off,7,9,msg_01SGFmGGSZ7bgmR3W87XNqqD,toolu_013REq94KAwUZhZZMQ9P5rBn,Bash,cargo test 2>&1,False,Run cargo test,13958,0,13958,False,1,32972,470,68,True,2026-06-11T19:14:25.742Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.26s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c",,False,False,18415
+20260611-205943,rtk-bench-off-7,off,7,10,msg_018P12ZX71S7YSajyesuMscx,toolu_01C4EjoqGAf78QYLgqMbGyDd,Bash,cargo install --list 2>&1,False,List installed cargo packages,0,0,31,False,1,33442,5976,64,True,2026-06-11T19:14:28.632Z,(Bash completed with no output),,False,False,2890
+20260611-205943,rtk-bench-off-7,off,7,11,msg_01WUpmyjzWpft2dqJWehrThJ,,,,False,,0,0,0,False,1,39418,266,42,False,,,,False,False,0
+20260611-205943,rtk-bench-on-8,on,8,1,msg_015fiU52SKjecx37LvWuy4i9,toolu_01CWtoCVm6r43MkUeUdt7YBm,Bash,ls -la,False,List files in current directory,241,0,241,False,5,26225,0,1,True,2026-06-11T19:11:58.656Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-8,on,8,2,msg_018hGF6eE8Ajq9MhjK2aRGXY,toolu_01U1FCxrFRsw21sJar3V9LP9,Bash,cat Cargo.toml,False,Display Cargo.toml contents,942,0,942,False,1,26225,291,68,True,2026-06-11T19:12:02.047Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,3391
+20260611-205943,rtk-bench-on-8,on,8,3,msg_0199XMv2bvbzcaXjq5xhNH3P,toolu_01JkPwemoKzsV5WyPH4Z6C6c,Bash,"find . -name ""*.rs"" | sort",False,Find and sort all Rust source files,621,0,621,False,1,26516,567,58,True,2026-06-11T19:12:04.894Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2847
+20260611-205943,rtk-bench-on-8,on,8,4,msg_01BkkpcMA1J1xnyY1Ek5kwMh,toolu_01PhZzVWEGvp8dALjowJqoCA,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27083,473,68,True,2026-06-11T19:13:23.716Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 16s",,False,False,78822
+20260611-205943,rtk-bench-on-8,on,8,5,msg_01PpSxbBjgSHtvySKxS6XVdY,toolu_01DVggx8DCsCo8BAyrT77w37,Bash,cargo build 2>&1,False,Build the project,101,0,101,False,1,27556,156,66,True,2026-06-11T19:14:16.392Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.45s",,False,False,52676
+20260611-205943,rtk-bench-on-8,on,8,6,msg_01WEiQjd695xnm5GkQWgN6LS,toolu_01DVxAajdJiCJ3XEKBjYRA4t,Bash,cargo clippy --all-targets 2>&1,False,Run clippy with default lints,29,0,29,False,1,27712,153,61,True,2026-06-11T19:14:29.003Z,cargo clippy: No issues found,,False,False,12611
+20260611-205943,rtk-bench-on-8,on,8,7,msg_01HxqDvsCrSJisez1dq9pPPD,toolu_017YSo4sq8KFRsfgB1wVvpmF,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy with pedantic lints,3594,0,3594,False,1,27865,130,59,True,2026-06-11T19:14:37.407Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,8404
+20260611-205943,rtk-bench-on-8,on,8,8,msg_01NqjnrQ3pBMtsuygNWNt8Vu,toolu_01JhzU2Zsq9NUj8NqT5JjeoV,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,27995,1803,63,True,2026-06-11T19:15:13.842Z,"cargo test: 166 passed (3 suites, 0.15s)",,False,False,36435
+20260611-205943,rtk-bench-on-8,on,8,9,msg_016UNhYRWYjpTQFgg9w79QFM,toolu_01DMRJS2uGtNhCHgRgCyEm6B,Bash,cargo install --list 2>&1,False,List installed cargo binaries,40,0,40,False,1,29798,131,64,True,2026-06-11T19:15:16.018Z,"cargo install (package, 0 deps compiled)",,False,False,2176
+20260611-205943,rtk-bench-on-8,on,8,10,msg_017HQwG6uCRXKmReZT9R1eDD,,,,False,,0,0,0,False,1,29929,130,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-8,off,8,1,msg_01YRYnC5YPDVVEay7KkHg6m5,toolu_01J9QodUQBxRB1ceUZvaTheH,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,8,True,2026-06-11T19:11:29.229Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:11 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-8,off,8,2,msg_013BpQhe62mfRLs7mC3QvYvC,toolu_014CGPUypT2j1r3t7niEWe5R,Bash,cat Cargo.toml,False,View Cargo.toml contents,942,0,942,False,1,26149,777,65,True,2026-06-11T19:11:31.358Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2129
+20260611-205943,rtk-bench-off-8,off,8,3,msg_01NTappLJ8v4uhDNNEo3gWNq,toolu_01K5dpaErypFxps1ZP5cpJSw,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26926,566,58,True,2026-06-11T19:11:34.194Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2836
+20260611-205943,rtk-bench-off-8,off,8,4,msg_013YgJN8cC4keiXmW172KGss,toolu_01Aixt5jPmeAnnPzqP7eZdN7,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27492,470,70,True,2026-06-11T19:12:28.339Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded cfg-if v1.0.4
+  Downloaded heck v0.5.0
+  Downloaded option-ext v0.2.0
+  Downloaded cassowary v0.3.0
+  Downloaded unicode-truncate v1.1",,False,False,54145
+20260611-205943,rtk-bench-off-8,off,8,5,msg_01LAPdFxaxqDmLu9azrqvAe9,toolu_01NcJzQkYExXVcxHEqG6Hrr2,Bash,cargo build 2>&1,False,Run cargo build,1760,0,1760,False,1,27962,2502,66,True,2026-06-11T19:13:37.885Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling log v0.4.29
+   Compiling smallvec v1.15.1
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+",,False,False,69546
+20260611-205943,rtk-bench-off-8,off,8,6,msg_01Fay7UB9BHFtjTLctuLUzYv,toolu_01DWYsBB4XsneCgPBs5VSJLr,Bash,cargo clippy --all-targets 2>&1,False,Run clippy with default lints,127,0,127,False,1,30464,1092,63,True,2026-06-11T19:13:50.317Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.19s",,False,False,12432
+20260611-205943,rtk-bench-off-8,off,8,7,msg_01EwouAyyBbHBVyBTtX7Rrd1,toolu_0138QFPfqbXGU187PPHy5xS3,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy with pedantic lints,30000,0,2208,False,1,31556,208,67,True,2026-06-11T19:14:03.709Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/63a5ffa7-2f50-4ac2-af5a-58688b29b06b/tool-results/bhth6nn6l.txt
+
+Preview ",,False,False,13392
+20260611-205943,rtk-bench-off-8,off,8,8,msg_014sieyc8gZXaguU7hVc5Vtk,toolu_01BPz3Luq8AoFkFKHULFpcAh,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/63a5ffa7-2f50-4ac2-af5a-58688b29b06b/tool-results/bhth6nn6l.txt; tail -5 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/63a5ffa7-2f50-4ac2-af5a-58688b29b06b/tool-results/bhth6nn6l.txt",False,Count clippy pedantic warnings,341,0,341,False,1,31764,1162,54,True,2026-06-11T19:14:07.877Z,"621
+1301 +         let kill_row = ports_area.y + 1 + 1 + u16::try_from(app.orphan_ports.len());
+     |
+
+warning: `abtop` (lib test) generated 614 warnings (547 duplicates) (run `cargo clippy --fix --l",,False,False,4168
+20260611-205943,rtk-bench-off-8,off,8,9,msg_01NrSAKCCobt3vka6essyqPh,toolu_015QvbHCVb3huCwfHCG3BboN,Bash,cargo test 2>&1,False,Run cargo test,13958,0,13958,False,1,32926,470,63,True,2026-06-11T19:14:29.517Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 16.29s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c",,False,False,21640
+20260611-205943,rtk-bench-off-8,off,8,10,msg_01RN1xmzkmKkmTTBiSv4x1xW,toolu_011s3xydLrvvxZadATsT3GfS,Bash,cargo install --list 2>&1,False,List installed cargo binaries,0,0,31,False,1,33396,5976,64,True,2026-06-11T19:14:35.733Z,(Bash completed with no output),,False,False,6216
+20260611-205943,rtk-bench-off-8,off,8,11,msg_01WyM6hx8htu6V8tXfV6qUoL,,,,False,,0,0,0,False,1,39372,267,43,False,,,,False,False,0
+20260611-205943,rtk-bench-on-9,on,9,1,msg_01Tr38HakRbbuzCuWXtf93TM,toolu_015cN2uouhzyMTfDfxUpgGHT,Bash,ls -la,False,List files in current directory,241,0,241,False,5,26225,0,8,True,2026-06-11T19:11:59.606Z,"755  .git/
+755  .github/
+755  assets/
+755  scripts/
+755  src/
+644  .gitignore  61B
+644  AGENTS.md  19.8K
+644  CLAUDE.md  299B
+644  Cargo.lock  33.4K
+644  Cargo.toml  943B
+644  LICENSE  1.0K
+644  READM",,False,False,0
+20260611-205943,rtk-bench-on-9,on,9,2,msg_01UrnWYUXb9EFCiRUjUiqgKD,toolu_01M33kW9YiaLtXnkQJr4DvCn,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26225,295,66,True,2026-06-11T19:12:02.498Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2892
+20260611-205943,rtk-bench-on-9,on,9,3,msg_01LjcRzWU493JjpM3yrZH99f,toolu_01WnnjKJkuuJTBPwiBs8T8Th,Bash,"find . -name ""*.rs"" | sort",False,List all Rust source files,621,0,621,False,1,26520,567,58,True,2026-06-11T19:12:04.586Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2088
+20260611-205943,rtk-bench-on-9,on,9,4,msg_01Dj2kMTdmdYeGaHeQgmNdhy,toolu_01NZni8YdvfQjqpGC4bEebya,Bash,cargo check 2>&1,False,Run cargo check,101,0,101,False,1,27087,469,70,True,2026-06-11T19:13:24.782Z,"cargo build (71 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 1m 17s",,False,False,80196
+20260611-205943,rtk-bench-on-9,on,9,5,msg_018QH5TTMNqj9oxKKfwrAUQK,toolu_01CP4ZSUWrR4VywSrwESDdXa,Bash,cargo build 2>&1,False,Run cargo build,101,0,101,False,1,27556,156,70,True,2026-06-11T19:14:16.730Z,"cargo build (54 crates compiled)
+Finished `dev` profile [unoptimized + debuginfo] target(s) in 49.40s",,False,False,51948
+20260611-205943,rtk-bench-on-9,on,9,6,msg_01TeKrg8d3i5gxNSeGnvJx6q,toolu_01LCzEpkzFhY5ZWLcDSWsdhe,Bash,cargo clippy --all-targets 2>&1,False,Run cargo clippy with default lints,29,0,29,False,1,27712,155,61,True,2026-06-11T19:14:29.060Z,cargo clippy: No issues found,,False,False,12330
+20260611-205943,rtk-bench-on-9,on,9,7,msg_01RYBFuoQeVaex92cMg4f3Jx,toolu_0157kQzisbSVaBLXb1xbCe6W,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run cargo clippy with pedantic lints,3594,0,3594,False,1,27867,133,66,True,2026-06-11T19:14:36.344Z,"cargo clippy: 0 errors, 619 warnings
+???????????????????????????????????????
+  variables can be used directly in the `format!` string (131x)
+    src/app.rs:260:25
+    src/app.rs:274:29
+    src/app.rs:",,False,False,7284
+20260611-205943,rtk-bench-on-9,on,9,8,msg_013DpumEG3V65KztgTE7TPpv,toolu_01SzLAcbLUaPCHd6UZ5UcW5F,Bash,cargo test 2>&1,False,Run cargo test,40,0,40,False,1,28000,1806,63,True,2026-06-11T19:14:44.250Z,"cargo test: 166 passed (3 suites, 0.18s)",,False,False,7906
+20260611-205943,rtk-bench-on-9,on,9,9,msg_01PZZzaHDQgLwKtYRwoNjihn,toolu_01E45t8BcCS2WnNze3R9YqiM,Bash,cargo install --list 2>&1,False,List installed cargo binaries,40,0,40,False,1,29806,131,64,True,2026-06-11T19:14:47.037Z,"cargo install (package, 0 deps compiled)",,False,False,2787
+20260611-205943,rtk-bench-on-9,on,9,10,msg_01TArLv3sy72Vs2KVYaNfbNp,,,,False,,0,0,0,False,1,29937,130,1,False,,,,False,False,0
+20260611-205943,rtk-bench-off-9,off,9,1,msg_011ws9cG2YroSW5QF63r3Uiu,toolu_01YE8BqEQenbkLuxLCMmBovk,Bash,ls -la,False,List files in current directory,827,0,827,False,5,26149,0,8,True,2026-06-11T19:11:28.551Z,"total 120
+drwxr-xr-x 7 ubuntu ubuntu  4096 Jun 11 19:00 .
+drwxr-x--- 1 ubuntu ubuntu  4096 Jun 11 19:11 ..
+drwxr-xr-x 8 ubuntu ubuntu  4096 Jun 11 19:00 .git
+drwxr-xr-x 4 ubuntu ubuntu  4096 Jun 11 19",,False,False,0
+20260611-205943,rtk-bench-off-9,off,9,2,msg_0165iS99M6oCG19AhysdrP8X,toolu_01Am6Pm94ng3JFgvDhVhgfBA,Bash,cat Cargo.toml,False,Show Cargo.toml contents,942,0,942,False,1,26149,776,66,True,2026-06-11T19:11:30.557Z,"[package]
+name = ""abtop""
+version = ""0.4.8""
+edition = ""2021""
+rust-version = ""1.88""
+description = ""AI agent monitor for your terminal""
+license = ""MIT""
+repository = ""https://github.com/graykode/abtop""
+ho",,False,False,2005
+20260611-205943,rtk-bench-off-9,off,9,3,msg_01QG4ismCSNC2hqGNkahcNPh,toolu_01SeHPqVmCzAZLURD87y7rb7,Bash,"find . -name ""*.rs"" | sort",False,Find all Rust source files,621,0,621,False,1,26925,567,66,True,2026-06-11T19:11:32.831Z,"./src/app.rs
+./src/collector/claude.rs
+./src/collector/codex.rs
+./src/collector/mcp.rs
+./src/collector/mod.rs
+./src/collector/opencode.rs
+./src/collector/process.rs
+./src/collector/rate_limit.rs
+./src",,False,False,2274
+20260611-205943,rtk-bench-off-9,off,9,4,msg_01J31oB39M1Uf238YEdTRTEZ,toolu_01FUxjLxhWKByvMFPSK1Qft6,Bash,cargo check 2>&1,False,Run cargo check,4485,0,4485,False,1,27492,470,70,True,2026-06-11T19:12:24.056Z,"    Updating crates.io index
+ Downloading crates ...
+  Downloaded castaway v0.2.4
+  Downloaded autocfg v1.5.0
+  Downloaded unicode-segmentation v1.13.2
+  Downloaded unicode-truncate v1.1.0
+  Downloade",,False,False,51225
+20260611-205943,rtk-bench-off-9,off,9,5,msg_016EJsoktUryxHAyEVxzvG3h,toolu_01FCSTvhJz2rEnAVGELjPXEy,Bash,cargo build 2>&1,False,Build the project,1760,0,1760,False,1,27962,2502,69,True,2026-06-11T19:13:33.794Z,"   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.4
+   Compiling bitflags v2.11.0
+   Compiling smallvec v1.15.1
+   Compiling log v0.4.29
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.4.14
+",,False,False,69738
+20260611-205943,rtk-bench-off-9,off,9,6,msg_01Nr7x6swkzwxYz8DFTUg9Mu,toolu_01CiJestWikYikxFGUaxWQFC,Bash,cargo clippy --all-targets 2>&1,False,Run clippy with default lints,128,0,128,False,1,30464,1093,63,True,2026-06-11T19:13:46.803Z,"    Checking abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 10.24s",,False,False,13009
+20260611-205943,rtk-bench-off-9,off,9,7,msg_01BogZpbm4NvR9Tm8ZbhEVcP,toolu_01Lt6zcpcLPCMb7yxfri15tZ,Bash,cargo clippy --all-targets -- -W clippy::pedantic 2>&1,False,Run clippy with pedantic lints,30000,0,2196,False,1,31557,208,67,True,2026-06-11T19:14:02.329Z,"<persisted-output>
+Output too large (319.2KB). Full output saved to: /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/6d99bc33-0457-4221-9668-04f8b70fce49/tool-results/b6i0x4xji.txt
+
+Preview ",,False,False,15526
+20260611-205943,rtk-bench-off-9,off,9,8,msg_01DQ8ofwr5ccRGxJg7KFBSRd,toolu_01R95VbbVJKmLhZe4azmPUYT,Bash,tail -50 /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/6d99bc33-0457-4221-9668-04f8b70fce49/tool-results/b6i0x4xji.txt,False,Show tail of pedantic clippy output,2614,0,2614,False,1,31765,1110,41,True,2026-06-11T19:14:06.004Z,"1236 | |             .sum::<usize>() as u16;
+     | |__________________________________^
+     |
+     = help: if this is intentional allow the lint with `#[allow(clippy::cast_possible_truncation)]` ...",,False,False,3675
+20260611-205943,rtk-bench-off-9,off,9,9,msg_012YR497q94mmcgXzv1dKYCC,toolu_01Y76Sk4uATVFYxZTs58bCUQ,Bash,"grep -c ""^warning:"" /home/ubuntu/.claude/projects/-home-ubuntu-bench-codebase/6d99bc33-0457-4221-9668-04f8b70fce49/tool-results/b6i0x4xji.txt",False,Count pedantic warning lines,3,0,3,False,1,32875,1307,47,True,2026-06-11T19:14:12.841Z,621,,False,False,6837
+20260611-205943,rtk-bench-off-9,off,9,10,msg_017eamVYg7GwmdpcTcQF2r6t,toolu_01WswapvsR7p5Fz1GfAmgZEv,Bash,cargo test 2>&1,False,Run cargo test,13958,0,13958,False,1,34182,188,66,True,2026-06-11T19:14:30.159Z,"   Compiling abtop v0.4.8 (/home/ubuntu/bench-codebase)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 14.62s
+     Running unittests src/lib.rs (target/debug/deps/abtop-3e3d7052d2c",,False,False,17318
+20260611-205943,rtk-bench-off-9,off,9,11,msg_01KhcbrHtAd6CCAHEAWieLx8,toolu_01Vt9QpKiWHPwbZ72V6SBRzM,Bash,cargo install --list 2>&1,False,List installed cargo binaries,0,0,31,False,1,34370,6118,43,True,2026-06-11T19:14:33.888Z,(Bash completed with no output),,False,False,3729
+20260611-205943,rtk-bench-off-9,off,9,12,msg_01MycpBQuuzPknJCJ4Dofm3F,,,,False,,0,0,0,False,1,40488,218,40,False,,,,False,False,0
