@@ -186,7 +186,7 @@ export const T: Record<string, Record<Lang, string>> = {
   'ui.nav_docs':          { en: 'Docs',                 fr: 'Docs',                 es: 'Docs',                 de: 'Docs',                 zh: '文档',          ja: 'ドキュメント' },
   'ui.nav_discord':       { en: 'Discord',              fr: 'Discord',              es: 'Discord',              de: 'Discord',              zh: 'Discord',       ja: 'Discord' },
   'ui.nav_github':        { en: 'GitHub',               fr: 'GitHub',               es: 'GitHub',               de: 'GitHub',               zh: 'GitHub',        ja: 'GitHub' },
-  'ui.nav_support':       { en: '☕ Support',           fr: '☕ Soutenir',          es: '☕ Apoyar',            de: '☕ Unterstützen',      zh: '☕ 支持',        ja: '☕ サポート' },
+  'ui.nav_support':       { en: 'Support',              fr: 'Soutenir',             es: 'Apoyar',               de: 'Unterstützen',         zh: '支持',          ja: 'サポート' },
 
   // ── ARIA labels ───────────────────────────────────────────────────────────
   'aria.copy':            { en: 'Copy',                 fr: 'Copier',               es: 'Copiar',               de: 'Kopieren',             zh: '复制',          ja: 'コピー' },
@@ -199,6 +199,7 @@ export const T: Record<string, Record<Lang, string>> = {
   'aria.open_menu':       { en: 'Open menu',            fr: 'Ouvrir le menu',       es: 'Abrir menú',           de: 'Menü öffnen',          zh: '打开菜单',      ja: 'メニューを開く' },
   'aria.close_menu':      { en: 'Close menu',           fr: 'Fermer le menu',       es: 'Cerrar menú',          de: 'Menü schließen',       zh: '关闭菜单',      ja: 'メニューを閉じる' },
   'aria.search':          { en: 'Search (Cmd+K)',        fr: 'Rechercher (Cmd+K)',   es: 'Buscar (Cmd+K)',       de: 'Suche (Cmd+K)',        zh: '搜索（Cmd+K）', ja: '検索（Cmd+K）' },
+  'aria.language':        { en: 'Select language',      fr: 'Choisir la langue',    es: 'Seleccionar idioma',   de: 'Sprache auswählen',    zh: '选择语言',     ja: '言語を選択' },
   'aria.support_kofi':    { en: 'Support on Ko-fi',     fr: 'Soutenir sur Ko-fi',   es: 'Apoyar en Ko-fi',     de: 'Unterstützen auf Ko-fi', zh: '在 Ko-fi 上支持', ja: 'Ko-fi でサポート' },
   'aria.join_discord':    { en: 'Join Discord',         fr: 'Rejoindre Discord',    es: 'Unirse a Discord',     de: 'Discord beitreten',    zh: '加入 Discord',  ja: 'Discord に参加' },
   'aria.compat_tools':    { en: 'Compatible AI tools',  fr: 'Outils IA compatibles', es: 'Herramientas IA compatibles', de: 'Kompatible KI-Tools', zh: '兼容的 AI 工具', ja: '対応 AI ツール' },

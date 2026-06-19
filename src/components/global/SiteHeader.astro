@@ -80,7 +80,7 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
       </div>
     </div>
 
-    <!-- Mobile right: search + hamburger -->
+    <!-- Mobile right: search + language + hamburger -->
     <div class="nav-mobile-right">
       {isLanding ? (
         <button id="search-trigger-mobile" class="search-trigger search-trigger-mobile" aria-label={t('aria.search', lang)}>
@@ -90,6 +90,26 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
         <button id="search-trigger" class="search-trigger search-trigger-mobile" aria-label={t('aria.search', lang)}>
           <IconSearch size={18} />
         </button>
+      )}
+      {isLanding && (
+        <details class="lang-dropdown">
+          <summary class="lang-globe-btn" aria-label={t('aria.language', lang)}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" /><path d="M3 12h18" /><path d="M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18" />
+            </svg>
+            <span class="lang-globe-code">{currentLocale.toUpperCase()}</span>
+          </summary>
+          <div class="lang-panel" role="navigation" aria-label="Language switcher">
+            {LOCALES.map(l => (
+              <a
+                href={getRelativeLocaleUrl(l, currentPath)}
+                class={`lang-btn${l === currentLocale ? ' active' : ''}`}
+                hreflang={l}
+                aria-current={l === currentLocale ? 'true' : undefined}
+              >{l.toUpperCase()}</a>
+            ))}
+          </div>
+        </details>
       )}
       <button class="nav-hamburger" id="nav-hamburger" aria-label={t('aria.open_menu', lang)} aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
@@ -113,31 +133,19 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
     <div class="nav-drawer-actions">
       {isLanding ? (
         <>
-          <a href="https://ko-fi.com/patrickszymkowiak" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_support', lang)}</a>
-          <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_discord', lang)}</a>
-          <a href="https://github.com/rtk-ai/rtk" class="btn btn-sm btn-ghost-nav" target="_blank" rel="noopener">{t('ui.nav_github', lang)}</a>
+          <a href="https://ko-fi.com/patrickszymkowiak" class="nav-drawer-action" target="_blank" rel="noopener"><IconKofi size={17} /><span>{t('ui.nav_support', lang)}</span></a>
+          <a href="https://discord.gg/RySmvNF5kF" class="nav-drawer-action" target="_blank" rel="noopener"><IconDiscord size={17} /><span>{t('ui.nav_discord', lang)}</span></a>
+          <a href="https://github.com/rtk-ai/rtk" class="nav-drawer-action" target="_blank" rel="noopener"><IconGitHub size={16} /><span>{t('ui.nav_github', lang)}</span></a>
         </>
       ) : (
         <>
           {!isVox && (
-            <a href="https://discord.gg/RySmvNF5kF" class="btn btn-sm nav-btn-discord" target="_blank" rel="noopener">Discord</a>
+            <a href="https://discord.gg/RySmvNF5kF" class="nav-drawer-action" target="_blank" rel="noopener"><IconDiscord size={17} /><span>Discord</span></a>
           )}
-          <a href={githubUrl} class="btn btn-sm" target="_blank" rel="noopener">GitHub</a>
+          <a href={githubUrl} class="nav-drawer-action" target="_blank" rel="noopener"><IconGitHub size={16} /><span>GitHub</span></a>
         </>
       )}
     </div>
-    {isLanding && (
-      <div class="nav-drawer-lang" role="navigation" aria-label="Language switcher">
-        {LOCALES.map(l => (
-          <a
-            href={getRelativeLocaleUrl(l, currentPath)}
-            class={`lang-btn${l === currentLocale ? ' active' : ''}`}
-            hreflang={l}
-            aria-current={l === currentLocale ? 'true' : undefined}
-          >{l.toUpperCase()}</a>
-        ))}
-      </div>
-    )}
   </div>
 </div>
 <div class="nav-overlay" id="nav-overlay"></div>
@@ -312,10 +320,11 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: none;
   color: var(--text-muted);
-  padding: 6px;
   cursor: pointer;
   border-radius: var(--radius-sm);
   transition: color 0.2s;
@@ -328,9 +337,9 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
-  padding: 6px;
+  width: 44px;
+  height: 44px;
+  padding: 9px;
   background: transparent;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
@@ -376,7 +385,9 @@ const icmHref = getRelativeLocaleUrl(currentLocale, 'icm/')
   gap: 4px;
 }
 .nav-drawer-links a {
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 12px;
   border-radius: var(--radius-md);
   color: var(--text-muted);
