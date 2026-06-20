@@ -13,7 +13,6 @@ const LANDING_ENTRIES: SearchEntry[] = [
   // Sections
   { id: 'landing-why', title: 'Why RTK?', keywords: 'why tokens problem cost expensive context window overflow cli noise', category: 'Landing', url: '/#problem', source: 'landing' },
   { id: 'landing-demo', title: 'Demo — Before/After', keywords: 'demo before after comparison cargo test pytest git diff go test grep savings slideshow', category: 'Landing', url: '/#demo', source: 'landing' },
-  { id: 'landing-tools', title: 'AI Tool Comparison', keywords: 'compare tools claude code cursor codex windsurf gemini aider copilot cline limits credits tokens context', category: 'Landing', url: '/#compare', source: 'landing' },
   { id: 'landing-cloud', title: 'RTK Cloud Waitlist', keywords: 'cloud team analytics waitlist enterprise dashboard token usage savings reports rate limit sso audit', category: 'Landing', url: '/#cloud', source: 'landing' },
   { id: 'landing-install', title: 'Install RTK', keywords: 'install curl brew cargo homebrew setup hook rtk init global transparent zero config', category: 'Landing', url: '/#install', source: 'landing' },
   { id: 'landing-share', title: 'Share Your rtk gain', keywords: 'share gain stats tokens saved twitter x bluesky linkedin social post flex timeline', category: 'Landing', url: '/#share-gain', source: 'landing' },

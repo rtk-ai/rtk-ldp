@@ -35,6 +35,9 @@
   --sl-content-width:   52rem;
   --sl-content-pad-x:   1.5rem;
 
+  --sl-nav-height: 60px;
+  --sl-z-index-menu: 90;
+
   /* Border radius */
   --sl-border-radius:    var(--radius);
   --sl-border-radius-lg: var(--radius-lg);
@@ -85,6 +88,9 @@
   border-radius: var(--radius);
   font-size: 0.875rem;
   line-height: 1.6;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sl-markdown-content code {
@@ -180,4 +186,34 @@ starlight-toc a:hover {
 /* Aside Caution */
 .starlight-aside--caution .starlight-aside__content {
   color: var(--sl-color-orange-high);
+}
+
+starlight-menu-button {
+  display: contents;
+}
+starlight-menu-button button {
+  display: none;
+}
+
+@media (max-width: 50rem) {
+  :root,
+  :root[data-theme='dark'],
+  [data-theme='dark'] {
+    --sl-content-pad-x: 1rem;
+  }
+
+  .sl-markdown-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sl-markdown-content pre {
+    font-size: 0.8rem;
+  }
+
+  .sl-markdown-content h1 { font-size: 1.65rem; }
+  .sl-markdown-content h2 { font-size: 1.35rem; }
+  .sl-markdown-content h3 { font-size: 1.15rem; }
 }
