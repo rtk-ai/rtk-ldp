@@ -12,19 +12,19 @@ const personas = [
   {
     id: 'claude-code',
     tabKey: 'install.tab.cc',
-    initCmd: 'rtk init --claude-code',
+    initCmd: 'rtk init --global',
     noteKey: 'install.note.cc',
   },
   {
     id: 'cursor',
     tabKey: 'install.tab.cursor',
-    initCmd: 'rtk init --cursor',
+    initCmd: 'rtk init --global --agent cursor',
     noteKey: 'install.note.cursor',
   },
   {
     id: 'other',
     tabKey: 'install.tab.other',
-    initCmd: 'rtk init --global',
+    initCmd: 'rtk init --global --agent <name>',
     noteKey: 'install.note.other',
   },
 ]
@@ -72,14 +72,14 @@ const personas = [
         <h3>{t('install.brew', lang)}</h3>
         <p>{t('install.brew_desc', lang)}</p>
         <div class="code-block">
-          <code>brew install rtk</code>
-          <button class="copy-btn" data-copy="brew install rtk" aria-label={t('aria.copy', lang)}>
+          <code>brew install rtk-ai/tap/rtk</code>
+          <button class="copy-btn" data-copy="brew install rtk-ai/tap/rtk" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
         <div class="code-block">
-          <code>brew upgrade rtk</code>
-          <button class="copy-btn" data-copy="brew upgrade rtk" aria-label={t('aria.copy', lang)}>
+          <code>brew upgrade rtk-ai/tap/rtk</code>
+          <button class="copy-btn" data-copy="brew upgrade rtk-ai/tap/rtk" aria-label={t('aria.copy', lang)}>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
           </button>
         </div>
@@ -122,7 +122,7 @@ const personas = [
         </div>
         <div class="install-step">
           <span class="install-step-num">2</span>
-          <code id="install-step-2-cmd">rtk init --claude-code</code>
+          <code id="install-step-2-cmd">rtk init --global</code>
         </div>
         <div class="install-step">
           <span class="install-step-num">3</span>
