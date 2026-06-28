@@ -24,6 +24,42 @@ const schemaOrg = {
   dateModified: buildDate,
   keywords: ['RTK', 'Claude Code', 'token savings', 'benchmark', 'LLM tooling'],
 }
+
+const benchI18n = {
+  all: t('bench.js.all', lang),
+  allEco: t('bench.js.all_eco', lang),
+  subtitle: t('bench.js.subtitle', lang),
+  allCombined: t('bench.js.all_combined', lang),
+  reportPdf: t('bench.js.report_pdf', lang),
+  noPdf: t('bench.js.no_pdf', lang),
+  bashSavings: t('bench.js.bash_savings', lang),
+  costSavings: t('bench.js.cost_savings', lang),
+  footTotal: t('bench.js.foot_total', lang),
+  footAvg: t('bench.js.foot_avg', lang),
+  cuts: t('bench.js.cuts', lang),
+  bashOutput: t('bench.js.bash_output', lang),
+  inputTokens: t('bench.js.input_tokens', lang),
+  costUsd: t('bench.js.cost_usd', lang),
+  tagSurface: t('bench.js.tag_surface', lang),
+  tagModel: t('bench.js.tag_model', lang),
+  tagBottom: t('bench.js.tag_bottom', lang),
+  connInput: t('bench.js.conn_input', lang),
+  connBilled: t('bench.js.conn_billed', lang),
+  tie: t('bench.js.tie', lang),
+  thMetric: t('bench.js.th_metric', lang),
+  thOff: t('bench.js.th_off', lang),
+  thOn: t('bench.js.th_on', lang),
+  thSavings: t('bench.js.th_savings', lang),
+  thPvalue: t('bench.js.th_pvalue', lang),
+  thWinner: t('bench.js.th_winner', lang),
+  mBash: t('bench.js.m_bash', lang),
+  mPrimary: t('bench.js.m_primary', lang),
+  mApi: t('bench.js.m_api', lang),
+  mBehavioral: t('bench.js.m_behavioral', lang),
+  mDuration: t('bench.js.m_duration', lang),
+  mPassrate: t('bench.js.m_passrate', lang),
+  noData: t('bench.js.no_data', lang),
+}
 ---
 <Layout
   title={t('bench.meta_title', lang)}
@@ -131,6 +167,7 @@ const schemaOrg = {
   <SiteFooter />
   <SearchModal />
 
+  <script is:inline define:vars={{ benchI18n }}>window.__BENCH_I18N__ = benchI18n</script>
   <script src="/scripts/benchmarks.js" is:inline></script>
 </Layout>
 

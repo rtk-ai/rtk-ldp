@@ -20,25 +20,28 @@ function stripLocalePrefix(path: string): string {
 }
 
 const currentPath = stripLocalePrefix(Astro.url.pathname)
+
+const homeHref = getRelativeLocaleUrl(currentLocale, '/')
+const benchHref = getRelativeLocaleUrl(currentLocale, '/benchmarks/')
 ---
 
 <nav class="nav" id="main-nav" aria-label={t('aria.main_nav', lang)}>
   <div class="nav-inner">
 
     <!-- Logo -->
-    <a href="/" class="nav-logo">
+    <a href={homeHref} class="nav-logo">
       <img src="/brand/logo.png" alt="rtk logo" width="28" height="28" style="border-radius:var(--radius-sm);">
       <span>rtk</span>
     </a>
 
     <!-- Desktop nav links -->
     <div class="nav-links" id="nav-links">
-      <a href="/#problem" class="nav-link" data-i18n="nav.why">Why</a>
-      <a href="/#demo" class="nav-link" data-i18n="nav.demo">Demo</a>
-      <a href="/#install" class="nav-link" data-i18n="nav.install">Install</a>
+      <a href={`${homeHref}#problem`} class="nav-link" data-i18n="nav.why">Why</a>
+      <a href={`${homeHref}#demo`} class="nav-link" data-i18n="nav.demo">Demo</a>
+      <a href={`${homeHref}#install`} class="nav-link" data-i18n="nav.install">Install</a>
       <span class="nav-divider" aria-hidden="true"></span>
       <a href="/guide/" class="nav-link">Docs</a>
-      <a href="/benchmarks/" class="nav-link">Benchmarks</a>
+      <a href={benchHref} class="nav-link">Benchmarks</a>
       <span class="nav-divider" aria-hidden="true"></span>
       <a href="https://ko-fi.com/patrickszymkowiak" class="nav-icon-btn" target="_blank" rel="noopener" title="Support on Ko-fi" aria-label="Support on Ko-fi">
         <IconKofi size={16} />
@@ -103,11 +106,11 @@ const currentPath = stripLocalePrefix(Astro.url.pathname)
 <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
   <div class="nav-drawer-inner">
     <div class="nav-drawer-links">
-      <a href="/#problem" data-i18n="nav.why">Why</a>
-      <a href="/#demo" data-i18n="nav.demo">Demo</a>
-      <a href="/#install" data-i18n="nav.install">Install</a>
+      <a href={`${homeHref}#problem`} data-i18n="nav.why">Why</a>
+      <a href={`${homeHref}#demo`} data-i18n="nav.demo">Demo</a>
+      <a href={`${homeHref}#install`} data-i18n="nav.install">Install</a>
       <a href="/guide/">Docs</a>
-      <a href="/benchmarks/">Benchmarks</a>
+      <a href={benchHref}>Benchmarks</a>
     </div>
     <div class="nav-drawer-actions">
       <a href="https://ko-fi.com/patrickszymkowiak" class="nav-drawer-action" target="_blank" rel="noopener"><IconKofi size={17} /><span>{t('ui.nav_support', lang)}</span></a>
