@@ -57,12 +57,14 @@ const currentPath = stripLocalePrefix(Astro.url.pathname)
       </button>
       <span class="nav-divider" aria-hidden="true"></span>
       <div class="lang-switch">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <button class="lang-btn" data-lang="es">ES</button>
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="zh">ZH</button>
-        <button class="lang-btn" data-lang="ja">JA</button>
+        {LOCALES.map(l => (
+          <a
+            href={getRelativeLocaleUrl(l, currentPath)}
+            class={`lang-btn${l === currentLocale ? ' active' : ''}`}
+            hreflang={l}
+            aria-current={l === currentLocale ? 'true' : undefined}
+          >{l.toUpperCase()}</a>
+        ))}
       </div>
     </div>
 

@@ -639,7 +639,14 @@ section h2 {
   padding: 0 9px;
   display: flex;
   align-items: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-dim);
+  text-decoration: none;
 }
+.lang-switch .lang-btn:hover { color: var(--text); }
+.lang-switch .lang-btn.active { color: var(--accent); font-weight: 700; }
 .lang-btn {
   padding: 3px 8px;
   border: none;
