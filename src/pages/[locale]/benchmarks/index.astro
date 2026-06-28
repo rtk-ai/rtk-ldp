@@ -1,0 +1,11 @@
+---
+import { NON_DEFAULT_LOCALES, type Lang } from '../../../lib/i18n'
+import BenchmarksPage from '../../../components/pages/BenchmarksPage.astro'
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map(locale => ({ params: { locale } }))
+}
+
+const { locale } = Astro.params as { locale: Lang }
+---
+<BenchmarksPage lang={locale} />

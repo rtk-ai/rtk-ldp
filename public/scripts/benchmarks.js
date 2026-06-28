@@ -10,6 +10,8 @@
 
   var DATA_BASE = '/data/benchmarks';
 
+  var I18N = (typeof window !== 'undefined' && window.__BENCH_I18N__) || {};
+
   // No ecosystem list to maintain: the display name is derived from the id in
   // the data, and every ecosystem uses the same dot color (for now). New
   // ecosystems appear automatically — nothing to edit here.
@@ -93,7 +95,7 @@
   }
 
   function showEmpty() {
-    if (elSidebar) { elSidebar.textContent = ''; var d = document.createElement('div'); d.className = 'bench-sidebar-loading'; d.textContent = 'No data'; elSidebar.appendChild(d); }
+    if (elSidebar) { elSidebar.textContent = ''; var d = document.createElement('div'); d.className = 'bench-sidebar-loading'; d.textContent = (I18N.noData || 'No data'); elSidebar.appendChild(d); }
     if (elEmpty) elEmpty.hidden = false;
     if (elContent) elContent.hidden = true;
   }
@@ -141,7 +143,7 @@
       var links = document.createElement('div');
       links.className = 'bench-vlinks';
       var aggSamples = (vdata.aggregate && (vdata.aggregate.sample_size_on + vdata.aggregate.sample_size_off)) || vdata.sample_size || 0;
-      links.appendChild(makeLink(v, 'all', 'All', null, aggSamples));
+      links.appendChild(makeLink(v, 'all', (I18N.all || 'All'), null, aggSamples));
       (vdata.ecosystems || []).forEach(function (e) {
         var m = ecoMeta(e.ecosystem);
         links.appendChild(makeLink(v, e.ecosystem, m.name, m.color, (e.sample_size_on || 0) + (e.sample_size_off || 0)));
@@ -159,7 +161,7 @@
       var og = document.createElement('optgroup');
       og.label = 'v' + v;
       var oAll = document.createElement('option');
-      oAll.value = v + '/all'; oAll.textContent = 'All ecosystems';
+      oAll.value = v + '/all'; oAll.textContent = (I18N.allEco || 'All ecosystems');
       og.appendChild(oAll);
       (vdata.ecosystems || []).forEach(function (e) {
         var o = document.createElement('option');
@@ -235,15 +237,15 @@
     var vdata = state.versions[cur.version];
     var m = metricFor(cur);
     var isAll = cur.scope === 'all';
-    var ecoName = isAll ? 'all ecosystems' : ecoMeta(cur.scope).name;
+    var ecoName = isAll ? (I18N.allEco || 'all ecosystems') : ecoMeta(cur.scope).name;
 
     elTitle.textContent = 'RTK v' + cur.version + ' — ' + ecoName;
     var sessions = isAll
       ? (vdata.sample_size || ((m.sample_size_on || 0) + (m.sample_size_off || 0)))
       : ((m.sample_size_on || 0) + (m.sample_size_off || 0));
-    elSubtitle.textContent =
-      sessions + ' sessions (ON ' + (m.sample_size_on || 0) + ' / OFF ' + (m.sample_size_off || 0) + ')' +
-      ' · pass rate ' + fmtRate(m.pass_rate.on) + ' ON / ' + fmtRate(m.pass_rate.off) + ' OFF';
+    elSubtitle.textContent = (I18N.subtitle || '{n} sessions (ON {on} / OFF {off}) · pass rate {ron} ON / {roff} OFF')
+      .replace('{n}', sessions).replace('{on}', (m.sample_size_on || 0)).replace('{off}', (m.sample_size_off || 0))
+      .replace('{ron}', fmtRate(m.pass_rate.on)).replace('{roff}', fmtRate(m.pass_rate.off));
 
     renderPdf(cur, vdata, m);
     renderData(cur, vdata);
@@ -259,14 +261,14 @@
     if (cur.scope === 'all') {
       // Only the combined report here — per-ecosystem PDFs live in their own section.
       if (vdata.pdf_combined_public_url)
-        links.push({ url: vdata.pdf_combined_public_url, label: 'All ecosystems (combined)' });
+        links.push({ url: vdata.pdf_combined_public_url, label: (I18N.allCombined || 'All ecosystems (combined)') });
     } else if (m.pdf_public_url) {
-      links.push({ url: m.pdf_public_url, label: ecoMeta(cur.scope).name + ' report (PDF)' });
+      links.push({ url: m.pdf_public_url, label: (I18N.reportPdf || '{name} report (PDF)').replace('{name}', ecoMeta(cur.scope).name) });
     }
     if (!links.length) {
       var span = document.createElement('span');
       span.className = 'bench-content-sub';
-      span.textContent = 'No PDF report available.';
+      span.textContent = (I18N.noPdf || 'No PDF report available.');
       elPdf.appendChild(span);
       return;
     }
@@ -313,14 +315,14 @@
     if (isAll) {
       // "All" view: totals derived for display only (mean × sample size) — the
       // import is untouched; savings % stays the aggregate figure from the data.
-      bashFoot = 'ON ' + fmtBytes(b.on_mean * nOn) + ' vs OFF ' + fmtBytes(b.off_mean * nOff) + ' total';
-      costFoot = 'ON ' + fmtUsdTotal(c.on_mean_usd * nOn) + ' vs OFF ' + fmtUsdTotal(c.off_mean_usd * nOff) + ' total';
+      bashFoot = (I18N.footTotal || 'ON {on} vs OFF {off} total').replace('{on}', fmtBytes(b.on_mean * nOn)).replace('{off}', fmtBytes(b.off_mean * nOff));
+      costFoot = (I18N.footTotal || 'ON {on} vs OFF {off} total').replace('{on}', fmtUsdTotal(c.on_mean_usd * nOn)).replace('{off}', fmtUsdTotal(c.off_mean_usd * nOff));
     } else {
-      bashFoot = 'ON ' + fmtBytes(b.on_mean) + ' vs OFF ' + fmtBytes(b.off_mean) + ' avg/run';
-      costFoot = 'ON ' + fmtUsd(c.on_mean_usd) + ' vs OFF ' + fmtUsd(c.off_mean_usd) + ' avg/run';
+      bashFoot = (I18N.footAvg || 'ON {on} vs OFF {off} avg/run').replace('{on}', fmtBytes(b.on_mean)).replace('{off}', fmtBytes(b.off_mean));
+      costFoot = (I18N.footAvg || 'ON {on} vs OFF {off} avg/run').replace('{on}', fmtUsd(c.on_mean_usd)).replace('{off}', fmtUsd(c.off_mean_usd));
     }
-    elKpis.appendChild(kpiCard('Bash output savings', fmtPct(b.savings_pct), sig(b.p_value) ? signClass(b.savings_pct) : 'neutral', bashFoot, sig(b.p_value)));
-    elKpis.appendChild(kpiCard('Cost savings', fmtPct(c.savings_pct), sig(c.p_value) ? signClass(c.savings_pct) : 'neutral', costFoot, sig(c.p_value)));
+    elKpis.appendChild(kpiCard((I18N.bashSavings || 'Bash output savings'), fmtPct(b.savings_pct), sig(b.p_value) ? signClass(b.savings_pct) : 'neutral', bashFoot, sig(b.p_value)));
+    elKpis.appendChild(kpiCard((I18N.costSavings || 'Cost savings'), fmtPct(c.savings_pct), sig(c.p_value) ? signClass(c.savings_pct) : 'neutral', costFoot, sig(c.p_value)));
   }
 
   // "Savings chain": RTK's direct, big win on Bash output cascades downstream
@@ -340,13 +342,13 @@
       note.textContent = '';
       var strong = function (t) { var s = document.createElement('strong'); s.textContent = t; return s; };
       var txt = function (t) { return document.createTextNode(t); };
-      note.appendChild(txt('RTK cuts '));
-      note.appendChild(strong(absPct(bashSav)));
-      note.appendChild(txt(' of bash output bytes, which cascades into '));
-      note.appendChild(strong(absPct(tokSav)));
-      note.appendChild(txt(' fewer input tokens for an average of '));
-      note.appendChild(strong(absPct(costSav)));
-      note.appendChild(txt(' lower cost.'));
+      var noteTmpl = I18N.cuts || 'RTK cuts {bash} of bash output bytes, which cascades into {tok} fewer input tokens for an average of {cost} lower cost.';
+      noteTmpl.split(/(\{bash\}|\{tok\}|\{cost\})/).forEach(function (part) {
+        if (part === '{bash}') note.appendChild(strong(absPct(bashSav)));
+        else if (part === '{tok}') note.appendChild(strong(absPct(tokSav)));
+        else if (part === '{cost}') note.appendChild(strong(absPct(costSav)));
+        else if (part) note.appendChild(txt(part));
+      });
     }
 
 
@@ -356,11 +358,11 @@
     host.textContent = '';
 
     var steps = [
-      { label: 'Bash output',  sav: bashSav, off: fmtBytes(bash.off_mean),   on: fmtBytes(bash.on_mean),   tag: 'RTK OSS surface', hero: true },
-      { label: 'Input tokens', sav: tokSav,  off: fmtTok(tok.off_mean),      on: fmtTok(tok.on_mean),      tag: 'sent to the model' },
-      { label: 'Cost (USD)',   sav: costSav, off: fmtUsd(cost.off_mean_usd), on: fmtUsd(cost.on_mean_usd), tag: 'the bottom line' }
+      { label: (I18N.bashOutput || 'Bash output'),  sav: bashSav, off: fmtBytes(bash.off_mean),   on: fmtBytes(bash.on_mean),   tag: (I18N.tagSurface || 'RTK OSS surface'), hero: true },
+      { label: (I18N.inputTokens || 'Input tokens'), sav: tokSav,  off: fmtTok(tok.off_mean),      on: fmtTok(tok.on_mean),      tag: (I18N.tagModel || 'sent to the model') },
+      { label: (I18N.costUsd || 'Cost (USD)'),   sav: costSav, off: fmtUsd(cost.off_mean_usd), on: fmtUsd(cost.on_mean_usd), tag: (I18N.tagBottom || 'the bottom line') }
     ];
-    var connectors = ['part of input tokens', 'billed per token and additional to Output tokens'];
+    var connectors = [(I18N.connInput || 'part of input tokens'), (I18N.connBilled || 'billed per token and additional to Output tokens')];
     var maxAbs = Math.max(Math.abs(bashSav), Math.abs(tokSav), Math.abs(costSav), 1);
 
     var mk = function (cls, t) { var e = document.createElement('div'); e.className = cls; if (t != null) e.textContent = t; return e; };
@@ -419,14 +421,14 @@
     var isSig = sig(pVal);
     if (savPct > 0)  return isSig ? '<td class="win-on">✓ RTK</td>' : '<td class="muted">~ RTK</td>';
     if (savPct < 0)  return isSig ? '<td class="win-off">✗ OFF</td>' : '<td class="muted">~ OFF</td>';
-    return '<td>Tie</td>';
+    return '<td>' + esc(I18N.tie || 'Tie') + '</td>';
   }
 
   function metricRows(m) {
     var rows = '';
     // Cost
     rows += '<tr class="metric-row">' +
-      '<td>Cost (USD)</td>' +
+      '<td>' + esc(I18N.costUsd || 'Cost (USD)') + '</td>' +
       '<td class="num">' + fmtUsd(m.cost.off_mean_usd || 0) + '</td>' +
       '<td class="num">' + fmtUsd(m.cost.on_mean_usd || 0) + '</td>' +
       cellPct(m.cost.savings_pct, m.cost.p_value) +
@@ -434,7 +436,7 @@
       winner(m.cost.savings_pct, m.cost.p_value) + '</tr>';
     // Tokens
     rows += '<tr class="metric-row">' +
-      '<td>Input tokens</td>' +
+      '<td>' + esc(I18N.inputTokens || 'Input tokens') + '</td>' +
       '<td class="num">' + fmtTok(m.tokens.off_mean) + '</td>' +
       '<td class="num">' + fmtTok(m.tokens.on_mean) + '</td>' +
       cellPct(m.tokens.savings_pct, m.tokens.p_value) +
@@ -442,7 +444,7 @@
       winner(m.tokens.savings_pct, m.tokens.p_value) + '</tr>';
     // Bash bytes
     rows += '<tr class="metric-row">' +
-      '<td>Bash output bytes <span class="muted">(Primary KPI)</span></td>' +
+      '<td>' + esc(I18N.mBash || 'Bash output bytes') + ' <span class="muted">' + esc(I18N.mPrimary || '(Primary KPI)') + '</span></td>' +
       '<td class="num">' + fmtBytes(m.bash_bytes.off_mean) + '</td>' +
       '<td class="num">' + fmtBytes(m.bash_bytes.on_mean) + '</td>' +
       cellPct(m.bash_bytes.savings_pct, m.bash_bytes.p_value) +
@@ -450,7 +452,7 @@
       winner(m.bash_bytes.savings_pct, m.bash_bytes.p_value) + '</tr>';
     // API calls
     rows += '<tr class="metric-row">' +
-      '<td>API calls <span class="muted">(Behavioral)</span></td>' +
+      '<td>' + esc(I18N.mApi || 'API calls') + ' <span class="muted">' + esc(I18N.mBehavioral || '(Behavioral)') + '</span></td>' +
       '<td class="num">' + Number(m.api_calls.off_mean).toFixed(1) + '</td>' +
       '<td class="num">' + Number(m.api_calls.on_mean).toFixed(1) + '</td>' +
       '<td class="num muted">—</td>' +
@@ -459,7 +461,7 @@
     // Duration
     if (m.duration_ms) {
       rows += '<tr class="metric-row">' +
-        '<td>Duration</td>' +
+        '<td>' + esc(I18N.mDuration || 'Duration') + '</td>' +
         '<td class="num">' + fmtDur(m.duration_ms.off_mean) + '</td>' +
         '<td class="num">' + fmtDur(m.duration_ms.on_mean) + '</td>' +
         '<td class="num muted">—</td>' +
@@ -468,7 +470,7 @@
     }
     // Pass rate
     rows += '<tr class="metric-row">' +
-      '<td>Pass rate</td>' +
+      '<td>' + esc(I18N.mPassrate || 'Pass rate') + '</td>' +
       '<td class="num">' + fmtRate(m.pass_rate.off) + '</td>' +
       '<td class="num">' + fmtRate(m.pass_rate.on) + '</td>' +
       '<td class="num muted">—</td>' +
@@ -483,15 +485,15 @@
   }
 
   var TABLE_HEAD = '<thead><tr>' +
-    '<th>Metric</th><th>OFF Mean</th><th>ON Mean</th>' +
-    '<th>Savings %</th><th>p-value</th><th>Winner</th>' +
+    '<th>' + esc(I18N.thMetric || 'Metric') + '</th><th>' + esc(I18N.thOff || 'OFF Mean') + '</th><th>' + esc(I18N.thOn || 'ON Mean') + '</th>' +
+    '<th>' + esc(I18N.thSavings || 'Savings %') + '</th><th>' + esc(I18N.thPvalue || 'p-value') + '</th><th>' + esc(I18N.thWinner || 'Winner') + '</th>' +
     '</tr></thead>';
 
   function renderTable(cur, vdata) {
     var body = '';
     if (cur.scope === 'all') {
       // One section per ecosystem + aggregate
-      var sections = [{ label: '<strong>All ecosystems</strong>', m: vdata.aggregate }];
+      var sections = [{ label: '<strong>' + esc(I18N.allEco || 'All ecosystems') + '</strong>', m: vdata.aggregate }];
       (vdata.ecosystems || []).forEach(function (e) {
         sections.push({ label: ecoCellHtml(e.ecosystem), m: e });
       });
