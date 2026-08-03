@@ -1,0 +1,106 @@
+---
+// ProCta — RTK Pro CTA section, redirects to pro.rtk-ai.app
+import { t, type Lang } from '../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+---
+<section class="pro-section" id="pro">
+  <div class="section-inner">
+    <div class="pro-card reveal">
+      <div class="pro-badge"><span>{t('pro.badge', lang)}</span></div>
+      <h2>RTK Pro</h2>
+      <p class="pro-desc">{t('hero.pro_text', lang)}</p>
+      <a href="https://pro.rtk-ai.app" class="btn btn-primary pro-btn">
+        {t('pro.cta', lang)}
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+.pro-section {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.pro-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pro-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 52px 48px;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 22, 41, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  text-align: center;
+  position: relative;
+}
+
+.pro-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent), var(--cyan));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.pro-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-dim);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.pro-badge span { color: var(--accent); }
+
+.pro-card h2 {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-3);
+}
+
+.pro-desc {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .pro-card { padding: 32px 20px; }
+}
+</style>

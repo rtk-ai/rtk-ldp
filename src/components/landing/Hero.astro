@@ -46,23 +46,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
         <strong>{t('hero.sub_2', lang)}</strong>
       </p>
 
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-value">89%</span>
-          <span class="stat-label">{t('hero.stat_pct_label', lang)}</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat">
-          <span class="stat-value">3x</span>
-          <span class="stat-label">{t('hero.stat_3x_label', lang)}</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat">
-          <span class="stat-value">30+</span>
-          <span class="stat-label">{t('hero.stat_cmds_label', lang)}</span>
-        </div>
-      </div>
-
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
@@ -204,38 +187,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
 }
 .hero-sub strong { color: var(--text); }
 
-.hero-stats {
-  display: flex;
-  align-items: center;
-  gap: var(--space-9);
-  margin: var(--space-5) 0;
-}
-
-.stat { text-align: center; }
-
-.stat-value {
-  font-family: var(--font-mono);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-shadow: none;
-  display: block;
-}
-
-.stat-label {
-  font-size: var(--text-xs);
-  color: var(--text-dim);
-  display: block;
-  margin-top: 0.15rem;
-}
-
-.stat-sep {
-  width: 1px;
-  height: 2rem;
-  background: var(--border);
-  flex-shrink: 0;
-}
-
 .hero-cta {
   display: flex;
   gap: var(--space-3);
@@ -360,7 +311,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   text-align: left;
 }
 .hero-content .hero-badges,
-.hero-content .hero-stats,
 .hero-content .hero-cta {
   justify-content: flex-start;
 }
@@ -383,8 +333,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
 
 @media (max-width: 768px) {
   .hero { padding: 120px 20px 60px; }
-  .hero-stats { gap: 20px; }
-  .stat-value { font-size: var(--text-2xl); }
   .hero-with-viking { flex-direction: column; gap: var(--space-6); }
   .hero-viking { max-width: 320px; }
 }

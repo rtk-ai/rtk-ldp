@@ -16,14 +16,12 @@ export const HTML_KEYS = new Set([
   'proof.sub',
   'proof.d1',
   'share.desc',
-  'cloud.pricing',
   'bench.hero_sub',
 ])
 
 export const T: Record<string, Record<Lang, string>> = {
   'nav.why':     { en: 'Why',     fr: 'Pourquoi', es: 'Por qué',      de: 'Warum',       zh: '为什么', ja: 'なぜ' },
   'nav.demo':    { en: 'Demo',    fr: 'Démo',     es: 'Demo',          de: 'Demo',        zh: '演示',  ja: 'デモ' },
-  'nav.cloud':   { en: 'Cloud',   fr: 'Cloud',    es: 'Cloud',         de: 'Cloud',       zh: '云端',  ja: 'クラウド' },
   'nav.install': { en: 'Install', fr: 'Installer', es: 'Instalar',     de: 'Installieren', zh: '安装', ja: 'インストール' },
 
   'hero.badge_oss': { en: 'Open Source · Apache 2.0 · Rust', fr: 'Open Source · Apache 2.0 · Rust', es: 'Open Source · Apache 2.0 · Rust', de: 'Open Source · Apache 2.0 · Rust', zh: '开源 · Apache 2.0 · Rust', ja: 'オープンソース · Apache 2.0 · Rust' },
@@ -32,12 +30,11 @@ export const T: Record<string, Record<Lang, string>> = {
   'hero.title_3':   { en: 'Fix it.', fr: 'Résolvez ça.', es: 'Arréglalo.', de: 'Beheb das.', zh: '解决它。', ja: '解決しよう。' },
   'hero.sub_1':     { en: 'rtk compresses command outputs before they reach the context window.', fr: "rtk compresse les sorties des commandes avant qu'elles n'atteignent la fenêtre de contexte.", es: 'rtk comprime las salidas de comandos antes de que lleguen a la ventana de contexto.', de: 'rtk komprimiert Kommandoausgaben, bevor sie das Kontextfenster erreichen.', zh: 'rtk 在命令输出进入上下文窗口之前对其进行压缩。', ja: 'rtk はコマンド出力がコンテキストウィンドウに入る前に圧縮します。' },
   'hero.sub_2':     { en: 'Better reasoning. Longer sessions. Lower costs.', fr: 'Meilleur raisonnement. Sessions plus longues. Coûts réduits.', es: 'Mejor razonamiento. Sesiones más largas. Menores costos.', de: 'Besseres Reasoning. Längere Sessions. Geringere Kosten.', zh: '更好的推理。更长的会话。更低的成本。', ja: 'より良い推論。より長いセッション。より低いコスト。' },
-  'hero.stat_pct_label':  { en: 'avg. noise removed', fr: 'bruit supprimé (moy.)', es: 'ruido eliminado (prom.)', de: 'Rauschen entfernt (Ø)', zh: '平均去除噪音', ja: '平均ノイズ除去' },
-  'hero.stat_3x_label':   { en: 'longer sessions', fr: 'sessions plus longues', es: 'sesiones más largas', de: 'längere Sessions', zh: '更长会话', ja: 'セッション延長' },
-  'hero.stat_cmds_label': { en: 'commands', fr: 'commandes', es: 'comandos', de: 'Befehle', zh: '命令数', ja: 'コマンド数' },
   'hero.cta_install':     { en: 'Install rtk', fr: 'Installer rtk', es: 'Instalar rtk', de: 'rtk installieren', zh: '安装 rtk', ja: 'rtk をインストール' },
   'hero.cta_star':        { en: 'Star on GitHub', fr: 'Star sur GitHub', es: 'Star en GitHub', de: 'Star auf GitHub', zh: 'GitHub 上加星', ja: 'GitHub でスター' },
   'hero.pro_text':        { en: 'Token economy, security & governance for teams', fr: 'Économie de tokens, sécurité & gouvernance pour les équipes', es: 'Economía de tokens, seguridad y gobernanza para equipos', de: 'Token-Ökonomie, Sicherheit & Governance für Teams', zh: '面向团队的 token 经济、安全与治理', ja: 'チーム向けのトークン経済・セキュリティ・ガバナンス' },
+  'pro.badge':            { en: 'Now available', fr: 'Disponible', es: 'Ya disponible', de: 'Jetzt verfügbar', zh: '现已推出', ja: '提供開始' },
+  'pro.cta':              { en: 'Discover RTK Pro', fr: 'Découvrir RTK Pro', es: 'Descubre RTK Pro', de: 'RTK Pro entdecken', zh: '探索 RTK Pro', ja: 'RTK Pro を見る' },
 
   'problem.title': { en: 'The problem with AI coding today', fr: "Le problème du codage IA aujourd'hui", es: 'El problema del coding con IA hoy', de: 'Das Problem mit KI-Coding heute', zh: '当今 AI 编程的问题', ja: '今日の AI コーディングの問題' },
   'problem.sub':   { en: "Every command your agent runs pollutes the context window with noise. Here's what that costs you.", fr: 'Chaque commande exécutée par votre agent pollue la fenêtre de contexte avec du bruit. Voici ce que ça vous coûte.', es: 'Cada comando que ejecuta tu agente contamina la ventana de contexto con ruido. Esto es lo que te cuesta.', de: 'Jeder Befehl deines Agenten verschmutzt das Kontextfenster mit Rauschen. Das kostet dich.', zh: '代理执行的每个命令都会用噪音污染上下文窗口。这会产生以下代价。', ja: 'エージェントが実行するすべてのコマンドがノイズでコンテキストを汚染します。' },
@@ -79,25 +76,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'proof.d2':    { en: 'Daily, weekly, and monthly stats by command. Track your savings over time.', fr: 'Statistiques quotidiennes, hebdomadaires et mensuelles. Suivez vos économies dans le temps.', es: 'Estadísticas diarias, semanales y mensuales por comando. Rastrea tus ahorros.', de: 'Tägliche, wöchentliche und monatliche Statistiken pro Befehl. Verfolgen Sie Ihre Einsparungen.', zh: '按命令的每日、每周和每月统计。跟踪你的节省。', ja: 'コマンド別の日次・週次・月次統計。節約を追跡。' },
 
 
-  'cloud.badge':              { en: 'Coming Soon', fr: 'Bientôt disponible', es: 'Próximamente', de: 'Demnächst', zh: '即将推出', ja: '近日公開' },
-  'cloud.desc':               { en: 'Visibility and control over your team\'s AI coding costs. Know what\'s wasted. Fix it.', fr: 'Visibility and control over your team\'s AI coding costs. Know what\'s wasted. Fix it.', es: 'Visibilidad y control sobre los costos de IA de tu equipo. Sabe qué se desperdicia. Corrígelo.', de: 'Transparenz und Kontrolle über die KI-Kosten deines Teams. Wisse, was verschwendet wird. Beheb es.', zh: '对团队 AI 编程成本的可见性和控制。了解浪费。解决它。', ja: 'チームの AI コーディングコストの可視化と制御。無駄を把握。解決。' },
-  'cloud.f1.title':           { en: 'Token analytics', fr: 'Analytique des tokens', es: 'Analítica de tokens', de: 'Token-Analytics', zh: 'Token 分析', ja: 'トークン分析' },
-  'cloud.f1.desc':            { en: 'Dashboard per dev, per project, per tool', fr: 'Dashboard par dev, par projet, par outil', es: 'Dashboard por dev, por proyecto, por herramienta', de: 'Dashboard pro Dev, pro Projekt, pro Tool', zh: '按开发者、项目、工具的仪表盘', ja: '開発者・プロジェクト・ツール別ダッシュボード' },
-  'cloud.f2.title':           { en: 'Team savings reports', fr: 'Team savings reports', es: 'Informes de ahorro', de: 'Team-Sparberichte', zh: '团队节省报告', ja: 'チーム節約レポート' },
-  'cloud.f2.desc':            { en: '"Your team saved $4,200 this month"', fr: '« Votre équipe a économisé 4 200$ ce mois »', es: '"Tu equipo ahorró $4.200 este mes"', de: '„Dein Team hat diesen Monat $4.200 gespart"', zh: '"你的团队本月节省了 $4,200"', ja: '「チームは今月 $4,200 節約」' },
-  'cloud.f3.title':           { en: 'Rate limit alerts', fr: 'Alertes de limites', es: 'Alertas de límites', de: 'Rate-Limit-Alarme', zh: '速率限制警报', ja: 'レート制限アラート' },
-  'cloud.f3.desc':            { en: 'Monitoring & smart notifications', fr: 'Monitoring & notifications intelligentes', es: 'Monitoreo y notificaciones inteligentes', de: 'Monitoring & smarte Benachrichtigungen', zh: '监控和智能通知', ja: 'モニタリングとスマート通知' },
-  'cloud.f4.title':           { en: 'Enterprise controls', fr: 'Contrôles entreprise', es: 'Controles empresariales', de: 'Enterprise-Kontrollen', zh: '企业控制', ja: 'エンタープライズ制御' },
-  'cloud.f4.desc':            { en: 'SSO, audit logs, compliance', fr: 'SSO, audit logs, compliance', es: 'SSO, logs de auditoría, cumplimiento', de: 'SSO, Audit-Logs, Compliance', zh: 'SSO、审计日志、合规', ja: 'SSO、監査ログ、コンプライアンス' },
-  'cloud.pricing':            { en: 'Free for open-source. Teams from <strong>$15/dev/month</strong>.', fr: 'Free for open-source. Teams from <strong>$15/dev/month</strong>.', es: 'Gratis para open-source. Equipos desde <strong>$15/dev/mes</strong>.', de: 'Kostenlos für Open-Source. Teams ab <strong>$15/Dev/Monat</strong>.', zh: '开源免费。团队从 <strong>$15/开发者/月</strong> 起。', ja: 'オープンソースは無料。チームは <strong>$15/開発者/月</strong> から。' },
-  'cloud.submit':             { en: 'Join the waitlist', fr: 'Rejoindre la waitlist', es: 'Unirse a la waitlist', de: 'Auf die Warteliste', zh: '加入等待列表', ja: 'ウェイトリストに参加' },
-  'cloud.counter':            { en: 'teams on the waitlist', fr: 'teams on the waitlist', es: 'equipos en lista de espera', de: 'Teams auf der Warteliste', zh: '团队在等待列表中', ja: 'チームが待機中' },
-  'cloud.note':               { en: 'No spam. One email when we launch.', fr: 'Pas de spam. Un seul email au lancement.', es: 'Sin spam. Un solo email al lanzamiento.', de: 'Kein Spam. Eine E-Mail zum Launch.', zh: '无垃圾邮件。上线时发一封邮件。', ja: 'スパムなし。ローンチ時に 1 通。' },
-  'cloud.spread':             { en: 'Spread the word', fr: 'Faites passer le mot', es: 'Corre la voz', de: 'Weitersagen', zh: '传播一下', ja: '拡散する' },
-  'cloud.post_gain':          { en: 'or post your rtk gain', fr: 'ou postez votre rtk gain', es: 'o publica tu rtk gain', de: 'oder poste deinen rtk gain', zh: '或发布你的 rtk gain', ja: 'または rtk gain を投稿' },
-  'cloud.placeholder_email':  { en: 'you@company.com', fr: 'vous@entreprise.com', es: 'tu@empresa.com', de: 'du@firma.com', zh: 'you@company.com', ja: 'you@company.com' },
-  'cloud.placeholder_company':{ en: 'Company (optional)', fr: 'Entreprise (optionnel)', es: 'Empresa (opcional)', de: 'Firma (optional)', zh: '公司（可选）', ja: '会社（任意）' },
-  'cloud.placeholder_tool':   { en: 'Main AI coding tool (optional)', fr: 'Outil IA principal (optionnel)', es: 'Herramienta IA principal (opcional)', de: 'Haupt-KI-Tool (optional)', zh: '主要 AI 编程工具（可选）', ja: '主要 AI コーディングツール（任意）' },
 
   'share.title_1':            { en: 'Post your', fr: 'Postez votre', es: 'Publica tu', de: 'Poste deinen', zh: '发布你的', ja: 'あなたの' },
   'share.title_2':            { en: 'rtk gain', fr: 'rtk gain', es: 'rtk gain', de: 'rtk gain', zh: 'rtk gain', ja: 'rtk gain' },

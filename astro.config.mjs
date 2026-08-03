@@ -26,6 +26,8 @@ export default defineConfig({
     },
   },
   redirects: {
+    // RTK Cloud waitlist page → RTK Pro site
+    '/cloud/': 'https://pro.rtk-ai.app',
     // Backcompat: old /guide/ URLs → new /docs/
     '/guide/': '/docs/',
     '/guide/what-rtk-covers/': '/docs/resources/what-rtk-covers/',
