@@ -63,13 +63,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
         </div>
       </div>
 
-      <details class="hero-context-details">
-        <summary class="hero-context-toggle">Why RTK? The numbers.</summary>
-        <p class="hero-context">
-          89% noise reduction measured across 2,900+ real-world dev commands: <code>cargo test</code> 91.8%, <code>git status</code> 80.8%, <code>find</code> 78.3%, <code>grep</code> 49.5%. Free, open source (Apache 2.0, Rust).
-        </p>
-      </details>
-
       <div class="hero-cta">
         <a href="#install" class="btn btn-primary">{t('hero.cta_install', lang)}</a>
         <a href="https://github.com/rtk-ai/rtk" class="btn btn-ghost" target="_blank" rel="noopener">
@@ -77,6 +70,12 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
           <span>{t('hero.cta_star', lang)}</span>
         </a>
       </div>
+
+      <a href="https://pro.rtk-ai.app" class="hero-pro">
+        <span class="hero-pro-badge">RTK Pro</span>
+        <span class="hero-pro-text">{t('hero.pro_text', lang)}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
     </div>
 
     <div class="hero-viking">
@@ -205,55 +204,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
 }
 .hero-sub strong { color: var(--text); }
 
-.hero-context {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  max-width: 600px;
-  margin: 0 auto 28px;
-  line-height: 1.65;
-}
-.hero-context code {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.8em;
-  color: var(--cyan);
-  background: var(--cyan-dim);
-  padding: 1px 5px;
-  border-radius: var(--radius-xs);
-}
-
-/* Hero context — collapsible SEO block */
-.hero-context-details {
-  margin-top: var(--space-5);
-  max-width: var(--hero-subhead-max-w);
-}
-
-.hero-context-toggle {
-  font-size: var(--text-sm);
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.hero-context-toggle::before {
-  content: '//';
-  opacity: 0.5;
-}
-
-.hero-context-details[open] .hero-context-toggle {
-  color: var(--text-muted);
-}
-
-.hero-context-details .hero-context {
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  max-width: var(--hero-subhead-max-w);
-}
-
 .hero-stats {
   display: flex;
   align-items: center;
@@ -291,8 +241,43 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}k` : String(star
   gap: var(--space-3);
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-4);
   position: relative;
+}
+
+/* === Pro callout === */
+.hero-pro {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px var(--space-4);
+  margin-bottom: var(--space-8);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  position: relative;
+}
+.hero-pro:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+}
+.hero-pro svg { color: var(--accent); flex-shrink: 0; }
+
+.hero-pro-badge {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* === Terminal Demo in Hero === */
