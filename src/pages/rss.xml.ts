@@ -1,5 +1,6 @@
 import rss from '@astrojs/rss'
 import type { APIRoute } from 'astro'
+import { getCollection } from 'astro:content'
 import { rssEntries, type RssEntry } from '../data/rss-entries'
 
 function parseDate(dateStr: string): Date {
@@ -23,7 +24,15 @@ export const GET: APIRoute = async (context) => {
     link: entry.link,
   }))
 
-  const allItems = [...manualItems]
+  const posts = await getCollection('blog', ({ data }) => !data.draft)
+  const blogItems = posts.map((post) => ({
+    title: `[Blog] ${post.data.title}`,
+    pubDate: post.data.date,
+    description: `<p>${post.data.description}</p>`,
+    link: new URL(`/blog/${post.id}/`, context.site).href,
+  }))
+
+  const allItems = [...manualItems, ...blogItems]
     .sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime())
     .slice(0, 50)
 

@@ -1,0 +1,216 @@
+---
+title: "RTK on SkillsBench: What the Benchmark Measures"
+description: "A JetBrains study measured RTK at +7.6% more expensive on SkillsBench at low reasoning effort, ±0% at high effort, with no quality change. We reproduce this benchmark."
+date: 2026-08-07
+tags: [benchmarks, skillsbench]
+---
+
+import BarChart from '../../components/blog/BarChart.astro'
+import DeltaChart from '../../components/blog/DeltaChart.astro'
+
+## TL;DR
+
+A JetBrains study measured RTK at +7.6% more expensive on SkillsBench at low reasoning effort, ±0% at high effort, with no quality change.
+
+RTK was first built for dev tasks, JetBrain used the full tasks set, while only 16 out of 86 are focused on Software engineering.
+
+We reproduce this benchmark to warn about what is being measured and if SkillsBench tasks can provide real measurement for RTK.
+
+Findings: The agent behavior variance is too high for RTK to be seen, tasks are in RTK main effect area (which is dev task loop like explore, build, test, ..), most of cost variance could be from pure agent behavior variance (api calls and how they write their commands), as long as we do not get a transcript of all the sessions, cannot affirm RTK made the final cost 7% worst.
+
+Data: Check the bottom line and final results, to summarize, on 13 dev tasks out of the 16 software engineer tasks of SkillsBench, results were - 4,8% on final costs
+
+## What the JetBrains Benchmark Taught Us About RTK — and What Comes Next
+
+A recent JetBrains benchmark put RTK to the test on SkillsBench.
+
++7.6% total cost at low reasoning effort.
+Almost no difference at high reasoning effort.
+No measurable impact on task quality.
+
+We took these results seriously.
+
+We also ran our own follow-up benchmarks to better understand what was happening.
+
+And the most important conclusion is not that compression does not work.
+
+It is that compressing one layer of an agentic system is very different from reducing the cost of the entire system.
+
+That distinction matters — and it is shaping the next phase of RTK.
+
+## How was RTK measured internally
+
+Our internal benchmark deliberately gives the agent a fixed action path, a semi-determinist sequence of commands, precisely to remove the single biggest confound in agentic evaluation: the agent choosing a different route each run.
+
+That determinism is what lets us attribute a cost or turn change to RTK rather than to the model's exploration. (in those task, agent was supposed to get a specific information from output, retry if it didn't)
+
+It's also how we caught and solved the additional API Turns problem, some commands rewrite were tricky and caused those retry. Those analyses allowed us to take real action and fix most.
+
+## Back to SkillsBench: What we learned
+
+- The compression ceiling is real. We reproduce it bottom-up.
+- Quality is unaffected.
+- RTK for now only compresses Bash command output. Other tools bypass it entirely.
+- Bash output is a thin slice of the bill. (estimated 3% on global tasks and can reach 5-6% on dev tasks, depending on the usage and environment)
+- RTK compresses ~30% of supported command outputs without losing signal, best cases are > 95% on test or build tasks.
+
+On the general SkillsBench set (86 tasks, K=1), RTK rewrites ~1/3 of Bash calls, covering ~20% of tool-output characters → ceiling ~3% of the bill.
+
+On a Bash-heavy dev task (fix-build-google-auto - SkillsBench, k=20), RTK rewrote ~48% of Bash commands, but only ~30% of the output bytes → ceiling still around ~3-4%.
+
+<BarChart title="Bash calls RTK rewrote" unit="%" max={100} data={[
+  { label: '86 tasks · K=1', value: 33 },
+  { label: 'dev task · k=20', value: 48 },
+]} />
+
+<BarChart title="Output volume covered by those rewrites" unit="%" max={100} data={[
+  { label: '86 tasks · K=1', value: 20 },
+  { label: 'dev task · k=20', value: 30 },
+]} />
+
+On both general and dev-focused tasks, RTK's savings ceiling is around 3% on those global benchmarks, and it does not hurt quality.
+
+## Why SkillsBench can't see RTK
+
+SkillsBench is a broad, general software-engineering benchmark.
+
+RTK was first built for a narrower target: the interactive, Bash-heavy developer loop.
+
+The deeper issue is variance. To average out agent-path noise we ran a single task at 20 pairs (K=20) on the SkillsBench task "fix-build-google-auto" and "fix-build-agentops".
+
+It never converged: cost deltas swung +14%, −16%, even +205%; all noise (p > 0.3).
+
+<DeltaChart
+  title="Extreme pairs from one run (fix-build-google-auto, K=20 runB)"
+  note="Cost delta a single pair can print, from the run's own per-trial data. Left of zero: ON cheaper. The luckiest pairing shows -85%, the unluckiest +195%; the actual run mean over 19v19 trials is -15.6% (p = 0.411). RTK's ceiling on this task: ~3-4%."
+  unit="%"
+  data={[
+    { label: 'luckiest pair', value: -85 },
+    { label: 'unluckiest pair', value: 195 },
+    { label: 'run mean · 19v19', value: -15.6 },
+  ]}
+/>
+
+Since cost ≈ context × turns, turn count dominates the bill, and the agent's route varies every run.
+
+On any single task, that variance completely swamps RTK's ~3-4% ceiling.
+
+<DeltaChart
+  title="Per-task cost delta, equal trials, errors excluded"
+  note="RTK ON vs OFF, equal trial counts per arm, runtime-error trials excluded. Left of zero: ON cheaper. Every estimate is indistinguishable from zero."
+  unit="%"
+  data={[
+    { label: 'dialogue · 11v11', value: -15.1 },
+    { label: 'fix-build · 44v44', value: 2.0 },
+    { label: 'simpo · 5v5', value: -1.0 },
+    { label: 'median', value: -1.0 },
+  ]}
+/>
+
+SkillsBench is a registry of 86 tasks, on generalist tasks.
+
+<img src="/assets/blog/skillsbench-tasks.webp" alt="Distribution of SkillsBench tasks by category, showing software engineering as a minority of the 86-task registry" width="1345" height="607" loading="lazy" />
+
+## Reading the cost carefully
+
+- The headline is single-pair. The 86-task runs were k=1: the study's own rule is "never trust k=1."
+- Noise is bigger than the effect. The same task varies ~22% run-to-run; even averaged over 80 tasks that leaves a ~3% margin of error, the size of RTK's ceiling on those tasks. That metric also counts the model's own output, which RTK never touches, so it drowns in variance the moment turn counts wobble.
+- Adding repeats erased it. On the Bash-heavy smoke, +35% at k=1 became noise (p≈0.65) at k=3.
+- It only appears at low effort. At high reasoning effort the delta is +0.1% (p=0.99). An effect that vanishes when the model thinks harder isn't structural.
+- The cost is behavioral, not compression. Sessions ran +13.8% more turns, measured with the awareness file on, on the noisiest metric there is, for now no logs to check why.
+
+Bottom line: +7.6% is a fragile, low-effort, behavioral signal, would need to know what happened on the worst pair for example, to determine where those behavior changes from.
+
+## About the RTK gains estimations
+
+The JetBrains benchmark is also talking about the “RTK gain” results.
+
+The “rtk gain” command is used to estimate the token savings that RTK produced. It is a pure heuristic because each model has its own tokenizer and embedder, and we cannot fit it to all of them.
+
+In the same way, each agent harness has its own capabilities, and each AI provider has its own cache systems and limitations.
+
+Thus, it is not possible, and it was never the goal, to produce a precise estimation, since this would imply a lot of maintenance for a small team like ours.
+
+We also encountered some bugs in “rtk gain”, but again, RTK gain was never a promise of a precise cost savings computation, only an estimate, because final costs and token usage depend on many variables and factors that we do not handle or do not want to maintain
+
+## Actions we can take now
+
+Those benchmarks are not aiming properly for RTK main coverage right now, but they are still a really good indicator about what RTK is missing on the total bill.
+
+Our team is still small, but we will now focus on wider compression, so everyone can benefit from our hook rewrite methods.
+
+- Extend coverage beyond Bash. (PostHook with Grep, Read, webSearch and others tools used by agents)
+- Benchmark wider. Run more paired tests across general tasks to map where compression pays off and where it doesn't, and find the optimizations that move the bill for everyone, not just specific dev tasks.
+- Publish our session logs and replay tooling, so every number here is reproducible.
+
+Our run data is already available: [download the benchmark data and analysis scripts (zip)](/data/blog/rtk-benchmark-public.zip).
+
+## Check results
+
+Same Harbor + SkillsBench harnesses a focused dev task, where RTK is fully active, and even there, the agent-behavior variance is so large that no reliable effect can be measured.
+
+<DeltaChart
+  title="K6 sweep, 3 tasks: mean cost delta, RTK ON vs OFF"
+  note="Equal trial counts per arm (5v5 per task, seeded subsample), runtime-error trials excluded. Pooled: ON -2.6%, permutation p = 0.89. Cost-neutral."
+  unit="%"
+  data={[
+    { label: 'dialogue · 5v5', value: -12.6 },
+    { label: 'fix-build · 5v5', value: 6.0 },
+    { label: 'simpo · 5v5', value: -1.1 },
+    { label: 'pooled', value: -2.6 },
+  ]}
+/>
+
+<DeltaChart
+  title="13-task sweep, K=4, RTK v0.45.0: per-task mean cost delta"
+  note="12 balanced tasks, 4v4 trials each, runtime-error trials excluded; data-to-d3 excluded (broken verifier, unbalanced arms). 7 tasks cheaper under ON, 5 costlier. Pooled: -4.8%, permutation p = 0.305. Cost-neutral; reproducible from the downloadable data."
+  unit="%"
+  data={[
+    { label: 'tfidf-search', value: -32 },
+    { label: 'react-perf', value: -21 },
+    { label: 'py-scala', value: -17 },
+    { label: 'dialogue', value: -12 },
+    { label: 'fix-build', value: -10 },
+    { label: 'jax-basics', value: -5 },
+    { label: 'spring-boot', value: -5 },
+    { label: 'debug-trl', value: 6 },
+    { label: 'simpo', value: 7 },
+    { label: 'llm-prefix', value: 7 },
+    { label: 'azure-bgp', value: 11 },
+    { label: 'fix-visual', value: 14 },
+    { label: 'pooled', value: -4.8 },
+  ]}
+/>
+
+## Main take aways
+
+### RTK is moving beyond Bash
+
+The next phase of RTK is about increasing coverage, not simply increasing compression ratios.
+
+RTK started as a dev tool CLI output compressor.
+
+It is evolving to a broader context optimization layer for AI agents.
+
+### What we take away from the benchmark
+
+The JetBrains benchmark challenged one interpretation of RTK that needed challenging:
+large compression ratios on individual commands should not be interpreted as equivalent reductions in the total agent bill.
+
+We agree.
+
+Today, RTK’s effect on broad general-purpose agent workloads is limited by the fraction of the context it can reach.
+
+That is an engineering constraint, not something we want to hide behind a benchmark.
+
+It is also something we can change.
+
+The first phase of RTK was about proving that noisy developer outputs can be compressed aggressively while preserving the signal agents need.
+
+The next phase is about applying that optimization much more broadly across the agent context.
+
+Because the next meaningful gain will not come from squeezing another few percent out of Bash.
+
+It will come from optimizing more of what the agent actually sees.
+
+[Download the benchmark data (zip)](/data/blog/rtk-benchmark-public.zip): per-trial CSVs, transcript stats, and the analysis scripts behind the aggregates in this article.

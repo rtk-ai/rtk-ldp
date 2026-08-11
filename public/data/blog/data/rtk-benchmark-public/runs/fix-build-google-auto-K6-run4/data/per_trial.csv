@@ -1,0 +1,13 @@
+arm,trial,cost_usd,reward,error,input_tokens,output_tokens
+off,fix-build-google-auto__5aJhYrA,0.717942,1,,542517,9247
+off,fix-build-google-auto__BnCZgNM,,,RuntimeError,,
+off,fix-build-google-auto__CkZCTiR,2.4787565000000003,1,,2234771,30986
+off,fix-build-google-auto__EM5rcPc,4.789202499999999,1,,4428442,64508
+off,fix-build-google-auto__SgJRNok,1.2946814999999998,1,,1168076,14942
+off,fix-build-google-auto__a7pNYNM,2.5171289999999997,1,,2011813,34908
+on,fix-build-google-auto__2Rizd2Z,,,RuntimeError,,
+on,fix-build-google-auto__3ybR5vJ,1.8849384999999999,1,,1741587,22683
+on,fix-build-google-auto__42qYCpk,1.571839,1,,1359926,17980
+on,fix-build-google-auto__TePqMv6,1.377735,1,,1065020,18433
+on,fix-build-google-auto__nbAv83t,4.334373999999999,1,,4395625,49875
+on,fix-build-google-auto__tWtKDhL,3.3339694999999994,1,,2906274,43496

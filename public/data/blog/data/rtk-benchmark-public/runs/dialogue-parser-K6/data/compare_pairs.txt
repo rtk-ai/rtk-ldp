@@ -1,0 +1,32 @@
+======================================================================
+RTK ON vs OFF   results/sweep-20260806-191959/dialogue-parser
+======================================================================
+
+QUALITY  (all trials; a timed-out/errored trial = NOT passed)
+  arm                    trials  errored  passed  pass-rate  mean-rwd
+  OFF (stock)                 6        0       2        33%     0.806
+  ON  (rtk)                   6        1       1        17%     0.667
+  -> pass-rate delta = -17 pp   <-- ON pass rate DROPPED (possible rtk regression)
+
+COST & TOKENS  (MEAN over all trials with a value -- errored included)
+  metric              OFF mean     ON mean      Δ%  perm-p  n OFF/ON
+  Cost USD               $0.37       $0.30  -17.6%   0.158       6/5
+  Input tokens         170,999     174,589   +2.1%   0.680       6/5
+  Cache tokens         157,057     168,158   +7.1%   0.447       6/5
+  Output tokens          6,081       6,254   +2.8%   0.686       6/5
+  TOTAL spend            $2.22       $1.52  -31.4%
+
+BASH OUTPUT  (mean per trial, from session logs; ~tokens = bytes/4)
+  metric                     OFF            ON      Δ%
+  bytes                    1,252         1,665  +33.1%
+  ~tokens                    313           416  +33.1%
+
+READ-OUT
+  ⚠ errored counts differ (OFF 0, ON 1). Timed-out trials are
+    truncated, so per-trial COST is confounded -- trust pass-rate and
+    TOTAL spend over cost means here. Re-run with a higher
+    AGENT_TIMEOUT_MULT so no legit trial is clipped.
+  - Cost/tokens use MEAN over ALL trials, not survivor-median, so a
+    clipped expensive trial can't fake a saving.
+  - perm-p >= 0.05 => the delta is indistinguishable from noise.
+  - Pass rate must NOT drop under ON; that's the real regression signal.

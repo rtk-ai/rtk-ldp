@@ -1,0 +1,26 @@
+==========================================================================
+RTK ON vs OFF -- PAIRED across 13 tasks   results/sweep-20260810-192020
+==========================================================================
+
+task                             OFF pass  ON pass    OFF $     ON $   Δcost
+  azure-bgp-oscillation-route-leak0/4      0/4          $0.51    $0.55     +8%
+  data-to-d3                    0/4      0/4          $2.16    $1.19    -45%
+  debug-trl-grpo                0/4      0/4          $0.57    $0.58     +2%
+  dialogue-parser               1/4      0/4          $0.37    $0.31    -18%
+  fix-build-google-auto         4/4      4/4          $2.16    $1.43    -34%
+  fix-visual-stability          3/4      4/4          $1.97    $2.23    +13%
+  jax-computing-basics          4/4      4/4          $0.27    $0.26     -0%
+  llm-prefix-cache-replay       0/4      0/4          $0.65    $0.65     -0%
+  parallel-tfidf-search         4/4      4/4          $1.15    $0.92    -20%
+  python-scala-translation      0/4      0/4          $1.17    $1.06    -10%
+  react-performance-debugging   2/4      0/4          $1.20    $1.01    -15%
+  simpo-code-reproduction       0/4      0/4          $1.00    $1.04     +4%
+  spring-boot-jakarta-migration 0/4      0/4          $0.91    $0.89     -3%
+
+--------------------------------------------------------------------------
+COST : median per-task delta = -2.9%   (paired sign-flip p = 0.078)   n=13 tasks
+INPUT: median per-task delta = -1.6%   (paired sign-flip p = 0.563)   n=13 tasks
+QUALITY: ON better on 1 tasks, worse on 2, tied on 10
+--------------------------------------------------------------------------
+Read-out: p>=0.05 => rtk's cost shift is indistinguishable from zero
+across tasks. Quality 'worse' count is the regression signal to watch.
