@@ -1,0 +1,16 @@
+RTK realized compression this sweep (154 rewrites across 48 ON trials)
+  family  calls  compressed  est-raw   saved
+  grep      63    69.5 KB   103.8 KB   34.2 KB
+  find      82    61.3 KB    87.6 KB   26.3 KB
+  ls        53    29.9 KB    53.3 KB   23.5 KB
+  tree      11    12.8 KB    21.3 KB    8.5 KB
+  git       18    15.6 KB    21.7 KB    6.1 KB
+  cat       53    77.9 KB    77.9 KB    0     (RTK does not wrap cat)
+  TOTAL           267 KB     366 KB   ~99 KB = ~25,000 tokens
+  = 0.08% of ON input naively; ~1-2% after cache re-read compounding.
+  vs per-task path variance of +-30% -> below the noise floor.
+
+Verified path-variance (biggest apparent "wins", NOT RTK compression):
+  parallel-tfidf -32%: ON 10 steps vs OFF 16, 0 rtk marks, ~1KB output
+  react          -21%: ON 30 steps vs OFF 36, 0 rtk marks, ~5KB output (ON also scored WORSE: 0.0 vs 0.5)
+  python-scala   -17%: ON  6 steps vs OFF  7, 0 rtk marks, ~1KB output

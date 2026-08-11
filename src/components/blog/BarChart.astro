@@ -1,0 +1,85 @@
+---
+export interface Props {
+  title: string
+  unit?: string
+  data: { label: string; value: number }[]
+  max?: number
+}
+
+const { title, unit = '', data, max } = Astro.props
+const scale = max ?? Math.max(...data.map((d) => d.value))
+---
+
+<figure class="blog-barchart">
+  <figcaption>{title}</figcaption>
+  <ul role="list">
+    {data.map((d) => (
+      <li>
+        <span class="bar-label">{d.label}</span>
+        <span class="bar-track"><span class="bar-fill" style={`width:${((d.value / scale) * 100).toFixed(1)}%`}></span></span>
+        <span class="bar-value">{d.value}{unit}</span>
+      </li>
+    ))}
+  </ul>
+</figure>
+
+<style>
+  .blog-barchart {
+    margin: 28px 0;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+  }
+  figcaption {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  li {
+    display: grid;
+    grid-template-columns: 132px 1fr 64px;
+    gap: 12px;
+    align-items: center;
+  }
+  .bar-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bar-track {
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background: var(--bg-elevated);
+    overflow: hidden;
+  }
+  .bar-fill {
+    display: block;
+    height: 100%;
+    min-width: 2px;
+    border-radius: var(--radius-pill);
+    background: var(--accent);
+  }
+  .bar-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+    text-align: right;
+  }
+  @media (max-width: 560px) {
+    li { grid-template-columns: 90px 1fr 56px; gap: 8px; }
+  }
+</style>

@@ -1,0 +1,4 @@
+FAIR COST (12 balanced tasks, data-to-d3 excluded)
+  per-task median=-4.8%  mean=-4.8%
+  pooled ON -4.8%  permutation p=0.305
+  direction: 7 cheaper / 5 costlier

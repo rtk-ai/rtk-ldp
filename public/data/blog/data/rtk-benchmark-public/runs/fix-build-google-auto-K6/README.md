@@ -1,0 +1,28 @@
+# fix-build-google-auto (K=6)
+
+Paired A/B run, RTK ON vs OFF. Tables below are the output of `compare_pairs.py`; per-trial values in `data/per_trial.csv`.
+
+```
+======================================================================
+RTK ON vs OFF   results/sweep-20260806-191959/fix-build-google-auto
+======================================================================
+
+QUALITY  (all trials; a timed-out/errored trial = NOT passed)
+  arm                    trials  errored  passed  pass-rate  mean-rwd
+  OFF (stock)                 6        1       5        83%     0.833
+  ON  (rtk)                   6        1       5        83%     0.833
+  -> pass-rate delta = +0 pp
+
+COST & TOKENS  (MEAN over all trials with a value -- errored included)
+  metric              OFF mean     ON mean      Δ%  perm-p  n OFF/ON
+  Cost USD               $1.92       $2.40  +25.0%   0.399       5/5
+  Input tokens       1,675,546   2,060,993  +23.0%   0.410       5/5
+  Cache tokens       1,623,127   1,998,408  +23.1%   0.410       5/5
+  Output tokens         23,412      31,060  +32.7%   0.329       5/5
+  TOTAL spend            $9.60      $12.01  +25.0%
+
+BASH OUTPUT  (mean per trial, from session logs; ~tokens = bytes/4)
+  metric                     OFF            ON      Δ%
+  bytes                   55,256        61,640  +11.6%
+  ~tokens                 13,814        15,410  +11.6%
+```

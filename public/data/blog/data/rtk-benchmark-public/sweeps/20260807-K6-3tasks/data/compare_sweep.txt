@@ -1,0 +1,16 @@
+==========================================================================
+RTK ON vs OFF -- PAIRED across 3 tasks   results/sweep-20260807-072640
+==========================================================================
+
+task                             OFF pass  ON pass    OFF $     ON $   Δcost
+  dialogue-parser               0/6      0/6          $0.34    $0.29    -15%
+  fix-build-google-auto         5/6      5/6          $2.48    $1.88    -24%
+  simpo-code-reproduction       0/6      0/6          $0.98    $0.87    -11%
+
+--------------------------------------------------------------------------
+COST : median per-task delta = -15.1%   (paired sign-flip p = 0.249)   n=3 tasks
+INPUT: median per-task delta = -11.2%   (paired sign-flip p = 0.249)   n=3 tasks
+QUALITY: ON better on 0 tasks, worse on 0, tied on 3
+--------------------------------------------------------------------------
+Read-out: p>=0.05 => rtk's cost shift is indistinguishable from zero
+across tasks. Quality 'worse' count is the regression signal to watch.
