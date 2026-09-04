@@ -60,7 +60,20 @@ export default defineConfig({
       description: 'RTK — Rust Token Killer. Reduce Claude Code token usage by 60-90%.',
       defaultLocale: 'en',
       disable404Route: true,
+      favicon: '/brand/favicon/favicon-32.png',
       head: [
+        {
+          tag: 'link',
+          attrs: { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/brand/favicon/favicon-16.png' },
+        },
+        {
+          tag: 'link',
+          attrs: { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/brand/favicon/favicon-192.png' },
+        },
+        {
+          tag: 'link',
+          attrs: { rel: 'apple-touch-icon', sizes: '180x180', href: '/brand/favicon/apple-touch-icon.png' },
+        },
         {
           tag: 'script',
           attrs: { type: 'application/ld+json' },
@@ -78,7 +91,7 @@ export default defineConfig({
               '@type': 'Organization',
               name: 'RTK AI',
               url: 'https://www.rtk-ai.app',
-              logo: { '@type': 'ImageObject', url: 'https://www.rtk-ai.app/favicon.svg' },
+              logo: { '@type': 'ImageObject', url: 'https://www.rtk-ai.app/brand/logo.png' },
             },
             isPartOf: {
               '@type': 'WebSite',
