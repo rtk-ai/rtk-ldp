@@ -210,12 +210,6 @@ const schemaOrg = {
       href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-         <head>, BEFORE the browser applies scroll restoration — the page
-         module runs too late (the hero pin grows the page after load, so the
-         browser re-applies the stored offset and wins).
-         On reload/back-forward, even a #hash in the URL (from a clicked CTA)
-         is stripped so the browser can't re-anchor below the fold. Hash deep
-         links on a fresh navigation are still honored. -->
     <script is:inline>
       ;(function () {
         try {
