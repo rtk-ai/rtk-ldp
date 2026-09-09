@@ -1,0 +1,50 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const features = [
+  { k: t('v3.pro.f1_title', lang), v: t('v3.pro.f1_text', lang) },
+  { k: t('v3.pro.f2_title', lang), v: t('v3.pro.f2_text', lang) },
+  { k: t('v3.pro.f3_title', lang), v: t('v3.pro.f3_text', lang) },
+]
+---
+<section class="lp3-section lp3-prosec" id="pro">
+  <div class="lp3-container">
+    <div class="lp3-pro reveal">
+
+      <div class="lp3-pro-head">
+        <p class="lp3-eyebrow lp3-pro-eyebrow">
+          <span class="dot" aria-hidden="true"></span>{t('v3.pro.eyebrow', lang)}
+        </p>
+        <h2 class="lp3-pro-title" set:html={t('v3.pro.title', lang)}></h2>
+        <p class="lp3-pro-lede">{t('v3.pro.lede', lang)}</p>
+      </div>
+
+      <ul class="lp3-pro-grid" role="list">
+        {features.map(f => (
+          <li class="lp3-pro-item">
+            <h3>{f.k}</h3>
+            <p>{f.v}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div class="lp3-pro-foot">
+        <a
+          href="https://pro.rtk-ai.app"
+          class="lp3-btn lp3-btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          {t('v3.pro.cta', lang)} <span aria-hidden="true">↗</span>
+        </a>
+        <p class="lp3-pro-note">{t('v3.pro.note', lang)}</p>
+      </div>
+
+    </div>
+  </div>
+</section>

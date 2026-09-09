@@ -1,0 +1,65 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const companies = [
+  { name: 'Microsoft', file: 'microsoft', w: 81, h: 18 },
+  { name: 'Google', file: 'google', w: 60, h: 20 },
+  { name: 'Amazon', file: 'amazon', w: 65, h: 20 },
+  { name: 'Meta', file: 'meta', w: 86, h: 18 },
+  { name: 'Apple', file: 'apple', w: 21, h: 26 },
+  { name: 'NVIDIA', file: 'nvidia', w: 87, h: 17 },
+  { name: 'IBM', file: 'ibm', w: 55, h: 21 },
+  { name: 'Tencent', file: 'tencent', w: 110, h: 15 },
+  { name: 'ByteDance', file: 'bytedance', w: 94, h: 17 },
+  { name: 'Alibaba', file: 'alibaba', w: 96, h: 16 },
+  { name: 'Shopify', file: 'shopify', w: 65, h: 19 },
+  { name: 'Datadog', file: 'datadog', w: 63, h: 20 },
+  { name: 'SAP', file: 'sap', w: 46, h: 23 },
+  { name: 'Adobe', file: 'adobe', w: 70, h: 19 },
+  { name: 'Intel', file: 'intel', w: 53, h: 21 },
+  { name: 'Samsung', file: 'samsung', w: 99, h: 16 },
+  { name: 'Bosch', file: 'bosch', w: 78, h: 18 },
+  { name: 'Cisco', file: 'cisco', w: 43, h: 23 },
+]
+
+const moreCompanies = '1,100'
+
+const passes = [0, 1, 2]
+---
+<section class="lp3-companies" id="companies">
+  <p class="lp3-eyebrow reveal">{t('v3.companies.eyebrow', lang)}</p>
+
+  <div class="lp3-marquee reveal">
+    <div class="lp3-marquee-track">
+      {passes.map(pass => (
+        <ul
+          class="lp3-marquee-pass"
+          role="list"
+          aria-label={pass === 0 ? t('v3.companies.aria_list', lang) : undefined}
+          aria-hidden={pass === 0 ? undefined : 'true'}
+        >
+          {companies.map(c => (
+            <li>
+              <img
+                src={`/brand/companies/${c.file}.svg`}
+                alt={pass === 0 ? c.name : ''}
+                width={c.w}
+                height={c.h}
+                style={`--logo-h:${c.h}px`}
+                fetchpriority="low"
+                decoding="async"
+              />
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+
+  <p class="lp3-companies-more reveal">{t('v3.companies.more', lang).replace('{n}', moreCompanies)}</p>
+</section>

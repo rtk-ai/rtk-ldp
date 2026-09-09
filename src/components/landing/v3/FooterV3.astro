@@ -1,0 +1,193 @@
+---
+import IconGitHub from '../../ui/icons/IconGitHub.astro'
+import IconDiscord from '../../ui/icons/IconDiscord.astro'
+import IconKofi from '../../ui/icons/IconKofi.astro'
+import IconLinkedIn from '../../ui/icons/IconLinkedIn.astro'
+import IconXLogo from '../../ui/icons/IconXLogo.astro'
+import IconStar from '../../ui/icons/IconStar.astro'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+const year = new Date().getFullYear()
+
+const currentLocale = (Astro.currentLocale ?? 'en') as Lang
+
+const currentPath = localizedPath(Astro.url.pathname)
+
+const homeHref = getRelativeLocaleUrl(currentLocale, '/')
+const benchHref = getRelativeLocaleUrl(currentLocale, '/benchmarks/')
+const teamHref = '/team/'
+
+let version = 'v0.37.1'
+try {
+  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
+  const token = process.env.GITHUB_TOKEN
+  if (token) headers['Authorization'] = `Bearer ${token}`
+  const res = await fetch('https://api.github.com/repos/rtk-ai/rtk/releases/latest', { headers })
+  if (res.ok) {
+    const data = await res.json()
+    if (data.tag_name) version = data.tag_name.startsWith('v') ? data.tag_name : `v${data.tag_name}`
+  }
+} catch {}
+
+const columns = [
+  {
+    title: t('footer.col_install', lang),
+    links: [
+      { href: `${homeHref}#install`, label: t('footer.homebrew', lang) },
+      { href: `${homeHref}#install`, label: t('footer.oneliner', lang) },
+      { href: `${homeHref}#install`, label: t('footer.cargo', lang) },
+      { href: 'https://github.com/rtk-ai/rtk/releases', label: t('footer.binaries', lang), ext: true },
+      { href: '/guide/', label: t('footer.getting_started', lang) },
+    ],
+  },
+  {
+    title: t('footer.col_docs', lang),
+    links: [
+      { href: '/guide/', label: t('footer.guide', lang) },
+      { href: '/guide/getting-started/installation/', label: t('footer.installation', lang) },
+      { href: '/guide/getting-started/quick-start/', label: t('footer.quick_start', lang) },
+      { href: '/guide/what-rtk-covers/', label: t('footer.what_covers', lang) },
+      { href: '/guide/troubleshooting/', label: t('footer.troubleshooting', lang) },
+      { href: 'https://github.com/rtk-ai/rtk/blob/master/CHANGELOG.md', label: t('footer.changelog', lang), ext: true },
+    ],
+  },
+  {
+    title: t('footer.col_community', lang),
+    links: [
+      { href: teamHref, label: t('footer.team', lang) },
+      { href: 'https://github.com/rtk-ai/rtk', label: t('footer.github_repo', lang), ext: true },
+      { href: 'https://discord.gg/RySmvNF5kF', label: t('footer.discord_server', lang), ext: true },
+      { href: 'https://github.com/rtk-ai/rtk/issues', label: t('footer.issues', lang), ext: true },
+      { href: 'https://github.com/rtk-ai/rtk/discussions', label: t('footer.discussions', lang), ext: true },
+      { href: 'https://www.linkedin.com/company/112306788', label: t('footer.linkedin', lang), ext: true },
+      { href: 'https://x.com/rtkailabs', label: t('footer.x_profile', lang), ext: true },
+      {
+        href: 'https://twitter.com/intent/tweet?url=https://www.rtk-ai.app&text=Cut+up+to+90%25+of+CLI+output+noise+before+it+reaches+your+AI+context+with+RTK',
+        label: t('footer.share_x', lang),
+        ext: true,
+      },
+      { href: 'https://github.com/sponsors/rtk-ai', label: t('footer.sponsors', lang), ext: true },
+      { href: 'https://ko-fi.com/patrickszymkowiak', label: t('footer.support', lang), ext: true },
+    ],
+  },
+]
+---
+<footer class="lp3-footer">
+  <div class="lp3-footer-cta">
+    <div class="lp3-container lp3-footer-cta-inner">
+      <div>
+        <p class="t">{t('footer.cta_title', lang)}</p>
+        <p class="s">{t('footer.cta_sub', lang)}</p>
+      </div>
+      <div class="lp3-footer-cta-btns">
+        <a href={`${homeHref}#install`} class="lp3-btn lp3-btn-primary lp3-btn-sm">
+          {t('hero.cta_install', lang)} <span class="arr" aria-hidden="true">→</span>
+        </a>
+        <a href="https://github.com/rtk-ai/rtk" class="lp3-btn lp3-btn-ghost lp3-btn-sm" target="_blank" rel="noopener">
+          <IconGitHub size={14} /> {t('hero.cta_star', lang)}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="lp3-container">
+    <div class="lp3-footer-top">
+      <div class="lp3-footer-brand">
+        <a href={homeHref} class="mark">
+          <img src="/brand/box-logo-white.webp" alt="RTK logo" width="28" height="28" />
+          <span>RTK</span>
+        </a>
+        <p>{t('footer.tagline', lang)}</p>
+        <div class="lp3-footer-badges">
+          <span class="badge"><IconStar size={12} filled /> {t('footer.open_source', lang)}</span>
+          <span class="ver">{version}</span>
+        </div>
+        <div class="lp3-footer-social">
+          <a href="https://github.com/rtk-ai/rtk" target="_blank" rel="noopener" aria-label={t('ui.nav_github', lang)}>
+            <IconGitHub size={16} />
+          </a>
+          <a href="https://discord.gg/RySmvNF5kF" target="_blank" rel="noopener" aria-label={t('aria.join_discord', lang)}>
+            <IconDiscord size={16} />
+          </a>
+          <a href="https://www.linkedin.com/company/112306788" target="_blank" rel="noopener" aria-label={t('aria.rtk_linkedin', lang)}>
+            <IconLinkedIn size={16} />
+          </a>
+          <a href="https://x.com/rtkailabs" target="_blank" rel="noopener" aria-label={t('aria.rtk_x', lang)}>
+            <IconXLogo size={15} />
+          </a>
+          <a href="https://github.com/sponsors/rtk-ai" target="_blank" rel="noopener" aria-label={t('aria.sponsor_github', lang)}>
+            <IconStar size={16} filled />
+          </a>
+          <a href="https://ko-fi.com/patrickszymkowiak" target="_blank" rel="noopener" aria-label={t('aria.support_kofi', lang)}>
+            <IconKofi size={16} />
+          </a>
+        </div>
+      </div>
+
+      <div class="lp3-footer-cols">
+        {columns.map(col => (
+          <nav class="lp3-footer-col" aria-label={col.title}>
+            <span>{col.title}</span>
+            {col.links.map(l => (
+              <a href={l.href} {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+            ))}
+          </nav>
+        ))}
+        <nav class="lp3-footer-col" aria-label={t('footer.col_products', lang)}>
+          <span>{t('footer.col_products', lang)}</span>
+          <a href="https://pro.rtk-ai.app" class="is-pro">RTK Pro</a>
+          <a href={benchHref}>{t('nav.benchmarks', lang)}</a>
+          <a href="/blog/">{t('nav.blog', lang)}</a>
+          <a href="https://pro.rtk-ai.app/careers" target="_blank" rel="noopener">{t('footer.careers', lang)}</a>
+          <span class="sub">{t('footer.col_legal', lang)}</span>
+          <a href="https://github.com/rtk-ai/rtk/blob/master/LICENSE" target="_blank" rel="noopener">{t('footer.license', lang)}</a>
+          <a href="https://github.com/rtk-ai/rtk/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener">{t('footer.contributing', lang)}</a>
+          <button type="button" class="lp3-footer-consent" id="lp3-cookie-prefs">{t('footer.cookie_prefs', lang)}</button>
+        </nav>
+      </div>
+    </div>
+
+    <div class="lp3-footer-bottom">
+      <span>
+        Apache 2.0 · {t('footer.built_by', lang)} · © {year} RTK AI Labs
+      </span>
+      <div class="lp3-footer-meta">
+        <span class="built">
+          {t('footer.built_with', lang)}
+          <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
+          ·
+          {t('footer.deployed_on', lang)}
+          <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+        </span>
+        <details class="lp3-menu lp3-lang lp3-footer-lang">
+          <summary aria-label={t('aria.language', lang)}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+            <span>{currentLocale.toUpperCase()}</span>
+            <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="lp3-menu-panel is-lang" role="navigation" aria-label={t('aria.language', lang)}>
+            {LOCALES.map(l => (
+              <a
+                href={getRelativeLocaleUrl(l, currentPath)}
+                class={l === currentLocale ? 'active' : undefined}
+                hreflang={l}
+                aria-current={l === currentLocale ? 'true' : undefined}
+              >{l.toUpperCase()}</a>
+            ))}
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('lp3-cookie-prefs')?.addEventListener('click', () => {
+    ;(window as unknown as { rtkConsentReset?: () => void }).rtkConsentReset?.()
+  })
+</script>

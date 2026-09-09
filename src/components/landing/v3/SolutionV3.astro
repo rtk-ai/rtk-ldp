@@ -1,0 +1,49 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const specs = [
+  { key: t('v3.specs.language', lang), val: 'Rust' },
+  { key: t('v3.specs.license', lang), val: 'Apache 2.0' },
+  { key: t('v3.specs.architecture', lang), val: t('v3.specs.architecture_val', lang) },
+  { key: t('v3.specs.overhead', lang), val: '< 20 ms' },
+  { key: t('v3.specs.commands', lang), val: '125+' },
+  { key: t('v3.specs.telemetry', lang), val: t('v3.specs.telemetry_val', lang) },
+]
+
+const fieldOut = Array.from({ length: 12 }, (_, i) => {
+  const y = 38 + i * 34
+  const yc = 216 + (i % 5) * 6
+  const c1 = 726 + (i % 3) * 26
+  const c2 = 800 + (i % 4) * 44
+  return `M 616 ${yc} C ${c1} ${yc}, ${c2} ${y}, 1208 ${y}`
+})
+---
+<section class="lp3-section" id="solution">
+  <div class="lp3-container">
+    <div class="lp3-specs" id="developers">
+      <div class="lp3-solution-head">
+        <p class="lp3-eyebrow reveal"><span class="idx">02</span> / {t('v3.solution.eyebrow', lang)}</p>
+        <h2 class="lp3-h2 reveal" set:html={t('v3.specs.title', lang)}></h2>
+        <p class="lp3-lede reveal">
+          {t('v3.specs.lede', lang)}
+        </p>
+      </div>
+      <div>
+        <p class="lp3-eyebrow lp3-spec-label reveal">{t('v3.specs.eyebrow', lang)}</p>
+        <div class="lp3-spec-table reveal">
+          {specs.map(sp => (
+            <div class="lp3-spec-row">
+              <span class="lp3-spec-key">{sp.key}</span>
+              <span class="lp3-spec-val">{sp.val}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
