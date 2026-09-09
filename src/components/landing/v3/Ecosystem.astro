@@ -1,0 +1,67 @@
+---
+/**
+ * Ecosystem — monochrome AI-coding-stack row. Trusted signals, not advertisements.
+ *
+ * The first four are the most-asked-for integrations and stay visible on every
+ * screen; the rest carry `is-extra` and collapse behind a "+N more" toggle on
+ * phones only (see initEcoMore). Without JS nothing collapses — all eight render.
+ */
+import IconGitHub from '../../ui/icons/IconGitHub.astro'
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+---
+<section class="lp3-eco" id="ecosystem">
+  <div class="lp3-container">
+    <p class="lp3-eyebrow reveal">{t('v3.eco.eyebrow', lang)}</p>
+    <ul class="lp3-eco-row reveal" id="lp3-eco-row" role="list" aria-label={t('v3.eco.aria_list', lang)}>
+      <li class="lp3-eco-item">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg>
+        Claude Code
+      </li>
+      <li class="lp3-eco-item">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12L3 7M12 12l9-5"/></svg>
+        Cursor
+      </li>
+      <li class="lp3-eco-item">
+        <IconGitHub size={21} />
+        GitHub Copilot
+      </li>
+      <li class="lp3-eco-item">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8.5 5v10L12 22l-8.5-5V7z"/><circle cx="12" cy="12" r="3.5"/></svg>
+        Codex
+      </li>
+      <li class="lp3-eco-item is-extra">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c0 5.5 4.5 10 10 10-5.5 0-10 4.5-10 10 0-5.5-4.5-10-10-10 5.5 0 10-4.5 10-10z"/></svg>
+        Gemini CLI
+      </li>
+      <li class="lp3-eco-item is-extra">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M3 8c4-3 8-3 12 0s6 3 6 3M3 14c4-3 8-3 12 0s6 3 6 3"/></svg>
+        Windsurf
+      </li>
+      <li class="lp3-eco-item is-extra">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="13" rx="2"/><path d="M12 6V3M9 12h.01M15 12h.01"/></svg>
+        Cline
+      </li>
+      <li class="lp3-eco-item is-extra">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
+        OpenCode
+      </li>
+    </ul>
+    <button
+      class="lp3-eco-more"
+      type="button"
+      aria-controls="lp3-eco-row"
+      aria-expanded="false"
+      data-more-label={t('v3.eco.more_count', lang)}
+      data-less-label={t('v3.eco.show_less', lang)}
+      hidden
+    >
+      <span class="txt">{t('v3.eco.show_more', lang)}</span>
+      <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+  </div>
+</section>

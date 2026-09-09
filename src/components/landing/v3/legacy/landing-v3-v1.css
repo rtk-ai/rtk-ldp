@@ -1,0 +1,2019 @@
+/**
+ * landing-v3.css — V3 landing experience ("noise → RTK → clean context").
+ * Rules: see NEW_DESIGN_RULES.md. All classes prefixed lp3-, tokens prefixed --lp3-.
+ * Colors come from global.css tokens — V3 adds derived tokens only (scoped to .lp3).
+ * The legacy landing.css is NOT loaded on V3 pages.
+ */
+
+/* ── V3 derived tokens ─────────────────────────────────────────────── */
+.lp3 {
+  --lp3-font-sans: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --lp3-max-w: 1280px;
+  --lp3-pad-x: clamp(20px, 4vw, 40px);
+  --lp3-radius: 12px;
+  --lp3-radius-sm: 10px;
+
+  /* thin engraved lines (derived from --text-muted #94a3b8) */
+  --lp3-line: rgba(148, 163, 184, 0.14);
+  --lp3-line-strong: rgba(148, 163, 184, 0.26);
+  --lp3-grid-line: rgba(148, 163, 184, 0.05);
+  --lp3-surface: rgba(15, 22, 41, 0.5);       /* barely-elevated panel */
+  --lp3-surface-solid: rgba(9, 15, 30, 0.92); /* hero panels — opaque, strands pass behind edges */
+  --lp3-surface-hover: rgba(148, 163, 184, 0.06);
+
+  /* context-line tones */
+  --lp3-ln-dim: rgba(148, 163, 184, 0.26);
+  --lp3-ln-mid: rgba(148, 163, 184, 0.42);
+  --lp3-ln-noise: rgba(248, 113, 113, 0.55);
+  --lp3-ln-signal: rgba(0, 229, 153, 0.65);
+  --lp3-noise-tint: rgba(248, 113, 113, 0.35);
+
+  /* atmosphere (accent-derived scene lighting — see NEW_DESIGN_RULES §8) */
+  --lp3-scene: rgba(0, 229, 153, 0.09);      /* wide radial scene light */
+  --lp3-atmo-tint: rgba(0, 229, 153, 0.045); /* vertical mint wash */
+  --lp3-vignette: rgba(0, 0, 0, 0.42);       /* corner darkening */
+
+  /* spacing rhythm */
+  --lp3-sec-pad: clamp(9rem, 12vw, 13.75rem);
+  --lp3-head-gap: clamp(4.5rem, 7vw, 6.25rem);
+
+  font-family: var(--lp3-font-sans);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.lp3 ::selection { background: var(--accent-dim); color: var(--text-bright); }
+
+/* ── Primitives ────────────────────────────────────────────────────── */
+.lp3-container {
+  max-width: var(--lp3-max-w);
+  margin: 0 auto;
+  padding-left: var(--lp3-pad-x);
+  padding-right: var(--lp3-pad-x);
+}
+
+.lp3-section {
+  padding-top: var(--lp3-sec-pad);
+  padding-bottom: var(--lp3-sec-pad);
+  scroll-margin-top: 72px;
+}
+
+.lp3-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  margin: 0 0 1.25rem;
+}
+.lp3-eyebrow .idx { color: var(--accent); }
+
+.lp3 h1, .lp3 h2, .lp3 h3 { margin: 0; color: var(--text-bright); }
+
+.lp3-h2 {
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+/* Big headlines wear a soft vertical gradient instead of flat bright white —
+   bright at the top, easing toward muted at the baseline. */
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .lp3-h2, .lp3-hero-title, .lp3-cta-title {
+    background: linear-gradient(
+      180deg,
+      var(--text-bright) 25%,
+      color-mix(in srgb, var(--text-bright) 55%, var(--text-muted)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.lp3-lede {
+  margin: 1.5rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 36rem;
+}
+
+.lp3-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Buttons ───────────────────────────────────────────────────────── */
+.lp3-btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-family: var(--lp3-font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease,
+              transform 0.2s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+.lp3-btn:hover { text-decoration: none; }
+.lp3-btn:active { transform: translateY(0) scale(0.98); }
+.lp3-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.lp3-btn .arr { transition: transform 0.2s ease; }
+
+/* primary: NOT a filled block — tinted mint glass. Dark body carrying our
+   accent as a tint: mint text, hairline mint border, faint mint wash.
+   The color we have, used sparingly. */
+.lp3-btn-primary {
+  background: var(--accent-dim); /* fallback */
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 17%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 7%, transparent) 100%
+  );
+  border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+  color: var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+@supports not (color: color-mix(in srgb, red 50%, blue)) {
+  .lp3-btn-primary { border-color: var(--accent-glow); }
+}
+.lp3-btn-primary:hover {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--accent) 24%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 11%, transparent) 100%
+  );
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  color: color-mix(in srgb, var(--accent) 80%, var(--text-bright));
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 6px 24px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+.lp3-btn-primary:hover .arr { transform: translateX(3px); }
+
+/* ── Micro-action: the RTK wipe ─────────────────────────────────────
+   Our signature button animation: a mint surface with a luminous leading
+   edge SLIDES across the pill — the button gets "cleaned" the way RTK
+   cleans the context. Hover: slides in and parks (text flips dark).
+   Scroll reveal: wipes in and back out once (JS adds .sheen briefly).
+   Reduced motion: none of this — the tinted-glass hover above stands. */
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-btn-primary { isolation: isolate; }
+  .lp3-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: -1px; bottom: -1px; left: -1px;
+    width: calc(100% + 36px);
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      var(--accent) calc(100% - 36px),
+      color-mix(in srgb, var(--accent) 55%, var(--text-bright)) calc(100% - 12px),
+      transparent 100%
+    );
+    transform: translateX(-103%);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .lp3-btn-primary:hover::before,
+  .lp3-btn-primary:focus-visible::before { transform: translateX(0); }
+  .lp3-btn-primary:hover,
+  .lp3-btn-primary:focus-visible { color: var(--text-on-accent); }
+  .lp3-btn-primary.sheen::before { animation: lp3-wipe 1.1s cubic-bezier(0.45, 0, 0.2, 1); }
+  .lp3-btn-primary.sheen { animation: lp3-wipe-text 1.1s linear; }
+}
+@keyframes lp3-wipe {
+  0% { transform: translateX(-103%); }
+  42% { transform: translateX(0); }
+  58% { transform: translateX(0); }
+  100% { transform: translateX(103%); }
+}
+@keyframes lp3-wipe-text {
+  0%, 30% { color: var(--accent); }
+  42%, 62% { color: var(--text-on-accent); }
+  80%, 100% { color: var(--accent); }
+}
+
+/* ghost: faint slate glass + inner highlight, brightens on hover */
+.lp3-btn-ghost {
+  background: rgba(148, 163, 184, 0.05);
+  border-color: var(--lp3-line-strong);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.lp3-btn-ghost:hover {
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(148, 163, 184, 0.45);
+  color: var(--text-bright);
+}
+
+.lp3-btn-sm { height: 38px; padding: 0 16px; font-size: 0.85rem; }
+
+/* ── Section shades — the scene light echoes through the page ──────
+   Faint mint radials behind each section, alternating sides for rhythm.
+   isolation:isolate lets the z-index:-1 layer sit above the page bg
+   but under all content, with no per-child z-index needed. */
+#problem, #impact, #demo, #developers,
+.lp3-companies, .lp3-footer {
+  position: relative;
+  isolation: isolate;
+}
+#problem::before, #impact::before, #demo::before, #developers::before,
+.lp3-companies::before, .lp3-footer::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: min(900px, 92vw);
+  height: 75%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, var(--lp3-scene), transparent 65%);
+  pointer-events: none;
+}
+#problem::before { left: 46%; top: 48%; opacity: 0.5; }
+#impact::before { left: 24%; top: 50%; opacity: 0.35; }
+#demo::before { left: 68%; top: 44%; opacity: 0.45; }
+#developers::before { left: 32%; top: 50%; opacity: 0.3; }
+.lp3-companies::before { left: 50%; top: 55%; height: 130%; opacity: 0.3; }
+.lp3-footer::before { left: 50%; top: 0; height: 90%; opacity: 0.35; }
+
+/* ── Reveal (scroll fade-in) ───────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .lp3 .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .lp3 .reveal.revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   NAV
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--lp3-line);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+/* cinematic opening: the nav recedes while the big-screen act plays.
+   visibility keeps it out of the tab order; any scroll brings it back. */
+.lp3-nav.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
+}
+.lp3-nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 64px;
+  gap: 1.5rem;
+}
+/* elevated once the page is scrolled */
+.lp3-nav.scrolled { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); }
+
+.lp3-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-bright);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  justify-self: start;
+}
+.lp3-nav-logo:hover { text-decoration: none; color: var(--text-bright); }
+.lp3-nav-logo img { border-radius: var(--radius-sm); transition: filter 0.25s ease; }
+.lp3-nav-logo:hover img { filter: drop-shadow(0 0 8px var(--accent-glow)); }
+
+.lp3-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: center;
+}
+.lp3-nav-links a {
+  position: relative;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.lp3-nav-links a:hover {
+  color: var(--text-bright);
+  background: var(--lp3-surface-hover);
+  text-decoration: none;
+}
+/* scroll-spy: the section in view gets a mint dot */
+.lp3-nav-links a.active { color: var(--text-bright); }
+.lp3-nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 1px;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-50%);
+}
+
+.lp3-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  justify-self: end;
+}
+/* GitHub star chip */
+.lp3-nav-gh {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 7px 12px;
+  border: 1px solid var(--lp3-line);
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.03);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.lp3-nav-gh:hover {
+  color: var(--text-bright);
+  background: var(--lp3-surface-hover);
+  border-color: var(--lp3-line-strong);
+  text-decoration: none;
+}
+.lp3-nav-gh .star { color: var(--accent); opacity: 0.85; }
+
+/* hamburger + drawer (mobile) */
+.lp3-nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--lp3-line-strong);
+  border-radius: var(--lp3-radius-sm);
+  cursor: pointer;
+}
+.lp3-nav-burger span {
+  display: block; width: 100%; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+/* mobile drawer — glass panel, grouped links, staggered entrance */
+.lp3-drawer {
+  position: fixed;
+  top: 64px; right: 0; bottom: 0;
+  width: min(340px, 100vw);
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid var(--lp3-line);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow-y: auto;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lp3-drawer.open { transform: translateX(0); }
+.lp3-drawer-label {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 0 0 8px;
+  padding: 0 14px;
+}
+.lp3-drawer-label + .lp3-drawer-label,
+.lp3-drawer a + .lp3-drawer-label { margin-top: 26px; }
+.lp3-drawer a {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 11px 14px;
+  border-radius: var(--lp3-radius-sm);
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lp3-drawer a:hover { background: var(--lp3-surface-hover); color: var(--text-bright); text-decoration: none; }
+.lp3-drawer .lp3-btn { margin-top: auto; width: 100%; justify-content: center; flex-shrink: 0; }
+/* staggered entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-drawer > * {
+    opacity: 0;
+    transform: translateX(16px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .lp3-drawer.open > * { opacity: 1; transform: none; }
+  .lp3-drawer.open > :nth-child(2) { transition-delay: 0.03s; }
+  .lp3-drawer.open > :nth-child(3) { transition-delay: 0.06s; }
+  .lp3-drawer.open > :nth-child(4) { transition-delay: 0.09s; }
+  .lp3-drawer.open > :nth-child(5) { transition-delay: 0.12s; }
+  .lp3-drawer.open > :nth-child(6) { transition-delay: 0.15s; }
+  .lp3-drawer.open > :nth-child(7) { transition-delay: 0.18s; }
+  .lp3-drawer.open > :nth-child(8) { transition-delay: 0.21s; }
+  .lp3-drawer.open > :nth-child(9) { transition-delay: 0.24s; }
+  .lp3-drawer.open > :nth-child(10) { transition-delay: 0.27s; }
+  .lp3-drawer.open > :nth-child(11) { transition-delay: 0.3s; }
+  .lp3-drawer.open > :nth-child(12) { transition-delay: 0.33s; }
+}
+.lp3-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 98;
+}
+.lp3-overlay.open { display: block; }
+
+@media (max-width: 900px) {
+  .lp3-nav-inner { grid-template-columns: auto 1fr auto; }
+  .lp3-nav-links { display: none; }
+  .lp3-nav-actions .lp3-btn { display: none; }
+  .lp3-nav-burger { display: flex; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO — the scroll-driven noise → RTK → clean transformation
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-hero { position: relative; }
+
+.lp3-hero-pin { height: 100%; }
+/* JS-animated mode: tall pin container drives scroll progress
+   (title card ≈ p 0–0.15 · transformation ≈ 0.14–0.64 · dock ≈ 0.66–0.88
+    · copy + proof reveal ≈ 0.72–0.93) */
+.lp3-hero.js-anim .lp3-hero-pin { height: 420vh; }
+
+.lp3-hero-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding-top: 84px;
+  padding-bottom: 48px;
+}
+.lp3-hero.js-anim .lp3-hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Layered atmosphere — the hero scene is "lit by the gate".
+   One div, three background layers: wide scene light (follows --glowx),
+   vertical mint wash, corner vignette. ::after adds film grain.
+   Intensity (--atmo) is driven by the choreography: dim at landing,
+   brightest when the transformation completes, settling once docked. */
+.lp3-hero-atmo {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--atmo, 0.8);
+  transition: opacity 0.4s ease;
+  background-image:
+    radial-gradient(ellipse 82% 66% at var(--glowx, 66%) 52%, var(--lp3-scene), transparent 62%),
+    linear-gradient(180deg, transparent 4%, var(--lp3-atmo-tint) 42%, transparent 84%),
+    radial-gradient(ellipse 120% 105% at 50% 48%, transparent 56%, var(--lp3-vignette) 100%);
+}
+.lp3-hero-atmo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* slow aurora drift — a soft mint blob wandering through the scene */
+.lp3-hero-atmo::before {
+  content: '';
+  position: absolute;
+  left: 18%; top: 26%;
+  width: 58%; height: 52%;
+  background: radial-gradient(ellipse at center, var(--lp3-scene), transparent 66%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-hero-atmo::before { animation: lp3-aurora 26s ease-in-out infinite alternate; }
+}
+@keyframes lp3-aurora {
+  from { transform: translate(-6%, -5%) scale(0.96); }
+  to { transform: translate(7%, 6%) scale(1.06); }
+}
+
+/* ambient motes — dust drifting through the light */
+.lp3-motes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.lp3-motes i {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-motes i { animation: lp3-mote var(--d) linear var(--dl) infinite; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lp3-motes { display: none; }
+}
+@keyframes lp3-mote {
+  0% { transform: translateY(0); opacity: 0; }
+  18% { opacity: 0.45; }
+  75% { opacity: 0.18; }
+  100% { transform: translateY(-110px); opacity: 0; }
+}
+
+/* tight glow that hugs the gate — sits under the atmosphere layers.
+   --glowx follows the visual: 50% while it plays big-screen, 66% once docked. */
+.lp3-hero-stage::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: var(--glowx, 66%);
+  width: min(860px, 70vw);
+  height: 640px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 58%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+/* faint construction grid, masked around the visual */
+.lp3-hero-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--lp3-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lp3-grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 62% 56% at var(--glowx, 66%) 50%, rgba(0, 0, 0, 0.9), transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 62% 56% at var(--glowx, 66%) 50%, rgba(0, 0, 0, 0.9), transparent 72%);
+  pointer-events: none;
+}
+
+.lp3-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  width: 100%;
+}
+
+.lp3-hero-copy .lp3-eyebrow { margin-bottom: 1.5rem; }
+
+.lp3-hero-title {
+  font-size: clamp(2.75rem, 4.4vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+/* the accent line stays OUR mint — a vertical tonal sweep inside the hue
+   (lit top → accent → slightly smoked base) with a faint halo. Subtle, classy.
+   Guarded: without color-mix the gradient would be invalid and the transparent
+   fill would erase the text — fall back to plain accent instead. */
+.lp3-hero-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .lp3-hero-title em {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--accent) 62%, var(--text-bright)) 0%,
+      var(--accent) 58%,
+      color-mix(in srgb, var(--accent-hover) 88%, var(--bg)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 22px var(--accent-dim));
+  }
+}
+
+.lp3-hero-sub {
+  margin: 1.75rem 0 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 26rem;
+}
+
+.lp3-hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.lp3-hero-meta {
+  margin-top: 2.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+/* ── Landing choreography (js-anim only) ──────────────────────────── */
+/* The visual starts big-screen center (JS sets --vs/--vx/--vy from measurement)
+   and docks into its grid slot as you scroll. Animated every frame while
+   pinned, hence will-change. */
+.lp3-hero.js-anim .lp3-hero-visual {
+  transform: translate(var(--vx, 0px), var(--vy, 0px)) scale(var(--vs, 1));
+  transform-origin: center center;
+  will-change: transform;
+}
+/* Act 0 veil: panels/strands/label sit as a dim silhouette behind the title
+   card — but NOT the gate, whose mark IS the title-card logo. */
+.lp3-hero.js-anim .lp3-panel,
+.lp3-hero.js-anim .lp3-strands,
+.lp3-hero.js-anim .lp3-gate-label {
+  opacity: var(--reveal, 1);
+}
+/* the gate mark travels: scaled to 180px at the title-card spot at landing,
+   easing into its 96px slot as the card dissolves (JS drives --gms/--gmy) */
+.lp3-hero.js-anim .lp3-gate-core {
+  transform: translateY(var(--gmy, 0px)) scale(var(--gms, 1));
+  transform-origin: center center;
+}
+/* while the title card is live, the mark shines even though the gate is
+   technically dormant — it powers down after the handoff, then reignites */
+.lp3-hero.js-anim.intro-live .lp3-gate:not(.lit) .lp3-gate-mark {
+  opacity: 1;
+  filter: drop-shadow(0 0 10px var(--accent-glow)) drop-shadow(0 0 32px var(--accent-glow));
+}
+.lp3-hero.js-anim.intro-live .lp3-gate:not(.lit) .lp3-gate-core::before { opacity: 1; }
+.lp3-hero.js-anim.intro-live .lp3-gate:not(.lit) .lp3-gate-core::after { opacity: 0.7; }
+/* Copy hidden until the visual docks, then slides in staggered.
+   visibility keeps hidden CTAs out of the tab order. */
+.lp3-hero.js-anim .lp3-hero-copy > * {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-22px);
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s linear 0.6s;
+}
+.lp3-hero.js-anim.show-copy .lp3-hero-copy > * {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s;
+}
+.lp3-hero.js-anim.show-copy .lp3-hero-copy > *:nth-child(2) { transition-delay: 0.08s; }
+.lp3-hero.js-anim.show-copy .lp3-hero-copy > *:nth-child(3) { transition-delay: 0.16s; }
+.lp3-hero.js-anim.show-copy .lp3-hero-copy > *:nth-child(4) { transition-delay: 0.24s; }
+.lp3-hero.js-anim.show-copy .lp3-hero-copy > *:nth-child(5) { transition-delay: 0.32s; }
+
+/* ── Hero proof strip — dealt in along the stage bottom ─────────────
+   Choreography (js-anim): the hairline draws itself left→right, the
+   eyebrow appears, then each stat is dealt in at its own scroll
+   threshold — sliding up and counting as it lands. */
+.lp3-hero-proofwrap { margin-top: clamp(3rem, 5vw, 4.5rem); }
+.lp3-hero.js-anim .lp3-hero-proofwrap {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 30px;
+  margin: 0;
+  z-index: 2;
+}
+.lp3-hero-proof {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.75rem 3rem;
+  flex-wrap: wrap;
+  padding-top: 1.75rem;
+}
+/* the hairline draws itself */
+.lp3-hero-proof::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--lp3-line-strong);
+  transform-origin: left center;
+}
+.lp3-hero.js-anim .lp3-hero-proof::before {
+  transform: scaleX(0);
+  transition: transform 0.9s ease;
+}
+.lp3-hero.js-anim.proof-line .lp3-hero-proof::before { transform: scaleX(1); }
+/* stats dealt one by one */
+.lp3-hero.js-anim .lp3-hero-stat {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease, visibility 0s linear 0.55s;
+}
+.lp3-hero.js-anim .lp3-hero-stat.on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition: opacity 0.55s ease, transform 0.55s ease, visibility 0s;
+}
+.lp3-hero-stat .num {
+  font-size: clamp(2.1rem, 3.1vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.lp3-hero-stat .lbl {
+  margin-top: 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ── Hero visual: RAW panel → gate → CLEAN panel ── */
+.lp3-hero-visual { position: relative; perspective: 1200px; }
+/* pointer parallax: the whole scene tilts a couple of degrees toward the
+   cursor during the big-screen act (JS sets --px/--py, damped to 0 as it docks) */
+.lp3-hero.js-anim .lp3-flow {
+  transform: rotateY(var(--px, 0deg)) rotateX(var(--py, 0deg));
+  transition: transform 0.35s ease-out;
+}
+/* floor glow — the visual floats above a faint lit ground */
+.lp3-hero-visual::after {
+  content: '';
+  position: absolute;
+  left: 4%; right: 4%;
+  bottom: -14%;
+  height: 130px;
+  background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 68%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.lp3-flow {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  perspective: 1400px;
+}
+
+.lp3-panel {
+  position: relative;
+  z-index: 1;
+  background-color: var(--lp3-surface-solid);
+  /* faint vertical sheen — lighter top edge instead of flat fill */
+  background-image: linear-gradient(180deg, rgba(148, 163, 184, 0.05), transparent 28%);
+  border: 1px solid var(--lp3-line);
+  border-radius: var(--lp3-radius);
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+/* 3D tilt toward the gate + colored top hairline */
+.lp3-panel-raw { transform: rotateY(9deg); }
+.lp3-panel-clean { transform: rotateY(-9deg); }
+.lp3-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--lp3-noise-tint), transparent);
+}
+.lp3-panel-clean::before {
+  background: linear-gradient(90deg, transparent, var(--lp3-ln-signal), transparent);
+}
+
+.lp3-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--lp3-line);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.lp3-panel-head .pct { color: var(--text-muted); letter-spacing: 0.04em; }
+.lp3-panel-clean .lp3-panel-head .pct { color: var(--accent); }
+.lp3-panel-head .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: 1px;
+  background: var(--lp3-ln-noise);
+}
+.lp3-panel-clean .lp3-panel-head .dot { background: var(--lp3-ln-signal); }
+
+/* ── The context window as a TOKEN GRID (14×16 cells) — a memory map ── */
+.lp3-panel-body {
+  padding: 14px;
+  height: 312px;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 4px;
+  overflow: hidden;
+}
+.lp3-cell {
+  min-height: 0;
+  border-radius: 2.5px;
+  opacity: var(--a, 0.6);
+}
+.lp3-cell.t-dim { background: var(--text-muted); }
+.lp3-cell.t-mid { background: var(--text); }
+.lp3-cell.t-noise { background: var(--red); }
+.lp3-cell.t-keep { background: var(--accent); }
+.lp3-panel-clean .lp3-cell.t-keep { box-shadow: 0 0 10px var(--accent-dim); }
+/* empty capacity — barely-there outlines: the free space IS the message */
+.lp3-cell.empty {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.09);
+  opacity: 1;
+}
+
+/* animated mode: token cells rain in as scroll accumulates */
+.lp3-cell[data-t] { transition: opacity 0.4s ease, transform 0.4s ease; }
+.lp3-hero.js-anim .lp3-cell[data-t] {
+  opacity: 0;
+  transform: scale(0.3);
+}
+.lp3-hero.js-anim .lp3-cell[data-t].on {
+  opacity: var(--a, 0.6);
+  transform: none;
+}
+/* filtered token: collapses to a faint dot (shape change, not color-only) */
+.lp3-hero:not(.js-anim) .lp3-cell[data-ct],
+.lp3-hero.js-anim .lp3-cell.on.cut {
+  opacity: 0.09;
+  transform: scale(0.3);
+}
+/* noisy tokens flicker while alive — the stream feels live */
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-cell.t-noise.on:not(.cut) {
+    animation: lp3-flicker 3s ease-in-out var(--fd, 0s) infinite;
+  }
+}
+@keyframes lp3-flicker {
+  0%, 100% { opacity: var(--a, 0.6); }
+  50% { opacity: calc(var(--a, 0.6) * 0.4); }
+}
+
+/* usage meter — instrument tick strip, not a progress bar */
+.lp3-meter {
+  height: 4px;
+  background: rgba(148, 163, 184, 0.1);
+  margin: 4px 14px 14px;
+  overflow: hidden;
+  mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 8px);
+  -webkit-mask-image: repeating-linear-gradient(90deg, #000 0 5px, transparent 5px 8px);
+}
+.lp3-meter i {
+  display: block;
+  height: 100%;
+  background: var(--lp3-ln-noise);
+  width: 86%;
+  transition: width 0.3s ease;
+}
+.lp3-panel-clean .lp3-meter i { background: var(--accent); width: 24%; }
+
+/* ── Flow strands: light streams sweeping through the gate ── */
+.lp3-strands {
+  position: absolute;
+  inset: -6% -2%;
+  width: 104%;
+  height: 112%;
+  z-index: 3;
+  pointer-events: none;
+  overflow: visible;
+}
+.lp3-strands path {
+  fill: none;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.lp3-strands stop { stop-color: var(--accent); }
+.lp3-strands .noisy stop { stop-color: var(--red); }
+.lp3-strands .slate stop { stop-color: var(--text-muted); }
+/* a few dashed strands drift to suggest continuous flow */
+.lp3-strands path:nth-child(3n) {
+  stroke-dasharray: 3 16;
+  animation: lp3-dash 5s linear infinite;
+}
+@keyframes lp3-dash {
+  to { stroke-dashoffset: -38; }
+}
+/* scroll ramps strand intensity in animated mode */
+.lp3-hero.js-anim [data-flow-in],
+.lp3-hero.js-anim [data-flow-out] {
+  opacity: calc(0.25 + var(--pflow, 0) * 0.75);
+}
+
+/* ── The RTK gate ── */
+.lp3-gate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0 clamp(1.5rem, 3.2vw, 3rem);
+  z-index: 4;
+}
+.lp3-gate-core {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* vertical light beam through the gate */
+.lp3-gate-core::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 1px;
+  height: 340px;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(to bottom, transparent, var(--accent-glow) 30%, var(--accent-glow) 70%, transparent);
+  transition: opacity 0.6s ease;
+}
+/* radial halo */
+.lp3-gate-core::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 62%);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+/* the mark is the white box logo — mint glow comes from drop-shadows */
+.lp3-gate-mark {
+  position: relative;
+  z-index: 1;
+  display: block;
+  filter: drop-shadow(0 0 10px var(--accent-glow)) drop-shadow(0 0 32px var(--accent-glow));
+  transition: opacity 0.6s ease, filter 0.6s ease;
+}
+.lp3-gate-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  color: var(--text-muted);
+  transition: color 0.6s ease;
+}
+/* hero animated mode: gate starts dormant, lights at phase 2 */
+.lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-mark {
+  opacity: 0.4;
+  filter: none;
+}
+.lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-core::before,
+.lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-core::after { opacity: 0.12; }
+.lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-label { color: var(--text-dim); }
+
+/* ── Act 0: title card — big logo + hook, dissolves into the machine.
+   --introp drives the logo shrinking toward the gate (which sits at the
+   same screen point), --introo fades the card away. */
+.lp3-intro {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5rem;
+  pointer-events: none;
+  opacity: var(--introo, 1);
+  transform: scale(calc(1 - var(--introp, 0) * 0.1));
+}
+.lp3-hero.js-anim .lp3-intro { display: flex; }
+.lp3-intro.gone { visibility: hidden; }
+/* reserves the screen spot where the (scaled-up) gate mark sits during Act 0 */
+.lp3-intro-spacer { height: 180px; }
+.lp3-intro-name {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.lp3-intro-tag {
+  margin: 0.25rem 0 0;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.lp3-intro-tag strong { color: var(--text-bright); font-weight: 600; }
+.lp3-intro-cue {
+  margin: 1.25rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 7px 18px 7px 8px;
+  border: 1px solid var(--lp3-line);
+  border-radius: 999px;
+  background: rgba(6, 11, 24, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.lp3-intro-cue .ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border: 1px solid var(--lp3-line-strong);
+  border-radius: 50%;
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-intro-cue .ring svg { animation: lp3-nudge 2.2s ease-in-out infinite; }
+}
+@keyframes lp3-nudge {
+  0%, 100% { transform: translateY(-1px); }
+  50% { transform: translateY(2px); }
+}
+
+/* ── Load-in ignition sequence — the machine boots up ──────────────
+   atmosphere blooms → gate ignites (beam + halo flash, settle dormant)
+   → panels rise into place → strands fade in → scroll pill appears.
+   `backwards` fill releases each property to its stylesheet/var value
+   after the animation ends, so the choreography takes over seamlessly. */
+@media (prefers-reduced-motion: no-preference) {
+  /* the gate breathes at rest — everywhere it appears */
+  .lp3-gate-core::after {
+    animation: lp3-breathe 5s ease-in-out infinite;
+  }
+
+  /* title-card ignition: atmosphere blooms, the mark lands, copy rises, cue last */
+  .lp3-hero.js-anim .lp3-hero-atmo { animation: lp3-bloom 1.2s ease backwards; }
+  .lp3-hero.js-anim .lp3-gate-mark { animation: lp3-fade-in 1.1s ease backwards; }
+  .lp3-hero.js-anim .lp3-intro-name { animation: lp3-fade-in 0.8s ease 0.55s backwards; }
+  .lp3-hero.js-anim .lp3-intro-tag { animation: lp3-rise-in 0.9s ease 0.75s backwards; }
+  .lp3-hero.js-anim .lp3-intro-cue { animation: lp3-fade-in 0.7s ease 1.4s backwards; }
+  .lp3-hero:not(.js-anim) .lp3-flow { animation: lp3-fade-in 0.9s ease backwards; }
+}
+@keyframes lp3-bloom {
+  from { opacity: 0; }
+  to { opacity: 0.45; }
+}
+@keyframes lp3-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes lp3-rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes lp3-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.07); }
+}
+
+/* hero responsive */
+@media (max-width: 960px) {
+  .lp3-hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .lp3-hero-stage { justify-content: flex-start; padding-top: 96px; }
+  .lp3-hero.js-anim .lp3-hero-pin { height: 240vh; }
+  .lp3-hero-stage::before { left: 50%; top: 70%; }
+  .lp3-hero-stage::after { display: none; }
+  .lp3-hero-title { font-size: clamp(2.75rem, 10vw, 3.5rem); }
+
+  /* vertical flow: RAW ↓ RTK ↓ CLEAN */
+  .lp3-flow { grid-template-columns: 1fr; justify-items: stretch; row-gap: 0.75rem; perspective: none; }
+  .lp3-panel-raw, .lp3-panel-clean { transform: none; }
+  .lp3-gate { flex-direction: row; padding: 0.75rem 0; justify-content: center; }
+  .lp3-gate-core::before { height: 180px; }
+  .lp3-gate-core::after { width: 180px; height: 180px; }
+  .lp3-strands { display: none; }
+  .lp3-panel-body { height: 150px; gap: 3px; }
+  /* 8 rows of 14 cells fit the compact panel */
+  .lp3-cell:nth-child(n + 113) { display: none; }
+}
+@media (max-height: 700px) and (min-width: 961px) {
+  .lp3-panel-body { height: 220px; }
+  /* 12 rows of 14 cells */
+  .lp3-cell:nth-child(n + 169) { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   PROOF BAND — compact, left-aligned numbers, thin separators
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-proof {
+  border-top: 1px solid var(--lp3-line);
+  border-bottom: 1px solid var(--lp3-line);
+  padding-top: clamp(4.5rem, 6vw, 6.5rem);
+  padding-bottom: clamp(4.5rem, 6vw, 6.5rem);
+}
+.lp3-proof .lp3-eyebrow { margin-bottom: 2.75rem; }
+.lp3-proof-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.lp3-proof-item {
+  padding: 0.25rem clamp(1.25rem, 2.5vw, 2.25rem);
+  border-left: 1px solid var(--lp3-line);
+}
+.lp3-proof-item:first-child { border-left: none; padding-left: 0; }
+.lp3-proof-num {
+  font-size: clamp(2.1rem, 3.4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-bright);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.lp3-proof-label {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+@media (max-width: 860px) {
+  .lp3-proof-row { grid-template-columns: repeat(2, 1fr); row-gap: 2.5rem; }
+  .lp3-proof-item:nth-child(odd) { border-left: none; padding-left: 0; }
+  .lp3-proof-item:nth-child(even) { border-left: 1px solid var(--lp3-line); }
+  .lp3-proof-item:last-child { grid-column: 1 / -1; border-left: none; padding-left: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMPANIES — "Starred by developers at", quiet wordmarks
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-companies {
+  padding-top: clamp(3.5rem, 5vw, 5rem);
+  padding-bottom: clamp(3.5rem, 5vw, 5rem);
+  border-top: 1px solid var(--lp3-line);
+  border-bottom: 1px solid var(--lp3-line);
+}
+.lp3-companies .lp3-eyebrow { justify-content: center; margin-bottom: 2.25rem; }
+.lp3-companies-row {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.1rem clamp(1.75rem, 3.5vw, 3rem);
+  max-width: 62rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.lp3-companies-row li {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+.lp3-companies-row li:hover { color: var(--text-muted); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   ECOSYSTEM ROW
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-eco {
+  padding-top: clamp(4rem, 5.5vw, 6rem);
+  padding-bottom: clamp(4rem, 5.5vw, 6rem);
+  border-bottom: 1px solid var(--lp3-line);
+}
+.lp3-eco .lp3-eyebrow { justify-content: center; margin-bottom: 2.75rem; }
+.lp3-eco-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  flex-wrap: wrap;
+}
+.lp3-eco-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.lp3-eco-item svg { opacity: 0.75; }
+.lp3-eco-item:hover {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+@media (max-width: 700px) {
+  .lp3-eco-row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .lp3-eco-row::-webkit-scrollbar { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   01 / THE PROBLEM — triptych: heading · context viz · consequence note
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-problem-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+  align-items: center;
+}
+.lp3-problem-grid .lp3-h2 { font-size: clamp(1.9rem, 2.7vw, 2.75rem); }
+.lp3-problem-grid .lp3-lede { font-size: 1rem; }
+
+.lp3-ctx {
+  border: 1px solid var(--lp3-line);
+  border-radius: var(--lp3-radius);
+  background: var(--lp3-surface);
+}
+.lp3-ctx-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--lp3-line);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.lp3-ctx-head .pct { color: var(--text-muted); letter-spacing: 0.04em; }
+
+.lp3-ctx-rows {
+  padding: 22px 18px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.lp3-ctx-row {
+  display: grid;
+  grid-template-columns: 158px 1fr 44px;
+  align-items: center;
+  gap: 1rem;
+}
+.lp3-ctx-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  white-space: nowrap;
+}
+.lp3-ctx-label .dot {
+  flex-shrink: 0;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--lp3-ln-signal);
+}
+.lp3-ctx-row.is-noise .lp3-ctx-label .dot { background: var(--lp3-ln-noise); }
+.lp3-ctx-track {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(148, 163, 184, 0.08);
+  overflow: hidden;
+}
+.lp3-ctx-fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--lp3-ln-mid);
+}
+.lp3-ctx-row.is-noise .lp3-ctx-fill {
+  background: var(--lp3-ln-noise);
+  width: var(--cli, 6%);
+}
+.lp3-ctx-pctcol {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.lp3-ctx-row.is-noise .lp3-ctx-pctcol { color: var(--red); }
+
+.lp3-ctx-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 16px 18px 18px;
+}
+.lp3-ctx-msg {
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 500;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.lp3-ctx.js-anim .lp3-ctx-msg { opacity: 0; transform: translateY(6px); }
+.lp3-ctx.js-anim .lp3-ctx-msg.on { opacity: 1; transform: none; }
+.lp3-ctx-total {
+  flex: 1;
+  max-width: 220px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(148, 163, 184, 0.12);
+  overflow: hidden;
+}
+.lp3-ctx-total i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  width: var(--used, 38%);
+}
+
+.lp3-ctx-note {
+  border-left: 1px solid var(--lp3-line);
+  padding-left: clamp(1.5rem, 2.5vw, 2.5rem);
+  align-self: center;
+}
+.lp3-ctx-note p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.lp3-ctx-note p strong { color: var(--text); font-weight: 500; }
+.lp3-ctx-note .note-mark {
+  margin-top: 1.75rem;
+  color: var(--text-dim);
+  opacity: 0.4;
+}
+
+@media (max-width: 1100px) {
+  .lp3-problem-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .lp3-problem-grid .lp3-h2 { font-size: clamp(2rem, 5vw, 2.75rem); }
+  .lp3-ctx-note {
+    border-left: none;
+    border-top: 1px solid var(--lp3-line);
+    padding-left: 0;
+    padding-top: 2rem;
+  }
+}
+@media (max-width: 560px) {
+  .lp3-ctx-row { grid-template-columns: 1fr 44px; row-gap: 8px; }
+  .lp3-ctx-track { grid-column: 1 / -1; order: 3; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   02 / THE SOLUTION — full-width flow field: NOISE → gate → SIGNAL
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-solution-head { max-width: 40rem; }
+
+.lp3-field {
+  position: relative;
+  height: clamp(280px, 36vw, 440px);
+  margin-top: var(--lp3-head-gap);
+}
+/* scene light behind the field — same source as the hero atmosphere */
+.lp3-field::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: min(1000px, 96vw);
+  height: 170%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(ellipse 60% 55% at center, var(--accent-glow) 0%, transparent 58%),
+    radial-gradient(ellipse at center, var(--lp3-scene) 0%, transparent 68%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.lp3-fieldsvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.lp3-fieldsvg path {
+  fill: none;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.lp3-fieldsvg stop { stop-color: var(--text-muted); }
+.lp3-fieldsvg .g-noise stop { stop-color: var(--red); }
+.lp3-fieldsvg .g-signal stop { stop-color: var(--accent); }
+.lp3-fieldsvg path:nth-child(4n) {
+  stroke-dasharray: 3 16;
+  animation: lp3-dash 5.5s linear infinite;
+}
+
+.lp3-field-gate {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 2;
+}
+.lp3-field-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.3em;
+  color: var(--text-dim);
+  z-index: 2;
+}
+.lp3-field-label.left { left: 0; }
+.lp3-field-label.right { right: 0; color: var(--accent); }
+
+@media (max-width: 700px) {
+  .lp3-field { height: 240px; }
+  .lp3-field-label { font-size: 0.66rem; letter-spacing: 0.2em; }
+  .lp3-field-gate .lp3-gate-core::before { height: 160px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   03 / THE IMPACT — heading band + three icon columns
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-impact-band {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+.lp3-impact-band .lp3-h2 { font-size: clamp(1.9rem, 2.7vw, 2.75rem); }
+.lp3-impact-sub {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.lp3-impact-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.lp3-impact-col {
+  padding: 0.5rem clamp(1.25rem, 2.5vw, 2.25rem);
+  border-left: 1px solid var(--lp3-line);
+}
+.lp3-impact-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border: 1px solid var(--lp3-line-strong);
+  border-radius: 50%;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+.lp3-impact-col h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.lp3-impact-col p {
+  margin: 0.6rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+@media (max-width: 960px) {
+  .lp3-impact-band { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 640px) {
+  .lp3-impact-cols { grid-template-columns: 1fr; row-gap: 2.25rem; }
+  .lp3-impact-col { border-left: none; border-top: 1px solid var(--lp3-line); padding: 2.25rem 0 0; }
+  .lp3-impact-col:first-child { border-top: none; padding-top: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   DEMO — heading left · interactive frame right
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-demo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+.lp3-demo-head .lp3-h2 { font-size: clamp(1.9rem, 2.7vw, 2.75rem); }
+
+.lp3-demo-frame {
+  border: 1px solid var(--lp3-line);
+  border-radius: var(--lp3-radius);
+  background: var(--lp3-surface);
+  overflow: hidden;
+}
+.lp3-demo-tabs {
+  display: flex;
+  gap: 0.4rem;
+  padding: 12px;
+  border-bottom: 1px solid var(--lp3-line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.lp3-demo-tabs::-webkit-scrollbar { display: none; }
+.lp3-demo-tab {
+  appearance: none;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 15px;
+  font-family: var(--lp3-font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  min-height: 34px;
+}
+.lp3-demo-tab:hover { color: var(--text); }
+.lp3-demo-tab[aria-selected="true"] {
+  color: var(--text-bright);
+  background: var(--lp3-surface-hover);
+  border-color: var(--lp3-line-strong);
+}
+
+.lp3-demo-panes { position: relative; }
+.lp3-demo-pane {
+  display: none;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 14px;
+}
+.lp3-demo-pane.active { display: grid; }
+@media (prefers-reduced-motion: no-preference) {
+  .lp3-demo-pane.active { animation: lp3-fade 0.3s ease; }
+}
+@keyframes lp3-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lp3-demo-side {
+  min-width: 0;
+  padding: 14px 16px 18px;
+  border: 1px solid var(--lp3-line);
+  border-radius: var(--lp3-radius-sm);
+  background: rgba(6, 11, 24, 0.55);
+}
+.lp3-demo-side-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.lp3-demo-side-head strong {
+  color: var(--text-muted);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.lp3-demo-side-head strong::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--lp3-ln-noise);
+}
+.lp3-demo-side.after .lp3-demo-side-head strong { color: var(--accent); }
+.lp3-demo-side.after .lp3-demo-side-head strong::before { background: var(--lp3-ln-signal); }
+.lp3-demo-side-head .lines { letter-spacing: 0.02em; }
+
+/* circular transform arrow floating between the two sides */
+.lp3-demo-arrow {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--lp3-line-strong);
+  background: var(--bg-alt);
+  color: var(--accent);
+  z-index: 2;
+}
+
+.lp3-demo-code {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  overflow-x: auto;
+  white-space: pre;
+}
+.lp3-demo-code .c { color: var(--text-bright); }      /* command */
+.lp3-demo-code .d { color: var(--text-dim); }         /* dim noise */
+.lp3-demo-code .n { color: var(--red); opacity: 0.75; } /* noisy/warning */
+.lp3-demo-code .k { color: var(--accent); }           /* kept signal */
+.lp3-demo-code .m { color: var(--text-dim); font-style: italic; } /* meta (… more lines) */
+
+/* "Why was this removed?" — lives in the left column */
+.lp3-demo-why { margin-top: 2.5rem; }
+.lp3-demo-why summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 36px;
+}
+.lp3-demo-why summary::-webkit-details-marker { display: none; }
+.lp3-demo-why summary:hover,
+.lp3-demo-why[open] summary { color: var(--accent); }
+.lp3-demo-why-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding-top: 1.25rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--lp3-line);
+}
+.lp3-demo-why-panel div strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.lp3-demo-why-panel div span {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+@media (max-width: 1100px) {
+  .lp3-demo-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 720px) {
+  .lp3-demo-pane { grid-template-columns: 1fr; }
+  .lp3-demo-arrow { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUILT FOR DEVELOPERS — technical spec
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-specs {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+}
+.lp3-spec-table { border-top: 1px solid var(--lp3-line); }
+.lp3-spec-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--lp3-line);
+  align-items: baseline;
+}
+.lp3-spec-key {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.lp3-spec-val {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.lp3-spec-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.25rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+.lp3-spec-link:hover { color: var(--accent-hover); text-decoration: none; }
+@media (max-width: 860px) {
+  .lp3-specs { grid-template-columns: 1fr; }
+  .lp3-spec-row { grid-template-columns: 130px 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FAQ — quiet
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-faq { max-width: 46rem; margin-left: auto; margin-right: auto; }
+.lp3-faq-list { margin-top: 3.5rem; border-top: 1px solid var(--lp3-line); }
+.lp3-faq-item { border-bottom: 1px solid var(--lp3-line); }
+.lp3-faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transition: color 0.2s ease;
+}
+.lp3-faq-item summary::-webkit-details-marker { display: none; }
+.lp3-faq-item summary::after {
+  content: '+';
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+.lp3-faq-item[open] summary::after { transform: rotate(45deg); color: var(--accent); }
+.lp3-faq-item summary:hover { color: var(--text-bright); }
+.lp3-faq-answer {
+  margin: 0;
+  padding: 0 4px 22px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 40rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-cta {
+  position: relative;
+  text-align: center;
+  border-top: 1px solid var(--lp3-line);
+  overflow: hidden;
+}
+/* scene light rising from below + film grain — same atmosphere as the hero */
+.lp3-cta::before {
+  content: '';
+  position: absolute;
+  left: 50%; bottom: -25%;
+  width: min(980px, 100vw);
+  height: 80%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, var(--lp3-scene) 0%, transparent 64%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.lp3-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.lp3-cta .lp3-container { position: relative; z-index: 1; }
+.lp3-cta-watermark {
+  position: absolute;
+  left: 50%;
+  bottom: -80px;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  opacity: 0.05;
+  pointer-events: none;
+}
+.lp3-cta-title {
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+.lp3-cta-sub {
+  margin: 1.5rem auto 0;
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  max-width: 30rem;
+}
+.lp3-cta-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 2.75rem;
+}
+.lp3-cta-install {
+  margin: 3.5rem auto 0;
+  max-width: 620px;
+  text-align: left;
+}
+.lp3-cta-cmd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 14px 18px;
+  border: 1px solid var(--lp3-line);
+  border-radius: var(--lp3-radius-sm);
+  background: var(--lp3-surface);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+.lp3-cta-cmd code {
+  color: var(--text);
+  white-space: nowrap;
+  display: block;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+}
+.lp3-cta-cmd code .p { color: var(--accent); }
+.lp3-copy-btn {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  min-width: 32px;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+.lp3-copy-btn:hover { color: var(--text); }
+.lp3-cta-step {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 1.75rem;
+}
+.lp3-cta-step:first-child { margin-top: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════════════════════════ */
+.lp3-footer {
+  border-top: 1px solid var(--lp3-line);
+  padding-top: clamp(3.5rem, 5vw, 5rem);
+  padding-bottom: 2.5rem;
+}
+.lp3-footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.lp3-footer-brand { max-width: 240px; }
+.lp3-footer-brand .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-bright);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.lp3-footer-brand .mark img { border-radius: var(--radius-sm); }
+.lp3-footer-brand p {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.lp3-footer-cols { display: flex; gap: clamp(2.5rem, 5vw, 5rem); flex-wrap: wrap; }
+.lp3-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 120px;
+}
+.lp3-footer-col span {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.35rem;
+}
+.lp3-footer-col a {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+.lp3-footer-col a:hover { color: var(--text-bright); text-decoration: none; }
+.lp3-footer-bottom {
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--lp3-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.lp3-footer-lang { display: flex; gap: 0.9rem; }
+.lp3-footer-lang a {
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+.lp3-footer-lang a:hover,
+.lp3-footer-lang a.active { color: var(--accent); text-decoration: none; }
+
+/* ── Skip link (reused pattern) ────────────────────────────────────── */
+.lp3 .skip-to-content {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  font-weight: 600;
+  border-radius: var(--lp3-radius-sm);
+  transition: top 0.2s ease;
+}
+.lp3 .skip-to-content:focus { top: 12px; text-decoration: none; }
+
+/* ── Reduced motion: pause all ambient animation ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .lp3-strands path,
+  .lp3-fieldsvg path {
+    animation: none;
+    stroke-dasharray: none;
+  }
+}

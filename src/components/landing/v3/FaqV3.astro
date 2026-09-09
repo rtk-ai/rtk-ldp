@@ -1,0 +1,41 @@
+---
+/**
+ * FaqV3 — quiet FAQ. Content mirrors the FAQPage JSON-LD in LandingPageV3.
+ *
+ * An answer may carry `links`, rendered as a row beneath it. That exists so an
+ * answer can send the reader to the source instead of reciting numbers in prose:
+ * figures go stale, a benchmark page does not. The same links are appended to the
+ * JSON-LD answer text as anchors, which Google's FAQPage spec permits, so the
+ * schema and the page keep saying the same thing.
+ */
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  items: { q: string; a: string; links?: { href: string; label: string }[] }[]
+  lang?: Lang
+}
+const { items, lang = 'en' } = Astro.props
+---
+<section class="lp3-section" id="faq">
+  <div class="lp3-container">
+    <div class="lp3-faq">
+      <p class="lp3-eyebrow reveal">{t('v3.faq.eyebrow', lang)}</p>
+      <h2 class="lp3-h2 reveal">{t('v3.faq.title', lang)}</h2>
+      <div class="lp3-faq-list">
+        {items.map(({ q, a, links }) => (
+          <details class="lp3-faq-item reveal">
+            <summary>{q}</summary>
+            <p class="faq-answer lp3-faq-answer">{a}</p>
+            {links && links.length > 0 && (
+              <p class="lp3-faq-links">
+                {links.map(l => (
+                  <a href={l.href}>{l.label} <span aria-hidden="true">→</span></a>
+                ))}
+              </p>
+            )}
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

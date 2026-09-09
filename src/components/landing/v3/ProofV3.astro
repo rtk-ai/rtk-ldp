@@ -1,0 +1,88 @@
+---
+/**
+ * 04 / THE EVIDENCE — the two real `rtk gain` dashboard screenshots.
+ *
+ * These are the only literal screenshots on the page and the only third-party
+ * evidence: everything else is an illustration of the idea. Restored from the
+ * previous design (landing/Proof.astro) — do not drop them for a diagram.
+ *
+ * The portrait shot is nearly twice the height of the landscape one, which left
+ * the row lopsided. It is cropped to the exact rendered height of its neighbour
+ * (see .lp3-proof-card.is-tall.is-cropped) with a button to reveal the rest.
+ * The crop is applied by JS, so with no JS the full image still renders rather
+ * than being silently truncated with no way to open it.
+ *
+ * The Discord line closes the section: the cards show one developer's numbers,
+ * the link shows everyone else's. Discord invites cannot deep-link to a channel
+ * without the guild and channel IDs, so the channel is named in the copy and the
+ * href is the plain invite.
+ */
+import IconDiscord from '../../ui/icons/IconDiscord.astro'
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+---
+<section class="lp3-section" id="proof">
+  <div class="lp3-container">
+    <p class="lp3-eyebrow reveal"><span class="idx">04</span> / {t('v3.proof.eyebrow', lang)}</p>
+    <h2 class="lp3-h2 reveal" set:html={t('v3.proof.title', lang)}></h2>
+    <p class="lp3-proof-sub reveal" set:html={t('v3.proof.sub', lang)}></p>
+
+    <div class="lp3-proof-grid">
+      <figure class="lp3-proof-card reveal">
+        <img
+          src="/assets/screenshots/rtkgain02.webp"
+          alt={t('v3.proof.alt1', lang)}
+          width="1370"
+          height="840"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <span class="k">{t('v3.proof.k1', lang)}</span>
+          <p set:html={t('v3.proof.d1', lang)}></p>
+        </figcaption>
+      </figure>
+
+      <figure class="lp3-proof-card is-tall reveal" data-proof-crop>
+        <img
+          src="/assets/screenshots/rtkgain01.webp"
+          alt={t('v3.proof.alt2', lang)}
+          width="609"
+          height="967"
+          loading="lazy"
+          decoding="async"
+        />
+        <button
+          class="lp3-proof-expand"
+          type="button"
+          hidden
+          aria-expanded="false"
+          data-more-label={t('v3.proof.expand', lang)}
+          data-less-label={t('v3.proof.collapse', lang)}
+        >
+          <span class="txt">{t('v3.proof.expand', lang)}</span>
+          <span class="chev" aria-hidden="true">↓</span>
+        </button>
+        <figcaption>
+          <span class="k">{t('v3.proof.k2', lang)}</span>
+          <p set:html={t('v3.proof.d2', lang)}></p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <a
+      class="lp3-proof-discord reveal"
+      href="https://discord.gg/RySmvNF5kF"
+      target="_blank"
+      rel="noopener"
+    >
+      <IconDiscord size={16} />
+      <span set:html={t('v3.proof.discord', lang)}></span>
+      <span class="arr" aria-hidden="true">↗</span>
+    </a>
+  </div>
+</section>

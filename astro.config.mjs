@@ -36,8 +36,11 @@ export default defineConfig({
     '/guide/getting-started/quick-start/': '/docs/getting-started/quick-start/',
     '/guide/analytics/gain/': '/docs/analytics/gain/',
     '/guide/analytics/discover/': '/docs/analytics/discover/',
-    '/guide/filter-workflow/': '/docs/filter-workflow/',
-    '/guide/technical/': '/docs/technical/',
+    /* technical.md and filter-workflow.md no longer exist in the rtk repo's
+       docs, so these two used to redirect onto a 404. Old inbound links land on
+       the docs index instead; restore the specific targets if the pages return. */
+    '/guide/filter-workflow/': '/docs/',
+    '/guide/technical/': '/docs/',
     '/guide/resources/what-rtk-covers/': '/docs/resources/what-rtk-covers/',
     '/guide/resources/troubleshooting/': '/docs/resources/troubleshooting/',
   },
@@ -57,7 +60,7 @@ export default defineConfig({
     }),
     starlight({
       title: 'RTK',
-      description: 'RTK — Rust Token Killer. Reduce Claude Code token usage by 60-90%.',
+      description: 'RTK — Rust Token Killer. Cuts up to 90% of CLI output noise before it reaches your AI context.',
       defaultLocale: 'en',
       disable404Route: true,
       favicon: '/brand/favicon/favicon-32.png',

@@ -1,10 +1,24 @@
 ---
 /**
- * Starlight Header override — matches landing nav visual style.
- * Includes SearchModal so Cmd+K works on docs pages too.
+ * Starlight header override — the docs use the same V3 nav as the rest of the
+ * site, so navigation never changes shape when you cross from the landing page
+ * into /guide/.
+ *
+ * landing-v3.css is fully scoped to `.lp3*`, so loading it here cannot leak
+ * into Starlight's own styles; the `.lp3` wrapper supplies the tokens the nav
+ * needs. `--sl-nav-height` in starlight-overrides.css must match the nav height.
  */
-import GlobalHeader from '../global/Header.astro'
+import NavV3 from '../landing/v3/NavV3.astro'
 import SearchModal from '../global/SearchModal.astro'
+import { getRepoFacts } from '../../lib/github'
+
+const { starsLabel } = await getRepoFacts()
 ---
-<GlobalHeader />
+<div class="lp3 lp3-docs-chrome">
+  <NavV3 starsLabel={starsLabel} />
+</div>
 <SearchModal />
+
+<style is:global>
+  @import '../../styles/landing-v3.css';
+</style>

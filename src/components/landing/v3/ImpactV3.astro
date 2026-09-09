@@ -1,0 +1,46 @@
+---
+/**
+ * 03 / THE IMPACT — heading band left, three icon columns right (reference layout).
+ */
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+---
+<section class="lp3-section" id="impact">
+  <div class="lp3-container lp3-impact-band">
+
+    <div>
+      <p class="lp3-eyebrow reveal"><span class="idx">05</span> / {t('v3.impact.eyebrow', lang)}</p>
+      <h2 class="lp3-h2 reveal" set:html={t('v3.impact.title', lang)}></h2>
+      <p class="lp3-impact-sub reveal">{t('v3.impact.sub', lang)}</p>
+    </div>
+
+    <div class="lp3-impact-cols">
+      <div class="lp3-impact-col reveal">
+        <span class="lp3-impact-ico" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        </span>
+        <h3>{t('v3.impact.col1_title', lang)}</h3>
+        <p>{t('v3.impact.col1_text', lang)}</p>
+      </div>
+      <div class="lp3-impact-col reveal">
+        <span class="lp3-impact-ico" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </span>
+        <h3>{t('v3.impact.col2_title', lang)}</h3>
+        <p>{t('v3.impact.col2_text', lang)}</p>
+      </div>
+      <div class="lp3-impact-col reveal">
+        <span class="lp3-impact-ico" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><path d="M12 3l7 5v8l-7 5-7-5V8z"/><path d="M12 9v6"/></svg>
+        </span>
+        <h3>{t('v3.impact.col3_title', lang)}</h3>
+        <p>{t('v3.impact.col3_text', lang)}</p>
+      </div>
+    </div>
+
+  </div>
+</section>

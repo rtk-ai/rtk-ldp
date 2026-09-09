@@ -1,0 +1,255 @@
+---
+/**
+ * NavV3 — product navigation for the V3 landing.
+ *
+ * The bar carries FOUR items: Product, Docs, Resources, Community. Everything
+ * else lives inside those menus, so nothing from SiteHeader/SiteFooter is lost
+ * (see §14 of NEW_DESIGN_RULES.md) while the bar stays quiet. Before adding a
+ * fifth top-level item, put it in a menu instead.
+ *
+ * Menus are <details>: they open on click, are keyboard-operable, and still
+ * work with JS disabled. JS only adds close-on-outside-click.
+ */
+import IconGitHub from '../../ui/icons/IconGitHub.astro'
+import IconKofi from '../../ui/icons/IconKofi.astro'
+import IconDiscord from '../../ui/icons/IconDiscord.astro'
+import IconSearch from '../../ui/icons/IconSearch.astro'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  starsLabel: string
+  lang?: Lang
+}
+const { starsLabel, lang = 'en' } = Astro.props
+
+const currentLocale = (Astro.currentLocale ?? 'en') as Lang
+
+/* Language links preserve the page you are on WHEN that page exists in the
+   other locale; localizedPath falls back to the locale homepage when it does
+   not, instead of offering a 404 (see src/lib/i18n.ts). */
+const currentPath = localizedPath(Astro.url.pathname)
+
+const homeHref = getRelativeLocaleUrl(currentLocale, '/')
+const benchHref = getRelativeLocaleUrl(currentLocale, '/benchmarks/')
+/* English-only page: no /fr/team/ etc. exists, so never localize it. */
+const teamHref = '/team/'
+
+/* Install leads: it is the one thing a visitor opening this menu most likely
+   came to do. RTK Pro is appended after this list in both the desktop panel and
+   the drawer, so the paid product always closes the menu rather than competing
+   with the free one at the top. */
+const productItems = [
+  { href: `${homeHref}#install`, label: t('v3.hero.cta_install', lang) },
+  { href: `${homeHref}#problem`, label: t('nav.why_rtk', lang) },
+  { href: `${homeHref}#solution`, label: t('nav.how_it_works', lang) },
+  { href: `${homeHref}#demo`, label: t('nav.demo', lang) },
+  { href: `${homeHref}#ecosystem`, label: t('nav.integrations', lang) },
+]
+
+const resourceItems = [
+  { href: benchHref, label: t('nav.benchmarks', lang) },
+  { href: '/blog/', label: t('nav.blog', lang) },
+  { href: 'https://github.com/rtk-ai/rtk/blob/master/CHANGELOG.md', label: t('footer.changelog', lang), ext: true },
+]
+
+const communityItems = [
+  { href: 'https://github.com/rtk-ai/rtk', label: t('footer.github_repo', lang), ext: true, icon: 'gh' },
+  { href: 'https://discord.gg/RySmvNF5kF', label: t('ui.nav_discord', lang), ext: true, icon: 'discord' },
+  { href: 'https://ko-fi.com/patrickszymkowiak', label: t('ui.nav_support', lang), ext: true, icon: 'kofi' },
+  { href: teamHref, label: t('footer.team', lang) },
+  { href: 'https://github.com/rtk-ai/rtk/discussions', label: t('footer.discussions', lang), ext: true },
+]
+
+const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`
+---
+<nav class="lp3-nav" aria-label={t('aria.main_nav', lang)}>
+  <div class="lp3-container lp3-nav-inner">
+    <div class="lp3-nav-left">
+      <a href={homeHref} class="lp3-nav-logo">
+        <img src="/brand/box-logo-white.webp" alt="RTK logo" width="30" height="30" />
+        <span>RTK</span>
+      </a>
+      <button class="lp3-nav-icon lp3-nav-search" id="search-trigger" aria-label={t('aria.search', lang)}>
+        <IconSearch size={15} />
+        <span class="lbl">{t('ui.search', lang)}</span>
+        <kbd>⌘K</kbd>
+      </button>
+    </div>
+
+    <div class="lp3-nav-links">
+      <details class="lp3-menu">
+        <summary>{t('nav.product', lang)}<Fragment set:html={caret} /></summary>
+        <div class="lp3-menu-panel">
+          {productItems.map(i => <a href={i.href}>{i.label}</a>)}
+          <a href="https://pro.rtk-ai.app" class="is-pro" target="_blank" rel="noopener">
+            <span class="dot" aria-hidden="true"></span>RTK Pro
+          </a>
+        </div>
+      </details>
+
+      <a href="/guide/" class="lp3-nav-link">{t('ui.nav_docs', lang)}</a>
+
+      <details class="lp3-menu">
+        <summary>{t('nav.resources', lang)}<Fragment set:html={caret} /></summary>
+        <div class="lp3-menu-panel">
+          {resourceItems.map(i => (
+            <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>{i.label}</a>
+          ))}
+        </div>
+      </details>
+
+      <details class="lp3-menu">
+        <summary>{t('footer.col_community', lang)}<Fragment set:html={caret} /></summary>
+        <div class="lp3-menu-panel">
+          {communityItems.map(i => (
+            <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>
+              {i.icon === 'gh' && <IconGitHub size={14} />}
+              {i.icon === 'discord' && <IconDiscord size={14} />}
+              {i.icon === 'kofi' && <IconKofi size={14} />}
+              {i.label}
+            </a>
+          ))}
+        </div>
+      </details>
+    </div>
+
+    <div class="lp3-nav-actions">
+      <a
+        href="https://github.com/rtk-ai/rtk"
+        class="lp3-nav-gh"
+        target="_blank"
+        rel="noopener"
+        aria-label={`RTK on GitHub, ${starsLabel} stars`}
+      >
+        <IconGitHub size={16} />
+        <span>{starsLabel}</span>
+        <svg class="star" width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </a>
+
+
+      <details class="lp3-menu lp3-lang">
+        <summary aria-label={t('aria.language', lang)}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          <span>{currentLocale.toUpperCase()}</span>
+          <Fragment set:html={caret} />
+        </summary>
+        <div class="lp3-menu-panel is-lang" role="navigation" aria-label={t('aria.language', lang)}>
+          {LOCALES.map(l => (
+            <a
+              href={getRelativeLocaleUrl(l, currentPath)}
+              hreflang={l}
+              class={l === currentLocale ? 'active' : undefined}
+              aria-current={l === currentLocale ? 'true' : undefined}
+            >{l.toUpperCase()}</a>
+          ))}
+        </div>
+      </details>
+      <a href={`${homeHref}#install`} class="lp3-btn lp3-btn-primary lp3-btn-sm">
+        {t('v3.hero.cta_install', lang)} <span class="arr" aria-hidden="true">→</span>
+      </a>
+      <button
+        class="lp3-nav-burger"
+        id="lp3-burger"
+        aria-label={t('aria.open_menu', lang)}
+        aria-expanded="false"
+        aria-controls="lp3-drawer"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="lp3-drawer" id="lp3-drawer" aria-hidden="true">
+  <span class="lp3-drawer-label">{t('nav.product', lang)}</span>
+  {productItems.map(i => <a href={i.href}>{i.label}</a>)}
+  <a href="https://pro.rtk-ai.app" class="is-pro">RTK Pro</a>
+
+  <span class="lp3-drawer-label">{t('nav.resources', lang)}</span>
+  <a href="/guide/">{t('ui.nav_docs', lang)}</a>
+  {resourceItems.map(i => (
+    <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>{i.label}</a>
+  ))}
+
+  <span class="lp3-drawer-label">{t('footer.col_community', lang)}</span>
+  {communityItems.map(i => (
+    <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>{i.label}</a>
+  ))}
+
+  <div class="lp3-drawer-lang" aria-label={t('aria.language', lang)}>
+    {LOCALES.map(l => (
+      <a
+        href={getRelativeLocaleUrl(l, currentPath)}
+        hreflang={l}
+        class={l === currentLocale ? 'active' : undefined}
+        aria-current={l === currentLocale ? 'true' : undefined}
+      >{l.toUpperCase()}</a>
+    ))}
+  </div>
+  <a href={`${homeHref}#install`} class="lp3-btn lp3-btn-primary">
+    {t('v3.hero.cta_install', lang)} <span class="arr" aria-hidden="true">→</span>
+  </a>
+</div>
+<div class="lp3-overlay" id="lp3-overlay"></div>
+
+<script>
+  const burger = document.getElementById('lp3-burger')
+  const drawer = document.getElementById('lp3-drawer')
+  const overlay = document.getElementById('lp3-overlay')
+  const nav = document.querySelector('.lp3-nav')
+
+  function setOpen(open: boolean) {
+    drawer?.classList.toggle('open', open)
+    overlay?.classList.toggle('open', open)
+    burger?.setAttribute('aria-expanded', String(open))
+    drawer?.setAttribute('aria-hidden', String(!open))
+    document.body.style.overflow = open ? 'hidden' : ''
+  }
+
+  burger?.addEventListener('click', () => setOpen(!drawer?.classList.contains('open')))
+  overlay?.addEventListener('click', () => setOpen(false))
+  drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)))
+
+  // Menus: one open at a time, closed by outside click, Escape, or choosing.
+  // Scoped to the whole page so the footer's language menu behaves the same.
+  const menus = Array.from(document.querySelectorAll<HTMLDetailsElement>('.lp3-menu'))
+  const closeMenus = (except?: HTMLDetailsElement) =>
+    menus.forEach(m => { if (m !== except) m.open = false })
+
+  menus.forEach(m => {
+    m.addEventListener('toggle', () => { if (m.open) closeMenus(m) })
+    m.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { m.open = false }))
+  })
+  document.addEventListener('click', e => {
+    if (!menus.some(m => m.contains(e.target as Node))) closeMenus()
+  })
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return
+    closeMenus()
+    setOpen(false)
+  })
+
+  // elevated nav once the page is scrolled
+  const onScrollNav = () => nav?.classList.toggle('scrolled', window.scrollY > 8)
+  window.addEventListener('scroll', onScrollNav, { passive: true })
+  onScrollNav()
+
+  // scroll-spy: mint dot on the Product menu while a product section is in view
+  if (typeof IntersectionObserver !== 'undefined') {
+    const sections = ['problem', 'solution', 'ecosystem', 'demo']
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+    const productSummary = document.querySelector<HTMLElement>('.lp3-nav-links .lp3-menu summary')
+    if (sections.length && productSummary) {
+      const spy = new IntersectionObserver(
+        entries => {
+          const anyVisible = entries.some(e => e.isIntersecting)
+          if (anyVisible) productSummary.classList.add('active')
+        },
+        { rootMargin: '-40% 0px -55% 0px' }
+      )
+      sections.forEach(s => spy.observe(s))
+    }
+  }
+</script>

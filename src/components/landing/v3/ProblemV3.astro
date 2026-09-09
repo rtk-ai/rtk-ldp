@@ -1,0 +1,85 @@
+---
+/**
+ * 01 / THE PROBLEM — triptych per the reference:
+ * heading block · AI CONTEXT visualization · consequence note.
+ *
+ * The rows mirror Claude Code's own `/context` profiler, because that is what a
+ * reader can check against their own terminal. The session shown is a REAL one:
+ * near capacity, where autocompact is about to start discarding context — that
+ * is the pain the section is about. A half-empty window has no problem to show.
+ * The fixed costs are deliberately tiny (system prompt + tools ~3%, MCP ~1%,
+ * memory ~1%, skills ~0.5%): overhead is not what fills a window, the
+ * conversation is, and CLI output is its compressible part. Scroll compresses
+ * that row 18% → 5% (usage 86% → 73%), which is the difference between
+ * "autocompact soon" and real headroom.
+ *
+ * The resting state is the BEFORE picture on purpose: this is the problem
+ * section, so with no JS it must show the problem, not the fix. Do NOT inflate these: RTK's own SkillsBench post puts bash
+ * output at a bounded slice of the bill, and a chart claiming RTK frees half the
+ * window contradicts the company's published analysis. The caption says so out
+ * loud: these proportions swing hard between projects, so the chart presents
+ * itself as one example rather than a measurement.
+ * Default (no JS / reduced motion) renders the settled end state.
+ */
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const staticRows = [
+  { label: t('v3.problem.row_system', lang), pct: 3 },
+  { label: t('v3.problem.row_mcp', lang), pct: 1 },
+  { label: t('v3.problem.row_memory', lang), pct: 1 },
+  { label: t('v3.problem.row_skills', lang), pct: 0.5 },
+  { label: t('v3.problem.row_history', lang), pct: 62 },
+]
+---
+<section class="lp3-section" id="problem">
+  <div class="lp3-container lp3-problem-grid">
+
+    <div class="lp3-problem-head">
+      <p class="lp3-eyebrow reveal"><span class="idx">01</span> / {t('v3.problem.eyebrow', lang)}</p>
+      <h2 class="lp3-h2 reveal" set:html={t('v3.problem.title', lang)}></h2>
+      <p class="lp3-lede reveal">
+        {t('v3.problem.lede', lang)}
+      </p>
+    </div>
+
+    <div class="lp3-ctx is-full reveal" data-ctxviz>
+      <p class="lp3-sr">
+        {t('v3.problem.chart_sr', lang)}
+      </p>
+      <div class="lp3-ctx-head" aria-hidden="true">
+        <span>{t('v3.problem.ctx_head', lang)}</span>
+        <span class="pct" set:html={t('v3.problem.pct_used', lang).replace('{n}', '<span data-used-pct>86</span>')}></span>
+      </div>
+      <div class="lp3-ctx-rows" aria-hidden="true">
+        {staticRows.map(r => (
+          <div class="lp3-ctx-row">
+            <span class="lp3-ctx-label"><i class="dot"></i>{r.label}</span>
+            <span class="lp3-ctx-track"><span class="lp3-ctx-fill" style={`width:${r.pct}%`}></span></span>
+            <span class="lp3-ctx-pctcol">{r.pct}%</span>
+          </div>
+        ))}
+        <div class="lp3-ctx-row is-noise">
+          <span class="lp3-ctx-label"><i class="dot"></i>{t('v3.problem.row_cli', lang)}</span>
+          <span class="lp3-ctx-track"><span class="lp3-ctx-fill"></span></span>
+          <span class="lp3-ctx-pctcol"><span data-cli-pct>18</span>%</span>
+        </div>
+      </div>
+      <p class="lp3-ctx-caption" aria-hidden="true">{t('v3.problem.ctx_caption', lang)}</p>
+      <div class="lp3-ctx-foot" aria-hidden="true">
+        <span class="lp3-ctx-msg" data-ctx-msg>{t('v3.problem.ctx_msg', lang)}</span>
+        <span class="lp3-ctx-total"><i></i></span>
+      </div>
+    </div>
+
+    <aside class="lp3-ctx-note reveal">
+      <p set:html={t('v3.problem.note', lang)}></p>
+      <img class="note-mark" src="/brand/box-logo-white.webp" alt="" width="44" height="44" loading="lazy" decoding="async" />
+    </aside>
+
+  </div>
+</section>

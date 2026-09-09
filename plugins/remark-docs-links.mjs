@@ -3,41 +3,68 @@
  *
  * Rewrites relative .md links in RTK docs to Starlight URL paths.
  *
- * Examples:
- *   ./FEATURES.md          → /docs/guide/features/
- *   ../TECHNICAL.md        → /docs/guide/technical/
- *   ./filter-workflow.md   → /docs/guide/filter-workflow/
+ * The docs are authored in the rtk repo and copied into src/content/docs/ by
+ * scripts/prepare-docs.mjs, preserving their directory structure. Because that
+ * directory IS the URL path under Starlight, a link only needs resolving
+ * against the directory of the file that contains it.
  *
- * Links that are already absolute URLs are left untouched.
- * Links outside docs/ fall back to their original form.
+ * Examples, from a page at src/content/docs/docs/getting-started/quick-start.md:
+ *   ./installation.md          → /docs/getting-started/installation/
+ *   ./configuration.md         → /docs/getting-started/configuration/
+ *   ../resources/telemetry.md  → /docs/resources/telemetry/
+ *   ../TECHNICAL.md            → /docs/technical/
+ *
+ * Previously this ignored the containing directory and hardcoded a /guide/
+ * prefix, so `./installation.md` inside getting-started/ became
+ * `/guide/installation/`: a page that does not exist. Eleven such links shipped
+ * as 404s, surviving only where astro.config.mjs happened to carry a matching
+ * backcompat redirect. Internal doc links must resolve to real pages directly,
+ * never by bouncing through the /guide/ compatibility map.
+ *
+ * Absolute URLs, anchors and mailto links are left untouched.
  */
 
 import { visit } from 'unist-util-visit'
+import path from 'node:path'
 
-/** Convert a .md filename to a Starlight slug path */
-function mdToSlug(href) {
-  const clean = href.replace(/^\.\.?\//, '')
-  const rawSlug = clean.replace(/\.md$/, '').toLowerCase()
-  // Strip bare `index` or trailing `/index` so index pages map to their directory route
-  const slug = rawSlug === 'index' ? '' : rawSlug.replace(/\/index$/, '')
-  return `/guide/${slug}/`
+/** Starlight's content root: everything below it maps 1:1 onto the URL path. */
+const CONTENT_ROOT = 'src/content/docs'
+
+/** Directory of the current page, relative to CONTENT_ROOT (e.g. "docs/getting-started"). */
+function pageDir(file) {
+  const abs = (file?.history?.[0] ?? file?.path ?? '').replace(/\\/g, '/')
+  const marker = `${CONTENT_ROOT}/`
+  const i = abs.indexOf(marker)
+  if (i === -1) return null
+  return path.posix.dirname(abs.slice(i + marker.length))
+}
+
+/** Resolve a relative .md href against the page's own directory. */
+function mdToUrl(href, dir) {
+  const base = dir && dir !== '.' ? dir : ''
+  const joined = path.posix.normalize(path.posix.join(base, href))
+  let slug = joined.replace(/\.md$/i, '').toLowerCase()
+  if (slug === 'index') return '/'
+  slug = slug.replace(/\/index$/, '')
+  return `/${slug}/`
 }
 
 /** @returns {import('unified').Plugin} */
 export function remarkDocsLinks() {
-  return (tree) => {
+  return (tree, file) => {
+    const dir = pageDir(file)
     visit(tree, 'link', (node) => {
       const href = node.url
-      // Skip absolute URLs, anchors-only, mailto
       if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto')) {
         return
       }
-      // Rewrite relative .md links
-      if (href.endsWith('.md') || href.match(/\.md#/)) {
-        const [mdPart, anchor] = href.split('#')
-        const newUrl = mdToSlug(mdPart) + (anchor ? `#${anchor}` : '')
-        node.url = newUrl
-      }
+      if (!href.endsWith('.md') && !href.match(/\.md#/)) return
+
+      const [mdPart, anchor] = href.split('#')
+      /* No resolvable directory (a doc rendered from outside the content root)
+         leaves the link alone rather than guessing a wrong absolute path. */
+      if (dir === null) return
+      node.url = mdToUrl(mdPart, dir) + (anchor ? `#${anchor}` : '')
     })
   }
 }

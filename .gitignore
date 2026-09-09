@@ -33,3 +33,6 @@ src/data/docs-search-entries.ts
 .next/
 claudedocs/
 .worktrees
+
+# RTK CLI local project id (machine-specific, not project content)
+.rtk-project
