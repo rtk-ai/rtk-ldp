@@ -3,17 +3,8 @@
  * Starlight Header override — matches landing nav visual style.
  * Includes SearchModal so Cmd+K works on docs pages too.
  */
-import NavV3 from '../landing/v3/NavV3.astro'
+import GlobalHeader from '../global/Header.astro'
 import SearchModal from '../global/SearchModal.astro'
-import { getRepoFacts } from '../../lib/github'
-
-const { starsLabel } = await getRepoFacts()
 ---
-<div class="lp3 lp3-docs-chrome">
-  <NavV3 starsLabel={starsLabel} />
-</div>
+<GlobalHeader />
 <SearchModal />
-
-<style is:global>
-  @import '../../styles/landing-v3.css';
-</style>

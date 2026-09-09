@@ -1,50 +1,107 @@
 ---
-import PageV3 from '../layouts/PageV3.astro'
+import Layout from '../layouts/Layout.astro'
+import SiteHeader from '../components/global/SiteHeader.astro'
+import SiteFooter from '../components/global/SiteFooter.astro'
 ---
-<PageV3
-  title="404: Page not found · RTK"
+<Layout
+  title="404 — Page not found · RTK"
   description="This page does not exist."
-  mainClass="nf"
 >
-  <div class="lp3-container nf-inner">
-    <p class="lp3-eyebrow reveal">404</p>
-    <h1 class="lp3-h2 reveal">Page <em>not found</em></h1>
-    <p class="nf-desc reveal">
-      The page you're looking for doesn't exist or has been moved.
-    </p>
-    <div class="nf-actions reveal">
-      <a href="/" class="lp3-btn lp3-btn-primary">
-        Back to home <span class="arr" aria-hidden="true">→</span>
-      </a>
-      <a href="/guide/" class="lp3-btn lp3-btn-ghost">Browse docs</a>
+  <SiteHeader />
+  <main id="main-content" class="notfound-main">
+    <div class="notfound-container">
+      <div class="notfound-code">404</div>
+      <h1 class="notfound-title">Page not found</h1>
+      <p class="notfound-desc">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <div class="notfound-actions">
+        <a href="/" class="btn-primary">Back to home</a>
+        <a href="/guide/" class="btn-secondary">Browse docs</a>
+      </div>
     </div>
-  </div>
-</PageV3>
+  </main>
+  <SiteFooter />
+</Layout>
+
+<style is:global>
+  @import '../styles/landing.css';
+</style>
 
 <style>
-  .nf {
+  .notfound-main {
     min-height: calc(100vh - 64px);
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
   }
-  .nf-inner {
+
+  .notfound-container {
     text-align: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    max-width: 480px;
   }
-  .nf-inner :global(.lp3-eyebrow) { justify-content: center; }
-  .nf-desc {
-    max-width: 34rem;
-    margin: 1.25rem auto 0;
+
+  .notfound-code {
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .notfound-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin: 0 0 1rem;
+  }
+
+  .notfound-desc {
     color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.65;
+    font-size: 1rem;
+    margin: 0 0 2rem;
+    line-height: 1.6;
   }
-  .nf-actions {
+
+  .notfound-actions {
     display: flex;
-    gap: 0.85rem;
+    gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 2.5rem;
   }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--accent);
+    color: #000;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; text-decoration: none; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 </style>

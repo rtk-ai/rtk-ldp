@@ -1,6 +1,6 @@
 ---
 import { NON_DEFAULT_LOCALES, type Lang } from '../../lib/i18n'
-import LandingPageV3 from '../../components/pages/LandingPageV3.astro'
+import LandingPage from '../../components/pages/LandingPage.astro'
 
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.map(locale => ({ params: { locale } }))
@@ -8,4 +8,4 @@ export function getStaticPaths() {
 
 const { locale } = Astro.params as { locale: Lang }
 ---
-<LandingPageV3 lang={locale} />
+<LandingPage lang={locale} />

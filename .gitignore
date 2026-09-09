@@ -33,9 +33,3 @@ src/data/docs-search-entries.ts
 .next/
 claudedocs/
 .worktrees
-
-# RTK CLI local project id (machine-specific, not project content)
-.rtk-project
-
-# Working notes for the V3 rework, not project content
-NEW_DESIGN_RULES.md
