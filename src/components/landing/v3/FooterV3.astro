@@ -13,6 +13,8 @@
 import IconGitHub from '../../ui/icons/IconGitHub.astro'
 import IconDiscord from '../../ui/icons/IconDiscord.astro'
 import IconKofi from '../../ui/icons/IconKofi.astro'
+import IconLinkedIn from '../../ui/icons/IconLinkedIn.astro'
+import IconXLogo from '../../ui/icons/IconXLogo.astro'
 import IconStar from '../../ui/icons/IconStar.astro'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
@@ -76,11 +78,14 @@ const columns = [
       { href: 'https://discord.gg/RySmvNF5kF', label: t('footer.discord_server', lang), ext: true },
       { href: 'https://github.com/rtk-ai/rtk/issues', label: t('footer.issues', lang), ext: true },
       { href: 'https://github.com/rtk-ai/rtk/discussions', label: t('footer.discussions', lang), ext: true },
+      { href: 'https://www.linkedin.com/company/112306788', label: t('footer.linkedin', lang), ext: true },
+      { href: 'https://x.com/rtkailabs', label: t('footer.x_profile', lang), ext: true },
       {
         href: 'https://twitter.com/intent/tweet?url=https://www.rtk-ai.app&text=Cut+up+to+90%25+of+CLI+output+noise+before+it+reaches+your+AI+context+with+RTK',
         label: t('footer.share_x', lang),
         ext: true,
       },
+      { href: 'https://github.com/sponsors/rtk-ai', label: t('footer.sponsors', lang), ext: true },
       { href: 'https://ko-fi.com/patrickszymkowiak', label: t('footer.support', lang), ext: true },
     ],
   },
@@ -109,7 +114,7 @@ const columns = [
     <div class="lp3-footer-top">
       <div class="lp3-footer-brand">
         <a href={homeHref} class="mark">
-          <img src="/brand/logo.png" alt="RTK logo" width="28" height="28" />
+          <img src="/brand/box-logo-white.webp" alt="RTK logo" width="28" height="28" />
           <span>RTK</span>
         </a>
         <p>{t('footer.tagline', lang)}</p>
@@ -123,6 +128,15 @@ const columns = [
           </a>
           <a href="https://discord.gg/RySmvNF5kF" target="_blank" rel="noopener" aria-label={t('aria.join_discord', lang)}>
             <IconDiscord size={16} />
+          </a>
+          <a href="https://www.linkedin.com/company/112306788" target="_blank" rel="noopener" aria-label={t('aria.rtk_linkedin', lang)}>
+            <IconLinkedIn size={16} />
+          </a>
+          <a href="https://x.com/rtkailabs" target="_blank" rel="noopener" aria-label={t('aria.rtk_x', lang)}>
+            <IconXLogo size={15} />
+          </a>
+          <a href="https://github.com/sponsors/rtk-ai" target="_blank" rel="noopener" aria-label={t('aria.sponsor_github', lang)}>
+            <IconStar size={16} filled />
           </a>
           <a href="https://ko-fi.com/patrickszymkowiak" target="_blank" rel="noopener" aria-label={t('aria.support_kofi', lang)}>
             <IconKofi size={16} />
@@ -144,6 +158,7 @@ const columns = [
           <a href="https://pro.rtk-ai.app" class="is-pro">RTK Pro</a>
           <a href={benchHref}>{t('nav.benchmarks', lang)}</a>
           <a href="/blog/">{t('nav.blog', lang)}</a>
+          <a href="https://pro.rtk-ai.app/careers" target="_blank" rel="noopener">{t('footer.careers', lang)}</a>
           <span class="sub">{t('footer.col_legal', lang)}</span>
           <a href="https://github.com/rtk-ai/rtk/blob/master/LICENSE" target="_blank" rel="noopener">{t('footer.license', lang)}</a>
           <a href="https://github.com/rtk-ai/rtk/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener">{t('footer.contributing', lang)}</a>

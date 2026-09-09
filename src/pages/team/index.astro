@@ -189,6 +189,14 @@ const contributors = [
   }))
   .sort((a, b) => b.contributions - a.contributions || a.handle.localeCompare(b.handle))
 
+/* Only repeat contributors get a chip. The full list is ~150 names, most of
+   them a single commit, which turned the section into a wall of chips where no
+   individual name registered. Everyone else is counted in the caption and
+   reachable through "View all contributors" on GitHub, which is the canonical
+   list anyway and never goes stale. */
+const shown = contributors.filter((c) => c.contributions > 1)
+const singleCommit = contributors.length - shown.length
+
 // No dedicated LinkedIn icon component exists — inline the mark.
 const linkedinSvg =
   '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
@@ -301,13 +309,15 @@ const schemaOrg = {
       <div class="tm-contrib-head">
         <h2 id="tm-contributors" class="lp3-h2 tm-h2 reveal">Open Source <em>Contributors</em></h2>
         <p class="lp3-lede tm-sub reveal">
-          {contributors.length} people have shipped code, docs or fixes to RTK, ranked by commit count.
+          {contributors.length} people have shipped code, docs or fixes to RTK. The {shown.length} with
+          more than one contribution are listed here, ranked by commit count; the other {singleCommit} are
+          on GitHub.
           <span class="tm-synced">Last synced {contributorsSyncedAt}</span>
         </p>
       </div>
 
       <ul class="tm-chips reveal" role="list">
-        {contributors.map((c) => (
+        {shown.map((c) => (
           <li>
             <a
               class="tm-chip"
@@ -331,8 +341,8 @@ const schemaOrg = {
           target="_blank"
           rel="noopener"
         >
-          View all contributors
-          <span class="arr" aria-hidden="true">→</span>
+          View all {contributors.length} contributors
+          <span class="arr" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>

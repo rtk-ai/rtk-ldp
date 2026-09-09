@@ -14,6 +14,8 @@ import IconGitHub from '../../ui/icons/IconGitHub.astro'
 import IconKofi from '../../ui/icons/IconKofi.astro'
 import IconDiscord from '../../ui/icons/IconDiscord.astro'
 import IconSearch from '../../ui/icons/IconSearch.astro'
+import IconLinkedIn from '../../ui/icons/IconLinkedIn.astro'
+import IconXLogo from '../../ui/icons/IconXLogo.astro'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
 
@@ -56,6 +58,9 @@ const resourceItems = [
 const communityItems = [
   { href: 'https://github.com/rtk-ai/rtk', label: t('footer.github_repo', lang), ext: true, icon: 'gh' },
   { href: 'https://discord.gg/RySmvNF5kF', label: t('ui.nav_discord', lang), ext: true, icon: 'discord' },
+  { href: 'https://www.linkedin.com/company/112306788', label: t('footer.linkedin', lang), ext: true, icon: 'li' },
+  { href: 'https://x.com/rtkailabs', label: t('footer.x_profile', lang), ext: true, icon: 'x' },
+  { href: 'https://github.com/sponsors/rtk-ai', label: t('footer.sponsors', lang), ext: true, icon: 'gh' },
   { href: 'https://ko-fi.com/patrickszymkowiak', label: t('ui.nav_support', lang), ext: true, icon: 'kofi' },
   { href: teamHref, label: t('footer.team', lang) },
   { href: 'https://github.com/rtk-ai/rtk/discussions', label: t('footer.discussions', lang), ext: true },
@@ -107,6 +112,8 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
               {i.icon === 'gh' && <IconGitHub size={14} />}
               {i.icon === 'discord' && <IconDiscord size={14} />}
               {i.icon === 'kofi' && <IconKofi size={14} />}
+              {i.icon === 'li' && <IconLinkedIn size={14} />}
+              {i.icon === 'x' && <IconXLogo size={13} />}
               {i.label}
             </a>
           ))}

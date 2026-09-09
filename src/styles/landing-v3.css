@@ -2318,16 +2318,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   color: var(--text);
   font-weight: 500;
 }
-.lp3-spec-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 2.25rem;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--accent);
-}
-.lp3-spec-link:hover { color: var(--accent-hover); text-decoration: none; }
 @media (max-width: 860px) {
   .lp3-specs { grid-template-columns: 1fr; }
   .lp3-spec-row { grid-template-columns: 130px 1fr; }
