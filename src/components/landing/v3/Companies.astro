@@ -1,26 +1,4 @@
 ---
-/**
- * Companies — "Starred by developers at" marquee. Real logos, flattened to
- * white, drifting in one seamless loop with the remaining count below it.
- *
- * Source of truth: GitHub stargazers of rtk-ai/rtk — the `company` field of
- * every stargazer profile, alias-normalized and ranked by count (fetched
- * Sep 2026: 79K stars, 20K with an employer set, 1.1K distinct employers
- * with 2+ stargazers). Every name below is in the actual top ranks; ordered
- * for brand recognition, not raw count.
- *
- * Each SVG is cropped to its artwork bounds, so w/h below is the true ratio
- * at its optical display size: wide wordmarks (Tencent, Samsung) sit shorter
- * than compact marks (Apple) so every logo carries the same visual weight
- * rather than the same height. Both attributes are required to prevent layout
- * shift, and landing-v3.css sizes from `h` — never leave it to the intrinsic
- * size, which several of these files do not carry.
- *
- * Not lazy-loaded: in a marquee most logos sit outside the horizontal viewport,
- * so lazy defers them until they drift in and they pop in blank. 18 small SVGs
- * (~84KB, and the repeat passes reuse the same URLs) at low fetch priority
- * costs less than the flicker.
- */
 import { t, type Lang } from '../../../lib/i18n'
 
 interface Props {
@@ -49,12 +27,8 @@ const companies = [
   { name: 'Cisco', file: 'cisco', w: 43, h: 23 },
 ]
 
-/* Conservative: distinct employers with 2+ stargazers each (1,165 measured). */
 const moreCompanies = '1,100'
 
-/* Three passes so the track outruns ultrawide viewports; the loop shifts by
-   exactly one pass (-33.333%), so it repeats with no seam. Only the first
-   pass is exposed to assistive tech — the rest are visual repeats. */
 const passes = [0, 1, 2]
 ---
 <section class="lp3-companies" id="companies">

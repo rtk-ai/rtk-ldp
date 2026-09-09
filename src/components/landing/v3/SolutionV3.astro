@@ -1,17 +1,4 @@
 ---
-/**
- * 02 / THE SOLUTION — what RTK actually is: a thin proxy layer, stated in specs.
- *
- * This section used to repeat the hero: a NOISE → gate → SIGNAL field diagram
- * saying "RTK cleans the noise", which the hero choreography already shows with
- * the same gate mark. Two identical metaphors, one after the other. The section
- * now carries the part the hero cannot show — what the thing is made of — and
- * "Fast enough to disappear." is its heading rather than a sub-heading.
- *
- * The diagram's strings (v3.solution.title / .lede / .diagram_sr / .label_noise /
- * .label_signal) were deleted with it; restoring the diagram means re-authoring
- * them in all six locales. Only v3.solution.eyebrow survives, used above.
- */
 import { t, type Lang } from '../../../lib/i18n'
 
 interface Props {
@@ -23,14 +10,7 @@ const specs = [
   { key: t('v3.specs.language', lang), val: 'Rust' },
   { key: t('v3.specs.license', lang), val: 'Apache 2.0' },
   { key: t('v3.specs.architecture', lang), val: t('v3.specs.architecture_val', lang) },
-  // Measured on rtk 0.48.0 (OSS master) against absolute-path raw binaries,
-  // Apple Silicon, 40 warm runs: median +9.0 ms, range +4.6 (git log) to
-  // +15.8 ms (git diff); `find` is FASTER through rtk. 20 ms is a ceiling with
-  // headroom over the worst case measured — re-measure per release, and note it
-  // is one machine's figure: slower hardware will sit higher.
   { key: t('v3.specs.overhead', lang), val: '< 20 ms' },
-  // 64 command implementations (src/cmds/) + 63 toml filters (src/filters/)
-  // counted in the rtk repo → 127 handlers. Keep in step with the hero stat.
   { key: t('v3.specs.commands', lang), val: '125+' },
   { key: t('v3.specs.telemetry', lang), val: t('v3.specs.telemetry_val', lang) },
 ]

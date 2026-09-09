@@ -1,8 +1,4 @@
 ---
-/**
- * LandingPageV3 — the V3 landing experience ("noise → RTK → clean context").
- * Design contract: NEW_DESIGN_RULES.md. Legacy LandingPage.astro is kept as backup.
- */
 import type { Lang } from '../../lib/i18n'
 import Layout from '../../layouts/Layout.astro'
 import NavV3 from '../landing/v3/NavV3.astro'
@@ -33,11 +29,6 @@ const faqItems = [
   },
   {
     q: 'How many tokens does RTK actually save?',
-    /* 56% is the average across REWRITTEN commands, not across everything a
-       shell runs, and 90% is the ceiling, not the norm. Both are scoped in the
-       sentence itself so neither can be quoted back as a global figure. The
-       links stay: an average invites "measured how?" and the answer is a click
-       away rather than a paragraph of prose that will go stale. */
     a: 'On the commands RTK rewrites, output drops by 56% on average, and by up to 90% on the noisiest ones. Across the community that adds up to billions of tokens saved. The exact figure depends on the command, so the benchmarks page publishes the methodology and the per-command results, and the blog covers what independent studies measured, including the cases where RTK did not come out ahead. For your own numbers, run rtk gain after a few days of use.',
     links: [
       { href: '/benchmarks/', label: 'See the benchmarks' },
@@ -63,9 +54,6 @@ const faqItems = [
 ]
 
 let version = ''
-/* Floor value, verified 2026-09-08. Stars only go up, so shipping this as a
-   lower bound stays truthful if GitHub is unreachable — but the build warns,
-   because a stale number presented as proof is worse than a failed build. */
 const STARS_FLOOR = 79000
 let stars = STARS_FLOOR
 let starsLive = false
@@ -100,7 +88,6 @@ const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}K` : String(star
 
 const buildDate = new Date().toISOString().split('T')[0]
 
-// Single @graph block — links all entities, preferred by Google & AI search engines
 const schemaOrg = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -151,8 +138,6 @@ const schemaOrg = {
     {
       '@type': 'FAQPage',
       '@id': 'https://www.rtk-ai.app/#faq',
-      /* Links are appended as anchors so the schema answer carries the same
-         sources the page shows. FAQPage permits <a> inside answer text. */
       mainEntity: faqItems.map(({ q, a, links }) => ({
         '@type': 'Question',
         name: q,
@@ -225,7 +210,6 @@ const schemaOrg = {
       href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <!-- A refresh ALWAYS replays the intro from the top. Must run inline in
          <head>, BEFORE the browser applies scroll restoration — the page
          module runs too late (the hero pin grows the page after load, so the
          browser re-applies the stored offset and wins).
@@ -243,15 +227,10 @@ const schemaOrg = {
             history.replaceState(null, '', location.pathname + location.search)
           }
           window.scrollTo(0, 0)
-          // Safari bfcache restores the page snapshot with its old scroll —
-          // pageshow(persisted) is the only hook that runs afterwards.
           window.addEventListener('pageshow', function (e) {
             if (e.persisted) window.scrollTo(0, 0)
           })
         } catch (e) {}
-        // No flash-of-assembled-page before the intro: when the choreography
-        // will run, pre-hide the assembled pieces BEFORE first paint (the page
-        // module removes this class as it takes over).
         try {
           if (
             !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
@@ -270,11 +249,6 @@ const schemaOrg = {
     <main id="main-content">
       <HeroV3 starsLabel={starsLabel} lang={lang} />
       <Companies lang={lang} />
-      {/* The argument runs 01–06 in order: problem → solution (what it is and
-          what it's made of) → show it → prove it → the payoff → install.
-          Companies and Ecosystem are unnumbered trust bands, and everything
-          after Get started is closing utility. Keep the numbering consecutive
-          — a gap advertises a step the page does not have. */}
       <ProblemV3 lang={lang} />
       <SolutionV3 lang={lang} />
       <DemoV3 lang={lang} />

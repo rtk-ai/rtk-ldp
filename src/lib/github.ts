@@ -1,24 +1,12 @@
-/**
- * github.ts — build-time repo facts (stars, latest version), fetched once.
- *
- * Every V3 page shows the star count in its nav and the version in its footer.
- * Without this cache each page would hit the API twice and rate-limit the build,
- * which is how a stale hardcoded number ends up shipping as "proof".
- */
 
 export interface RepoFacts {
   stars: number
   starsLabel: string
-  /** false when the API call failed — the caller is showing a floor value */
   starsLive: boolean
-  /** tag without the leading v, empty when unknown */
   version: string
-  /** tag with the leading v, for display */
   versionTag: string
 }
 
-/* Floor value, verified 2026-09-08. Stars only go up, so shipping this as a
-   lower bound stays truthful if GitHub is unreachable — and the build warns. */
 const STARS_FLOOR = 79000
 const VERSION_FALLBACK = 'v0.37.1'
 

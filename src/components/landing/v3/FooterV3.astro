@@ -1,15 +1,4 @@
 ---
-/**
- * FooterV3 — full site map in V3 styling.
- *
- * Deliberate parity with src/components/global/SiteFooter.astro: the footer is
- * the site's link map, and the landing page is its strongest internal-link
- * source. Every href here also exists in SiteFooter — keep the two in step, and
- * never drop a destination just because the design is quieter.
- *
- * `version` is fetched at build time so the site always states the current
- * release; the fallback only ships if GitHub is unreachable during the build.
- */
 import IconGitHub from '../../ui/icons/IconGitHub.astro'
 import IconDiscord from '../../ui/icons/IconDiscord.astro'
 import IconKofi from '../../ui/icons/IconKofi.astro'
@@ -27,13 +16,10 @@ const year = new Date().getFullYear()
 
 const currentLocale = (Astro.currentLocale ?? 'en') as Lang
 
-/* Same helper as NavV3: pages with no locale build (team, blog, 404) send the
-   language switcher to that locale's homepage instead of a 404. */
 const currentPath = localizedPath(Astro.url.pathname)
 
 const homeHref = getRelativeLocaleUrl(currentLocale, '/')
 const benchHref = getRelativeLocaleUrl(currentLocale, '/benchmarks/')
-/* English-only page: no /fr/team/ etc. exists, so never localize it. */
 const teamHref = '/team/'
 
 let version = 'v0.37.1'
@@ -92,7 +78,6 @@ const columns = [
 ]
 ---
 <footer class="lp3-footer">
-  <!-- Pre-footer CTA strip -->
   <div class="lp3-footer-cta">
     <div class="lp3-container lp3-footer-cta-inner">
       <div>
@@ -179,7 +164,6 @@ const columns = [
           {t('footer.deployed_on', lang)}
           <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
         </span>
-        <!-- Current language only; the list opens on click (same pattern as the nav). -->
         <details class="lp3-menu lp3-lang lp3-footer-lang">
           <summary aria-label={t('aria.language', lang)}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
@@ -203,8 +187,6 @@ const columns = [
 </footer>
 
 <script>
-  /* Reopens the GA4 consent banner. window.rtkConsentReset is defined by
-     GoogleTag.astro; without this control there is no way to change consent. */
   document.getElementById('lp3-cookie-prefs')?.addEventListener('click', () => {
     ;(window as unknown as { rtkConsentReset?: () => void }).rtkConsentReset?.()
   })

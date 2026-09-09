@@ -1,17 +1,4 @@
 ---
-/**
- * HeroV3 — the cinematic landing choreography:
- *
- *   1. On load the transformation visual fills the screen, alone (big-screen act).
- *   2. Scroll plays it at full size: noise floods in → the gate lights → the
- *      clean context appears.
- *   3. Keep scrolling: the illustration shrinks and docks into its slot on the
- *      right, the title + CTAs slide in on the left, and the proof numbers
- *      (downloads, stars…) count up along the bottom. The hero assembles itself.
- *
- * Default (no JS / reduced motion / mobile): renders the final assembled state.
- * landing-v3.ts adds `.js-anim` and drives every phase from scroll progress.
- */
 import { t, type Lang } from '../../../lib/i18n'
 
 interface Props {
@@ -20,8 +7,6 @@ interface Props {
 }
 const { starsLabel, lang = 'en' } = Astro.props
 
-// Commands: 64 cmd implementations (src/cmds/) + 63 toml filters
-// (src/filters/) counted in the rtk repo → 127 handlers.
 const stats = [
   { num: '1.6M+', label: t('v3.hero.stat_downloads', lang) },
   { num: `${starsLabel}+`, label: t('v3.hero.stat_stars', lang) },
@@ -30,32 +15,17 @@ const stats = [
   { num: '17', label: t('v3.hero.stat_tools', lang) },
 ]
 
-// The context window as a TOKEN GRID (20×20 fine cells per panel).
-// The story is BINARY and legible: a near-uniform muted RED noise mass, with a
-// few mint signal tokens. Scroll plays the red→green arc — the red collapses
-// under the filter, the mint survives. No tonal zoo — clarity over texture.
-//
-//   t: appear threshold. The raw window STAYS FULL once written — it is the
-//   raw input; the filtering story lives in the contrast with the clean panel.
 const COLS = 20
 const ROWS = 24 // cells are true squares; the grid clips flush at the panel edge
 const rawCells = Array.from({ length: COLS * ROWS }, (_, i) => {
-  // Knuth multiplicative hash — survivors scatter at ANY column count
-  // (a linear hash formed diagonals when the mobile grid reflowed to 28 cols)
   const keep = ((i * 2654435761) >>> 0) % 100 < 4
   const spread = ((i * 53) % 40) / 40
   const a = keep ? 0.6 + spread * 0.2 : 0.18 + spread * 0.14
-  // fills LIKE TEXT: strict reading order (row-major index = left→right,
-  // top→bottom), completing fast in the first ~18% of the transformation
   const t = +((i / (COLS * ROWS)) * 0.18).toFixed(3)
   const fd = `-${((i % 9) * 0.5).toFixed(2)}s`
   return { keep, a: +a.toFixed(2), t, fd }
 })
 
-// CLEAN: the same grid as a faint dot matrix of free capacity. The mint tokens
-// that materialize are THE SAME survivors, at the SAME grid positions as in the
-// raw panel — they visibly pass through the gate, and they arrive in the same
-// text-like reading order the raw window filled with.
 const survivorIdx = rawCells.flatMap((c, i) => (c.keep ? [i] : []))
 const cleanFilledAt = new Map<number, number>(
   survivorIdx.map((idx, rank) => [
@@ -67,7 +37,6 @@ const cleanCells = Array.from({ length: COLS * ROWS }, (_, i) => ({
   t: cleanFilledAt.get(i),
 }))
 
-// Ambient motes — dust drifting through the light. Deterministic pseudo-random.
 const motes = Array.from({ length: 14 }, (_, i) => ({
   x: (i * 7.3 + 5) % 96,
   y: 12 + ((i * 13.7 + 9) % 76),
@@ -76,8 +45,6 @@ const motes = Array.from({ length: 14 }, (_, i) => ({
   dl: -((i * 1.9) % 12),
 }))
 
-// Light strands sweeping through the gate (viewBox 0 0 1000 560, gate at 500,280).
-// Deterministic pseudo-variation from the index — no randomness at build time.
 const strandsIn = Array.from({ length: 12 }, (_, i) => {
   const y = 36 + i * 44
   const x0 = 8 + (i % 4) * 30
@@ -95,11 +62,6 @@ const strandsOut = Array.from({ length: 9 }, (_, i) => {
   return `M 510 ${yc} C ${c1} ${yc}, ${c2} ${y}, ${x1} ${y}`
 })
 
-// Vertical strand variant for the mobile stack (RAW ↓ gate ↓ CLEAN):
-// viewBox 0 0 600 1000, gate at (300, 500). Same behind-the-panels behavior —
-// the links show in the gaps and meet at the gate.
-// Convergence knot: tight and SYMMETRIC around x=284 (the mark's optical
-// center — the mark is nudged slightly left on mobile to balance its label).
 const strandsInV = Array.from({ length: 10 }, (_, i) => {
   const x = 30 + i * 60
   const y0 = 6 + (i % 4) * 22
@@ -122,7 +84,6 @@ const strandsOutV = Array.from({ length: 8 }, (_, i) => {
     <div class="lp3-hero-stage">
       <div class="lp3-hero-atmo" aria-hidden="true"></div>
 
-      <!-- Act 0 — title card: hook + scroll cue around the gate mark, which is
            scaled up to logo size at landing and travels into its slot on scroll
            (ONE element — the spacer only reserves its screen spot).
            Only exists in the animated choreography (display:none otherwise). -->
@@ -146,7 +107,6 @@ const strandsOutV = Array.from({ length: 8 }, (_, i) => {
       <div class="lp3-container lp3-hero-grid">
 
         <div class="lp3-hero-copy">
-          <!-- Pro chip — the story's epilogue: last element to appear -->
           <a
             href="https://pro.rtk-ai.app"
             class="lp3-pro-chip"

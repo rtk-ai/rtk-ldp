@@ -160,10 +160,6 @@ const benchI18n = {
 </PageV3>
 
 <style is:global>
-  /* The V3 system (tokens, chrome, buttons) comes from PageV3 → landing-v3.css.
-     Everything below is benchmarks-specific. Class names are load-bearing:
-     public/scripts/benchmarks.js builds the KPIs, table and chain at runtime
-     against them — restyle freely, rename nothing. */
 
   .bench-hero {
     padding: clamp(3.5rem, 6vw, 5.5rem) 0 clamp(2rem, 3vw, 3rem);
@@ -179,9 +175,6 @@ const benchI18n = {
     margin: 0 0 1rem;
     color: var(--text-bright);
   }
-  /* mint tonal sweep, matching the hero accent line on the landing page */
-  /* page title: mint, upright. The italic is a SECTION-heading device only
-     (NEW_DESIGN_RULES §3) — mixing both on one word muddles the two levels. */
   .bench-h1 em {
     font-style: normal;
     color: var(--accent);

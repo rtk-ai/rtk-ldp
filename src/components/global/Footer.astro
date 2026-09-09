@@ -1,10 +1,7 @@
 ---
 /**
- * Footer.astro — compact footer for the docs (Starlight override).
- *
- * Deliberately NOT the full FooterV3 site map: docs pages are reference
- * material and a marketing footer under every page would fight the content.
- * Styling follows the V3 system so it still reads as the same site.
+ * Footer.astro — RTK global footer.
+ * Used on landing pages and as a Starlight override.
  */
 const year = new Date().getFullYear()
 ---
@@ -47,7 +44,6 @@ const year = new Date().getFullYear()
     gap: 0.75rem;
   }
 
-  /* quiet wordmark — the V3 chrome keeps colour for the accent and the CTA */
   .footer-logo {
     font-weight: 600;
     font-size: 0.82rem;

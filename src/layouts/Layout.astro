@@ -82,11 +82,6 @@ const allSchemas = hasGraph
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
     <link rel="canonical" href={canonical} />
 
-    {/* hreflang alternates — only for pages that are actually built per locale.
-        /team/, /blog/ and /404 are English-only, and advertising
-        /fr/team/ to a crawler that then gets a 404 is worse than not
-        declaring an alternate at all. localizedPath() is the same gate the
-        language switcher uses, so the two can never disagree. */}
     <link rel="alternate" hreflang="x-default" href={`${siteUrl}${canonicalPath}`} />
     <link rel="alternate" hreflang="en" href={`${siteUrl}${canonicalPath}`} />
     {localizedPath(canonicalPath) === canonicalPath && NON_DEFAULT_LOCALES.map(l => (

@@ -1,9 +1,3 @@
-/**
- * landing-v3.ts — V3 landing interactions.
- * Everything is opt-in: without JS (or with prefers-reduced-motion, or on small
- * screens for the hero) the page renders its final assembled state. JS adds
- * `.js-anim` and drives animation.
- */
 
 const reduced = () =>
   typeof window.matchMedia === 'function' &&
@@ -28,7 +22,6 @@ function onScroll(update: () => void) {
   update()
 }
 
-/* ── Count-up helper (shared by hero choreography + static fallback) ── */
 function animateCount(el: HTMLElement) {
   const final = el.dataset.count || el.textContent || ''
   const m = final.match(/^([\d.,]+)(.*)$/)
@@ -47,32 +40,17 @@ function animateCount(el: HTMLElement) {
   requestAnimationFrame(frame)
 }
 
-/* ── Hero: the landing choreography ─────────────────────────────────
-   p 0–0.15   title card: big logo + hook dissolve, logo shrinks into the gate
-   p 0.14–.64 the transformation plays BIG-SCREEN, centered
-   p 0.66–.88 the visual shrinks + docks into its grid slot
-   p 0.72+    title/CTAs slide in on the left
-   p 0.81+    proof numbers are dealt along the bottom and count up
-*/
 export function initHeroScroll() {
-  // whatever happens below, the pre-paint boot state must not outlive init
   const dropBoot = () => document.documentElement.classList.remove('lp3-boot')
   const hero = document.querySelector<HTMLElement>('[data-hero]')
   if (!hero || reduced()) return dropBoot()
-  // Only very short viewports (landscape phones) fall back to the static
-  // assembled state — portrait mobile runs the full choreography.
   if (window.matchMedia('(max-height: 560px)').matches) return dropBoot()
   const pin = hero.querySelector<HTMLElement>('[data-pin]')
   const visual = hero.querySelector<HTMLElement>('.lp3-hero-visual')
   if (!pin || !visual) return dropBoot()
 
   hero.classList.add('js-anim')
-  // hand over from the pre-paint boot state (set by the inline <head> script)
   dropBoot()
-
-  // Refresh-replays-the-intro lives in an inline <head> script on the page
-  // (LandingPageV3) — it must run before the browser applies scroll
-  // restoration; this module runs too late for that.
 
   const lines = Array.from(hero.querySelectorAll<HTMLElement>('[data-t]'))
   const gate = hero.querySelector<HTMLElement>('[data-gate]')
@@ -86,10 +64,6 @@ export function initHeroScroll() {
   const nav = document.querySelector<HTMLElement>('.lp3-nav')
   const intro = hero.querySelector<HTMLElement>('[data-intro]')
 
-  // Big-screen start: measure the visual's docked slot so the transform can
-  // center + enlarge it, then interpolate back to identity while docking.
-  // Also measures the gate mark vs. the title-card spacer so the SAME mark
-  // can sit at logo size in the card and travel into its slot (one element).
   const gateCore = hero.querySelector<HTMLElement>('.lp3-gate-core')
   const spacer = hero.querySelector<HTMLElement>('[data-intro-spacer]')
   let dx = 0
@@ -112,8 +86,6 @@ export function initHeroScroll() {
     hero.style.setProperty('--gms', '1')
     hero.style.setProperty('--gmx', '0px')
     hero.style.setProperty('--gmy', '0px')
-    // the glide transform must not pollute the measurements either
-    // (resizing after the departure used to corrupt the centering math)
     const flowEl = hero.querySelector<HTMLElement>('.lp3-flow')
     if (flowEl) {
       flowEl.style.setProperty('--fx', '0px')
@@ -148,12 +120,9 @@ export function initHeroScroll() {
     }
     visual.style.transform = prev
   }
-  // re-measure on viewport changes, inside the frame update (keeps ordering safe)
   let lastW = 0
   let lastH = 0
 
-  // Pointer parallax: the scene tilts a couple of degrees toward the cursor
-  // during the big-screen act, damped to zero as the visual docks.
   const flow = hero.querySelector<HTMLElement>('.lp3-flow')
   const stage = hero.querySelector<HTMLElement>('.lp3-hero-stage')
   let dockD = 0
@@ -180,12 +149,8 @@ export function initHeroScroll() {
     const total = pin.offsetHeight - window.innerHeight
     const p = total > 0 ? clamp01(-pin.getBoundingClientRect().top / total) : 1
 
-    // cinematic opening: nav recedes while the big-screen act holds the frame
     nav?.classList.toggle('is-hidden', p < 0.02)
 
-    /* ── Act 0: title card dissolves; the gate mark — scaled up to logo size
-       at the card's spot — travels into its slot while the machine reveals
-       from its dim silhouette. One element, it moves. ── */
     const ip = seg(p, 0.03, 0.15)
     const ipe = easeOut(ip)
     hero.style.setProperty('--introp', ipe.toFixed(3))
@@ -198,10 +163,8 @@ export function initHeroScroll() {
     hero.classList.toggle('intro-live', p < 0.15)
     intro?.classList.toggle('gone', p >= 0.16)
 
-    /* ── Act 1: the transformation, full size (q remaps p 0.14–0.64 → 0–1) ── */
     const q = seg(p, 0.14, 0.64)
 
-    // atmosphere brightens with the transformation, settles once docked
     const atmo = (0.45 + 0.55 * seg(q, 0.15, 0.9)) * (1 - 0.25 * seg(p, 0.62, 0.76))
     hero.style.setProperty('--atmo', atmo.toFixed(3))
 
@@ -211,21 +174,28 @@ export function initHeroScroll() {
       if (ct) el.classList.toggle('cut', q >= parseFloat(ct))
     }
 
-    // AFTER the dock has seated (two clean beats, never overlapping the
-    // dezoom): the raw window dissolves in place, the rest (gate, links,
-    // clean window) glides into the freed space, the payoff writes in.
-    const rawFade = easeOut(seg(p, 0.8, 0.9))
+    const d = easeOut(seg(p, 0.62, 0.76))
+    dockD = d
+
+    const endScale = isVertical ? 1 : 1.15
+    const endOff = -endScale * (groupOff + (isVertical ? 0 : boxSize * 0.07))
+    const endX = isVertical ? 0 : endOff
+    const endY = isVertical ? endOff : 0
+    if (d >= 1 && flow) {
+      flow.style.setProperty('--px', '0deg')
+      flow.style.setProperty('--py', '0deg')
+    }
+    hero.style.setProperty('--vs', String(s0 + (endScale - s0) * d))
+    hero.style.setProperty('--vx', `${(dx * (1 - d) + endX * d).toFixed(1)}px`)
+    hero.style.setProperty('--vy', `${(dy * (1 - d) + endY * d).toFixed(1)}px`)
+    hero.style.setProperty('--glowx', `${50 + 16 * d}%`)
+
+    const rawFade = easeOut(seg(p, 0.54, 0.6))
     hero.style.setProperty('--rawout', rawFade.toFixed(3))
-    // the remaining group grows ~15% (desktop) and lands slightly LEFT of the
-    // box center (7% bias toward the copy) — a dead-center landing leaves a
-    // void between the text and the group on wide screens
-    const k = isVertical ? 1 : 1.15
-    const fs = 1 + (k - 1) * rawFade
-    const bias = isVertical ? 0 : boxSize * 0.07
-    const shift = -(groupOff + bias) * fs * rawFade
-    flow?.style.setProperty('--fs', fs.toFixed(3))
-    flow?.style.setProperty('--fx', isVertical ? '0px' : `${shift.toFixed(1)}px`)
-    flow?.style.setProperty('--fy', isVertical ? `${shift.toFixed(1)}px` : '0px')
+
+    flow?.style.setProperty('--fs', '1')
+    flow?.style.setProperty('--fx', '0px')
+    flow?.style.setProperty('--fy', '0px')
 
     gate?.classList.toggle('lit', q >= 0.32)
     const pIn = String(seg(q, 0.26, 0.5))
@@ -237,7 +207,6 @@ export function initHeroScroll() {
     })
     flowOuts.forEach(g => g.style.setProperty('--pflow', pOut))
 
-    // usage climbs in step with the text-like grid fill
     const raw = Math.round(32 + 54 * easeOut(seg(q, 0, 0.2)))
     if (rawPct) rawPct.textContent = `${raw}% used`
     if (rawMeter) rawMeter.style.width = `${raw}%`
@@ -248,35 +217,14 @@ export function initHeroScroll() {
         cleanPct.textContent = '—'
         cleanMeter.style.width = '0%'
       } else {
-        /* 86% -> 73%. RTK compresses CLI output, which is one slice of the
-           window (18% in the 01 chart), not the whole window. Sweeping the
-           meter down to 24% would claim RTK empties the context it does not
-           touch. Keep in step with initContextViz and v3.hero.visual_sr. */
         const c = Math.round(86 - 13 * easeOut(cq))
         cleanPct.textContent = `${c}% used`
         cleanMeter.style.width = `${c}%`
       }
     }
 
-    /* ── Act 2: the illustration docks into its slot (completes BEFORE the
-       raw-dissolve beat so the two motions never compose) ── */
-    const d = easeOut(seg(p, 0.62, 0.76))
-    dockD = d
-    if (d >= 1 && flow) {
-      flow.style.setProperty('--px', '0deg')
-      flow.style.setProperty('--py', '0deg')
-    }
-    hero.style.setProperty('--vs', String(s0 + (1 - s0) * d))
-    hero.style.setProperty('--vx', `${dx * (1 - d)}px`)
-    hero.style.setProperty('--vy', `${dy * (1 - d)}px`)
-    hero.style.setProperty('--glowx', `${50 + 16 * d}%`)
-
-    /* ── Act 3: title slides in; the proof is dealt out along the bottom —
-       hairline draws, eyebrow appears, then each stat lands at its own
-       scroll threshold and counts up. ── */
     const copyOn = p >= 0.7
     if (copyOn && !hero.classList.contains('show-copy')) {
-      // sheen the hero CTA once, as it slides in
       const btn = hero.querySelector<HTMLElement>('.lp3-hero-cta .lp3-btn-primary')
       if (btn) setTimeout(() => sweep(btn), 500)
     }
@@ -291,13 +239,11 @@ export function initHeroScroll() {
       }
     })
 
-    // the story's epilogue: the Pro chip appears last, above the title
     hero.classList.toggle('pro-on', p >= 0.93)
     hero.classList.toggle('settled', p >= 0.96)
   })
 }
 
-/* ── 01 / Problem: CLI-noise bar compresses as you scroll ───────────── */
 export function initContextViz() {
   const root = document.querySelector<HTMLElement>('[data-ctxviz]')
   if (!root || reduced()) return
@@ -311,22 +257,17 @@ export function initContextViz() {
     const rect = root.getBoundingClientRect()
     const vh = window.innerHeight
     const q = clamp01((vh * 0.85 - rect.top) / (vh * 0.6))
-    // 18% → 5% of the window: what RTK removes from CLI output on a bash-heavy
-    // session. Fixed rows total 67.5 (3 + 1 + 1 + 0.5 + 62), so the window goes
-    // 86% → 73% — out of autocompact territory, which is the actual sell.
     const cli = Math.round(18 - 13 * easeOut(q))
     const used = Math.round(67.5 + cli)
     root.style.setProperty('--cli', `${cli}%`)
     root.style.setProperty('--used', `${used}%`)
     if (cliPct) cliPct.textContent = String(cli)
     if (usedPct) usedPct.textContent = String(used)
-    // ≥80% is where Claude Code starts warning about autocompact
     root.classList.toggle('is-full', used >= 80)
     msg?.classList.toggle('on', q > 0.85)
   })
 }
 
-/* ── Demo: accessible tabs, content cross-fades ─────────────────────── */
 export function initDemoTabs() {
   const frame = document.querySelector<HTMLElement>('[data-demo]')
   if (!frame) return
@@ -357,7 +298,6 @@ export function initDemoTabs() {
   })
 }
 
-/* ── Buttons: the RTK wipe plays once when a primary button reveals ── */
 function sweep(el: HTMLElement) {
   el.classList.add('sheen')
   el.addEventListener('animationend', () => el.classList.remove('sheen'), { once: true })
@@ -365,9 +305,6 @@ function sweep(el: HTMLElement) {
 
 export function initButtonSheen() {
   if (reduced() || typeof IntersectionObserver === 'undefined') return
-  /* The footer's primary button is excluded. The footer is on every page, so its
-     sweep fires on every page, and a highlight that plays everywhere stops
-     reading as emphasis. The sweep is for the CTAs that close a story. */
   const els = Array.from(
     document.querySelectorAll<HTMLElement>('.lp3-btn-primary')
   ).filter(el => !el.closest('.lp3-footer'))
@@ -377,7 +314,6 @@ export function initButtonSheen() {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return
         const el = entry.target as HTMLElement
-        // skip buttons hidden by the hero choreography — it sweeps its own
         if (el.checkVisibility && !el.checkVisibility()) return
         io.unobserve(el)
         sweep(el)
@@ -388,13 +324,6 @@ export function initButtonSheen() {
   els.forEach(el => io.observe(el))
 }
 
-/* ── Companies marquee.
-   The CSS keyframes are the no-JS path. When JS is available we take the drift
-   over on the main thread instead: a compositor-run CSS animation and the main
-   thread keep separate clocks, so `animation-play-state: paused` on hover snaps
-   the row to the main thread's frame — visible as a jump right before it stops.
-   Writing the transform ourselves means the rendered position is always the one
-   we last wrote, so hovering freezes exactly where the eye last saw it. ── */
 export function initMarquee() {
   const view = document.querySelector<HTMLElement>('.lp3-marquee')
   const track = view?.querySelector<HTMLElement>('.lp3-marquee-track')
@@ -411,7 +340,6 @@ export function initMarquee() {
   let paused = false
   let onScreen = true
 
-  // speed stays authored in CSS: one pass per --lp3-marquee-dur
   const measure = () => {
     passW = pass.getBoundingClientRect().width
     const dur = parseFloat(getComputedStyle(track).getPropertyValue('--lp3-marquee-dur')) || 60
@@ -421,7 +349,6 @@ export function initMarquee() {
 
   const frame = (t: number) => {
     if (!last) last = t
-    // a long frame (tab wake, scroll stall) must not teleport the row
     const dt = Math.min(0.05, (t - last) / 1000)
     last = t
     x -= pxPerSec * dt
@@ -466,7 +393,6 @@ export function initMarquee() {
   }
 }
 
-/* ── Install hook tabs — one panel per agent, arrow-key navigable. ── */
 export function initHookTabs() {
   const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-hook-tab]'))
   const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-hook-panel]'))
@@ -494,11 +420,6 @@ export function initHookTabs() {
   })
 }
 
-/* ── Ecosystem "+N more".
-   Progressive enhancement: the markup ships all eight tools, and only once this
-   runs does the section become collapsible (`js-collapsible`), so a JS failure
-   leaves the full list readable rather than permanently truncated. The collapse
-   itself is a CSS concern — it applies on phones only. ── */
 export function initEcoMore() {
   const row = document.querySelector<HTMLElement>('.lp3-eco-row')
   const btn = document.querySelector<HTMLButtonElement>('.lp3-eco-more')
@@ -511,8 +432,6 @@ export function initEcoMore() {
 
   section.classList.add('js-collapsible')
   btn.hidden = false
-  /* Labels come from data attributes so they stay translated — the script must
-     never author user-visible copy. */
   const moreTpl = btn.dataset.moreLabel ?? '+{n} more'
   const lessTpl = btn.dataset.lessLabel ?? 'Show less'
   label.textContent = moreTpl.replace('{n}', String(extras))
@@ -524,17 +443,12 @@ export function initEcoMore() {
   })
 }
 
-/* ── Proof: crop the portrait screenshot to its neighbour's height, with a
-   button to reveal the rest. The crop class is added here, never in the markup,
-   so a JS-less reader gets the whole image instead of a truncated one they
-   cannot open. ── */
 export function initProofCrop() {
   const card = document.querySelector<HTMLElement>('[data-proof-crop]')
   const btn = card?.querySelector<HTMLButtonElement>('.lp3-proof-expand')
   const label = btn?.querySelector<HTMLElement>('.txt')
   if (!card || !btn || !label) return
 
-  /* Labels come from data attributes so they stay translated. */
   const moreTpl = btn.dataset.moreLabel ?? 'Show full screenshot'
   const lessTpl = btn.dataset.lessLabel ?? 'Show less'
 
@@ -546,16 +460,12 @@ export function initProofCrop() {
     const cropped = card.classList.toggle('is-cropped')
     btn.setAttribute('aria-expanded', String(!cropped))
     label.textContent = cropped ? moreTpl : lessTpl
-    /* Collapsing removes several hundred pixels above the fold; keep the card
-       in view so the reader is not dropped further down the page. */
     if (cropped) {
       card.scrollIntoView({ block: 'nearest', behavior: reduced() ? 'auto' : 'smooth' })
     }
   })
 }
 
-/* ── Count up on viewport entry — static fallback only.
-   Counters inside the animated hero are triggered by its choreography. ── */
 export function initCountUp() {
   if (reduced() || typeof IntersectionObserver === 'undefined') return
   const animatedHero = document.querySelector('[data-hero].js-anim')

@@ -36,9 +36,6 @@ export default defineConfig({
     '/guide/getting-started/quick-start/': '/docs/getting-started/quick-start/',
     '/guide/analytics/gain/': '/docs/analytics/gain/',
     '/guide/analytics/discover/': '/docs/analytics/discover/',
-    /* technical.md and filter-workflow.md no longer exist in the rtk repo's
-       docs, so these two used to redirect onto a 404. Old inbound links land on
-       the docs index instead; restore the specific targets if the pages return. */
     '/guide/filter-workflow/': '/docs/',
     '/guide/technical/': '/docs/',
     '/guide/resources/what-rtk-covers/': '/docs/resources/what-rtk-covers/',

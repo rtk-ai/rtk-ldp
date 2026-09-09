@@ -1,13 +1,4 @@
 ---
-/**
- * FaqV3 — quiet FAQ. Content mirrors the FAQPage JSON-LD in LandingPageV3.
- *
- * An answer may carry `links`, rendered as a row beneath it. That exists so an
- * answer can send the reader to the source instead of reciting numbers in prose:
- * figures go stale, a benchmark page does not. The same links are appended to the
- * JSON-LD answer text as anchors, which Google's FAQPage spec permits, so the
- * schema and the page keep saying the same thing.
- */
 import { t, type Lang } from '../../../lib/i18n'
 
 interface Props {

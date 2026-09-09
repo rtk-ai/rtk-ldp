@@ -1,9 +1,4 @@
 ---
-/**
- * DemoV3 — the ONE detailed product demo on the page.
- * Tabbed before/after comparison. Layout is stable; only content cross-fades.
- * Line classes: c=command · d=dim noise · n=warning/noise · k=kept signal · m=meta
- */
 import { t, type Lang } from '../../../lib/i18n'
 
 interface Props {
@@ -15,8 +10,6 @@ type Ln = { cls: 'c' | 'd' | 'n' | 'k' | 'm'; text: string }
 type Side = { cmd: string; count: string; lines: Ln[] }
 type Tab = { id: string; label: string; before: Side; after: Side }
 
-// <pre> content is pre-rendered to an HTML string (the Astro compiler does not
-// support nested JSX expressions inside <pre>).
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const sideHtml = (side: Side) =>
@@ -181,9 +174,6 @@ const tabs: Tab[] = [
   },
 ]
 
-// Hoisted: `t` is shadowed by the tab map parameter inside the markup below.
-// `t` is shadowed by the tab-map parameter in the markup below, so the
-// strings used inside that scope are resolved here.
 const linesLabel = t('v3.demo.lines', lang)
 const sideBefore = t('v3.demo.side_before', lang)
 const sideAfter = t('v3.demo.side_after', lang)

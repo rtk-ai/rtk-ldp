@@ -1,22 +1,12 @@
-/**
- * landing-v3.css — V3 landing experience ("noise → RTK → clean context").
- * Rules: see NEW_DESIGN_RULES.md. All classes prefixed lp3-, tokens prefixed --lp3-.
- * Colors come from global.css tokens — V3 adds derived tokens only (scoped to .lp3).
- * The legacy landing.css is NOT loaded on V3 pages.
- */
 
-/* ── V3 derived tokens ─────────────────────────────────────────────── */
 .lp3 {
   --lp3-font-sans: 'Inter', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  /* display face — Geist (the spec's first recommendation): precise,
-     modern, premium dev-infrastructure type. Headlines only. */
   --lp3-font-display: 'Geist', 'Inter', 'DM Sans', sans-serif;
   --lp3-max-w: 1280px;
   --lp3-pad-x: clamp(20px, 4vw, 40px);
   --lp3-radius: 12px;
   --lp3-radius-sm: 10px;
 
-  /* thin engraved lines (derived from --text-muted #94a3b8) */
   --lp3-line: rgba(148, 163, 184, 0.14);
   --lp3-line-strong: rgba(148, 163, 184, 0.26);
   --lp3-grid-line: rgba(148, 163, 184, 0.05);
@@ -24,19 +14,16 @@
   --lp3-surface-solid: rgba(9, 15, 30, 0.92); /* hero panels — opaque, strands pass behind edges */
   --lp3-surface-hover: rgba(148, 163, 184, 0.06);
 
-  /* context-line tones */
   --lp3-ln-dim: rgba(148, 163, 184, 0.26);
   --lp3-ln-mid: rgba(148, 163, 184, 0.42);
   --lp3-ln-noise: rgba(248, 113, 113, 0.55);
   --lp3-ln-signal: rgba(0, 229, 153, 0.65);
   --lp3-noise-tint: rgba(248, 113, 113, 0.35);
 
-  /* atmosphere (accent-derived scene lighting — see NEW_DESIGN_RULES §8) */
   --lp3-scene: rgba(0, 229, 153, 0.09);      /* wide radial scene light */
   --lp3-atmo-tint: rgba(0, 229, 153, 0.045); /* vertical mint wash */
   --lp3-vignette: rgba(0, 0, 0, 0.42);       /* corner darkening */
 
-  /* spacing rhythm */
   --lp3-sec-pad: clamp(9rem, 12vw, 13.75rem);
   --lp3-head-gap: clamp(4.5rem, 7vw, 6.25rem);
 
@@ -47,7 +34,6 @@
 
 .lp3 ::selection { background: var(--accent-dim); color: var(--text-bright); }
 
-/* ── Primitives ────────────────────────────────────────────────────── */
 .lp3-container {
   max-width: var(--lp3-max-w);
   margin: 0 auto;
@@ -85,11 +71,6 @@
   line-height: 1.1;
 }
 
-/* Emphasis inside a headline: the one word the sentence turns on, set in a
-   lighter italic of the same display face. It is the page's only italic, so it
-   marks meaning rather than decorating — use it on the payoff word (or a
-   literal command like `rtk gain`), never on more than one span per heading,
-   and never on CJK, where a synthesised oblique just looks broken. */
 .lp3-h2 em,
 .lp3-cta-title em,
 .lp3-page-title em {
@@ -97,16 +78,8 @@
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.015em;
-  /* Extra lean on top of Geist's real italic. Geist exposes no `slnt` axis, so
-     this is a skew — keep it at 5deg: past ~7 the letterforms visibly stretch
-     and it starts to look like the faux italic we just got rid of. */
   transform: skewX(-5deg);
-  /* the skew pushes the glyph tops toward the next character — just enough to
-     stop the lean colliding with the following period, no visible gap */
   margin-right: 0.03em;
-  /* The transform gives this span its own painting context, which cuts it off
-     from the heading's background-clip:text fill — without an explicit fill the
-     word renders invisible. Keep these two rules together. */
   color: var(--text-bright);
   -webkit-text-fill-color: currentColor;
 }
@@ -126,9 +99,6 @@
   }
 }
 
-
-/* Big headlines wear a soft vertical gradient instead of flat bright white —
-   bright at the top, easing toward muted at the baseline. */
 @supports (color: color-mix(in srgb, red 50%, blue)) {
   .lp3-h2, .lp3-hero-title, .lp3-cta-title {
     background: linear-gradient(
@@ -161,7 +131,6 @@
   border: 0;
 }
 
-/* ── Buttons ───────────────────────────────────────────────────────── */
 .lp3-btn {
   position: relative;
   overflow: hidden;
@@ -187,9 +156,6 @@
 
 .lp3-btn .arr { transition: transform 0.2s ease; }
 
-/* primary: NOT a filled block — tinted mint glass. Dark body carrying our
-   accent as a tint: mint text, hairline mint border, faint mint wash.
-   The color we have, used sparingly. */
 .lp3-btn-primary {
   background: var(--accent-dim); /* fallback */
   background: linear-gradient(
@@ -221,12 +187,6 @@
 }
 .lp3-btn-primary:hover .arr { transform: translateX(3px); }
 
-/* ── Micro-action: the RTK wipe ─────────────────────────────────────
-   Our signature button animation: a mint surface with a luminous leading
-   edge SLIDES across the pill — the button gets "cleaned" the way RTK
-   cleans the context. Hover: slides in and parks (text flips dark).
-   Scroll reveal: wipes in and back out once (JS adds .sheen briefly).
-   Reduced motion: none of this — the tinted-glass hover above stands. */
 @media (prefers-reduced-motion: no-preference) {
   .lp3-btn-primary { isolation: isolate; }
   .lp3-btn-primary::before {
@@ -265,7 +225,6 @@
   80%, 100% { color: var(--accent); }
 }
 
-/* ghost: faint slate glass + inner highlight, brightens on hover */
 .lp3-btn-ghost {
   background: rgba(148, 163, 184, 0.05);
   border-color: var(--lp3-line-strong);
@@ -282,10 +241,6 @@
 
 .lp3-btn-sm { height: 38px; padding: 0 16px; font-size: 0.85rem; }
 
-/* ── Section shades — the scene light echoes through the page ──────
-   Faint mint radials behind each section, alternating sides for rhythm.
-   isolation:isolate lets the z-index:-1 layer sit above the page bg
-   but under all content, with no per-child z-index needed. */
 #problem, #impact, #demo, #developers,
 .lp3-companies, .lp3-footer {
   position: relative;
@@ -309,7 +264,6 @@
 .lp3-companies::before { left: 50%; top: 55%; height: 130%; opacity: 0.3; }
 .lp3-footer::before { left: 50%; top: 0; height: 90%; opacity: 0.35; }
 
-/* ── Reveal (scroll fade-in) ───────────────────────────────────────── */
 @media (prefers-reduced-motion: no-preference) {
   .lp3 .reveal {
     opacity: 0;
@@ -322,9 +276,6 @@
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   NAV
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -335,8 +286,6 @@
   border-bottom: 1px solid var(--lp3-line);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-/* cinematic opening: the nav recedes while the big-screen act plays.
-   visibility keeps it out of the tab order; any scroll brings it back. */
 .lp3-nav.is-hidden {
   opacity: 0;
   visibility: hidden;
@@ -350,7 +299,6 @@
   height: 64px;
   gap: 1.5rem;
 }
-/* elevated once the page is scrolled */
 .lp3-nav.scrolled { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35); }
 
 .lp3-nav-logo {
@@ -373,9 +321,6 @@
   gap: 0.5rem;
   justify-self: center;
 }
-/* Logo + search read as one "utility" cluster on the left, so the centre
-   belongs entirely to navigation and the right edge to actions. The gap is
-   wide enough that the wordmark and the field stay two separate objects. */
 .lp3-nav-left {
   display: flex;
   align-items: center;
@@ -396,7 +341,6 @@
   background: var(--lp3-surface-hover);
   text-decoration: none;
 }
-/* scroll-spy: the section in view gets a mint dot */
 .lp3-nav-links a.active { color: var(--text-bright); }
 .lp3-nav-links a.active::after {
   content: '';
@@ -415,7 +359,6 @@
   gap: 0.9rem;
   justify-self: end;
 }
-/* GitHub star chip */
 .lp3-nav-gh {
   display: inline-flex;
   align-items: center;
@@ -437,10 +380,6 @@
 }
 .lp3-nav-gh .star { color: var(--accent); opacity: 0.85; }
 
-/* Search trigger, Ko-fi/Discord icons, language menu — parity with SiteHeader. */
-/* Only the install CTA looks like a button. Search, stars and language are
-   quiet affordances that reveal themselves on hover — three bordered pills in
-   a row made the right side read as a toolbar. */
 .lp3-nav-icon {
   display: inline-flex;
   align-items: center;
@@ -463,9 +402,6 @@
   text-decoration: none;
 }
 .lp3-nav-icon-only { padding: 0 0.5rem; }
-/* The search trigger is a text-entry affordance, not an icon button, so it
-   earns a field's width and a hairline — it sits beside the logo where there
-   is room, and a 32px icon reads as decoration rather than as search. */
 .lp3-nav-search {
   width: clamp(132px, 11vw, 176px);
   padding: 0 0.5rem 0 0.6rem;
@@ -489,11 +425,8 @@
   padding: 1px 4px;
 }
 .lp3-nav-links a.is-pro { color: var(--accent); }
-/* the bar is dense — the CTA must never wrap onto two lines */
 .lp3-nav-actions .lp3-btn { white-space: nowrap; }
 
-/* Dropdown menus (Product / Resources / Community / language).
-   <details> based: click to open, keyboard-native, works without JS. */
 .lp3-menu { position: relative; }
 .lp3-menu > summary {
   display: inline-flex;
@@ -518,7 +451,6 @@
   transition: transform 0.2s ease;
 }
 .lp3-menu[open] > summary .caret { transform: rotate(180deg); }
-/* scroll-spy mark, same dot the flat links used */
 .lp3-nav-links .lp3-menu > summary.active { color: var(--text-bright); }
 .lp3-nav-links .lp3-menu > summary.active::after {
   content: '';
@@ -542,8 +474,6 @@
   gap: 1px;
   min-width: 210px;
   padding: 6px;
-  /* Solid, not glass: these panels sit over the animated hero, and a
-     translucent surface let the token grid read straight through the labels. */
   background: var(--bg-card);
   border: 1px solid var(--lp3-line-strong);
   border-radius: 12px;
@@ -573,7 +503,6 @@
   background: var(--accent);
   flex: none;
 }
-/* language panel: a compact grid of codes rather than a list */
 .lp3-menu-panel.is-lang {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -613,7 +542,6 @@
 }
 .lp3-drawer-lang a.active { color: var(--accent); border-color: var(--accent); }
 
-/* hamburger + drawer (mobile) */
 .lp3-nav-burger {
   display: none;
   flex-direction: column;
@@ -631,7 +559,6 @@
   background: var(--text);
   border-radius: 2px;
 }
-/* mobile drawer — glass panel, grouped links, staggered entrance */
 .lp3-drawer {
   position: fixed;
   top: 64px; right: 0; bottom: 0;
@@ -674,7 +601,6 @@
 }
 .lp3-drawer a:hover { background: var(--lp3-surface-hover); color: var(--text-bright); text-decoration: none; }
 .lp3-drawer .lp3-btn { margin-top: auto; width: 100%; justify-content: center; flex-shrink: 0; }
-/* staggered entrance */
 @media (prefers-reduced-motion: no-preference) {
   .lp3-drawer > * {
     opacity: 0;
@@ -707,9 +633,6 @@
   .lp3-nav-links { display: none; }
   .lp3-nav-actions .lp3-btn { display: none; }
   .lp3-nav-burger { display: flex; }
-  /* Only search, language and the burger survive on a phone bar — Ko-fi,
-     Discord and the star pill would push the burger off-screen, and all three
-     are in the drawer anyway. */
   .lp3-nav-icon-only,
   .lp3-nav-gh { display: none; }
   .lp3-nav-actions { gap: 0.5rem; }
@@ -718,15 +641,9 @@
   .lp3-nav-search { width: auto; padding: 0 0.55rem; border-color: transparent; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   HERO — the scroll-driven noise → RTK → clean transformation
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-hero { position: relative; }
 
 .lp3-hero-pin { height: 100%; }
-/* JS-animated mode: tall pin container drives scroll progress
-   (title card ≈ p 0–0.15 · transformation ≈ 0.14–0.64 · dock ≈ 0.66–0.88
-    · copy + proof reveal ≈ 0.72–0.93) */
 .lp3-hero.js-anim .lp3-hero-pin { height: 420vh; }
 
 .lp3-hero-stage {
@@ -744,16 +661,9 @@
   height: 100svh;
   min-height: 0;
   overflow: hidden;
-  /* reserve the proof strip's band so the centered grid sits at the true
-     visual center between nav and strip (not sagging low) */
   padding-bottom: 160px;
 }
 
-/* Layered atmosphere — the hero scene is "lit by the gate".
-   One div, three background layers: wide scene light (follows --glowx),
-   vertical mint wash, corner vignette. ::after adds film grain.
-   Intensity (--atmo) is driven by the choreography: dim at landing,
-   brightest when the transformation completes, settling once docked. */
 .lp3-hero-atmo {
   position: absolute;
   inset: 0;
@@ -772,7 +682,6 @@
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* slow aurora drift — a soft mint blob wandering through the scene */
 .lp3-hero-atmo::before {
   content: '';
   position: absolute;
@@ -788,7 +697,6 @@
   to { transform: translate(7%, 6%) scale(1.06); }
 }
 
-/* ambient motes — dust drifting through the light */
 .lp3-motes {
   position: absolute;
   inset: 0;
@@ -817,8 +725,6 @@
   100% { transform: translateY(-110px); opacity: 0; }
 }
 
-/* tight glow that hugs the gate — sits under the atmosphere layers.
-   --glowx follows the visual: 50% while it plays big-screen, 66% once docked. */
 .lp3-hero-stage::before {
   content: '';
   position: absolute;
@@ -830,7 +736,6 @@
   opacity: 0.4;
   pointer-events: none;
 }
-/* faint construction grid, masked around the visual */
 .lp3-hero-stage::after {
   content: '';
   position: absolute;
@@ -863,10 +768,6 @@
   letter-spacing: -0.025em;
   line-height: 1.08;
 }
-/* the accent line stays OUR mint — a vertical tonal sweep inside the hue
-   (lit top → accent → slightly smoked base) with a faint halo. Subtle, classy.
-   Guarded: without color-mix the gradient would be invalid and the transparent
-   fill would erase the text — fall back to plain accent instead. */
 .lp3-hero-title em {
   font-style: normal;
   color: var(--accent);
@@ -902,39 +803,26 @@
   color: var(--text-dim);
 }
 
-/* ── Landing choreography (js-anim only) ──────────────────────────── */
-/* The visual starts big-screen center (JS sets --vs/--vx/--vy from measurement)
-   and docks into its grid slot as you scroll. Animated every frame while
-   pinned, hence will-change. */
 .lp3-hero.js-anim .lp3-hero-visual {
   transform: translate(var(--vx, 0px), var(--vy, 0px)) scale(var(--vs, 1));
   transform-origin: center center;
   will-change: transform;
 }
-/* Act 0 veil: panels/strands/label sit as a dim silhouette behind the title
-   card — but NOT the gate, whose mark IS the title-card logo. */
 .lp3-hero.js-anim .lp3-panel,
 .lp3-hero.js-anim .lp3-strands,
 .lp3-hero.js-anim .lp3-gate-label {
   opacity: var(--reveal, 1);
 }
-/* the gate mark travels: scaled to logo size at the title-card spot at landing,
-   easing into its slot as the card dissolves (JS drives --gms/--gmx/--gmy —
-   the X component matters on mobile, where the label sits beside the mark) */
 .lp3-hero.js-anim .lp3-gate-core {
   transform: translate(var(--gmx, 0px), var(--gmy, 0px)) scale(var(--gms, 1));
   transform-origin: center center;
 }
-/* while the title card is live, the mark shines even though the gate is
-   technically dormant — it powers down after the handoff, then reignites */
 .lp3-hero.js-anim.intro-live .lp3-gate:not(.lit) .lp3-gate-mark {
   opacity: 1;
   filter: drop-shadow(0 0 10px var(--accent-glow)) drop-shadow(0 0 32px var(--accent-glow));
 }
 .lp3-hero.js-anim.intro-live .lp3-gate:not(.lit) .lp3-gate-core::before { opacity: 1; }
 .lp3-hero.js-anim.intro-live .lp3-gate:not(.lit) .lp3-gate-core::after { opacity: 0.7; }
-/* Copy hidden until the visual docks, then slides in staggered.
-   visibility keeps hidden CTAs out of the tab order. */
 .lp3-hero.js-anim .lp3-hero-copy > * {
   opacity: 0;
   visibility: hidden;
@@ -952,9 +840,6 @@
 .lp3-hero.js-anim.show-copy .lp3-hero-copy > *:nth-child(4) { transition-delay: 0.24s; }
 .lp3-hero.js-anim.show-copy .lp3-hero-copy > *:nth-child(5) { transition-delay: 0.32s; }
 
-/* ── Pro chip — quiet glass pill above the title. In the choreography it is
-   the FINAL beat (JS adds .pro-on after the raw departs); statically it just
-   sits above the headline. Must never outshine Install. ── */
 .lp3-pro-chip {
   display: inline-flex;
   align-items: center;
@@ -968,7 +853,6 @@
   -webkit-backdrop-filter: blur(8px);
   font-size: 0.8rem;
   color: var(--text-muted);
-  /* must NEVER widen the grid column (it warps the whole mobile layout) */
   max-width: 100%;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
@@ -993,7 +877,6 @@
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
 }
 .lp3-pro-chip:hover .arr { transform: translateX(3px); color: var(--accent); }
-/* excluded from the copy stagger — it waits for the story's end */
 .lp3-hero.js-anim .lp3-hero-copy > .lp3-pro-chip {
   opacity: 0;
   visibility: hidden;
@@ -1007,14 +890,7 @@
   transition: opacity 0.6s ease, transform 0.6s ease, visibility 0s;
 }
 
-/* ── Hero proof strip — dealt in along the stage bottom ─────────────
-   Choreography (js-anim): the hairline draws itself left→right, the
-   eyebrow appears, then each stat is dealt in at its own scroll
-   threshold — sliding up and counting as it lands. */
 .lp3-hero-proofwrap { margin-top: clamp(3rem, 5vw, 4.5rem); }
-/* No rule above these numbers: they are the hero's proof, not a footnote, and
-   the separator made them read as a caption pinned to the bottom edge. Lifted
-   well clear of that edge so they sit inside the composition. */
 .lp3-hero.js-anim .lp3-hero-proofwrap {
   position: absolute;
   left: 0; right: 0;
@@ -1030,7 +906,6 @@
   gap: 1.75rem 3rem;
   flex-wrap: wrap;
 }
-/* stats dealt one by one */
 .lp3-hero.js-anim .lp3-hero-stat {
   opacity: 0;
   visibility: hidden;
@@ -1058,34 +933,24 @@
   color: var(--text-dim);
 }
 
-/* ── Hero visual: RAW panel → gate → CLEAN panel ── */
 .lp3-hero-visual { position: relative; perspective: 1200px; }
-/* pointer parallax (+ the dock recenter shift once the raw window dissolves):
-   JS sets --px/--py for tilt and --fx/--fy to recenter gate+clean in the
-   freed space while docking */
 .lp3-hero.js-anim .lp3-flow {
   transform: translate(var(--fx, 0px), var(--fy, 0px)) rotateY(var(--px, 0deg)) rotateX(var(--py, 0deg)) scale(var(--fs, 1));
   transition: transform 0.35s ease-out;
 }
 
-/* the raw window dissolves during the dock — its job is done.
-   Opacity MULTIPLIES the Act-0 veil (--reveal) — it must never override it,
-   or the raw shows through the title card. */
 .lp3-hero.js-anim .lp3-panel-raw {
   opacity: calc(var(--reveal, 1) * (1 - var(--rawout, 0)));
   transform: translateX(calc(var(--rawout, 0) * -48px)) rotateY(9deg);
 }
 .lp3-hero.settled .lp3-panel-raw { visibility: hidden; }
 
-/* desktop: in the FINAL assembled state the mark rides a touch lower
-   (eases in with the departure; mid-transformation position untouched) */
 @media (min-width: 961px) {
   .lp3-hero.js-anim .lp3-gate-core {
     margin-top: calc(var(--rawout, 0) * 12px);
   }
 }
 
-/* floor glow — the visual floats above a faint lit ground */
 .lp3-hero-visual::after {
   content: '';
   position: absolute;
@@ -1109,14 +974,12 @@
   position: relative;
   z-index: 1;
   background-color: var(--lp3-surface-solid);
-  /* faint vertical sheen — lighter top edge instead of flat fill */
   background-image: linear-gradient(180deg, rgba(148, 163, 184, 0.05), transparent 28%);
   border: 1px solid var(--lp3-line);
   border-radius: var(--lp3-radius);
   overflow: hidden;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
 }
-/* 3D tilt toward the gate + colored top hairline */
 .lp3-panel-raw { transform: rotateY(9deg); }
 .lp3-panel-clean { transform: rotateY(-9deg); }
 .lp3-panel::before {
@@ -1155,9 +1018,6 @@
 }
 .lp3-panel-clean .lp3-panel-head .dot { background: var(--lp3-ln-signal); }
 
-/* ── The context window as a fine TOKEN GRID (20×20 cells) ──────────
-   Binary, legible story: a near-uniform slate noise mass + a few mint
-   signal tokens. Two tones only. */
 .lp3-panel-body {
   padding: 12px;
   height: 312px;
@@ -1172,19 +1032,14 @@
   border-radius: 1.5px;
   opacity: var(--a, 0.3);
 }
-/* the noise mass is muted RED — one uniform substance, not confetti.
-   Scrolling plays the red→green arc: the red mass collapses under the
-   filter and only the mint survives. */
 .lp3-cell.t-dim { background: var(--red); }
 .lp3-cell.t-keep { background: var(--accent); }
 .lp3-panel-clean .lp3-cell.t-keep { box-shadow: 0 0 8px var(--accent-dim); }
-/* empty capacity — a faint dot matrix: the free space IS the message */
 .lp3-cell.empty {
   background: radial-gradient(circle, rgba(148, 163, 184, 0.16) 0 1px, transparent 1.6px);
   opacity: 1;
 }
 
-/* animated mode: token cells rain in as scroll accumulates */
 .lp3-cell[data-t] { transition: opacity 0.4s ease, transform 0.4s ease; }
 .lp3-hero.js-anim .lp3-cell[data-t] {
   opacity: 0;
@@ -1194,7 +1049,6 @@
   opacity: var(--a, 0.6);
   transform: none;
 }
-/* a whisper of life: every 7th noise token breathes very slightly */
 @media (prefers-reduced-motion: no-preference) {
   .lp3-cell.t-dim.on:nth-child(7n):not(.cut) {
     animation: lp3-flicker 4s ease-in-out var(--fd, 0s) infinite;
@@ -1205,7 +1059,6 @@
   50% { opacity: calc(var(--a, 0.3) * 0.55); }
 }
 
-/* usage meter — instrument tick strip, not a progress bar */
 .lp3-meter {
   height: 4px;
   background: rgba(148, 163, 184, 0.1);
@@ -1223,14 +1076,11 @@
 }
 .lp3-panel-clean .lp3-meter i { background: var(--accent); width: 24%; }
 
-/* ── Flow strands: light streams sweeping through the gate ── */
 .lp3-strands {
   position: absolute;
   inset: -6% -2%;
   width: 104%;
   height: 112%;
-  /* BEHIND the panels: the strands emerge from behind each window and meet
-     at the gate — only the gap between the panels shows them */
   z-index: 0;
   pointer-events: none;
   overflow: visible;
@@ -1241,11 +1091,9 @@
   vector-effect: non-scaling-stroke;
 }
 .lp3-strands stop { stop-color: var(--accent); }
-/* vertical variant exists for the mobile stack only */
 .lp3-strands.vertical { display: none; }
 .lp3-strands .noisy stop { stop-color: var(--red); }
 .lp3-strands .slate stop { stop-color: var(--text-muted); }
-/* a few dashed strands drift to suggest continuous flow */
 .lp3-strands path:nth-child(3n) {
   stroke-dasharray: 3 16;
   animation: lp3-dash 5s linear infinite;
@@ -1253,8 +1101,6 @@
 @keyframes lp3-dash {
   to { stroke-dashoffset: -38; }
 }
-/* scroll ramps strand intensity in animated mode; the IN side dies fully
-   with the raw window's departure (--alive → 0, no 0.25 floor left behind) */
 .lp3-hero.js-anim [data-flow-out] {
   opacity: calc(0.25 + var(--pflow, 0) * 0.75);
 }
@@ -1262,7 +1108,6 @@
   opacity: calc((0.25 + var(--pflow, 0) * 0.75) * var(--alive, 1));
 }
 
-/* ── The RTK gate ── */
 .lp3-gate {
   position: relative;
   display: flex;
@@ -1278,7 +1123,6 @@
   align-items: center;
   justify-content: center;
 }
-/* vertical light beam through the gate */
 .lp3-gate-core::before {
   content: '';
   position: absolute;
@@ -1289,7 +1133,6 @@
   background: linear-gradient(to bottom, transparent, var(--accent-glow) 30%, var(--accent-glow) 70%, transparent);
   transition: opacity 0.6s ease;
 }
-/* radial halo */
 .lp3-gate-core::after {
   content: '';
   position: absolute;
@@ -1302,7 +1145,6 @@
   pointer-events: none;
   transition: opacity 0.6s ease;
 }
-/* the mark is the white box logo — mint glow comes from drop-shadows */
 .lp3-gate-mark {
   position: relative;
   z-index: 1;
@@ -1317,7 +1159,6 @@
   color: var(--text-muted);
   transition: color 0.6s ease;
 }
-/* hero animated mode: gate starts dormant, lights at phase 2 */
 .lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-mark {
   opacity: 0.4;
   filter: none;
@@ -1326,9 +1167,6 @@
 .lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-core::after { opacity: 0.12; }
 .lp3-hero.js-anim .lp3-gate:not(.lit) .lp3-gate-label { color: var(--text-dim); }
 
-/* ── Boot state: applied by the inline <head> script BEFORE first paint
-   whenever the choreography will run — prevents the flash of the assembled
-   page before the intro. initHeroScroll removes it as .js-anim takes over. */
 html.lp3-boot .lp3-hero-copy > *,
 html.lp3-boot .lp3-hero-proofwrap {
   opacity: 0;
@@ -1343,9 +1181,6 @@ html.lp3-boot .lp3-gate-mark { opacity: 0; }
 html.lp3-boot .lp3-intro { display: flex; }
 html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 
-/* ── Act 0: title card — big logo + hook, dissolves into the machine.
-   --introp drives the logo shrinking toward the gate (which sits at the
-   same screen point), --introo fades the card away. */
 .lp3-intro {
   display: none;
   position: absolute;
@@ -1362,7 +1197,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-hero.js-anim .lp3-intro { display: flex; }
 .lp3-intro.gone { visibility: hidden; }
-/* reserves the screen spot where the (scaled-up) gate mark sits during Act 0 */
 .lp3-intro-spacer { height: 180px; }
 .lp3-intro-name {
   margin: 0;
@@ -1415,19 +1249,11 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   50% { transform: translateY(2px); }
 }
 
-/* ── Load-in ignition sequence — the machine boots up ──────────────
-   atmosphere blooms → gate ignites (beam + halo flash, settle dormant)
-   → panels rise into place → strands fade in → scroll pill appears.
-   `backwards` fill releases each property to its stylesheet/var value
-   after the animation ends, so the choreography takes over seamlessly. */
 @media (prefers-reduced-motion: no-preference) {
-  /* the gate breathes at rest — everywhere it appears */
   .lp3-gate-core::after {
     animation: lp3-breathe 5s ease-in-out infinite;
   }
 
-  /* title-card ignition: atmosphere blooms → the logo LANDS (starts big,
-     glides into the title card) → copy rises → cue last */
   .lp3-hero.js-anim .lp3-hero-atmo { animation: lp3-bloom 1.2s ease backwards; }
   .lp3-hero.js-anim .lp3-gate-mark {
     animation: lp3-logo-land 1.4s cubic-bezier(0.22, 1, 0.36, 1) backwards;
@@ -1449,8 +1275,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }
 }
-/* the logo lands: appears big center-stage, then glides down into the card
-   (multiplies with the gate-core's own var-driven transform) */
 @keyframes lp3-logo-land {
   from { opacity: 0; transform: scale(1.9) translateY(14px); }
   45% { opacity: 1; }
@@ -1461,37 +1285,19 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   50% { transform: translate(-50%, -50%) scale(1.07); }
 }
 
-/* hero responsive — the FULL choreography runs on mobile too; everything is
-   compacted so the assembled state (copy + vertical flow + proof) fits one
-   viewport. Desktop rendering is untouched. */
 @media (max-width: 960px) {
   .lp3-hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .lp3-hero-stage { justify-content: flex-start; padding-top: 132px; }
   .lp3-hero.js-anim .lp3-hero-stage {
     justify-content: center;
-    /* `safe` degrades to flex-start when the content is taller than the box.
-       Plain `center` overflows equally at both ends, and since this stage is a
-       fixed-height sticky box with overflow:hidden, the top of the copy slid
-       under the 65px nav on shorter phones (measured -20px clearance at
-       360x780). Keep the unprefixed line above it as the fallback. */
     justify-content: safe center;
-    /* Because `safe center` resolves to start here (the content is taller than
-       the box), the copy's top IS this padding: title top == padding-top, so
-       every pixel added lowers the block 1:1 rather than by half. Measured at
-       390x844: 116 left 51px under the nav against 102px down to the gate mark,
-       which read as pinned high. 140 balances it against the trimmed grid gap
-       below. Verify on the settled frame, never mid-scroll: during the pin the
-       content changes height and the alignment flips between start and centre. */
     padding-top: 140px;
-    /* must exceed the absolute proof block (two rows + its clearance), or the
-       numbers ride up into the visual above them */
     padding-bottom: 172px;
   }
   .lp3-hero.js-anim .lp3-hero-pin { height: 340vh; }
   .lp3-hero-stage::before { left: 50%; top: 50%; }
   .lp3-hero-stage::after { display: none; }
 
-  /* compact copy */
   .lp3-pro-chip { font-size: 0.72rem; margin-bottom: 1rem; padding: 6px 12px; }
   .lp3-hero-title { font-size: clamp(1.9rem, 7.2vw, 2.4rem); }
   .lp3-hero-cta { margin-top: 1.2rem; gap: 0.6rem; }
@@ -1499,27 +1305,18 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-hero.js-anim .lp3-hero-meta { display: none; }
   .lp3-hero-meta { margin-top: 1.25rem; }
 
-  /* title card */
   .lp3-intro { padding: 0 24px; gap: 1.1rem; }
   .lp3-intro-spacer { height: clamp(116px, 34vw, 150px); }
   .lp3-intro-name { font-size: 0.66rem; letter-spacing: 0.22em; }
 
-  /* the other half of centring the copy: pulls the visual up toward it */
   .lp3-hero-grid { gap: 1.4rem; }
 
-  /* vertical flow: RAW ↓ RTK ↓ CLEAN — generous air around the gate */
   .lp3-flow { grid-template-columns: 1fr; justify-items: stretch; row-gap: 1.1rem; perspective: none; }
   .lp3-panel-raw, .lp3-panel-clean { transform: none; }
-  /* raw dissolves upward on the vertical stack */
   .lp3-hero.js-anim .lp3-panel-raw {
     transform: translateY(calc(var(--rawout, 0) * -32px));
   }
-  /* the mark sits at the OPTICAL center between the windows: nudged a touch
-     left to balance the label, which is absolutely placed beside it so it
-     cannot push the layout */
   .lp3-gate { gap: 0; }
-  /* between the windows: -2px optical balance; in the FINAL state it eases
-     to true center (tied to the departure) */
   .lp3-gate-core { margin-left: calc(-2px + var(--rawout, 0) * 2px); }
   .lp3-gate-label {
     position: absolute;
@@ -1532,13 +1329,9 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-gate-label { font-size: 0.58rem; letter-spacing: 0.2em; }
   .lp3-gate-core::before { height: 110px; }
   .lp3-gate-core::after { width: 130px; height: 130px; }
-  /* swap to the vertical strand system: links flow RAW → gate → CLEAN
-     (slightly smaller footprint than the desktop overlay) */
   .lp3-strands { display: none; }
   .lp3-strands.vertical { display: block; inset: -1% -2%; width: 104%; height: 102%; }
   .lp3-panel-head { padding: 8px 10px; font-size: 0.58rem; }
-  /* finer grid on mobile: the panel is wider relative to the desktop columns,
-     so 28 columns keeps the token squares at the same fine scale */
   .lp3-panel-body {
     padding: 10px;
     height: clamp(78px, 10svh, 104px);
@@ -1547,12 +1340,7 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   }
   .lp3-meter { margin: 2px 10px 10px; }
 
-  /* proof: two centered rows (3 + 2), readable numbers, balanced in the
-     band between the visual above and the next section below */
   .lp3-hero.js-anim .lp3-hero-proofwrap { bottom: 30px; }
-  /* 5 stats on a phone = 3 + 2. A six-column grid lets the pair on the second
-     row sit between the columns above instead of floating centred against
-     nothing, so the block reads as a deliberate pyramid. */
   .lp3-hero-proof {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -1566,8 +1354,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-hero-stat .num { font-size: clamp(1.25rem, 5.5vw, 1.5rem); }
   .lp3-hero-stat .lbl { font-size: 0.62rem; margin-top: 2px; }
 }
-/* tall mobile/tablet viewports: the absolute bottom strip drifts too far
-   from the content — put it in flow, centered with the stack */
 @media (max-width: 960px) and (min-height: 1000px) {
   .lp3-hero.js-anim .lp3-hero-proofwrap {
     position: static;
@@ -1577,9 +1363,7 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-hero.js-anim .lp3-hero-stage { padding-bottom: 56px; }
 }
 
-/* short phones (e.g. 375×667): squeeze the assembled state into the viewport */
 @media (max-width: 960px) and (max-height: 720px) {
-  /* 60px slid the Pro chip under the fixed nav (65px tall) — clear it */
   .lp3-hero.js-anim .lp3-hero-stage { padding-top: 100px; padding-bottom: 92px; }
   .lp3-hero-grid { gap: 1rem; }
   .lp3-hero-title { font-size: 1.65rem; }
@@ -1589,7 +1373,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-gate-mark { width: 44px; height: 44px; }
   .lp3-gate-core::before { height: 84px; }
   .lp3-gate-core::after { width: 100px; height: 100px; }
-  /* short phones: back to one compact row — two rows don't fit */
   .lp3-hero.js-anim .lp3-hero-proofwrap { bottom: 12px; }
   .lp3-hero-proof { flex-wrap: nowrap; gap: 0.5rem; padding-top: 0.7rem; }
   .lp3-hero-stat .num { font-size: clamp(0.95rem, 4vw, 1.1rem); }
@@ -1599,9 +1382,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-panel-body { height: 220px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   PROOF BAND — compact, left-aligned numbers, thin separators
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-proof {
   border-top: 1px solid var(--lp3-line);
   border-bottom: 1px solid var(--lp3-line);
@@ -1638,9 +1418,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-proof-item:last-child { grid-column: 1 / -1; border-left: none; padding-left: 0; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   COMPANIES — "Starred by developers at", a marquee of white logos
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-companies {
   --lp3-logo-scale: 1.35;
   --lp3-marquee-gap: clamp(3rem, 5vw, 4.75rem);
@@ -1650,15 +1427,11 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   border-top: 1px solid var(--lp3-line);
   border-bottom: 1px solid var(--lp3-line);
 }
-/* The label and the count sit well clear of the drifting row, so the marquee
-   reads as its own band rather than as text with logos stuck to it. */
 .lp3-companies .lp3-eyebrow {
   justify-content: center;
   margin-bottom: clamp(3.25rem, 4.5vw, 4.5rem);
 }
 
-/* The viewport: clips the track and dissolves both edges so logos drift in
-   and out instead of being chopped at a hard line. */
 .lp3-marquee {
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
@@ -1669,9 +1442,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   width: max-content;
   animation: lp3-marquee var(--lp3-marquee-dur) linear infinite;
 }
-/* One pass = the full logo set. Three identical passes shift by exactly one
-   pass width (-33.333%), so the loop restarts on a frame identical to its
-   start — no seam, no jump. */
 @keyframes lp3-marquee {
   from { transform: translate3d(0, 0, 0); }
   to { transform: translate3d(-33.3333%, 0, 0); }
@@ -1686,11 +1456,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-marquee-pass li { display: flex; align-items: center; }
 
-/* Every mark is flattened to pure white regardless of its source colors,
-   then held back so the row reads as texture, not a sponsor wall.
-   Height comes from the per-logo --logo-h (optical size, tuned per ratio);
-   width follows the viewBox. Never size these `auto` — several of the files
-   carry no intrinsic dimensions and collapse to 0×0. */
 .lp3-marquee img {
   display: block;
   height: calc(var(--logo-h, 20px) * var(--lp3-logo-scale, 1));
@@ -1699,15 +1464,9 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   opacity: 0.5;
   transition: opacity 0.25s ease;
 }
-/* Hovering holds the drift so a logo can actually be read. The CSS pause is the
-   no-JS path only: pausing a compositor-run animation snaps the row to the main
-   thread's frame, so with JS the drift is driven from the main thread instead
-   (`js-marquee`) and freezes exactly where it was. */
 .lp3-marquee:hover .lp3-marquee-track:not(.js-marquee) { animation-play-state: paused; }
 .lp3-marquee-track.js-marquee {
   animation: none;
-  /* the row is wide and repainted every frame — keeping it on its own layer is
-     measurably necessary here, unlike elsewhere in this stylesheet */
   will-change: transform;
 }
 .lp3-marquee li:hover img { opacity: 0.85; }
@@ -1721,7 +1480,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   letter-spacing: 0.01em;
 }
 
-/* No motion: fall back to the static wrapped row, one pass only. */
 @media (prefers-reduced-motion: reduce) {
   .lp3-marquee {
     mask-image: none;
@@ -1739,9 +1497,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   ECOSYSTEM ROW
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-eco {
   padding-top: clamp(5rem, 7vw, 7.5rem);
   padding-bottom: clamp(5rem, 7vw, 7.5rem);
@@ -1749,8 +1504,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-eco .lp3-eyebrow { justify-content: center; margin-bottom: 3.25rem; }
 .lp3-eco-row {
-  /* the list's default block margin collapses out of the container and shows
-     up as phantom space under the row — reset it, don't pad around it */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1760,8 +1513,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   gap: clamp(1.25rem, 2.5vw, 2.5rem);
   flex-wrap: wrap;
 }
-/* These are trust signals and need to read as such — dim 0.9rem labels made the
-   band disappear next to the logo marquee above it. */
 .lp3-eco-item {
   display: inline-flex;
   align-items: center;
@@ -1785,7 +1536,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   border-bottom-color: var(--accent);
   text-decoration: none;
 }
-/* "+N more" — phones only; desktop shows the full row. */
 .lp3-eco-more {
   display: none;
   width: fit-content;
@@ -1810,8 +1560,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 .lp3-eco-more[aria-expanded='true'] .chev { transform: rotate(180deg); }
 
 @media (max-width: 700px) {
-  /* Two fixed columns rather than free wrapping — free wrapping centres each
-     row on its own width, which leaves the icons in a ragged zigzag. */
   .lp3-eco-row {
     display: grid;
     grid-template-columns: repeat(2, auto);
@@ -1819,16 +1567,11 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
     justify-items: start;
     gap: 1.35rem 1.75rem;
   }
-  /* Four tools is a readable block on a phone; the rest are one tap away.
-     Only collapses once JS has run, so no-JS keeps the full list. */
   .lp3-eco.js-collapsible .lp3-eco-item.is-extra { display: none; }
   .lp3-eco.js-collapsible .lp3-eco-row.expanded .lp3-eco-item.is-extra { display: inline-flex; }
   .lp3-eco.js-collapsible .lp3-eco-more { display: flex; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   01 / THE PROBLEM — triptych: heading · context viz · consequence note
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-problem-grid {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
@@ -1862,8 +1605,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   letter-spacing: 0.04em;
   transition: color 0.45s ease;
 }
-/* Near capacity the window is the problem, so it reads as one — the number and
-   the total bar carry the noise tint until RTK pulls usage back down. */
 .lp3-ctx.is-full .lp3-ctx-head .pct { color: var(--red); }
 
 .lp3-ctx-rows {
@@ -1992,9 +1733,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-ctx-track { grid-column: 1 / -1; order: 3; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   02 / THE SOLUTION — full-width flow field: NOISE → gate → SIGNAL
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-solution-head { max-width: 40rem; }
 
 .lp3-field {
@@ -2002,7 +1740,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   height: clamp(280px, 36vw, 440px);
   margin-top: var(--lp3-head-gap);
 }
-/* scene light behind the field — same source as the hero atmosphere */
 .lp3-field::before {
   content: '';
   position: absolute;
@@ -2065,9 +1802,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-field-gate .lp3-gate-core::before { height: 160px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   03 / THE IMPACT — heading band + three icon columns
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-impact-band {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
@@ -2118,9 +1852,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-impact-col:first-child { border-top: none; padding-top: 0; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   DEMO — heading left · interactive frame right
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-demo-grid {
   display: grid;
   grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
@@ -2129,9 +1860,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-demo-head .lp3-h2 { font-size: clamp(1.9rem, 2.7vw, 2.75rem); }
 
-/* Panel template (shared language with the AI CONTEXT card): ONE frame, a
-   tighter radius, and hairlines instead of nested boxes. Boxes inside boxes and
-   pill tabs read as consumer UI; a single ruled surface reads as an instrument. */
 .lp3-demo-frame {
   border: 1px solid var(--lp3-line);
   border-radius: var(--lp3-radius-sm);
@@ -2191,7 +1919,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   padding: 18px 20px 22px;
   background: transparent;
 }
-/* the two states are separated by one rule, not by two boxes */
 .lp3-demo-side.after { border-left: 1px solid var(--lp3-line); }
 .lp3-demo-side-head {
   display: flex;
@@ -2233,7 +1960,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 .lp3-demo-code .k { color: var(--accent); }           /* kept signal */
 .lp3-demo-code .m { color: var(--text-dim); font-style: italic; } /* meta (… more lines) */
 
-/* "Why was this removed?" — lives in the left column */
 .lp3-demo-why { margin-top: 2.5rem; }
 .lp3-demo-why summary {
   list-style: none;
@@ -2274,7 +2000,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-demo-grid { grid-template-columns: 1fr; gap: 3rem; }
 }
 @media (max-width: 720px) {
-  /* stacked: the divider between the two states becomes horizontal */
   .lp3-demo-pane { grid-template-columns: 1fr; }
   .lp3-demo-side.after {
     border-left: 0;
@@ -2282,9 +2007,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   BUILT FOR DEVELOPERS — technical spec
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-specs {
   display: grid;
   align-items: start;
@@ -2292,9 +2014,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   gap: clamp(3rem, 6vw, 6rem);
   align-items: start;
 }
-/* Specs sit inside the solution section now, so they need their own separation
-   from the flow diagram above rather than a section's padding. */
-/* label above the spec table, aligned with its first row */
 .lp3-spec-label { margin-bottom: 1.1rem; }
 .lp3-specs-inline .lp3-lede { margin-top: 1rem; }
 .lp3-spec-table { border-top: 1px solid var(--lp3-line); }
@@ -2323,9 +2042,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-spec-row { grid-template-columns: 130px 1fr; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   FAQ — quiet
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-faq { max-width: 46rem; margin-left: auto; margin-right: auto; }
 .lp3-faq-list { margin-top: 3.5rem; border-top: 1px solid var(--lp3-line); }
 .lp3-faq-item { border-bottom: 1px solid var(--lp3-line); }
@@ -2362,16 +2078,12 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   max-width: 40rem;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   FINAL CTA
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-cta {
   position: relative;
   text-align: center;
   border-top: 1px solid var(--lp3-line);
   overflow: hidden;
 }
-/* scene light rising from below + film grain — same atmosphere as the hero */
 .lp3-cta::before {
   content: '';
   position: absolute;
@@ -2382,15 +2094,9 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   background: radial-gradient(ellipse at center, var(--lp3-scene) 0%, transparent 64%);
   opacity: 0.6;
   pointer-events: none;
-  /* faded out before the clip edge, for the same reason as the watermark */
   -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 88%);
   mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 88%);
 }
-/* The grain lifts this section about three RGB units off the page background.
-   As a full-bleed rectangle it ended on a hard horizontal line at the section
-   boundary: grain above, flat --bg below, a visible seam even though no colour
-   was declared anywhere. It fades out over the last third instead. The top edge
-   keeps its hard cut because a hairline border sits there and hides it. */
 .lp3-cta::after {
   content: '';
   position: absolute;
@@ -2402,10 +2108,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   mask-image: linear-gradient(to bottom, #000 0%, #000 62%, transparent 97%);
 }
 .lp3-cta .lp3-container { position: relative; z-index: 1; }
-/* The mark is clipped by .lp3-cta's overflow:hidden, and while this section was
-   the last one on the page that cut landed on the footer's own edge and was
-   invisible. With a section after it the straight cut reads as a seam across the
-   page, so the mark dissolves before it reaches the boundary instead. */
 .lp3-cta-watermark {
   position: absolute;
   left: 50%;
@@ -2494,9 +2196,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-cta-step:first-child { margin-top: 0; }
 
-/* ═══════════════════════════════════════════════════════════════════
-   FOOTER
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-footer {
   border-top: 1px solid var(--lp3-line);
   padding-top: clamp(3.5rem, 5vw, 5rem);
@@ -2546,9 +2245,7 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-footer-col a:hover { color: var(--text-bright); text-decoration: none; }
 .lp3-footer-col a.is-pro { color: var(--accent); }
-/* second heading inside a column (e.g. Legal under Products) */
 .lp3-footer-col .sub { margin-top: 1.4rem; }
-/* the consent control is a button, but reads as one of the links */
 .lp3-footer-consent {
   border: 0;
   background: none;
@@ -2562,7 +2259,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-footer-consent:hover { color: var(--text-bright); }
 
-/* pre-footer CTA strip */
 .lp3-footer-cta { border-top: 1px solid var(--lp3-line); }
 .lp3-footer-cta-inner {
   display: flex;
@@ -2582,7 +2278,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 .lp3-footer-cta .s { margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--text-muted); }
 .lp3-footer-cta-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-/* brand badges + social row */
 .lp3-footer-badges {
   display: flex;
   align-items: center;
@@ -2644,7 +2339,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   font-size: 0.8rem;
   color: var(--text-dim);
 }
-/* the footer sits at the page bottom, so its panel opens upward */
 .lp3-footer-lang > .lp3-menu-panel { top: auto; bottom: calc(100% + 10px); }
 .lp3-footer-lang a {
   color: var(--text-dim);
@@ -2655,7 +2349,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 .lp3-footer-lang a:hover,
 .lp3-footer-lang a.active { color: var(--accent); text-decoration: none; }
 
-/* ── Skip link (reused pattern) ────────────────────────────────────── */
 .lp3 .skip-to-content {
   position: absolute;
   top: -48px;
@@ -2670,23 +2363,14 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3 .skip-to-content:focus { top: 12px; text-decoration: none; }
 
-/* ── Mobile rhythm — tighter vertical cadence + touch polish ────────
-   Desktop keeps its huge whitespace; on small screens the same paddings
-   read as dead space, so the whole rhythm compresses. */
 @media (max-width: 700px) {
   .lp3 {
     --lp3-sec-pad: clamp(5.5rem, 16vw, 7rem);
     --lp3-head-gap: clamp(3rem, 10vw, 4rem);
   }
-  /* Each band below the hero gets the same generous top/bottom air, so the
-     numbers, the logos and the agents read as three separate bands instead of
-     one crowded stack. */
   .lp3-companies { padding-top: 4rem; padding-bottom: 4rem; }
   .lp3-eco { padding-top: 3.5rem; padding-bottom: 3rem; }
   .lp3-eco .lp3-eyebrow { margin-bottom: 2rem; }
-  /* Logos stay large on phones but drift noticeably slower — a small screen
-     passes a logo in a fraction of the time a desktop one does, so matching
-     desktop px/s here would read as a rush. */
   .lp3-companies {
     --lp3-logo-scale: 1.1;
     --lp3-marquee-gap: 2.25rem;
@@ -2694,8 +2378,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   }
   .lp3-companies .lp3-eyebrow { margin-bottom: 2.75rem; }
   .lp3-companies-more { font-size: 0.82rem; margin-top: 2.5rem; }
-  /* A narrow screen only ever shows 3–4 logos, so the edges must dissolve much
-     earlier — otherwise a half-cut wordmark ("eta") reads as broken layout. */
   .lp3-marquee {
     mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 22%, #000 78%, transparent);
@@ -2710,12 +2392,10 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-faq-list { margin-top: 2.5rem; }
   .lp3-cta-install { margin-top: 2.5rem; }
   .lp3-footer-top { gap: 2.25rem; }
-  /* touch targets */
   .lp3-demo-tab { min-height: 44px; padding: 12px 0 10px; }
   .lp3-copy-btn { min-width: 42px; min-height: 42px; }
 }
 
-/* ── Reduced motion: pause all ambient animation ───────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .lp3-strands path,
   .lp3-fieldsvg path {
@@ -2724,9 +2404,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   04 / PROOF — the two real rtk gain screenshots
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-proof-sub {
   margin: 1rem 0 0;
   color: var(--text-muted);
@@ -2775,14 +2452,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 }
 .lp3-proof-card figcaption strong { color: var(--text-bright); font-weight: 500; }
 
-/* Crop the portrait shot to its neighbour's exact height.
-   Left column is 1.55fr, right is 1fr, so leftW = 1.55 × rightW and the left
-   image renders at leftW × 840/1370, giving a bare ratio of
-   1370 / (1.55 × 840) = 1370/1302. That ignores three border pixels the two
-   cards do not share equally (2 on each card, 1 under each image), which leaves
-   the crop ~2px short; 1307 folds them back in and holds within a pixel across
-   the desktop range. Keep in step with .lp3-proof-grid's columns and the two
-   images' intrinsic sizes. */
 .lp3-proof-card.is-tall.is-cropped img {
   aspect-ratio: 1370 / 1307;
   height: auto;
@@ -2809,8 +2478,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 .lp3-proof-expand .chev { transition: transform 0.2s ease; }
 .lp3-proof-card.is-tall:not(.is-cropped) .lp3-proof-expand .chev { transform: rotate(180deg); }
 
-/* Closing line: one quiet rule, no panel. The section already carries two
-   framed cards, so a third box here would read as a banner ad. */
 .lp3-proof-discord {
   display: flex;
   align-items: center;
@@ -2836,9 +2503,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-proof-discord:hover .arr { transform: none; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   06 / INSTALL — three paths + per-agent hook
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-install-sub {
   margin: 1rem 0 0;
   color: var(--text-muted);
@@ -2917,8 +2581,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   background: rgba(0, 229, 153, 0.06);
 }
 .lp3-hook-panel { display: flex; flex-direction: column; gap: 0.85rem; }
-/* `display` beats the hidden attribute's UA rule — restore it, or every
-   agent panel renders at once. */
 .lp3-hook-panel[hidden] { display: none; }
 .lp3-hook-note {
   margin: 0;
@@ -2927,7 +2589,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   line-height: 1.65;
 }
 
-/* ── closing CTA share row ── */
 .lp3-cta-share {
   display: flex;
   align-items: center;
@@ -2962,19 +2623,13 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
 
 @media (max-width: 900px) {
   .lp3-proof-grid { grid-template-columns: 1fr; }
-  /* Stacked: there is no neighbour to match, so cap the height instead. */
   .lp3-proof-card.is-tall.is-cropped img { aspect-ratio: auto; max-height: 420px; }
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   RTK PRO — the second closing door, paired with the final CTA
-   ═══════════════════════════════════════════════════════════════════ */
 .lp3-prosec {
   padding-top: 0;
   padding-bottom: clamp(5rem, 8vw, 8rem);
 }
-/* A bounded panel, not a full-bleed section: the free CLI owns the page's
-   climax, Pro sits beside it as an adjacent offer. */
 .lp3-pro {
   position: relative;
   overflow: hidden;
@@ -2983,7 +2638,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   background: var(--lp3-panel);
   padding: clamp(2rem, 4vw, 3.25rem);
 }
-/* One quiet wash from the top-left corner, the only decoration the panel gets */
 .lp3-pro::before {
   content: '';
   position: absolute;
@@ -3023,7 +2677,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   font-size: 1.02rem;
   line-height: 1.65;
 }
-/* Three columns divided by hairlines, the same device as the spec table */
 .lp3-pro-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3075,7 +2728,6 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-pro-item:first-child { padding-top: 1.4rem; border-top: 1px solid var(--lp3-line); }
 }
 
-/* FAQ answers that point at a source rather than reciting numbers */
 .lp3-faq-links {
   display: flex;
   flex-wrap: wrap;
@@ -3094,22 +2746,10 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   .lp3-faq-links a:hover span { transform: none; }
 }
 
-/* ── Phone: the Pro chip moves below the headline ──────────────────────
-   On a wide screen the chip sits above the H1 as a quiet kicker and the eye
-   passes it on the way down. On a phone it is a full-width pill that arrives
-   before the page has said what it is, so the headline lands second. Ordered
-   Ordered below the headline AND below the CTAs, it reads as the epilogue it
-   already is in the choreography (excluded from the copy stagger, revealed last
-   by .pro-on), and nothing secondary stands between the headline and Install.
-
-   CSS order only, no duplicated markup: the H1 is not focusable, so the tab
-   order through the chip and the two CTA buttons is unchanged. The stagger
-   delays use :nth-child, which follows the DOM and is likewise unaffected. */
 @media (max-width: 700px) {
   .lp3-hero-copy { display: flex; flex-direction: column; }
   .lp3-hero-title { order: 1; }
   .lp3-hero-cta { order: 2; margin-top: 1.5rem; }
-  /* after the CTAs, so nothing secondary sits between the headline and Install */
   .lp3-pro-chip {
     order: 3;
     align-self: flex-start;

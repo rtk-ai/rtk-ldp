@@ -85,9 +85,6 @@ const schemaOrg = {
 </PageV3>
 
 <style>
-  /* ── Reading column ─────────────────────────────────────────────────
-     One measure for the whole article (~68 characters at the body size), so
-     header, prose, figures and footer share the same left and right edge. */
   .bp-article {
     padding-top: clamp(3.5rem, 6vw, 5.5rem);
     padding-bottom: clamp(6rem, 10vw, 9rem);
@@ -97,7 +94,6 @@ const schemaOrg = {
     margin: 0 auto;
   }
 
-  /* ── Header ─────────────────────────────────────────────────────────── */
   .bp-head {
     padding-bottom: clamp(2rem, 4vw, 2.75rem);
     border-bottom: 1px solid var(--lp3-line);
@@ -135,9 +131,6 @@ const schemaOrg = {
     color: var(--text-dim);
   }
 
-  /* Two classes deep on purpose: `.lp3 h1` (margin: 0) and `.lp3-h2` live in
-     the shared V3 bundle, which loads after this page's styles — a
-     single-class override would lose. Same for the prose headings below. */
   .bp-head .bp-title {
     margin-top: 1.25rem;
     font-size: clamp(1.95rem, 3.2vw, 2.7rem);
@@ -150,7 +143,6 @@ const schemaOrg = {
     gap: 0.5rem;
     margin-top: 1.5rem;
   }
-  /* Quiet hairline chips — mint stays budgeted for CTAs (§2). */
   .bp-tag {
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -162,10 +154,6 @@ const schemaOrg = {
     color: var(--text-dim);
   }
 
-  /* ── Prose ──────────────────────────────────────────────────────────
-     :global() because the markdown body is rendered by <Content />, which
-     Astro's scoping never touches. Everything stays under .bp-prose so no
-     rule escapes this page. */
   .bp-prose {
     margin-top: clamp(2.5rem, 4vw, 3.25rem);
     font-size: 1.0625rem;
@@ -284,7 +272,6 @@ const schemaOrg = {
     padding: 10px 12px;
     text-align: left;
   }
-  /* No text-transform anywhere in the prose — the markdown owns its casing. */
   .bp-prose :global(th) {
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -300,7 +287,6 @@ const schemaOrg = {
     margin: 3rem 0;
   }
 
-  /* ── Footer ─────────────────────────────────────────────────────────── */
   .bp-foot {
     margin-top: clamp(3rem, 5vw, 4rem);
     padding-top: 1.75rem;

@@ -1,13 +1,4 @@
 ---
-/**
- * PageV3 — the shell every non-landing page uses so the whole site shares one
- * design system: V3 chrome (NavV3 + FooterV3 + search), the `.lp3` token scope,
- * and landing-v3.css.
- *
- * Page bodies supply only their content and their own scoped <style>. They must
- * not re-import landing.css (the legacy system) or mount their own header,
- * footer or search modal — this layout owns all four.
- */
 import Layout from './Layout.astro'
 import NavV3 from '../components/landing/v3/NavV3.astro'
 import FooterV3 from '../components/landing/v3/FooterV3.astro'
@@ -19,13 +10,10 @@ interface Props {
   title: string
   description: string
   lang?: Lang
-  /** JSON-LD passed straight through to Layout */
   schemaOrg?: unknown
   canonicalUrl?: string
-  /** OG image + og:type, passed straight through to Layout (articles need them) */
   image?: string
   ogType?: 'website' | 'article'
-  /** extra class on the <main> element, for page-specific layout hooks */
   mainClass?: string
 }
 
@@ -41,7 +29,6 @@ const { starsLabel } = await getRepoFacts()
   ogType={ogType}
 >
   <Fragment slot="head">
-    <!-- V3 display faces. The `ital` axis is required: without it the browser
          has no italic file and fakes one by slanting the uprights, which is a
          visibly cruder letterform than Geist's real italic. Loaded here so every page using this layout gets the
          same typography — without it the .lp3 font tokens fall back to DM Sans
@@ -67,14 +54,8 @@ const { starsLabel } = await getRepoFacts()
 <style is:global>
   @import '../styles/landing-v3.css';
 
-  /* The nav is fixed (64px), so inner pages clear it here rather than each
-     page inventing its own offset. The landing does not use this layout — its
-     hero owns the top of the viewport. */
   .lp3-page {
     padding-top: 64px;
-    /* Content pages are denser than the landing story — one statement per
-       section there, lists and tables here — so they run a tighter rhythm
-       than the landing's --lp3-sec-pad. Set once, inherited by every page. */
     --lp3-sec-pad: clamp(4rem, 6vw, 6.5rem);
     --lp3-head-gap: clamp(2.25rem, 4vw, 3.25rem);
   }

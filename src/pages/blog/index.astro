@@ -78,22 +78,13 @@ const schemaOrg = {
 </PageV3>
 
 <style>
-  /* ── Header ─────────────────────────────────────────────────────────
-     Left-aligned like every V3 section head; the hairline under it is the
-     only separator — no background change (NEW_DESIGN_RULES §4/§5). */
   .bx-head {
     padding-top: clamp(4.5rem, 8vw, 7rem);
     padding-bottom: clamp(2.75rem, 5vw, 4rem);
   }
-  /* Two classes deep on purpose: .lp3-h2 ships in the shared V3 bundle, which
-     loads after this page's styles, so a single-class override would lose the
-     tie. Same reason for .bx-body .bx-item-title below. */
   .bx-head .bx-title {
     font-size: clamp(2.1rem, 3.4vw, 3.1rem);
   }
-  /* The mint word wears a vertical tonal sweep inside the hue — flat accent at
-     display size is forbidden (§2). Guarded: without color-mix the gradient is
-     invalid and a transparent fill would erase the word. */
   .bx-accent { color: var(--accent); }
   @supports (color: color-mix(in srgb, red 50%, blue)) {
     .bx-accent {
@@ -117,9 +108,6 @@ const schemaOrg = {
     color: var(--text-muted);
   }
 
-  /* ── Listing ────────────────────────────────────────────────────────
-     Hairline-separated rows instead of cards: meta column left, article
-     column right. Quiet surfaces, 1px lines, no boxes. */
   .bx-listing {
     padding-bottom: clamp(7rem, 11vw, 11rem);
   }
@@ -157,8 +145,6 @@ const schemaOrg = {
     gap: 0.5rem;
     padding-top: 0.3rem;
   }
-  /* Mono + dim like every V3 meta line, but never text-transform: the date
-     string is content, and uppercasing it would change what the page reads. */
   .bx-meta time {
     font-family: var(--font-mono);
     font-size: 0.74rem;
@@ -166,7 +152,6 @@ const schemaOrg = {
     color: var(--text-dim);
     white-space: nowrap;
   }
-  /* Tags are quiet hairline chips — mint stays budgeted for CTAs (§2). */
   .bx-tag {
     font-family: var(--font-mono);
     font-size: 0.68rem;

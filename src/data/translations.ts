@@ -2,7 +2,7 @@
  * translations.ts — RTK i18n dictionary (6 languages)
  * Extracted from rtk-ldp/index.html L3503-3967
  *
- * Keys with HTML content (contain <code> etc.), are marked in HTML_KEYS.
+ * Keys with HTML content (contain <code> etc.) are marked in HTML_KEYS.
  * Use data-i18n-html for those, data-i18n for plain text.
  */
 
@@ -86,8 +86,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'proof.d1': { en: 'After a few weeks of daily use: 15,720 commands processed, 130M tokens saved. Just run <code>rtk gain</code> to see yours.', fr: 'Après quelques semaines d\'utilisation quotidienne : 15 720 commandes, 130M tokens économisés. Lancez <code>rtk gain</code> pour voir les vôtres.', es: 'Tras unas semanas de uso diario: 15.720 comandos, 130M tokens ahorrados. Ejecuta <code>rtk gain</code> para ver los tuyos.', de: 'Nach einigen Wochen täglicher Nutzung: 15.720 Befehle, 130M Tokens gespart. Führen Sie <code>rtk gain</code> aus, um Ihre zu sehen.', zh: '日常使用几周后：15,720 个命令，节省 1.30 亿 token。运行 <code>rtk gain</code> 查看你的。', ja: '数週間の日常使用後：15,720 コマンド、1.30億トークン節約。<code>rtk gain</code> で確認。' },
   'proof.h2': { en: 'Detailed breakdown', fr: 'Détail par commande', es: 'Desglose detallado', de: 'Detaillierte Aufschlüsselung', zh: '详细明细', ja: '詳細な内訳' },
   'proof.d2': { en: 'Daily, weekly, and monthly stats by command. Track your savings over time.', fr: 'Statistiques quotidiennes, hebdomadaires et mensuelles. Suivez vos économies dans le temps.', es: 'Estadísticas diarias, semanales y mensuales por comando. Rastrea tus ahorros.', de: 'Tägliche, wöchentliche und monatliche Statistiken pro Befehl. Verfolgen Sie Ihre Einsparungen.', zh: '按命令的每日、每周和每月统计。跟踪你的节省。', ja: 'コマンド別の日次・週次・月次統計。節約を追跡。' },
-
-
 
   'share.title_1': { en: 'Post your', fr: 'Postez votre', es: 'Publica tu', de: 'Poste deinen', zh: '发布你的', ja: 'あなたの' },
   'share.title_2': { en: 'rtk gain', fr: 'rtk gain', es: 'rtk gain', de: 'rtk gain', zh: 'rtk gain', ja: 'rtk gain' },
@@ -191,7 +189,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'bench.js.m_passrate': { en: 'Pass rate', fr: 'Taux de réussite', es: 'Tasa de aprobación', de: 'Erfolgsquote', zh: '通过率', ja: '合格率' },
   'bench.js.no_data': { en: 'No data', fr: 'Aucune donnée', es: 'Sin datos', de: 'Keine Daten', zh: '无数据', ja: 'データなし' },
 
-  // ── V3 · Hero ─────────────────────────────────────────────────────────────
   'v3.hero.intro_tag': { en: 'Your AI agent drowns in noise.<br /><strong>RTK clean it up.</strong>', fr: 'Votre agent IA se noie dans le bruit.<br /><strong>RTK fait le ménage.</strong>', es: 'Tu agente IA se ahoga en ruido.<br /><strong>RTK lo limpia.</strong>', de: 'Dein KI-Agent ertrinkt im Rauschen.<br /><strong>RTK räumt auf.</strong>', zh: '你的 AI 代理正淹没在噪音中。<br /><strong>RTK 帮它清理。</strong>', ja: 'AI エージェントはノイズに埋もれている。<br /><strong>RTK が片づける。</strong>' },
   'v3.hero.scroll_cue': { en: 'Scroll to see it work', fr: 'Faites défiler pour voir', es: 'Desplázate para verlo', de: 'Scrollen und zusehen', zh: '向下滚动查看效果', ja: 'スクロールして動作を見る' },
   'v3.hero.pro_chip': { en: '<strong>RTK Pro</strong>: the AI Control Layer for your team', fr: '<strong>RTK Pro</strong> : la couche de contrôle IA de votre équipe', es: '<strong>RTK Pro</strong>: la capa de control de IA para tu equipo', de: '<strong>RTK Pro</strong>: der AI Control Layer für dein Team', zh: '<strong>RTK Pro</strong>：团队的 AI 控制层', ja: '<strong>RTK Pro</strong>：チームのための AI コントロールレイヤー' },
@@ -209,19 +206,16 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.hero.stat_commands': { en: 'Commands', fr: 'Commandes', es: 'Comandos', de: 'Befehle', zh: '命令', ja: 'コマンド' },
   'v3.hero.stat_tools': { en: 'AI coding tools', fr: 'Outils de codage IA', es: 'Herramientas IA', de: 'KI-Coding-Tools', zh: 'AI 编程工具', ja: 'AI コーディングツール' },
 
-  // ── V3 · Companies ────────────────────────────────────────────────────────
   'v3.companies.eyebrow': { en: 'Starred by developers at', fr: 'Star par des développeurs chez', es: 'Con star de desarrolladores de', de: 'Beliebt bei Entwicklern von', zh: '这些公司的开发者已 star', ja: 'スターを付けた開発者の所属企業' },
   'v3.companies.aria_list': { en: 'Companies whose developers starred RTK', fr: 'Entreprises dont les développeurs ont star RTK', es: 'Empresas cuyos desarrolladores han dado star a RTK', de: 'Unternehmen, deren Entwickler RTK einen Star gegeben haben', zh: '开发者为 RTK 加星的公司', ja: 'RTK にスターを付けた開発者の所属企業' },
   'v3.companies.more': { en: '+{n} more companies', fr: '+{n} autres entreprises', es: '+{n} empresas más', de: '+{n} weitere Unternehmen', zh: '另有 {n} 家公司', ja: 'ほか {n} 社' },
 
-  // ── V3 · Ecosystem ────────────────────────────────────────────────────────
   'v3.eco.eyebrow': { en: 'Works with your AI coding stack', fr: 'Compatible avec votre stack IA', es: 'Compatible con tu stack de IA', de: 'Kompatibel mit deinem KI-Stack', zh: '兼容你的 AI 编程工具链', ja: 'あなたの AI コーディング環境に対応' },
   'v3.eco.aria_list': { en: 'Compatible AI coding tools', fr: 'Outils IA compatibles', es: 'Herramientas IA compatibles', de: 'Kompatible KI-Tools', zh: '兼容的 AI 工具', ja: '対応 AI ツール' },
   'v3.eco.show_more': { en: 'Show more', fr: 'Voir plus', es: 'Ver más', de: 'Mehr anzeigen', zh: '显示更多', ja: 'もっと見る' },
   'v3.eco.show_less': { en: 'Show less', fr: 'Voir moins', es: 'Ver menos', de: 'Weniger anzeigen', zh: '收起', ja: '閉じる' },
   'v3.eco.more_count': { en: '+{n} more', fr: '+{n} de plus', es: '+{n} más', de: '+{n} weitere', zh: '+{n} 个', ja: 'ほか {n} 件' },
 
-  // ── V3 · 01 The problem ───────────────────────────────────────────────────
   'v3.problem.eyebrow': { en: 'The problem', fr: 'Le problème', es: 'El problema', de: 'Das Problem', zh: '问题所在', ja: '問題' },
   'v3.problem.title': { en: 'Your context window is <em>valuable</em>', fr: 'Votre fenêtre de contexte est <em>précieuse</em>', es: 'Tu ventana de contexto es <em>valiosa</em>', de: 'Dein Kontextfenster ist <em>wertvoll</em>', zh: '你的上下文窗口很宝贵', ja: 'コンテキストウィンドウは貴重です' },
   'v3.problem.lede': { en: "AI agents don't need more output. They need more relevant output.", fr: "Les agents IA n'ont pas besoin de plus de sortie. Ils ont besoin d'une sortie plus pertinente.", es: 'Los agentes de IA no necesitan más salida. Necesitan una salida más relevante.', de: 'KI-Agenten brauchen nicht mehr Output. Sie brauchen relevanteren Output.', zh: 'AI 代理不需要更多输出，而是需要更相关的输出。', ja: 'AI エージェントに必要なのは、出力の量ではなく関連性です。' },
@@ -237,10 +231,8 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.problem.ctx_msg': { en: 'More room for reasoning.', fr: 'Plus de place pour raisonner.', es: 'Más espacio para razonar.', de: 'Mehr Raum fürs Reasoning.', zh: '更多推理空间。', ja: '推論の余地が広がる。' },
   'v3.problem.note': { en: 'Too much noise means <strong>higher costs</strong>, <strong>slower reasoning</strong> and <strong>less capable agents</strong>.', fr: "Trop de bruit, c'est <strong>des coûts plus élevés</strong>, <strong>un raisonnement plus lent</strong> et <strong>des agents moins performants</strong>.", es: 'Demasiado ruido significa <strong>más costos</strong>, <strong>razonamiento más lento</strong> y <strong>agentes menos capaces</strong>.', de: 'Zu viel Rauschen bedeutet <strong>höhere Kosten</strong>, <strong>langsameres Reasoning</strong> und <strong>schwächere Agenten</strong>.', zh: '噪音过多意味着<strong>成本更高</strong>、<strong>推理更慢</strong>、<strong>代理更弱</strong>。', ja: 'ノイズが多いほど<strong>コストは上がり</strong>、<strong>推論は遅くなり</strong>、<strong>エージェントは弱くなります</strong>。' },
 
-  // ── V3 · 02 The solution ──────────────────────────────────────────────────
   'v3.solution.eyebrow': { en: 'The solution', fr: 'La solution', es: 'La solución', de: 'Die Lösung', zh: '解决方案', ja: '解決策' },
 
-  // ── V3 · 03 The impact ────────────────────────────────────────────────────
   'v3.impact.eyebrow': { en: 'The impact', fr: "L'impact", es: 'El impacto', de: 'Die Wirkung', zh: '带来的改变', ja: '効果' },
   'v3.impact.title': { en: 'More <em>efficiency</em>', fr: "Plus d'<em>efficacité</em>", es: 'Más <em>eficiencia</em>', de: 'Mehr <em>Effizienz</em>', zh: '更高的<em>效率</em>', ja: 'より高い<em>効率</em>' },
   'v3.impact.sub': { en: 'Less noise. More useful context. Fewer tokens.', fr: 'Moins de bruit. Un contexte plus utile. Moins de tokens.', es: 'Menos ruido. Contexto más útil. Menos tokens.', de: 'Weniger Rauschen. Nützlicherer Kontext. Weniger Tokens.', zh: '更少噪音。更有用的上下文。更少 token。', ja: 'ノイズを減らし、文脈を活かし、トークンを節約。' },
@@ -251,7 +243,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.impact.col3_title': { en: 'Fewer tokens', fr: 'Moins de tokens', es: 'Menos tokens', de: 'Weniger Tokens', zh: '更少 token', ja: 'トークン削減' },
   'v3.impact.col3_text': { en: 'Less unnecessary output enters the context.', fr: 'Moins de sorties inutiles entrent dans le contexte.', es: 'Menos salida innecesaria entra en el contexto.', de: 'Weniger unnötige Ausgaben landen im Kontext.', zh: '更少无用输出进入上下文。', ja: '不要な出力がコンテキストに入りません。' },
 
-  // ── V3 · Demo ─────────────────────────────────────────────────────────────
   'v3.demo.eyebrow': { en: 'See it in action', fr: 'En action', es: 'En acción', de: 'In Aktion', zh: '实际效果', ja: '実際の動作' },
   'v3.demo.title': { en: 'The difference is <em>clear</em>', fr: 'La différence est <em>nette</em>', es: 'La diferencia es <em>clara</em>', de: 'Der Unterschied ist <em>deutlich</em>', zh: '差异一目了然', ja: '違いは一目瞭然' },
   'v3.demo.lede': { en: 'Compare real output before and after RTK, and see what gets filtered.', fr: 'Comparez des sorties réelles avant et après RTK, et voyez ce qui est filtré.', es: 'Compara salidas reales antes y después de RTK, y mira qué se filtra.', de: 'Vergleiche echte Ausgaben vor und nach RTK und sieh, was gefiltert wird.', zh: '对比 RTK 前后的真实输出，看看什么被过滤了。', ja: 'RTK の前後で実際の出力を比較し、何が除かれるかを確認できます。' },
@@ -273,7 +264,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.demo.side_before': { en: 'Without RTK', fr: 'Sans RTK', es: 'Sin RTK', de: 'Ohne RTK', zh: '不用 RTK', ja: 'RTK なし' },
   'v3.demo.side_after': { en: 'With RTK', fr: 'Avec RTK', es: 'Con RTK', de: 'Mit RTK', zh: '使用 RTK', ja: 'RTK あり' },
 
-  // ── V3 · Tech specs ───────────────────────────────────────────────────────
   'v3.specs.eyebrow': { en: 'Built for developers', fr: 'Conçu pour les développeurs', es: 'Hecho para desarrolladores', de: 'Für Entwickler gebaut', zh: '为开发者而生', ja: '開発者のために' },
   'v3.specs.title': { en: 'Install &amp; <em>forget</em>', fr: 'Installez, puis <em>oubliez</em>', es: 'Instálalo y <em>olvídalo</em>', de: 'Installieren und <em>vergessen</em>', zh: '装上就<em>忘掉它</em>', ja: '入れたら<em>忘れていい</em>' },
   'v3.specs.lede': { en: 'RTK is a thin, open proxy layer. It adds nothing to your workflow: it only takes the noise away.', fr: "RTK est une fine couche proxy ouverte. Elle n'ajoute rien à votre workflow : elle enlève juste le bruit.", es: 'RTK es una capa proxy fina y abierta. No añade nada a tu flujo de trabajo: solo quita el ruido.', de: 'RTK ist eine dünne, offene Proxy-Schicht. Sie fügt deinem Workflow nichts hinzu: sie nimmt nur das Rauschen weg.', zh: 'RTK 是一层轻薄的开放代理。它不会给你的工作流增加任何东西（）只是把噪音拿走。', ja: 'RTK は薄いオープンなプロキシ層です。ワークフローに何も足さず、ノイズだけを取り除きます。' },
@@ -286,11 +276,9 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.specs.telemetry': { en: 'Telemetry', fr: 'Télémétrie', es: 'Telemetría', de: 'Telemetrie', zh: '遥测', ja: 'テレメトリ' },
   'v3.specs.telemetry_val': { en: 'Opt-in, no personal data', fr: 'Opt-in, aucune donnée personnelle', es: 'Opt-in, sin datos personales', de: 'Opt-in, keine personenbezogenen Daten', zh: '需选择加入，不含个人数据', ja: 'オプトイン、個人データなし' },
 
-  // ── V3 · FAQ ──────────────────────────────────────────────────────────────
   'v3.faq.eyebrow': { en: 'Questions', fr: 'Questions', es: 'Preguntas', de: 'Fragen', zh: '常见问题', ja: 'よくある質問' },
   'v3.faq.title': { en: 'Frequently asked', fr: 'Les plus fréquentes', es: 'Las más frecuentes', de: 'Häufig gestellt', zh: '高频提问', ja: 'よくいただく質問' },
 
-  // ── V3 · Proof (restored) ─────────────────────────────────────────────────
   'v3.proof.eyebrow': { en: 'The evidence', fr: 'Les preuves', es: 'La evidencia', de: 'Der Beleg', zh: '实测证据', ja: '実測データ' },
   'v3.proof.title': { en: 'Measure your rtk <em>gains</em>', fr: 'Mesurez vos <em>gains</em> rtk', es: 'Mide tus <em>ganancias</em> rtk', de: 'Miss deine rtk-<em>Gewinne</em>', zh: '衡量你的 rtk 收益', ja: 'あなたの rtk 節約量を測る' },
   'v3.proof.sub': { en: "Real <code>rtk gain</code> output from a developer's daily use.", fr: "Sortie réelle de <code>rtk gain</code> issue d'un usage quotidien.", es: 'Salida real de <code>rtk gain</code> de uso diario de un desarrollador.', de: 'Echte <code>rtk gain</code>-Ausgabe aus dem täglichen Einsatz.', zh: '来自开发者日常使用的真实 <code>rtk gain</code> 输出。', ja: '開発者の日常利用から得た実際の <code>rtk gain</code> 出力。' },
@@ -304,7 +292,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.proof.k2': { en: 'Per-command analytics', fr: 'Analyse par commande', es: 'Analítica por comando', de: 'Analyse pro Befehl', zh: '按命令统计', ja: 'コマンド別の分析' },
   'v3.proof.d2': { en: 'Daily, weekly and monthly stats by command. Run <code>rtk gain</code> to see yours.', fr: 'Statistiques quotidiennes, hebdomadaires et mensuelles par commande. Lancez <code>rtk gain</code> pour voir les vôtres.', es: 'Estadísticas diarias, semanales y mensuales por comando. Ejecuta <code>rtk gain</code> para ver las tuyas.', de: 'Tages-, Wochen- und Monatsstatistiken pro Befehl. Führe <code>rtk gain</code> aus, um deine zu sehen.', zh: '按命令查看每日、每周和每月统计。运行 <code>rtk gain</code> 查看你的数据。', ja: 'コマンド別の日次・週次・月次の統計。<code>rtk gain</code> を実行すると自分の数値を確認できます。' },
 
-  // ── V3 · Install (restored) ───────────────────────────────────────────────
   'v3.install.eyebrow': { en: 'Get started', fr: 'Démarrer', es: 'Empezar', de: 'Loslegen', zh: '开始使用', ja: 'はじめる' },
   'v3.install.title': { en: 'Running in <em>30 seconds</em>', fr: 'Opérationnel en <em>30 secondes</em>', es: 'Funcionando en <em>30 segundos</em>', de: 'In <em>30 Sekunden</em> startklar', zh: '30 秒即可运行', ja: '30 秒で動き出す' },
   'v3.install.sub': { en: 'Install, activate the hook, and every command is compressed automatically.', fr: 'Installez, activez le hook, et chaque commande est compressée automatiquement.', es: 'Instala, activa el hook y cada comando se comprime automáticamente.', de: 'Installieren, Hook aktivieren, jeder Befehl wird automatisch komprimiert.', zh: '安装、激活钩子，之后每条命令都会被自动压缩。', ja: 'インストールしてフックを有効化すれば、あらゆるコマンドが自動で圧縮されます。' },
@@ -322,9 +309,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.install.note_cursor': { en: "Configures Cursor's .cursorrules to pipe Bash commands through rtk.", fr: 'Configure le fichier .cursorrules de Cursor pour faire passer les commandes Bash par rtk.', es: 'Configura el .cursorrules de Cursor para pasar los comandos Bash por rtk.', de: 'Konfiguriert die .cursorrules von Cursor, damit Bash-Befehle durch rtk laufen.', zh: '配置 Cursor 的 .cursorrules，让 Bash 命令经过 rtk。', ja: 'Cursor の .cursorrules を設定し、Bash コマンドを rtk 経由にします。' },
   'v3.install.note_other': { en: 'Installs a global shell hook: works with Aider, Gemini CLI, Codex, Windsurf, and any terminal AI tool.', fr: 'Installe un hook shell global : fonctionne avec Aider, Gemini CLI, Codex, Windsurf et tout outil IA en terminal.', es: 'Instala un hook global de shell: funciona con Aider, Gemini CLI, Codex, Windsurf y cualquier herramienta de IA en terminal.', de: 'Installiert einen globalen Shell-Hook: funktioniert mit Aider, Gemini CLI, Codex, Windsurf und jedem Terminal-KI-Tool.', zh: '安装全局 shell 钩子（）适用于 Aider、Gemini CLI、Codex、Windsurf 以及任何终端 AI 工具。', ja: 'グローバルなシェルフックを導入（）Aider、Gemini CLI、Codex、Windsurf などあらゆるターミナル AI ツールで動作します。' },
 
-  // ── V3 · Share gain (restored) ────────────────────────────────────────────
-
-  // ── V3 · Final CTA ────────────────────────────────────────────────────────
   'v3.cta.title': { en: 'Give your agent<br /><em>room to think</em>', fr: 'Donnez à votre agent<br /><em>de la place pour réfléchir</em>', es: 'Dale a tu agente<br /><em>espacio para pensar</em>', de: 'Gib deinem Agenten<br /><em>Raum zum Denken</em>', zh: '给你的代理<br />留出思考空间', ja: 'エージェントに<br />考える余地を' },
   'v3.cta.sub': { en: 'Install RTK and keep the noise out of your context.', fr: 'Installez RTK et gardez le bruit hors de votre contexte.', es: 'Instala RTK y mantén el ruido fuera de tu contexto.', de: 'Installiere RTK und halte das Rauschen aus deinem Kontext.', zh: '安装 RTK，让噪音远离你的上下文。', ja: 'RTK をインストールして、ノイズをコンテキストから締め出しましょう。' },
   'v3.pro.eyebrow': { en: 'RTK Pro', fr: 'RTK Pro', es: 'RTK Pro', de: 'RTK Pro', zh: 'RTK Pro', ja: 'RTK Pro' },
@@ -340,7 +324,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.pro.note': { en: 'The CLI stays free and open source.', fr: 'Le CLI reste gratuit et open source.', es: 'El CLI sigue siendo gratuito y de código abierto.', de: 'Das CLI bleibt kostenlos und Open Source.', zh: 'CLI 始终保持免费与开源。', ja: 'CLI は無料でオープンソースのままです。' },
   'v3.cta.share': { en: 'Share RTK', fr: 'Partager RTK', es: 'Comparte RTK', de: 'RTK teilen', zh: '分享 RTK', ja: 'RTK をシェア' },
 
-  // ── Nav ───────────────────────────────────────────────────────────────────
   'nav.product': { en: 'Product',      fr: 'Produit',       es: 'Producto',      de: 'Produkt',       zh: '产品',       ja: 'プロダクト' },
   'nav.why_rtk': { en: 'Why RTK',      fr: 'Pourquoi RTK',  es: 'Por qué RTK',   de: 'Warum RTK',     zh: '为什么选 RTK', ja: 'なぜ RTK' },
   'nav.integrations': { en: 'Integrations', fr: 'Intégrations',  es: 'Integraciones', de: 'Integrationen', zh: '集成',       ja: '連携' },
@@ -349,7 +332,6 @@ export const T: Record<string, Record<Lang, string>> = {
   'nav.resources': { en: 'Resources',    fr: 'Ressources',   es: 'Recursos',     de: 'Ressourcen',   zh: '资源',   ja: 'リソース' },
   'nav.how_it_works': { en: 'How it works', fr: 'Fonctionnement', es: 'Cómo funciona', de: 'So funktioniert es', zh: '工作原理', ja: '仕組み' },
 
-  // ── Footer ────────────────────────────────────────────────────────────────
   'footer.tagline': { en: 'Rust Token Killer: cuts up to 90% of CLI output noise before it reaches your AI context. Zero config.', fr: "Rust Token Killer : supprime jusqu'à 90 % du bruit des sorties CLI avant qu'il n'atteigne le contexte de votre IA. Sans configuration.", es: 'Rust Token Killer: elimina hasta el 90 % del ruido de la salida CLI antes de que llegue al contexto de tu IA. Sin configuración.', de: 'Rust Token Killer: entfernt bis zu 90 % des CLI-Ausgaberauschens, bevor es den KI-Kontext erreicht. Ohne Konfiguration.', zh: 'Rust Token Killer：在 CLI 输出进入 AI 上下文之前，清除其中多达 90% 的噪音。零配置。', ja: 'Rust Token Killer：CLI 出力のノイズを AI コンテキストに届く前に最大 90% 削減。設定不要。' },
   'footer.col_install': { en: 'Install',   fr: 'Installation',  es: 'Instalación', de: 'Installation', zh: '安装',   ja: 'インストール' },
   'footer.col_docs': { en: 'Docs',      fr: 'Docs',          es: 'Docs',        de: 'Docs',         zh: '文档',   ja: 'ドキュメント' },

@@ -189,11 +189,6 @@ const contributors = [
   }))
   .sort((a, b) => b.contributions - a.contributions || a.handle.localeCompare(b.handle))
 
-/* Only repeat contributors get a chip. The full list is ~150 names, most of
-   them a single commit, which turned the section into a wall of chips where no
-   individual name registered. Everyone else is counted in the caption and
-   reachable through "View all contributors" on GitHub, which is the canonical
-   list anyway and never goes stale. */
 const shown = contributors.filter((c) => c.contributions > 1)
 const singleCommit = contributors.length - shown.length
 
@@ -350,10 +345,7 @@ const schemaOrg = {
 </PageV3>
 
 <style>
-  /* Team — page-scoped layout on top of the V3 system (landing-v3.css owns the
-     primitives: container, section rhythm, eyebrow, h2, buttons, reveal). */
 
-  /* ── Page header ─────────────────────────────────────────────────── */
   .tm-head {
     padding-top: clamp(4.5rem, 8vw, 7rem);
     padding-bottom: calc(var(--lp3-sec-pad) * 0.34);
@@ -361,9 +353,6 @@ const schemaOrg = {
   .tm-title {
     max-width: 20ch;
   }
-  /* The accent word keeps our mint as a vertical tonal sweep inside the hue,
-     never flat at display size (NEW_DESIGN_RULES §2). Guarded: without
-     color-mix the transparent fill would erase the word. */
   .tm-accent {
     color: var(--accent);
   }
@@ -382,14 +371,10 @@ const schemaOrg = {
     }
   }
 
-  /* ── Section rhythm ──────────────────────────────────────────────── */
-  /* A quieter cadence than the landing: this page stacks four text blocks,
-     so the shared rhythm token is scaled rather than redefined. */
   .tm-sec {
     padding-top: calc(var(--lp3-sec-pad) * 0.52);
     padding-bottom: calc(var(--lp3-sec-pad) * 0.52);
   }
-  /* bands separated by a hairline, never by a background change */
   .tm-sec-line {
     border-top: 1px solid var(--lp3-line);
   }
@@ -401,7 +386,6 @@ const schemaOrg = {
     font-size: 0.95rem;
   }
 
-  /* ── RTK AI Labs — three columns split by thin vertical rules ────── */
   .tm-people {
     list-style: none;
     margin: clamp(3rem, 5vw, 4.5rem) 0 0;
@@ -471,7 +455,6 @@ const schemaOrg = {
     text-decoration: none;
   }
 
-  /* ── Maintainers — heading band left, hairline table right ───────── */
   .tm-split {
     display: grid;
     grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
@@ -519,7 +502,6 @@ const schemaOrg = {
     background: var(--lp3-surface-hover);
   }
 
-  /* ── Contributors — quiet chips ──────────────────────────────────── */
   .tm-contrib-head {
     max-width: 40rem;
   }
@@ -567,7 +549,6 @@ const schemaOrg = {
     margin-top: clamp(2rem, 3.5vw, 3rem);
   }
 
-  /* ── Responsive ──────────────────────────────────────────────────── */
   @media (max-width: 960px) {
     .tm-split {
       grid-template-columns: 1fr;
