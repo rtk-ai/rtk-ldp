@@ -22,13 +22,6 @@ export const rssEntries: RssEntry[] = [
     link: 'https://www.rtk-ai.app/cloud/',
   },
   {
-    type: 'new_page',
-    title: 'RTK token savings data — dedicated page',
-    date: 'May 9, 2026',
-    description: 'Proof page with measured savings across 2,900+ real commands. cargo test at 91.8%, git status at 80.8%, grep at 49.5%. One developer tracked 138 million tokens saved over several weeks.',
-    link: 'https://www.rtk-ai.app/savings/',
-  },
-  {
     type: 'new_doc',
     title: 'Docs: Filter Workflow guide',
     date: 'Apr 5, 2026',

@@ -38,7 +38,7 @@ export const GET: APIRoute = async (context) => {
 
   return rss({
     title: 'RTK — Rust Token Killer',
-    description: 'Updates, releases and new features for RTK — reduce Claude Code token usage by 60-90%.',
+    description: 'Updates, releases and new features for RTK: cutting up to 90% of CLI output noise before it reaches your AI context.',
     site: context.site!,
     items: allItems,
     customData: `<language>en-us</language>`,
