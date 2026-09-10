@@ -88,12 +88,12 @@ const strandsOutV = Array.from({ length: 8 }, (_, i) => {
         <div class="lp3-intro-spacer" data-intro-spacer aria-hidden="true"></div>
         <p class="lp3-intro-name">RTK</p>
         <p class="lp3-intro-tag" set:html={t('v3.hero.intro_tag', lang)}></p>
-        <p class="lp3-intro-cue">
+        <button type="button" class="lp3-intro-cue" data-intro-cue>
           <span class="ring" aria-hidden="true">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg>
           </span>
           {t('v3.hero.scroll_cue', lang)}
-        </p>
+        </button>
       </div>
 
       <div class="lp3-motes" aria-hidden="true">
