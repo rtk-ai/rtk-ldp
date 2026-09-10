@@ -83,6 +83,16 @@ export function initHeroProofPlacement() {
   phone.addEventListener('change', place)
 }
 
+export function initIntroCue() {
+  const cue = document.querySelector<HTMLElement>('[data-intro-cue]')
+  const pin = document.querySelector<HTMLElement>('[data-pin]')
+  if (!cue || !pin) return
+  cue.addEventListener('click', () => {
+    const end = pin.offsetTop + pin.offsetHeight - window.innerHeight
+    window.scrollTo({ top: Math.max(0, end), behavior: reduced() ? 'auto' : 'smooth' })
+  })
+}
+
 export function initHeroIdle() {
   const hero = document.querySelector<HTMLElement>('.lp3-hero')
   if (!hero) return
