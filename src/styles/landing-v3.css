@@ -75,30 +75,9 @@
 .lp3-cta-title em,
 .lp3-page-title em,
 .lp3-pro-title em {
-  display: inline-block;
   font-style: italic;
   font-weight: 500;
   letter-spacing: -0.015em;
-  transform: skewX(-5deg);
-  margin-inline: 0.09em;
-  color: var(--text-bright);
-  -webkit-text-fill-color: currentColor;
-}
-@supports (color: color-mix(in srgb, red 50%, blue)) {
-  .lp3-h2 em,
-  .lp3-cta-title em,
-  .lp3-page-title em,
-  .lp3-pro-title em {
-    background: linear-gradient(
-      180deg,
-      var(--text-bright) 25%,
-      color-mix(in srgb, var(--text-bright) 55%, var(--text-muted)) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
 }
 
 @supports (color: color-mix(in srgb, red 50%, blue)) {
