@@ -7,6 +7,19 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v))
 const seg = (p: number, a: number, b: number) => clamp01((p - a) / (b - a))
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3)
 
+const varMemo = new WeakMap<HTMLElement, Map<string, string>>()
+function setText(el: HTMLElement | null | undefined, value: string) {
+  if (el && el.textContent !== value) el.textContent = value
+}
+function setVar(el: HTMLElement | null | undefined, name: string, value: string) {
+  if (!el) return
+  let m = varMemo.get(el)
+  if (!m) { m = new Map(); varMemo.set(el, m) }
+  if (m.get(name) === value) return
+  m.set(name, value)
+  el.style.setProperty(name, value)
+}
+
 function onScroll(update: () => void) {
   let ticking = false
   const request = () => {
@@ -40,11 +53,66 @@ function animateCount(el: HTMLElement) {
   requestAnimationFrame(frame)
 }
 
+export function initFooterGroups() {
+  const cols = Array.from(document.querySelectorAll<HTMLDetailsElement>('.lp3-footer-col'))
+  if (!cols.length) return
+  const phone = window.matchMedia('(max-width: 700px)')
+  const sync = () => cols.forEach(c => { c.open = !phone.matches })
+  sync()
+  phone.addEventListener('change', sync)
+}
+
+export function initHeroProofPlacement() {
+  const hero = document.querySelector<HTMLElement>('[data-hero]')
+  const proof = document.querySelector<HTMLElement>('[data-hero-proof]')
+  const stage = hero?.querySelector<HTMLElement>('.lp3-hero-stage')
+  if (!hero || !proof || !stage) return
+  const phone = window.matchMedia('(max-width: 760px)')
+  const place = () => {
+    if (phone.matches) {
+      if (proof.parentElement === stage) {
+        hero.insertAdjacentElement('afterend', proof)
+        proof.classList.add('is-band')
+      }
+    } else if (proof.parentElement !== stage) {
+      stage.appendChild(proof)
+      proof.classList.remove('is-band')
+    }
+  }
+  place()
+  phone.addEventListener('change', place)
+}
+
+export function initHeroIdle() {
+  const hero = document.querySelector<HTMLElement>('.lp3-hero')
+  if (!hero) return
+  if (typeof IntersectionObserver !== 'function') return
+  const io = new IntersectionObserver(
+    entries => {
+      for (const e of entries) hero.classList.toggle('hero-away', !e.isIntersecting)
+    },
+    { rootMargin: '10% 0px' }
+  )
+  io.observe(hero)
+}
+
 export function initHeroScroll() {
   const dropBoot = () => document.documentElement.classList.remove('lp3-boot')
   const hero = document.querySelector<HTMLElement>('[data-hero]')
   if (!hero || reduced()) return dropBoot()
-  if (window.matchMedia('(max-height: 560px)').matches) return dropBoot()
+  const fitsInOneViewport = () => {
+    const grid = hero.querySelector<HTMLElement>('.lp3-hero-grid')
+    const proof = hero.querySelector<HTMLElement>('.lp3-hero-proofwrap')
+    const rawPanelEl = hero.querySelector<HTMLElement>('.lp3-panel-raw')
+    if (!grid) return true
+    const prev = rawPanelEl?.style.display ?? ''
+    if (rawPanelEl) rawPanelEl.style.display = 'none'
+    const navEl = document.querySelector<HTMLElement>('.lp3-nav')
+    const need = grid.scrollHeight + (proof?.offsetHeight ?? 0) + (navEl?.offsetHeight ?? 64) + 48
+    if (rawPanelEl) rawPanelEl.style.display = prev
+    return need <= window.innerHeight
+  }
+  if (!fitsInOneViewport()) return dropBoot()
   const pin = hero.querySelector<HTMLElement>('[data-pin]')
   const visual = hero.querySelector<HTMLElement>('.lp3-hero-visual')
   if (!pin || !visual) return dropBoot()
@@ -75,6 +143,7 @@ export function initHeroScroll() {
   let spacerOffY = 0
   let gateW = 96 // rendered gate-mark size (differs on mobile)
   let logoSize = 180 // title-card logo size = the spacer's height
+  let cleanBase = 0
   let groupOff = 0 // [gate+clean] group center offset from the visual's center
   let boxSize = 0 // visual box extent along the flow axis
   let isVertical = false // mobile stack vs desktop row
@@ -83,14 +152,16 @@ export function initHeroScroll() {
   const measure = () => {
     const prev = visual.style.transform
     visual.style.transform = 'none'
-    hero.style.setProperty('--gms', '1')
-    hero.style.setProperty('--gmx', '0px')
-    hero.style.setProperty('--gmy', '0px')
+    setVar(hero, '--gms', '1')
+    setVar(hero, '--gmx', '0px')
+    setVar(hero, '--gmy', '0px')
     const flowEl = hero.querySelector<HTMLElement>('.lp3-flow')
     if (flowEl) {
-      flowEl.style.setProperty('--fx', '0px')
-      flowEl.style.setProperty('--fy', '0px')
-      flowEl.style.setProperty('--fs', '1')
+      setVar(flowEl, '--fx', '0px')
+      setVar(flowEl, '--fy', '0px')
+      setVar(flowEl, '--fs', '1')
+      setVar(flowEl, '--rawfr', '1fr')
+      setVar(flowEl, '--cleanw', '1fr')
     }
     const r = visual.getBoundingClientRect()
     dx = window.innerWidth / 2 - (r.left + r.width / 2)
@@ -118,6 +189,8 @@ export function initHeroScroll() {
         boxSize = isVertical ? r.height : r.width
       }
     }
+    cleanBase = cleanPanel && !isVertical ? Math.round(cleanPanel.offsetWidth) : 0
+    if (flowEl) setVar(flowEl, '--cleanw', cleanBase > 0 ? `${cleanBase}px` : '1fr')
     visual.style.transform = prev
   }
   let lastW = 0
@@ -131,12 +204,12 @@ export function initHeroScroll() {
     const k = 1 - dockD
     const px = (e.clientX / window.innerWidth - 0.5) * 5 * k
     const py = (0.5 - e.clientY / window.innerHeight) * 4 * k
-    flow.style.setProperty('--px', `${px.toFixed(2)}deg`)
-    flow.style.setProperty('--py', `${py.toFixed(2)}deg`)
+    setVar(flow, '--px', `${px.toFixed(2)}deg`)
+    setVar(flow, '--py', `${py.toFixed(2)}deg`)
   })
   stage?.addEventListener('pointerleave', () => {
-    flow?.style.setProperty('--px', '0deg')
-    flow?.style.setProperty('--py', '0deg')
+    setVar(flow, '--px', '0deg')
+    setVar(flow, '--py', '0deg')
   })
 
   onScroll(() => {
@@ -149,24 +222,27 @@ export function initHeroScroll() {
     const total = pin.offsetHeight - window.innerHeight
     const p = total > 0 ? clamp01(-pin.getBoundingClientRect().top / total) : 1
 
-    nav?.classList.toggle('is-hidden', p < 0.02)
+
+    const vs0 = isVertical ? 1 : s0
+    const vdx = isVertical ? 0 : dx
+    const vdy = isVertical ? 0 : dy
 
     const ip = seg(p, 0.03, 0.15)
     const ipe = easeOut(ip)
-    hero.style.setProperty('--introp', ipe.toFixed(3))
-    hero.style.setProperty('--introo', (1 - seg(p, 0.07, 0.145)).toFixed(3))
-    hero.style.setProperty('--reveal', (0.06 + 0.94 * easeOut(seg(p, 0.02, 0.16))).toFixed(3))
-    const gs0 = logoSize / (gateW * s0)
-    hero.style.setProperty('--gms', (gs0 + (1 - gs0) * ipe).toFixed(3))
-    hero.style.setProperty('--gmx', `${((spacerOffX / s0 - gateOffX) * (1 - ipe)).toFixed(1)}px`)
-    hero.style.setProperty('--gmy', `${((spacerOffY / s0 - gateOffY) * (1 - ipe)).toFixed(1)}px`)
+    setVar(hero, '--introp', ipe.toFixed(3))
+    setVar(hero, '--introo', (1 - seg(p, 0.07, 0.145)).toFixed(3))
+    setVar(hero, '--reveal', (0.06 + 0.94 * easeOut(seg(p, 0.02, 0.16))).toFixed(3))
+    const gs0 = logoSize / (gateW * vs0)
+    setVar(hero, '--gms', (gs0 + (1 - gs0) * ipe).toFixed(3))
+    setVar(hero, '--gmx', `${(((dx + spacerOffX - vdx) / vs0 - gateOffX) * (1 - ipe)).toFixed(1)}px`)
+    setVar(hero, '--gmy', `${(((dy + spacerOffY - vdy) / vs0 - gateOffY) * (1 - ipe)).toFixed(1)}px`)
     hero.classList.toggle('intro-live', p < 0.15)
     intro?.classList.toggle('gone', p >= 0.16)
 
     const q = seg(p, 0.14, 0.64)
 
     const atmo = (0.45 + 0.55 * seg(q, 0.15, 0.9)) * (1 - 0.25 * seg(p, 0.62, 0.76))
-    hero.style.setProperty('--atmo', atmo.toFixed(3))
+    setVar(hero, '--atmo', atmo.toFixed(3))
 
     for (const el of lines) {
       el.classList.toggle('on', q >= parseFloat(el.dataset.t || '0'))
@@ -177,49 +253,51 @@ export function initHeroScroll() {
     const d = easeOut(seg(p, 0.62, 0.76))
     dockD = d
 
-    const endScale = isVertical ? 1 : 1.15
-    const endOff = -endScale * (groupOff + (isVertical ? 0 : boxSize * 0.07))
-    const endX = isVertical ? 0 : endOff
-    const endY = isVertical ? endOff : 0
+    const endScale = 1
+    const endX = 0
+    const endY = 0
     if (d >= 1 && flow) {
-      flow.style.setProperty('--px', '0deg')
-      flow.style.setProperty('--py', '0deg')
+      setVar(flow, '--px', '0deg')
+      setVar(flow, '--py', '0deg')
     }
-    hero.style.setProperty('--vs', String(s0 + (endScale - s0) * d))
-    hero.style.setProperty('--vx', `${(dx * (1 - d) + endX * d).toFixed(1)}px`)
-    hero.style.setProperty('--vy', `${(dy * (1 - d) + endY * d).toFixed(1)}px`)
-    hero.style.setProperty('--glowx', `${50 + 16 * d}%`)
+    const vs = vs0 + (endScale - vs0) * d
+    setVar(hero, '--vs', String(vs))
+    setVar(hero, '--vx', `${(vdx * (1 - d) + endX * d).toFixed(1)}px`)
+    setVar(hero, '--vy', `${(vdy * (1 - d) + endY * d).toFixed(1)}px`)
+    setVar(hero, '--glowx', `${50 + 16 * d}%`)
 
     const rawFade = easeOut(seg(p, 0.54, 0.6))
-    hero.style.setProperty('--rawout', rawFade.toFixed(3))
+    setVar(hero, '--rawout', rawFade.toFixed(3))
+    setVar(flow, '--rawfr', `${(1 - rawFade).toFixed(3)}fr`)
+    setVar(flow, '--rawopen', (1 - rawFade).toFixed(3))
 
-    flow?.style.setProperty('--fs', '1')
-    flow?.style.setProperty('--fx', '0px')
-    flow?.style.setProperty('--fy', '0px')
+    setVar(flow, '--fs', '1')
+    setVar(flow, '--fx', '0px')
+    setVar(flow, '--fy', '0px')
 
     gate?.classList.toggle('lit', q >= 0.32)
     const pIn = String(seg(q, 0.26, 0.5))
     const pOut = String(seg(q, 0.44, 0.64))
     const alive = String(1 - rawFade)
     flowIns.forEach(g => {
-      g.style.setProperty('--pflow', pIn)
-      g.style.setProperty('--alive', alive)
+      setVar(g, '--pflow', pIn)
+      setVar(g, '--alive', alive)
     })
-    flowOuts.forEach(g => g.style.setProperty('--pflow', pOut))
+    flowOuts.forEach(g => setVar(g, '--pflow', pOut))
 
     const raw = Math.round(32 + 54 * easeOut(seg(q, 0, 0.2)))
-    if (rawPct) rawPct.textContent = `${raw}% used`
-    if (rawMeter) rawMeter.style.width = `${raw}%`
+    if (rawPct) setText(rawPct, `${raw}% used`)
+    if (rawMeter) setVar(rawMeter, 'width', `${raw}%`)
 
     const cq = seg(q, 0.5, 0.74)
     if (cleanPct && cleanMeter) {
       if (cq === 0) {
-        cleanPct.textContent = '—'
-        cleanMeter.style.width = '0%'
+        setText(cleanPct, '—')
+        setVar(cleanMeter, 'width', '0%')
       } else {
         const c = Math.round(86 - 13 * easeOut(cq))
-        cleanPct.textContent = `${c}% used`
-        cleanMeter.style.width = `${c}%`
+        setText(cleanPct, `${c}% used`)
+        setVar(cleanMeter, 'width', `${c}%`)
       }
     }
 
@@ -259,8 +337,8 @@ export function initContextViz() {
     const q = clamp01((vh * 0.85 - rect.top) / (vh * 0.6))
     const cli = Math.round(18 - 13 * easeOut(q))
     const used = Math.round(67.5 + cli)
-    root.style.setProperty('--cli', `${cli}%`)
-    root.style.setProperty('--used', `${used}%`)
+    setVar(root, '--cli', `${cli}%`)
+    setVar(root, '--used', `${used}%`)
     if (cliPct) cliPct.textContent = String(cli)
     if (usedPct) usedPct.textContent = String(used)
     root.classList.toggle('is-full', used >= 80)

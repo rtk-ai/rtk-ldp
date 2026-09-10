@@ -15,6 +15,7 @@ import FaqV3 from '../landing/v3/FaqV3.astro'
 import FinalCta from '../landing/v3/FinalCta.astro'
 import ProCta from '../landing/v3/ProCta.astro'
 import FooterV3 from '../landing/v3/FooterV3.astro'
+import { getRepoFacts } from '../../lib/github'
 import SearchModal from '../global/SearchModal.astro'
 
 interface Props {
@@ -53,38 +54,8 @@ const faqItems = [
   },
 ]
 
-let version = ''
-const STARS_FLOOR = 79000
-let stars = STARS_FLOOR
-let starsLive = false
-try {
-  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
-  const token = process.env.GITHUB_TOKEN
-  if (token) headers['Authorization'] = `Bearer ${token}`
-  const [repo, rel] = await Promise.all([
-    fetch('https://api.github.com/repos/rtk-ai/rtk', { headers }),
-    fetch('https://api.github.com/repos/rtk-ai/rtk/releases/latest', { headers }),
-  ])
-  if (repo.ok) {
-    const data = await repo.json()
-    if (data.stargazers_count) {
-      stars = data.stargazers_count
-      starsLive = true
-    }
-  }
-  if (rel.ok) {
-    const data = await rel.json()
-    if (data.tag_name) version = data.tag_name.replace(/^v/, '')
-  }
-} catch {}
+const { version, starsLabel } = await getRepoFacts()
 
-if (!starsLive) {
-  console.warn(
-    `[landing] GitHub stars unavailable — shipping the ${STARS_FLOOR} floor value. Check the API/token before release.`
-  )
-}
-
-const starsLabel = stars >= 1000 ? `${(stars / 1000).toFixed(1)}K` : String(stars)
 
 const buildDate = new Date().toISOString().split('T')[0]
 
@@ -254,7 +225,7 @@ const schemaOrg = {
       <FinalCta lang={lang} />
       <ProCta lang={lang} />
     </main>
-    <FooterV3 lang={lang} />
+    <FooterV3 lang={lang} compact />
     <SearchModal />
   </div>
 </Layout>
@@ -267,7 +238,10 @@ const schemaOrg = {
   import { initReveal } from '../../scripts/reveal'
   import { initCopyButtons } from '../../scripts/copy'
   import {
+    initFooterGroups,
+    initHeroProofPlacement,
     initHeroScroll,
+    initHeroIdle,
     initContextViz,
     initDemoTabs,
     initCountUp,
@@ -280,7 +254,10 @@ const schemaOrg = {
 
   initReveal()
   initCopyButtons()
+  initFooterGroups()
+  initHeroProofPlacement()
   initHeroScroll()
+  initHeroIdle()
   initContextViz()
   initDemoTabs()
   initCountUp()

@@ -1,4 +1,5 @@
 ---
+const caret = `<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`
 import IconGitHub from '../../ui/icons/IconGitHub.astro'
 import IconDiscord from '../../ui/icons/IconDiscord.astro'
 import IconKofi from '../../ui/icons/IconKofi.astro'
@@ -7,11 +8,13 @@ import IconXLogo from '../../ui/icons/IconXLogo.astro'
 import IconStar from '../../ui/icons/IconStar.astro'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
+import { getRepoFacts } from '../../../lib/github'
 
 interface Props {
   lang?: Lang
+  compact?: boolean
 }
-const { lang = 'en' } = Astro.props
+const { lang = 'en', compact = false } = Astro.props
 const year = new Date().getFullYear()
 
 const currentLocale = (Astro.currentLocale ?? 'en') as Lang
@@ -22,17 +25,7 @@ const homeHref = getRelativeLocaleUrl(currentLocale, '/')
 const benchHref = getRelativeLocaleUrl(currentLocale, '/benchmarks/')
 const teamHref = '/team/'
 
-let version = 'v0.37.1'
-try {
-  const headers: Record<string, string> = { 'User-Agent': 'rtk-landing' }
-  const token = process.env.GITHUB_TOKEN
-  if (token) headers['Authorization'] = `Bearer ${token}`
-  const res = await fetch('https://api.github.com/repos/rtk-ai/rtk/releases/latest', { headers })
-  if (res.ok) {
-    const data = await res.json()
-    if (data.tag_name) version = data.tag_name.startsWith('v') ? data.tag_name : `v${data.tag_name}`
-  }
-} catch {}
+const { versionTag: version } = await getRepoFacts()
 
 const columns = [
   {
@@ -78,22 +71,24 @@ const columns = [
 ]
 ---
 <footer class="lp3-footer">
-  <div class="lp3-footer-cta">
-    <div class="lp3-container lp3-footer-cta-inner">
-      <div>
-        <p class="t">{t('footer.cta_title', lang)}</p>
-        <p class="s">{t('footer.cta_sub', lang)}</p>
-      </div>
-      <div class="lp3-footer-cta-btns">
-        <a href={`${homeHref}#install`} class="lp3-btn lp3-btn-primary lp3-btn-sm">
-          {t('hero.cta_install', lang)} <span class="arr" aria-hidden="true">→</span>
-        </a>
-        <a href="https://github.com/rtk-ai/rtk" class="lp3-btn lp3-btn-ghost lp3-btn-sm" target="_blank" rel="noopener">
-          <IconGitHub size={14} /> {t('hero.cta_star', lang)}
-        </a>
+  {!compact && (
+    <div class="lp3-footer-cta">
+      <div class="lp3-container lp3-footer-cta-inner">
+        <div>
+          <p class="t">{t('footer.cta_title', lang)}</p>
+          <p class="s">{t('footer.cta_sub', lang)}</p>
+        </div>
+        <div class="lp3-footer-cta-btns">
+          <a href={`${homeHref}#install`} class="lp3-btn lp3-btn-primary lp3-btn-sm">
+            {t('hero.cta_install', lang)} <span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="https://github.com/rtk-ai/rtk" class="lp3-btn lp3-btn-ghost lp3-btn-sm" target="_blank" rel="noopener">
+            <IconGitHub size={14} /> {t('hero.cta_star', lang)}
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  )}
 
   <div class="lp3-container">
     <div class="lp3-footer-top">
@@ -102,7 +97,7 @@ const columns = [
           <img src="/brand/box-logo-white.webp" alt="RTK logo" width="28" height="28" />
           <span>RTK</span>
         </a>
-        <p>{t('footer.tagline', lang)}</p>
+        {!compact && <p>{t('footer.tagline', lang)}</p>}
         <div class="lp3-footer-badges">
           <span class="badge"><IconStar size={12} filled /> {t('footer.open_source', lang)}</span>
           <span class="ver">{version}</span>
@@ -131,15 +126,18 @@ const columns = [
 
       <div class="lp3-footer-cols">
         {columns.map(col => (
-          <nav class="lp3-footer-col" aria-label={col.title}>
-            <span>{col.title}</span>
-            {col.links.map(l => (
-              <a href={l.href} {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
-            ))}
-          </nav>
+          <details class="lp3-footer-col" open>
+            <summary>{col.title}<Fragment set:html={caret} /></summary>
+            <div class="lp3-footer-links">
+              {col.links.map(l => (
+                <a href={l.href} {...(l.ext ? { target: '_blank', rel: 'noopener' } : {})}>{l.label}</a>
+              ))}
+            </div>
+          </details>
         ))}
-        <nav class="lp3-footer-col" aria-label={t('footer.col_products', lang)}>
-          <span>{t('footer.col_products', lang)}</span>
+        <details class="lp3-footer-col" open>
+          <summary>{t('footer.col_products', lang)}<Fragment set:html={caret} /></summary>
+          <div class="lp3-footer-links">
           <a href="https://pro.rtk-ai.app" class="is-pro">RTK Pro</a>
           <a href={benchHref}>{t('nav.benchmarks', lang)}</a>
           <a href="/blog/">{t('nav.blog', lang)}</a>
@@ -148,7 +146,8 @@ const columns = [
           <a href="https://github.com/rtk-ai/rtk/blob/master/LICENSE" target="_blank" rel="noopener">{t('footer.license', lang)}</a>
           <a href="https://github.com/rtk-ai/rtk/blob/master/CONTRIBUTING.md" target="_blank" rel="noopener">{t('footer.contributing', lang)}</a>
           <button type="button" class="lp3-footer-consent" id="lp3-cookie-prefs">{t('footer.cookie_prefs', lang)}</button>
-        </nav>
+          </div>
+        </details>
       </div>
     </div>
 
