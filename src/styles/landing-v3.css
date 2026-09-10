@@ -633,7 +633,7 @@
 .lp3-hero { position: relative; }
 
 .lp3-hero-pin { height: 100%; }
-.lp3-hero.js-anim .lp3-hero-pin { height: 420vh; }
+.lp3-hero.js-anim .lp3-hero-pin { height: 420svh; }
 
 .lp3-hero-stage {
   position: relative;
@@ -1309,7 +1309,7 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
     padding-top: clamp(88px, 15svh, 140px);
     padding-bottom: 0;
   }
-  .lp3-hero.js-anim .lp3-hero-pin { height: 240vh; }
+  .lp3-hero.js-anim .lp3-hero-pin { height: 240svh; }
   .lp3-hero-stage::before { left: 50%; top: 50%; }
   .lp3-hero-stage::after { display: none; }
 
