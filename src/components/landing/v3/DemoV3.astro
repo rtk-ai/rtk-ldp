@@ -1,0 +1,253 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+type Ln = { cls: 'c' | 'd' | 'n' | 'k' | 'm'; text: string }
+type Side = { cmd: string; count: string; lines: Ln[] }
+type Tab = { id: string; label: string; before: Side; after: Side }
+
+const esc = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+const sideHtml = (side: Side) =>
+  `<span class="c">${esc(side.cmd)}\n</span>` +
+  side.lines.map(l => `<span class="${l.cls}">${esc(l.text)}\n</span>`).join('')
+
+const tabs: Tab[] = [
+  {
+    id: 'output',
+    label: t('v3.demo.tab_output', lang),
+    before: {
+      cmd: '$ cargo build',
+      count: '1,042',
+      lines: [
+        { cls: 'd', text: '   Compiling libc v0.2.155' },
+        { cls: 'd', text: '   Compiling proc-macro2 v1.0.85' },
+        { cls: 'd', text: '   Compiling unicode-ident v1.0.12' },
+        { cls: 'd', text: '   Compiling quote v1.0.36' },
+        { cls: 'd', text: '   Compiling syn v2.0.66' },
+        { cls: 'd', text: '   Compiling cfg-if v1.0.0' },
+        { cls: 'd', text: '   Compiling once_cell v1.19.0' },
+        { cls: 'n', text: 'warning: unused variable: `raw`' },
+        { cls: 'n', text: '  --> src/filter.rs:214:9' },
+        { cls: 'n', text: 'warning: field is never read: `depth`' },
+        { cls: 'n', text: '  --> src/tree.rs:87:5' },
+        { cls: 'd', text: '   Compiling serde v1.0.197' },
+        { cls: 'd', text: '   Compiling anyhow v1.0.79' },
+        { cls: 'm', text: '⋮ 1,026 more lines' },
+        { cls: 'd', text: '    Finished dev [unoptimized] in 32.48s' },
+      ],
+    },
+    after: {
+      cmd: '$ rtk cargo build',
+      count: '4',
+      lines: [
+        { cls: 'k', text: '✓ build finished in 32.4s' },
+        { cls: 'd', text: '· 214 crates compiled' },
+        { cls: 'n', text: '· 2 warnings: filter.rs:214, tree.rs:87' },
+      ],
+    },
+  },
+  {
+    id: 'tests',
+    label: t('v3.demo.tab_tests', lang),
+    before: {
+      cmd: '$ cargo test',
+      count: '1,842',
+      lines: [
+        { cls: 'd', text: 'running 184 tests' },
+        { cls: 'd', text: 'test filter::tests::collapses_dupes ... ok' },
+        { cls: 'd', text: 'test filter::tests::keeps_failures ... ok' },
+        { cls: 'd', text: 'test parse::tests::ansi_codes ... ok' },
+        { cls: 'd', text: 'test parse::tests::empty_input ... ok' },
+        { cls: 'd', text: 'test tree::tests::depth_limit ... ok' },
+        { cls: 'd', text: 'test gain::tests::daily_rollup ... ok' },
+        { cls: 'd', text: 'test proxy::tests::passthrough ... ok' },
+        { cls: 'd', text: 'test proxy::tests::exit_codes ... ok' },
+        { cls: 'd', text: 'test git::tests::short_status ... ok' },
+        { cls: 'd', text: 'test git::tests::diff_stat ... ok' },
+        { cls: 'm', text: '⋮ 1,829 more lines' },
+        { cls: 'd', text: 'test result: ok. 184 passed; 0 failed' },
+      ],
+    },
+    after: {
+      cmd: '$ rtk cargo test',
+      count: '3',
+      lines: [
+        { cls: 'k', text: '✓ 184 passed · 0 failed · 3 ignored' },
+        { cls: 'd', text: '· finished in 3.2s' },
+      ],
+    },
+  },
+  {
+    id: 'git',
+    label: t('v3.demo.tab_git', lang),
+    before: {
+      cmd: '$ git status',
+      count: '38',
+      lines: [
+        { cls: 'd', text: 'On branch feat/filter-v2' },
+        { cls: 'd', text: "Your branch is ahead of 'origin/feat/filter-v2'" },
+        { cls: 'd', text: '  by 3 commits.' },
+        { cls: 'd', text: '  (use "git push" to publish your commits)' },
+        { cls: 'd', text: '' },
+        { cls: 'd', text: 'Changes not staged for commit:' },
+        { cls: 'd', text: '  (use "git add <file>..." to update)' },
+        { cls: 'd', text: '  (use "git restore <file>..." to discard)' },
+        { cls: 'k', text: '        modified:   src/filter.rs' },
+        { cls: 'k', text: '        modified:   src/proxy.rs' },
+        { cls: 'd', text: '' },
+        { cls: 'd', text: 'Untracked files:' },
+        { cls: 'd', text: '  (use "git add <file>..." to include)' },
+        { cls: 'k', text: '        tests/fixtures/big_output.log' },
+        { cls: 'm', text: '⋮ 21 more lines' },
+      ],
+    },
+    after: {
+      cmd: '$ rtk git status',
+      count: '5',
+      lines: [
+        { cls: 'k', text: 'feat/filter-v2 ↑3' },
+        { cls: 'd', text: 'M src/filter.rs' },
+        { cls: 'd', text: 'M src/proxy.rs' },
+        { cls: 'd', text: '? tests/fixtures/big_output.log' },
+      ],
+    },
+  },
+  {
+    id: 'files',
+    label: t('v3.demo.tab_files', lang),
+    before: {
+      cmd: '$ find . -name "*.rs"',
+      count: '312',
+      lines: [
+        { cls: 'd', text: './src/main.rs' },
+        { cls: 'd', text: './src/filter.rs' },
+        { cls: 'd', text: './src/proxy.rs' },
+        { cls: 'd', text: './src/commands/git.rs' },
+        { cls: 'd', text: './src/commands/test.rs' },
+        { cls: 'd', text: './src/commands/grep.rs' },
+        { cls: 'n', text: './target/debug/build/libc-8f00…/out/lib.rs' },
+        { cls: 'n', text: './target/debug/build/serde-71ab…/out/de.rs' },
+        { cls: 'n', text: './target/debug/build/syn-90c1…/out/gen.rs' },
+        { cls: 'm', text: '⋮ 303 more lines' },
+      ],
+    },
+    after: {
+      cmd: '$ rtk find "*.rs" .',
+      count: '3',
+      lines: [
+        { cls: 'k', text: '29 matches (target/ excluded)' },
+        { cls: 'd', text: 'src/ 14 · commands/ 9 · tests/ 6' },
+      ],
+    },
+  },
+  {
+    id: 'search',
+    label: t('v3.demo.tab_search', lang),
+    before: {
+      cmd: '$ grep -rn "pub fn" src/',
+      count: '217',
+      lines: [
+        { cls: 'd', text: 'src/main.rs:12:pub fn main() {' },
+        { cls: 'd', text: 'src/filter.rs:31:pub fn compress(input: &str)' },
+        { cls: 'd', text: 'src/filter.rs:88:pub fn strip_ansi(s: &str)' },
+        { cls: 'd', text: 'src/proxy.rs:19:pub fn spawn(cmd: Command)' },
+        { cls: 'd', text: 'src/commands/git.rs:9:pub fn status()' },
+        { cls: 'd', text: 'src/commands/git.rs:44:pub fn diff()' },
+        { cls: 'd', text: 'src/commands/test.rs:15:pub fn run()' },
+        { cls: 'm', text: '⋮ 210 more lines' },
+      ],
+    },
+    after: {
+      cmd: '$ rtk grep "pub fn" src/',
+      count: '4',
+      lines: [
+        { cls: 'k', text: '67 matches across 12 files' },
+        { cls: 'd', text: 'filter.rs 12 · proxy.rs 8 · git.rs 6' },
+        { cls: 'd', text: 'main.rs 3 · 38 more' },
+      ],
+    },
+  },
+]
+
+const linesLabel = t('v3.demo.lines', lang)
+const sideBefore = t('v3.demo.side_before', lang)
+const sideAfter = t('v3.demo.side_after', lang)
+---
+<section class="lp3-section" id="demo">
+  <div class="lp3-container lp3-demo-grid">
+
+    <div class="lp3-demo-head">
+      <p class="lp3-eyebrow reveal"><span class="idx">03</span> / {t('v3.demo.eyebrow', lang)}</p>
+      <h2 class="lp3-h2 reveal" set:html={t('v3.demo.title', lang)}></h2>
+      <p class="lp3-lede reveal">
+        {t('v3.demo.lede', lang)}
+      </p>
+      <details class="lp3-demo-why reveal">
+        <summary>{t('v3.demo.why_summary', lang)} <span aria-hidden="true">→</span></summary>
+        <div class="lp3-demo-why-panel">
+          <div>
+            <strong>{t('v3.demo.why1_title', lang)}</strong>
+            <span>{t('v3.demo.why1_text', lang)}</span>
+          </div>
+          <div>
+            <strong>{t('v3.demo.why2_title', lang)}</strong>
+            <span>{t('v3.demo.why2_text', lang)}</span>
+          </div>
+          <div>
+            <strong>{t('v3.demo.why3_title', lang)}</strong>
+            <span>{t('v3.demo.why3_text', lang)}</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="lp3-demo-frame reveal" data-demo>
+      <div class="lp3-demo-tabs" role="tablist" aria-label={t('v3.demo.aria_tabs', lang)}>
+        {tabs.map((t, i) => (
+          <button
+            class="lp3-demo-tab"
+            role="tab"
+            id={`lp3-tab-${t.id}`}
+            aria-controls={`lp3-pane-${t.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            data-demo-tab
+          >{t.label}</button>
+        ))}
+      </div>
+
+      <div class="lp3-demo-panes">
+        {tabs.map((t, i) => (
+          <div
+            class={`lp3-demo-pane${i === 0 ? ' active' : ''}`}
+            role="tabpanel"
+            id={`lp3-pane-${t.id}`}
+            aria-labelledby={`lp3-tab-${t.id}`}
+            data-demo-pane
+          >
+            <div class="lp3-demo-side before">
+              <div class="lp3-demo-side-head">
+                <strong>{sideBefore}</strong>
+                <span class="lines">{linesLabel.replace('{n}', t.before.count)}</span>
+              </div>
+              <pre class="lp3-demo-code" set:html={sideHtml(t.before)}></pre>
+            </div>
+            <div class="lp3-demo-side after">
+              <div class="lp3-demo-side-head">
+                <strong>{sideAfter}</strong>
+                <span class="lines">{linesLabel.replace('{n}', t.after.count)}</span>
+              </div>
+              <pre class="lp3-demo-code" set:html={sideHtml(t.after)}></pre>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

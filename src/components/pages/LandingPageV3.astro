@@ -1,0 +1,269 @@
+---
+import type { Lang } from '../../lib/i18n'
+import Layout from '../../layouts/Layout.astro'
+import NavV3 from '../landing/v3/NavV3.astro'
+import HeroV3 from '../landing/v3/HeroV3.astro'
+import Companies from '../landing/v3/Companies.astro'
+import Ecosystem from '../landing/v3/Ecosystem.astro'
+import ProblemV3 from '../landing/v3/ProblemV3.astro'
+import SolutionV3 from '../landing/v3/SolutionV3.astro'
+import ImpactV3 from '../landing/v3/ImpactV3.astro'
+import DemoV3 from '../landing/v3/DemoV3.astro'
+import ProofV3 from '../landing/v3/ProofV3.astro'
+import InstallV3 from '../landing/v3/InstallV3.astro'
+import FaqV3 from '../landing/v3/FaqV3.astro'
+import FinalCta from '../landing/v3/FinalCta.astro'
+import ProCta from '../landing/v3/ProCta.astro'
+import FooterV3 from '../landing/v3/FooterV3.astro'
+import { getRepoFacts } from '../../lib/github'
+import SearchModal from '../global/SearchModal.astro'
+
+interface Props {
+  lang: Lang
+}
+const { lang } = Astro.props
+
+const faqItems = [
+  {
+    q: 'What is RTK (Rust Token Killer)?',
+    a: 'RTK is an open-source CLI tool that compresses command outputs before they reach the AI context window. It cuts up to 90% of that output noise with zero configuration changes, which leaves more of the context window for reasoning and lowers the token cost of every command that runs. RTK is written in Rust, Apache 2.0 licensed, and works transparently with Claude Code, Cursor, and any terminal-based AI assistant.',
+  },
+  {
+    q: 'How many tokens does RTK actually save?',
+    a: 'On the commands RTK rewrites, output drops by 56% on average, and by up to 90% on the noisiest ones. Across the community that adds up to billions of tokens saved. The exact figure depends on the command, so the benchmarks page publishes the methodology and the per-command results, and the blog covers what independent studies measured, including the cases where RTK did not come out ahead. For your own numbers, run rtk gain after a few days of use.',
+    links: [
+      { href: '/benchmarks/', label: 'See the benchmarks' },
+      { href: '/blog/', label: 'Read the analysis' },
+    ],
+  },
+  {
+    q: 'Is RTK free? Are there usage limits?',
+    a: 'RTK is completely free. It is open source under the Apache 2.0 license, with source code available on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required and no accounts. Telemetry is opt-in: it is off until you explicitly enable it, and it collects no personal data. For teams, RTK Pro is available at pro.rtk-ai.app.',
+  },
+  {
+    q: 'Which AI coding tools and commands does RTK support?',
+    a: 'RTK works with Claude Code (Anthropic), Cursor, Gemini CLI, Aider, and any AI assistant that reads terminal output. It supports all major CLI commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
+  },
+  {
+    q: 'How does RTK work without changing my workflow?',
+    a: 'Running rtk init --global installs a PreToolUse hook in Claude Code that automatically rewrites Bash commands to rtk equivalents at the proxy layer. You continue using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes to prompts or workflows needed.',
+  },
+  {
+    q: 'Does RTK affect code quality or AI reasoning accuracy?',
+    a: 'No. RTK removes verbose boilerplate and repetitive output noise, not meaningful content. Test failures, error messages, diffs, and stack traces are preserved in full. The AI receives the same essential information with far less noise around it, which leaves more of the context window for reasoning.',
+  },
+]
+
+const { version, starsLabel } = await getRepoFacts()
+
+
+const buildDate = new Date().toISOString().split('T')[0]
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://www.rtk-ai.app/#organization',
+      name: 'RTK AI',
+      url: 'https://www.rtk-ai.app',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.rtk-ai.app/brand/logo.png',
+      },
+      sameAs: [
+        'https://github.com/rtk-ai',
+        'https://discord.gg/RySmvNF5kF',
+      ],
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://www.rtk-ai.app/#software',
+      name: 'RTK — Rust Token Killer',
+      description:
+        'RTK compresses CLI command outputs before they reach the AI context window, cutting up to 90% of that output noise with zero config changes. Open source, Apache 2.0 licensed, written in Rust.',
+      url: 'https://www.rtk-ai.app',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'macOS, Linux, Windows',
+      ...(version ? { softwareVersion: version } : {}),
+      releaseNotes: 'https://github.com/rtk-ai/rtk/blob/master/CHANGELOG.md',
+      datePublished: '2025-01-01',
+      dateModified: buildDate,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+      license: 'https://opensource.org/licenses/Apache-2.0',
+      downloadUrl: 'https://github.com/rtk-ai/rtk',
+      author: { '@id': 'https://www.rtk-ai.app/#organization' },
+      featureList: [
+        '56% average output reduction on the commands RTK rewrites, benchmarks published in full',
+        '3x longer AI coding sessions by reducing context pollution',
+        'Supports all major CLI commands: cargo test, git status, grep, find, ls, docker, kubectl, and more',
+        'Auto-rewrite hook for Claude Code via PreToolUse',
+        'Real-time analytics dashboard with rtk gain',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.rtk-ai.app/#faq',
+      mainEntity: faqItems.map(({ q, a, links }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: links?.length
+            ? `${a} ${links.map(l => `<a href="https://www.rtk-ai.app${l.href}">${l.label}</a>`).join(' ')}`
+            : a,
+        },
+      })),
+    },
+    {
+      '@type': 'HowTo',
+      '@id': 'https://www.rtk-ai.app/#howto-install',
+      name: 'How to install RTK and cut up to 90% of CLI output noise',
+      description:
+        'Install RTK (Rust Token Killer) in under 2 minutes and activate the automatic command compression hook. No workflow changes required.',
+      totalTime: 'PT2M',
+      estimatedCost: { '@type': 'MonetaryAmount', currency: 'USD', value: '0' },
+      tool: [{ '@type': 'HowToTool', name: 'Terminal / Command Line' }],
+      step: [
+        {
+          '@type': 'HowToStep',
+          position: 1,
+          name: 'Install RTK',
+          text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh — supports macOS and Linux. Alternatively install via Homebrew: brew install rtk.',
+          url: 'https://www.rtk-ai.app/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 2,
+          name: 'Activate the auto-rewrite hook',
+          text: 'Run rtk init --global to install the PreToolUse hook in Claude Code. This transparently rewrites Bash tool calls to rtk equivalents, compressing output before it reaches the context window.',
+          url: 'https://www.rtk-ai.app/#install',
+        },
+        {
+          '@type': 'HowToStep',
+          position: 3,
+          name: 'Verify your token savings',
+          text: 'Run rtk gain to open the analytics dashboard. View total tokens saved, per-command savings percentages, and daily/weekly/monthly trends.',
+          url: 'https://www.rtk-ai.app/#install',
+        },
+      ],
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://www.rtk-ai.app/#webpage',
+      url: 'https://www.rtk-ai.app/',
+      name: 'RTK — Rust Token Killer',
+      description: 'RTK cuts CLI output noise before it reaches your AI context: 56% less output on average for the commands it rewrites, up to 90% on the noisiest. Longer sessions, zero config. Free, open source, Apache 2.0, written in Rust.',
+      inLanguage: 'en',
+      dateModified: buildDate,
+      isPartOf: { '@type': 'WebSite', name: 'RTK', url: 'https://www.rtk-ai.app' },
+      publisher: { '@id': 'https://www.rtk-ai.app/#organization' },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.faq-answer'],
+      },
+    },
+  ],
+}
+---
+<Layout
+  title="RTK — Rust Token Killer"
+  description="RTK cuts CLI output noise before it reaches your AI context: 56% less on average for rewritten commands, up to 90% on the noisiest. Zero config, Apache 2.0."
+  schemaOrg={schemaOrg}
+>
+  <Fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Geist:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      ;(function () {
+        try {
+          if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
+          var entry = performance.getEntriesByType && performance.getEntriesByType('navigation')[0]
+          var revisit = entry && (entry.type === 'reload' || entry.type === 'back_forward')
+          if (location.hash && !revisit) return
+          if (location.hash && revisit) {
+            history.replaceState(null, '', location.pathname + location.search)
+          }
+          window.scrollTo(0, 0)
+          window.addEventListener('pageshow', function (e) {
+            if (e.persisted) window.scrollTo(0, 0)
+          })
+        } catch (e) {}
+        try {
+          if (
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+            window.innerHeight > 560
+          ) {
+            document.documentElement.classList.add('lp3-boot')
+          }
+        } catch (e) {}
+      })()
+    </script>
+  </Fragment>
+
+  <div class="lp3">
+    <a href="#main-content" class="skip-to-content">Skip to content</a>
+    <NavV3 starsLabel={starsLabel} lang={lang} />
+    <main id="main-content">
+      <HeroV3 starsLabel={starsLabel} lang={lang} />
+      <Companies lang={lang} />
+      <ProblemV3 lang={lang} />
+      <SolutionV3 lang={lang} />
+      <DemoV3 lang={lang} />
+      <ProofV3 lang={lang} />
+      <ImpactV3 lang={lang} />
+      <Ecosystem lang={lang} />
+      <InstallV3 lang={lang} />
+      <FaqV3 items={faqItems} lang={lang} />
+      <FinalCta lang={lang} />
+      <ProCta lang={lang} />
+    </main>
+    <FooterV3 lang={lang} compact />
+    <SearchModal />
+  </div>
+</Layout>
+
+<style is:global>
+  @import '../../styles/landing-v3.css';
+</style>
+
+<script>
+  import { initReveal } from '../../scripts/reveal'
+  import { initCopyButtons } from '../../scripts/copy'
+  import {
+    initFooterGroups,
+    initHeroProofPlacement,
+    initHeroScroll,
+    initHeroIdle,
+    initContextViz,
+    initDemoTabs,
+    initCountUp,
+    initButtonSheen,
+    initMarquee,
+    initEcoMore,
+    initHookTabs,
+    initProofCrop,
+  } from '../../scripts/landing-v3'
+
+  initReveal()
+  initCopyButtons()
+  initFooterGroups()
+  initHeroProofPlacement()
+  initHeroScroll()
+  initHeroIdle()
+  initContextViz()
+  initDemoTabs()
+  initCountUp()
+  initButtonSheen()
+  initMarquee()
+  initEcoMore()
+  initHookTabs()
+  initProofCrop()
+</script>

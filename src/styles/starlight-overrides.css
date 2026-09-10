@@ -35,7 +35,7 @@
   --sl-content-width:   52rem;
   --sl-content-pad-x:   1.5rem;
 
-  --sl-nav-height: 60px;
+  --sl-nav-height: 64px; /* matches the V3 nav mounted in the header override */
   --sl-z-index-menu: 90;
 
   /* Border radius */

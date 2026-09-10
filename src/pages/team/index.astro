@@ -1,8 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import SiteHeader from '../../components/global/SiteHeader.astro'
-import SiteFooter from '../../components/global/SiteFooter.astro'
-import SearchModal from '../../components/global/SearchModal.astro'
+import PageV3 from '../../layouts/PageV3.astro'
 import IconGitHub from '../../components/ui/icons/IconGitHub.astro'
 
 const siteUrl = 'https://www.rtk-ai.app'
@@ -192,6 +189,9 @@ const contributors = [
   }))
   .sort((a, b) => b.contributions - a.contributions || a.handle.localeCompare(b.handle))
 
+const shown = contributors.filter((c) => c.contributions > 1)
+const singleCommit = contributors.length - shown.length
+
 // No dedicated LinkedIn icon component exists — inline the mark.
 const linkedinSvg =
   '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
@@ -203,7 +203,7 @@ const schemaOrg = {
   name: 'RTK AI Labs',
   url: siteUrl,
   logo: { '@type': 'ImageObject', url: siteUrl + '/brand/logo.png', width: 256, height: 256 },
-  description: 'RTK AI Labs builds tools for AI coding agents — makers of RTK (Rust Token Killer).',
+  description: 'RTK AI Labs builds tools for AI coding agents, makers of RTK (Rust Token Killer).',
   member: [
     ...labs.map((m) => ({
       '@type': 'Person',
@@ -222,446 +222,366 @@ const schemaOrg = {
   ],
 }
 ---
-<Layout
-  title="Team — RTK AI Labs | rtk-ai"
-  description="Meet RTK AI Labs — the team and open-source community building RTK, the Rust Token Killer for AI coding agents."
-  image="/og-image.png"
+<PageV3
+  title="Team · RTK AI Labs | rtk-ai"
+  description="Meet RTK AI Labs: the team and open-source community building RTK, the Rust Token Killer for AI coding agents."
   schemaOrg={schemaOrg}
+  mainClass="tm"
 >
-  <a href="#main-content" class="skip-to-content">Skip to content</a>
+  <section class="tm-head">
+    <div class="lp3-container">
+      <p class="lp3-eyebrow reveal">Team</p>
+      <h1 class="lp3-h2 tm-title reveal">The team behind <span class="tm-accent">RTK</span></h1>
+      <p class="lp3-lede reveal">A small team building tools for AI coding agents</p>
+    </div>
+  </section>
 
-  <SiteHeader />
+  <section class="lp3-section tm-sec" aria-labelledby="tm-labs">
+    <div class="lp3-container">
+      <h2 id="tm-labs" class="lp3-h2 tm-h2 reveal">RTK AI Labs</h2>
 
-  <main id="main-content" class="team-page">
-    <section class="team-hero">
-      <div class="section-inner">
-        <div class="team-badge">Team</div>
-        <h1>The team behind <span class="gradient-text">RTK</span></h1>
-        <p class="team-sub">A small team building tools for AI coding agents</p>
-      </div>
-    </section>
-
-    <section class="team-block">
-      <div class="section-inner">
-        <h2 class="team-block-title">RTK AI Labs</h2>
-        <ul class="team-grid" role="list">
-          {labs.map((member) => (
-            <li class="team-card">
-              <img
-                class="team-avatar"
-                src={member.photo}
-                alt={`Portrait of ${member.name}`}
-                width="72"
-                height="72"
-                loading="lazy"
-              />
-              <div class="team-identity">
-                <h3 class="team-name">{member.name}</h3>
-                <p class="team-role">
-                  {member.role}
-                  <span class="team-role-founder">{member.founderRole}</span>
-                </p>
-              </div>
-              <div class="social-row">
-                {member.github && (
-                  <a class="social-btn" href={member.github} target="_blank" rel="noopener" aria-label={`${member.name} on GitHub`}>
-                    <IconGitHub size={15} />
-                    GitHub
-                  </a>
-                )}
-                <a class="social-btn" href={member.linkedin} target="_blank" rel="noopener" aria-label={`${member.name} on LinkedIn`}>
-                  <Fragment set:html={linkedinSvg} />
-                  LinkedIn
-                </a>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <section class="team-maintainers">
-      <div class="section-inner">
-        <h2 class="maintainers-title">Open Source Maintainers</h2>
-        <p class="maintainers-sub">Core contributors who keep RTK moving.</p>
-        <ul class="maintainers-list" role="list">
-          {maintainers.map((m) => (
-            <li class="maintainer-row">
-              <span class="maintainer-name">{m.name}</span>
-              <span class="maintainer-links">
-                <a class="maintainer-link" href={m.github} target="_blank" rel="noopener" aria-label={`${m.name} on GitHub`}>
+      <ul class="tm-people" role="list">
+        {labs.map((member) => (
+          <li class="tm-person reveal">
+            <img
+              class="tm-avatar"
+              src={member.photo}
+              alt={`Portrait of ${member.name}`}
+              width="72"
+              height="72"
+              loading="lazy"
+            />
+            <h3 class="tm-name">{member.name}</h3>
+            <p class="tm-role">
+              {member.role}
+              <span class="tm-role-founder">{member.founderRole}</span>
+            </p>
+            <div class="tm-social">
+              {member.github && (
+                <a class="tm-social-btn" href={member.github} target="_blank" rel="noopener" aria-label={`${member.name} on GitHub`}>
                   <IconGitHub size={15} />
+                  GitHub
                 </a>
-                <a class="maintainer-link" href={m.linkedin} target="_blank" rel="noopener" aria-label={`${m.name} on LinkedIn`}>
-                  <Fragment set:html={linkedinSvg} />
-                </a>
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <section class="team-contributors">
-      <div class="section-inner">
-        <h2 class="contributors-title">Open Source Contributors</h2>
-        <p class="contributors-sub">
-          {contributors.length} people have shipped code, docs or fixes to RTK, ranked by commit count.
-          <span class="contributors-synced">Last synced {contributorsSyncedAt}</span>
-        </p>
-        <ul class="contributors-list" role="list">
-          {contributors.map((c) => (
-            <li>
-              <a
-                class="contributor-chip"
-                href={c.url}
-                target="_blank"
-                rel="noopener"
-                aria-label={`${c.handle} on GitHub — ${c.contributions} contributions`}
-              >
-                <IconGitHub size={13} />
-                {c.handle}
-                <span class="contributor-count">{c.contributions}</span>
+              )}
+              <a class="tm-social-btn" href={member.linkedin} target="_blank" rel="noopener" aria-label={`${member.name} on LinkedIn`}>
+                <Fragment set:html={linkedinSvg} />
+                LinkedIn
               </a>
-            </li>
-          ))}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="lp3-section tm-sec tm-sec-line" aria-labelledby="tm-maintainers">
+    <div class="lp3-container tm-split">
+      <div class="tm-split-head">
+        <h2 id="tm-maintainers" class="lp3-h2 tm-h2 reveal">Open Source <em>Maintainers</em></h2>
+        <p class="lp3-lede tm-sub reveal">Core contributors who keep RTK moving.</p>
+      </div>
+
+      <ul class="tm-rows" role="list">
+        {maintainers.map((m) => (
+          <li class="tm-row reveal">
+            <span class="tm-row-name">{m.name}</span>
+            <span class="tm-row-links">
+              <a class="tm-icon-link" href={m.github} target="_blank" rel="noopener" aria-label={`${m.name} on GitHub`}>
+                <IconGitHub size={15} />
+              </a>
+              <a class="tm-icon-link" href={m.linkedin} target="_blank" rel="noopener" aria-label={`${m.name} on LinkedIn`}>
+                <Fragment set:html={linkedinSvg} />
+              </a>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="lp3-section tm-sec tm-sec-line" aria-labelledby="tm-contributors">
+    <div class="lp3-container">
+      <div class="tm-contrib-head">
+        <h2 id="tm-contributors" class="lp3-h2 tm-h2 reveal">Open Source <em>Contributors</em></h2>
+        <p class="lp3-lede tm-sub reveal">
+          {contributors.length} people have shipped code, docs or fixes to RTK. The {shown.length} with
+          more than one contribution are listed here, ranked by commit count; the other {singleCommit} are
+          on GitHub.
+          <span class="tm-synced">Last synced {contributorsSyncedAt}</span>
+        </p>
+      </div>
+
+      <ul class="tm-chips reveal" role="list">
+        {shown.map((c) => (
           <li>
             <a
-              class="contributor-chip contributor-chip--all"
-              href="https://github.com/rtk-ai/rtk/graphs/contributors"
+              class="tm-chip"
+              href={c.url}
               target="_blank"
               rel="noopener"
+              aria-label={`${c.handle} on GitHub, ${c.contributions} contributions`}
             >
-              View all contributors
-              <span aria-hidden="true">→</span>
+              <IconGitHub size={13} />
+              {c.handle}
+              <span class="tm-chip-count">{c.contributions}</span>
             </a>
           </li>
-        </ul>
+        ))}
+      </ul>
+
+      <div class="tm-actions reveal">
+        <a
+          class="lp3-btn lp3-btn-ghost lp3-btn-sm"
+          href="https://github.com/rtk-ai/rtk/graphs/contributors"
+          target="_blank"
+          rel="noopener"
+        >
+          View all {contributors.length} contributors
+          <span class="arr" aria-hidden="true">↗</span>
+        </a>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</PageV3>
 
-  <SiteFooter />
-  <SearchModal />
-</Layout>
+<style>
 
-<style is:global>
-  @import '../../styles/landing.css';
-
-  /* ── Team page ───────────────────────────────────────────────────── */
-  .team-page { padding-top: 60px; }
-
-  .team-hero {
-    padding: 72px 0 8px;
-    text-align: center;
-    background:
-      radial-gradient(ellipse 600px 240px at 50% 0%, var(--accent-glow), transparent 70%),
-      var(--bg);
+  .tm-head {
+    padding-top: clamp(4.5rem, 8vw, 7rem);
+    padding-bottom: calc(var(--lp3-sec-pad) * 0.34);
   }
-  .team-badge {
-    display: inline-block;
-    padding: 5px 14px;
-    border-radius: var(--radius-pill);
-    background: var(--accent-dim);
+  .tm-title {
+    max-width: 20ch;
+  }
+  .tm-accent {
     color: var(--accent);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 18px;
   }
-  .team-hero h1 {
-    font-size: clamp(2.2rem, 5vw, 3.2rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 14px;
-  }
-  .team-sub {
-    color: var(--text-muted);
-    font-size: var(--text-lg);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
+  @supports (color: color-mix(in srgb, red 50%, blue)) {
+    .tm-accent {
+      background: linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--accent) 62%, var(--text-bright)) 0%,
+        var(--accent) 58%,
+        color-mix(in srgb, var(--accent-hover) 88%, var(--bg)) 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 18px var(--accent-dim));
+    }
   }
 
-  /* RTK AI Labs block */
-  .team-block { padding: 56px 0 72px; }
-  .team-block-title {
-    text-align: center;
-    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: var(--text-bright);
-    margin-bottom: 32px;
+  .tm-sec {
+    padding-top: calc(var(--lp3-sec-pad) * 0.52);
+    padding-bottom: calc(var(--lp3-sec-pad) * 0.52);
   }
-  .team-block-title::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--cyan));
-    margin: 10px auto 0;
-    border-radius: var(--radius-pill);
-    opacity: 0.8;
+  .tm-sec-line {
+    border-top: 1px solid var(--lp3-line);
   }
-  .team-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-width: 620px;
-    margin: 0 auto;
+  .tm-h2 {
+    font-size: clamp(1.6rem, 2.4vw, 2.25rem);
+  }
+  .tm-sub {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .tm-people {
     list-style: none;
+    margin: clamp(3rem, 5vw, 4.5rem) 0 0;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .team-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    text-align: left;
-    padding: 16px 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-card);
-    box-shadow: var(--shadow-card);
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  .tm-person {
+    padding: 0 clamp(1.25rem, 2.5vw, 2.5rem);
+    border-left: 1px solid var(--lp3-line);
   }
-  .team-card:hover {
-    border-color: var(--border-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-card-hover), var(--shadow-glow-green);
+  .tm-person:first-child {
+    padding-left: 0;
+    border-left: none;
   }
-  .team-avatar {
+  .tm-avatar {
     width: 72px;
     height: 72px;
-    flex-shrink: 0;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--border-light);
-  }
-  .team-identity {
-    flex: 1;
-    min-width: 0;
-  }
-  .team-card .social-row {
-    flex-shrink: 0;
-  }
-  .team-name {
-    font-size: var(--text-base);
-    font-weight: 600;
-    color: var(--text-bright);
-    margin: 0 0 3px;
-  }
-  .team-role {
-    color: var(--text-muted);
-    font-size: var(--text-xs);
-    font-family: var(--font-mono);
-    margin: 0;
-  }
-  .team-role-founder {
+    border: 1px solid var(--lp3-line-strong);
     display: block;
-    margin-top: 1px;
+    margin-bottom: 1.5rem;
+  }
+  .tm-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .tm-role {
+    margin: 0.55rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .tm-role-founder {
+    display: block;
+    margin-top: 0.3rem;
     color: var(--text-dim);
-    font-size: var(--text-xs);
   }
-
-  /* Shared social pill buttons */
-  .social-row {
+  .tm-social {
     display: flex;
-    gap: 8px;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
   }
-  .social-btn {
+  .tm-social-btn {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 7px 14px;
-    border: 1px solid var(--border-light);
-    border-radius: var(--radius-md);
-    background: var(--bg-card-hover);
+    gap: 0.45rem;
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid var(--lp3-line);
+    border-radius: 999px;
+    background: var(--lp3-surface);
     color: var(--text-muted);
-    font-size: var(--text-xs);
-    font-weight: 600;
+    font-size: 0.8rem;
+    font-weight: 500;
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
-  .social-btn:hover {
-    color: var(--accent);
-    border-color: var(--accent);
+  .tm-social-btn:hover {
+    color: var(--text-bright);
+    border-color: var(--lp3-line-strong);
+    background: var(--lp3-surface-hover);
     text-decoration: none;
   }
 
-  /* ── RTK Open Source Maintainers (smaller block) ─────────────────── */
-  .team-maintainers {
-    padding: 56px 0 88px;
-    text-align: center;
+  .tm-split {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
   }
-  .maintainers-title {
-    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
-    font-weight: 800;
-    color: var(--text-bright);
-    letter-spacing: -0.02em;
-    margin: 0 0 6px;
-  }
-  .maintainers-sub {
-    color: var(--text-muted);
-    font-size: var(--text-sm);
-    margin: 0 0 28px;
-  }
-  .maintainers-list {
+  .tm-rows {
     list-style: none;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
-    max-width: 540px;
-    text-align: left;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-card);
-    overflow: hidden;
+    border-top: 1px solid var(--lp3-line);
   }
-  .maintainer-row {
+  .tm-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
+    gap: 1.5rem;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--lp3-line);
   }
-  .maintainer-row:last-child { border-bottom: none; }
-  .maintainer-name {
+  .tm-row-name {
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--text);
-    font-size: var(--text-base);
-    font-weight: 600;
   }
-  .maintainer-links {
+  .tm-row-links {
     display: flex;
-    gap: 8px;
+    gap: 0.5rem;
     flex-shrink: 0;
   }
-  .maintainer-link {
+  .tm-icon-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-light);
-    background: var(--bg-card-hover);
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid var(--lp3-line);
     color: var(--text-muted);
-    transition: color 0.2s, border-color 0.2s;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
-  .maintainer-link:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* ── RTK Open Source Contributors (lightweight chips) ────────────── */
-  .team-contributors {
-    padding: 56px 0 96px;
-    text-align: center;
-  }
-
-  .team-maintainers,
-  .team-contributors {
-    position: relative;
-  }
-  .team-maintainers::before,
-  .team-contributors::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(760px, 88%);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-  }
-  .contributors-title {
-    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
-    font-weight: 800;
+  .tm-icon-link:hover {
     color: var(--text-bright);
-    letter-spacing: -0.02em;
-    margin: 0 0 6px;
+    border-color: var(--lp3-line-strong);
+    background: var(--lp3-surface-hover);
   }
-  .contributors-sub {
-    color: var(--text-muted);
-    font-size: var(--text-sm);
-    margin: 0 0 24px;
+
+  .tm-contrib-head {
+    max-width: 40rem;
   }
-  .contributors-synced {
+  .tm-synced {
     display: block;
-    margin-top: 4px;
-    color: var(--text-dim);
-    font-size: var(--text-xs);
-  }
-  .contributor-count {
-    padding: 1px 6px;
-    border-radius: var(--radius-pill);
-    background: var(--bg-elevated);
-    color: var(--text-dim);
+    margin-top: 0.6rem;
     font-family: var(--font-mono);
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
   }
-  .contributors-list {
+  .tm-chips {
     list-style: none;
-    margin: 0 auto;
+    margin: clamp(2.5rem, 4vw, 3.5rem) 0 0;
     padding: 0;
-    max-width: 760px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+    gap: 8px;
   }
-  .contributor-chip {
+  .tm-chip {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 6px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-pill);
-    background: var(--bg-card);
+    gap: 0.5rem;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--lp3-line);
+    border-radius: 999px;
     color: var(--text-muted);
     font-family: var(--font-mono);
-    font-size: var(--text-xs);
+    font-size: 0.76rem;
     text-decoration: none;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
-  .contributor-chip:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: var(--bg-card-hover);
+  .tm-chip:hover {
+    color: var(--text-bright);
+    border-color: var(--lp3-line-strong);
+    background: var(--lp3-surface-hover);
     text-decoration: none;
   }
-  .contributor-chip--all {
-    font-family: inherit;
-    font-weight: 600;
-    color: var(--accent);
-    border-color: var(--accent-dim);
-    background: var(--accent-dim);
+  .tm-chip-count {
+    color: var(--text-dim);
+    font-size: 0.7rem;
   }
-  .contributor-chip--all span { transition: transform 0.2s; }
-  .contributor-chip--all:hover { background: var(--accent-dim); border-color: var(--accent); }
-  .contributor-chip--all:hover span { transform: translateX(2px); }
+  .tm-actions {
+    margin-top: clamp(2rem, 3.5vw, 3rem);
+  }
 
-  @media (max-width: 640px) {
-    .team-hero { padding: 48px 0 4px; }
-    .team-block { padding: 40px 0 56px; }
-    .team-block-title { margin-bottom: 24px; }
-    .team-card {
-      flex-wrap: wrap;
-      gap: 14px;
-      padding: 16px;
+  @media (max-width: 960px) {
+    .tm-split {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
-    .team-avatar { width: 60px; height: 60px; }
-    .team-card .social-row { width: 100%; }
-    .team-sub { font-size: var(--text-base); }
-    .team-maintainers { padding: 40px 0 56px; }
-    .team-contributors { padding: 40px 0 64px; }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .team-card { transition: none; }
-    .team-card:hover { transform: none; }
+  @media (max-width: 760px) {
+    .tm-people {
+      grid-template-columns: 1fr;
+      row-gap: 2.5rem;
+    }
+    .tm-person {
+      padding: 2.5rem 0 0;
+      border-left: none;
+      border-top: 1px solid var(--lp3-line);
+    }
+    .tm-person:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+    .tm-avatar {
+      margin-bottom: 1.25rem;
+    }
+    .tm-social-btn,
+    .tm-icon-link {
+      min-height: 44px;
+    }
+    .tm-icon-link {
+      width: 44px;
+      height: 44px;
+    }
+    .tm-chip {
+      min-height: 38px;
+    }
   }
 </style>

@@ -1,0 +1,110 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const curlCmd = 'curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh'
+const brewCmd = 'brew install rtk-ai/tap/rtk'
+const brewUpgrade = 'brew upgrade rtk-ai/tap/rtk'
+
+const agents = [
+  {
+    id: 'claude-code',
+    label: 'Claude Code',
+    cmd: 'rtk init --global',
+    note: t('v3.install.note_cc', lang),
+  },
+  {
+    id: 'cursor',
+    label: 'Cursor',
+    cmd: 'rtk init --global --agent cursor',
+    note: t('v3.install.note_cursor', lang),
+  },
+  {
+    id: 'other',
+    label: t('v3.install.tab_other', lang),
+    cmd: 'rtk init --global --agent <name>',
+    note: t('v3.install.note_other', lang),
+  },
+]
+
+const copyIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`
+---
+<section class="lp3-section" id="install">
+  <div class="lp3-container">
+    <p class="lp3-eyebrow reveal"><span class="idx">06</span> / {t('v3.install.eyebrow', lang)}</p>
+    <h2 class="lp3-h2 reveal" set:html={t('v3.install.title', lang)}></h2>
+    <p class="lp3-install-sub reveal">
+      {t('v3.install.sub', lang)}
+    </p>
+
+    <div class="lp3-install-grid">
+      <div class="lp3-install-card is-primary reveal">
+        <h3>{t('v3.install.quick', lang)}</h3>
+        <p>{t('v3.install.quick_desc', lang)}</p>
+        <div class="lp3-cta-cmd">
+          <code><span class="p">$</span> {curlCmd}</code>
+          <button class="lp3-copy-btn" data-copy={curlCmd} aria-label="Copy install command" set:html={copyIcon} />
+        </div>
+      </div>
+
+      <div class="lp3-install-card reveal">
+        <h3>{t('v3.install.brew', lang)}</h3>
+        <p>{t('v3.install.brew_desc', lang)}</p>
+        <div class="lp3-cta-cmd">
+          <code><span class="p">$</span> {brewCmd}</code>
+          <button class="lp3-copy-btn" data-copy={brewCmd} aria-label="Copy Homebrew install command" set:html={copyIcon} />
+        </div>
+        <div class="lp3-cta-cmd">
+          <code><span class="p">$</span> {brewUpgrade}</code>
+          <button class="lp3-copy-btn" data-copy={brewUpgrade} aria-label="Copy Homebrew upgrade command" set:html={copyIcon} />
+        </div>
+      </div>
+
+      <div class="lp3-install-card reveal">
+        <h3>{t('v3.install.binaries', lang)}</h3>
+        <p>{t('v3.install.binaries_desc', lang)}</p>
+        <a href="https://github.com/rtk-ai/rtk/releases" class="lp3-install-link" target="_blank" rel="noopener">
+          {t('v3.install.releases', lang)} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="lp3-hook reveal">
+      <h3>{t('v3.install.hook', lang)}</h3>
+      <div class="lp3-hook-tabs" role="tablist" aria-label={t('v3.install.aria_tabs', lang)}>
+        {agents.map((a, i) => (
+          <button
+            role="tab"
+            id={`hook-tab-${a.id}`}
+            aria-controls={`hook-panel-${a.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            class={i === 0 ? 'active' : undefined}
+            data-hook-tab={a.id}
+          >{a.label}</button>
+        ))}
+      </div>
+      {agents.map((a, i) => (
+        <div
+          role="tabpanel"
+          id={`hook-panel-${a.id}`}
+          aria-labelledby={`hook-tab-${a.id}`}
+          class="lp3-hook-panel"
+          data-hook-panel={a.id}
+          hidden={i !== 0}
+        >
+          <div class="lp3-cta-cmd">
+            <code><span class="p">$</span> {a.cmd}</code>
+            <button class="lp3-copy-btn" data-copy={a.cmd} aria-label={`Copy ${a.label} setup command`} set:html={copyIcon} />
+          </div>
+          <p class="lp3-hook-note">{a.note}</p>
+          <a href="/guide/getting-started/installation/" class="lp3-install-link">{t('ui.install_docs_link', lang)}</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
