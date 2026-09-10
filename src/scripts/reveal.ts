@@ -38,5 +38,16 @@ export function initReveal() {
     { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
   )
 
-  all.forEach(el => observer.observe(el))
+  let started = false
+  const start = () => {
+    if (started) return
+    started = true
+    all.forEach(el => observer.observe(el))
+  }
+  if (typeof document.fonts?.ready?.then === 'function') {
+    const fallback = setTimeout(start, 1500)
+    document.fonts.ready.then(() => { clearTimeout(fallback); start() })
+  } else {
+    start()
+  }
 }

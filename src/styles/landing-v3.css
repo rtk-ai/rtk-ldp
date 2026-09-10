@@ -1261,7 +1261,13 @@ html.lp3-boot .lp3-nav { opacity: 0; visibility: hidden; }
   letter-spacing: 0.1em;
   color: var(--text-dim);
   white-space: nowrap;
+  cursor: pointer;
+  pointer-events: auto;
+  min-height: 44px;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
+.lp3-intro-cue:hover { color: var(--text); border-color: var(--lp3-line-strong); }
+.lp3-intro-cue:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .lp3-intro-cue .ring {
   display: inline-flex;
   align-items: center;
