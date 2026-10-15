@@ -1,0 +1,176 @@
+---
+title: "RTK v1: From CLI Compressor to Cost Reduction Engine"
+description: "RTK v1 is out. The battle-tested CLI compressor becomes a full cost reduction engine: compress more than bash, route work to cheaper models, build your own pipeline, plug in new methods, and share it, in any agent. Upgrading changes nothing."
+date: 2026-10-15
+tags: [release, v1]
+draft: false
+---
+
+import AgentLoop from '../../components/blog/AgentLoop.astro'
+
+## TL;DR
+
+RTK v1 is out.
+
+From a battle-tested CLI compressor to a full cost reduction engine.
+
+- **Compress** more than bash: lockfiles, search results, web pages, and the API traffic itself.
+- **Build** your own pipeline in one file.
+- **Route** big reads and noisy output to a cheaper model you choose.
+- **Share** a pipeline as one file.
+- **Plug in** new methods that every pipeline can use.
+- **Agent agnostic pipelines:** agent agnostic TOML pipeline definition.
+
+Still install & forget, no additional complexity if you don’t look for it.
+
+## Where RTK comes from
+
+RTK started with one job: filter the noise out of what your coding agent reads in the terminal. `git status`, `cargo test`, `npm install`, build logs. Up to 90% less command output, in 18 coding agents.
+
+The community made it battle-tested. 82k stars later, that compressor is what people rely on every day.
+
+But your agent reads far more than terminal output. Files, search results, web pages, MCP responses, and every request it sends to the model. RTK only saw Bash, its rules were fixed, and filtering was the only thing it could do.
+
+RTK engine goes beyond Bash.
+
+## What's new: the engine & proxy
+
+<AgentLoop />
+
+In v1, RTK can act at every step of that loop, on conditions you choose. That is the engine, and it works in two places:
+
+- **Inside your agent,** through its hooks: before and after every tool call.
+- **On the API traffic,** through the new RTK Proxy: an optional local process between your agent and the model provider. It sees the whole request on its way out, including what hooks never reach: every tool result already in the conversation, and the prompt cache.
+
+The proxy is what takes the engine past the limits of the agent itself. And it is driven by the same pipeline file: a proxy rule is written like any other rule.
+
+```toml
+# runs on every request the agent sends, once the proxy is on
+[[proxy.request.tool_result]]
+name = "normalize"
+use  = ["ansi", "progress", "dedup"]
+```
+
+Today the proxy normalises API traffic and keeps it byte-stable from one turn to the next, so the prompt cache keeps hitting.
+
+The compressor you know is still at the core of the engine, exactly as it was. Around it, RTK can now do much more.
+
+### Compress more than Bash
+
+RTK can now compress what other tools return, not only shell commands. One line turns it on:
+
+```toml
+[pipeline]
+extends = ["rtk:posthook"]
+```
+
+Then define any methods you want, from built-in to your own plugins, and optimize your workflow.
+
+### Route heavy work to a cheaper model
+
+Some work doesn't need your main model. With routing, a 4,000-line file read goes to a cheaper model, and your agent gets the answer instead of the file. Those tokens never enter its context.
+
+Routing is opt-in and ships with no model attached: you pick the model and bring your own key.
+
+### Build your own pipeline
+
+Everything RTK does is now written in one file, `pipeline.toml`. A rule says where RTK acts, when, and what it does. Here is a complete one:
+
+- compresses every tool
+- routes big file reads to a cheaper model
+- squeezes build logs
+- leaves diffs alone
+- makes the agent write less
+
+```toml
+# ~/.config/rtk/pipeline.toml
+[pipeline]
+extends = ["rtk:posthook", "rtk:delegate-reads"]   # compress every tool, route big reads
+
+# Route: big file reads go to a cheaper model, with your own key
+[upstream.flash]
+provider    = "google"
+model       = "gemini-2.5-flash"
+api_key_env = "GEMINI_API_KEY"
+
+[task.bulk-read]
+upstream = "flash"
+[task.code-write]
+upstream = "flash"
+
+[override.shunt-large-read]
+when.file_lines_gt = 500          # only files over 500 lines (built-in: 350)
+
+# Compress: build logs get the full chain
+[[hook.after_tool.shell]]
+name = "build-logs"
+when = { command_matches = "^(make|docker build)\\b" }
+use  = ["ansi", "progress", "dedup", "cap"]
+
+# Keep: diffs reach the agent untouched
+[[hook.before_tool.shell]]
+name   = "keep-diffs"
+when   = { command_matches = "^git (diff|show)\\b" }
+action = "passthrough"
+
+# Write less: the agent answers in terse prose
+[[directive]]
+use = "terse-output"
+```
+
+Two built-in pipelines, one tweak, two rules, one directive. RTK's own behaviour is written the same way, so you never start from a blank page.
+
+### Plug in your own methods
+
+A rule decides where and when. A method decides what happens to the content. Methods are the plugins of the engine: real code, not line filters. A method can parse what it reads, so it can understand code, JSON or a web page, not just match lines of command output.
+
+Write one once, and it works on any tool, in the proxy, and in every agent:
+
+```toml
+# code-outline: a plugged-in method that parses source files
+# and keeps signatures and types, dropping function bodies
+
+[[hook.after_tool.read]]            # when the agent reads a big file
+name = "outline-big-files"
+when = { file_lines_gt = 800 }
+use  = ["code-outline"]
+
+[[proxy.request.tool_result]]       # the same method, on the API traffic
+name = "outline-in-proxy"
+when = { tool_in = ["read"], tokens_gt = 8000 }
+use  = ["code-outline"]
+```
+
+On RTK V1 release, a dozen of builtin methods have been shipped already.
+
+### Share it
+
+A pipeline is one file. `rtk pipeline share` turns it into a sharable link, private or public, and others can download it as you share it.
+
+Pipelines are agent agnostic, so share it, and it's plug & play.
+
+### Any agent
+
+Rules target tools like `shell`, `read` or `web`, never a specific agent. The same pipeline runs in Claude Code, Cursor, Codex, Gemini CLI and the rest, as far as each agent's hooks allow.
+
+## Get started
+
+```bash
+brew upgrade rtk
+rtk init -g
+rtk gain --by-layer
+```
+
+Then add one line to your `pipeline.toml`: `extends = ["rtk:posthook"]`. Every rule, condition and method is in the [pipelines guide](/docs/pipelines/overview/).
+
+## What's next
+
+- Contributions open on 18th October.
+- More builtins, better evaluation systems to measure pipelines
+- Your pipelines: build one, share the card, show us.
+- New high performances savings built-in pipelines
+
+RTK started as a CLI compressor, and became a reference in its field.
+Now an agent agnostic pipeline engine.
+
+Build. Plug in. Share. In any agent.

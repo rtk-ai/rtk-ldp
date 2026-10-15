@@ -8,11 +8,11 @@ interface Props {
 const { starsLabel, lang = 'en' } = Astro.props
 
 const stats = [
-  { num: '1.6M+', label: t('v3.hero.stat_downloads', lang) },
+  { num: '4M+', label: t('v3.hero.stat_downloads', lang) },
   { num: `${starsLabel}+`, label: t('v3.hero.stat_stars', lang) },
   { num: '140K+', label: t('v3.hero.stat_devs', lang) },
   { num: '125+', label: t('v3.hero.stat_commands', lang) },
-  { num: '17', label: t('v3.hero.stat_tools', lang) },
+  { num: '18', label: t('v3.hero.stat_tools', lang) },
 ]
 
 const COLS = 20
@@ -104,16 +104,6 @@ const strandsOutV = Array.from({ length: 8 }, (_, i) => {
       <div class="lp3-container lp3-hero-grid">
 
         <div class="lp3-hero-copy">
-          <a
-            href="https://pro.rtk-ai.app"
-            class="lp3-pro-chip"
-            target="_blank"
-            rel="noopener"
-          >
-            <span class="dot" aria-hidden="true"></span>
-            <span class="txt" set:html={t('v3.hero.pro_chip', lang)}></span>
-            <span class="arr" aria-hidden="true">→</span>
-          </a>
           <h1 class="lp3-hero-title" set:html={t('v3.hero.title', lang)}></h1>
           <div class="lp3-hero-cta">
             <a href="/#install" class="lp3-btn lp3-btn-primary">

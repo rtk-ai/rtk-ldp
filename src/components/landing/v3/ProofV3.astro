@@ -6,54 +6,52 @@ interface Props {
   lang?: Lang
 }
 const { lang = 'en' } = Astro.props
+
+const agents = ['Claude Code', 'Cursor', 'Codex']
 ---
 <section class="lp3-section" id="proof">
   <div class="lp3-container">
-    <p class="lp3-eyebrow reveal"><span class="idx">04</span> / {t('v3.proof.eyebrow', lang)}</p>
+    <p class="lp3-eyebrow reveal"><span class="idx">05</span> / {t('v3.proof.eyebrow', lang)}</p>
     <h2 class="lp3-h2 reveal" set:html={t('v3.proof.title', lang)}></h2>
     <p class="lp3-proof-sub reveal" set:html={t('v3.proof.sub', lang)}></p>
 
-    <div class="lp3-proof-grid">
-      <figure class="lp3-proof-card reveal">
-        <img
-          src="/assets/screenshots/rtkgain02.webp"
-          alt={t('v3.proof.alt1', lang)}
-          width="1370"
-          height="840"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption>
-          <span class="k">{t('v3.proof.k1', lang)}</span>
-          <p set:html={t('v3.proof.d1', lang)}></p>
-        </figcaption>
-      </figure>
+    <div class="lp3-share reveal">
+      <p class="lp3-sr">{t('v3.proof.ill_sr', lang)}</p>
 
-      <figure class="lp3-proof-card is-tall reveal" data-proof-crop>
-        <img
-          src="/assets/screenshots/rtkgain01.webp"
-          alt={t('v3.proof.alt2', lang)}
-          width="609"
-          height="967"
-          loading="lazy"
-          decoding="async"
-        />
-        <button
-          class="lp3-proof-expand"
-          type="button"
-          hidden
-          aria-expanded="false"
-          data-more-label={t('v3.proof.expand', lang)}
-          data-less-label={t('v3.proof.collapse', lang)}
-        >
-          <span class="txt">{t('v3.proof.expand', lang)}</span>
-          <span class="chev" aria-hidden="true">↓</span>
-        </button>
-        <figcaption>
-          <span class="k">{t('v3.proof.k2', lang)}</span>
-          <p set:html={t('v3.proof.d2', lang)}></p>
-        </figcaption>
-      </figure>
+      <div class="lp3-share-term" aria-hidden="true">
+        <span><i>$</i> rtk pipeline share</span>
+        <span class="ok">✓ {t('v3.proof.s_copied', lang)}</span>
+      </div>
+
+      <div class="lp3-share-card" aria-hidden="true">
+        <div class="lp3-share-top">
+          <img src="/brand/box-logo-white.webp" alt="" width="22" height="22" loading="lazy" decoding="async" />
+          <span class="name">team-pipeline</span>
+          <span class="badge">{t('v3.proof.s_public', lang)}</span>
+        </div>
+
+        <div class="lp3-share-stats">
+          <div><b>4.7M</b><span>{t('v3.proof.g_saved', lang)}</span></div>
+          <div><b class="acc">−44%</b><span>{t('v3.proof.g_less', lang)}</span></div>
+        </div>
+
+        <svg class="lp3-share-spark" viewBox="0 0 400 64" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="lp3SparkFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="currentColor" stop-opacity="0.22" />
+              <stop offset="1" stop-color="currentColor" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path class="fill" d="M0 58 C40 56 70 52 100 47 S160 40 200 33 S280 22 320 15 S380 6 400 4 L400 64 L0 64 Z" fill="url(#lp3SparkFill)" />
+          <path class="line" d="M0 58 C40 56 70 52 100 47 S160 40 200 33 S280 22 320 15 S380 6 400 4" pathLength="1" />
+        </svg>
+
+        <div class="lp3-share-runs">
+          <span class="k">{t('v3.proof.s_runs', lang)}</span>
+          {agents.map(a => <span class="chip">{a}</span>)}
+          <span class="chip">+15</span>
+        </div>
+      </div>
     </div>
 
     <a

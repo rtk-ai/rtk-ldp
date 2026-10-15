@@ -11,8 +11,13 @@ import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
 interface Props {
   starsLabel: string
   lang?: Lang
+  promo?: boolean
 }
-const { starsLabel, lang = 'en' } = Astro.props
+const { starsLabel, lang = 'en', promo = false } = Astro.props
+
+const proText = t('v3.hero.pro_chip', lang)
+const proCta = t('v3.probar.cta', lang)
+const proLabel = `${proText.replace(/<[^>]+>/g, '')} — ${proCta}`
 
 const currentLocale = (Astro.currentLocale ?? 'en') as Lang
 
@@ -23,10 +28,10 @@ const benchHref = getRelativeLocaleUrl(currentLocale, '/benchmarks/')
 const teamHref = '/team/'
 
 const productItems = [
+  { href: `${homeHref}#engine`, label: t('nav.whats_new', lang) },
   { href: `${homeHref}#install`, label: t('v3.hero.cta_install', lang) },
   { href: `${homeHref}#problem`, label: t('nav.why_rtk', lang) },
-  { href: `${homeHref}#solution`, label: t('nav.how_it_works', lang) },
-  { href: `${homeHref}#demo`, label: t('nav.demo', lang) },
+  { href: `${homeHref}#pipelines`, label: t('nav.how_it_works', lang) },
   { href: `${homeHref}#ecosystem`, label: t('nav.integrations', lang) },
 ]
 
@@ -50,6 +55,23 @@ const communityItems = [
 const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`
 ---
 <nav class="lp3-nav" aria-label={t('aria.main_nav', lang)}>
+  {promo && (
+    <a class="lp3-probar" href="https://pro.rtk-ai.app" target="_blank" rel="noopener" aria-label={proLabel}>
+      <span class="lp3-probar-track" aria-hidden="true">
+        {[0, 1].map(() => (
+          <span class="lp3-probar-pass">
+            {Array.from({ length: 6 }).map(() => (
+              <span class="lp3-probar-item">
+                <i class="dot"></i>
+                <span set:html={proText} />
+                <span class="cta">{proCta} <span class="arr">→</span></span>
+              </span>
+            ))}
+          </span>
+        ))}
+      </span>
+    </a>
+  )}
   <div class="lp3-container lp3-nav-inner">
     <div class="lp3-nav-left">
       <a href={homeHref} class="lp3-nav-logo">
@@ -220,7 +242,7 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
   onScrollNav()
 
   if (typeof IntersectionObserver !== 'undefined') {
-    const sections = ['problem', 'solution', 'ecosystem', 'demo']
+    const sections = ['problem', 'engine', 'pipelines', 'ecosystem']
       .map(id => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
     const productSummary = document.querySelector<HTMLElement>('.lp3-nav-links .lp3-menu summary')
