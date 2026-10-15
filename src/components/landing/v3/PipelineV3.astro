@@ -1,0 +1,67 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+const H = (s: string) => `<span class="h">${esc(s)}</span>`
+const K = (s: string) => `<span class="k">${esc(s)}</span>`
+const V = (s: string) => `<span class="v">${esc(s)}</span>`
+const C = (s: string) => `<span class="c">${esc(s)}</span>`
+
+const lines: { html: string; tag?: string }[] = [
+  { html: H('[pipeline]') },
+  { html: `${K('extends')} = [${V('"rtk:posthook"')}, ${V('"rtk:proxy"')}]  ${C("# compress every tool's output")}` },
+  { html: '' },
+  { html: H('[[hook.before_tool.read]]'), tag: t('v3.pipelines.where', lang) },
+  { html: `${K('when')}   = { ${K('file_lines_gt')} = ${V('350')} }`, tag: t('v3.pipelines.when', lang) },
+  { html: `${K('action')} = ${V('"route"')}`, tag: t('v3.pipelines.what', lang) },
+  { html: `${K('task')}   = ${V('"bulk-read"')}  ${C('# answered by a model you supply')}` },
+]
+
+const codeHtml = lines
+  .map(
+    l =>
+      `<span class="row${l.tag ? ' is-hl' : ''}"><span class="code">${l.html || ' '}</span>${
+        l.tag ? `<span class="tag">${esc(l.tag)}</span>` : ''
+      }</span>`
+  )
+  .join('')
+
+const agents = ['Claude Code', 'Cursor', 'Codex', 'Gemini CLI']
+---
+<section class="lp3-section" id="pipelines">
+  <div class="lp3-container lp3-pipe-band">
+    <div>
+      <p class="lp3-eyebrow reveal"><span class="idx">04</span> / {t('v3.pipelines.eyebrow', lang)}</p>
+      <h2 class="lp3-h2 reveal" set:html={t('v3.pipelines.title', lang)}></h2>
+      <p class="lp3-lede reveal">{t('v3.pipelines.lede', lang)}</p>
+      <p class="lp3-pipe-note reveal" set:html={t('v3.pipelines.note', lang)}></p>
+      <a href="/docs/pipelines/overview/" class="lp3-install-link lp3-pipe-link reveal">{t('v3.pipelines.docs_link', lang)} <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div>
+      <div class="lp3-pipe-frame reveal">
+        <div class="lp3-pipe-head" aria-hidden="true">
+          <strong>{t('v3.pipelines.file_label', lang)}</strong>
+          <span>~/.config/rtk/</span>
+        </div>
+        <pre class="lp3-pipe-code" aria-hidden="true" set:html={codeHtml}></pre>
+        <p class="lp3-sr">{t('v3.pipelines.sr', lang)}</p>
+      </div>
+      <p class="lp3-pipe-runs reveal">
+        <span class="lbl">{t('v3.pipelines.runs_in', lang)}</span>
+        {agents.map(a => <span class="chip">{a}</span>)}
+        <span class="chip is-accent">+14</span>
+      </p>
+      <p class="lp3-pipe-runs reveal">
+        <span class="lbl">Acts</span>
+        <span class="chip">in the agent — hooks</span>
+        <span class="chip">on the API traffic — RTK Proxy, optional</span>
+      </p>
+    </div>
+  </div>
+</section>

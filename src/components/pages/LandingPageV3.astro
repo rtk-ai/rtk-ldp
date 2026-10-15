@@ -6,10 +6,10 @@ import HeroV3 from '../landing/v3/HeroV3.astro'
 import Companies from '../landing/v3/Companies.astro'
 import Ecosystem from '../landing/v3/Ecosystem.astro'
 import ProblemV3 from '../landing/v3/ProblemV3.astro'
-import SolutionV3 from '../landing/v3/SolutionV3.astro'
-import ImpactV3 from '../landing/v3/ImpactV3.astro'
-import DemoV3 from '../landing/v3/DemoV3.astro'
 import ProofV3 from '../landing/v3/ProofV3.astro'
+import CompressorV3 from '../landing/v3/CompressorV3.astro'
+import EngineV3 from '../landing/v3/EngineV3.astro'
+import PipelineV3 from '../landing/v3/PipelineV3.astro'
 import InstallV3 from '../landing/v3/InstallV3.astro'
 import FaqV3 from '../landing/v3/FaqV3.astro'
 import FinalCta from '../landing/v3/FinalCta.astro'
@@ -26,7 +26,24 @@ const { lang } = Astro.props
 const faqItems = [
   {
     q: 'What is RTK (Rust Token Killer)?',
-    a: 'RTK is an open-source CLI tool that compresses command outputs before they reach the AI context window. It cuts up to 90% of that output noise with zero configuration changes, which leaves more of the context window for reasoning and lowers the token cost of every command that runs. RTK is written in Rust, Apache 2.0 licensed, and works transparently with Claude Code, Cursor, and any terminal-based AI assistant.',
+    a: 'RTK is a cost reduction engine for AI coding agents. It cleans what your agent reads at every tool call — shell output, file reads, search results, web pages, MCP calls — cutting up to 90% of command output noise, and it can hand heavy work to cheaper models. The battle-tested Bash compressor developers starred is the core of the engine. RTK is free to use, written in Rust, with the CLI open source under Apache 2.0, and works with Claude Code, Cursor, and 18 AI coding agents.',
+  },
+  {
+    q: "What is RTK Engine?",
+    a: "RTK Engine turns the battle-tested compressor into a full cost reduction engine. RTK can now compress every tool's output, not just shell commands, route heavy work to cheaper models, and let you build your own pipeline, plug in new methods, and share your setup as one file that works in any supported agent. Upgrading changes nothing: RTK works exactly as before until you add a line.",
+    links: [{ href: '/blog/rtk-v1-release/', label: 'Read the RTK Engine announcement' }],
+  },
+  {
+    q: 'What is a pipeline?',
+    a: "One file of rules. Each rule reads like a sentence: where RTK acts, when, and what it does — for example, when the agent reads a file longer than 350 lines, send it to a cheaper model. RTK's own behaviour is written in the same format, so you never start from a blank page: pick a built-in pipeline, change one line, or write your own.",
+  },
+  {
+    q: 'Can I share a pipeline with my team?',
+    a: 'Yes. A pipeline is one file: share it, drop it in, and it works in any supported agent. The same file can be used in Claude Code by one person and Cursor by another.',
+  },
+  {
+    q: 'Do I need to change anything when I upgrade to RTK Engine?',
+    a: 'No. Install, run rtk init, and RTK works exactly as before. Nothing changes until you add a line to a pipeline. The compressor you already rely on is the core of the engine, not a feature that moved.',
   },
   {
     q: 'How many tokens does RTK actually save?',
@@ -38,15 +55,15 @@ const faqItems = [
   },
   {
     q: 'Is RTK free? Are there usage limits?',
-    a: 'RTK is completely free. It is open source under the Apache 2.0 license, with source code available on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required and no accounts. Telemetry is opt-in: it is off until you explicitly enable it, and it collects no personal data. For teams, RTK Pro is available at pro.rtk-ai.app.',
+    a: 'RTK is completely free. It is open source under the Apache 2.0 license, with source code available on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required and no accounts. Routing to a cheaper model is optional and uses a model key you provide. Telemetry is opt-in: it is off until you explicitly enable it, and it collects no personal data. For teams, RTK Pro is available at pro.rtk-ai.app.',
   },
   {
     q: 'Which AI coding tools and commands does RTK support?',
-    a: 'RTK works with Claude Code (Anthropic), Cursor, Gemini CLI, Aider, and any AI assistant that reads terminal output. It supports all major CLI commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
+    a: 'RTK works with 18 AI coding agents, including Claude Code (Anthropic), Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline and Aider — and the engine acts on every tool an agent uses: shell commands, file reads, search, web fetches and MCP calls. On the shell side it covers 125+ commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
   },
   {
     q: 'How does RTK work without changing my workflow?',
-    a: 'Running rtk init --global installs a PreToolUse hook in Claude Code that automatically rewrites Bash commands to rtk equivalents at the proxy layer. You continue using your normal commands. RTK intercepts and compresses the output before it enters the context window, with no manual changes to prompts or workflows needed.',
+    a: 'Running rtk init --global installs hooks inside your agent that act around each tool call: shell commands are automatically rewritten to rtk equivalents, and output is compressed before it enters the context window. If you turn it on, the RTK Proxy also acts on the API traffic, trimming what the agent sends to the model. You continue using your normal commands, with no manual changes to prompts or workflows needed.',
   },
   {
     q: 'Does RTK affect code quality or AI reasoning accuracy?',
@@ -81,7 +98,7 @@ const schemaOrg = {
       '@id': 'https://www.rtk-ai.app/#software',
       name: 'RTK — Rust Token Killer',
       description:
-        'RTK compresses CLI command outputs before they reach the AI context window, cutting up to 90% of that output noise with zero config changes. Open source, Apache 2.0 licensed, written in Rust.',
+        'RTK is a cost reduction engine for AI coding agents: it compresses what the agent reads at every tool call, cutting up to 90% of command output noise with zero config changes, and can route heavy work to cheaper models through a pipeline you control and share as one file. Free to use, CLI open source under Apache 2.0, written in Rust.',
       url: 'https://www.rtk-ai.app',
       applicationCategory: 'DeveloperApplication',
       operatingSystem: 'macOS, Linux, Windows',
@@ -101,7 +118,11 @@ const schemaOrg = {
       featureList: [
         '56% average output reduction on the commands RTK rewrites, benchmarks published in full',
         '3x longer AI coding sessions by reducing context pollution',
-        'Supports all major CLI commands: cargo test, git status, grep, find, ls, docker, kubectl, and more',
+        'Compresses the output of every tool an agent uses: shell, file reads, search, web, MCP',
+        'Routes heavy work to cheaper models via pipeline rules',
+        'Pipelines: one file of rules you build, plug methods into, and share with your team',
+        'Works with 18 AI coding agents, including Claude Code, Cursor and Gemini CLI',
+        'Supports 125+ CLI commands: cargo test, git status, grep, find, ls, docker, kubectl, and more',
         'Auto-rewrite hook for Claude Code via PreToolUse',
         'Real-time analytics dashboard with rtk gain',
       ],
@@ -134,7 +155,7 @@ const schemaOrg = {
           '@type': 'HowToStep',
           position: 1,
           name: 'Install RTK',
-          text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh — supports macOS and Linux. Alternatively install via Homebrew: brew install rtk.',
+          text: 'Run the one-liner installer: curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh — supports macOS and Linux. Alternatively install via Homebrew: brew install rtk-ai/tap/rtk.',
           url: 'https://www.rtk-ai.app/#install',
         },
         {
@@ -158,7 +179,7 @@ const schemaOrg = {
       '@id': 'https://www.rtk-ai.app/#webpage',
       url: 'https://www.rtk-ai.app/',
       name: 'RTK — Rust Token Killer',
-      description: 'RTK cuts CLI output noise before it reaches your AI context: 56% less output on average for the commands it rewrites, up to 90% on the noisiest. Longer sessions, zero config. Free, open source, Apache 2.0, written in Rust.',
+      description: 'RTK is a cost reduction engine for AI coding agents: it cuts command output noise before it reaches your AI context — 56% less on average for rewritten commands, up to 90% on the noisiest — routes heavy work to cheaper models, and lets you build and share pipelines. Free to use, CLI open source, Apache 2.0, written in Rust.',
       inLanguage: 'en',
       dateModified: buildDate,
       isPartOf: { '@type': 'WebSite', name: 'RTK', url: 'https://www.rtk-ai.app' },
@@ -173,7 +194,7 @@ const schemaOrg = {
 ---
 <Layout
   title="RTK — Rust Token Killer"
-  description="RTK cuts CLI output noise before it reaches your AI context: 56% less on average for rewritten commands, up to 90% on the noisiest. Zero config, Apache 2.0."
+  description="RTK Engine cuts what AI coding agents cost: compress tool output, route work to cheaper models, share one pipeline file. Zero config, Apache 2.0."
   schemaOrg={schemaOrg}
 >
   <Fragment slot="head">
@@ -210,16 +231,21 @@ const schemaOrg = {
 
   <div class="lp3">
     <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <NavV3 starsLabel={starsLabel} lang={lang} />
+    <NavV3 starsLabel={starsLabel} lang={lang} promo />
     <main id="main-content">
       <HeroV3 starsLabel={starsLabel} lang={lang} />
       <Companies lang={lang} />
       <ProblemV3 lang={lang} />
-      <SolutionV3 lang={lang} />
-      <DemoV3 lang={lang} />
+      <CompressorV3 lang={lang} />
+      <EngineV3 lang={lang} />
+      <PipelineV3 lang={lang} />
       <ProofV3 lang={lang} />
-      <ImpactV3 lang={lang} />
       <Ecosystem lang={lang} />
+      <section class="lp3-section lp3-benefit" id="why">
+        <div class="lp3-container">
+          <p class="lp3-h2 lp3-benefit-line reveal">Fewer tokens. Lower bill. <em>Same answers.</em></p>
+        </div>
+      </section>
       <InstallV3 lang={lang} />
       <FaqV3 items={faqItems} lang={lang} />
       <FinalCta lang={lang} />
@@ -243,14 +269,12 @@ const schemaOrg = {
     initHeroScroll,
     initHeroIdle,
     initIntroCue,
-    initContextViz,
-    initDemoTabs,
+    initLayerCosts,
     initCountUp,
     initButtonSheen,
     initMarquee,
     initEcoMore,
     initHookTabs,
-    initProofCrop,
   } from '../../scripts/landing-v3'
 
   initReveal()
@@ -260,12 +284,10 @@ const schemaOrg = {
   initHeroScroll()
   initHeroIdle()
   initIntroCue()
-  initContextViz()
-  initDemoTabs()
+  initLayerCosts()
   initCountUp()
   initButtonSheen()
   initMarquee()
   initEcoMore()
   initHookTabs()
-  initProofCrop()
 </script>

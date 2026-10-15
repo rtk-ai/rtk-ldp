@@ -1,0 +1,56 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const specs = [
+  { key: t('v3.specs.language', lang), val: 'Rust' },
+  { key: t('v3.specs.license', lang), val: 'Apache 2.0' },
+  { key: t('v3.specs.architecture', lang), val: t('v3.specs.architecture_val', lang) },
+  { key: t('v3.specs.overhead', lang), val: '< 20 ms' },
+  { key: t('v3.specs.commands', lang), val: '125+' },
+  { key: t('v3.specs.telemetry', lang), val: t('v3.specs.telemetry_val', lang) },
+]
+---
+<section class="lp3-section" id="compressor">
+  <div class="lp3-container">
+    <div class="lp3-specs">
+      <div>
+        <p class="lp3-eyebrow reveal"><span class="idx">02</span> / {t('v3.comp.eyebrow', lang)}</p>
+        <h2 class="lp3-h2 reveal">The compressor with <em>4M+ downloads</em></h2>
+        <p class="lp3-lede reveal">{t('v3.comp.lede', lang)}</p>
+
+        <div class="lp3-comp-specs reveal">
+          <p class="lp3-eyebrow lp3-spec-label">{t('v3.specs.eyebrow', lang)}</p>
+          <div class="lp3-spec-table">
+            {specs.map(sp => (
+              <div class="lp3-spec-row">
+                <span class="lp3-spec-key">{sp.key}</span>
+                <span class="lp3-spec-val">{sp.val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <figure class="lp3-proof-card lp3-comp-shot reveal">
+        <img
+          src="/assets/screenshots/rtk-gain-live.webp"
+          alt={t('v3.proof.alt1', lang)}
+          width="1600"
+          height="825"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>
+          <span class="k">{t('v3.proof.k1', lang)}</span>
+          <p set:html={t('v3.proof.d1', lang)}></p>
+        </figcaption>
+      </figure>
+    </div>
+
+  </div>
+</section>

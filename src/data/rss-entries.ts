@@ -15,6 +15,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'release',
+    title: 'RTK Engine released: from CLI compressor to cost reduction engine',
+    date: 'Oct 15, 2026',
+    description: 'The compressor became a full cost reduction engine. Compress every tool output, route heavy work to cheaper models, build your own pipeline, plug in methods and share it as one file, in any agent. Upgrading changes nothing until you add a line.',
+    link: 'https://www.rtk-ai.app/blog/rtk-v1-release/',
+  },
+  {
     type: 'new_page',
     title: 'RTK Cloud waitlist page is live',
     date: 'May 9, 2026',

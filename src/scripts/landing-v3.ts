@@ -327,33 +327,60 @@ export function initHeroScroll() {
       }
     })
 
-    hero.classList.toggle('pro-on', p >= 0.93)
     hero.classList.toggle('settled', p >= 0.96)
   })
 }
 
-export function initContextViz() {
-  const root = document.querySelector<HTMLElement>('[data-ctxviz]')
-  if (!root || reduced()) return
+export function initLayerCosts() {
+  const root = document.querySelector<HTMLElement>('[data-layers]')
+  if (!root || reduced() || typeof IntersectionObserver !== 'function') return
+
+  const fmt = (v: number) => `${Math.round(v)}k`
+  const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-layer]')).map(el => ({
+    el,
+    before: parseFloat(el.dataset.before || '0'),
+    after: parseFloat(el.dataset.after || '0'),
+    cost: el.querySelector<HTMLElement>('[data-cost]'),
+  }))
+  const max = Math.max(...rows.map(r => r.before))
+  const totalBefore = rows.reduce((s, r) => s + r.before, 0)
+  const total = root.querySelector<HTMLElement>('[data-total]')
+  const saved = root.querySelector<HTMLElement>('[data-saved]')
+
+  const render = (k: number) => {
+    let sum = 0
+    for (const r of rows) {
+      const v = r.before - (r.before - r.after) * k
+      sum += v
+      setVar(r.el, '--cw', `${((v / max) * 100).toFixed(2)}%`)
+      r.el.classList.toggle('cut', k > 0.02 && r.before > r.after)
+      setText(r.cost, fmt(v))
+    }
+    root.classList.toggle('rtk-on', k > 0.02)
+    setText(total, fmt(sum))
+    setText(saved, `−${Math.round((1 - sum / totalBefore) * 100)}%`)
+    root.classList.toggle('saving', totalBefore - sum > 0.5)
+  }
 
   root.classList.add('js-anim')
-  const cliPct = root.querySelector<HTMLElement>('[data-cli-pct]')
-  const usedPct = root.querySelector<HTMLElement>('[data-used-pct]')
-  const msg = root.querySelector<HTMLElement>('[data-ctx-msg]')
+  render(0)
 
-  onScroll(() => {
-    const rect = root.getBoundingClientRect()
-    const vh = window.innerHeight
-    const q = clamp01((vh * 0.85 - rect.top) / (vh * 0.6))
-    const cli = Math.round(18 - 13 * easeOut(q))
-    const used = Math.round(67.5 + cli)
-    setVar(root, '--cli', `${cli}%`)
-    setVar(root, '--used', `${used}%`)
-    if (cliPct) cliPct.textContent = String(cli)
-    if (usedPct) usedPct.textContent = String(used)
-    root.classList.toggle('is-full', used >= 80)
-    msg?.classList.toggle('on', q > 0.85)
-  })
+  const io = new IntersectionObserver(
+    entries => {
+      if (!entries.some(e => e.isIntersecting)) return
+      io.disconnect()
+      const start = performance.now() + 250
+      const dur = 1400
+      const frame = (now: number) => {
+        const k = easeOut(clamp01((now - start) / dur))
+        render(k)
+        if (k < 1) requestAnimationFrame(frame)
+      }
+      requestAnimationFrame(frame)
+    },
+    { threshold: 0.5 }
+  )
+  io.observe(root)
 }
 
 export function initDemoTabs() {
@@ -528,29 +555,6 @@ export function initEcoMore() {
     const open = row.classList.toggle('expanded')
     btn.setAttribute('aria-expanded', String(open))
     label.textContent = open ? lessTpl : moreTpl.replace('{n}', String(extras))
-  })
-}
-
-export function initProofCrop() {
-  const card = document.querySelector<HTMLElement>('[data-proof-crop]')
-  const btn = card?.querySelector<HTMLButtonElement>('.lp3-proof-expand')
-  const label = btn?.querySelector<HTMLElement>('.txt')
-  if (!card || !btn || !label) return
-
-  const moreTpl = btn.dataset.moreLabel ?? 'Show full screenshot'
-  const lessTpl = btn.dataset.lessLabel ?? 'Show less'
-
-  card.classList.add('is-cropped')
-  btn.hidden = false
-  label.textContent = moreTpl
-
-  btn.addEventListener('click', () => {
-    const cropped = card.classList.toggle('is-cropped')
-    btn.setAttribute('aria-expanded', String(!cropped))
-    label.textContent = cropped ? moreTpl : lessTpl
-    if (cropped) {
-      card.scrollIntoView({ block: 'nearest', behavior: reduced() ? 'auto' : 'smooth' })
-    }
   })
 }
 

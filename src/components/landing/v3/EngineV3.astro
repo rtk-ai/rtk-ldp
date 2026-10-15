@@ -1,0 +1,70 @@
+---
+import { t, type Lang } from '../../../lib/i18n'
+
+interface Props {
+  lang?: Lang
+}
+const { lang = 'en' } = Astro.props
+
+const icons = [
+  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3l4 4 4-4M8 21l4-4 4 4M4 12h16"/></svg>`,
+  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h5c3 0 3-6 6-6h7M8 12c3 0 3 6 6 6h7"/><path d="M18 3l3 3-3 3M18 15l3 3-3 3"/></svg>`,
+  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.25"/><circle cx="9" cy="17" r="2.25"/></svg>`,
+  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M7 7h10v3a5 5 0 0 1-5 5 5 5 0 0 1-5-5zM12 15v6"/></svg>`,
+  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.3 10.9l7.4-3.8M8.3 13.1l7.4 3.8"/></svg>`,
+  `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>`,
+]
+
+const things = icons.map((icon, i) => ({
+  icon,
+  title: t(`v3.engine.c${i + 1}_title`, lang),
+  ex: t(`v3.engine.c${i + 1}_ex`, lang),
+  known: i === 0,
+}))
+
+const left = things.slice(0, 3)
+const right = things.slice(3)
+---
+<section class="lp3-section" id="engine">
+  <div class="lp3-container">
+    <div class="lp3-engine-head">
+      <p class="lp3-eyebrow reveal"><span class="idx">03</span> / {t('v3.engine.eyebrow', lang)}</p>
+      <h2 class="lp3-h2 reveal" set:html={t('v3.engine.title', lang)}></h2>
+      <p class="lp3-lede reveal">56% less command output on average, up to 90% on the noisiest. And with RTK Engine: route, build, plug in, share — in any agent.</p>
+      <a href="/blog/rtk-v1-release/" class="lp3-install-link lp3-pipe-link reveal">{t('v3.engine.blog_link', lang)} <span aria-hidden="true">→</span></a>
+    </div>
+
+    <div class="lp3-engine-viz">
+      <div class="lp3-engine-colv">
+        {left.map(th => (
+          <div class="lp3-engine-card reveal">
+            <span class="ico" aria-hidden="true" set:html={th.icon} />
+            <div class="body">
+              <h3>{th.title}{th.known && <span class="known">{t('v3.comp.eyebrow', lang)}</span>}</h3>
+              <p class="ex">{th.ex}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="lp3-engine-core reveal" aria-hidden="true">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="glow"></span>
+        <span class="chip">Engine</span>
+      </div>
+
+      <div class="lp3-engine-colv is-right">
+        {right.map(th => (
+          <div class="lp3-engine-card reveal">
+            <span class="ico" aria-hidden="true" set:html={th.icon} />
+            <div class="body">
+              <h3>{th.title}</h3>
+              <p class="ex">{th.ex}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

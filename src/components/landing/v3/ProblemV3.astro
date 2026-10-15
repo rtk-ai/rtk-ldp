@@ -6,57 +6,65 @@ interface Props {
 }
 const { lang = 'en' } = Astro.props
 
-const staticRows = [
-  { label: t('v3.problem.row_system', lang), pct: 3 },
-  { label: t('v3.problem.row_mcp', lang), pct: 1 },
-  { label: t('v3.problem.row_memory', lang), pct: 1 },
-  { label: t('v3.problem.row_skills', lang), pct: 0.5 },
-  { label: t('v3.problem.row_history', lang), pct: 62 },
+const layers = [
+  { key: 'v3.problem.l_fixed', before: 63, after: 63 },
+  { key: 'v3.problem.l_conv', before: 60, after: 52 },
+  { key: 'v3.problem.l3', before: 70, after: 25 },
+  { key: 'v3.problem.l2', before: 90, after: 40 },
+  { key: 'v3.problem.l4', before: 40, after: 20 },
 ]
----
-<section class="lp3-section" id="problem">
-  <div class="lp3-container lp3-problem-grid">
 
+const k = (v: number) => `${Math.round(v)}k`
+
+const max = Math.max(...layers.map(l => l.before))
+const totalBefore = layers.reduce((s, l) => s + l.before, 0)
+const totalAfter = layers.reduce((s, l) => s + l.after, 0)
+const cut = Math.round((1 - totalAfter / totalBefore) * 100)
+---
+<section class="lp3-section lp3-problem" id="problem">
+  <div class="lp3-container">
     <div class="lp3-problem-head">
       <p class="lp3-eyebrow reveal"><span class="idx">01</span> / {t('v3.problem.eyebrow', lang)}</p>
       <h2 class="lp3-h2 reveal" set:html={t('v3.problem.title', lang)}></h2>
-      <p class="lp3-lede reveal">
-        {t('v3.problem.lede', lang)}
-      </p>
+      <p class="lp3-lede reveal">{t('v3.problem.lede', lang)}</p>
     </div>
+  </div>
 
-    <div class="lp3-ctx is-full reveal" data-ctxviz>
-      <p class="lp3-sr">
-        {t('v3.problem.chart_sr', lang)}
-      </p>
-      <div class="lp3-ctx-head" aria-hidden="true">
-        <span>{t('v3.problem.ctx_head', lang)}</span>
-        <span class="pct" set:html={t('v3.problem.pct_used', lang).replace('{n}', '<span data-used-pct>86</span>')}></span>
-      </div>
-      <div class="lp3-ctx-rows" aria-hidden="true">
-        {staticRows.map(r => (
-          <div class="lp3-ctx-row">
-            <span class="lp3-ctx-label"><i class="dot"></i>{r.label}</span>
-            <span class="lp3-ctx-track"><span class="lp3-ctx-fill" style={`width:${r.pct}%`}></span></span>
-            <span class="lp3-ctx-pctcol">{r.pct}%</span>
-          </div>
-        ))}
-        <div class="lp3-ctx-row is-noise">
-          <span class="lp3-ctx-label"><i class="dot"></i>{t('v3.problem.row_cli', lang)}</span>
-          <span class="lp3-ctx-track"><span class="lp3-ctx-fill"></span></span>
-          <span class="lp3-ctx-pctcol"><span data-cli-pct>18</span>%</span>
+  <div class="lp3-container">
+      <div class="lp3-layers reveal" data-layers>
+        <p class="lp3-sr">{t('v3.problem.chart_sr', lang)}</p>
+
+        <div class="lp3-layers-head" aria-hidden="true">
+          <span class="k">{t('v3.problem.tok_head', lang)}</span>
+          <span class="state">
+            <span class="off">{t('v3.problem.without', lang)}</span>
+            <span class="on"><i class="dot"></i>{t('v3.problem.with', lang)}</span>
+          </span>
         </div>
-      </div>
-      <p class="lp3-ctx-caption" aria-hidden="true">{t('v3.problem.ctx_caption', lang)}</p>
-      <div class="lp3-ctx-foot" aria-hidden="true">
-        <span class="lp3-ctx-msg" data-ctx-msg>{t('v3.problem.ctx_msg', lang)}</span>
-        <span class="lp3-ctx-total"><i></i></span>
-      </div>
-    </div>
 
-    <aside class="lp3-ctx-note reveal">
-      <p set:html={t('v3.problem.note', lang)}></p>
-    </aside>
+        <div class="lp3-layers-list" aria-hidden="true">
+          {layers.map(l => (
+            <div
+              class="lp3-layer"
+              style={`--w0:${((l.before / max) * 100).toFixed(1)}%; --w:${((l.after / max) * 100).toFixed(1)}%`}
+              data-layer
+              data-before={l.before}
+              data-after={l.after}
+            >
+              <span class="lp3-layer-name">{t(l.key, lang)}</span>
+              <span class="lp3-layer-bar"><i></i></span>
+              <b class="lp3-layer-cost" data-cost>{k(l.after)}</b>
+            </div>
+          ))}
+        </div>
 
+        <div class="lp3-layers-total" aria-hidden="true">
+          <span class="k">{t('v3.problem.total', lang)}</span>
+          <span class="v"><b data-total>{k(totalAfter)}</b> <small>{t('v3.problem.tokens', lang)}</small></span>
+          <span class="saved"><b data-saved>−{cut}%</b></span>
+        </div>
+
+        <p class="lp3-layers-caption">{t('v3.problem.caption', lang)}</p>
+      </div>
   </div>
 </section>

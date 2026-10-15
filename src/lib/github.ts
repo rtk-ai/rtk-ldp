@@ -8,8 +8,8 @@ export interface RepoFacts {
   versionLive: boolean
 }
 
-const STARS_FLOOR = 79000
-const VERSION_FALLBACK = 'v0.48.0'
+const STARS_FLOOR = 82000
+const VERSION_FALLBACK = 'v1.0.0'
 
 let cached: Promise<RepoFacts> | null = null
 
