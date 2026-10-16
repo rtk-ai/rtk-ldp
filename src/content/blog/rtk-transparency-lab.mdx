@@ -1,0 +1,99 @@
+---
+title: "Inside the RTK Transparency Lab: How We Prove Compression Never Changes Behaviour"
+description: "Every RTK pre-release now goes through 1,000+ differential fuzz cases, a deterministic oracle gate and an advisory decision-model judge. Here is how it works, what it checks, and what comes next."
+date: 2026-10-16
+tags: [testing, transparency, reliability]
+---
+
+import StatGrid from '../../components/blog/StatGrid.astro'
+
+## TL;DR
+
+RTK compresses command output so AI agents spend fewer tokens. The hard part is doing it without changing what the agent learns: same exit code, same errors, only the noise removed.
+
+For several weeks now, every merge to RTK's pre-release branch has gone through the **Transparency Lab**. Each case runs twice, raw and through RTK, then gets checked in two layers:
+
+1. **Deterministic oracles:** the hard gate. They're rule-based and reproducible.
+2. **A decision model as judge:** advisory. It weighs in where rules can't decide.
+
+The maintainers get the results before anything ships.
+
+<StatGrid stats={[
+  { value: '1,000+', label: 'differential cases per run' },
+  { value: '100%', label: 'of declared commands and flags exercised' },
+  { value: '2×', label: 'a finding must reproduce before it is reported' },
+  { value: '0', label: 'network calls in the hard gate' },
+]} />
+
+## The contract
+
+A hook rewrites `git log` into `rtk git log`, runs the real tool, and filters the output. Every filtered command must keep four promises:
+
+- **Same behaviour:** the tool runs with the same arguments.
+- **Same exit code:** success and failure are never confused.
+- **Signal preserved:** errors, paths, line numbers and counts survive, or the output says how to recover them.
+- **Never worse:** never more tokens than the raw command.
+
+## Why a separate lab
+
+- **It's one of our internal R&D labs.** It's where we study filter behaviour and look for ways to compress better without losing signal.
+- **Zero footprint on the open-source core:** no extra dependencies, and no CI cost for contributors.
+- **It tests real binaries.** That includes pre-releases, packaged releases, and two versions side by side, to see whether a filter became more aggressive between them.
+
+## Step 1: Differential fuzzing
+
+Each case runs in an isolated sandbox, once raw and once exactly as the hook would run it. Stdout, stderr and exit code are captured for both runs.
+
+- **Seeded flag combinations** for every supported tool, so every run is reproducible.
+- **Real projects** across the main language ecosystems, each with a deliberate failure and warning, run through the real compilers, linters and test runners.
+- **Built-in and TOML filters**, both tested end to end through the real CLI.
+
+**Coverage:** every command and flag RTK declares is exercised, and a new one without a test fails the run. Native flags that RTK passes through to the underlying tool are effectively unbounded, so we sample them deliberately and report what we covered, without claiming 100%.
+
+## Step 2: Deterministic oracles
+
+| Oracle | Asserts |
+|---|---|
+| Exit code | Same as raw. |
+| Never worse | Output is not larger than raw. |
+| No breakage | A filter never breaks a working command. |
+| Stream fidelity | Content on stderr does not vanish. |
+| Signal survival | Key information survives, or a recovery hint exists. |
+| Recovery works | Elided output can actually be recalled. |
+| No crash, no block | No panic, and a fallback always runs. |
+| Execution, not help | RTK never answers with help text instead of running the command. |
+| Declared behaviour | TOML filters match their own declared expectations. |
+
+Why you can trust this layer:
+
+- **Reproducible:** the same seed gives the same verdicts.
+- **Stable:** non-deterministic commands are only checked on exit code, and a finding must reproduce twice.
+- **Self-tested:** each oracle must catch a planted defect *and* stay silent on legitimate compression. We removed false positives by fixing their root cause, never by loosening the checks.
+
+## Step 3: A decision model as judge
+
+Whether a removed detail was noise or signal often takes judgement. For cases where content was removed and the rules couldn't decide, a decision model compares raw and filtered output and returns a **probability of over-filtering**.
+
+- **Advisory only:** it never overrides a deterministic failure.
+- **Opt-in:** it runs on demand, separate from the gate that runs on every merge.
+- **Benchmarked:** we checked it against planted over-filtering before relying on it.
+
+## Step 4: Reports to maintainers
+
+Each run sends maintainers a report grouped by severity and filter. It includes a diff against the previous run and enough detail to reproduce any finding in seconds. Regressions are caught before a release, not in your terminal.
+
+## Limits, honestly
+
+- Forwarded native flags are sampled, not exhausted.
+- Some cloud and cluster CLIs run without credentials, so their success paths get less coverage.
+- The judge is a second opinion, not proof.
+
+## Where your reports fit
+
+Many reported issues fell exactly into the classes these oracles cover. They're fixed, and each one is now a permanent test case. **Update to the latest release** to get those fixes. If something still looks off, open an issue with the raw and RTK output, and it becomes a test case.
+
+## What's next for the Transparency Lab?
+
+**Full agent sessions, judged end to end.** Comparing outputs one command at a time tells us whether a filter is correct. It doesn't tell us whether an agent did its job just as well. Next, we'll run complete agent sessions with and without RTK, and have the decision model judge them as a whole: did the agent find what it needed, did it retry, did it take a longer path? That turns noise vs signal from a per-command question into a measured one, and points us to the next round of improvements.
+
+**Beyond Bash.** Since v1.0.0, the RTK Engine does far more than compress shell output. It brings pipelines, plugins, and a proxy at the request layer. The lab will grow with it, so every new surface is held to the same contract: same behaviour, signal preserved, only the noise removed.
