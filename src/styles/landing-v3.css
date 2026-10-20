@@ -269,8 +269,9 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--lp3-line);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease, transform 0.35s ease, box-shadow 0.35s ease;
 }
+.lp3-nav.is-hidden:not(:focus-within) { transform: translateY(-100%); box-shadow: none; }
 .lp3-nav-inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -311,7 +312,7 @@
 .lp3-probar-item .arr { display: inline-block; transition: transform 0.2s ease; }
 .lp3-probar:hover .arr { transform: translateX(3px); }
 @media (prefers-reduced-motion: no-preference) {
-  .lp3-probar-track { animation: lp3-probar 80s linear infinite; }
+  .lp3-probar-track { animation: lp3-probar 120s linear infinite; }
   .lp3-probar:hover .lp3-probar-track,
   .lp3-probar:focus-visible .lp3-probar-track { animation-play-state: paused; }
 }
@@ -947,6 +948,12 @@
 @media (min-width: 961px) {
   .lp3-hero.js-anim .lp3-gate-core {
     margin-top: calc(var(--rawout, 0) * 12px);
+  }
+  .lp3-hero.js-anim .lp3-panel-raw {
+    transform: translateX(calc(var(--rawout, 0) * -48px - var(--spread, 0) * 40px)) rotateY(9deg);
+  }
+  .lp3-hero.js-anim .lp3-panel-clean {
+    transform: translateX(calc(var(--spread, 0) * 40px)) rotateY(-9deg);
   }
 }
 

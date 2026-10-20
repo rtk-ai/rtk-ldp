@@ -177,8 +177,8 @@ export function initHeroScroll() {
     dx = window.innerWidth / 2 - (r.left + r.width / 2)
     dy = window.innerHeight / 2 - (r.top + r.height / 2)
     s0 = Math.min(
-      1.55,
-      Math.max(1.0, Math.min((window.innerWidth * 0.92) / r.width, (window.innerHeight * 0.72) / r.height))
+      1.2,
+      Math.max(1.0, Math.min((window.innerWidth * 0.7) / r.width, (window.innerHeight * 0.56) / r.height))
     )
     if (gateCore && spacer) {
       const gr = gateCore.getBoundingClientRect()
@@ -271,6 +271,7 @@ export function initHeroScroll() {
       setVar(flow, '--py', '0deg')
     }
     const vs = vs0 + (endScale - vs0) * d
+    setVar(hero, '--spread', (1 - d).toFixed(3))
     setVar(hero, '--vs', String(vs))
     setVar(hero, '--vx', `${(vdx * (1 - d) + endX * d).toFixed(1)}px`)
     setVar(hero, '--vy', `${(vdy * (1 - d) + endY * d).toFixed(1)}px`)

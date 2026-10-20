@@ -238,8 +238,21 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
     setOpen(false)
   })
 
-  const onScrollNav = () => nav?.classList.toggle('scrolled', window.scrollY > 8)
-  window.addEventListener('scroll', onScrollNav, { passive: true })
+  let lastY = window.scrollY
+  let ticking = false
+  const onScrollNav = () => {
+    const y = window.scrollY
+    nav?.classList.toggle('scrolled', y > 8)
+    const busy = drawer?.classList.contains('open') || menus.some(m => m.open) || nav?.matches(':focus-within')
+    if (y < 120 || busy) nav?.classList.remove('is-hidden')
+    else if (y - lastY > 6) nav?.classList.add('is-hidden')
+    else if (lastY - y > 6) nav?.classList.remove('is-hidden')
+    if (Math.abs(y - lastY) > 6 || y < 120) lastY = y
+    ticking = false
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScrollNav) }
+  }, { passive: true })
   onScrollNav()
 
   if (typeof IntersectionObserver !== 'undefined') {
