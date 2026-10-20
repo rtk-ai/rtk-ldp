@@ -949,6 +949,12 @@
   .lp3-hero.js-anim .lp3-gate-core {
     margin-top: calc(var(--rawout, 0) * 12px);
   }
+  .lp3-hero.js-anim .lp3-panel-raw {
+    transform: translateX(calc(var(--rawout, 0) * -48px - var(--spread, 0) * 40px)) rotateY(9deg);
+  }
+  .lp3-hero.js-anim .lp3-panel-clean {
+    transform: translateX(calc(var(--spread, 0) * 40px)) rotateY(-9deg);
+  }
 }
 
 .lp3-hero-visual::after {
