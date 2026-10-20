@@ -54,6 +54,24 @@ const agents = ['Claude Code', 'Cursor', 'Codex']
       </div>
     </div>
 
+    <div class="lp3-comm reveal">
+      <div class="lp3-comm-head">
+        <h3>{t('v3.comm.title', lang)}</h3>
+        <p set:html={t('v3.comm.lede', lang)}></p>
+      </div>
+      <dl class="lp3-comm-cmds">
+        <div><dt><code>rtk pipeline add github:user/repo</code></dt><dd>{t('v3.comm.add', lang)}</dd></div>
+        <div><dt><code>rtk pipeline share publish</code></dt><dd>{t('v3.comm.publish', lang)}</dd></div>
+      </dl>
+      <p class="lp3-comm-warn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4M12 17.5v.01"/></svg>
+        <span set:html={t('v3.comm.warn', lang)}></span>
+      </p>
+      <a class="lp3-btn lp3-btn-ghost lp3-comm-btn" href="https://github.com/topics/rtk-pipeline" target="_blank" rel="noopener">
+        {t('v3.comm.browse', lang)} <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
     <a
       class="lp3-proof-discord reveal"
       href="https://discord.gg/RySmvNF5kF"

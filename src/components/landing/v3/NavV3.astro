@@ -33,6 +33,7 @@ const productItems = [
   { href: `${homeHref}#problem`, label: t('nav.why_rtk', lang) },
   { href: `${homeHref}#pipelines`, label: t('nav.how_it_works', lang) },
   { href: `${homeHref}#ecosystem`, label: t('nav.integrations', lang) },
+  { href: 'https://github.com/topics/rtk-pipeline', label: t('nav.community_pipelines', lang), ext: true },
 ]
 
 const resourceItems = [
@@ -89,7 +90,7 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
       <details class="lp3-menu">
         <summary>{t('nav.product', lang)}<Fragment set:html={caret} /></summary>
         <div class="lp3-menu-panel">
-          {productItems.map(i => <a href={i.href}>{i.label}</a>)}
+          {productItems.map(i => <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>{i.label}{i.ext && <span aria-hidden="true"> ↗</span>}</a>)}
           <a href="https://pro.rtk-ai.app" class="is-pro" target="_blank" rel="noopener">
             <span class="dot" aria-hidden="true"></span>RTK Pro
           </a>
@@ -172,7 +173,7 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
 
 <div class="lp3-drawer" id="lp3-drawer" aria-hidden="true">
   <span class="lp3-drawer-label">{t('nav.product', lang)}</span>
-  {productItems.map(i => <a href={i.href}>{i.label}</a>)}
+  {productItems.map(i => <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>{i.label}</a>)}
   <a href="https://pro.rtk-ai.app" class="is-pro">RTK Pro</a>
 
   <span class="lp3-drawer-label">{t('nav.resources', lang)}</span>
