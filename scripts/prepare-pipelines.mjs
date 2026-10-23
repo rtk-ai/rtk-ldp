@@ -129,7 +129,7 @@ function sanitizeBenchmark(b) {
     suite, agent: textOf(b.agent, 60), model: textOf(b.model, 60), baseline: textOf(b.baseline, 80) ?? 'without this pipeline',
     trialsPerArm: Number.isInteger(b.trials_per_arm) && b.trials_per_arm > 0 ? b.trials_per_arm : null,
     dates: (Array.isArray(b.dates) ? b.dates : []).slice(0, 12).map((d) => textOf(d, 10)).filter((d) => d && /^\d{4}-\d{2}-\d{2}$/.test(d)),
-    details: rel(b.details), raw: rel(b.raw), notes: textOf(b.notes, 400),
+    details: rel(b.details), raw: rel(b.raw), notes: textOf(b.notes, 800),
     cost, quality, tasks,
   }
 }
