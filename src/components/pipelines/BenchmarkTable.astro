@@ -14,7 +14,8 @@ const tasks: any[] = b?.tasks ?? []
 const hasTaskQuality = tasks.some((t) => t.qualityBaseline != null && t.qualityPipeline != null)
 const maxAbs = Math.max(0.0001, ...tasks.map((t) => Math.abs(delta(t.baseline, t.pipeline) ?? 0)))
 const totalDelta = delta(b.cost.baseline, b.cost.pipeline)
-const toneOf = (d: number | null) => (d == null ? 'note' : d < -0.005 ? 'ok' : d > 0.005 ? 'warn' : 'note')
+// Savings are green; anything else, including a task that got dearer, stays neutral grey.
+const toneOf = (d: number | null) => (d == null ? 'note' : d < -0.005 ? 'ok' : 'note')
 const fileAt = (path: string) => (p.source === 'github' ? `https://github.com/${p.owner}/${p.repo}/blob/${p.sha}/${path}` : null)
 const setup = [b.suite, [b.agent, modelName(b.model)].filter(Boolean).join(' on '), b.trialsPerArm ? `${fmtInt(b.trialsPerArm)} trials per arm` : null, formatDates(b.dates ?? [])].filter(Boolean).join(' · ')
 ---
