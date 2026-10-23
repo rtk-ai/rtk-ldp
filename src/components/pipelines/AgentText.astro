@@ -1,0 +1,39 @@
+---
+import { groupTextBlocks } from './summary'
+
+interface Props {
+  p: any
+}
+const { p } = Astro.props
+const { agent, helpers } = groupTextBlocks(p)
+const ownersLabel = (owners: string[]) => (owners.length > 1 ? `used by ${owners.length} rules: ${owners.join(', ')}` : owners[0])
+---
+{agent.length === 0 ? (
+  <p class="pl-body">Nothing is shown to your agent.</p>
+) : (
+  <ol class="pl-blocks" role="list">
+    {agent.map((g) => (
+      <li class="pl-block">
+        <div class="pl-block-head"><span>{g.label}</span><span class="pl-block-owner">{ownersLabel(g.owners)}</span></div>
+        <pre class="pl-block-text">{g.text}</pre>
+      </li>
+    ))}
+  </ol>
+)}
+
+{helpers.length > 0 && (
+  <details class="pl-helpers">
+    <summary>
+      <span class="pl-helpers-title">Prompts for helper models</span>
+      <span class="pl-dim">{helpers.length} text{helpers.length === 1 ? '' : 's'}, never shown to your agent</span>
+    </summary>
+    <ol class="pl-blocks" role="list">
+      {helpers.map((g) => (
+        <li class="pl-block">
+          <div class="pl-block-head"><span>{g.label}</span><span class="pl-block-owner">{ownersLabel(g.owners)}</span></div>
+          <pre class="pl-block-text">{g.text}</pre>
+        </li>
+      ))}
+    </ol>
+  </details>
+)}

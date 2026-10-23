@@ -1,0 +1,18 @@
+---
+import { Code } from 'astro:components'
+
+interface Props {
+  toml: string
+  fileUrl: string
+  sha7: string
+  approvedLabel?: string | null
+}
+const { toml, fileUrl, sha7, approvedLabel = null } = Astro.props
+---
+<p class="pl-file-note">
+  Exact file at commit <code>{sha7}</code>, reviewed {approvedLabel ?? 'by RTK'}. Comments are the author's own; numbers in them are self-reported.
+  <a href={fileUrl} target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+</p>
+<div class="pl-toml-body">
+  <Code code={toml} lang="toml" theme="github-dark" />
+</div>

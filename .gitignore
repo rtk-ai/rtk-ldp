@@ -28,6 +28,8 @@ pnpm-debug.log*
 src/content/docs/
 src/data/docs-anchor-map.json
 src/data/docs-search-entries.ts
+src/data/pipelines.json
+pipelines-repo/
 
 # Next.js (not used here but just in case)
 .next/

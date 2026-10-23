@@ -4,13 +4,15 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "dev:full": "node scripts/prepare-docs.mjs && node scripts/build-search-index.mjs && astro dev",
+    "dev:full": "node scripts/prepare-docs.mjs && node scripts/build-search-index.mjs && node scripts/prepare-pipelines.mjs && astro dev",
     "build:guide": "node scripts/prepare-docs.mjs",
     "build:search": "node scripts/build-search-index.mjs",
-    "build": "node scripts/prepare-docs.mjs && node scripts/build-search-index.mjs && astro build",
+    "build": "node scripts/prepare-docs.mjs && node scripts/build-search-index.mjs && node scripts/prepare-pipelines.mjs && node scripts/check-pipelines-safety.mjs && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "astro": "astro"
+    "astro": "astro",
+    "build:pipelines": "node scripts/prepare-pipelines.mjs",
+    "check:pipelines": "node scripts/check-pipelines-safety.mjs"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "smol-toml": "^1.9.1",
     "typescript": "^5.7.0"
   }
 }

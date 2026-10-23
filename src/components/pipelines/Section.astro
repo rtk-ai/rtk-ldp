@@ -1,0 +1,23 @@
+---
+/**
+ * A collapsible section with an informative header: title plus a few words
+ * of what is inside, so the closed page already answers most questions.
+ */
+interface Props {
+  id: string
+  title: string
+  meta?: string | null
+  open?: boolean
+}
+const { id, title, meta = null, open = false } = Astro.props
+---
+<details id={id} class="pl-acc" open={open}>
+  <summary>
+    <span class="pl-acc-chev" aria-hidden="true"></span>
+    <span class="pl-acc-title">{title}</span>
+    {meta && <span class="pl-acc-meta">{meta}</span>}
+  </summary>
+  <div class="pl-acc-body">
+    <slot />
+  </div>
+</details>

@@ -6,7 +6,7 @@ on:
   schedule:
     - cron: "0 6 * * *"
   repository_dispatch:
-    types: [docs-updated]
+    types: [docs-updated, pipelines-updated]
   workflow_dispatch:
 
 permissions:
@@ -50,6 +50,30 @@ jobs:
 
       - name: Build search index
         run: node scripts/build-search-index.mjs
+
+      - name: Clone reviewed pipelines
+        # rtk-ai/pipelines is private during the soft launch: set the secret PIPELINES_REPO_PAT
+        # (fine-grained, Contents: read on that repo). Without access the marketplace renders empty
+        # and the deploy still succeeds.
+        run: |
+          URL="https://github.com/rtk-ai/pipelines.git"
+          if [ -n "$PIPELINES_REPO_PAT" ]; then URL="https://x-access-token:${PIPELINES_REPO_PAT}@github.com/rtk-ai/pipelines.git"; fi
+          if git clone --quiet --depth 1 --branch "${{ vars.PIPELINES_REF || 'main' }}" "$URL" ./pipelines-repo; then
+            cd pipelines-repo && mkdir -p state
+            (git fetch --quiet --depth 1 origin state && git show origin/state:state/approvals.json > state/approvals.json) || echo '{}' > state/approvals.json
+          else
+            echo "::warning::rtk-ai/pipelines not reachable — /pipelines/ will be built empty"
+          fi
+        env:
+          PIPELINES_REPO_PAT: ${{ secrets.PIPELINES_REPO_PAT }}
+
+      - name: Prepare pipelines marketplace data
+        run: PIPELINES_REPO_PATH=./pipelines-repo node scripts/prepare-pipelines.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: No raw HTML sinks under the pipelines pages
+        run: node scripts/check-pipelines-safety.mjs
 
       - name: Build Astro site
         run: pnpm astro build

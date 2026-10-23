@@ -1,0 +1,59 @@
+---
+import { ruleSentence, overrideSentence, builtinName } from './summary'
+
+interface Props {
+  p: any
+}
+const { p } = Astro.props
+const rules = (p.rules as any[]).map((r) => ruleSentence(p, r))
+const overrides = (p.overrides as any[]).map(overrideSentence)
+const ext = p.extends as string[]
+const classifiers = p.classifiers as any[]
+
+const joinAnd = (xs: string[]) => (xs.length <= 1 ? xs[0] ?? '' : xs.length === 2 ? `${xs[0]} and ${xs[1]}` : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`)
+const decisionDest = (() => {
+  const ups = [...new Set(classifiers.map((c) => c.upstream).filter(Boolean))]
+  const eg = (p.egress as any[]).filter((e) => ups.includes(e.name))
+  if (eg.length === 0) return null
+  return joinAnd(eg.map((e) => (e.local ? `a local service on ${e.host}` : `${e.provider ?? 'an upstream'}${e.model ? ` (${e.model})` : ''}`)))
+})()
+---
+{ext.length > 0 && (
+  <p class="pl-basedon">
+    Based on {ext.map((e, i) => <Fragment>{i > 0 && ', '}<strong>{builtinName(e)}</strong> (<code>{e}</code>)</Fragment>)}.
+  </p>
+)}
+
+{rules.length === 0 ? (
+  <p class="pl-body">Adds no rules of its own.</p>
+) : (
+  <ol class="pl-rules" role="list">
+    {rules.map((r) => (
+      <li class="pl-rule">
+        <p class="pl-rule-text">
+          <strong>{r.when}</strong>{r.conditions.length > 0 && <Fragment>, if {joinAnd(r.conditions)}</Fragment>}: {r.action}.
+        </p>
+        {r.raw && (
+          <details class="pl-raw">
+            <summary>Exact condition</summary>
+            <code>{r.raw}</code>
+          </details>
+        )}
+      </li>
+    ))}
+  </ol>
+)}
+
+{overrides.length > 0 && (
+  <ul class="pl-overrides" role="list">
+    {overrides.map((o) => (
+      <li>{o.verb}{' '}<code>{o.target}</code>{o.builtin && <Fragment>{' from '}<code>{o.builtin}</code></Fragment>}{' '}{o.tail}.{o.control && <span class="pl-flag">{' '}This changes when calls are redirected.</span>}</li>
+    ))}
+  </ul>
+)}
+
+{classifiers.length > 0 && (
+  <p class="pl-decisions">
+    Uses {classifiers.length} decision step{classifiers.length === 1 ? '' : 's'} ({joinAnd(classifiers.map((c) => c.name))}){decisionDest && <Fragment>, answered by {decisionDest}</Fragment>}, to decide when the rules above apply.
+  </p>
+)}

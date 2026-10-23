@@ -70,6 +70,7 @@ src/
     vox/index.astro          # Page produit Vox
     icm/index.astro          # Page produit ICM
     rss.xml.ts               # Endpoint RSS
+    pipelines/               # Marketplace: index.astro, [owner]/[repo]/index.astro, index.json.ts, rss.xml.ts
     404.astro
   content/docs/guide/        # GÉNÉRÉ — ne jamais éditer (prepare-docs.mjs)
   layouts/
@@ -82,6 +83,7 @@ src/
     rss-entries.ts           # ← ÉDITER ICI pour ajouter des entrées RSS
     docs-search-entries.ts   # GÉNÉRÉ — ne pas éditer
     docs-anchor-map.json     # GÉNÉRÉ — ne pas éditer
+    pipelines.json           # GÉNÉRÉ — ne pas éditer (prepare-pipelines.mjs, depuis rtk-ai/pipelines)
   styles/
     global.css               # Design tokens + resets (source de vérité)
     landing.css              # Styles pages landing
@@ -89,6 +91,8 @@ src/
 scripts/
   prepare-docs.mjs           # Pipeline docs: rtk/docs/guide/ → src/content/docs/guide/
   build-search-index.mjs     # Construit docs-search-entries.ts
+  prepare-pipelines.mjs      # Marketplace: rtk-ai/pipelines approved/** → src/data/pipelines.json
+  check-pipelines-safety.mjs # Refuse set:html/innerHTML sous src/{pages,components}/pipelines
 ```
 
 ---
@@ -132,6 +136,7 @@ Tokens dans `src/styles/global.css`. **Jamais de styles inline pour des couleurs
 | Index search docs | `build-search-index.mjs` | `src/data/docs-search-entries.ts` |
 | Anchor map | `prepare-docs.mjs` | `src/data/docs-anchor-map.json` |
 | Entrées RSS | `src/data/rss-entries.ts` | `src/pages/rss.xml.ts` |
+| Pipelines listés | `rtk-ai/pipelines` → `approved/**` (merge maintainer) | `src/data/pipelines.json` |
 
 ---
 
@@ -187,6 +192,13 @@ Ne pas bloquer ces bots — c'est critique pour la visibilité GEO.
 2. Push → deploy auto.
 
 ---
+
+## Marketplace /pipelines/
+
+Rendu uniquement depuis `approved/**` du repo `rtk-ai/pipelines` (clone CI, `vars.PIPELINES_REF`).
+Dev local avec une allowlist d'exemple : `PIPELINES_REPO_PATH=../pipelines/test/fixtures/sample-repo pnpm dev:full`.
+Règles : jamais de `set:html`/`innerHTML` sous `src/pages/pipelines` et `src/components/pipelines`
+(vérifié au build), READMEs liés jamais rendus, ligne d'install construite depuis owner/repo/sha validés.
 
 ## Nav architecture
 

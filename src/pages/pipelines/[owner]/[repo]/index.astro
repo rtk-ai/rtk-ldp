@@ -1,0 +1,151 @@
+---
+import PageV3 from '../../../../layouts/PageV3.astro'
+import ResultHero from '../../../../components/pipelines/ResultHero.astro'
+import GlanceRow from '../../../../components/pipelines/GlanceRow.astro'
+import InstallBox from '../../../../components/pipelines/InstallBox.astro'
+import Section from '../../../../components/pipelines/Section.astro'
+import BenchmarkTable from '../../../../components/pipelines/BenchmarkTable.astro'
+import RulesList from '../../../../components/pipelines/RulesList.astro'
+import EgressTable from '../../../../components/pipelines/EgressTable.astro'
+import AgentText from '../../../../components/pipelines/AgentText.astro'
+import TomlView from '../../../../components/pipelines/TomlView.astro'
+import IconStar from '../../../../components/ui/icons/IconStar.astro'
+import { oneLiner, formatDate, lineCount, isAgentFacing, builtinName } from '../../../../components/pipelines/summary'
+import { headline, aim, providerName } from '../../../../components/pipelines/impact'
+import data from '../../../../data/pipelines.json'
+
+export function getStaticPaths() {
+  return (data.pipelines as any[]).map((p) => ({ params: { owner: p.owner, repo: p.repo }, props: { p } }))
+}
+
+const { p } = Astro.props as { p: any }
+const siteUrl = 'https://www.rtk-ai.app'
+const pageUrl = `${siteUrl}/pipelines/${p.owner}/${p.repo}/`
+const summary = oneLiner(p)
+const h = headline(p)
+const a = aim(p)
+const approvedLabel = formatDate(p.approvedAt)
+const reportUrl = `https://github.com/rtk-ai/pipelines/issues/new?template=report-pipeline.yml&title=${encodeURIComponent(`report: ${p.owner}/${p.repo}`)}&pipeline=${encodeURIComponent(`${p.owner}/${p.repo}`)}`
+const discussUrl = p.discussionUrl ?? 'https://github.com/rtk-ai/pipelines/discussions'
+const badgeMd = `[![Reviewed RTK pipeline](${siteUrl}/pipelines/badge.svg)](${pageUrl})`
+const showClaim = Boolean(p.description) && !p.benchmark && !p.selfReported
+
+// Section headers say what is inside, so the closed page already answers most questions.
+const nRules = p.rules.length, nOver = p.overrides.length, nCls = p.classifiers.length
+const howMeta = nRules === 0
+  ? `no rules of its own · turns on ${(p.extends as string[]).map(builtinName).join(', ')}`
+  : `${nRules} rule${nRules === 1 ? '' : 's'}`
+const egress: any[] = p.egress
+const dataMeta = [...new Set(egress.map((e) => `${providerName(e.provider)}${e.local ? ' (local)' : ''}`))].join(' · ')
+const toAgent = (p.textBlocks as any[]).filter((b) => isAgentFacing(b.kind)).length
+const helpers = p.textBlocks.length - toAgent
+const textMeta = toAgent ? `${toAgent} text${toAgent === 1 ? '' : 's'} to your agent` : `${helpers} helper prompt${helpers === 1 ? '' : 's'}`
+const benchMeta = p.benchmark ? `${p.benchmark.tasks.length} task${p.benchmark.tasks.length === 1 ? '' : 's'} · ${p.benchmark.suite}` : null
+
+const resultBit = h.value ? `${h.value} ${h.unit} (${h.evidenceLabel.toLowerCase()})` : 'not measured yet'
+const metaTitle = `${p.name} · RTK pipeline by ${p.owner} | rtk-ai`.slice(0, 70)
+const metaDesc = `${p.name} by ${p.owner}: ${resultBit}. ${summary} Reviewed by RTK maintainers, pinned to ${p.sha7}.`.slice(0, 155)
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  '@id': `${pageUrl}#code`,
+  name: p.name,
+  description: summary,
+  url: pageUrl,
+  codeRepository: p.repoUrl,
+  programmingLanguage: 'TOML',
+  runtimePlatform: 'rtk',
+  version: p.sha7,
+  dateModified: p.approvedAt ?? undefined,
+  author: { '@type': 'Person', name: p.owner, url: `https://github.com/${p.owner}` },
+  isPartOf: { '@type': 'CollectionPage', url: `${siteUrl}/pipelines/` },
+}
+---
+<PageV3 title={metaTitle} description={metaDesc} canonicalUrl={pageUrl} schemaOrg={schemaOrg} mainClass="pl">
+  <section class="pl-page">
+    <div class="lp3-container pl-narrow">
+      <nav class="pl-crumbs reveal" aria-label="Breadcrumb">
+        <a href="/pipelines/">Pipelines</a><span aria-hidden="true">/</span><span>{p.name}</span>
+      </nav>
+
+      <header class="pl-hd reveal">
+        <div class="pl-hd-row">
+          <h1 class="pl-name">{p.name}</h1>
+          <button class="lp3-btn lp3-btn-primary lp3-btn-sm pl-hd-copy" type="button" data-copy={p.install} data-ga-event="pipeline_install_copy" data-ga-id={`${p.id}#top`} aria-label={`Copy the install command for ${p.name}`}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy install
+          </button>
+        </div>
+        <p class="pl-sum">{summary}</p>
+        <p class="pl-meta">
+          <img class="pl-avatar" src={p.avatarUrl} alt="" width="18" height="18" loading="eager" decoding="async" />
+          <a href={p.repoUrl} target="_blank" rel="noopener">{p.owner}</a>
+          {p.parent && <span class="pl-dim"> (fork of <a href={`https://github.com/${p.parent}`} target="_blank" rel="noopener">{p.parent}</a>)</span>}
+          <span class="pl-meta-sep" aria-hidden="true">·</span>
+          <span class="pl-stars"><IconStar size={12} /> {p.stars}</span>
+          <span class="pl-meta-sep" aria-hidden="true">·</span>
+          <span>{a.label}</span>
+          <span class="pl-meta-sep" aria-hidden="true">·</span>
+          <span class="pl-t-ok"><span class="pl-dot" aria-hidden="true"></span>Reviewed by RTK</span>
+        </p>
+        {showClaim && <p class="pl-claim"><span class="pl-claim-label">Author's claim, not verified:</span> {p.description}</p>}
+      </header>
+
+      <div class="reveal"><ResultHero p={p} /></div>
+      <div class="reveal"><GlanceRow p={p} /></div>
+      <div class="reveal"><InstallBox p={p} approvedLabel={approvedLabel} rtkMin={(data as any).rtkMin ?? null} /></div>
+
+      <div class="pl-accs reveal">
+        {p.benchmark && (
+          <Section id="bench" title="Benchmark" meta={benchMeta} open>
+            <BenchmarkTable p={p} />
+          </Section>
+        )}
+        <Section id="how" title="How it works" meta={howMeta}>
+          <RulesList p={p} />
+        </Section>
+        {egress.length > 0 && (
+          <Section id="data" title="Where your data goes" meta={dataMeta}>
+            <EgressTable egress={egress} />
+          </Section>
+        )}
+        {p.textBlocks.length > 0 && (
+          <Section id="text" title="What it tells your agent" meta={textMeta}>
+            <AgentText p={p} />
+          </Section>
+        )}
+        <Section id="file" title="pipeline.toml" meta={`${lineCount(p.toml)} lines`}>
+          <TomlView toml={p.toml} fileUrl={p.fileUrl} sha7={p.sha7} approvedLabel={approvedLabel} />
+        </Section>
+      </div>
+
+      <footer class="pl-foot reveal">
+        <div class="pl-actions">
+          <a class="lp3-btn lp3-btn-ghost lp3-btn-sm" href={p.repoUrl} target="_blank" rel="noopener"><IconStar size={14} /> Star <span class="pl-dim">{p.stars}</span></a>
+          <a class="lp3-btn lp3-btn-ghost lp3-btn-sm" href={discussUrl} target="_blank" rel="noopener">Discuss</a>
+          <a class="lp3-btn lp3-btn-ghost lp3-btn-sm" href={`${p.repoUrl}/fork`} target="_blank" rel="noopener">Fork to remix</a>
+          <a class="lp3-btn lp3-btn-ghost lp3-btn-sm" href={reportUrl} target="_blank" rel="noopener">Report</a>
+        </div>
+        <details class="pl-badge">
+          <summary>For authors: README badge</summary>
+          <div class="pl-cmd">
+            <code class="pl-cmd-text">{badgeMd}</code>
+            <button class="pl-copy" type="button" data-copy={badgeMd} aria-label="Copy badge markdown">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </div>
+        </details>
+      </footer>
+    </div>
+  </section>
+</PageV3>
+
+<style is:global>
+  @import '../../../../styles/pipelines.css';
+</style>
+
+<script>
+  import { initPipelineDetail } from '../../../../scripts/pipelines'
+  initPipelineDetail()
+</script>

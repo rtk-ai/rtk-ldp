@@ -8,6 +8,7 @@
 | `src/data/docs-search-entries.ts` | `scripts/build-search-index.mjs` | docs content |
 | `src/data/docs-anchor-map.json` | `scripts/prepare-docs.mjs` | docs content |
 | `src/pages/rss.xml.ts` | Astro endpoint | `src/data/rss-entries.ts` |
+| `src/data/pipelines.json` | `scripts/prepare-pipelines.mjs` | `rtk-ai/pipelines` → `approved/**` |
 
 These files are overwritten on every build. Edits will be lost silently.
 

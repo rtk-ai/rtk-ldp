@@ -27,6 +27,9 @@ importers:
       '@types/node':
         specifier: ^22.0.0
         version: 22.19.17
+      smol-toml:
+        specifier: ^1.9.1
+        version: 1.9.1
       typescript:
         specifier: ^5.7.0
         version: 5.9.3
@@ -1726,6 +1729,10 @@ packages:
     resolution: {integrity: sha512-dWUG8F5sIIARXih1DTaQAX4SsiTXhInKf1buxdY9DIg4ZYPZK5nGM1VRIYmEbDbsHt7USo99xSLFu5Q1IqTmsg==}
     engines: {node: '>= 18'}
 
+  smol-toml@1.9.1:
+    resolution: {integrity: sha512-j7WyPdf0CJoutMzMoPLF/bVXHtKZIT9Rb4eGeEbWw8X2t5oirjPgpL+OpaENZrILYaXqYwnVH+qgUwVbl+pUJQ==}
+    engines: {node: '>= 18'}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -2755,7 +2762,7 @@ snapshots:
       rehype: 13.0.2
       semver: 7.7.4
       shiki: 3.23.0
-      smol-toml: 1.6.1
+      smol-toml: 1.9.1
       svgo: 4.0.1
       tinyexec: 1.0.4
       tinyglobby: 0.2.15
@@ -4223,6 +4230,8 @@ snapshots:
       sax: 1.6.0
 
   smol-toml@1.6.1: {}
+
+  smol-toml@1.9.1: {}
 
   source-map-js@1.2.1: {}
 

@@ -1,0 +1,37 @@
+---
+interface Props {
+  egress: any[]
+}
+const { egress } = Astro.props
+const PROVIDER: Record<string, string> = { anthropic: 'Anthropic', openai: 'OpenAI', google: 'Google', laya: 'Laya' }
+const providerName = (e: any) => PROVIDER[e.provider] ?? e.provider ?? 'Unknown provider'
+---
+<div class="pl-table-wrap">
+  <table class="pl-table">
+    <thead>
+      <tr><th scope="col">Service</th><th scope="col">Model</th><th scope="col">Where it runs</th><th scope="col">Key it reads</th></tr>
+    </thead>
+    <tbody>
+      {egress.map((e) => (
+        <tr>
+          <td><code>{e.name}</code></td>
+          <td>{e.model ? <code>{e.model}</code> : '—'}</td>
+          <td>
+            {e.local
+              ? <span class="pl-f-ok pl-inline-fact">On your machine · {e.host}</span>
+              : e.custom
+                ? <span class="pl-f-warn pl-inline-fact">Author-chosen server · {e.host}</span>
+                : <span class="pl-inline-fact">{providerName(e)}'s API</span>}
+          </td>
+          <td>
+            {e.apiKeyEnv
+              ? <Fragment><code>{e.apiKeyEnv}</code>{e.noncanonicalEnv && <span class="pl-flag"> pipeline-specific key</span>}</Fragment>
+              : e.canonicalEnv
+                ? <Fragment><code>{e.canonicalEnv}</code> <span class="pl-dim">(your usual key)</span></Fragment>
+                : '—'}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

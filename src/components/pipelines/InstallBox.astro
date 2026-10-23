@@ -1,0 +1,37 @@
+---
+interface Props {
+  p: any
+  approvedLabel: string | null
+  rtkMin: string | null
+}
+const { p, approvedLabel, rtkMin } = Astro.props
+const at = p.install.indexOf('@')
+const head = at > 0 ? p.install.slice(0, at + 1) : p.install
+const sha = at > 0 ? p.install.slice(at + 1) : ''
+const copyIcon = 'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'
+const rtk = rtkMin ?? p.reviewedWith
+---
+<div class="pl-install">
+  <div class="pl-install-top">
+    <span class="pl-install-label">Install</span>
+    <span class="pl-install-sha">pinned to the reviewed version</span>
+  </div>
+  <div class="pl-cmd">
+    <code class="pl-cmd-text">{head}{sha && <span class="pl-sha">{sha}</span>}</code>
+    <button class="pl-copy" type="button" data-copy={p.install} data-ga-event="pipeline_install_copy" data-ga-id={p.id} aria-label="Copy install command">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d={copyIcon}/></svg>
+    </button>
+  </div>
+  <details class="pl-shadow">
+    <summary>Try it first without changing anything</summary>
+    <div class="pl-cmd pl-cmd-shadow">
+      <code class="pl-cmd-text">{p.installShadow}</code>
+      <button class="pl-copy" type="button" data-copy={p.installShadow} data-ga-event="pipeline_install_copy" data-ga-id={`${p.id}#shadow`} aria-label="Copy dry-run install command">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d={copyIcon}/></svg>
+      </button>
+    </div>
+    <p class="pl-small pl-dim">
+      Records what it would have done. Then <code>rtk pipeline eval {p.name}</code> shows the numbers; <code>promote</code> or <code>--discard</code>.
+    </p>
+  </details>
+</div>
