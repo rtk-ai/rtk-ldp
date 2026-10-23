@@ -24,9 +24,14 @@ export const EVIDENCE_LABEL: Record<Evidence, string> = {
 const EVIDENCE_RANK: Record<Evidence, number> = { measured: 3, benchmark: 2, usage: 1, none: 0 }
 
 export interface Quality { text: string; tone: Tone; detail: string | null }
+/** What the number measures. Only `cost` is a measurement of what a task cost end to end. */
+export type ResultKind = 'cost' | 'output' | 'none'
+export const KIND_LABEL: Record<ResultKind, string> = { cost: 'Total cost', output: 'Output size', none: '' }
 export interface Headline {
   evidence: Evidence
   evidenceLabel: string
+  kind: ResultKind
+  kindLabel: string
   /** "−14%" or null when there is nothing to show */
   value: string | null
   /** what the value is of: "cost per trial", "command output" */
@@ -133,18 +138,18 @@ export function headline(p: any): Headline {
     const m = p.measured
     const d = delta(m.baseline, m.pipeline)
     return {
-      evidence: 'measured', evidenceLabel: EVIDENCE_LABEL.measured,
+      evidence: 'measured', evidenceLabel: EVIDENCE_LABEL.measured, kind: 'output', kindLabel: KIND_LABEL.output,
       value: d == null ? null : fmtPct(d), unit: m.unit ?? 'tokens', sub: null,
-      tone: d != null && d < 0 ? 'ok' : d != null && d > 0 ? 'warn' : 'note',
+      tone: 'note',
       quality: { text: 'Not measured', tone: 'note', detail: null }, setup: null,
     }
   }
   if (b?.cost) {
     const d = delta(b.cost.baseline, b.cost.pipeline)
     return {
-      evidence: 'benchmark', evidenceLabel: EVIDENCE_LABEL.benchmark,
+      evidence: 'benchmark', evidenceLabel: EVIDENCE_LABEL.benchmark, kind: 'cost', kindLabel: KIND_LABEL.cost,
       value: d == null ? null : fmtPct(d),
-      unit: `cost per ${b.cost.per ?? 'trial'}`,
+      unit: `per ${b.cost.per ?? 'trial'}`,
       sub: `${fmtUsd(b.cost.baseline)} → ${fmtUsd(b.cost.pipeline)} vs ${b.baseline}`,
       tone: d != null && d < -0.005 ? 'ok' : d != null && d > 0.005 ? 'warn' : 'note',
       quality: qualityVerdict(b.quality),
@@ -153,17 +158,18 @@ export function headline(p: any): Headline {
   }
   const u = usageLead(p.selfReported)
   if (u) {
+    // Smaller tool outputs, not a measurement of what a task costs: never green, never big.
     return {
-      evidence: 'usage', evidenceLabel: EVIDENCE_LABEL.usage,
-      value: fmtPct(-u.pct / 100), unit: u.what,
+      evidence: 'usage', evidenceLabel: EVIDENCE_LABEL.usage, kind: 'output', kindLabel: KIND_LABEL.output,
+      value: fmtPct(-u.pct / 100), unit: `${u.what} removed`,
       sub: `over ${fmtInt(u.activity)} ${u.unit}${p.selfReported.rtkVersion ? `, rtk ${p.selfReported.rtkVersion}` : ''}`,
-      tone: u.pct > 0 ? 'ok' : 'note',
+      tone: 'note',
       quality: { text: 'Not measured', tone: 'note', detail: null },
       setup: null,
     }
   }
   return {
-    evidence: 'none', evidenceLabel: EVIDENCE_LABEL.none,
+    evidence: 'none', evidenceLabel: EVIDENCE_LABEL.none, kind: 'none', kindLabel: '',
     value: null, unit: null, sub: null, tone: 'note',
     quality: { text: 'Not measured', tone: 'note', detail: null }, setup: null,
   }

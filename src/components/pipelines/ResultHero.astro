@@ -15,10 +15,10 @@ const sr = p.selfReported
 const lead = sr?.levers?.find((l: any) => l.kind === 'command_filtering') ?? sr?.levers?.[0] ?? null
 
 const qualityLine = h.quality.text === 'Not measured' ? 'quality not measured' : `quality ${h.quality.text.toLowerCase()}`
-const what = h.evidence === 'benchmark'
+const what = h.kind === 'cost'
   ? `${h.unit} · ${qualityLine}`
-  : h.evidence === 'usage'
-    ? `${h.unit} removed · ${qualityLine}`
+  : h.kind === 'output'
+    ? `${h.unit} · not a total-cost measurement · ${qualityLine}`
     : null
 const provenance = h.evidence === 'benchmark'
   ? [modelName(b.model), b.trialsPerArm ? `${fmtInt(b.trialsPerArm)} trials per arm` : null].filter(Boolean)
@@ -26,10 +26,11 @@ const provenance = h.evidence === 'benchmark'
     ? [lead ? `${fmtInt(lead.activity)} ${lead.activityUnit}` : null].filter(Boolean)
     : []
 ---
-<section class={`pl-hero pl-t-${h.tone}`} aria-labelledby="pl-hero-h">
+<section class={`pl-hero pl-t-${h.tone} pl-res-${h.kind}`} aria-labelledby="pl-hero-h">
   <h2 id="pl-hero-h" class="lp3-sr">Result</h2>
   {h.value ? (
     <Fragment>
+      <p class="pl-kind">{h.kindLabel}</p>
       <p class="pl-hero-num">{h.value}</p>
       <p class="pl-hero-what">{what}</p>
       <p class="pl-hero-prov">

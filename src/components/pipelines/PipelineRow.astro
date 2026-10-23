@@ -46,10 +46,11 @@ const parentOwner = typeof p.parent === 'string' ? p.parent.split('/')[0] : null
     <p class="pl-row-sum">{summary}</p>
   </div>
 
-  <div class={`pl-c pl-c-result pl-t-${h.tone}`}>
+  <div class={`pl-c pl-c-result pl-t-${h.tone} pl-res-${h.kind}`}>
     <span class="pl-k">Result</span>
     {h.value ? (
       <Fragment>
+        <span class="pl-kind">{h.kindLabel}</span>
         <span class="pl-big">{h.value}</span>
         <span class="pl-unit">{h.unit}</span>
       </Fragment>

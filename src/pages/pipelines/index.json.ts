@@ -14,7 +14,7 @@ export const GET: APIRoute = () => {
         name: p.name,
         summary: oneLiner(p),
         aim: aim(p).key,
-        result: { evidence: h.evidence, value: h.value, unit: h.unit, quality: h.quality.text },
+        result: { kind: h.kind, evidence: h.evidence, value: h.value, unit: h.unit, quality: h.quality.text },
         benchmark: p.benchmark
           ? { suite: p.benchmark.suite, model: p.benchmark.model, trials_per_arm: p.benchmark.trialsPerArm, cost: p.benchmark.cost, quality: p.benchmark.quality }
           : null,

@@ -103,8 +103,11 @@
   margin: 0.4rem 0 0; font-size: 0.9rem; line-height: 1.5; color: var(--text-muted);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
+.pl-kind { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+.pl-res-cost .pl-kind { color: var(--accent); }
 .pl-big { font-size: 1.6rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; color: var(--pl-tone); }
 .pl-t-note .pl-big { color: var(--text-bright); }
+.pl-res-output .pl-big { font-size: 1.25rem; color: var(--text); }
 .pl-unit { font-size: 0.82rem; color: var(--text-muted); }
 .pl-none { font-size: 0.95rem; color: var(--text-dim); }
 .pl-evi { margin-top: 0.15rem; font-size: 0.74rem; color: var(--text-dim); }
@@ -167,8 +170,10 @@
 
 /* the focal point */
 .pl-hero { padding: 1.75rem 0 1.6rem; border-top: 1px solid var(--lp3-line-strong); border-bottom: 1px solid var(--lp3-line); }
+.pl-hero .pl-kind { margin: 0 0 0.5rem; font-size: 0.74rem; }
 .pl-hero-num { margin: 0; font-size: clamp(3rem, 6vw, 4.25rem); font-weight: 700; line-height: 1; letter-spacing: -0.04em; color: var(--pl-tone); }
 .pl-t-note .pl-hero-num { color: var(--text-bright); }
+.pl-res-output .pl-hero-num { font-size: clamp(2rem, 4vw, 2.75rem); color: var(--text); }
 .pl-hero-none { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text-muted); font-weight: 600; letter-spacing: -0.02em; }
 .pl-hero-what { margin: 0.6rem 0 0; font-size: 1.05rem; line-height: 1.5; color: var(--text); }
 .pl-hero-prov { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.5rem; margin: 0.7rem 0 0; font-size: 0.82rem; color: var(--text-dim); }

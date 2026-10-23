@@ -85,7 +85,7 @@ const schemaOrg = {
 
       <details id="how" class="pl-how reveal">
         <summary>How a pipeline gets here, and how to publish yours</summary>
-        <p class="pl-how-legend">Results are labelled by evidence. <b>Measured by RTK</b>: our CI. <b>Author's benchmark</b>: an A/B run the author published. <b>Author's own usage</b>: what their rtk counted on their traffic.</p>
+        <p class="pl-how-legend">Results are labelled by evidence. <b>Measured by RTK</b>: our CI. <b>Author's benchmark</b>: an A/B run the author published. <b>Author's own usage</b>: what their rtk counted on their traffic. Only a benchmark measures <b>total cost</b>; usage numbers measure <b>output size</b>, how much smaller tool outputs got.</p>
         <ol class="pl-how-steps">
           <li>You publish a public GitHub repo with a <code>pipeline.toml</code> and the <code>rtk-pipeline</code> topic. <code>rtk pipeline share publish</code> does this for you and writes your own usage numbers into the README.</li>
           <li>To show a benchmark, add a <code>benchmark.toml</code> next to it: cost per trial with and without your pipeline, an optional quality metric, per task. <a href="https://github.com/rtk-ai/pipelines#benchmarktoml-authors" target="_blank" rel="noopener">Format</a>.</li>
