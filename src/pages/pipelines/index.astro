@@ -2,9 +2,10 @@
 import PageV3 from '../../layouts/PageV3.astro'
 import PipelineRow from '../../components/pipelines/PipelineRow.astro'
 import data from '../../data/pipelines.json'
+import { sortPipelines } from '../../components/pipelines/impact'
 
 const siteUrl = 'https://www.rtk-ai.app'
-const pipelines = data.pipelines as any[]
+const pipelines = sortPipelines(data.pipelines as any[])
 const showToolbar = pipelines.length >= 6
 const showCount = pipelines.length >= 10
 

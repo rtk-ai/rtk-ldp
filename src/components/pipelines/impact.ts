@@ -191,6 +191,14 @@ export function impactScore(p: any): number {
   return base
 }
 
+/** Default listing order: strongest evidence, then biggest saving, then stars, then name. */
+export function sortPipelines<T extends { stars?: number; name?: string }>(list: T[]): T[] {
+  return list
+    .map((p, i) => ({ p, i, s: impactScore(p) }))
+    .sort((a, b) => b.s - a.s || (b.p.stars ?? 0) - (a.p.stars ?? 0) || String(a.p.name ?? '').localeCompare(String(b.p.name ?? '')) || a.i - b.i)
+    .map((x) => x.p)
+}
+
 export type AimKey = 'cost' | 'quality' | 'both'
 export interface Aim { key: AimKey; label: string }
 /**

@@ -1,13 +1,13 @@
 import type { APIRoute } from 'astro'
 import data from '../../data/pipelines.json'
 import { oneLiner } from '../../components/pipelines/summary'
-import { headline, aim, requirements } from '../../components/pipelines/impact'
+import { headline, aim, requirements, sortPipelines } from '../../components/pipelines/impact'
 
 export const GET: APIRoute = () => {
   const body = {
     generated: data.generated,
     rtk_min: data.rtkMin,
-    pipelines: (data.pipelines as any[]).map((p) => {
+    pipelines: sortPipelines(data.pipelines as any[]).map((p) => {
       const h = headline(p)
       return {
         id: p.id,
