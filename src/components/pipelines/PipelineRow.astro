@@ -1,0 +1,86 @@
+---
+/**
+ * One row of the comparison list. The same five facts in the same order for
+ * every pipeline, so rows compare at a glance: result, quality, what it
+ * needs, stars, install. All text is derived or labelled; nothing here is
+ * author prose except the capped repo headline fallback handled upstream.
+ */
+import IconStar from '../ui/icons/IconStar.astro'
+import { oneLiner } from './summary'
+import { headline, needsSummary, aim, impactScore } from './impact'
+
+interface Props {
+  p: any
+}
+const { p } = Astro.props
+const h = headline(p)
+const needs = needsSummary(p)
+const a = aim(p)
+const summary = oneLiner(p)
+const href = `/pipelines/${p.owner}/${p.repo}/`
+const parentOwner = typeof p.parent === 'string' ? p.parent.split('/')[0] : null
+---
+<li
+  class="pl-row reveal"
+  data-id={p.id}
+  data-name={p.name.toLowerCase()}
+  data-owner={p.owner.toLowerCase()}
+  data-summary={summary.toLowerCase()}
+  data-stars={p.stars}
+  data-approved={p.approvedAt ?? ''}
+  data-aim={a.key}
+  data-evidence={h.evidence}
+  data-nothing={needs.nothing ? '1' : '0'}
+  data-score={impactScore(p)}
+>
+  <a class="pl-row-link" href={href} aria-label={`${p.name} by ${p.owner}: details and install`}></a>
+
+  <div class="pl-c pl-c-who">
+    <h3 class="pl-row-name">{p.name}</h3>
+    <p class="pl-row-owner">
+      <img class="pl-avatar" src={p.avatarUrl} alt="" width="18" height="18" loading="lazy" decoding="async" />
+      <span>{p.owner}</span>
+      {parentOwner && <span class="pl-row-fork">fork of {parentOwner}</span>}
+      <span class="pl-aim-tag">{a.label}</span>
+    </p>
+    <p class="pl-row-sum">{summary}</p>
+  </div>
+
+  <div class={`pl-c pl-c-result pl-t-${h.tone} pl-res-${h.kind}`}>
+    <span class="pl-k">Result</span>
+    {h.value ? (
+      <Fragment>
+        <span class="pl-kind">{h.kindLabel}</span>
+        <span class="pl-big">{h.value}</span>
+        <span class="pl-unit">{h.unit}</span>
+      </Fragment>
+    ) : (
+      <span class="pl-none">Not measured yet</span>
+    )}
+    <span class={`pl-evi pl-evi-${h.evidence}`}>{h.evidenceLabel}</span>
+  </div>
+
+  <div class={`pl-c pl-c-quality pl-t-${h.quality.tone}`}>
+    <span class="pl-k">Quality</span>
+    <span class="pl-val"><span class="pl-dot" aria-hidden="true"></span>{h.quality.text}</span>
+  </div>
+
+  <div class={`pl-c pl-c-needs pl-t-${needs.tone}`}>
+    <span class="pl-k">Needs</span>
+    <ul class="pl-needs" role="list">
+      {needs.items.map((item) => <li><span class="pl-dot" aria-hidden="true"></span>{item}</li>)}
+    </ul>
+  </div>
+
+  <div class="pl-c pl-c-stars">
+    <span class="pl-k">Stars</span>
+    <span class="pl-stars" title="GitHub stars on the author's repository"><IconStar size={13} /> {p.stars}</span>
+  </div>
+
+  <div class="pl-c pl-c-act">
+    <button class="lp3-btn lp3-btn-ghost lp3-btn-sm pl-copy-btn" type="button" data-copy={p.install} data-ga-event="pipeline_install_copy" data-ga-id={p.id} aria-label={`Copy the install command for ${p.name}`}>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copy install
+    </button>
+  </div>
+</li>

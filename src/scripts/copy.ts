@@ -8,6 +8,9 @@ export function initCopyButtons() {
       const text = btn.dataset.copy ?? ''
       try {
         await navigator.clipboard.writeText(text)
+        if (btn.dataset.gaEvent && typeof (window as any).gtag === 'function') {
+          ;(window as any).gtag('event', btn.dataset.gaEvent, { id: btn.dataset.gaId ?? '' })
+        }
         const original = btn.innerHTML
         btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`
         btn.style.color = 'var(--accent)'

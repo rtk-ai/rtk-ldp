@@ -116,6 +116,7 @@ export const T: Record<string, Record<Lang, string>> = {
   // ── Generic UI strings ────────────────────────────────────────────────────
   'ui.install_docs_link': { en: 'Full install guide →', fr: 'Guide complet →',      es: 'Guía completa →',      de: 'Vollständige Anleitung →', zh: '完整安装指南 →', ja: '完全インストールガイド →' },
   'ui.nav_docs': { en: 'Docs',                 fr: 'Docs',                 es: 'Docs',                 de: 'Docs',                 zh: '文档',          ja: 'ドキュメント' },
+  'ui.nav_pipelines': { en: 'Pipelines',       fr: 'Pipelines',            es: 'Pipelines',            de: 'Pipelines',            zh: '流水线',        ja: 'パイプライン' },
   'ui.nav_discord': { en: 'Discord',              fr: 'Discord',              es: 'Discord',              de: 'Discord',              zh: 'Discord',       ja: 'Discord' },
   'ui.nav_github': { en: 'GitHub',               fr: 'GitHub',               es: 'GitHub',               de: 'GitHub',               zh: 'GitHub',        ja: 'GitHub' },
   'ui.nav_support': { en: 'Support',              fr: 'Soutenir',             es: 'Apoyar',               de: 'Unterstützen',         zh: '支持',          ja: 'サポート' },

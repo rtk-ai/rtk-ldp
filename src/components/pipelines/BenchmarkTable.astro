@@ -1,0 +1,69 @@
+---
+/**
+ * Per-task table of the author's benchmark. Deltas are recomputed from the
+ * two raw values; bars share one scale so an outlier stays visible.
+ */
+import { delta, fmtPct, fmtUsd, fmtInt, formatDates, modelName } from './impact'
+
+interface Props {
+  p: any
+}
+const { p } = Astro.props
+const b = p.benchmark
+const tasks: any[] = b?.tasks ?? []
+const hasTaskQuality = tasks.some((t) => t.qualityBaseline != null && t.qualityPipeline != null)
+const maxAbs = Math.max(0.0001, ...tasks.map((t) => Math.abs(delta(t.baseline, t.pipeline) ?? 0)))
+const totalDelta = delta(b.cost.baseline, b.cost.pipeline)
+// Savings are green; anything else, including a task that got dearer, stays neutral grey.
+const toneOf = (d: number | null) => (d == null ? 'note' : d < -0.005 ? 'ok' : 'note')
+const fileAt = (path: string) => (p.source === 'github' ? `https://github.com/${p.owner}/${p.repo}/blob/${p.sha}/${path}` : null)
+const setup = [b.suite, [b.agent, modelName(b.model)].filter(Boolean).join(' on '), b.trialsPerArm ? `${fmtInt(b.trialsPerArm)} trials per arm` : null, formatDates(b.dates ?? [])].filter(Boolean).join(' · ')
+---
+{tasks.length > 0 && (
+  <table class="pl-tasks">
+    <caption class="lp3-sr">Mean cost per {b.cost.per} by task, without and with the pipeline</caption>
+    <thead>
+      <tr>
+        <th scope="col">Task</th>
+        <th scope="col" class="pl-num">{b.baseline}</th>
+        <th scope="col" class="pl-num">{p.name}</th>
+        <th scope="col">Change</th>
+        {hasTaskQuality && <th scope="col" class="pl-num">{b.quality?.metric ?? 'quality'}</th>}
+      </tr>
+    </thead>
+    <tbody>
+      {tasks.map((t) => {
+        const d = delta(t.baseline, t.pipeline)
+        const w = d == null ? 0 : Math.round((Math.abs(d) / maxAbs) * 100)
+        return (
+          <tr class={`pl-t-${toneOf(d)}`}>
+            <th scope="row">{t.name}</th>
+            <td class="pl-num">{fmtUsd(t.baseline)}</td>
+            <td class="pl-num">{fmtUsd(t.pipeline)}</td>
+            <td class="pl-change">
+              <span class="pl-bar-wrap" aria-hidden="true"><span class={`pl-bar ${d != null && d < 0 ? 'pl-bar-neg' : 'pl-bar-pos'}`} style={`--w:${w}%`}></span></span>
+              <span class="pl-change-val">{d == null ? '—' : fmtPct(d)}</span>
+            </td>
+            {hasTaskQuality && <td class="pl-num pl-dim">{t.qualityBaseline != null && t.qualityPipeline != null ? `${t.qualityBaseline} → ${t.qualityPipeline}` : '—'}</td>}
+          </tr>
+        )
+      })}
+      <tr class={`pl-total pl-t-${toneOf(totalDelta)}`}>
+        <th scope="row">All tasks, mean per {b.cost.per}</th>
+        <td class="pl-num">{fmtUsd(b.cost.baseline)}</td>
+        <td class="pl-num">{fmtUsd(b.cost.pipeline)}</td>
+        <td class="pl-change"><span class="pl-change-val">{totalDelta == null ? '—' : fmtPct(totalDelta)}</span></td>
+        {hasTaskQuality && <td class="pl-num">{b.quality ? `${b.quality.baseline} → ${b.quality.pipeline}` : '—'}</td>}
+      </tr>
+    </tbody>
+  </table>
+)}
+{tasks.length === 0 && (
+  <p class="pl-body">Mean cost per {b.cost.per}: {fmtUsd(b.cost.baseline)} without, {fmtUsd(b.cost.pipeline)} with ({totalDelta == null ? '—' : fmtPct(totalDelta)}).</p>
+)}
+<p class="pl-foot-line">
+  {setup}. Declared by the author in <code>benchmark.toml</code>, not reproduced by RTK
+  {b.details && fileAt(b.details) && <Fragment>{' · '}<a href={fileAt(b.details)!} target="_blank" rel="noopener">Write-up</a></Fragment>}
+  {b.raw && fileAt(b.raw) && <Fragment>{' · '}<a href={fileAt(b.raw)!} target="_blank" rel="noopener">Per-trial data</a></Fragment>}
+</p>
+{b.notes && <p class="pl-author-note"><span class="pl-dim">Author's note: </span>{b.notes}</p>}

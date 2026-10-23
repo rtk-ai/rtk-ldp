@@ -1,0 +1,68 @@
+---
+/**
+ * Three short columns under the result: what you need, where your data
+ * goes, what your agent is told. Same three questions on every page, each
+ * answered in one or two lines with a link to the full section.
+ */
+import { requirements, providerName } from './impact'
+import { isAgentFacing } from './summary'
+
+interface Props {
+  p: any
+}
+const { p } = Astro.props
+const reqs = requirements(p)
+const egress: any[] = p.egress ?? []
+const remote = egress.filter((e) => !e.local)
+const local = egress.filter((e) => e.local)
+const custom = remote.filter((e) => e.custom)
+const uniq = (xs: string[]) => [...new Set(xs)]
+
+const dataRows: { text: string; tone: 'ok' | 'note' | 'warn' }[] = []
+if (egress.length === 0) dataRows.push({ text: 'Stays on your machine', tone: 'ok' })
+else {
+  if (custom.length) dataRows.push({ text: `Goes to ${uniq(custom.map((e) => e.host)).join(', ')}, a server the author chose`, tone: 'warn' })
+  else if (remote.length) dataRows.push({ text: `Goes to ${uniq(remote.map((e) => providerName(e.provider))).join(', ')}`, tone: 'note' })
+  if (local.length) dataRows.push({ text: `${uniq(local.map((e) => providerName(e.provider))).join(', ')} stays local`, tone: 'ok' })
+}
+
+const blocks: any[] = p.textBlocks ?? []
+const toAgent = blocks.filter((b) => isAgentFacing(b.kind)).length
+const helpers = blocks.length - toAgent
+const agentRow = toAgent > 0
+  ? { text: `Gets ${toAgent} instruction${toAgent === 1 ? '' : 's'}`, tone: 'warn' as const }
+  : helpers > 0
+    ? { text: 'Not instructed. Helper models are prompted', tone: 'note' as const }
+    : { text: 'Not instructed', tone: 'ok' as const }
+---
+<div class="pl-glance">
+  <div class="pl-gl-col">
+    <h2 class="pl-gl-h">You need</h2>
+    <ul class="pl-gl-list" role="list">
+      {reqs.length === 0 ? (
+        <li class="pl-t-ok"><span class="pl-dot" aria-hidden="true"></span><span>Nothing extra</span></li>
+      ) : (
+        reqs.map((r) => (
+          <li class={`pl-t-${r.tone}`}>
+            <span class="pl-dot" aria-hidden="true"></span>
+            <span>{r.url ? <a href={r.url} target="_blank" rel="noopener">{r.name}</a> : r.name}{r.short && <span class="pl-gl-sub"> · {r.short}</span>}</span>
+          </li>
+        ))
+      )}
+    </ul>
+  </div>
+  <div class="pl-gl-col">
+    <h2 class="pl-gl-h">Your data</h2>
+    <ul class="pl-gl-list" role="list">
+      {dataRows.map((d) => <li class={`pl-t-${d.tone}`}><span class="pl-dot" aria-hidden="true"></span><span>{d.text}</span></li>)}
+    </ul>
+    {egress.length > 0 && <a class="pl-gl-more" href="#data">Details</a>}
+  </div>
+  <div class="pl-gl-col">
+    <h2 class="pl-gl-h">Your agent</h2>
+    <ul class="pl-gl-list" role="list">
+      <li class={`pl-t-${agentRow.tone}`}><span class="pl-dot" aria-hidden="true"></span><span>{agentRow.text}</span></li>
+    </ul>
+    {blocks.length > 0 && <a class="pl-gl-more" href="#text">{toAgent > 0 ? 'Read them' : 'See the prompts'}</a>}
+  </div>
+</div>

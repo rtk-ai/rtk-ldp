@@ -1,0 +1,47 @@
+---
+/**
+ * The focal point of a detail page: one number, one line saying what it is
+ * and what happened to quality, one dim line saying who measured it and how.
+ */
+import { headline, fmtInt, modelName } from './impact'
+
+interface Props {
+  p: any
+}
+const { p } = Astro.props
+const h = headline(p)
+const b = p.benchmark
+const sr = p.selfReported
+const lead = sr?.levers?.find((l: any) => l.kind === 'command_filtering') ?? sr?.levers?.[0] ?? null
+
+const qualityLine = h.quality.text === 'Not measured' ? 'quality not measured' : `quality ${h.quality.text.toLowerCase()}`
+const what = h.kind === 'cost'
+  ? `${h.unit} · ${qualityLine}`
+  : h.kind === 'output'
+    ? `${h.unit} · not a total-cost measurement · ${qualityLine}`
+    : null
+const provenance = h.evidence === 'benchmark'
+  ? [modelName(b.model), b.trialsPerArm ? `${fmtInt(b.trialsPerArm)} trials per arm` : null].filter(Boolean)
+  : h.evidence === 'usage'
+    ? [lead ? `${fmtInt(lead.activity)} ${lead.activityUnit}` : null].filter(Boolean)
+    : []
+---
+<section class={`pl-hero pl-t-${h.tone} pl-res-${h.kind}`} aria-labelledby="pl-hero-h">
+  <h2 id="pl-hero-h" class="lp3-sr">Result</h2>
+  {h.value ? (
+    <Fragment>
+      <p class="pl-kind">{h.kindLabel}</p>
+      <p class="pl-hero-num">{h.value}</p>
+      <p class="pl-hero-what">{what}</p>
+      <p class="pl-hero-prov">
+        <span class={`pl-evi-tag pl-evi-${h.evidence}`}>{h.evidenceLabel}</span>
+        {provenance.length > 0 && <span>{provenance.join(' · ')}</span>}
+      </p>
+    </Fragment>
+  ) : (
+    <Fragment>
+      <p class="pl-hero-num pl-hero-none">Not measured yet</p>
+      <p class="pl-hero-what">No benchmark published, no RTK measurement. <code>--shadow</code> install, then <code>rtk pipeline eval {p.name}</code> measures it on your own sessions.</p>
+    </Fragment>
+  )}
+</section>

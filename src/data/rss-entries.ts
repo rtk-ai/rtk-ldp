@@ -15,6 +15,13 @@ export interface RssEntry {
 
 export const rssEntries: RssEntry[] = [
   {
+    type: 'new_page',
+    title: 'Pipelines marketplace: reviewed community pipelines with their results',
+    date: 'Oct 23, 2026',
+    description: 'Community rtk pipelines reviewed by RTK maintainers, listed with what they save, what they need and a one-line install pinned to the reviewed commit.',
+    link: 'https://www.rtk-ai.app/pipelines/',
+  },
+  {
     type: 'release',
     title: 'RTK Engine released: from CLI compressor to cost reduction engine',
     date: 'Oct 15, 2026',

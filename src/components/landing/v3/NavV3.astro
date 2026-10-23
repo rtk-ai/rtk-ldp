@@ -98,6 +98,7 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
       </details>
 
       <a href="/guide/" class="lp3-nav-link">{t('ui.nav_docs', lang)}</a>
+      <a href="/pipelines/" class="lp3-nav-link">{t('ui.nav_pipelines', lang)}</a>
 
       <details class="lp3-menu">
         <summary>{t('nav.resources', lang)}<Fragment set:html={caret} /></summary>
@@ -178,6 +179,7 @@ const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fil
 
   <span class="lp3-drawer-label">{t('nav.resources', lang)}</span>
   <a href="/guide/">{t('ui.nav_docs', lang)}</a>
+        <a href="/pipelines/">{t('ui.nav_pipelines', lang)}</a>
   {resourceItems.map(i => (
     <a href={i.href} {...(i.ext ? { target: '_blank', rel: 'noopener' } : {})}>{i.label}</a>
   ))}

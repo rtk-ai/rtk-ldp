@@ -14,6 +14,7 @@ const LANDING_ENTRIES: SearchEntry[] = [
   { id: 'landing-why', title: 'Why RTK?', keywords: 'why tokens problem cost expensive context window overflow cli noise', category: 'Landing', url: '/#problem', source: 'landing' },
   { id: 'landing-engine', title: 'RTK Engine — Cost reduction engine', keywords: 'rtk engine v1 cost reduction compress route build plug in share any agent cheaper models new', category: 'Landing', url: '/#engine', source: 'landing' },
   { id: 'landing-pipelines', title: 'Pipelines — Make it yours', keywords: 'pipeline pipeline.toml rules where when what route hook upstream task share one file built-in', category: 'Landing', url: '/#pipelines', source: 'landing' },
+  { id: 'pipelines-marketplace', title: 'Pipelines marketplace — reviewed community pipelines', keywords: 'pipelines marketplace community reviewed install benchmark cost saving laya delegate proxy share publish', category: 'Pipelines', url: '/pipelines/', source: 'landing' },
   { id: 'landing-pro', title: 'RTK Pro', keywords: 'pro team enterprise token economy security governance cost cloud', category: 'Landing', url: '/#pro', source: 'landing' },
   { id: 'landing-install', title: 'Install RTK', keywords: 'install curl brew cargo homebrew setup hook rtk init global transparent zero config', category: 'Landing', url: '/#install', source: 'landing' },
 

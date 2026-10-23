@@ -1,0 +1,109 @@
+---
+import PageV3 from '../../layouts/PageV3.astro'
+import PipelineRow from '../../components/pipelines/PipelineRow.astro'
+import data from '../../data/pipelines.json'
+
+const siteUrl = 'https://www.rtk-ai.app'
+const pipelines = data.pipelines as any[]
+const showToolbar = pipelines.length >= 6
+const showCount = pipelines.length >= 10
+
+const schemaOrg = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${siteUrl}/pipelines/#collection`,
+  name: 'RTK Pipelines — reviewed community pipelines with their results',
+  description: 'Shared RTK pipeline.toml files reviewed by RTK maintainers, listed with their measured or author-reported cost results and what they need.',
+  url: `${siteUrl}/pipelines/`,
+  isPartOf: { '@type': 'WebSite', name: 'RTK', url: siteUrl },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: pipelines.length,
+    itemListElement: pipelines.slice(0, 50).map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${siteUrl}/pipelines/${p.owner}/${p.repo}/`,
+      name: p.name,
+    })),
+  },
+}
+---
+<PageV3
+  title="RTK Pipelines · what each one saves | rtk-ai"
+  description="Reviewed rtk pipelines listed with their cost results, quality impact and what they need. One-line install pinned to the reviewed version."
+  schemaOrg={schemaOrg}
+  mainClass="pl"
+>
+  <Fragment slot="head">
+    <link rel="alternate" type="application/rss+xml" title="RTK Pipelines — new reviewed pipelines" href="/pipelines/rss.xml" />
+  </Fragment>
+
+  <section class="pl-page">
+    <div class="lp3-container">
+      <header class="pl-list-head reveal">
+        <p class="lp3-eyebrow">Pipelines</p>
+        <h1 class="pl-list-title">Pick a pipeline. See what it saves.</h1>
+        <p class="pl-list-lede">
+          Reviewed add-ons for rtk, listed with what they save and what they need.
+          <a href="#how">How listing works</a>
+        </p>
+      </header>
+
+      {showToolbar && (
+        <form class="pl-toolbar reveal" role="search" aria-label="Filter pipelines" onsubmit="return false">
+          <input id="pl-q" type="search" placeholder="Search pipelines" aria-label="Search pipelines" autocomplete="off" />
+          <fieldset class="pl-seg">
+            <legend class="lp3-sr">Aim</legend>
+            <label><input type="radio" name="pl-aim" value="all" checked /><span>All</span></label>
+            <label><input type="radio" name="pl-aim" value="cost" /><span>Cuts cost</span></label>
+            <label><input type="radio" name="pl-aim" value="quality" /><span>Quality</span></label>
+          </fieldset>
+          <label class="pl-chip-toggle"><input id="pl-nothing" type="checkbox" /><span>Nothing extra needed</span></label>
+          <label class="pl-chip-toggle"><input id="pl-bench" type="checkbox" /><span>Benchmarked</span></label>
+          <label class="pl-sort">
+            <span class="lp3-sr">Sort</span>
+            <select id="pl-sort" aria-label="Sort pipelines">
+              <option value="score">Biggest saving</option>
+              <option value="stars">Most stars</option>
+              <option value="approved">Newest</option>
+            </select>
+          </label>
+          {showCount && <span id="pl-count" class="pl-count" aria-live="polite">{pipelines.length} of {pipelines.length}</span>}
+        </form>
+      )}
+
+      <div class="pl-cols reveal" aria-hidden="true">
+        <span>Pipeline</span><span>Result</span><span>Quality</span><span>Needs</span><span>Stars</span><span></span>
+      </div>
+      <h2 class="lp3-sr">All reviewed pipelines</h2>
+      <ul id="pl-list" class="pl-rows" role="list">
+        {pipelines.map((p) => <PipelineRow p={p} />)}
+      </ul>
+      <p class="pl-empty" role="status">
+        {pipelines.length === 0 ? 'No pipeline has been reviewed yet.' : 'No pipelines match. Clear the filters.'}
+      </p>
+
+      <details id="how" class="pl-how reveal">
+        <summary>How a pipeline gets here, and how to publish yours</summary>
+        <p class="pl-how-legend">Results are labelled by evidence. <b>Measured by RTK</b>: our CI. <b>Author's benchmark</b>: an A/B run the author published. <b>Author's own usage</b>: what their rtk counted on their traffic. Only a benchmark measures <b>total cost</b>; usage numbers measure <b>output size</b>, how much smaller tool outputs got.</p>
+        <ol class="pl-how-steps">
+          <li>You publish a public GitHub repo with a <code>pipeline.toml</code> and the <code>rtk-pipeline</code> topic. <code>rtk pipeline share publish</code> does this for you and writes your own usage numbers into the README.</li>
+          <li>To show a benchmark, add a <code>benchmark.toml</code> next to it: cost per trial with and without your pipeline, an optional quality metric, per task. <a href="https://github.com/rtk-ai/pipelines#benchmarktoml-authors" target="_blank" rel="noopener">Format</a>.</li>
+          <li>A bot pre-checks each new commit with the standard <code>rtk</code> binary and opens a review in <a href="https://github.com/rtk-ai/pipelines" target="_blank" rel="noopener">rtk-ai/pipelines</a>.</li>
+          <li>An RTK maintainer reads it and merges. Only merged versions appear here, pinned to that commit. Numbers stay labelled with who produced them.</li>
+          <li>Stars on your repo are the votes. Forks are remixes. Each pipeline has a discussion thread and a report link.</li>
+        </ol>
+        <p class="pl-small pl-dim">Machine-readable: <a href="/pipelines/index.json">index.json</a> · <a href="/pipelines/rss.xml">RSS</a></p>
+      </details>
+    </div>
+  </section>
+</PageV3>
+
+<style is:global>
+  @import '../../styles/pipelines.css';
+</style>
+
+<script>
+  import { initPipelinesList } from '../../scripts/pipelines'
+  initPipelinesList()
+</script>
