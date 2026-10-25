@@ -205,6 +205,7 @@ export function initHeroScroll() {
   }
   let lastW = 0
   let lastH = 0
+  let vpH = window.innerHeight
 
   const flow = hero.querySelector<HTMLElement>('.lp3-flow')
   const stage = hero.querySelector<HTMLElement>('.lp3-hero-stage')
@@ -223,13 +224,14 @@ export function initHeroScroll() {
   })
 
   onScroll(() => {
-    if (window.innerWidth !== lastW || window.innerHeight !== lastH) {
+    if (window.innerWidth !== lastW || Math.abs(window.innerHeight - lastH) > 140) {
       lastW = window.innerWidth
       lastH = window.innerHeight
+      vpH = window.innerHeight
       measure()
     }
 
-    const total = pin.offsetHeight - window.innerHeight
+    const total = pin.offsetHeight - vpH
     const p = total > 0 ? clamp01(-pin.getBoundingClientRect().top / total) : 1
 
 
@@ -237,11 +239,11 @@ export function initHeroScroll() {
     const vdx = isVertical ? 0 : dx
     const vdy = isVertical ? 0 : dy
 
-    const ip = seg(p, 0.03, 0.15)
+    const ip = seg(p, 0, 0.15)
     const ipe = easeOut(ip)
     setVar(hero, '--introp', ipe.toFixed(3))
     setVar(hero, '--introo', (1 - seg(p, 0.07, 0.145)).toFixed(3))
-    setVar(hero, '--reveal', (0.06 + 0.94 * easeOut(seg(p, 0.02, 0.16))).toFixed(3))
+    setVar(hero, '--reveal', (0.06 + 0.94 * easeOut(seg(p, 0, 0.16))).toFixed(3))
     const gs0 = logoSize / (gateW * vs0)
     setVar(hero, '--gms', (gs0 + (1 - gs0) * ipe).toFixed(3))
     setVar(hero, '--gmx', `${(((dx + spacerOffX - vdx) / vs0 - gateOffX) * (1 - ipe)).toFixed(1)}px`)
