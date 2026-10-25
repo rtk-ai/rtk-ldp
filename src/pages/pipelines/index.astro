@@ -83,15 +83,19 @@ const schemaOrg = {
       <p class="pl-empty" role="status">
         {pipelines.length === 0 ? 'No pipeline has been reviewed yet.' : 'No pipelines match. Clear the filters.'}
       </p>
+      <p class="pl-topic">
+        <a href="https://github.com/topics/rtk-pipeline" target="_blank" rel="noopener">View all community pipelines on GitHub <span aria-hidden="true">↗</span></a>
+        <span class="pl-topic-warn pl-t-warn"><span class="pl-dot" aria-hidden="true"></span>Not reviewed by RTK. Read a pipeline's file before you install it.</span>
+      </p>
 
       <details id="how" class="pl-how reveal">
         <summary>How a pipeline gets here, and how to publish yours</summary>
         <p class="pl-how-legend">Results are labelled by evidence. <b>Measured by RTK</b>: our CI. <b>Author's benchmark</b>: an A/B run the author published. <b>Author's own usage</b>: what their rtk counted on their traffic. Only a benchmark measures <b>total cost</b>; usage numbers measure <b>output size</b>, how much smaller tool outputs got.</p>
         <ol class="pl-how-steps">
-          <li>You publish a public GitHub repo with a <code>pipeline.toml</code> and the <code>rtk-pipeline</code> topic. <code>rtk pipeline share publish</code> does this for you and writes your own usage numbers into the README.</li>
-          <li>To show a benchmark, add a <code>benchmark.toml</code> next to it: cost per trial with and without your pipeline, an optional quality metric, per task. <a href="https://github.com/rtk-ai/pipelines#benchmarktoml-authors" target="_blank" rel="noopener">Format</a>.</li>
-          <li>A bot pre-checks each new commit with the standard <code>rtk</code> binary and opens a review in <a href="https://github.com/rtk-ai/pipelines" target="_blank" rel="noopener">rtk-ai/pipelines</a>.</li>
-          <li>An RTK maintainer reads it and merges. Only merged versions appear here, pinned to that commit. Numbers stay labelled with who produced them.</li>
+          <li>Run <code>rtk pipeline share publish</code> and choose <b>GitHub repository</b>. rtk creates the public repo in your account with your <code>pipeline.toml</code>, the <code>rtk-pipeline</code> topic and a README card carrying your own usage numbers. That is all it takes.</li>
+          <li>Optional: to show a benchmark, add a <code>benchmark.toml</code> to that repo with the cost per trial with and without your pipeline, an optional quality metric, per task. <a href="https://github.com/rtk-ai/pipelines#benchmarktoml-authors" target="_blank" rel="noopener">Format</a>.</li>
+          <li>Within six hours a bot pre-checks the new commit with the standard <code>rtk</code> binary and opens a review in <a href="https://github.com/rtk-ai/pipelines" target="_blank" rel="noopener">rtk-ai/pipelines</a>.</li>
+          <li>An RTK maintainer reads it and merges. Only merged versions appear here, pinned to that commit.</li>
           <li>Stars on your repo are the votes. Forks are remixes. Each pipeline has a discussion thread and a report link.</li>
         </ol>
         <p class="pl-small pl-dim">Machine-readable: <a href="/pipelines/index.json">index.json</a> · <a href="/pipelines/rss.xml">RSS</a></p>

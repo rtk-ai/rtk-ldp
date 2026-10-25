@@ -131,6 +131,12 @@
   .pl-sort { margin-left: 0; }
 }
 
+/* link to the unreviewed topic page, with its warning */
+.pl-topic { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1rem; margin: 1.5rem 0 0; font-size: 0.9rem; }
+.pl-topic a { color: var(--text); text-decoration: underline; text-decoration-color: var(--lp3-line-strong); text-underline-offset: 3px; }
+.pl-topic a:hover { color: var(--accent); }
+.pl-topic-warn { display: inline-flex; align-items: center; font-size: 0.85rem; color: var(--text-dim); }
+
 .pl-how { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--lp3-line); color: var(--text-muted); }
 .pl-how > summary { cursor: pointer; color: var(--text); font-weight: 600; font-size: 0.95rem; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
 .pl-how > summary::-webkit-details-marker { display: none; }
