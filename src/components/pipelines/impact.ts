@@ -103,9 +103,9 @@ export function modelName(id: string | null | undefined): string | null {
 
 /**
  * Verdict on the quality metric. Small benchmarks are noisy (the authors
- * themselves call per-task moves under ~20% noise), so only a move over 5%
- * of the baseline is called better or worse; under that it is "about the
- * same", with the two numbers always shown next to it.
+ * themselves call per-task moves under ~20% noise), so only a move over 10%
+ * of the baseline is called higher or lower; under that it is "about the
+ * same". The two numbers are always shown in the benchmark section.
  */
 function qualityVerdict(q: any | null): Quality {
   if (!q) return { text: 'Not measured', tone: 'note', detail: null }
@@ -113,11 +113,11 @@ function qualityVerdict(q: any | null): Quality {
   const rel = Math.abs(diff) / Math.max(Math.abs(q.baseline), 1e-9)
   const detail = `${q.metric} ${q.baseline} → ${q.pipeline}`
   if (rel <= 0.005) return { text: 'Unchanged', tone: 'ok', detail }
-  if (rel <= 0.05) return { text: 'About the same', tone: 'note', detail }
+  if (rel <= 0.10) return { text: 'About the same', tone: 'note', detail }
   const better = diff > 0 === (q.higherIsBetter !== false)
   return better
-    ? { text: `Better (${fmtPct(rel)})`, tone: 'ok', detail }
-    : { text: `Worse (${fmtPct(-rel)})`, tone: 'warn', detail }
+    ? { text: `Higher (${fmtPct(rel)})`, tone: 'ok', detail }
+    : { text: `Lower (${fmtPct(-rel)})`, tone: 'warn', detail }
 }
 
 export function benchmarkSetup(b: any): string | null {
@@ -210,7 +210,7 @@ export function aim(p: any): Aim {
   const rules: any[] = p.rules ?? []
   const ext: string[] = p.extends ?? []
   const q = p.benchmark?.quality
-  const qualityUp = q ? (q.pipeline - q.baseline) * (q.higherIsBetter === false ? -1 : 1) / Math.max(Math.abs(q.baseline), 1e-9) > 0.05 : false
+  const qualityUp = q ? (q.pipeline - q.baseline) * (q.higherIsBetter === false ? -1 : 1) / Math.max(Math.abs(q.baseline), 1e-9) > 0.10 : false
   const savesTokens = rules.some((r) => /^(compress|delegate|rewrite)/.test(r.does ?? '')) || ext.length > 0
   const guides = (p.textBlocks ?? []).some((b: any) => b.kind === 'directive.text')
   if (qualityUp && savesTokens) return { key: 'both', label: 'Cost and quality' }
