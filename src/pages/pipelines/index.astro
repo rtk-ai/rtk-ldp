@@ -83,6 +83,10 @@ const schemaOrg = {
       <p class="pl-empty" role="status">
         {pipelines.length === 0 ? 'No pipeline has been reviewed yet.' : 'No pipelines match. Clear the filters.'}
       </p>
+      <p class="pl-topic">
+        <a href="https://github.com/topics/rtk-pipeline" target="_blank" rel="noopener">View all community pipelines on GitHub <span aria-hidden="true">↗</span></a>
+        <span class="pl-topic-warn pl-t-warn"><span class="pl-dot" aria-hidden="true"></span>Not reviewed by RTK. Read a pipeline's file before you install it.</span>
+      </p>
 
       <details id="how" class="pl-how reveal">
         <summary>How a pipeline gets here, and how to publish yours</summary>
