@@ -6,7 +6,7 @@ import { sortPipelines } from '../../components/pipelines/impact'
 
 const siteUrl = 'https://www.rtk-ai.app'
 const pipelines = sortPipelines(data.pipelines as any[])
-const showToolbar = pipelines.length >= 6
+const showToolbar = pipelines.length >= 4
 const showCount = pipelines.length >= 10
 
 const schemaOrg = {
@@ -83,6 +83,10 @@ const schemaOrg = {
       <p class="pl-empty" role="status">
         {pipelines.length === 0 ? 'No pipeline has been reviewed yet.' : 'No pipelines match. Clear the filters.'}
       </p>
+      <div class="pl-more-row">
+        <span id="pl-more-note" class="pl-small pl-dim" aria-live="polite" hidden></span>
+        <button id="pl-more" class="lp3-btn lp3-btn-ghost lp3-btn-sm" type="button" hidden>Show more</button>
+      </div>
       <p class="pl-topic">
         <a href="https://github.com/topics/rtk-pipeline" target="_blank" rel="noopener">View all community pipelines on GitHub <span aria-hidden="true">↗</span></a>
         <span class="pl-topic-warn pl-t-warn"><span class="pl-dot" aria-hidden="true"></span>Not reviewed by RTK. Read a pipeline's file before you install it.</span>
