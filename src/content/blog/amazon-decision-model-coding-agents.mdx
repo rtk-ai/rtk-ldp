@@ -1,0 +1,239 @@
+---
+title: "Amazon Fired Sonnet From One Job: What a Decision Model Saves in a Coding Agent"
+description: "Amazon replaced Claude Sonnet with a small decision model for one task and cut its cost 98%. Coding agents have the same job opening. Here is what Amazon did, what RTK pipelines do with a local decision model, and what it saves: 14% to 27% of total cost in our benchmarks, with the losses shown."
+date: 2026-11-12
+tags: [pipelines, cost, benchmarks]
+draft: false
+---
+
+import BarChart from '../../components/blog/BarChart.astro'
+import DeltaChart from '../../components/blog/DeltaChart.astro'
+
+## TL;DR
+
+Amazon just fired Claude Sonnet from one of its jobs. It will save them millions a year.
+
+The job was a decision: pick 1 of 20 labels for each ticket. A small decision model now does it 44x cheaper, in 0.9 seconds instead of 4.2, with the same quality or better.
+
+Your coding agent has the same job opening. Around the real thinking, it makes small decisions all day: what kind of task is this, do I need this whole file, should I run this search myself. Today your most expensive model answers them all.
+
+RTK, the open-source cost reduction engine for coding agents, already does this. Two RTK pipelines put a small local decision model on those calls and route the work that follows:
+
+- **Haiku explores, Sonnet implements, Opus decides.**
+- **−13.9% total cost** with `laya-delegate`, same success rate, 48 trials per arm.
+- **−20.2% to −26.7%** with `laya-tiered`. In one run it was cheaper and more successful than stock Claude Code.
+- **Nothing to host.** The decision model runs on your laptop, for free.
+- **Measured before you switch.** Shadow mode shows the numbers on your own sessions first.
+
+## What Amazon did
+
+On 9 November, the Strands Agents team at AWS published [how Amazon replaced Sonnet 4.6 with Strands Decider](https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/) in one of its large internal ticketing systems.
+
+The task: every incoming ticket (customer escalations, capacity requests, alarms, security findings) gets one of 20 category labels. Sonnet did it with a long system prompt on every ticket, reasoning against the label set and writing JSON back.
+
+Then they gave the job to Strands Decider, a small model that cannot generate text. It receives some state, a question and a set of options, and returns a probability for each option. The 20 labels became 20 options, each described in a sentence or two, plus "none".
+
+| Per ticket | Sonnet 4.6 | Strands Decider |
+|---|---|---|
+| Input tokens | 6,554 | 2,009 |
+| Output tokens | 170 | 1 |
+| Latency | 4,215 ms | 897 ms |
+| Cost | $0.0222 | about $0.0005 |
+
+<BarChart title="Cost per million tickets, in dollars (Amazon's figures)" data={[
+  { label: 'Sonnet 4.6', value: 22200 },
+  { label: 'Strands Decider', value: 500 },
+]} />
+
+Three details matter more than the headline:
+
+- **The cost model changed, not just the price.** Sonnet is billed per token. The decision model runs on one GPU instance at $1.408 an hour, which works out to about $500 per million tickets with headroom. Amazon gives no ticket volume, but at that rate every 100 million tickets is about $2.2 million less (our arithmetic).
+- **They ran both side by side before switching.** A three-way switch let Sonnet label every ticket while the decision model labelled the same ones in parallel, on live traffic. Amazon says this told them more than offline tests, and that the model they shipped "beat production Sonnet on a separate set of our tickets".
+- **They say when it does not work.** It worked because the task is a closed choice from a known list, at high volume, where latency mattered. It probably is not the right tool if the labels need an explanation, if the list changes every week, or if the useful context does not fit in a few thousand tokens.
+
+The lesson fits in one line: a decision does not need a frontier model.
+
+## The same job opening in your coding agent
+
+Amazon could replace Sonnet outright because the whole job was the choice.
+
+A coding task is different. You cannot fire Opus from it: it does the thinking. But around that thinking, the agent makes a stream of closed choices, exactly the kind Amazon describes:
+
+- "What kind of task is this?" Bug, setup, new code, data analysis.
+- "Do I need this whole file, or a summary?"
+- "Should I run this search myself?"
+
+In a stock setup, the frontier model answers every one of them. Then it does every read and every grep itself, and that is where the money goes. As we wrote in [our SkillsBench post](/blog/rtk-on-skillsbench/), cost ≈ context × turns. A 400-line file that Opus opens once stays in its context and is paid for again on every later turn. If a summary would have done, you paid frontier prices for an errand, many times over.
+
+So the fix is not to replace the frontier model. It is to take the decisions off it, and route the errands around it.
+
+## What RTK pipelines do with a decision model
+
+RTK started as a compressor: up to 90% less command output, in 18 coding agents, installed once and forgotten. [Since v1](/blog/rtk-v1-release/) it is an engine. A pipeline is one TOML file that acts at every step of your agent's loop: before and after each tool call, and on the API traffic itself.
+
+Two published pipelines add a decision model to that loop. We benchmarked the first on 18 and 19 October, three weeks before Amazon's post.
+
+The decision model is Laya, a small local classifier (the `@receptron/laya` package). It runs on your machine, about 1.7 GB on first start. Nothing it sees leaves your laptop. The pipeline asks it two closed questions, which will look familiar after reading Amazon's write-up (excerpt from `laya-tiered`):
+
+```toml
+[classifier.kind]
+upstream     = "judge"
+question     = "choice"
+instructions = "What kind of work is this coding task?"
+
+[classifier.kind.labels]
+bug   = "find and fix a bug by reading source code closely"
+setup = "understand or repair a build, configuration, dependency or environment"
+write = "write new code, a script or a port"
+data  = "analyse data or files and report results"
+
+[classifier.need]
+upstream     = "judge"
+question     = "score"
+instructions = "How much of this file's exact text does the agent need for its next step?"
+rubric       = ["none: a short summary is enough", "a few exact lines", "most of the file verbatim"]
+```
+
+Rules then act on the answers. This one sends a big whole-file read to Haiku when the agent does not need the exact text:
+
+```toml
+[[hook.before_tool.read]]
+name   = "answer-big-reads"
+when   = { file_lines_gt = 350, whole_file = true, "score.need_lte" = 0.65 }
+action = "route"
+task   = "bulk-read"
+mode   = "answer"
+```
+
+The two pipelines:
+
+- **[laya-delegate](/pipelines/aeppling/rtk-pipeline-laya-delegate/):** on `write` and `data` tasks, early searches and reads go to a Haiku sub-agent that reports back file paths, line numbers and exact lines. Big reads that only need a summary are summarised by Haiku. Bug and setup tasks are left alone.
+- **[laya-tiered](/pipelines/aeppling/rtk-pipeline-laya-tiered/):** the same, plus a Sonnet sub-agent that implements the change from a short brief and runs the tests. Opus writes the brief, checks the result and fixes what the tests missed.
+
+Haiku explores. Sonnet implements. Opus decides.
+
+## What it saves
+
+All figures below are the pipeline author's benchmarks (one of us), on SkillsBench with Claude Code on Claude Opus 5.5, against stock Claude Code run in the same batch. The per-trial data is published with each pipeline, so you can check them. They have not been independently reproduced yet.
+
+<DeltaChart
+  title="Total cost against stock Claude Code"
+  note="Left of zero: the pipeline is cheaper. SkillsBench, Claude Opus 5.5, baseline in the same batch."
+  unit="%"
+  data={[
+    { label: 'laya-delegate · 6 tasks · 48v48', value: -13.9 },
+    { label: 'laya-tiered · 11 tasks · 44v44', value: -20.2 },
+    { label: 'laya-tiered · 6 tasks', value: -26.7 },
+  ]}
+/>
+
+| Run | Stock Claude Code | With the pipeline | Change | Success |
+|---|---|---|---|---|
+| laya-delegate, 6 tasks, 48 trials per arm (18–19 Oct) | $3.59 | $3.09 | −13.9% | 0.81 → 0.81 |
+| laya-tiered, 11 tasks, 44 trials per arm (22–23 Oct) | $4.31 | $3.44 | −20.2% | 0.66 → 0.64 |
+| laya-tiered, 6 tasks (21–22 Oct) | $3.42 | $2.51 | −26.7% | 0.72 → 0.85 |
+
+Dollar figures are the "all tasks" totals from each pipeline page.
+
+Two things stand out. With `laya-delegate`, success did not move at all over 48 trials per arm. And in the 6-task run, `laya-tiered` was both cheaper and more successful than stock Claude Code. That run is small, which is why we quote a range.
+
+These numbers build on RTK's core compression, which both pipelines keep. Compression removes up to 90% of command output; on the whole bill that was about 5% on SkillsBench dev tasks in August (a different run, so read it as an order of magnitude). A decision model that routes the reads takes it to about 14%, and tiers to 20% and more.
+
+### Where the money is, and where it is not
+
+The savings are not spread evenly. Here is every task of the 11-task `laya-tiered` run:
+
+<DeltaChart
+  title="laya-tiered, cost change per task"
+  note="Left of zero: cheaper. 4 trials per task per arm. Differences under about 20% on a single task are within noise."
+  unit="%"
+  data={[
+    { label: 'parallel-tfidf-search', value: -51.2 },
+    { label: 'fix-visual-stability', value: -31.1 },
+    { label: 'python-scala-translation', value: -28.1 },
+    { label: 'fix-build-google-auto', value: -23.8 },
+    { label: 'azure-bgp-route-leak', value: -10.4 },
+    { label: 'react-performance-debugging', value: -9.5 },
+    { label: 'debug-trl-grpo', value: -7.7 },
+    { label: 'fix-erlang-ssh-cve', value: 7.3 },
+    { label: 'dialogue-parser', value: 11.1 },
+    { label: 'jax-computing-basics', value: 33.6 },
+    { label: 'llm-prefix-cache-replay', value: 64.5 },
+  ]}
+/>
+
+- **Big wins on writing and porting.** The tasks that cost the most are the ones that shrink the most: an $0.89 task became $0.43. Long tasks read a lot, and reads are what gets routed.
+- **Nothing on small tasks.** Under about $0.25 a task, there is nothing to save, and the hand-off itself costs 3 to 9 cents. That is the right-hand side of the chart: big percentages on tasks worth 13 or 14 cents.
+- **Quality moves both ways on single tasks.** Two tasks improved (`fix-visual-stability` from 0 to 0.5, `fix-build-google-auto` from 0.75 to 1) and two dropped. The clearest loss is `react-performance-debugging`, from 1 to 0.25: the Sonnet implementer missed a fetch reordering that stock Opus found. Overall, success went from 0.66 to 0.64 in this run, and from 0.72 to 0.85 in the other.
+- **It is slower.** `laya-tiered` takes 1.5 to 1.8 times the wall-clock time of stock Claude Code. You trade minutes for dollars.
+
+### What that is in dollars
+
+If your work looks like these tasks, every $1,000 of agent spend becomes about $860 with `laya-delegate`, and $730 to $800 with `laya-tiered`.
+
+For a team of 40 developers spending $200 each a month, that is roughly $1,100 a month in the first case and $1,600 to $2,100 in the second.
+
+The "if" matters. A team that mostly fixes small bugs will see little. A team that writes, ports and analyses will see more. A benchmark cannot tell you your own mix, which is why the next section exists.
+
+## Same idea, different job
+
+| | Amazon | RTK pipelines |
+|---|---|---|
+| The task | One closed choice per ticket | A coding task with choices inside it |
+| What the decision model does | The whole job | The routing calls |
+| What the frontier model does | Nothing: switched off | The thinking, the brief, the review |
+| Where the decision model runs | A GPU endpoint, billed per hour | Your laptop, nothing to host |
+| Saving | 98% of that task | 14% to 27% of the whole bill |
+| How it was checked | Both models side by side on live traffic | `--shadow` on your own sessions |
+
+Amazon removed the frontier model from a job that was 100% decision. In a coding agent the decisions and errands are a part of the bill, and the thinking is the rest. 14% to 27% is what that part is worth today.
+
+## Build your own Amazon-style pipeline
+
+Pipelines were not built for decision models. They were built to optimise the whole agent loop: what the agent reads, what it runs, what comes back, and which model handles it. A decision model is one thing you can plug in. That also means you are not limited to ours:
+
+- **The decision model is declared in one place.** `[upstream.judge]` names the model that answers.
+- **The questions are yours.** A `choice` with your own labels, or a `score` with your own rubric.
+- **The routing is yours.** Which calls go to which model, on which conditions.
+
+And do what Amazon did before switching: run it side by side.
+
+```bash
+# record what the pipeline would have done, without changing anything
+rtk pipeline add github:aeppling/rtk-pipeline-laya-delegate@6452459d550853f14fac8a400fb6704cea983900 --shadow
+
+# see the numbers on your own sessions
+rtk pipeline eval laya-delegate
+```
+
+Then promote it or discard it. If you build something better, `rtk pipeline share` turns it into a link others can use.
+
+## Good to know
+
+- RTK itself works with 18 coding agents, and the pipeline format is agent agnostic. These two Laya pipelines were measured on Claude Code and hand work to its sub-agents, so results on other agents will differ.
+- Laya runs locally, but the delegated reads and searches go to Haiku and Sonnet through Anthropic's API, like the rest of your session.
+- Whole-file summaries need an Anthropic API key. They are skipped on subscription logins.
+- Laya needs Node 20 or later.
+
+## Take away
+
+Amazon's post is the clearest case so far for a simple idea: stop paying a frontier model to make closed choices.
+
+In a ticket queue that is worth 98%. In a coding agent it is worth 14% to 27% of the whole bill today, with success holding, nothing to host, and a way to check it on your own work before you commit.
+
+Frontier models for judgment. Small models for decisions. Cheap models for errands.
+
+RTK is free and open source, and installs in one command:
+
+```bash
+brew install rtk
+```
+
+Running agents across a team? [RTK Pro](https://pro.rtk-ai.app) assigns pipelines to every team and project, and shows spend by team, person and model.
+
+Which decision would you take off your frontier model first?
+
+- [Install RTK](https://github.com/rtk-ai/rtk)
+- [Browse the pipelines](/pipelines/)
+- [How pipelines work](/docs/pipelines/overview/)
+- [Amazon's write-up](https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/)
