@@ -1,23 +1,26 @@
 ---
-title: "Amazon Learned AI FinOps the Hard Way in 2026. Here Is What We Learned Building RTK."
-description: "In 2026 Amazon paid for two lessons on AI costs, and researchers started measuring where agent tokens go. The RTK story: where token costs hide, what the research found, how we find savings, and where we are taking it."
+title: "The RTK FinOps Story: From a Session Limit to Token Economics at Company Scale"
+description: "How RTK grew from a filter for noisy bash output into a way of cutting AI costs across the whole agent harness, what 2026's research and market confirmed along the way, and where we are taking it with RTK Pro."
 date: 2026-11-12
 tags: [finops, cost, research, pipelines]
-draft: false
+draft: true
 ---
 
 import BarChart from '../../components/blog/BarChart.astro'
 
 ## TL;DR
 
-In 2026, Amazon taught the industry two lessons about AI costs, in public.
+RTK started with a session limit. In January 2026, we built a filter for the noisy bash output our coding agent kept reading. It turned out to be a cost lever: in an agent, everything the model reads is paid for again on every turn that follows.
 
-- **July: the bill nobody watched.** A Claude Sonnet project ran 860% over budget and cost $1.8 million. Nobody noticed for five months. Lesson: a company has to see and control its AI spend.
-- **November: the job that didn't need Sonnet.** Amazon gave one task to a small decision model, 44x cheaper, and expects to save millions a year. Lesson: not every token needs a frontier model.
+That first filter grew into a way of working on AI costs, what the industry now calls token economics, or AI FinOps:
 
-The same year, researchers started measuring what goes on inside an agent's bill. Agentic coding uses about 1,000x more tokens than chat. Input, not output, drives the cost. And the software around the model, the harness, sets the price more than the model does.
+- **On every machine:** RTK, open source, cuts command output by up to 90%. 86k GitHub stars, 4.6M+ downloads.
+- **Across the agent's whole lifecycle:** RTK pipelines, released in September, route each part of a task to the right model, skip costly tools and keep the context short. Our decision-model pipelines cut total cost by 14% to 27% in benchmarks.
+- **Across a company:** RTK Pro takes the same method to every team: see the spend, control it, optimize it.
 
-These are the questions RTK has been working on since its first release in January 2026, starting with noisy bash output. Here is what we have learned, and where we are going.
+Over 2026, research and the market converged on the same lessons: input drives agent costs, the harness sets the price more than the model does, and companies need to see and control what their agents spend.
+
+Here is the story so far, and where we are going.
 
 ## It started with a session limit
 
@@ -25,7 +28,7 @@ We built RTK (Rust Token Killer) because we kept hitting session limits.
 
 The culprit wasn't our prompts. It was the output of the commands our coding agent ran: a test suite printing every passing test, a build printing every bundle, a `git log` with a hundred commits. The agent needed three lines. It read three hundred.
 
-So we wrote a filter between the agent and the shell: keep the signal, drop the noise. Failing tests stay, passing ones become a count. Errors stay, progress bars go. Today RTK cuts command output by up to 90%, works with 18 coding tools, and has 86k GitHub stars.
+So we wrote a filter between the agent and the shell: keep the signal, drop the noise. Failing tests stay, passing ones become a count. Errors stay, progress bars go. Today it works with 18 coding tools.
 
 It looked like a tidy-up. It turned out to be a cost lever, and the reason explains this whole field.
 
@@ -86,7 +89,7 @@ The model wasn't the problem. Nobody could see the spend by project, nobody owne
 
 On 9 November, AWS's Strands team [showed how Amazon gave a ticket-labelling job to a small decision model](https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/): 44x cheaper, 4.7x faster, same quality.
 
-RTK pipelines do the same inside a coding agent. A small local model classifies each task and each read, then routes the work: Haiku explores, Sonnet implements, Opus decides. In our October benchmarks: −13.9% total cost at the same success rate, and −20% to −27% with a tiered version. Details and losses are in [Amazon fired Sonnet from one job](/blog/amazon-decision-model-coding-agents/).
+RTK pipelines do the same inside a coding agent. A small local model classifies each task and each read, then routes the work: Haiku explores, Sonnet implements, Opus decides. In our October benchmarks: −13.9% total cost at the same success rate, and −20% to −27% with a tiered version. Details and losses are in [Amazon fired Sonnet from one job](/blog/amazon-fired-sonnet-decision-models/).
 
 ### Two halves of one discipline
 
