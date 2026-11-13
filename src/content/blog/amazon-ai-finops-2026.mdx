@@ -1,0 +1,159 @@
+---
+title: "The RTK FinOps Story: From a Session Limit to Token Economics at Company Scale"
+description: "How RTK grew from a filter for noisy bash output into a way of cutting AI costs across the whole agent harness, what 2026's research and market confirmed along the way, and where we are taking it with RTK Pro."
+date: 2026-11-12
+tags: [finops, cost, research, pipelines]
+draft: true
+---
+
+import BarChart from '../../components/blog/BarChart.astro'
+
+## TL;DR
+
+RTK started with a session limit. In January 2026, we built a filter for the noisy bash output our coding agent kept reading. It turned out to be a cost lever: in an agent, everything the model reads is paid for again on every turn that follows.
+
+That first filter grew into a way of working on AI costs, what the industry now calls token economics, or AI FinOps:
+
+- **On every machine:** RTK, open source, cuts command output by up to 90%. 86k GitHub stars, 4.6M+ downloads.
+- **Across the agent's whole lifecycle:** RTK pipelines, released in September, route each part of a task to the right model, skip costly tools and keep the context short. Our decision-model pipelines cut total cost by 14% to 27% in benchmarks.
+- **Across a company:** RTK Pro takes the same method to every team: see the spend, control it, optimize it.
+
+Over 2026, research and the market converged on the same lessons: input drives agent costs, the harness sets the price more than the model does, and companies need to see and control what their agents spend.
+
+Here is the story so far, and where we are going.
+
+## It started with a session limit
+
+We built RTK (Rust Token Killer) because we kept hitting session limits.
+
+The culprit wasn't our prompts. It was the output of the commands our coding agent ran: a test suite printing every passing test, a build printing every bundle, a `git log` with a hundred commits. The agent needed three lines. It read three hundred.
+
+So we wrote a filter between the agent and the shell: keep the signal, drop the noise. Failing tests stay, passing ones become a count. Errors stay, progress bars go. Today it works with 18 coding tools.
+
+It looked like a tidy-up. It turned out to be a cost lever, and the reason explains this whole field.
+
+## The bill is not where people look
+
+People think AI cost is about what the model writes. In a coding agent, that is the small part.
+
+An agent works in a loop. Each turn, it sends the model everything so far: instructions, tool definitions, the conversation, and the output of every command it has run. Then it does it again. [How Do AI Agents Spend Your Money?](https://arxiv.org/abs/2604.22750) (April 2026) measured this on eight frontier models:
+
+- Agentic coding consumes **about 1,000x more tokens** than code chat or code reasoning.
+- **Input tokens, not output tokens, drive the cost**, even with caching on.
+- The same task can use **up to 30x more tokens** from one run to the next, and more tokens don't buy more accuracy.
+
+In July, [Writer's harness study](https://arxiv.org/abs/2607.06906) showed why: a naive agent replays its whole history every turn, so input grows with the *square* of the number of turns.
+
+So a noisy test output isn't paid for once. It is paid for again on every turn that follows. Cutting it at the source is one of the cheapest savings there is.
+
+## What 2026's research found
+
+| Date (2026) | Published | What it means for RTK |
+|---|---|---|
+| 24 April | [Bai et al.](https://arxiv.org/abs/2604.22750): input tokens drive agent costs | Filtering what the agent reads pays off |
+| 8 July | [Writer](https://arxiv.org/abs/2607.06906): the harness is the main lever, −41% cost, same models | Optimize how agents use the model, not only which model |
+| 23 October | [HarnessMM](https://arxiv.org/abs/2610.32813): skip model calls whose decision is already known | Not every decision needs the frontier model |
+| 3 November | [NVIDIA](https://arxiv.org/abs/2611.05306): later tokens cost up to 7x more; short contexts lose little accuracy | Keep noise out of the context |
+| 4 November | [How Do AI Agents Waste Your Money?](https://arxiv.org/abs/2611.07238): waste varies by task and harness | No single setting fits everyone |
+
+Three findings stand out.
+
+**The harness sets the price.** Writer kept six models fixed and swapped only the orchestration layer. Cost per task fell 41%, with quality at parity, and every model got cheaper. On that workload, the harness moved cost more than the spread between the cheapest and the most expensive model. (Writer measures its own product, as we do with ours.)
+
+<BarChart title="Cost per task, same six models, in cents (Writer's figures)" data={[
+  { label: 'Conventional loop', value: 21 },
+  { label: 'Optimized harness', value: 12 },
+]} />
+
+**Waste has a structure.** The November waste paper recorded full agent runs, removed the spans it judged useless, and resumed the agent: cutting 41% to 46% of the model's reasoning largely preserved performance. Waste varied more across tasks and setups than across models, and different harnesses created different kinds of waste.
+
+**Context is the cost.** NVIDIA's researchers found later tokens cost more to generate than earlier ones, and that frontier models lose little accuracy when contexts are kept short. The cheapest token is the one that never enters the context.
+
+## Amazon, twice
+
+Amazon is the case study of 2026 because it ran into both halves of the problem in the same year.
+
+### July: the bill nobody watched
+
+At a staff meeting on 28 July, Amazon engineers presented projects that had run over budget, as [reported after the Financial Times](https://www.tomshardware.com/tech-industry/artificial-intelligence/amazon-accidentally-spent-usd1-8-million-using-claude-for-menial-coding-task-went-860-percent-over-budget-catastrophically-expensive-coding-blunders-discovered-in-internal-amazon-ai-usage-metrics):
+
+- A Claude Sonnet tool to match author records with product listings cost **$1.8 million, 860% over budget**, and ran for **five months** before anyone noticed.
+- A financial auditing tool went about **$541,000** over, a logistics project **$134,000**.
+- Engineers said mistakes that used to be cheap had become "catastrophically expensive" once agents did the coding.
+
+Amazon disputed that these cases represent how its teams use AI, and [said it is building guardrails](https://gigazine.net/gsc_news/en/20260731-ai-amazon-expensive/) to monitor and limit usage.
+
+The model wasn't the problem. Nobody could see the spend by project, nobody owned a limit, and nothing flagged the trend. That is the problem RTK Pro is built for.
+
+### November: the job that didn't need Sonnet
+
+On 9 November, AWS's Strands team [showed how Amazon gave a ticket-labelling job to a small decision model](https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/): 44x cheaper, 4.7x faster, same quality.
+
+RTK pipelines do the same inside a coding agent. A small local model classifies each task and each read, then routes the work: Haiku explores, Sonnet implements, Opus decides. In our October benchmarks: −13.9% total cost at the same success rate, and −20% to −27% with a tiered version. Details and losses are in [Amazon fired Sonnet from one job](/blog/amazon-fired-sonnet-decision-models/).
+
+### Two halves of one discipline
+
+Together, the two stories are AI FinOps for agents:
+
+- **Control:** who spends what, on which project, within which limit.
+- **Efficiency:** how many tokens a task needs, and from which model.
+
+RTK works on efficiency on every machine. RTK Pro adds control and takes efficiency to the whole company.
+
+## How we find a saving
+
+Bash output was our first target because it hurt us first. It is a small part of the whole. Model choice, tool usage, prompt caching, repeated reads, tool definitions, retries, long contexts: each is a place where tokens leak, and the list keeps growing.
+
+Every RTK optimization goes through the same eight steps:
+
+1. **Analyze the consumption.** Break the context window and the usage down into what fills them.
+2. **Identify the waste.** Tools, prompts, repetitive behavior, verbose commands.
+3. **Estimate the gain.** Is it worth building?
+4. **Choose the anchor.** Where should RTK act: before a tool call, after it, or on the traffic to the model?
+5. **Replay real sessions** to check the trigger fires at the right moments and can perform the saving.
+6. **Estimate the gain again,** more precisely.
+7. **Benchmark it** on our SkillsBench task sets, against stock agents.
+8. **Scale and release** it as a pipeline.
+
+We publish the losses too: our tiered pipeline saves nothing on tasks under about $0.25, and runs 1.5 to 1.8x longer.
+
+## Why one setting can't fit everyone
+
+Before version 1, RTK did one thing for everyone: filter bash output. It helped almost everyone, but it could never be the best answer for a specific use case. A team writing data pipelines wastes tokens differently from a team building a mobile app, which is what the waste research found too.
+
+RTK pipelines, released in September, fix that. A pipeline is one TOML file that defines behavior across the agent's whole lifecycle, in every agent RTK supports. By default it compresses command output. Beyond that, it can route to a cheaper model, answer a read without the frontier model, skip a costly tool, and more. Anyone can write one, test it in shadow mode on their own sessions, and share it.
+
+## Where we are going: the same method, company-wide
+
+Token waste doesn't stop at one session. A company has its own: the same agent set up differently on 40 laptops, a team on a frontier model for routine work, an MCP server loaded everywhere, a job that runs for months unwatched.
+
+The method stays the same. The analysis has to break spend down by team, workspace, project, developer and tool. That is RTK Pro:
+
+- **See:** every AI call in one place, spend by team, project, person and model.
+- **Control:** limits, ownership and forecasts, so an overrun shows up early instead of five months later.
+- **Optimize:** pipelines, skills and MCP servers shared across teams, so one team's saving reaches everyone.
+
+On the money, we stay careful: around 3–5% off the AI bill from day one, and 20% or more within a few months as your teams tune how they use agents.
+
+## Take away
+
+AI FinOps for coding agents comes down to two things: engineer the harness so each task uses the tokens it needs, and manage spend so nobody finds a $1.8 million problem five months late.
+
+```bash
+brew install rtk
+```
+
+- Browse and test pipelines: [rtk-ai.app/pipelines](https://www.rtk-ai.app/pipelines/)
+- The open-source engine: [github.com/rtk-ai/rtk](https://github.com/rtk-ai/rtk)
+- For teams: [RTK Pro](https://pro.rtk-ai.app), free trial or talk to us
+
+## Sources
+
+- Bai et al., [How Do AI Agents Spend Your Money? Analyzing and Predicting Token Consumption in Agentic Coding Tasks](https://arxiv.org/abs/2604.22750), April 2026 (revised October 2026)
+- Sayed Ali et al. (Writer), [The Harness Effect: How Orchestration Design Sets the Token Economics of Enterprise Agentic AI](https://arxiv.org/abs/2607.06906), July 2026 (revised October 2026)
+- Jiang et al., [HarnessMM: Recursive Self-Improvement for Harness Token Efficiency](https://arxiv.org/abs/2610.32813), October 2026
+- Belcak et al. (NVIDIA), [You don't need long context](https://arxiv.org/abs/2611.05306), November 2026
+- Zeng et al., [How Do AI Agents Waste Your Money?](https://arxiv.org/abs/2611.07238), November 2026
+- Tom's Hardware, [Amazon accidentally spent $1.8 million using Claude for a menial coding task](https://www.tomshardware.com/tech-industry/artificial-intelligence/amazon-accidentally-spent-usd1-8-million-using-claude-for-menial-coding-task-went-860-percent-over-budget-catastrophically-expensive-coding-blunders-discovered-in-internal-amazon-ai-usage-metrics), July 2026, after the Financial Times
+- GIGAZINE, [report on Amazon's AI overspend](https://gigazine.net/gsc_news/en/20260731-ai-amazon-expensive/), July 2026
+- Strands Agents, [Amazon saves millions replacing Sonnet with Strands Decider](https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/), November 2026
