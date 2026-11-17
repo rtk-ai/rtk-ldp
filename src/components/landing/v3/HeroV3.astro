@@ -104,16 +104,17 @@ const strandsOutV = Array.from({ length: 8 }, (_, i) => {
       <div class="lp3-container lp3-hero-grid">
 
         <div class="lp3-hero-copy">
+          <p class="lp3-eyebrow lp3-hero-kicker">{t('v3.hero.descriptor', lang).replace(/[.。]\s*$/, '')}</p>
           <h1 class="lp3-hero-title" set:html={t('v3.hero.title', lang)}></h1>
+          <p class="lp3-hero-desc" set:html={t('v3.hero.sub', lang)}></p>
           <div class="lp3-hero-cta">
             <a href="/#install" class="lp3-btn lp3-btn-primary">
-              {t('v3.hero.cta_install', lang)} <span class="arr" aria-hidden="true">→</span>
+              <span class="lbl-long">{t('v3.hero.cta_install_oss', lang)}</span><span class="lbl-short">{t('v3.hero.cta_install', lang)}</span> <span class="arr" aria-hidden="true">→</span>
             </a>
-            <a href="https://github.com/rtk-ai/rtk" class="lp3-btn lp3-btn-ghost" target="_blank" rel="noopener">
-              {t('v3.hero.cta_github', lang)} <span aria-hidden="true">↗</span>
+            <a href="/#engine" class="lp3-hero-more">
+              {t('v3.hero.more', lang)} <span aria-hidden="true">→</span>
             </a>
           </div>
-          <p class="lp3-hero-meta">{t('v3.hero.meta', lang)}</p>
         </div>
 
         <div class="lp3-hero-visual">

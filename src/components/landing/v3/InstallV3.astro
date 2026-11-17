@@ -9,6 +9,7 @@ const { lang = 'en' } = Astro.props
 const curlCmd = 'curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh'
 const brewCmd = 'brew install rtk-ai/tap/rtk'
 const brewUpgrade = 'brew upgrade rtk-ai/tap/rtk'
+const wingetCmd = 'winget install rtk-ai.rtk'
 
 const agents = [
   {
@@ -26,7 +27,7 @@ const agents = [
   {
     id: 'other',
     label: t('v3.install.tab_other', lang),
-    cmd: 'rtk init --global --agent <name>',
+    cmd: 'rtk init --global --codex',
     note: t('v3.install.note_other', lang),
   },
 ]
@@ -68,6 +69,10 @@ const copyIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" st
       <div class="lp3-install-card reveal">
         <h3>{t('v3.install.binaries', lang)}</h3>
         <p>{t('v3.install.binaries_desc', lang)}</p>
+        <div class="lp3-cta-cmd">
+          <code><span class="p">&gt;</span> {wingetCmd}</code>
+          <button class="lp3-copy-btn" data-copy={wingetCmd} aria-label="Copy winget install command" set:html={copyIcon} />
+        </div>
         <a href="https://github.com/rtk-ai/rtk/releases" class="lp3-install-link" target="_blank" rel="noopener">
           {t('v3.install.releases', lang)} <span aria-hidden="true">↗</span>
         </a>
@@ -107,5 +112,9 @@ const copyIcon = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" st
         </div>
       ))}
     </div>
+    <p class="lp3-install-further reveal">
+      {t('v3.install.further', lang)}
+      <a href="/docs/pipelines/overview/" class="lp3-install-link">{t('v3.pipelines.docs_link', lang)} <span aria-hidden="true">→</span></a>
+    </p>
   </div>
 </section>
