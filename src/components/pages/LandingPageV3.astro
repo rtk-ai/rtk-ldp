@@ -26,7 +26,7 @@ const { lang } = Astro.props
 const faqItems = [
   {
     q: 'What is RTK (Rust Token Killer)?',
-    a: 'RTK is a cost reduction engine for AI coding agents. It cleans what your agent reads at every tool call — shell output, file reads, search results, web pages, MCP calls — cutting up to 90% of command output noise, and it can hand heavy work to cheaper models. The battle-tested Bash compressor developers starred is the core of the engine. RTK is free to use, written in Rust, with the CLI open source under Apache 2.0, and works with Claude Code, Cursor, and 18 AI coding agents.',
+    a: 'RTK is a cost reduction engine for AI coding agents. It cleans what your agent reads at every tool call — shell output, file reads, search results, web pages, MCP calls — cutting up to 90% of command output noise, and it can hand heavy work to cheaper models. The battle-tested Bash compressor developers starred is the core of the engine. RTK is free to use, written in Rust, with the CLI open source under Apache 2.0, and works with Claude Code, Cursor, and 18 AI coding agents in total.',
   },
   {
     q: "What is RTK Engine?",
@@ -55,11 +55,16 @@ const faqItems = [
   },
   {
     q: 'Is RTK free? Are there usage limits?',
-    a: 'RTK is completely free. It is open source under the Apache 2.0 license, with source code available on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required and no accounts. Routing to a cheaper model is optional and uses a model key you provide. Telemetry is opt-in: it is off until you explicitly enable it, and it collects no personal data. For teams, RTK Pro is available at pro.rtk-ai.app.',
+    a: 'RTK is free, production use included. The CLI is open source under Apache 2.0; the pipeline engine it ships with and the optional RTK Proxy are source-available under BUSL 1.1, and an Apache-only edition exists. The source is on GitHub at github.com/rtk-ai/rtk. There are no usage limits, no API keys required and no accounts. Routing to a cheaper model is optional and uses a model key you provide. Telemetry is opt-in: it is off until you explicitly enable it, and it collects no personal data.',
+    links: [{ href: '/docs/resources/editions/', label: 'Editions and licensing' }],
+  },
+  {
+    q: 'What is RTK Pro?',
+    a: 'RTK runs on each developer’s machine. RTK Pro connects those machines into one control layer for the whole company: a gateway every AI call goes through, whichever provider each team uses; spend by team, person and model, with budgets that warn, then stop; secrets and personal data masked before any model sees them; risky commands stopped before they run; a team catalog of skills, MCP servers and pipelines; and an audit log of who did what. There is a Dev plan for one developer, and Teams, Business and Enterprise plans for companies. Plans are at pro.rtk-ai.app/pricing. The CLI stays free and open source.',
   },
   {
     q: 'Which AI coding tools and commands does RTK support?',
-    a: 'RTK works with 18 AI coding agents, including Claude Code (Anthropic), Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline and Aider — and the engine acts on every tool an agent uses: shell commands, file reads, search, web fetches and MCP calls. On the shell side it covers 125+ commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
+    a: 'RTK works with 18 AI coding agents, including Claude Code (Anthropic), Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf and Cline. Commands are rewritten automatically in 14 of them; the others get a rules file. The engine acts on every tool an agent uses: shell commands, file reads, search, web fetches and MCP calls. On the shell side it covers 125+ commands: cargo test, pytest, go test, git diff, git status, git log, grep, find, ls, pnpm list, tsc, eslint, prisma, docker, kubectl, and more.',
   },
   {
     q: 'How does RTK work without changing my workflow?',
@@ -112,7 +117,7 @@ const schemaOrg = {
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock',
       },
-      license: 'https://opensource.org/licenses/Apache-2.0',
+      license: 'https://www.rtk-ai.app/docs/resources/editions/',
       downloadUrl: 'https://github.com/rtk-ai/rtk',
       author: { '@id': 'https://www.rtk-ai.app/#organization' },
       featureList: [
@@ -193,8 +198,8 @@ const schemaOrg = {
 }
 ---
 <Layout
-  title="RTK — Rust Token Killer"
-  description="RTK Engine cuts what AI coding agents cost: compress tool output, route work to cheaper models, share one pipeline file. Zero config, Apache 2.0."
+  title="RTK (Rust Token Killer): the cost reduction engine for AI coding agents"
+  description="The cost reduction engine for AI coding agents. Install & forget: up to 90% less command output. Go further with pipelines: cheaper models, every tool, one shareable file."
   schemaOrg={schemaOrg}
 >
   <Fragment slot="head">
@@ -247,9 +252,9 @@ const schemaOrg = {
         </div>
       </section>
       <InstallV3 lang={lang} />
+      <ProCta lang={lang} />
       <FaqV3 items={faqItems} lang={lang} />
       <FinalCta lang={lang} />
-      <ProCta lang={lang} />
     </main>
     <FooterV3 lang={lang} compact />
     <SearchModal />
@@ -275,6 +280,7 @@ const schemaOrg = {
     initMarquee,
     initEcoMore,
     initHookTabs,
+    initExplore,
   } from '../../scripts/landing-v3'
 
   initReveal()
@@ -290,4 +296,5 @@ const schemaOrg = {
   initMarquee()
   initEcoMore()
   initHookTabs()
+  initExplore()
 </script>

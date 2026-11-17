@@ -31,7 +31,7 @@ const codeHtml = lines
   )
   .join('')
 
-const agents = ['Claude Code', 'Cursor', 'Codex', 'Gemini CLI']
+const agents = ['Claude Code']
 ---
 <section class="lp3-section" id="pipelines">
   <div class="lp3-container lp3-pipe-band">
@@ -53,9 +53,9 @@ const agents = ['Claude Code', 'Cursor', 'Codex', 'Gemini CLI']
         <p class="lp3-sr">{t('v3.pipelines.sr', lang)}</p>
       </div>
       <p class="lp3-pipe-runs reveal">
-        <span class="lbl">{t('v3.pipelines.runs_in', lang)}</span>
+        <span class="lbl">{t('v3.pipelines.this_rule', lang)}</span>
         {agents.map(a => <span class="chip">{a}</span>)}
-        <span class="chip is-accent">+14</span>
+        <span class="chip is-accent">{t('v3.pipelines.shell_note', lang)}</span>
       </p>
       <p class="lp3-pipe-runs reveal">
         <span class="lbl">Acts</span>

@@ -579,3 +579,61 @@ export function initCountUp() {
   )
   els.forEach(el => io.observe(el))
 }
+
+export function initExplore() {
+  document.querySelectorAll<HTMLElement>('[data-xp]').forEach(root => {
+    const items = Array.from(root.querySelectorAll<HTMLElement>('[data-xp-item]'))
+    const panels = Array.from(root.querySelectorAll<HTMLElement>('[data-xp-panel]'))
+    if (!items.length) return
+    root.classList.add('js-xp')
+    const host = (el: HTMLElement) => el.closest<HTMLElement>('[data-xp-row]') ?? el
+    let current = Math.max(0, items.findIndex(el => host(el).classList.contains('is-on')))
+    const show = (i: number) => {
+      current = i
+      items.forEach((el, j) => {
+        host(el).classList.toggle('is-on', j === i)
+        el.setAttribute('aria-expanded', String(j === i))
+      })
+      panels.forEach((p, j) => p.classList.toggle('is-on', j === i))
+    }
+    show(current)
+
+    let timer = 0
+    let touched = false
+    const stop = () => {
+      if (timer) window.clearInterval(timer)
+      timer = 0
+    }
+    const pick = (i: number) => {
+      touched = true
+      stop()
+      show(i)
+    }
+    const hover = root.hasAttribute('data-xp-hover') && window.matchMedia('(hover: hover)').matches
+    items.forEach((el, i) => {
+      el.addEventListener('click', () => pick(i))
+      el.addEventListener('focus', () => pick(i))
+      if (hover) el.addEventListener('mouseenter', () => pick(i))
+    })
+
+    const auto =
+      root.hasAttribute('data-xp-auto') &&
+      !reduced() &&
+      typeof IntersectionObserver !== 'undefined' &&
+      window.matchMedia('(min-width: 961px)').matches
+    if (!auto) return
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          stop()
+          if (touched) return io.disconnect()
+          if (entry.isIntersecting) {
+            timer = window.setInterval(() => show((current + 1) % items.length), 3200)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+    io.observe(root)
+  })
+}
