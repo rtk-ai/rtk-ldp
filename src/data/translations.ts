@@ -278,6 +278,11 @@ export const T: Record<string, Record<Lang, string>> = {
   'v3.problem.total': { en: "One session", fr: "Une session", es: "Una sesión", de: "Eine Session", zh: "一次会话", ja: "1セッション" },
   'v3.problem.caption': { en: "Illustrative example.", fr: "Exemple illustratif.", es: "Ejemplo ilustrativo.", de: "Illustratives Beispiel.", zh: "示意示例。", ja: "説明用の例です。" },
   'v3.probar.cta': { en: "Learn more", fr: "En savoir plus", es: "Más información", de: "Mehr erfahren", zh: "了解更多", ja: "詳しく見る" },
+  // Black Friday bar (src/data/promo.ts). v3.bf.text is a placeholder until the discount is final.
+  'v3.bf.badge': { en: "Black Friday offer", fr: "Offre Black Friday", es: "Oferta Black Friday", de: "Black-Friday-Angebot", zh: "黑色星期五优惠", ja: "ブラックフライデー特別オファー" },
+  'v3.bf.off': { en: "−{pct}%", fr: "−{pct} %", es: "−{pct} %", de: "−{pct} %", zh: "直降 {pct}%", ja: "{pct}% オフ" },
+  'v3.bf.limited': { en: "for a limited time", fr: "pour une durée limitée", es: "por tiempo limitado", de: "nur für kurze Zeit", zh: "限时", ja: "期間限定" },
+  'v3.bf.text': { en: "on RTK Pro", fr: "sur RTK Pro", es: "en RTK Pro", de: "auf RTK Pro", zh: "RTK Pro 专享", ja: "RTK Pro 対象" },
   'v3.demo.side_before': { en: 'Without RTK', fr: 'Sans RTK', es: 'Sin RTK', de: 'Ohne RTK', zh: '不用 RTK', ja: 'RTK なし' },
   'v3.demo.side_after': { en: 'With RTK', fr: 'Avec RTK', es: 'Con RTK', de: 'Mit RTK', zh: '使用 RTK', ja: 'RTK あり' },
 
