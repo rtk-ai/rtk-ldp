@@ -323,6 +323,134 @@
   .lp3-probar-item + .lp3-probar-item { display: none; }
 }
 
+/* Black Friday bar (src/data/promo.ts), in place of the Pro bar while the
+   offer runs. A static black band with faint diagonal stripes at both edges,
+   one centred line: a white coupon (year stub, tear line, offer name), the
+   offer, and a plain call to action. The whole band is the link. */
+.lp3:has(.lp3-bfbar) { --lp3-bar-h: 56px; }
+.lp3-bfbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--lp3-bar-h);
+  padding: 0 var(--lp3-pad-x);
+  overflow: hidden;
+  background: var(--bg);
+  border-bottom: 1px solid var(--lp3-line);
+  color: var(--text);
+  font-family: var(--lp3-font-sans);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.lp3-bfbar:hover { color: var(--text); text-decoration: none; }
+.lp3-bfbar:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+.lp3-bfbar::before,
+.lp3-bfbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30%;
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--text-bright) 9%, transparent) 0 2px,
+    transparent 2px 11px
+  );
+  pointer-events: none;
+}
+.lp3-bfbar::before { left: 0; mask-image: linear-gradient(90deg, var(--bg), transparent); }
+.lp3-bfbar::after { right: 0; mask-image: linear-gradient(-90deg, var(--bg), transparent); }
+.lp3-bfbar-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* The coupon: a white ticket, year stub, dashed tear line with notches */
+.bf-coupon {
+  --stub: 4.1rem;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  border-radius: 6px;
+  background: var(--text-bright);
+  color: var(--bg);
+  -webkit-mask:
+    radial-gradient(circle 5px at var(--stub) 0, transparent 96%, var(--bg)) top / 100% 51% no-repeat,
+    radial-gradient(circle 5px at var(--stub) 100%, transparent 96%, var(--bg)) bottom / 100% 51% no-repeat;
+  mask:
+    radial-gradient(circle 5px at var(--stub) 0, transparent 96%, var(--bg)) top / 100% 51% no-repeat,
+    radial-gradient(circle 5px at var(--stub) 100%, transparent 96%, var(--bg)) bottom / 100% 51% no-repeat;
+}
+.bf-year {
+  display: grid;
+  place-items: center;
+  width: var(--stub);
+  height: 100%;
+  border-right: 1.5px dashed color-mix(in srgb, var(--bg) 35%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+.bf-name {
+  padding: 0 1rem 0 0.9rem;
+  font-family: var(--lp3-font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+/* After the coupon: "−90%" in display type, then "on RTK Pro for a limited
+   time" as plain text, the arrow */
+.bf-cta {
+  flex: none;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--text-bright);
+}
+.bf-off {
+  font-family: var(--lp3-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+.bf-text,
+.bf-limited { color: var(--text); }
+.bf-limited { margin-inline-start: -0.2rem; }
+.bf-cta .arr {
+  display: inline-block;
+  margin-left: 0.3rem;
+  transition: transform 0.2s ease;
+}
+.lp3-bfbar:hover .bf-cta .arr { transform: translateX(3px); }
+/* Phones: "−90% for a limited time"; the narrowest keep the coupon and "−90%" */
+@media (max-width: 640px) {
+  .lp3-bfbar-inner { gap: 0.9rem; }
+  .bf-text,
+  .bf-cta .arr { display: none; }
+  .bf-name { font-size: 0.95rem; }
+  .bf-off { font-size: 1.05rem; }
+  .bf-limited { margin-inline-start: 0; font-size: 0.82rem; }
+}
+@media (max-width: 520px) {
+  .bf-limited { display: none; }
+}
+@media (max-width: 400px) {
+  .bf-coupon { -webkit-mask: none; mask: none; }
+  .bf-year { display: none; }
+}
+
 .lp3-nav-logo {
   display: inline-flex;
   align-items: center;
