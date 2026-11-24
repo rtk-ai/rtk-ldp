@@ -8,7 +8,7 @@ const { lang = 'en' } = Astro.props
 
 const specs = [
   { key: t('v3.specs.language', lang), val: 'Rust' },
-  { key: t('v3.specs.license', lang), val: 'Apache 2.0' },
+  { key: t('v3.specs.license', lang), val: 'Apache 2.0 + BUSL 1.1' },
   { key: t('v3.specs.architecture', lang), val: t('v3.specs.architecture_val', lang) },
   { key: t('v3.specs.overhead', lang), val: '< 20 ms' },
   { key: t('v3.specs.commands', lang), val: '125+' },
@@ -19,7 +19,7 @@ const specs = [
   <div class="lp3-container">
     <div class="lp3-specs">
       <div>
-        <p class="lp3-eyebrow reveal"><span class="idx">02</span> / {t('v3.comp.eyebrow', lang)}</p>
+        <p class="lp3-eyebrow reveal"><span class="idx">02</span> / ① {t('v3.comp.step', lang)}</p>
         <h2 class="lp3-h2 reveal">The compressor with <em>5.6M+ downloads</em></h2>
         <p class="lp3-lede reveal">{t('v3.comp.lede', lang)}</p>
 
