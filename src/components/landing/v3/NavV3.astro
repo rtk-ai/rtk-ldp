@@ -7,6 +7,7 @@ import IconLinkedIn from '../../ui/icons/IconLinkedIn.astro'
 import IconXLogo from '../../ui/icons/IconXLogo.astro'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import { t, LOCALES, localizedPath, type Lang } from '../../../lib/i18n'
+import { TOP_BANNER, BLACK_FRIDAY_HREF, BLACK_FRIDAY_YEAR, BLACK_FRIDAY_DISCOUNT } from '../../../data/promo'
 
 interface Props {
   starsLabel: string
@@ -18,6 +19,13 @@ const { starsLabel, lang = 'en', promo = false } = Astro.props
 const proText = t('v3.hero.pro_chip', lang)
 const proCta = t('v3.probar.cta', lang)
 const proLabel = `${proText.replace(/<[^>]+>/g, '')} — ${proCta}`
+
+// Black Friday replaces the RTK Pro bar while TOP_BANNER says so (src/data/promo.ts)
+const blackFriday = TOP_BANNER === 'black-friday'
+const bfBadge = t('v3.bf.badge', lang)
+const bfText = t('v3.bf.text', lang)
+const bfOff = t('v3.bf.off', lang).replace('{pct}', String(BLACK_FRIDAY_DISCOUNT))
+const bfLimited = t('v3.bf.limited', lang)
 
 const currentLocale = (Astro.currentLocale ?? 'en') as Lang
 
@@ -56,7 +64,23 @@ const communityItems = [
 const caret = `<svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`
 ---
 <nav class="lp3-nav" aria-label={t('aria.main_nav', lang)}>
-  {promo && (
+  {promo && blackFriday && (
+    <a class="lp3-bfbar" href={BLACK_FRIDAY_HREF} target="_blank" rel="noopener">
+      <span class="lp3-bfbar-inner">
+        <span class="bf-coupon">
+          <span class="bf-year">{BLACK_FRIDAY_YEAR}</span>
+          <span class="bf-name">{bfBadge}</span>
+        </span>
+        <span class="bf-cta">
+          <span class="bf-off">{bfOff}</span>
+          <span class="bf-text">{bfText}</span>
+          <span class="bf-limited">{bfLimited}</span>
+          <span class="arr" aria-hidden="true">→</span>
+        </span>
+      </span>
+    </a>
+  )}
+  {promo && !blackFriday && (
     <a class="lp3-probar" href="https://pro.rtk-ai.app" target="_blank" rel="noopener" aria-label={proLabel}>
       <span class="lp3-probar-track" aria-hidden="true">
         {[0, 1].map(() => (

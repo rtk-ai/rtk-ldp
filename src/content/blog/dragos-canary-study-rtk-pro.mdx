@@ -1,0 +1,103 @@
+---
+title: "Where Your Agent's Prompts End Up: The Dragos Canary Study and RTK Pro"
+description: "Dragos seeded about two million AI prompts with traceable secrets. At least three inference providers were breached. Here is what that means for teams running coding agents, and what RTK Pro's Shield does with the secrets in their output."
+date: 2026-11-24
+tags: [security, shield, rtk-pro]
+---
+
+import StatGrid from '../../components/blog/StatGrid.astro'
+
+## TL;DR
+
+Dragos seeded about two million AI prompts with traceable secrets over five months. At least three AI providers had data exposed, and some stolen AWS keys were tested within a few hours. Coding agents put .env files, logs and command output into their prompts every day. RTK Pro's Shield redacts the secrets it detects on the developer's machine, before that output reaches the model.
+
+<StatGrid stats={[
+  { value: '~2M', label: 'prompts seeded with canaries, July to November 2026' },
+  { value: '3+', label: 'AI providers with data exposed' },
+  { value: 'hours', label: 'before some stolen AWS keys were tested' },
+  { value: '125', label: 'endpoints OpenRouter removed from ZDR eligibility' },
+]} />
+
+## What Dragos found
+
+On November 19, 2026, HD Moore, Chief Research Officer at Dragos, published a five-month study. From July to November, his team sent about two million prompts to AI services. Each prompt carried unique canaries: real AWS keys tied to empty accounts with full logging, unique URLs and hostnames, and credentials for SSH, git and databases.
+
+The canaries fired. At least three AI providers had data exposed. In the largest breach, a couple hundred AWS keys were stolen. Each key had been sent once, to one provider. Some were tested within a few hours. In total, the stolen keys made tens of thousands of AWS API calls.
+
+Breaches were only part of the picture. On reseller marketplaces, a seller could read prompts by listing a model at the lowest price and turning on request logging. No exploit was needed.
+
+Requests marked zero data retention (ZDR) were caught too. Two of the three breaches included stolen ZDR requests.
+
+On November 22, OpenRouter published its response. It off-boarded three providers and removed 125 endpoints from ZDR eligibility, some of them as a precaution. OpenRouter says the findings showed no breach or unauthorized access of its own systems.
+
+The full details are in the [Dragos report](https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens) and [OpenRouter's post](https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/).
+
+## What this changes for a team using coding agents
+
+A coding agent does not decide what goes into a prompt the way a person does. It opens a file, runs a command, and the result is part of the next request. That can be the .env it read to debug a connection. It can be a stack trace that prints a database URL, or the output of `printenv`.
+
+Moore says it directly: AI agents "will happily send whatever they can read."
+
+The study also shows how far a prompt can travel. A privacy setting is a promise from the service your request reaches first. Behind it, a router may forward the request to a marketplace, and a marketplace seller may log it. A secret in a prompt sits on every one of those systems.
+
+Dragos lists several answers, from hosting models yourself to going directly to a first-tier provider and seeding your own canaries. Those are decisions about where prompts go. A team also has a second question to answer: what leaves the developer's machine in the first place. That is where RTK Pro works.
+
+## What RTK Pro does
+
+RTK Pro sits between the agent and the shell. It already rewrites commands so their output reaches the model compressed. Shield is the part that looks for secrets in that output and replaces them before the agent sees it.
+
+It works on two paths.
+
+- **Commands run through RTK.** A licensed binary runs the command as a child process and filters its output before passing it on. When an agent is driving, both stdout and stderr are filtered.
+- **Claude Code tools.** `rtk init --global` registers a hook that runs after every tool call. It walks the tool's result, file reads included, and redacts each string with the same engine.
+
+Detection uses 224 built-in patterns based on gitleaks, for things like cloud keys, GitHub tokens, Stripe keys, JWTs, connection strings and private keys. Admins can add custom rules in RTK Cloud, and the CLI picks them up. Each match becomes a placeholder like `<RTK_SEC:e63965>`.
+
+Here is a run on a test machine. A fake .env:
+
+```
+DATABASE_URL=postgres://app:Xk29fLq8Zr7vPw3m@db.internal:5432/prod
+AWS_ACCESS_KEY_ID=AKIA4HQZT7MRWNX2JKLP
+LOG_LEVEL=debug
+```
+
+When the agent reads it through RTK Pro:
+
+```
+$ rtk read .env
+⚠ shield: 2 secret(s) redacted
+DATABASE_URL=<RTK_SEC:8adc4a>
+AWS_ACCESS_KEY_ID=<RTK_SEC:e63965>
+LOG_LEVEL=debug
+```
+
+The connection string and the access key ID are gone. The rest of the file is still there, so the agent can keep working. To check your own files, run `rtk secrets test --file <path>`, or paste text into the Test Secrets tab in RTK Cloud.
+
+The secret value never leaves the machine, and RTK Cloud doesn't receive it either. The dashboard gets a one-way fingerprint, a masked preview and the rule that matched. The Shield page groups leaks by risk, so you know what to rotate first. Its event log shows when and where each one was caught. A detection that keeps coming back usually points to a .env file or a script that should move to a proper secret store.
+
+On the Teams plan and up, roles and groups decide who can change Shield settings and rules. The audit log records security events such as role and settings changes. It never stores command output or secrets.
+
+Some limits, stated plainly:
+
+- Detection is pattern-based. A value that matches no rule goes through. A bare AWS secret access key is one example today, because entropy-based detection is off by default.
+- On Cursor, the hook only covers MCP tool output. Shell output and file reads there are not redacted yet.
+- Shield does not choose your provider or check where a router sends your request. That part of Dragos's advice stays with you.
+
+## Try RTK Pro
+
+Start free at [pro.rtk-ai.app](https://pro.rtk-ai.app). A trial includes every feature until it ends, and Shield is part of every plan.
+
+Then, on each developer machine:
+
+```bash
+curl -fsSL https://github.com/rtk-ai/rtk-pro-releases/releases/latest/download/install.sh | sh
+rtk init --global
+rtk login --endpoint https://<your-team>.cloud.rtk-ai.app
+```
+
+Run `rtk cloud-status` to confirm the connection, then work as usual. Open Shield in your dashboard after a few sessions and look at the Leaks tab. If something shows up there, it was caught on the developer's machine before it reached the agent.
+
+## Sources
+
+- HD Moore (Dragos), [Three breaches, endless leaks: Your AI supply chain needs canaries](https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens), November 19, 2026
+- OpenRouter, [Data Processing Incidents on Inference Providers](https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/), November 22, 2026
