@@ -30,6 +30,7 @@ const REPO_RE = /^[A-Za-z0-9_.-]{1,100}$/
 const SHA_RE = /^[0-9a-f]{40}$/
 const NAME_RE = /^[A-Za-z0-9_-]+$/
 const MAX_TOML = 64 * 1024
+const NOTE_MAX = 40
 
 const PIPELINES_REPO_PATH = process.env.PIPELINES_REPO_PATH
   ?? (existsSync(resolve(ROOT, '../pipelines/approved')) ? resolve(ROOT, '../pipelines') : resolve(ROOT, 'pipelines-repo'))
@@ -87,6 +88,15 @@ function walkApproved() {
 
 function textOf(v, max) {
   return typeof v === 'string' ? v.slice(0, max) : null
+}
+
+function noteOf(toml) {
+  let note
+  try { note = parseToml(toml)?.pipeline?.note } catch { return null }
+  if (typeof note !== 'string') return null
+  const chars = [...note.replace(/[\u0000-\u001f\u007f-\u009f]/g, ' ').replace(/\s+/g, ' ').trim()]
+  if (!chars.length) return null
+  return chars.length <= NOTE_MAX ? chars.join('') : chars.slice(0, NOTE_MAX - 1).join('').trimEnd() + '…'
 }
 
 /**
@@ -193,6 +203,7 @@ function buildEntry({ owner, repo, sha, dir }) {
     isFork: facts.is_fork === true,
     pushedAt: textOf(facts.pushedAt, 40),
     description: headlineOf(facts.description),
+    note: noteOf(toml),
     approvedAt: textOf(meta.approved_at, 40) ?? textOf(entry.submitted_at, 40) ?? null,
     approvedBy: textOf(meta.approved_by, 60),
     discussionUrl: typeof (meta.discussion_url ?? repoMeta.discussion_url) === 'string' && /^https:\/\/github\.com\/rtk-ai\/pipelines\/discussions\/\d+$/.test(meta.discussion_url ?? repoMeta.discussion_url) ? (meta.discussion_url ?? repoMeta.discussion_url) : null,
