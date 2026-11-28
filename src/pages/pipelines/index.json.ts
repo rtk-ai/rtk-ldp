@@ -13,6 +13,7 @@ export const GET: APIRoute = () => {
         id: p.id,
         name: p.name,
         summary: oneLiner(p),
+        note: p.note ?? null,
         aim: aim(p).key,
         result: { kind: h.kind, evidence: h.evidence, value: h.value, unit: h.unit, quality: h.quality.text },
         benchmark: p.benchmark
